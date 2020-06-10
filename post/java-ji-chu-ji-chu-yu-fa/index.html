@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Java基础-基础语法 | CY的学习博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://jonchan1013.github.io/favicon.ico?v=1591762301399">
+<link rel="stylesheet" href="https://jonchan1013.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="✍️JavaSE是Java Standard Edtion的缩写，译成中文就是Java标准版，也是Java的核心。无论是JavaEE(Java企业版)还是JavaME(Java微型版)都是以JavaSE为基础。
+
+1、标识符
+
+Java对各..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://jonchan1013.github.io">
+        <img src="https://jonchan1013.github.io/images/avatar.png?v=1591762301399" class="site-logo">
+        <h1 class="site-title">CY的学习博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://jonchan1013.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Java基础-基础语法</h2>
+            <div class="post-date">2020-06-10</div>
+            
+            <div class="post-content" v-pre>
+              <p>✍️JavaSE是Java Standard Edtion的缩写，译成中文就是Java标准版，也是Java的核心。无论是JavaEE(Java企业版)还是JavaME(Java微型版)都是以JavaSE为基础。</p>
+<!-- more -->
+<h2 id="1-标识符">1、标识符</h2>
+<ul>
+<li>Java对各种变量、方法和类等要素命名时使用的字符序列称为标识符。
+<ul>
+<li>凡是自己可以起名字的地方都叫标识符，都遵守标识符的规则</li>
+</ul>
+</li>
+<li>Java标识符命名规则:
+<ul>
+<li>标识符应以字母、下划线、美元符开头。</li>
+<li>Java 标识符大小写敏感，长度无限制。</li>
+<li>Java 标识符大小写敏感，长度无限制。</li>
+</ul>
+</li>
+<li>约定俗成: Java标识符选取因注意&quot;见名知意&quot;且不能与Java语言的关键字重名。</li>
+</ul>
+<h2 id="2-关键字">2、关键字</h2>
+<ul>
+<li>
+<p>Java中一些赋以特定的含义，用做专门用途的字符串称为关键字( keyword)。大多数编辑器会将关键字用特殊方式标出</p>
+</li>
+<li>
+<p>所有Java关键字都是小写英文。</p>
+</li>
+<li>
+<p>所有Java关键字都是小写英文。</p>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610115950.png" alt="" loading="lazy"></figure>
+</li>
+</ul>
+<h2 id="3-java基础数据类型">3、JAVA基础数据类型</h2>
+<h3 id="31-java常量">3.1 Java常量</h3>
+<ul>
+<li>
+<p>Java 的常量值用字符串表示，区分为不同的数据类型。</p>
+<ul>
+<li>如整型常量123</li>
+<li>实型常量3.14</li>
+<li>字符常量'a'</li>
+<li>逻辑常量true. false</li>
+<li>字符串常量&quot;helloworld&quot;</li>
+</ul>
+</li>
+<li>
+<p>注意:区分字符常量和字符串常量</p>
+</li>
+<li>
+<p>注意:“常量”这个名词还会用在另外其它语境中表示值不可变的变量</p>
+</li>
+</ul>
+<h3 id="32-java变量">3.2 Java变量</h3>
+<ul>
+<li>
+<p>Java变量是程序中最基本的存储单元，其要素包括变量名，变量类型和作用域。</p>
+</li>
+<li>
+<p>Java程序中每一个变量都属于特定的数据类型，在使用前必须对其声明，声明格式为:</p>
+<ul>
+<li>
+<p>例如：int i=100;<br>
+float f=12.3f;</p>
+<p>​			double d1, d2, d3 = 0.123;<br>
+​			String s=&quot;hello&quot;;</p>
+</li>
+</ul>
+</li>
+<li>
+<p>从本质上讲，变量其实是内存中的一-小块区域，使用变量名来访问这块区域，因此，每一个变量使用前必须要先申请(声明)，然后必须进行赋值(填充内容)，才能使用</p>
+</li>
+<li>
+<p>一个程序在运行的时候，实际上这个程序是位于内存里面，然后才开始运行。一个.exe文件存放在硬盘上是无法运行的，在硬盘上看到的.exe文件无非就是一个文件而已，当我们双击这个.exe文件时，运行起来的时候实际上是整个.exe文件被放在了在内存里面，然后操作系统找到main方法，也就是程序的入口，然后就开始执行了。执行的过程之中，会不断地在内存里面分配一些区域，变量在内存里面就是一小块区域，变量有两个概念，一个是变量的名字，另一个是变量的值，即这一小块区域是有名字的，里面装着一个值，因此以后要想访问这小块区域里面的内容就可以根据这小块区域的名字来访问了。因此，变量的本质就是一小块内存区域。就变量来说，该在内存里面分配多大的存储空间呢？不同的变量类型分配不同大小的存储空间，每一个变量都是属于特定的数据类型的，声明成不同的数据类型，它就在内存里面分配不同的存储空间。</p>
+</li>
+<li>
+<p>变量作用域：变量的作用域只在“{ }”有效，出了这个“{ }”就没有作用了</p>
+</li>
+</ul>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://jonchan1013.github.io/post/java-ji-chu/">
+                  <h3 class="post-title">
+                    Java环境变量配置
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
