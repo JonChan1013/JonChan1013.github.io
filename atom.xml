@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-10T02:16:18.549Z</updated>
+    <updated>2020-06-10T02:18:56.156Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -15,7 +15,7 @@
         <id>https://jonchan1013.github.io/post/java-ji-chu/</id>
         <link href="https://jonchan1013.github.io/post/java-ji-chu/">
         </link>
-        <updated>2019-06-08T01:04:05.000Z</updated>
+        <updated>2019-02-05T01:04:05.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="前言">前言</h2>
 <p>学习java的第一步就要搭建java的学习环境，首先是要安装JDK，JDK安装好之后，还需要在电脑上配置&quot;JAVA_HOME”、&quot;path”、&quot;classpath&quot;这三个环境变量才能够把java的开发环境搭建好。在没安装过jdk的环境下，path环境变量是系统变量，本来存在的，而JAVA_HOME和classpath是不存在的。</p>
 ]]></summary>
@@ -78,7 +78,7 @@
         <id>https://jonchan1013.github.io/post/intellij-idea-chang-yong-kuai-jie-jian/</id>
         <link href="https://jonchan1013.github.io/post/intellij-idea-chang-yong-kuai-jie-jian/">
         </link>
-        <updated>2019-06-03T07:17:39.000Z</updated>
+        <updated>2019-01-03T07:17:39.000Z</updated>
         <summary type="html"><![CDATA[<h3 id="️最常用快捷键">✍️最常用快捷键</h3>
 <ol>
 <li>Alt+回车 导入包,自动修正</li>
