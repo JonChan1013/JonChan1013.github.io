@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://jonchan1013.github.io/favicon.ico?v=1591767615432">
+<link rel="shortcut icon" href="https://jonchan1013.github.io/favicon.ico?v=1591777470022">
 <link rel="stylesheet" href="https://jonchan1013.github.io/styles/main.css">
 
 
@@ -32,7 +32,7 @@ Java对各..." />
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://jonchan1013.github.io">
-        <img src="https://jonchan1013.github.io/images/avatar.png?v=1591767615432" class="site-logo">
+        <img src="https://jonchan1013.github.io/images/avatar.png?v=1591777470022" class="site-logo">
         <h1 class="site-title">CY的学习博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -197,9 +197,9 @@ float f=12.3f;</p>
 <ul>
 <li>
 <p>方法体内部声明的变量(包括形参)称为局部变量:</p>
-<ul>
-<li>方法体内部是指与方法对应的大括号内部</li>
-</ul>
+</li>
+<li>
+<p>方法体内部是指与方法对应的大括号内部</p>
 </li>
 <li>
 <p>在方法体外，类体内声明的变量成为成员变量</p>
@@ -404,7 +404,7 @@ if(f1ag) {
 </li>
 </ul>
 <h3 id="55-逻辑运算符">5.5 逻辑运算符</h3>
-<figure data-type="image" tabindex="10"><img src="C:%5CUsers%5CCY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610131413957.png" alt="image-20200610131413957" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610152457.png" alt="" loading="lazy"></figure>
 <ul>
 <li>
 <p>逻辑运算符，是用来连接两个布尔类型结果的运算符，运算结果都是布尔值 true 或者 false</p>
@@ -438,6 +438,130 @@ if(f1ag) {
     System.out.println(j);//500 
 }
 </code></pre>
+<h2 id="6-语句">6、语句</h2>
+<figure data-type="image" tabindex="11"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610151654.png" alt="" loading="lazy"></figure>
+<h3 id="61-条件语句">6.1 条件语句</h3>
+<ol>
+<li>
+<p>if语句</p>
+<figure data-type="image" tabindex="12"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610151746.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>分支语句(switch语句)</p>
+<figure data-type="image" tabindex="13"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610151816.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<figure data-type="image" tabindex="14"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610151831.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="15"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610152413.png" alt="" loading="lazy"></figure>
+<h3 id="62-循环语句">6.2 循环语句</h3>
+<h4 id="621-for循环语句">6.2.1 for循环语句<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610151930.png" alt="" loading="lazy"></h4>
+<p>学会画内存分析图分析别人写的程序，这样就很容易分析出规律，分析出规律也就明白了别人的算法，也就很容易读懂别人的程序。</p>
+<h4 id="622-while循环和do-while循环">6.2.2 while循环和do while循环</h4>
+<figure data-type="image" tabindex="16"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610152239.png" alt="" loading="lazy"></figure>
+<h4 id="623-break和continue语句">6.2.3 break和continue语句</h4>
+<figure data-type="image" tabindex="17"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610152202.png" alt="" loading="lazy"></figure>
+<h2 id="7-方法">7、方法</h2>
+<ul>
+<li>
+<p>Java的方法类似于其它语言的函数，是一段用来完成特定功能的代码片段</p>
+</li>
+<li>
+<p>形式参数:在方法被调用时用 于接收外界输入的数据。</p>
+</li>
+<li>
+<p>实参:调用方法时实际传给方法的数据。</p>
+</li>
+<li>
+<p>返回值:方法在执行完毕后返还给调用它的环境的数据。</p>
+</li>
+<li>
+<p>返回值类型:事先约定的返回值的数据类型，如无返回值，必须给出返回值类型void.</p>
+</li>
+<li>
+<p>Java语言中使用下述形式调用方法:对象名方法名(实参列表)</p>
+</li>
+<li>
+<p>实参的数目、数据类型和次序必须和所调用方法声明的形参列表匹配，</p>
+</li>
+<li>
+<p>retun语句终止方法的运行并指定要返回的数据。</p>
+</li>
+<li>
+<p>Java中进行函数调用中传递参数时，遵循值传递的原则:基本类型传递的是该数据值本身。引用类型传递的是对对象的引用，而不是对象本身。</p>
+</li>
+<li>
+<p>方法执行到return语句后，这个方法的执行就结束了，<strong>方法可以有返回值，但可以不用这个返回值</strong>。方法首先要定义，然后才能调用。</p>
+<pre><code class="language-java">public class TestMethod{
+    public static void main(String args[]){
+        m();
+        m1(3);
+        m2(2,3);
+        int i = m3(4,5);
+        System.out.println(i);
+    }
+    //以下定义的都是静态方法，静态方法可以在main()方法里面直接调用
+    public static void m(){
+            System.out.println(&quot;Hello!&quot;);
+            System.out.println(&quot;World!&quot;);
+        }
+
+    public static void m1(int i){
+            if(i==5){
+                    return;
+                }
+            System.out.println(i);
+        }
+
+    public static void m2(int i,int j){
+            System.out.println(i+j);
+        }
+
+    public static int m3(int i,int j){
+            return i+j;
+        }
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="8-变量的作用域">8、变量的作用域</h2>
+<ul>
+<li>变量的作用域只在“{ }”有效，出了这个“{ }”就没有作用了</li>
+</ul>
+<h2 id="9-递归调用">9、递归调用</h2>
+<ul>
+<li>递归：在一个方法内部对自身的调用就称为递归</li>
+</ul>
+<figure data-type="image" tabindex="18"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610153500.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="19"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610153511.png" alt="" loading="lazy"></figure>
+<ul>
+<li>范例：使用递归计算第5个斐波那契数列数</li>
+</ul>
+<pre><code class="language-java">/*计算第5个斐波那契数列数*/
+/*
+斐波那契数列特点：f(1)=1,f(2)=1,f(3)=f(1)+f(2),f(4)=(f2)+(f3)……依次类推。
+即后一个数都是等于前两个数的和，这样的数列就是斐波那契数列。
+*/
+/*
+使用递归调用的方法计算
+*/
+public class Fab{
+    public static void main(String args[]){
+        System.out.println(f(5));
+    }
+
+    public static int f(int n){
+            if(n==1||n==2){
+                    return 1;
+                }else{
+                        return f(n-1)+f(n-2);
+                    }
+        }
+}
+</code></pre>
+<p>​	整个在内存中执行过程如下图所示</p>
+<figure data-type="image" tabindex="20"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610153613.png" alt="" loading="lazy"></figure>
+<h2 id="10-程序的执行过程">10、程序的执行过程</h2>
+<figure data-type="image" tabindex="21"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610153705.png" alt="" loading="lazy"></figure>
 
             </div>
             
