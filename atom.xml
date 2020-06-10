@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-09T07:34:36.996Z</updated>
+    <updated>2020-06-10T02:11:07.150Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -10,6 +10,69 @@
     <logo>https://jonchan1013.github.io/images/avatar.png</logo>
     <icon>https://jonchan1013.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, CY的学习博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Java环境变量配置]]></title>
+        <id>https://jonchan1013.github.io/post/java-ji-chu/</id>
+        <link href="https://jonchan1013.github.io/post/java-ji-chu/">
+        </link>
+        <updated>2019-06-08T01:04:05.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="前言">前言</h2>
+<p>学习java的第一步就要搭建java的学习环境，首先是要安装JDK，JDK安装好之后，还需要在电脑上配置&quot;JAVA_HOME”、&quot;path”、&quot;classpath&quot;这三个环境变量才能够把java的开发环境搭建好。在没安装过jdk的环境下，path环境变量是系统变量，本来存在的，而JAVA_HOME和classpath是不存在的。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2>
+<p>学习java的第一步就要搭建java的学习环境，首先是要安装JDK，JDK安装好之后，还需要在电脑上配置&quot;JAVA_HOME”、&quot;path”、&quot;classpath&quot;这三个环境变量才能够把java的开发环境搭建好。在没安装过jdk的环境下，path环境变量是系统变量，本来存在的，而JAVA_HOME和classpath是不存在的。</p>
+<!-- more -->
+<ol>
+<li>
+<p>配置JAVA_HOME变量<br>
+操作步骤：计算机→右键“属性”→高级系统设置→高级→环境变量，如下图所示：<br>
+<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610095005.png" alt="" loading="lazy"><br>
+<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610095133.png" alt="" loading="lazy"><br>
+<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610095235.png" alt="" loading="lazy"><br>
+点击系统变量下面的“【新建】”，弹出一个新建系统变量对话框，首先在变量名写上JAVA_HOME，顾名思义，JAVA_HOME的含义就是JDK的安装路径，，然后在变量值写JDK的安装路径，如这里设置的变量值是&quot;C:\Program Files (x86)\Java\jdk1.8.0&quot;，设置好变量值之后，点击【确定】按钮，JAVA_HOME环境变量就设置完成，如下图所示：系统变量中多了一个&quot;JAVA_HOME&quot;变量</p>
+</li>
+<li>
+<p>配置path环境变量<br>
+操作步骤：计算机→右键“属性”→高级系统设置→高级→环境变量<br>
+找到系统变量中的Path变量，点击【编辑】按钮，弹出编辑系统变量的对话框，可以看到，Path变量中设置有很多的目录，每个目录之间使用;(分号)隔开,将%JAVA_HOME%\bin;添加到Path变量的变量值中，点击【确定】按钮，Path环境变量的就设置完成了，如下图所示：<br>
+<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610095552.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>配置ClassPath变量<br>
+设置Classpath的目的，在于告诉Java执行环境，在哪些目录下可以找到您所要执行的Java程序(.class文件)，关于这个ClassPath变量，其实可以不用配置了<br>
+<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610095445.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>JAVA_HOME变量、Path变量、ClassPath变量的说明</p>
+<ol>
+<li>设置JAVA_HOME变量的目的
+<ol>
+<li>为了方便引用，比如，JDK安装在C:\Program Files (x86)\Java\jdk1.8.0目录里，则设置JAVA_HOME为该目录路径, 那么以后要使用这个路径的时候, 只需输入%JAVA_HOME%即可, 避免每次引用都输入很长的路径串;</li>
+<li>归一原则, 当JDK路径被迫改变的时候, 仅需更改JAVA_HOME的变量值即可。</li>
+<li>第三方软件会引用约定好的JAVA_HOME变量, 典型的就是tomcat服务器，如果不配置JAVA_HOME变量，那么tomcat服务器根本运行不起来</li>
+</ol>
+</li>
+<li>Path变量(重点说明)<br>
+操作系统用path的路径来找可执行程序(.exe程序)，在windows下当我们敲任何一个命令时，实际上就是在执行一个可执行文件，如输入notepad命令就可以打开一个记事本<br>
+<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610100042.png" alt="" loading="lazy"><br>
+实际上是执行了c:\Windows下的notepad.exe这个可执行文件，和用鼠标双击notepad.exe后能够打开一个记事本的效果是一样的<br>
+<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610100137.png" alt="" loading="lazy"><br>
+当在命令窗口敲一个命令时，系统就会去自动寻找这个命令对应的可执行文件(.exe)，如果这个文件不存在，就当然无法执行这个命令了。这个可执行文件的根目录必须设置在path环境变量中。</li>
+<li>在命令窗口显示path设置的环境变量<br>
+直接输入“echo %path%”命令就可以显示设置的path环境变量的所有根目录了，只要是根目录里面存在相应的.exe文件，敲入命令时就能执行这个相应的.exe文件。因为notepad.exe所在的Windows目录已经添加到了Path环境变量中了，这就解释了为什么输入命令notepad就可以打开一个记事本，所以前面配置java开发环境时，将%JAVA_HOME%\bin添加到Path变量中的目的就是希望可以在命令行窗口下使用javac和java这两个命令来执行javac.exe和java.exe这两个可执行程序。</li>
+<li>Classpath变量说明<br>
+使用javac命令编译.java文件时，如果需要其他的类，也是通过classpath去找的，<br>
+　　使用java命令执行.class文件时，执行的.class文件是通过classpath去找的。<br>
+　　classpath表示的是要查找的类所在的路径。</li>
+</ol>
+</li>
+<li>
+<p>用户变量和系统变量的区别<br>
+用户变量，顾名思义，是针对某一个特定的用户的，只对特定的用户有效，而系统变量，则对任何用户都有效。</p>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Intellij IDEA常用快捷键]]></title>
         <id>https://jonchan1013.github.io/post/intellij-idea-chang-yong-kuai-jie-jian/</id>
