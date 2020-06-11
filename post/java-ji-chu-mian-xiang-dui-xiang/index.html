@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://jonchan1013.github.io/favicon.ico?v=1591777470022">
+<link rel="shortcut icon" href="https://jonchan1013.github.io/favicon.ico?v=1591777924806">
 <link rel="stylesheet" href="https://jonchan1013.github.io/styles/main.css">
 
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://jonchan1013.github.io">
-        <img src="https://jonchan1013.github.io/images/avatar.png?v=1591777470022" class="site-logo">
+        <img src="https://jonchan1013.github.io/images/avatar.png?v=1591777924806" class="site-logo">
         <h1 class="site-title">CY的学习博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -240,7 +240,7 @@ class Person{
 <li>同一类的每个对象共享该类的方法。</li>
 </ul>
 <h3 id="25-类和对象的关系">2.5 类和对象的关系</h3>
-<figure data-type="image" tabindex="9"><img src="C:%5CUsers%5CCY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610161325734.png" alt="image-20200610161325734" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610162714.png" alt="" loading="lazy"></figure>
 <p><strong>在内存中分析类和对象的关系</strong></p>
 <p>假设这里有一个类C，我们定义了一个类class C，然后在这个类里面定义了两个成员变量: int i和int j。定义好了这两个成员变量以后，我们写了一个main()方法（public static void main(Strng[] args)），程序开始执行。第一句我们写了 C c1 = new C()，这句的代码是我们相当于在堆内存里创建了一个对象，同时也创建了这个对象的一个引用对象c1，c1位于栈内存中，c1这个引用对象指向堆中一大块内存，这一大块内存里面装着new出来的那个对象。这里面我们一般来说是new出来两个对象c1和c2，当然，实际上，严格来讲，c1和c2叫做对象的引用，有时候，简称new出来了两个对象，c1和c2。你脑子里马上要浮现出两块内存，c1指向一块，c2指向一块。局部变量是分配在栈内存里面的，main方法里面的c1和c2都是局部变量，所以在栈里面分配了两小块内存出来，一块是c1的，一块是c2的，c1这块内存里面装着一个值，或者叫装着一个地址，这个地址是什么，我们不知道，我们只知道根据这个值就能找到new出来的C这个类里面的一个对象，而在这个对象里面有它自己的成员变量i和j，里面的两小块内存是分别用来装i和j的值的，因为每一个对象都有自己不同的成员变量的值，所以c1指向的那块对内存里面又分成一小块一小块内存，每一个小块的内存都装着这个对象的成员变量（或者叫属性）。如这里的第一小块装着i的值，第二小块装着j的值，所以当我们去访问第一小块里面装着的成员变量时，我们应该这样写：c1.i，这样就拿到了i的值，c1.j，这样就拿到了j的值。同理，c2这个对象也指向了一个new出来的C这个类里面的另一个对象，这个对象也有成员变量i和j，只不过和c1指向的那个对象里的i和j的值不同而已。要访问这个这个对象的成员变量时 ，也是要c2.i，c2.j这样去访问。</p>
 <h3 id="26-构造方法">2.6 构造方法</h3>
