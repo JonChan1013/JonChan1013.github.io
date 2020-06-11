@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>jQuery | CY的学习博客</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://jonchan1013.github.io/favicon.ico?v=1591864545365">
+<link rel="stylesheet" href="https://jonchan1013.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="✍️ jQuery 是一个 JavaScript 库。 jQuery 极大地简化了 JavaScript 编程......
+
+1、jQuery的概述
+1.1 为什么要用jquery
+
+选择器功能弱
+DOM操作繁琐之极
+浏览器兼容性不好
+动画..." />
+    <meta name="keywords" content="jQuery" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://jonchan1013.github.io">
+        <img src="https://jonchan1013.github.io/images/avatar.png?v=1591864545365" class="site-logo">
+        <h1 class="site-title">CY的学习博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://jonchan1013.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">jQuery</h2>
+            <div class="post-date">2020-06-11</div>
+            
+            <div class="post-content" v-pre>
+              <p>✍️ jQuery 是一个 JavaScript 库。 jQuery 极大地简化了 JavaScript 编程......</p>
+<!-- more -->
+<h2 id="1-jquery的概述">1、jQuery的概述</h2>
+<h3 id="11-为什么要用jquery">1.1 为什么要用jquery</h3>
+<ul>
+<li>选择器功能弱</li>
+<li>DOM操作繁琐之极</li>
+<li>浏览器兼容性不好</li>
+<li>动画效果弱</li>
+</ul>
+<h3 id="12-什么是-jquery概念">1.2 什么是 jQuery(概念)</h3>
+<p>​	jQuery （javaScriptQuery）JavaScript 代码库</p>
+<p>js.js:</p>
+<pre><code class="language-js">function $(id){
+    var dom = document.getElementById(id);
+    return dom;
+}
+</code></pre>
+<p>jq的含义.html:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		
+		&lt;!--[1]引入js文件--&gt;
+		
+		&lt;script src=&quot;js/js.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+		
+		&lt;script&gt;
+			
+			//js获得元素对象的方式
+			var  div =document.getElementById(&quot;div1&quot;);
+			
+			//JQ获得元素的方式
+			var  div2=$(&quot;div1&quot;);
+			
+		&lt;/script&gt;	
+		
+	&lt;/head&gt;
+	&lt;body&gt;
+		
+		&lt;div id=&quot;div1&quot;&gt;&lt;/div&gt;
+		
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="13-目前-jquery-有三个大版本">1.3 目前 jQuery 有三个大版本：</h3>
+<ul>
+<li>
+<p>1.x：兼容ie678,使用最为广泛的，官方只做BUG维护，功能不再新增。因此一般项目来说，使用1.x版本就可以了，最终版本：1.12.4 (2016年5月20日)</p>
+</li>
+<li>
+<p>2.x：不兼容ie678，很少有人使用，官方只做BUG维护，功<br>
+能不再新增。如果不考虑兼容低版本的浏览器可以使用2.x，最终版本：2.2.4 (2016年5月20日)</p>
+</li>
+<li>
+<p>3.x：不兼容 ie678，只支持最新的浏览器。除非特殊要求一般不会使用 3.x 版本的，很多老的 jQuery 插件不支持这个版本。目前该版本是官方主要更新维护的版本。最新版本：3.4.1</p>
+</li>
+</ul>
+<h2 id="2-jquery-中的含义">2、jQuery 中$的含义</h2>
+<p>引入jQuery：</p>
+<script src="js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
+<p>js的方式实现隔行变色的效果：</p>
+<pre><code class="language-javascript">window.onload=function(){	  	 	
+		  	 	//获得所有的tr对象
+		  	 	
+		  	 	var  tr =document.getElementsByTagName(&quot;tr&quot;);
+		  	 	
+		  	 	for(var i =0;i&lt;tr.length;i++){ 		
+		  	 		 if(i%2==0){
+		  	 		 	tr[i].style.backgroundColor=&quot;red&quot;;	  	 		 	
+		  	 		 }else { 	 		 	
+		  	 		 	tr[i].style.backgroundColor=&quot;green&quot;;
+		  	 		 }		  	 				  	 		
+		  	 	} 	 	
+		  	 }
+</code></pre>
+<p>jQuery实现隔行变色的效果：</p>
+<pre><code class="language-javascript">$(function(){	
+	 	  $(&quot;tr:odd&quot;).css(&quot;background-color&quot;,&quot;red&quot;);
+ })
+</code></pre>
+<h3 id="21-作用-1function">2.1 作用 1：$(function)</h3>
+<ul>
+<li>相当于 window.onload=function(){}</li>
+<li>功能比window.onload更强大
+<ol>
+<li>window onload一个页面只能写一个,但是可以写多个$() 而不冲突</li>
+<li>window onload要等整个页面加载完后再执行（包括图片、超链接、音视频等），但是$的执行时间要早</li>
+</ol>
+</li>
+<li>3.完整形式是$(document).ready(…….);</li>
+</ul>
+<h3 id="22-作用-2selector">2.2. 作用 2：$(selector)</h3>
+<ul>
+<li>选择器<br>
+jQuery具有强大的选择器功能</li>
+</ul>
+<h2 id="3-基本选择器一">3、基本选择器（一）</h2>
+<h3 id="31-对象之间的转换">3.1 对象之间的转换</h3>
+<ul>
+<li>DOM对象：直接使用JavaScript获取的节点对象
+<ul>
+<li>className  innerHTML  value</li>
+</ul>
+</li>
+<li>jQuery对象：使用jQuery选择器获取的节点对象，它能够使用jQuery中的方法
+<ul>
+<li>addClass()  html()  val()</li>
+</ul>
+</li>
+<li>DOM对象和jQuery对象分别拥有一套独立的方法，不能混用</li>
+<li>DOM对象转换成jQuery对象
+<ul>
+<li>$(DOM对象)</li>
+</ul>
+</li>
+<li>jQuery对象转换成DOM对象
+<ul>
+<li>jQuery对象[index]</li>
+<li>jQuery对象.get(index)</li>
+</ul>
+</li>
+</ul>
+<h3 id="32-基本选择器">3.2 基本选择器</h3>
+<ul>
+<li>标签选择器 $(“a”)</li>
+<li>ID选择器 $(“#id”)    $(“p#id”)</li>
+<li>类选择器 $(“.class”)    $(“h2.class”)    通配选择器 $(&quot;*&quot;)</li>
+</ul>
+<pre><code class="language-html">&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		
+		&lt;script src=&quot;js/jquery-1.9.1.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			   $(function(){		   	
+			   	//js获得元素对象
+			    var  zh =document.getElementById(&quot;zh&quot;);
+			    //Element
+			    // JS----JQ对象
+			    var  zhh=$(zh);
+			    alert(zh);
+			    
+			    //JQ获得元素的对象  *ID选择器
+			    var  zh1=$(&quot;#zh&quot;);
+			    //Object---[Element1,Element2,Element3]
+			    //JQ----JS对象
+			    alert(zh1[0]);
+			    
+			    //*元素选择器
+			    var inp =$(&quot;input&quot;);
+			    
+			    alert(inp.length);
+
+                //*类选择器
+                
+                var inp2=$(&quot;.inp&quot;);
+                //jq先转成js再获取内容
+              alert(inp2[0].value);
+                //  jq获得内容操作
+			    alert(inp2.eq(0).val());
+
+                //通用选择器
+                
+                $(&quot;*&quot;).css(&quot;background-color&quot;,&quot;greenyellow&quot;);
+                
+			    //分组选择器
+			   })
+		
+		&lt;/script&gt;
+	
+	&lt;/head&gt;
+	&lt;body&gt;	
+		&lt;p&gt;		
+			账号: &lt;input type=&quot;text&quot; name=&quot;&quot; id=&quot;zh&quot; value=&quot;123&quot; /&gt;		
+		&lt;/p&gt;		
+		&lt;p&gt;
+			密码: &lt;input type=&quot;password&quot; name=&quot;&quot; id=&quot;pwd&quot; value=&quot;12366&quot;  class=&quot;inp&quot;/&gt;			
+		&lt;/p&gt;
+		&lt;p&gt;
+			 确认密码： &lt;input type=&quot;password&quot; name=&quot;&quot; id=&quot;pwd2&quot; value=&quot;123&quot; class=&quot;inp&quot;/&gt;		
+		&lt;/p&gt;	
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h2 id="4-层级选择器">4、层级选择器</h2>
+<ul>
+<li>并集选择器$(&quot;elem1,elem2,elem3&quot;)</li>
+<li>后代选择器$(ul li)</li>
+<li>父子选择器 $(ul&gt;li)</li>
+<li>后面第一个兄弟元素 prev + next
+<ul>
+<li>后面所有的兄弟元素 prev ~ next</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-html">&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style&gt;			
+			div{				
+				height: 200px;				
+				border:  3px solid  red;				
+			}
+		&lt;/style&gt;
+		
+		&lt;script src=&quot;js/jquery-1.9.1.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			
+			   $(function(){
+			   	
+			   	   //  div下面包含的所有span标签
+			   	   $(&quot;div span&quot;).css(&quot;background-color&quot;,&quot;red&quot;);
+			   	  // div下面的直系子元素
+			   	   $(&quot;div&gt;span&quot;).css(&quot;background-color&quot;,&quot;green&quot;);
+
+                  //  紧接着的span标签
+                 $(&quot;#sp1 + span&quot;).css(&quot;background-color&quot;,&quot;red&quot;);
+                    
+                    //获得指定元素后面同级的span标签
+                   $(&quot;#sp1~span&quot;).css(&quot;background-color&quot;,&quot;aqua&quot;); 
+			   	
+			   })		
+		&lt;/script&gt;		
+	&lt;/head&gt;
+	&lt;body&gt;		
+	   &lt;div&gt;	   	 
+	   	 &lt;span id=&quot;sp1&quot;&gt;你好&lt;/span&gt;
+	   	 
+	   	 &lt;span&gt;你好&lt;/span&gt;&lt;br /&gt;
+	   	 
+	   	 &lt;span&gt;你好&lt;/span&gt;&lt;br /&gt;
+	   	 
+	   	 &lt;p&gt;
+	   	 	&lt;span&gt;你好&lt;/span&gt;&lt;br /&gt;
+	   	 
+	   	    &lt;span&gt;你好&lt;/span&gt;&lt;br /&gt;
+	   	 
+	   	    &lt;span&gt;你好&lt;/span&gt;&lt;br /&gt;
+	   	 		   	 	
+	   	 &lt;/p&gt;	   	
+	   &lt;/div&gt;		
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h2 id="5-基本选择器二">5、基本选择器（二)</h2>
+<pre><code class="language-html">&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style&gt;
+			div{
+				
+				height: 200px;
+				
+				border:  3px solid red;
+				
+			}
+		&lt;/style&gt;
+		&lt;script src=&quot;js/jquery-1.9.1.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			
+			  $(function(){
+			  	    //只是第一行变颜色
+			  	   $(&quot;ul li:first&quot;).css(&quot;background-color&quot;,&quot;red&quot;);
+			  	   $(&quot;ul li&quot;).first().css(&quot;background-color&quot;,&quot;red&quot;);
+			  	   
+			  	   //最后一行变颜色
+			  	   $(&quot;ul li:last&quot;).css(&quot;background-color&quot;,&quot;green&quot;);
+			  	   $(&quot;ul li&quot;).last().css(&quot;background-color&quot;,&quot;green&quot;);
+                   //获得索引是奇数对象  索引从0开始
+             	  $(&quot;ul li:odd&quot;).css(&quot;background-color&quot;,&quot;green&quot;);
+					//获得索引是偶数对象  索引从0开始
+                  $(&quot;ul li:even&quot;).css(&quot;background-color&quot;,&quot;green&quot;);
+			  	   //获得索引下标位3的对象
+			   	  $(&quot;ul li:eq(3)&quot;).css(&quot;background-color&quot;,&quot;green&quot;);
+                    //获得大于指定索引下标的对象
+                  $(&quot;ul li:gt(3)&quot;).css(&quot;background-color&quot;,&quot;green&quot;);
+			  	    //获得小于指定索引下标的对象
+			  	   $(&quot;ul li:lt(3)&quot;).css(&quot;background-color&quot;,&quot;green&quot;);
+
+                   /**********子选择器*************************/
+                  
+                  
+             	 $(&quot;ul li:nth-child(1)&quot;).css(&quot;background-color&quot;,&quot;green&quot;);
+                    
+                 $(&quot;ul li:first-child&quot;).css(&quot;background-color&quot;,&quot;darkred&quot;);
+                    
+                 $(&quot;ul li:last-child&quot;).css(&quot;background-color&quot;,&quot;darkred&quot;);  
+                  
+                 $(&quot;ul li:only-child&quot;).css(&quot;background-color&quot;,&quot;#00A40C&quot;);
+			  })		
+		&lt;/script&gt;
+				
+	&lt;/head&gt;
+	&lt;body&gt;		
+		&lt;div&gt;		
+			&lt;ul&gt;
+				&lt;li&gt;List  Item1&lt;/li&gt;
+				&lt;li&gt;List  Item2&lt;/li&gt;
+				&lt;li&gt;List  Item3&lt;/li&gt;
+				&lt;li&gt;List  Item4&lt;/li&gt;
+			&lt;/ul&gt;	
+            
+			&lt;ul&gt;
+				&lt;li&gt;List  Item1&lt;/li&gt;
+			&lt;/ul&gt;						
+		&lt;/div&gt;	
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h2 id="6-属性选择器">6、属性选择器</h2>
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot;&gt;
+			
+			$(function(){
+				//type属性等于text
+				$(&quot;input[type=text]&quot;).css(&quot;background-color&quot;,&quot;#00A40C&quot;);
+				// name属性用z开头的
+				$(&quot;input[name^=z]&quot;).css(&quot;background-color&quot;,&quot;#FF0000&quot;);
+				// name属性同d结尾的
+				$(&quot;input[name$=d]&quot;).css(&quot;background-color&quot;,&quot;green&quot;);
+				//name属性中包含p 的元素
+				$(&quot;input[name*=p]&quot;).css(&quot;background-color&quot;,&quot;green&quot;);
+               
+               //复合属性选择器，需要同时满足多个条件时使用
+                $(&quot;input[type=text][name^=z]&quot;).css(&quot;background-color&quot;,&quot;deeppink&quot;); 
+			})
+			
+			
+		&lt;/script&gt;
+</code></pre>
+<h2 id="7-表单选择器">7、表单选择器</h2>
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot;&gt;
+			
+			$(function(){
+				
+				// √ 获得form表单中的所有的表单项
+				var inp= $(&quot;:input&quot;) 
+				//获得标签名称是input 的所有的标签对象
+				var  inp2=$(&quot;input&quot;);
+				alert(inp.length+&quot;----&quot;+inp2.length);
+				
+				$(&quot;input[type=text]&quot;)
+				//  √ input标签 type属性等于text所对应的对象
+				$(&quot;:text&quot;).css(&quot;background-color&quot;,&quot;green&quot;);
+				
+				$(&quot;:password&quot;).css(&quot;background-color&quot;,&quot;red&quot;);
+				
+				
+				/********表单属性选择器*****************/
+				
+				//获得input标签中含有disabled属性的对象
+				var but=  $(&quot;input:disabled&quot;);	
+				
+				alert(but.val());
+				//√  获得含有checked属性的对象
+				var  ch =$(&quot;input:checked&quot;);
+				
+			})
+</code></pre>
+<h2 id="8-操作元素对象的样式">8、 操作元素对象的样式</h2>
+<pre><code class="language-html">&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		
+		&lt;style&gt;
+			
+			#div1{
+				
+				width: 200px;
+				
+				height: 200px;
+				
+				border: 2px solid  green;
+				
+			}			
+		&lt;/style&gt;		
+		&lt;script src=&quot;js/jquery-1.9.1.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			
+			$(function(){
+				
+				
+				$(&quot;#bu1&quot;).click(function(){
+					
+					//获得div对象
+					
+					var  div =$(&quot;#div1&quot;);
+					
+					//获得css样式
+					
+					var wid=div.css(&quot;width&quot;);
+					
+					var hi=div.css(&quot;height&quot;);
+					
+					console.log(wid+&quot;----&quot;+hi);
+					
+					//操作元素对象的css
+					
+					div.css(&quot;width&quot;,&quot;400px&quot;);
+					
+					div.css(&quot;height&quot;,&quot;500px&quot;);
+					
+					div.css(&quot;background-color&quot;,&quot;red&quot;);
+					
+					div.css(&quot;backgroundColor&quot;,&quot;red&quot;);
+					
+				  //以上内容的综合---{key1:value1,key2:value2}---json数据格式
+					
+					div.css({'width':'300px','height':'300px','background-color':'red'});
+				})
+				
+				
+			})
+			
+		&lt;/script&gt;
+		
+	&lt;/head&gt;
+	&lt;body&gt;		
+		&lt;input type=&quot;button&quot; value=&quot;样式的添加&quot; id=&quot;bu1&quot;&gt;		
+		&lt;hr /&gt;	
+		&lt;div id=&quot;div1&quot;&gt;&lt;/div&gt;	
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<p>如果当页面中的css样式比较多的时候可以通过添加类的方式添加样式，方法如下：两种：</p>
+<pre><code class="language-html">&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style&gt;
+			#div1{
+				
+				width: 300px;
+				
+				height: 300px;
+				
+				border:  3px solid red;
+				
+			}
+			
+			.div{
+				
+				width: 500px;
+				
+				height: 500px;
+				
+				
+				background-image: url(img/1.jpg);
+				
+				background-repeat: no-repeat;
+				
+				background-position: center;
+				
+				background-color: greenyellow;
+				
+			}
+			
+		&lt;/style&gt;
+		
+		&lt;script src=&quot;js/jquery-1.9.1.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			
+			  $(function(){
+			  	 
+			  	$(&quot;#bu1&quot;).click(function(){
+			  		
+			  		//获得div对象 --通过添加类的方式添加css样式
+			  		$(&quot;#div1&quot;).attr(&quot;class&quot;,&quot;div&quot;);
+			  		
+			  		$(&quot;#div1&quot;).addClass(&quot;div&quot;);
+			  	})			  				  	
+			  })
+						
+		&lt;/script&gt;				
+	&lt;/head&gt;
+	&lt;body&gt;
+		
+		&lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;bu1&quot; value=&quot;元素样式操作&quot; /&gt;		
+		&lt;hr /&gt;		
+		&lt;div id=&quot;div1&quot;&gt;			
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h2 id="9-操作元素对象的属性">9、操作元素对象的属性</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;script src=&quot;js/jquery-1.9.1.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			
+			 $(function(){
+			 	
+			 	 $(&quot;#bu1&quot;).click(function(){
+			 	 	
+			 	  //获得元素对象
+			 	  var tex=$(&quot;#inp1&quot;);
+			 	 //获得元素对象的属性	
+			 	  var te=tex.attr(&quot;type&quot;);
+			 	 	
+			 	  var cl =tex.attr(&quot;class&quot;);
+			 	 //获得元素固有的属性值
+			 	 var  val =tex.attr(&quot;value&quot;);
+			 	 
+			 	 console.log(te+&quot;------&quot;+cl+&quot;-----&quot;+val);
+			 	 //获得文本框实时输入的值
+			 	 var  val2=tex.val();
+			 	  alert(val2);
+			 	 
+			 	 /*********操作元素对象的属性******************/
+                  
+                  tex.attr(&quot;type&quot;,&quot;button&quot;);
+                  
+                  tex.attr(&quot;value&quot;,&quot;测试按钮&quot;);
+			 	 
+			 	 //支持json数据格式
+			 	  tex.attr({&quot;type&quot;:&quot;button&quot;,&quot;value&quot;:&quot;测试按钮&quot;});
+			 	  
+			 	  var ch= $(&quot;#fav&quot;).attr(&quot;checked&quot;);//返回的是checked
+                  var  flag=$(&quot;#fav&quot;).prop(&quot;checked&quot;);//返回值是true或false
+
+                  var  flag=$(&quot;#fav&quot;).prop(&quot;checked&quot;,true);
+			 	 
+			 	 })			 	
+			 	
+			 })
+		&lt;/script&gt;
+		
+	&lt;/head&gt;
+	&lt;body&gt;
+		
+		&lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;bu1&quot; value=&quot;元素属性的获得&quot; /&gt;
+		&lt;hr /&gt;
+		&lt;form&gt;
+			
+			
+			账号：&lt;input type=&quot;text&quot; class=&quot;inp&quot; id=&quot;inp1&quot; value=&quot;sxt&quot; /&gt; &lt;br /&gt;
+			
+			
+			密码：&lt;input type=&quot;password&quot; class=&quot;pwd&quot; id=&quot;pwd1&quot; value=&quot;sxt&quot; /&gt;&lt;br /&gt;
+			
+			
+			爱好： 抽烟：&lt;input type=&quot;checkbox&quot; /&gt;
+			         
+			       喝酒：&lt;input type=&quot;checkbox&quot; /&gt;
+			
+			       烫头：&lt;input type=&quot;checkbox&quot; checked=&quot;checked&quot; id=&quot;fav&quot; /&gt;
+		
+		&lt;/form&gt;
+		
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h2 id="10-操作元素对象的内容和值">10、操作元素对象的内容和值</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+      &lt;script src=&quot;js/jquery-1.9.1.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+      
+      &lt;script type=&quot;text/javascript&quot;&gt;
+      	
+      	$(function(){
+      		
+      		$(&quot;#bu1&quot;).click(function(){
+      			
+      			 //获得div元素对象
+      			 var div =$(&quot;#div1&quot;);
+      			 
+      			 
+      			 //获得元素的内容 含有HTML的标签的
+      			 var  ht=div.html();
+      			 
+      			 console.log(ht);
+      			 //只是获得文本内容， 不含有HTML标签
+      			 var te =div.text();
+      			 
+      			 console.log(te);
+      			//获得文本框的值
+      			
+      			var val=$(&quot;#inp1&quot;).val();
+      			
+      			console.log(val);
+      			
+      			
+      			/********操作元素对象的内容和值****************/
+      			
+      			//会识别这里的b标签，覆盖之前的内容
+      			div.html(&quot;&lt;b&gt;我们都爱笑&lt;/b&gt;&quot;);
+				
+				//不会识别这里的b标签，覆盖之前的内容
+      			div.text(&lt;b&gt;我们都爱笑&lt;/b&gt;&quot;);
+      			
+				//累加，不覆盖
+      			div.text(div.text()+&quot;&lt;b&gt;我们都爱笑&lt;/b&gt;&quot;);
+      			
+      			
+      			$(&quot;#inp1&quot;).val(&quot;123&quot;);
+      			
+      		})
+	
+      	})
+      	
+      	
+      &lt;/script&gt;
+	
+	&lt;/head&gt;
+	&lt;body&gt;
+		
+		&lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;bu1&quot; value=&quot;操作元素的内容&quot; /&gt;
+		&lt;hr /&gt;
+		
+		&lt;div id=&quot;div1&quot;&gt;
+			
+			&lt;span&gt;你好&lt;/span&gt;
+			
+		&lt;/div&gt;
+	
+		&lt;input type=&quot;text&quot; name=&quot;inp1&quot;  id=&quot;inp1&quot; value=&quot;&quot; /&gt;
+		
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h2 id="11-操作元素对象的节点">11、操作元素对象的节点</h2>
+<pre><code class="language-html">&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style&gt;	
+			#div1{
+				height: 300px;
+				
+				border: 3px solid  red;
+			}
+			p{
+				border: 2px solid  green;
+				
+			}
+		&lt;/style&gt;
+		
+		&lt;script src=&quot;js/jquery-1.9.1.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			$(function(){
+				//创建了新的元素
+				var  p=$(&quot;&lt;p&gt; &lt;b&gt;List  Item0&lt;/b&gt; &lt;/p&gt;&quot;)
+				//增加子元素   ---现有元素之后
+				$(&quot;#div1&quot;).append(p);
+                 //把p元素增加到  div里面 
+                p.appendTo(&quot;#div1&quot;);
+               //添加内部的子元素  ---现有元素之前
+                $(&quot;#div1&quot;).prepend(p);
+               
+                p.prependTo(&quot;#div1&quot;);
+               //平级的添加元素---现有元素之前
+                p.insertBefore(&quot;#div1&quot;);
+               
+                $(&quot;#div1&quot;).before(p);
+                
+                //平级的添加元素---现有元素之后
+                p.insertAfter(&quot;#div1&quot;);
+                
+                $(&quot;#div1&quot;).after(p);
+
+            /***********替换指定的节点******************/
+            
+            $(&quot;div p:nth-child(1)&quot;).replaceWith(p);
+            
+            p.replaceAll(&quot;div p:nth-child(5)&quot;);
+             
+             /**********删除指定的节点元素***************************/
+             //删除指定的元素
+            $(&quot;#div1&quot;).remove();
+	        //删除指定下标为3的子元素
+	         $(&quot;div p:nth-child(3)&quot;).remove();
+	         
+	         
+	         //清空内容,div1里面的内容全清空
+	         $(&quot;#div1&quot;).empty();
+	         
+	         $(&quot;div p:nth-child(2)&quot;).empty();
+	         
+			})
+			
+		&lt;/script&gt;
+		
+	&lt;/head&gt;
+	&lt;body&gt;
+		
+		&lt;div id=&quot;div1&quot;&gt;
+			
+			&lt;p&gt;List Item1&lt;/p&gt;
+			
+			&lt;p&gt;List Item2&lt;/p&gt;
+			
+			&lt;p&gt;List Item3&lt;/p&gt;
+			
+			&lt;p&gt;List Item4&lt;/p&gt;
+			
+			&lt;p&gt;List Item5&lt;/p&gt;	
+		&lt;/div&gt;
+		
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<pre><code class="language-html">&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;script src=&quot;js/jquery-1.9.1.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			
+			 function insertNode(){
+			 	
+			 	//创建节点对象
+			 	var  p =$('&lt;p&gt;'+
+				'照片:&lt;input type=&quot;file&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;'+
+				'&lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;删除&quot; onclick=&quot;removeNode(this)&quot; /&gt;'+
+			    '&lt;/p&gt;');
+			 	
+			 	$(&quot;#last&quot;).before(p);
+			 	
+			 }
+			 function removeNode(obj){
+			 	
+			 	$(obj).parent().remove();
+			 }
+						
+		&lt;/script&gt;
+				
+	&lt;/head&gt;
+	&lt;body&gt;
+		
+		&lt;form&gt;
+			
+			&lt;p&gt;
+				
+				用户名:&lt;input type=&quot;text&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;
+				
+			&lt;/p&gt;
+			
+			&lt;p&gt;
+				照片:&lt;input type=&quot;file&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;
+				
+				&lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;添加&quot; onclick=&quot;insertNode()&quot; /&gt;
+			&lt;/p&gt;
+			
+			&lt;p id=&quot;last&quot;&gt;
+				&lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;提交&quot; /&gt;
+				
+				&lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;清空&quot; /&gt;
+			&lt;/p&gt;
+			
+		&lt;/form&gt;	
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h2 id="12-事件处理">12、事件处理</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;script src=&quot;http://apps.bdimg.com/libs/jquery/1.7.0/jquery.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			/*页面加载完执行的操作*/
+//			$(function(){})
+//			
+//			jQuery(function(){})
+//			
+//			$(document).ready(function(){})
+			
+			$(function(){
+				/*******事件的基础绑定*************/
+				$(&quot;#bu1&quot;).click(function(){
+				
+				alert(&quot;单击事件&quot;);
+				
+			  })
+			  
+			 $(&quot;#bu1&quot;).dblclick(function(){
+			  	
+			  	alert(&quot;双击事件&quot;);
+			  })
+			 
+			  /*******bind事件绑定**************/
+			  $(&quot;#bu2&quot;).bind('click',function(){
+			  	
+			  	alert(&quot;单击事件绑定&quot;);
+			  	
+			  })*/
+			  //内容还支持json数据格式
+			  $(&quot;#bu2&quot;).bind({
+			  	 'click':function(){},
+			  	 'dblclick':function(){},
+			  	 'blur':function(){}
+			  	})
+			  
+			  /*********one一次事件绑定*************/
+			  
+				$(&quot;#bu3&quot;).one('click',function(){
+					
+					alert(&quot;一次事件绑定&quot;);
+				})
+				
+				
+				
+				/*********trigger事件操作****************/
+				
+				$(&quot;#bu4&quot;).click(function(){
+					
+					
+					$(&quot;#bu1&quot;).trigger('dblclick');
+					
+					$(&quot;#bu3&quot;).trigger('click');
+					
+				})
+				
+				/********事件的解绑***********/
+				
+				$(&quot;#bu5&quot;).click(function(){
+					
+					//事件的解绑
+					//解绑指定对象上的所有事件
+					$(&quot;#bu1&quot;).unbind();
+					//解绑指定的事件
+					$(&quot;#bu1&quot;).unbind(&quot;dblclick&quot;);
+					
+				})
+				
+				$(&quot;.bu6&quot;).click(function(){
+					
+					alert(&quot;单击事件的绑定&quot;);
+					
+				})
+				
+				$(&quot;.bu6&quot;).live('click',function(){
+					
+					alert(&quot;单击事件绑定&quot;);
+					
+				})
+				
+				
+				$(&quot;body&quot;).append('&lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; class=&quot;bu6&quot; value=&quot;事件操作2&quot; /&gt;');
+				
+			})
+		
+		&lt;/script&gt;
+	
+	&lt;/head&gt;
+	&lt;body&gt;
+	
+		&lt;input type=&quot;button&quot; name=&quot;bu1&quot; id=&quot;bu1&quot; value=&quot;事件绑定&quot; /&gt;
+		
+		&lt;input type=&quot;button&quot; name=&quot;bu2&quot; id=&quot;bu2&quot; value=&quot;bind事件绑定&quot; /&gt;
+		
+		&lt;input type=&quot;button&quot; name=&quot;bu3&quot; id=&quot;bu3&quot; value=&quot;one事件绑定&quot; /&gt;
+		
+		&lt;input type=&quot;button&quot; name=&quot;bu4&quot; id=&quot;bu4&quot; value=&quot;tigger事件学习&quot; /&gt;
+		
+		&lt;input type=&quot;button&quot; name=&quot;bu5&quot; id=&quot;bu5&quot; value=&quot;事件解绑&quot; /&gt;
+	
+		&lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; class=&quot;bu6&quot; value=&quot;事件操作&quot; /&gt;
+	
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://jonchan1013.github.io/tag/WEeMzSzHJ/" class="tag">
+                    jQuery
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://jonchan1013.github.io/post/java-ji-chu-mian-xiang-dui-xiang/">
+                  <h3 class="post-title">
+                    Java基础-面向对象
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
