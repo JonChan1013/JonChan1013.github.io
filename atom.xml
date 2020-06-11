@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-11T08:35:48.706Z</updated>
+    <updated>2020-06-11T13:17:44.642Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -82,19 +82,18 @@
 <p>引入jQuery：</p>
 <script src="js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
 <p>js的方式实现隔行变色的效果：</p>
-<pre><code class="language-javascript">window.onload=function(){	  	 	
-		  	 	//获得所有的tr对象
+<pre><code class="language-html">window.onload=function(){	  	 	
+		  	 	//获得所有的tr对象  	 	
+  	 	var  tr =document.getElementsByTagName(&quot;tr&quot;);
 		  	 	
-		  	 	var  tr =document.getElementsByTagName(&quot;tr&quot;);
-		  	 	
-		  	 	for(var i =0;i&lt;tr.length;i++){ 		
-		  	 		 if(i%2==0){
-		  	 		 	tr[i].style.backgroundColor=&quot;red&quot;;	  	 		 	
-		  	 		 }else { 	 		 	
-		  	 		 	tr[i].style.backgroundColor=&quot;green&quot;;
-		  	 		 }		  	 				  	 		
-		  	 	} 	 	
-		  	 }
+	 	 	for(var i =0;i&lt;tr.length;i++){ 		
+  	 		 if(i%2==0){
+  	 		 	tr[i].style.backgroundColor=&quot;red&quot;;	  	 		 	
+		  		 }else { 	 		 	
+		  		 	tr[i].style.backgroundColor=&quot;green&quot;;
+	 	 		 }		  	 				  	 		
+  	 	} 	 	
+  	 }
 </code></pre>
 <p>jQuery实现隔行变色的效果：</p>
 <pre><code class="language-javascript">$(function(){	
@@ -811,9 +810,9 @@ jQuery具有强大的选择器功能</li>
 		&lt;script type=&quot;text/javascript&quot;&gt;
 			/*页面加载完执行的操作*/
 //			$(function(){})
-//			
+			
 //			jQuery(function(){})
-//			
+			
 //			$(document).ready(function(){})
 			
 			$(function(){
@@ -847,15 +846,12 @@ jQuery具有强大的选择器功能</li>
 				$(&quot;#bu3&quot;).one('click',function(){
 					
 					alert(&quot;一次事件绑定&quot;);
-				})
-				
-				
+				})			
 				
 				/*********trigger事件操作****************/
 				
 				$(&quot;#bu4&quot;).click(function(){
-					
-					
+						
 					$(&quot;#bu1&quot;).trigger('dblclick');
 					
 					$(&quot;#bu3&quot;).trigger('click');
@@ -908,6 +904,74 @@ jQuery具有强大的选择器功能</li>
 	
 		&lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; class=&quot;bu6&quot; value=&quot;事件操作&quot; /&gt;
 	
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h2 id="13-动画功能">13、动画功能</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style&gt;
+			#div1{		
+				height: 300px;
+				background-color: green;
+			}
+			
+			#div2{
+				
+				height: 300px;
+				
+				background-color: yellow;
+		}
+		&lt;/style&gt;
+		
+		&lt;script src=&quot;js/jquery-1.9.1.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			
+			  $(function(){
+			  	  $(&quot;#bu1&quot;).click(function(){
+			  	  	
+			  	  	  //获得div对象
+			  	  	  var  div1 =$(&quot;#div1&quot;);
+			  	  	  
+			  	  	  //3s隐藏动画
+			  	  	  div1.hide(3000);
+			  	  	  
+			  	  	  div1.show(3000);
+                      //隐藏的显示 ---显示的隐藏
+                      $(&quot;div&quot;).toggle(3000);
+                     //滑动上
+                   div1.slideUp(3000);
+                     //滑动下
+                   div1.slideDown(3000);
+                     //滑动上--滑动下    滑动下---滑动上
+                   $(&quot;div&quot;).slideToggle(3000);
+                   
+                     //淡出
+                     div1.fadeOut(3000);
+                     //淡入
+                     div1.fadeIn(3000);
+			  	  	
+			  	  })
+	  	
+			  })
+			
+		&lt;/script&gt;
+		
+	&lt;/head&gt;
+	&lt;body&gt;
+		
+		&lt;input type=&quot;button&quot; id=&quot;bu1&quot; value='动画触发'&gt;
+		
+		&lt;hr /&gt;
+		
+		&lt;div id=&quot;div1&quot;&gt;&lt;/div&gt;
+		
+		&lt;div id=&quot;div2&quot;&gt;&lt;/div&gt;	
 	&lt;/body&gt;
 &lt;/html&gt;
 

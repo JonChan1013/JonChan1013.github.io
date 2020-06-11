@@ -8,9 +8,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://jonchan1013.github.io/favicon.ico?v=1591864545365">
+<link rel="shortcut icon" href="https://jonchan1013.github.io/favicon.ico?v=1591881454940">
 <link rel="stylesheet" href="https://jonchan1013.github.io/styles/main.css">
 
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
 
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -36,7 +42,7 @@ DOM操作繁琐之极
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://jonchan1013.github.io">
-        <img src="https://jonchan1013.github.io/images/avatar.png?v=1591864545365" class="site-logo">
+        <img src="https://jonchan1013.github.io/images/avatar.png?v=1591881454940" class="site-logo">
         <h1 class="site-title">CY的学习博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -166,19 +172,18 @@ DOM操作繁琐之极
 <p>引入jQuery：</p>
 <script src="js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
 <p>js的方式实现隔行变色的效果：</p>
-<pre><code class="language-javascript">window.onload=function(){	  	 	
-		  	 	//获得所有的tr对象
+<pre><code class="language-html">window.onload=function(){	  	 	
+		  	 	//获得所有的tr对象  	 	
+  	 	var  tr =document.getElementsByTagName(&quot;tr&quot;);
 		  	 	
-		  	 	var  tr =document.getElementsByTagName(&quot;tr&quot;);
-		  	 	
-		  	 	for(var i =0;i&lt;tr.length;i++){ 		
-		  	 		 if(i%2==0){
-		  	 		 	tr[i].style.backgroundColor=&quot;red&quot;;	  	 		 	
-		  	 		 }else { 	 		 	
-		  	 		 	tr[i].style.backgroundColor=&quot;green&quot;;
-		  	 		 }		  	 				  	 		
-		  	 	} 	 	
-		  	 }
+	 	 	for(var i =0;i&lt;tr.length;i++){ 		
+  	 		 if(i%2==0){
+  	 		 	tr[i].style.backgroundColor=&quot;red&quot;;	  	 		 	
+		  		 }else { 	 		 	
+		  		 	tr[i].style.backgroundColor=&quot;green&quot;;
+	 	 		 }		  	 				  	 		
+  	 	} 	 	
+  	 }
 </code></pre>
 <p>jQuery实现隔行变色的效果：</p>
 <pre><code class="language-javascript">$(function(){	
@@ -895,9 +900,9 @@ jQuery具有强大的选择器功能</li>
 		&lt;script type=&quot;text/javascript&quot;&gt;
 			/*页面加载完执行的操作*/
 //			$(function(){})
-//			
+			
 //			jQuery(function(){})
-//			
+			
 //			$(document).ready(function(){})
 			
 			$(function(){
@@ -931,15 +936,12 @@ jQuery具有强大的选择器功能</li>
 				$(&quot;#bu3&quot;).one('click',function(){
 					
 					alert(&quot;一次事件绑定&quot;);
-				})
-				
-				
+				})			
 				
 				/*********trigger事件操作****************/
 				
 				$(&quot;#bu4&quot;).click(function(){
-					
-					
+						
 					$(&quot;#bu1&quot;).trigger('dblclick');
 					
 					$(&quot;#bu3&quot;).trigger('click');
@@ -996,6 +998,74 @@ jQuery具有强大的选择器功能</li>
 &lt;/html&gt;
 
 </code></pre>
+<h2 id="13-动画功能">13、动画功能</h2>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style&gt;
+			#div1{		
+				height: 300px;
+				background-color: green;
+			}
+			
+			#div2{
+				
+				height: 300px;
+				
+				background-color: yellow;
+		}
+		&lt;/style&gt;
+		
+		&lt;script src=&quot;js/jquery-1.9.1.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			
+			  $(function(){
+			  	  $(&quot;#bu1&quot;).click(function(){
+			  	  	
+			  	  	  //获得div对象
+			  	  	  var  div1 =$(&quot;#div1&quot;);
+			  	  	  
+			  	  	  //3s隐藏动画
+			  	  	  div1.hide(3000);
+			  	  	  
+			  	  	  div1.show(3000);
+                      //隐藏的显示 ---显示的隐藏
+                      $(&quot;div&quot;).toggle(3000);
+                     //滑动上
+                   div1.slideUp(3000);
+                     //滑动下
+                   div1.slideDown(3000);
+                     //滑动上--滑动下    滑动下---滑动上
+                   $(&quot;div&quot;).slideToggle(3000);
+                   
+                     //淡出
+                     div1.fadeOut(3000);
+                     //淡入
+                     div1.fadeIn(3000);
+			  	  	
+			  	  })
+	  	
+			  })
+			
+		&lt;/script&gt;
+		
+	&lt;/head&gt;
+	&lt;body&gt;
+		
+		&lt;input type=&quot;button&quot; id=&quot;bu1&quot; value='动画触发'&gt;
+		
+		&lt;hr /&gt;
+		
+		&lt;div id=&quot;div1&quot;&gt;&lt;/div&gt;
+		
+		&lt;div id=&quot;div2&quot;&gt;&lt;/div&gt;	
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
 
             </div>
             
@@ -1018,6 +1088,12 @@ jQuery具有强大的选择器功能</li>
               </div>
             
 
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
             
 
           </div>
@@ -1046,6 +1122,29 @@ var app = new Vue({
     hljs.initHighlightingOnLoad()
   </script>
 
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 
