@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-11T16:51:12.797Z</updated>
+    <updated>2020-06-12T16:52:20.383Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -10,6 +10,325 @@
     <logo>https://jonchan1013.github.io/images/avatar.png</logo>
     <icon>https://jonchan1013.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, CY的学习博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Ajax]]></title>
+        <id>https://jonchan1013.github.io/post/ajax/</id>
+        <link href="https://jonchan1013.github.io/post/ajax/">
+        </link>
+        <updated>2020-06-12T10:34:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>✍️Ajax 即“Asynchronous Javascript And XML”（异步 JavaScript 和 XML），是指一种创建交互式、快速动态应用的网页开发技术，无需重新加载整个网页的情况下，能够更新页面局部数据的技术。<br>
+通过在后台与服务器进行少量数据交换，Ajax 可以使页面实现异步更新。这意味着可以在不重新加载整个页面的情况下，对页面的某部分进行更新。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>✍️Ajax 即“Asynchronous Javascript And XML”（异步 JavaScript 和 XML），是指一种创建交互式、快速动态应用的网页开发技术，无需重新加载整个网页的情况下，能够更新页面局部数据的技术。<br>
+通过在后台与服务器进行少量数据交换，Ajax 可以使页面实现异步更新。这意味着可以在不重新加载整个页面的情况下，对页面的某部分进行更新。</p>
+<!-- more -->
+<h2 id="1-ajax简介">1、Ajax简介</h2>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200612214538.png" alt="" loading="lazy"></figure>
+<p>​		Ajax 即“Asynchronous Javascript And XML”（异步 JavaScript 和 XML），是指一种创建交互式、快速动态应用的网页开发技术，无需重新加载整个网页的情况下，能够更新页面局部数据的技术。</p>
+<p>​		通过在后台与服务器进行少量数据交换，Ajax 可以使页面实现异步更新。这意味着可以在不重新加载整个页面的情况下，对页面的某部分进行更新。</p>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200612214639.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200612214744.png" alt="" loading="lazy"></figure>
+<h2 id="2-ajax的使用">2、Ajax的使用</h2>
+<h3 id="21-xmlhttprequest-对象">2.1 XMLHttpRequest 对象</h3>
+<p>​		XMLHttpRequest 是浏览器接口对象，该对象的 API 可被 JavaScript、VBScript 以及其它<br>
+web 浏览器内嵌的脚本语言调用，通过 HTTP 协议在浏览器和 web 服务器之间收发 XML 或<br>
+其它数据。XMLHttpRequest 可以与服务器实现异步交互，而无需让整个页面刷新，因此成<br>
+为 Ajax 编程的核心对象。</p>
+<h3 id="22-ajax-的使用步骤">2.2 Ajax 的使用步骤</h3>
+<ol>
+<li>
+<p>创建 XMLHttpRequest 对象</p>
+<pre><code class="language-javascript">var xhr = new XMLHttpRequest();
+</code></pre>
+</li>
+<li>
+<p>给定请求方式以及请求地址</p>
+</li>
+</ol>
+<pre><code class="language-javascript">xhr.open(&quot;get&quot;,&quot;http://www.example.com&quot;);
+</code></pre>
+<ol start="3">
+<li>发送请求</li>
+</ol>
+<pre><code class="language-javascript">xhr.send();
+</code></pre>
+<ol start="4">
+<li>获取服务器端给客户端的响应数据</li>
+</ol>
+<pre><code class="language-javascript">xhr.onreadystatechange = function(){
+//0:open()没有被调用
+//1:open()正在被调用
+//2:send()正在被调用
+//3:服务端正在返回结果
+//4:请求结束，并且服务端已经结束发送数据到客户端
+if(xhr.readyState == 4 &amp;&amp; xhr.status == 200){
+document.getElementById(&quot;span&quot;).innerHTML=xhr.responseText;
+alert(xhr.responseText);
+}
+</code></pre>
+<h3 id="23-ajax的运行原理">2.3 Ajax的运行原理</h3>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200612215857.png" alt="" loading="lazy"></figure>
+<h3 id="24-示例代码">2.4 示例代码</h3>
+<p>index.jsp：</p>
+<pre><code class="language-js">&lt;%@ page contentType=&quot;text/html; charset=UTF-8&quot; language=&quot;java&quot;%&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;script&gt;
+        function but() {
+            var xhr = new XMLHttpRequest();
+            xhr.open(&quot;get&quot;, &quot;ajax.do&quot;);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 &amp;&amp; xhr.status == 200) {
+                    alert(xhr.responseText);
+                    //将数据插入到span标签中
+                    document.getElementById(&quot;span&quot;).innerHTML=xhr.responseText;
+                }
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;你好&lt;/h2&gt;
+&lt;hr/&gt;
+&lt;span id=&quot;span&quot;&gt;&lt;/span&gt;
+&lt;input type=&quot;button&quot; value=&quot;ok&quot; onclick=&quot;but()&quot;/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<p>AjaxServlet:</p>
+<pre><code class="language-java">@WebServlet(&quot;/ajax.do&quot;)
+public class AjaxServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter pw=resp.getWriter();
+        pw.println(&quot;hello,ajax!&quot;);
+        pw.flush();
+        pw.close();
+    }
+}
+</code></pre>
+<p>效果：</p>
+<figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200612234214.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200612234238.png" alt="" loading="lazy"></figure>
+<h2 id="3-json详解">3、JSON详解</h2>
+<figure data-type="image" tabindex="7"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200613002650.png" alt="" loading="lazy"></figure>
+<h3 id="31-json简介">3.1 JSON简介</h3>
+<p>​		JSON(JavaScript Object Notation) 是一种基于字符串的轻量级的数据交换格式。易于人阅读和编写，同时也易于机器解析和生成。JSON 是 JavaScript 数据类型的子集。</p>
+<h3 id="32-为什么要使用-json">3.2 为什么要使用 JSON</h3>
+<p>​		在 JSON 未出现之前在 Ajax 中对于数据传递方式，会使用 XML 作为主要数据格式来传输数据。直到 JSON 出现后逐渐放弃使用 XML 作为数据传输格式。JSON 比 XML 更小、更快，更易解析。</p>
+<h3 id="33-json-格式的特征">3.3 JSON 格式的特征</h3>
+<h4 id="331json-的语法规则">3.3.1JSON 的语法规则</h4>
+<p>JSON 是按照特定的语法规则所生成的字符串结构。</p>
+<ul>
+<li>大括号表示 JSON 的字符串对象。{ }</li>
+<li>属性和值用冒号分割。{&quot;属性&quot;:&quot;value&quot;}</li>
+<li>属性和属性之间用逗号分割。{&quot;属性&quot;:&quot;value&quot;,&quot;属性&quot;:&quot;value&quot;,...}</li>
+<li>中括号表示数组。[{&quot;属性&quot;:&quot;value&quot;...},{&quot;属性&quot;:&quot;value&quot;...}]</li>
+</ul>
+<p>JSON 字符串对象：<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200613002918.png" alt="" loading="lazy"></p>
+<p>{&quot;userid&quot;:1,&quot;username&quot;:&quot;admin&quot;,&quot;sex&quot;:&quot;male&quot;}</p>
+<p>数组：<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200613002948.png" alt="" loading="lazy"></p>
+<p>[{&quot;userid&quot;:1,&quot;username&quot;:&quot;admin&quot;},{&quot;userid&quot;:2,&quot;username&quot;:&quot;oldlu&quot;}]</p>
+<h4 id="332-josn-的-6-种数据类型">3.3.2 JOSN 的 6 种数据类型</h4>
+<figure data-type="image" tabindex="8"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200613003047.png" alt="" loading="lazy"></figure>
+<ul>
+<li>string：字符串，必须要用双引号引起来。</li>
+<li>number：数值，与 JavaScript 的 number 一致，</li>
+<li>object：JavaScript 的对象形式，{ key:value }表示方式，可嵌套。</li>
+<li>array：数组，JavaScript 的 Array 表示方式[ value ]，可嵌套。</li>
+<li>true/false：布尔类型，JavaScript 的 boolean 类型。</li>
+<li>null：空值，JavaScript 的 null。</li>
+</ul>
+<h3 id="34-jackson的使用">3.4 Jackson的使用</h3>
+<p>​		在 JDK 中并没有内置操作 JSON 格式数据的 API，因此使用处理 JSON 格式的数据需要借助第三方类库。<br>
+几个常用的 JSON 解析类库：<br>
+Gson: 谷歌开发的 JSON 库，功能十分全面。<br>
+FastJson: 阿里巴巴开发的 JSON 库，性能十分优秀。<br>
+Jackson: 社区十分活跃且更新速度很快。被称为“最好的 Json 解析器”</p>
+<h4 id="341-jackson简介">3.4.1 Jackson简介</h4>
+<p>Jackson 是一种解析 JSON 格式数据的 API，也是最流行，速度最快的 JSON API。在SpringMVC 中默认使用 Jackson API 处理 JSON 格式的数据。<br>
+Jackson 下载地址：<br>
+https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations<br>
+https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core<br>
+https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind</p>
+<h4 id="342-在响应中通过-json-格式传递数据">3.4.2 在响应中通过 JSON 格式传递数据</h4>
+<p>在响应中使用 Jackson 处理 JSON 格式数据的步骤：</p>
+<ul>
+<li>添加 jackson-annotations.jar、jackson-core.jar、jackson-databind.jar</li>
+<li>通过 jackson API 将 Java 对象转换 JSON 格式</li>
+<li>修改响应头，响应类型为 application/json</li>
+<li>将结果基于字符输出流推回客户端浏览器</li>
+<li>在页面的中通过 JavaScript 的 JSON.parse()函数将 JSON 格式的数据转换为 JavaScript对象</li>
+</ul>
+<h5 id="3421-通过-json-格式在响应中传递单个对象">3.4.2.1 通过 JSON 格式在响应中传递单个对象</h5>
+<p>需求：<br>
+定义一个 User 类，包含 userid、username 属性。<br>
+实例化一个 User 对象，通过 JSON 格式将 User 对象响应到客户端浏览器。<br>
+将 User 对象中的数据插入到页面中。</p>
+<p>User类:</p>
+<pre><code class="language-java">public class User {
+    private int userid;
+    private String username;
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;User{&quot; +
+                &quot;userid=&quot; + userid +
+                &quot;, username='&quot; + username + '\'' +
+                '}';
+    }
+}
+</code></pre>
+<p>SingleObjectServlet类：</p>
+<pre><code class="language-java">@WebServlet(&quot;/single.do&quot;)
+public class SingleObjectServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //创建User对象
+        User user = new User();
+        user.setUserid(10);
+        user.setUsername(&quot;张三&quot;);
+
+
+        //使用jackson的api将User对象转换成JSON格式的字符串对象
+        ObjectMapper objectMapper = new ObjectMapper();
+        //将USer对象转换为JSON格式的字符串对象
+        String s = objectMapper.writeValueAsString(user);
+        System.out.println(s);
+        //设置响应类型为application/json
+        resp.setContentType(&quot;application/json&quot;);
+
+        PrintWriter pw = resp.getWriter();
+        pw.print(s);
+        pw.flush();
+        pw.close();
+
+    }
+}
+
+</code></pre>
+<p>singleDemo.jsp</p>
+<pre><code class="language-jsp">&lt;%@ page contentType=&quot;text/html; charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;script&gt;
+        function but(){
+            var xhr = new XMLHttpRequest();
+            xhr.open(&quot;get&quot;,&quot;single.do&quot;);
+            xhr.send();
+            xhr.onreadystatechange = function(){
+
+                if(xhr.readyState == 4 &amp;&amp; xhr.status == 200){
+                    alert(xhr.responseText);
+                    //通过javaScript的内置对象JSON中的parse函数将JSON格式的字符串对转换成javascript对象
+                    var obj = JSON.parse(xhr.responseText);
+                    alert(obj.userid+&quot; &quot;+obj.username);
+                    document.getElementById(&quot;span&quot;).innerHTML=obj.userid+&quot;&lt;br/&gt;&quot;+obj.username;
+                }
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h3&gt;JSON格式的单个对象响应&lt;/h3&gt;
+&lt;hr/&gt;
+&lt;span id=&quot;span&quot;&gt;&lt;/span&gt;
+&lt;input type=&quot;button&quot; value=&quot;OK&quot; onclick=&quot;but()&quot;/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="3422-通过-json-格式在响应中传递多个对象">3.4.2.2 通过 JSON 格式在响应中传递多个对象</h5>
+<p>需求：<br>
+定义一个 User 类，包含 userid、username 属性。<br>
+实例化多个 User 对象，通过 JSON 格式将 User对象响应到客户端浏览器。<br>
+将 User 对象中的数据插入到页面中。</p>
+<p>MultipleObjectServlet类：</p>
+<pre><code class="language-java">@WebServlet(&quot;/multiple.do&quot;)
+public class MultipleObjectServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user1 = new User();
+        user1.setUserid(1);
+        user1.setUsername(&quot;张三&quot;);
+        User user2 = new User();
+        user2.setUserid(2);
+        user2.setUsername(&quot;李四&quot;);
+
+        //将多个对象放入list中
+        List&lt;User&gt; list = new ArrayList&lt;&gt;();
+        list.add(user1);
+        list.add(user2);
+
+        //通过jackson将List转换成JSON格式的字符串对象
+        ObjectMapper objectMapper = new ObjectMapper();
+        String s = objectMapper.writeValueAsString(list);
+        System.out.println(s);
+        resp.setContentType(&quot;application/json&quot;);
+
+        PrintWriter pw = resp.getWriter();
+        pw.print(s);
+        pw.flush();
+        pw.close();
+    }
+}
+</code></pre>
+<p>multipleDemo.jsp</p>
+<pre><code class="language-jsp">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;script&gt;
+        function but() {
+            var xhr = new XMLHttpRequest();
+            xhr.open(&quot;get&quot;, &quot;multiple.do&quot;);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+
+                if (xhr.readyState == 4 &amp;&amp; xhr.status == 200) {
+                    alert(xhr.responseText);
+                    //通过javaScript的内置对象JSON中的parse函数将JSON格式的字符串对转换成javascript对象
+                    //此时obj是数组，里面存放的是JavaScript对象
+                    var obj = JSON.parse(xhr.responseText);
+                    var temp = &quot;&quot;;
+                    for (var i = 0; i &lt; obj.length; i++) {
+                        alert(obj[i].userid + &quot; &quot; + obj[i].username);
+                        temp +=obj[i].userid + &quot;&lt;br/&gt;&quot; + obj[i].username
+                    }
+
+                    document.getElementById(&quot;span&quot;).innerHTML = temp;
+                }
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h3&gt;JSON格式的多个对象响应&lt;/h3&gt;
+&lt;hr/&gt;
+&lt;span id=&quot;span&quot;&gt;&lt;/span&gt;
+&lt;input type=&quot;button&quot; value=&quot;OK&quot; onclick=&quot;but()&quot;/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[jQuery]]></title>
         <id>https://jonchan1013.github.io/post/jquery/</id>
