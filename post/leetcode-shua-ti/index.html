@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于 | CY的学习博客</title>
+<title>LeetCode刷题 | CY的学习博客</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -24,14 +24,13 @@
 
 
 
-    <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
+    <meta name="description" content="70、爬楼梯
+题目描述：假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+**注意：**给定 n 是一个正整数。
 
-🏠 关于本站
-👨‍💻 博主是谁
-⛹ 兴趣爱好
-📬 联系我呀
-..." />
+方法1：记忆化递归：
+class Solution {..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -103,20 +102,71 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于</h2>
-            <div class="post-date">2019-01-25</div>
+            <h2 class="post-title">LeetCode刷题</h2>
+            <div class="post-date">2020-06-13</div>
             
             <div class="post-content" v-pre>
-              <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+              <h2 id="70-爬楼梯">70、爬楼梯</h2>
+<p>题目描述：假设你正在爬楼梯。需要 <em>n</em> 阶你才能到达楼顶。</p>
+<p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<p>**注意：**给定 <em>n</em> 是一个正整数。</p>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200613121348.png" alt="" loading="lazy"></figure>
+<p>方法1：记忆化递归：</p>
+<pre><code class="language-java">class Solution {
+    public int climbStairs(int n) {
+        int memo[] = new int[n + 1]; //存储中间结果，避免重复计算
+        return climbStairsMemo(n, memo);
+
+    }
+
+    public int climbStairsMemo(int n, int memo[]) {
+        if (memo[n] &gt; 0) {
+            return memo[n];
+        }
+        if (n == 1) {
+            return memo[n] = 1;
+        } else if (n == 2) {
+            return memo[n] = 2;
+        } else {
+            return memo[n] = climbStairs(n - 1) + climbStairs(n - 2);
+        }
+    }
+}
+</code></pre>
+<p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(n)</p>
+<p>方法2：斐波那契数列</p>
+<pre><code class="language-java">class Solution {
+    public int climbStairs(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        int first = 1;
+        int second = 2;
+        for (int i = 3; i &lt;= n; i++) {
+            //滚动数组，优化空间复杂度,只记录两个状态
+            int third = first + second;
+            first = second;
+            second = third;
+        }
+        return second;
+    }
+}
+</code></pre>
+<p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(1)</p>
 
             </div>
             
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://jonchan1013.github.io/post/ajax/">
+                  <h3 class="post-title">
+                    Ajax
+                  </h3>
+                </a>
+              </div>
             
 
             
