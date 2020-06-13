@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1592076557585">
+<link rel="shortcut icon" href="/favicon.ico?v=1592077955788">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -200,7 +200,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">8</span>
+        <span class="site-item-stat-count">9</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -332,10 +332,6 @@
       
       
       
-      
-      
-      
-      
       <a href="https://jonchan1013.github.io/post/hello-gridea/">
         <div class="motion-warpper">
           <div class="tag-post-node">
@@ -346,6 +342,12 @@
           </div>
         </div>
       </a>
+      
+      
+      
+      
+      
+      
       
       
       
@@ -1112,6 +1114,7 @@
           &lt;h2 id=&#34;70-爬楼梯&#34;&gt;70、爬楼梯&lt;/h2&gt;
 &lt;p&gt;题目描述：假设你正在爬楼梯。需要 &lt;em&gt;n&lt;/em&gt; 阶你才能到达楼顶。&lt;/p&gt;
 &lt;p&gt;每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？&lt;/p&gt;
+&lt;!-- more --&gt;
 &lt;p&gt;**注意：**给定 &lt;em&gt;n&lt;/em&gt; 是一个正整数。&lt;/p&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200613121348.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;方法1：记忆化递归：&lt;/p&gt;
@@ -2435,696 +2438,6 @@ jQuery具有强大的选择器功能&lt;/li&gt;
 
 &lt;/code&gt;&lt;/pre&gt;
 ">jQuery</a>
-      </div>
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/java-ji-chu-mian-xiang-dui-xiang/"" data-c="
-          &lt;p&gt;✍️面向对象的基本思想是，从现实世界中客观存在的事物出发来构造软件系统，并在系统的构造中尽可能运用人类的自然思维方式。&lt;br&gt;
-面向对象更加强调运用人类在日常生活的逻辑思维中经常采用的思想方法与原则，如抽象、分类，继承、聚合、多态等。&lt;/p&gt;
-&lt;!-- more --&gt;
-&lt;h2 id=&#34;1-面向对象一&#34;&gt;1、面向对象（一）&lt;/h2&gt;
-&lt;h3 id=&#34;11-面向过程的思想和面向对象的思想&#34;&gt;1.1 面向过程的思想和面向对象的思想&lt;/h3&gt;
-&lt;p&gt;​		面向对象和面向过程的思想有着本质上的区别, &lt;strong&gt;作为面向对象的思维来说，当你拿到一个问题时，你分析这个问题不再是第一步先做什么，第二步再做什么，这是面向过程的思维，你应该分析这个问题里面有哪些类和对象，这是第一点，然后再分析这些类和对象应该具有哪些属性和方法。这是第二点。最后分析类和类之间具体有什么关系，这是第三点。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;​		&lt;strong&gt;面向对象有一个非常重要的设计思维：合适的方法应该出现在合适的类里面。&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;12-简单理解面向对象&#34;&gt;1.2 简单理解面向对象&lt;/h3&gt;
-&lt;p&gt;​		就是在程序里面首先分解出来的应该是注意不再是一步一步的过程了，而是首先考虑在这个问题域里面或者程序里面应该具有有哪些对象，所以从现在开始考虑任何问题脑子里不要再想着我实现这件事我第一步应该干什么，第二步应该干什么，如果这样想，那就是面向过程的思维了。面向对象的思维是，当我碰到这个问题域的时候，碰到这个程序的时候，我首先应该把这个问题里有哪些对象，对象与对象之间有什么关系抽象出来。&lt;/p&gt;
-&lt;h3 id=&#34;13-面向对象的设计思想&#34;&gt;1.3 面向对象的设计思想&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;面向对象的基本思想是，从现实世界中客观存在的事物出发来构造软件系统，并在系统的构造中尽可能运用人类的自然思维方式。&lt;/li&gt;
-&lt;li&gt;面向对象更加强调运用人类在日常生活的逻辑思维中经常采用的思想方法与原则，如抽象、分类，继承、聚合、多态等。&lt;/li&gt;
-&lt;li&gt;人在思考的时候，首先眼睛里看到的是一个一个的对象。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;14-对象和类的概念&#34;&gt;1.4  对象和类的概念&lt;/h3&gt;
-&lt;p&gt;​		对象是用于计算机语言对问题域中事物的描述，&lt;strong&gt;对象通过“属性（attribute）”和“方法（method）”来分别对应事物所具有的静态属性和动态属性&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;​		&lt;strong&gt;类是用于描述同一类的对象的一个抽象的概念，类中定义了这一类对象所具有的静态属性和动态属性&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;​		&lt;strong&gt;类可以看成一类对象的模板，对象可以看成该类的一个具体实例&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;​		&lt;strong&gt;eg.什么叫瓶子？&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;​		瓶子的定义：具有某些类特征的东西就是瓶子，比分说什么样的形状，比方说有个口，能倒水，能装水，一般有个盖等等。给瓶子下定义的过程，其实就是把瓶子里的某些东西抽象出来了，所以瓶子在这里是叫做一类事物的一个抽象，在你脑子里有瓶子的概念，可瓶子的概念在你脑子里到底是什么呢？瓶子的概念在你脑子里叫做一类事物的一个抽象。怎么抽象的呢？你往往抽象的是这两个方面：第一个方面我们叫它静态的属性，瓶子应该具有哪些特征，比分说瓶子应有个口，这是它的具有的一个静态属性，瓶子一般有一个盖，这也是它的具有一个静态属性，除此之外，你还可能给它总结动态的属性，什么动态的属性呢？比放说瓶子能倒水，这是它的动态属性。瓶子这个概念在你脑子里如果你细细的思维的话，其实你给它做了两方面的总结，一方面是静态的，一方面是动态的。反映到JAVA的类上，一个就是成员变量（静态属性），一个就是方法（动态属性）方法是可以执行的，可以动的。成员变量是某一个类的静态属性。所以你脑子里瓶子的概念实际上是一类事物的一个抽象，这种东西我们叫它类，椅子是类，桌子是类，学生是类。什么是对象呢？这一类事物的具体的某个实例就叫做对象。所以&lt;strong&gt;一类事物的具体的某一个东西，符合这类事物具体的特征的某个东西就叫做对象&lt;/strong&gt;。瓶子是一个类，某个瓶子就是瓶子这个类里面的一个对象。&lt;/p&gt;
-&lt;h3 id=&#34;15-如何抽象出一个类&#34;&gt;1.5 如何抽象出一个类？&lt;/h3&gt;
-&lt;p&gt;​		有两个方面，一方面是它的静态属性，另一方面是它的动态属性。反映到JAVA里面的类怎么包装它呢？一方面成员变量，另一方面是方法。&lt;/p&gt;
-&lt;p&gt;​		eg.职员这个类该怎么抽象出来？也是从两个方面，一方面是它的静态属性，另一方面它的动态属性&lt;/p&gt;
-&lt;p&gt;​		职员有哪些属性呢？有姓名，年龄，目前工资数额等属性，他有哪些方法呢？让这个职员来显示姓名，显示年龄，修改姓名，领取工资。当然显示姓名，显示年龄，修改姓名，领取工资这些也可以让别人来做，但&lt;strong&gt;面向对象的设计思维是最合适的方法应该出现在最合适的类里面&lt;/strong&gt;。显示姓名，显示年龄，修改姓名，领取工资由谁来做更合适呢，那就是职员自己最合适。所以这些方法应该出现在职员这个类里面。&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610155239.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;​		对于类来说，它有一些属性或者称为成员变量，以后说属性或者成员变量指的是同一回事。具体的对象他有没有相关的一些属性或者叫成员变量呢？有，每一个人都有一份，只不过是取值不同而已。如从职员这个类实例化出来的两个职员：职员A和职员B，他们都有姓名，年龄，目前工资数额这些属性，但他们的名字，年龄，领取的工资数额都不一样。这样就能把职员A和职员B区分开来了，正是因为他们的属性值不一样，所以这个对象才能和另外的对象区分开来，&lt;strong&gt;所以通过属性是可以区分两个对象的&lt;/strong&gt;。猫是一个类，这只猫是一个对象，这只猫和另外一只猫该怎么区分开来呢？那就得看你的猫这个类是怎么定义的了，猫有猫毛，毛有颜色。OK，这只猫是黑猫，另一只猫是白猫，这样通过猫毛的颜色区分开来了。如果只定义一个，如捉老鼠，白猫也能捉，黑猫也能捉，这样就没办法区分出黑猫和白猫了，所以&lt;strong&gt;根据方法是没办法区分两个对象的&lt;/strong&gt;。所以&lt;strong&gt;每个对象都有自己的属性，属性值和另外一个对象一般是不一样的&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;​		一定要区分类和对象，什么叫做类？什么叫做对象？类是一类事物的一个抽象，具有共同特征的一类事物的一个抽象。对象是这个类具体的某一个实例，所以以后说实例（instance）或者说对象（object）指的是同一回事。&lt;/p&gt;
-&lt;h3 id=&#34;16-类对象之间的关系&#34;&gt;1.6 类（对象）之间的关系&lt;/h3&gt;
-&lt;h4 id=&#34;161-关联关系最弱的一种关系&#34;&gt;1.6.1 关联关系(最弱的一种关系)&lt;/h4&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610155402.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;​		类和类之间是有关系的，如学生和老师这两个类，老师可以教学生，学生可以向老师学习。这就是他们之间的关系。关系和关系之间是不同的，你和你老婆的关系和你和你其他女朋友的关系是不能混为一谈的。关系最弱的一种关系叫关联关系。关联关系反应到代码上往往是一个类的方法里面的参数是另一个类的具体的某一个对象，比如教授教研究生，教哪个研究生，教是教授这个类里面的一个方法，某个研究生是研究生这个类里面的一个具体的对象。&lt;strong&gt;关联关系是最弱的一种关系&lt;/strong&gt;，咱们两个类之间有关系，或者两个对象之间有关系，但关系不是很紧密。&lt;/p&gt;
-&lt;h4 id=&#34;162-继承关系比较强的一种关系&#34;&gt;1.6.2 继承关系（比较强的一种关系）&lt;/h4&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610155535.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;​		&lt;strong&gt;继承关系封装了这样一种逻辑：“XX是一种XX”，只要这东西能说通了，就可以考虑用继承关系来封装它&lt;/strong&gt;。如：游泳运动员从运动员继承，游泳运动员是一种运动员，这能说得通，所以游泳运动员就是从运动员继承过来的，游泳运动员和运动员就是一种继承关系。学生是一个人，学生从人继承，老师是一个人，老师也从人继承，学生是一种老师，这说不通，所以学生和老师就不存在继承关系。所以将来做设计的时候要分清继承关系很简单，你只要说通这么一句话：“XX是一种XX”。OK，那他们之间就是继承关系。篮球运动员是一种球类运动员，这说得通，所以篮球运动员从球类运动员继承，这样继承很有可能会产生一棵继承树，运动员派生出来，派生出来的意思是游泳运动员这个类、球类运动员这个类、射击运动员类从它继承，相当于运动员派生出来了这些个不同的运动员，包括游泳的，球类的，射击的。球类的再派生足球的，篮球的，排球的。这就是一棵继承树，不过这棵树是比较理想化的情况，只有一个根节点。但实际当中，我们真实世界当中的继承关系不一定只从一个类继承，一个类可能从多个类继承过来，比如说：金丝猴从动物这个类继承，这很正常，但我还有另外一个专门的类：“应该受到保护的东西”，这也是一个类，金丝猴应该受到保护，所以金丝猴是一种应该受到保护的东西。所以金丝猴从“应该受到保护的东西”这个类继承过来。所以在现实情况当中，一个类完完全全有可能从多个不同的类继承，C++正是因为想封装这种继承关系，所以C++存在多重继承。&lt;/p&gt;
-&lt;h4 id=&#34;163-聚合关系整体和部分比较强的一种关系&#34;&gt;1.6.3 聚合关系（整体和部分）（比较强的一种关系）&lt;/h4&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610155626.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;​		什么是聚合？&lt;strong&gt;聚合就是一个整体与部分的关系&lt;/strong&gt;。我们说**“XX是XX的一部分”，只要说得通，那么他们之间的关系就是聚合关系**，队长是球队的一部分，队员是球队的一部分。所以队长和球队是聚合关系，队员和球队也是聚合关系。脑袋是人的以部分，身体和胳膊也是人的一部分，因此脑袋，身体和胳膊与人都是聚合关系。&lt;strong&gt;聚合关系分得再细一点的话就可以分成聚集关系和组合关系&lt;/strong&gt;，比如球队、队长，队员，这三者是聚集关系，假如这个队长既是足球的队长，同时也是篮球的队长，一个人分属两个不同的球队，这是可以的，球队与队长之间没有我离不了你，你离不了我这种情况，所以如果分得更细的话，这种就叫做聚集关系。还有一种情况叫组合，组合说的是咱们俩密不可分，我是你必不可少的一部分。一个人的脑袋不可能既属于你又属于别人，身体也一样，不可能既属于你又属于别人。所以你的身体，脑袋和你是密不可分的，这是一种更加严格的聚合关系，专门给它取了个名字叫组合。&lt;/p&gt;
-&lt;h4 id=&#34;164-实现关系&#34;&gt;1.6.4 实现关系&lt;/h4&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610155715.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;​		**作为父类来说，我觉得我应该具有这样一个方法，但我不知道怎么去实现，谁去实现，我的子类去实现，这就是实现关系。**和实现关系息息相关的还有一种关系叫多态。&lt;/p&gt;
-&lt;h4 id=&#34;165-多态&#34;&gt;1.6.5 多态&lt;/h4&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610155757.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;17-java与面向对象&#34;&gt;1.7 Java与面向对象&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;	对象和类是分不开的，必须首先定义类才能有对象。首先定义方法才能调用。对象是JAVA里面的核心，做任何东西你首先都得给我造出一个对象才能做。静态属性简称属性，也叫成员变量，以后说属性或者说成员变量它们指的都是同一回事。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;整个类可以看作是静态的属性还有方法他们之间的一个综合。怎么抽象出一个类的概念，还是那句话，你必须抽象出两个方面来，第一方面是看他们的静态属性，他们有哪些成员变量，第二方面是看他们的有哪些方法。&lt;/p&gt;
-&lt;p&gt;写JAVA程序时，我们一上来写的就是public class（声明一个类），在这个class里面我们写的是成员变量和方法。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;每一个JAVA里面的class（类）都对应了我们现实生活中某一类事物的一个抽象&lt;/strong&gt;。比如说要在JAVA里面封装一只狗，具体怎么封装，如何写代码，代码如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
- * 一类事物封装到JAVA里面首先得写class，定义这个类，类名是什么可以自己取。
- * 这里把类名叫做Dog
- */
-public class Dog {
-    /**
-     * 接下来就是写这个狗这个类的属性或者叫成员变量，
-     * 比如说狗这个类的毛的颜色，怎么定义这个属性呢，
-     * 首先得定义毛的一个类型,如使用int来定义毛的颜色类型
-     */
-    int furcolor; //定义属性：毛的颜色
-    float height; //定义属性：狗的高度
-    float weight; //定义属性：狗的体重
-
-    /**
-     * 狗的颜色，高度，体重这些属性定义完了，接下来要定义的就是方法了。
-     * 如写一个CatchMouse（）方法，捉老鼠的方法。
-     * CatchMouse这个方法里面有一个对象类型的参数，捉哪一只老鼠，这个对象参数是属于Mouse这个类的
-     * @param m
-     */
-    void CatchMouse(Mouse m){
-            //在方法体内写捉老鼠这个过程，怎么捉，跑着捉，走着捉
-            System.out.println(&amp;quot;我捉到老鼠了，汪汪！，老鼠要尖叫了！&amp;quot;);
-            /**
-             * 老鼠尖叫一声，表示被狗咬到了，咬到了能不叫吗，很自然而然地想到，
-             * 尖叫（scream()）这个方法是属于Mouse这个类里面的某一个方法。
-             * 老鼠自己调用它，让它自己尖叫。这就是面向对象的思维。
-             */
-            m.scream();
-    }
-
-    public static void main(String[] args) {
-        Dog  d = new Dog();//首先用new关键字创建一只狗
-        Mouse m=new Mouse();//造出一只老鼠。
-        d.CatchMouse(m);//然后用这只狗去抓老鼠，让狗调用CatchMouse()方法去捉某只老鼠。
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;​		从这个意义上来讲，JAVA里面的每定义一个类实际上就相当于一种新的数据类型。就跟int ，float， String等一样，不过是一种新定义的类型而已。&lt;/p&gt;
-&lt;h3 id=&#34;18-为什么使用面向对象编程&#34;&gt;1.8 为什么使用面向对象编程？&lt;/h3&gt;
-&lt;p&gt;​		面向对象编程：一组对象互相配合通过沟通完成特定功能&lt;/p&gt;
-&lt;p&gt;做软件苦苦追求的一种境界是可重用性（reusable），可扩展性。如果是面向过程，一般情况是属性和方法它们是分开的，他们不是聚合的关系，不是合在一起的，这样要复用起来比较麻烦，复用的层次只是局限于方法这个层次上，而面向对象则不同，它是把属性和方法综合在一个里面。综合在一起复用的时候是整个对象进行复用。所以面向对象和面向过程相比，前者更加容易让我们达到可重用性。&lt;/p&gt;
-&lt;h2 id=&#34;2-java面向对象二&#34;&gt;2、Java面向对象（二）&lt;/h2&gt;
-&lt;h3 id=&#34;21-java类的定义&#34;&gt;2.1 Java类的定义&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//用class关键字定义一个类
-class Person{
-    private int id;
-    private int age = 20;
-    //方法的定义
-    public int getAge(){
-        return age;
-    }
-    public void setAge(int i){
-        age = i;
-    }
-    public int getId(){
-        return id;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;类的定义主要有两方面组成一成员变量和方法。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;声明成员变量的格式为: [&amp;lt; modifiers&amp;gt;] type &amp;lt; attr_name&amp;gt;[=defaultValue] ;&lt;br&gt;
-例如:  private int id;    private int age = 20;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;声明方法的格式为:&lt;br&gt;
-[&amp;lt; modifiers&amp;gt;)] &amp;lt; modifiers&amp;gt; &amp;lt;return_ type&amp;gt; &lt;name&gt;([&amp;lt; argu list&amp;gt;]) {&lt;br&gt;
-[&amp;lt; statements&amp;gt;]&lt;br&gt;
-}    例如: public int getAge() {return age;}&lt;/p&gt;
-&lt;p&gt;​		JAVA里面有&lt;strong&gt;class&lt;/strong&gt;关键字定义一个类，后面加上自定义的类名即可。如这里定义的person类，使用class person定义了一个person类，然后在person这个类的类体里面定义person这个类应该具有的成员变量（即属性）和方法，如这里定义的int id和int age这个两个成员变量，或者叫属性，这个id表示人的身份证号码，人应该具有这个属性，age表示人的年龄，这也是人应该具有的。这样就在person这个类里面定义了两个人应该有的属性，接下来就是定义方法了，这里定义了三个方法，分别是getAge()、setAge(int i)和getId()，分别用来获取人的年龄，设置人的年龄，获取人的id，getAge()方法获取了人的年龄后，将获取到的值返回，所以使用了return age语句，getId()方法也使用了return id语句用于返回获取到的id的值。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;22-成员变量&#34;&gt;2.2 成员变量&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610160936.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;**在JAVA里面的任何变量首先应该要声明，然后再赋值，然后再使用。**成员变量和局部变量有一个重要区别：&lt;strong&gt;成员变量在类里面声明时如果不进行初始化，那么JAVA会默认给它初始化，而局部变量JAVA不会默认给它初始化，所以在方法里面声明一个局部变量如果不给它初始化时就会出错&lt;/strong&gt;。默认初始化大多数都是0，boolean类型的为false，引用类型的为null，如过不记得JAVA对成员变量默认的初始化是多少的话，那就这样做，定义一个成员变量，不给它初始化，然后直接打印这个成员变量，打印出来的结果就是JAVA默认的初始化的值。&lt;/p&gt;
-&lt;h3 id=&#34;23-java面向对象的基本概念引用&#34;&gt;2.3 Java面向对象的基本概念——引用&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610161110.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;​		&lt;strong&gt;引用类型和基本类型有着巨大的区别&lt;/strong&gt;，当声明一个int i=0时，系统会马上给这个i分配一个内存空间（在栈内存里面分配一小块区域用来装数字0），里面装着一个值为0，以后使用i这个名字马上就可以访问这个内存空间里面的值，这就是基本数据类型，所以&lt;strong&gt;基础类型就只占一块内存&lt;/strong&gt;。基础类型之外的类型全都叫引用类型，我们定义一个Mouse m，这个m就是一个引用类型的数据。引用类型有什么重要的特征——&lt;strong&gt;引用类型占&lt;strong&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/strong&gt;块内存&lt;/strong&gt;。我们定义好这个类之后，需要使用new关键字把这个类的对象实例化出来，也就是真真正正造出一个对象出来才能使用这个对象。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;如何在内存中区分类和对象&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;类是静态的概念，是位于代码区里面。对象是new出来的，它是位于堆内存，为什么对象要位于堆内存？因为堆内存是用来动态分配内存的，只有在运行当中才会new一个对象放堆内存里面，那这个对象到底有多大个，这个东西你不知道，你没有办法提前知道，所以你没有办法提前分配内存给这个对象，你只有在运行期间才能去分配它。什么叫运行期间？敲JAVAC这个命令那是在编译期间，编译完成后再敲JAVA命令，那就是运行期间了。只有在运行期间，才能够明白这个对象到底要分配多大的空间给它，所以把它放在堆内存里面，堆内存比较大，动态分配内存用它。如果这个对象不用了，那它就是垃圾，那么就等着垃圾收集器把它收集回去，释放掉占用的内存。&lt;/p&gt;
-&lt;p&gt;​		记住，&lt;strong&gt;以后一提到引用，脑子里马上浮现引用那就是一小块内存指向一大块内存。&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;24-对象的创建和使用&#34;&gt;2.4 对象的创建和使用&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;必须使用new关键字创建对象。&lt;/li&gt;
-&lt;li&gt;使用对象(引用) .成员变量或来引用对象的成员变量。&lt;/li&gt;
-&lt;li&gt;使用对象(引用) .方法(参数列表)来调用对象的方法。&lt;/li&gt;
-&lt;li&gt;同一类的每个对象有不同的成员变量存储空间。&lt;/li&gt;
-&lt;li&gt;同一类的每个对象共享该类的方法。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;25-类和对象的关系&#34;&gt;2.5 类和对象的关系&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610162714.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;strong&gt;在内存中分析类和对象的关系&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;假设这里有一个类C，我们定义了一个类class C，然后在这个类里面定义了两个成员变量: int i和int j。定义好了这两个成员变量以后，我们写了一个main()方法（public static void main(Strng[] args)），程序开始执行。第一句我们写了 C c1 = new C()，这句的代码是我们相当于在堆内存里创建了一个对象，同时也创建了这个对象的一个引用对象c1，c1位于栈内存中，c1这个引用对象指向堆中一大块内存，这一大块内存里面装着new出来的那个对象。这里面我们一般来说是new出来两个对象c1和c2，当然，实际上，严格来讲，c1和c2叫做对象的引用，有时候，简称new出来了两个对象，c1和c2。你脑子里马上要浮现出两块内存，c1指向一块，c2指向一块。局部变量是分配在栈内存里面的，main方法里面的c1和c2都是局部变量，所以在栈里面分配了两小块内存出来，一块是c1的，一块是c2的，c1这块内存里面装着一个值，或者叫装着一个地址，这个地址是什么，我们不知道，我们只知道根据这个值就能找到new出来的C这个类里面的一个对象，而在这个对象里面有它自己的成员变量i和j，里面的两小块内存是分别用来装i和j的值的，因为每一个对象都有自己不同的成员变量的值，所以c1指向的那块对内存里面又分成一小块一小块内存，每一个小块的内存都装着这个对象的成员变量（或者叫属性）。如这里的第一小块装着i的值，第二小块装着j的值，所以当我们去访问第一小块里面装着的成员变量时，我们应该这样写：c1.i，这样就拿到了i的值，c1.j，这样就拿到了j的值。同理，c2这个对象也指向了一个new出来的C这个类里面的另一个对象，这个对象也有成员变量i和j，只不过和c1指向的那个对象里的i和j的值不同而已。要访问这个这个对象的成员变量时 ，也是要c2.i，c2.j这样去访问。&lt;/p&gt;
-&lt;h3 id=&#34;26-构造方法&#34;&gt;2.6 构造方法&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;使用new+构造方法创建-一个新的对象。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;构造函数是定义在Java类中的一个用来初始化对象的函数。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;构造函数与类同名且没有返回值。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;例如: Person 类的构造函数:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Person(){
-    int id;
-    int age;
-    Person(int n,int i){
-        id = n;
-        age = i;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;在面向对象里面有一个特殊的方法，叫构造方法。&lt;/p&gt;
-&lt;p&gt;构造方法是用来创建一个新的对象的，与new组合在一起用，使用new+构造方法创建一个新的对象。你new一个东西的时候，实际上你调用的是一个构造方法，构造方法就是把自己构造成一个新的对象，所以叫构造方法，构造一个新对象用的方法叫构造方法。&lt;/p&gt;
-&lt;p&gt;构造方法比较特殊，构造方法的名字必须和类的名字完全一模一样，包括大小写，并且没有返回值。如原来定义的一个person类，在类里面声明了两个成员变量id与age，这时候你可以再为这个person类定义一个它的构造方法person(int n，int i)，这个方法的名字和类名完全相同，并且没有返回值，也就是在这个方法前面不能写任何的方法的返回类型修饰符，连void都不可以写。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;构造方法范例：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Person {
-    int id;  //在person这类里面定义两个成员变量id和age,
-    int age=20;  //给成员变量age赋了初值为20
-
-    /**这里就是person这个类的一个构造方法
-     * 构造方法的规则很简单，和类名要完全一样，一点都不能错，包括大小写。
-     * 并且没有返回值，不能写void在它前面修饰
-     * @param _id
-     * @param _age
-     */
-    public Person(int _id,int _age ) {
-        id = _id;
-        age = _age;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;​		构造方法写好后就和new组合在一起使用，new的作用是构建一个新对象，创造一个新对象，所以new的时候实际当中调用的是构造方法。只有调用了这个构造方法才能构造出一个新的对象。例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args) {
-    Person tom = new Person(1, 25); // 调用person这个构造方法创建一个新的对象，并给这个对象的成员变量赋初始值
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610161822.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;​	&lt;strong&gt;下面是在main方法里面调用person构造方法时的内存分析情况：&lt;/strong&gt;&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610161855.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610161922.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;​		&lt;strong&gt;当方法调用完成之后，栈里面为它分配的空间全部都要消失，即把这个方法调用时分配给它的内存空间释放出来&lt;/strong&gt;，所以这个构造方法person调用完成之后，栈内存里面分配的两小块内存_id和_age自动消失了。这样就把它们所占的空间让了出来，让其他的方法去占用。而new出来的对象则永远留在了堆内存里面。&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610162016.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;p&gt;​		&lt;strong&gt;声明一个类，若没有在类中指定其构造方法（构造函数）时，编译器会为这个类自动添加形如类名( ){ }的构造函数。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;如：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class  point{//这里声明一个类时并没有给它指定其构造方法。
-     int  x;
-     int  y;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;​		但在main方法里面我们却可以这样使用：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args){
-     point  p = new  point();
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;​		这里这样写是可以的，当没有给这个类指明构造方法时，系统会默认地给这个类加上point ( ) { }这样一个空的构造方法。所以才可以在main方法中使用point p = new point(); 实际上你调用的就是编译器默认给它加上的point ( ) { }这个构造方法，在这个构造方法当中，默认地把类里面的成员变量x和y初始值设为0。正是因为系统给它默认加上这么一个构造方法，所以才能在main方法里面调用。但&lt;strong&gt;要记住一点，一旦给这个类里面指定了构造方法，那么系统就不会再给这个类添加构造方法了&lt;/strong&gt;。&lt;/p&gt;
-">Java基础-面向对象</a>
-      </div>
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/java-ji-chu-ji-chu-yu-fa/"" data-c="
-          &lt;p&gt;✍️JavaSE是Java Standard Edtion的缩写，译成中文就是Java标准版，也是Java的核心。无论是JavaEE(Java企业版)还是JavaME(Java微型版)都是以JavaSE为基础。&lt;/p&gt;
-&lt;!-- more --&gt;
-&lt;h2 id=&#34;1-标识符&#34;&gt;1、标识符&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Java对各种变量、方法和类等要素命名时使用的字符序列称为标识符。
-&lt;ul&gt;
-&lt;li&gt;凡是自己可以起名字的地方都叫标识符，都遵守标识符的规则&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Java标识符命名规则:
-&lt;ul&gt;
-&lt;li&gt;标识符应以字母、下划线、美元符开头。&lt;/li&gt;
-&lt;li&gt;Java 标识符大小写敏感，长度无限制。&lt;/li&gt;
-&lt;li&gt;Java 标识符大小写敏感，长度无限制。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;约定俗成: Java标识符选取因注意&amp;quot;见名知意&amp;quot;且不能与Java语言的关键字重名。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;2-关键字&#34;&gt;2、关键字&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Java中一些赋以特定的含义，用做专门用途的字符串称为关键字( keyword)。大多数编辑器会将关键字用特殊方式标出&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;所有Java关键字都是小写英文。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;所有Java关键字都是小写英文。&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610115950.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;3-java基础数据类型&#34;&gt;3、Java基础数据类型&lt;/h2&gt;
-&lt;h3 id=&#34;31-java常量&#34;&gt;3.1 Java常量&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Java 的常量值用字符串表示，区分为不同的数据类型。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如整型常量123&lt;/li&gt;
-&lt;li&gt;实型常量3.14&lt;/li&gt;
-&lt;li&gt;字符常量&#39;a&#39;&lt;/li&gt;
-&lt;li&gt;逻辑常量true. false&lt;/li&gt;
-&lt;li&gt;字符串常量&amp;quot;helloworld&amp;quot;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;注意:区分字符常量和字符串常量&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;注意:“常量”这个名词还会用在另外其它语境中表示值不可变的变量&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;32-java变量&#34;&gt;3.2 Java变量&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Java变量是程序中最基本的存储单元，其要素包括变量名，变量类型和作用域。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Java程序中每一个变量都属于特定的数据类型，在使用前必须对其声明，声明格式为:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;例如：int i=100;&lt;br&gt;
-float f=12.3f;&lt;/p&gt;
-&lt;p&gt;​			double d1, d2, d3 = 0.123;&lt;br&gt;
-​			String s=&amp;quot;hello&amp;quot;;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;从本质上讲，变量其实是内存中的一-小块区域，使用变量名来访问这块区域，因此，每一个变量使用前必须要先申请(声明)，然后必须进行赋值(填充内容)，才能使用&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;一个程序在运行的时候，实际上这个程序是位于内存里面，然后才开始运行。一个.exe文件存放在硬盘上是无法运行的，在硬盘上看到的.exe文件无非就是一个文件而已，当我们双击这个.exe文件时，运行起来的时候实际上是整个.exe文件被放在了在内存里面，然后操作系统找到main方法，也就是程序的入口，然后就开始执行了。执行的过程之中，会不断地在内存里面分配一些区域，变量在内存里面就是一小块区域，变量有两个概念，一个是变量的名字，另一个是变量的值，即这一小块区域是有名字的，里面装着一个值，因此以后要想访问这小块区域里面的内容就可以根据这小块区域的名字来访问了。因此，变量的本质就是一小块内存区域。就变量来说，该在内存里面分配多大的存储空间呢？不同的变量类型分配不同大小的存储空间，每一个变量都是属于特定的数据类型的，声明成不同的数据类型，它就在内存里面分配不同的存储空间。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;变量作用域：变量的作用域只在“{ }”有效，出了这个“{ }”就没有作用了&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;33-java变量分类&#34;&gt;3.3 Java变量分类&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;按被声明的位置划分:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;局部变量:方法或语句块内部定义的变量&lt;/li&gt;
-&lt;li&gt;成员变量:方法外部、类的内部定义的变量&lt;/li&gt;
-&lt;li&gt;注意:类外面(与类对应的大括号外面)不能有变量的声明&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;按所属的数据类型划分:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;基本数据类型变量&lt;/li&gt;
-&lt;li&gt;引用数据类型变量&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;34-java局部变量和成员变量&#34;&gt;3.4 Java局部变量和成员变量&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;方法体内部声明的变量(包括形参)称为局部变量:&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;方法体内部是指与方法对应的大括号内部&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;在方法体外，类体内声明的变量成为成员变量&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void method(){
-int i;
-int j= i+5://编译出错，变量i还未被初始化
-double d= 3.14;
-Dog dog;
-dog = new Dog(22,7,1964);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;35-java数据类型划分&#34;&gt;3.5 Java数据类型划分&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610124522.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;Java中定义了4类8种基本数据类型。
-&lt;ul&gt;
-&lt;li&gt;逻辑型一boolean&lt;/li&gt;
-&lt;li&gt;文本型一char&lt;/li&gt;
-&lt;li&gt;整数型一byte, short, int, long&lt;/li&gt;
-&lt;li&gt;浮点数型一float, double&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;4-java数据类型讲解&#34;&gt;4、Java数据类型讲解&lt;/h2&gt;
-&lt;h3 id=&#34;41-boolean-布尔型&#34;&gt;4.1 boolean--布尔型&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;boolean类型适于逻辑运算，一般用于程序流程控制。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;boolean类型数据只允许取值true或false，不可以0或非0的整数替代true和false，这点和C语言不同。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;用法举例:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;boolean flag;
-flag = true;
-if(f1ag) {
-    //do something
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;42-char-字符型&#34;&gt;4.2 char--字符型&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;char型数据用来表示通常意义上字符”&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;字符常量为用单引号括起来的单个字符，例如:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;char eChar = &#39;a&#39;; char cChar =&#39;中‘；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Java字符采用Unicode编码，每个字符占两个字节，因而可用十六进制编码形式表示，例如:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;char c1 =’\u0061&#39;;&lt;/li&gt;
-&lt;li&gt;注: Unicode是全球语言统一编码&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Java语言中还允许使用转义字符\来将其后的字符转变为其它的含义，例如:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;@ char c2= &#39;\n&#39;;
-&lt;ul&gt;
-&lt;li&gt;&#39;\n&#39;代表换行符&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;全球的文字放到计算机里面表示全是0和1，Unicode是统一了全世界国家文字的一种编码方式，用这样的编码可以把全世界国家的文字连接在一起。Unicode编码又分为两种，一种是Utf-8，另一种是Utf-16。JAVA所采用的是Utf-16，每一个字符占2个字节，任何国家的文字放到Unicode里面都是占2个字节。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;43-整数类型&#34;&gt;4.3 整数类型&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Java各整数类型有固定的表数范围和字段长度，其不受具体操作系统的影响，以保证Java程序的可移植性。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Java语言整型常量的:三种表示形式:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;十进制整数，如: 12, -314, 0。&lt;/li&gt;
-&lt;li&gt;八进制整数，要求以0开头，如: 012。&lt;/li&gt;
-&lt;li&gt;十六进制数，要求0x或0X开头，如: 0x12。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Java语言的整型常量默认为int型，声明long型常 量可以后加工或L’，如1:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;int i1= 600; //正确 long l1 = 888888888L; l1必须加否则会出错&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610125719.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;C语言编译好的程序为什么不能移植，如把.exe文件放到Linux下是执行不了的，一个很大很大的原因在于C语言定义的变量在不同的操作系统上所占的大小是不一样的，声明一个int类型的变量，在Windows下面占32位，但放到Linux下面就有可能只占16位，那么这时候很可能表示的大小就不一样了，在Windows下声明一个很大的数，在Linux下面很可能就会溢出。因此这就是C语言为什么在编译完成之后不能移植的原因。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;44-浮点类型&#34;&gt;4.4 浮点类型&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;与整数类型类似，Java浮 点类型有固定的表数范围和字段长度，不受平台影响。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Java浮点类型常量有两种表示形式&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;十进制数形式，例如:3.14&lt;/li&gt;
-&lt;li&gt;⑥科学记数法形式，如3.14e2  3.14E2  100E2&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Java浮点型常量默认为double型，如要声明一个常量为float型，则需在数字后面加f或F，如:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;double d= 12345.6; //正确 float f= 12.3f; //必须加f否则会出错&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;下面列出Java的各种浮点类型&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610130037.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;45-基本数据类型的转换&#34;&gt;4.5 基本数据类型的转换&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;boolean类型不可以转换为其他的数据类型。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;整型，字符型，浮点型的数据在混合运算中相互转换，转换时遵循以下原则:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;容量小的类型自动转换为容量大的数据类型:数据类型按容量大小排序为:
-&lt;ul&gt;
-&lt;li&gt;byte,short,char-&amp;gt;int-&amp;gt;long-&amp;gt;float-&amp;gt;double&lt;/li&gt;
-&lt;li&gt;byte,short,char之间不会互相转换， 他们三者在计算时首先回转换为int类型&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;容量大的数据类型转换为容量小的数据类型时，要加上强制转换符，但可能造成精度降低或溢出:使用时要格外注意。&lt;/li&gt;
-&lt;li&gt;有多种类型的数据混合运算时，系统首先自动的将所有数据转换成容量最大的那一:种数据类型，然后再进行计算。&lt;/li&gt;
-&lt;li&gt;实数常量(如: 1.2)默认为double。&lt;/li&gt;
-&lt;li&gt;整数常量(如: 123) 默认为int。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;类型转换测试&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class TestConvert {
-    public static void main(String arg[]) {
-        int i1 = 123;
-        int i2 = 456;
-        double d1 = (i1+i2)*1.2;//系统将转换为double型运算
-        float f1 = (float)((i1+i2)*1.2);//需要加强制转换符
-        byte b1 = 67;
-        byte b2 = 89;
-        byte b3 = (byte)(b1+b2);//系统将转换为int型运算，需要强制转换符
-        System.out.println(b3);
-        double d2 = 1e200;
-        float f2 = (float)d2;//会产生溢出
-        System.out.println(f2);
-        float f3 = 1.23f;//必须加f
-        long l1 = 123;
-        long l2 = 30000000000L;//必须加l
-        float f = l1+l2+f3;//系统将转换为float型计算
-        long l = (long)f;//强制转换会舍去小数部分（不是四舍五入）
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;5-运算符&#34;&gt;5、运算符&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610130557.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;51-算数运算符自加和自减运算符&#34;&gt;5.1 算数运算符（自加和自减运算符)&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610130722.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;52-逻辑运算符&#34;&gt;5.2 逻辑运算符&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610130816.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;53-赋值运算符&#34;&gt;5.3 赋值运算符&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610131019.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;赋值运算符，就是将符号右边的值，赋给左边的变量。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args){ 
-    int i = 5; 
-    i+=5;//计算方式 i=i+5 变量i先加5，再赋值变量i 
-    System.out.println(i); //输出结果是10 
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;54-比较运算符&#34;&gt;5.4 比较运算符&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610131143.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;比较运算符，是两个数据之间进行比较的运算，运算结果都是布尔值 true 或者 false 。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args) { 
-    System.out.println(1==1);//true 
-    System.out.println(1&amp;lt;2);//true 
-    System.out.println(3&amp;gt;4);//false 
-    System.out.println(3&amp;lt;=4);//true 
-    System.out.println(3&amp;gt;=4);//false 
-    System.out.println(3!=4);//true 
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;55-逻辑运算符&#34;&gt;5.5 逻辑运算符&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610152457.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;逻辑运算符，是用来连接两个布尔类型结果的运算符，运算结果都是布尔值 true 或者 false&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args) { 
-    System.out.println(true &amp;amp;&amp;amp; true);//true 
-    System.out.println(true &amp;amp;&amp;amp; false);//false 
-    System.out.println(false &amp;amp;&amp;amp; true);//false，右边不计算 
-    System.out.println(false || false);//falase 
-    System.out.println(false || true);//true 
-    System.out.println(true || false);//true，右边不计算				
-    System.out.println(!false);//true 
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;56-三元运算符&#34;&gt;5.6 三元运算符&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;三元运算符格式：&lt;br&gt;
-数据类型 变量名 = 布尔类型表达式？结果1：结果2&lt;/li&gt;
-&lt;li&gt;三元运算符计算方式：
-&lt;ul&gt;
-&lt;li&gt;布尔类型表达式结果是true，三元运算符整体结果为结果1，赋值给变量。&lt;/li&gt;
-&lt;li&gt;布尔类型表达式结果是false，三元运算符整体结果为结果2，赋值给变量。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args) { 
-	int i = (1==2 ? 100 : 200); 
-    System.out.println(i);//200 
-    int j = (3&amp;lt;=4 ? 500 : 600); 
-    System.out.println(j);//500 
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;6-语句&#34;&gt;6、语句&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610151654.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;61-条件语句&#34;&gt;6.1 条件语句&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;if语句&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610151746.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;分支语句(switch语句)&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610151816.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610151831.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610152413.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;62-循环语句&#34;&gt;6.2 循环语句&lt;/h3&gt;
-&lt;h4 id=&#34;621-for循环语句&#34;&gt;6.2.1 for循环语句&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610151930.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/h4&gt;
-&lt;p&gt;学会画内存分析图分析别人写的程序，这样就很容易分析出规律，分析出规律也就明白了别人的算法，也就很容易读懂别人的程序。&lt;/p&gt;
-&lt;h4 id=&#34;622-while循环和do-while循环&#34;&gt;6.2.2 while循环和do while循环&lt;/h4&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610152239.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h4 id=&#34;623-break和continue语句&#34;&gt;6.2.3 break和continue语句&lt;/h4&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610152202.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;7-方法&#34;&gt;7、方法&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Java的方法类似于其它语言的函数，是一段用来完成特定功能的代码片段&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;形式参数:在方法被调用时用 于接收外界输入的数据。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;实参:调用方法时实际传给方法的数据。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;返回值:方法在执行完毕后返还给调用它的环境的数据。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;返回值类型:事先约定的返回值的数据类型，如无返回值，必须给出返回值类型void.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Java语言中使用下述形式调用方法:对象名方法名(实参列表)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;实参的数目、数据类型和次序必须和所调用方法声明的形参列表匹配，&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;retun语句终止方法的运行并指定要返回的数据。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Java中进行函数调用中传递参数时，遵循值传递的原则:基本类型传递的是该数据值本身。引用类型传递的是对对象的引用，而不是对象本身。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;方法执行到return语句后，这个方法的执行就结束了，&lt;strong&gt;方法可以有返回值，但可以不用这个返回值&lt;/strong&gt;。方法首先要定义，然后才能调用。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class TestMethod{
-    public static void main(String args[]){
-        m();
-        m1(3);
-        m2(2,3);
-        int i = m3(4,5);
-        System.out.println(i);
-    }
-    //以下定义的都是静态方法，静态方法可以在main()方法里面直接调用
-    public static void m(){
-            System.out.println(&amp;quot;Hello!&amp;quot;);
-            System.out.println(&amp;quot;World!&amp;quot;);
-        }
-
-    public static void m1(int i){
-            if(i==5){
-                    return;
-                }
-            System.out.println(i);
-        }
-
-    public static void m2(int i,int j){
-            System.out.println(i+j);
-        }
-
-    public static int m3(int i,int j){
-            return i+j;
-        }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;8-变量的作用域&#34;&gt;8、变量的作用域&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;变量的作用域只在“{ }”有效，出了这个“{ }”就没有作用了&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;9-递归调用&#34;&gt;9、递归调用&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;递归：在一个方法内部对自身的调用就称为递归&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610153500.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610153511.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;范例：使用递归计算第5个斐波那契数列数&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/*计算第5个斐波那契数列数*/
-/*
-斐波那契数列特点：f(1)=1,f(2)=1,f(3)=f(1)+f(2),f(4)=(f2)+(f3)……依次类推。
-即后一个数都是等于前两个数的和，这样的数列就是斐波那契数列。
-*/
-/*
-使用递归调用的方法计算
-*/
-public class Fab{
-    public static void main(String args[]){
-        System.out.println(f(5));
-    }
-
-    public static int f(int n){
-            if(n==1||n==2){
-                    return 1;
-                }else{
-                        return f(n-1)+f(n-2);
-                    }
-        }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;​	整个在内存中执行过程如下图所示&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610153613.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;10-程序的执行过程&#34;&gt;10、程序的执行过程&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;21&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610153705.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-">Java基础-基础语法</a>
       </div>
       
       <div class="item">
@@ -5401,6 +4714,828 @@ INSERT INTO account(`name`,money) VALUES(&#39;C&#39;,1000);
 &lt;p&gt;尽情发挥你的才华吧！&lt;/p&gt;
 &lt;p&gt;😘 Enjoy~&lt;/p&gt;
 ">Hello Gridea</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/java-ji-chu-zong-jie-shu-zu/"" data-c="
+          &lt;h2 id=&#34;1-数组的基本概念&#34;&gt;1、 数组的基本概念&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;数组可以看成是多个相同类型数据组合，对这些数据的统一管理。&lt;/li&gt;
+&lt;li&gt;数组变量属引用类型，数组也可以看成是对象，数组中的每个元素相当于该对象的成员变量。&lt;/li&gt;
+&lt;li&gt;数组的元素可以是任何数据类型，包括基本类型和引用类型。&lt;/li&gt;
+&lt;li&gt;C和C++中的数组都可以分配在栈上面，而JAVA中的数组是只能分配在堆上面的，因为JAVA中的数组是引用类型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- more --&gt;
+&lt;h2 id=&#34;2-一维数组&#34;&gt;2、一维数组&lt;/h2&gt;
+&lt;p&gt;一维数组的声明方式有2种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;格式一：数组元素类型 数组名[ ]; 即type var[ ];&lt;/li&gt;
+&lt;li&gt;格式二：数组元素类型[ ] 数组名; 即type[ ] var;&lt;/li&gt;
+&lt;li&gt;格式二声明数组的方法与C#上声明一维数组的方法一样。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;int a1[ ];  
+int[ ] a2;
+double b[ ];
+person[ ] p1;
+String s1[ ];
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：JAVA语言中声明数组时不能指定其长度(数组中的元素个数)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​    如：int a[5]; 这样声明一维数组是非法的。&lt;/p&gt;
+&lt;h2 id=&#34;3-数组的模型&#34;&gt;3、数组的模型&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;一维数组：一维数组就是一行，一行小格。&lt;/li&gt;
+&lt;li&gt;二维数组：二维数组就是一行加一列组成的一个平面分成的小格，有行有列。&lt;/li&gt;
+&lt;li&gt;三维数组：三维数组就是一个立方体。&lt;/li&gt;
+&lt;li&gt;人类对最多认识到三维空间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-数组对象的创建&#34;&gt;4、数组对象的创建&lt;/h2&gt;
+&lt;p&gt;JAVA中使用关键字&lt;strong&gt;new&lt;/strong&gt;创建数组对象。&lt;/p&gt;
+&lt;p&gt;格式为：数组名 = &lt;strong&gt;new&lt;/strong&gt; 数组元素的类型[数组元素的个数]&lt;/p&gt;
+&lt;p&gt;例如：&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200614033838.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-元素为引用数据类型的数组&#34;&gt;5、元素为引用数据类型的数组&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;注意：元素为引用数据类型的数组中的每一个元素都需要实例化。&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Date{
+      int year; int moth; int day;
+      Date(int y; int m, int d){
+      　　year=y ;
+　　　　  month=m ;
+　　　　  day=d ;
+　　}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200614034019.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;6-数组的初始化&#34;&gt;6、数组的初始化&lt;/h2&gt;
+&lt;h3 id=&#34;61-动态初始化&#34;&gt;6.1 动态初始化&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;数组定义与为数组元素分配空间和赋值的操作分开进行&lt;/strong&gt;。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Test{
+    public static void main(String args[ ]){
+    int a[ ];  //定义数组，即声明一个int类型的数组a[ ]
+    a=new int[3];  //给数组元素分配内存空间。
+    a[0]=3; a[1]=9; a[2]=8;  //给数组元素赋值。
+    Date days[ ];
+    days=new Date[3];
+    days[0]=new Date(1, 4, 2004);
+    days[1]=new Date(2, 4, 2004);
+    days[2]=new Date(3, 4, 2004);
+    }
+}
+
+class Date{
+    int year, month, day;
+    Date(int y, int m, int d){
+        year = y ;
+        month = m ;
+        day = d ;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;62-静态初始化&#34;&gt;6.2 静态初始化&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;在定义数组的同时就为数组元素分配空间并赋值。&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;puclic class Test{
+        public static void main(String args[ ]){
+            int a[ ] = { 3, 9, 8};   //在定义数组的同时给数组分配空间并赋值。
+            Date days[ ] = {
+                new Date(1, 4, 2004),
+                new Date(2 ,4 ,2004),
+                new Date(3 ,4, 2004)
+        };
+    }
+}
+class Date{
+    int year, month, day;
+    Date(int y, int m, int d){
+        year = y ;
+        month = m ;
+        day = d ;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;7-数组元素的默认初始化&#34;&gt;7、数组元素的默认初始化&lt;/h2&gt;
+&lt;p&gt;​		数组是引用类型，它的元素相当于类的成员变量，因此给数组分配内存空间后，每个元素也被按照成员变量的规则被隐式初始化。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Test{
+        public static void main(String args[ ]){
+            int a[ ] = new int[5];
+            Date[ ] days=new Date[3];
+            System.out.println(a[3]);
+            System.out.println(days[2]);
+    }
+}
+class Date{
+    int year, month, day;
+    Date(int y, int m, int d){
+        year = y ;
+        month = m ;
+        day = d ;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输出结果：&lt;/p&gt;
+&lt;p&gt;System.out.println(a[3]);  打印出来的结果是：0。&lt;/p&gt;
+&lt;p&gt;System.out.println(days[2]); 打印出来的结果是：null(空)&lt;/p&gt;
+&lt;h2 id=&#34;8-数组元素的引用&#34;&gt;8、数组元素的引用&lt;/h2&gt;
+&lt;p&gt;​		定义并用运算符new为之分配内存空间后，才可以引用数组中的每个元素，数组元素的引用方式为：&lt;strong&gt;arrayName[index]，&lt;/strong&gt; index为数组元素下标，可以是整型常量或整型表达式。如：&lt;strong&gt;a[3], b[i], c[6*i]。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;数组元素下标从0开始；长度为n的数组的合法下标取值范围为&lt;strong&gt;0～n—1。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​    	每个数组都有一个属性length指明它的长度，例如：&lt;strong&gt;a.&lt;strong&gt;&lt;strong&gt;length&lt;/strong&gt;&lt;/strong&gt;的值为数组&lt;strong&gt;&lt;strong&gt;a&lt;/strong&gt;&lt;/strong&gt;的长度&lt;/strong&gt;**(&lt;strong&gt;&lt;strong&gt;元素个数&lt;/strong&gt;&lt;/strong&gt;)****。**&lt;/p&gt;
+&lt;h2 id=&#34;9-二维数组&#34;&gt;9、二维数组&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200614034607.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;二维数组初始化：&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200614034640.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;10-理解java中的各个维度的数组模型&#34;&gt;10、理解JAVA中的各个维度的数组模型&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;C:%5CUsers%5CCY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200614034726096.png&#34; alt=&#34;image-20200614034726096&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+">Java基础总结-数组</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/java-ji-chu-mian-xiang-dui-xiang/"" data-c="
+          &lt;p&gt;✍️面向对象的基本思想是，从现实世界中客观存在的事物出发来构造软件系统，并在系统的构造中尽可能运用人类的自然思维方式。&lt;br&gt;
+面向对象更加强调运用人类在日常生活的逻辑思维中经常采用的思想方法与原则，如抽象、分类，继承、聚合、多态等。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2 id=&#34;1-面向对象一&#34;&gt;1、面向对象（一）&lt;/h2&gt;
+&lt;h3 id=&#34;11-面向过程的思想和面向对象的思想&#34;&gt;1.1 面向过程的思想和面向对象的思想&lt;/h3&gt;
+&lt;p&gt;​		面向对象和面向过程的思想有着本质上的区别, &lt;strong&gt;作为面向对象的思维来说，当你拿到一个问题时，你分析这个问题不再是第一步先做什么，第二步再做什么，这是面向过程的思维，你应该分析这个问题里面有哪些类和对象，这是第一点，然后再分析这些类和对象应该具有哪些属性和方法。这是第二点。最后分析类和类之间具体有什么关系，这是第三点。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​		&lt;strong&gt;面向对象有一个非常重要的设计思维：合适的方法应该出现在合适的类里面。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;12-简单理解面向对象&#34;&gt;1.2 简单理解面向对象&lt;/h3&gt;
+&lt;p&gt;​		就是在程序里面首先分解出来的应该是注意不再是一步一步的过程了，而是首先考虑在这个问题域里面或者程序里面应该具有有哪些对象，所以从现在开始考虑任何问题脑子里不要再想着我实现这件事我第一步应该干什么，第二步应该干什么，如果这样想，那就是面向过程的思维了。面向对象的思维是，当我碰到这个问题域的时候，碰到这个程序的时候，我首先应该把这个问题里有哪些对象，对象与对象之间有什么关系抽象出来。&lt;/p&gt;
+&lt;h3 id=&#34;13-面向对象的设计思想&#34;&gt;1.3 面向对象的设计思想&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;面向对象的基本思想是，从现实世界中客观存在的事物出发来构造软件系统，并在系统的构造中尽可能运用人类的自然思维方式。&lt;/li&gt;
+&lt;li&gt;面向对象更加强调运用人类在日常生活的逻辑思维中经常采用的思想方法与原则，如抽象、分类，继承、聚合、多态等。&lt;/li&gt;
+&lt;li&gt;人在思考的时候，首先眼睛里看到的是一个一个的对象。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;14-对象和类的概念&#34;&gt;1.4  对象和类的概念&lt;/h3&gt;
+&lt;p&gt;​		对象是用于计算机语言对问题域中事物的描述，&lt;strong&gt;对象通过“属性（attribute）”和“方法（method）”来分别对应事物所具有的静态属性和动态属性&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;​		&lt;strong&gt;类是用于描述同一类的对象的一个抽象的概念，类中定义了这一类对象所具有的静态属性和动态属性&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​		&lt;strong&gt;类可以看成一类对象的模板，对象可以看成该类的一个具体实例&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;​		&lt;strong&gt;eg.什么叫瓶子？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​		瓶子的定义：具有某些类特征的东西就是瓶子，比分说什么样的形状，比方说有个口，能倒水，能装水，一般有个盖等等。给瓶子下定义的过程，其实就是把瓶子里的某些东西抽象出来了，所以瓶子在这里是叫做一类事物的一个抽象，在你脑子里有瓶子的概念，可瓶子的概念在你脑子里到底是什么呢？瓶子的概念在你脑子里叫做一类事物的一个抽象。怎么抽象的呢？你往往抽象的是这两个方面：第一个方面我们叫它静态的属性，瓶子应该具有哪些特征，比分说瓶子应有个口，这是它的具有的一个静态属性，瓶子一般有一个盖，这也是它的具有一个静态属性，除此之外，你还可能给它总结动态的属性，什么动态的属性呢？比放说瓶子能倒水，这是它的动态属性。瓶子这个概念在你脑子里如果你细细的思维的话，其实你给它做了两方面的总结，一方面是静态的，一方面是动态的。反映到JAVA的类上，一个就是成员变量（静态属性），一个就是方法（动态属性）方法是可以执行的，可以动的。成员变量是某一个类的静态属性。所以你脑子里瓶子的概念实际上是一类事物的一个抽象，这种东西我们叫它类，椅子是类，桌子是类，学生是类。什么是对象呢？这一类事物的具体的某个实例就叫做对象。所以&lt;strong&gt;一类事物的具体的某一个东西，符合这类事物具体的特征的某个东西就叫做对象&lt;/strong&gt;。瓶子是一个类，某个瓶子就是瓶子这个类里面的一个对象。&lt;/p&gt;
+&lt;h3 id=&#34;15-如何抽象出一个类&#34;&gt;1.5 如何抽象出一个类？&lt;/h3&gt;
+&lt;p&gt;​		有两个方面，一方面是它的静态属性，另一方面是它的动态属性。反映到JAVA里面的类怎么包装它呢？一方面成员变量，另一方面是方法。&lt;/p&gt;
+&lt;p&gt;​		eg.职员这个类该怎么抽象出来？也是从两个方面，一方面是它的静态属性，另一方面它的动态属性&lt;/p&gt;
+&lt;p&gt;​		职员有哪些属性呢？有姓名，年龄，目前工资数额等属性，他有哪些方法呢？让这个职员来显示姓名，显示年龄，修改姓名，领取工资。当然显示姓名，显示年龄，修改姓名，领取工资这些也可以让别人来做，但&lt;strong&gt;面向对象的设计思维是最合适的方法应该出现在最合适的类里面&lt;/strong&gt;。显示姓名，显示年龄，修改姓名，领取工资由谁来做更合适呢，那就是职员自己最合适。所以这些方法应该出现在职员这个类里面。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610155239.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		对于类来说，它有一些属性或者称为成员变量，以后说属性或者成员变量指的是同一回事。具体的对象他有没有相关的一些属性或者叫成员变量呢？有，每一个人都有一份，只不过是取值不同而已。如从职员这个类实例化出来的两个职员：职员A和职员B，他们都有姓名，年龄，目前工资数额这些属性，但他们的名字，年龄，领取的工资数额都不一样。这样就能把职员A和职员B区分开来了，正是因为他们的属性值不一样，所以这个对象才能和另外的对象区分开来，&lt;strong&gt;所以通过属性是可以区分两个对象的&lt;/strong&gt;。猫是一个类，这只猫是一个对象，这只猫和另外一只猫该怎么区分开来呢？那就得看你的猫这个类是怎么定义的了，猫有猫毛，毛有颜色。OK，这只猫是黑猫，另一只猫是白猫，这样通过猫毛的颜色区分开来了。如果只定义一个，如捉老鼠，白猫也能捉，黑猫也能捉，这样就没办法区分出黑猫和白猫了，所以&lt;strong&gt;根据方法是没办法区分两个对象的&lt;/strong&gt;。所以&lt;strong&gt;每个对象都有自己的属性，属性值和另外一个对象一般是不一样的&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;​		一定要区分类和对象，什么叫做类？什么叫做对象？类是一类事物的一个抽象，具有共同特征的一类事物的一个抽象。对象是这个类具体的某一个实例，所以以后说实例（instance）或者说对象（object）指的是同一回事。&lt;/p&gt;
+&lt;h3 id=&#34;16-类对象之间的关系&#34;&gt;1.6 类（对象）之间的关系&lt;/h3&gt;
+&lt;h4 id=&#34;161-关联关系最弱的一种关系&#34;&gt;1.6.1 关联关系(最弱的一种关系)&lt;/h4&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610155402.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		类和类之间是有关系的，如学生和老师这两个类，老师可以教学生，学生可以向老师学习。这就是他们之间的关系。关系和关系之间是不同的，你和你老婆的关系和你和你其他女朋友的关系是不能混为一谈的。关系最弱的一种关系叫关联关系。关联关系反应到代码上往往是一个类的方法里面的参数是另一个类的具体的某一个对象，比如教授教研究生，教哪个研究生，教是教授这个类里面的一个方法，某个研究生是研究生这个类里面的一个具体的对象。&lt;strong&gt;关联关系是最弱的一种关系&lt;/strong&gt;，咱们两个类之间有关系，或者两个对象之间有关系，但关系不是很紧密。&lt;/p&gt;
+&lt;h4 id=&#34;162-继承关系比较强的一种关系&#34;&gt;1.6.2 继承关系（比较强的一种关系）&lt;/h4&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610155535.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		&lt;strong&gt;继承关系封装了这样一种逻辑：“XX是一种XX”，只要这东西能说通了，就可以考虑用继承关系来封装它&lt;/strong&gt;。如：游泳运动员从运动员继承，游泳运动员是一种运动员，这能说得通，所以游泳运动员就是从运动员继承过来的，游泳运动员和运动员就是一种继承关系。学生是一个人，学生从人继承，老师是一个人，老师也从人继承，学生是一种老师，这说不通，所以学生和老师就不存在继承关系。所以将来做设计的时候要分清继承关系很简单，你只要说通这么一句话：“XX是一种XX”。OK，那他们之间就是继承关系。篮球运动员是一种球类运动员，这说得通，所以篮球运动员从球类运动员继承，这样继承很有可能会产生一棵继承树，运动员派生出来，派生出来的意思是游泳运动员这个类、球类运动员这个类、射击运动员类从它继承，相当于运动员派生出来了这些个不同的运动员，包括游泳的，球类的，射击的。球类的再派生足球的，篮球的，排球的。这就是一棵继承树，不过这棵树是比较理想化的情况，只有一个根节点。但实际当中，我们真实世界当中的继承关系不一定只从一个类继承，一个类可能从多个类继承过来，比如说：金丝猴从动物这个类继承，这很正常，但我还有另外一个专门的类：“应该受到保护的东西”，这也是一个类，金丝猴应该受到保护，所以金丝猴是一种应该受到保护的东西。所以金丝猴从“应该受到保护的东西”这个类继承过来。所以在现实情况当中，一个类完完全全有可能从多个不同的类继承，C++正是因为想封装这种继承关系，所以C++存在多重继承。&lt;/p&gt;
+&lt;h4 id=&#34;163-聚合关系整体和部分比较强的一种关系&#34;&gt;1.6.3 聚合关系（整体和部分）（比较强的一种关系）&lt;/h4&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610155626.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		什么是聚合？&lt;strong&gt;聚合就是一个整体与部分的关系&lt;/strong&gt;。我们说**“XX是XX的一部分”，只要说得通，那么他们之间的关系就是聚合关系**，队长是球队的一部分，队员是球队的一部分。所以队长和球队是聚合关系，队员和球队也是聚合关系。脑袋是人的以部分，身体和胳膊也是人的一部分，因此脑袋，身体和胳膊与人都是聚合关系。&lt;strong&gt;聚合关系分得再细一点的话就可以分成聚集关系和组合关系&lt;/strong&gt;，比如球队、队长，队员，这三者是聚集关系，假如这个队长既是足球的队长，同时也是篮球的队长，一个人分属两个不同的球队，这是可以的，球队与队长之间没有我离不了你，你离不了我这种情况，所以如果分得更细的话，这种就叫做聚集关系。还有一种情况叫组合，组合说的是咱们俩密不可分，我是你必不可少的一部分。一个人的脑袋不可能既属于你又属于别人，身体也一样，不可能既属于你又属于别人。所以你的身体，脑袋和你是密不可分的，这是一种更加严格的聚合关系，专门给它取了个名字叫组合。&lt;/p&gt;
+&lt;h4 id=&#34;164-实现关系&#34;&gt;1.6.4 实现关系&lt;/h4&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610155715.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		**作为父类来说，我觉得我应该具有这样一个方法，但我不知道怎么去实现，谁去实现，我的子类去实现，这就是实现关系。**和实现关系息息相关的还有一种关系叫多态。&lt;/p&gt;
+&lt;h4 id=&#34;165-多态&#34;&gt;1.6.5 多态&lt;/h4&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610155757.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;17-java与面向对象&#34;&gt;1.7 Java与面向对象&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;	对象和类是分不开的，必须首先定义类才能有对象。首先定义方法才能调用。对象是JAVA里面的核心，做任何东西你首先都得给我造出一个对象才能做。静态属性简称属性，也叫成员变量，以后说属性或者说成员变量它们指的都是同一回事。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;整个类可以看作是静态的属性还有方法他们之间的一个综合。怎么抽象出一个类的概念，还是那句话，你必须抽象出两个方面来，第一方面是看他们的静态属性，他们有哪些成员变量，第二方面是看他们的有哪些方法。&lt;/p&gt;
+&lt;p&gt;写JAVA程序时，我们一上来写的就是public class（声明一个类），在这个class里面我们写的是成员变量和方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;每一个JAVA里面的class（类）都对应了我们现实生活中某一类事物的一个抽象&lt;/strong&gt;。比如说要在JAVA里面封装一只狗，具体怎么封装，如何写代码，代码如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 一类事物封装到JAVA里面首先得写class，定义这个类，类名是什么可以自己取。
+ * 这里把类名叫做Dog
+ */
+public class Dog {
+    /**
+     * 接下来就是写这个狗这个类的属性或者叫成员变量，
+     * 比如说狗这个类的毛的颜色，怎么定义这个属性呢，
+     * 首先得定义毛的一个类型,如使用int来定义毛的颜色类型
+     */
+    int furcolor; //定义属性：毛的颜色
+    float height; //定义属性：狗的高度
+    float weight; //定义属性：狗的体重
+
+    /**
+     * 狗的颜色，高度，体重这些属性定义完了，接下来要定义的就是方法了。
+     * 如写一个CatchMouse（）方法，捉老鼠的方法。
+     * CatchMouse这个方法里面有一个对象类型的参数，捉哪一只老鼠，这个对象参数是属于Mouse这个类的
+     * @param m
+     */
+    void CatchMouse(Mouse m){
+            //在方法体内写捉老鼠这个过程，怎么捉，跑着捉，走着捉
+            System.out.println(&amp;quot;我捉到老鼠了，汪汪！，老鼠要尖叫了！&amp;quot;);
+            /**
+             * 老鼠尖叫一声，表示被狗咬到了，咬到了能不叫吗，很自然而然地想到，
+             * 尖叫（scream()）这个方法是属于Mouse这个类里面的某一个方法。
+             * 老鼠自己调用它，让它自己尖叫。这就是面向对象的思维。
+             */
+            m.scream();
+    }
+
+    public static void main(String[] args) {
+        Dog  d = new Dog();//首先用new关键字创建一只狗
+        Mouse m=new Mouse();//造出一只老鼠。
+        d.CatchMouse(m);//然后用这只狗去抓老鼠，让狗调用CatchMouse()方法去捉某只老鼠。
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​		从这个意义上来讲，JAVA里面的每定义一个类实际上就相当于一种新的数据类型。就跟int ，float， String等一样，不过是一种新定义的类型而已。&lt;/p&gt;
+&lt;h3 id=&#34;18-为什么使用面向对象编程&#34;&gt;1.8 为什么使用面向对象编程？&lt;/h3&gt;
+&lt;p&gt;​		面向对象编程：一组对象互相配合通过沟通完成特定功能&lt;/p&gt;
+&lt;p&gt;做软件苦苦追求的一种境界是可重用性（reusable），可扩展性。如果是面向过程，一般情况是属性和方法它们是分开的，他们不是聚合的关系，不是合在一起的，这样要复用起来比较麻烦，复用的层次只是局限于方法这个层次上，而面向对象则不同，它是把属性和方法综合在一个里面。综合在一起复用的时候是整个对象进行复用。所以面向对象和面向过程相比，前者更加容易让我们达到可重用性。&lt;/p&gt;
+&lt;h2 id=&#34;2-java面向对象二&#34;&gt;2、Java面向对象（二）&lt;/h2&gt;
+&lt;h3 id=&#34;21-java类的定义&#34;&gt;2.1 Java类的定义&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//用class关键字定义一个类
+class Person{
+    private int id;
+    private int age = 20;
+    //方法的定义
+    public int getAge(){
+        return age;
+    }
+    public void setAge(int i){
+        age = i;
+    }
+    public int getId(){
+        return id;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;类的定义主要有两方面组成一成员变量和方法。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;声明成员变量的格式为: [&amp;lt; modifiers&amp;gt;] type &amp;lt; attr_name&amp;gt;[=defaultValue] ;&lt;br&gt;
+例如:  private int id;    private int age = 20;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;声明方法的格式为:&lt;br&gt;
+[&amp;lt; modifiers&amp;gt;)] &amp;lt; modifiers&amp;gt; &amp;lt;return_ type&amp;gt; &lt;name&gt;([&amp;lt; argu list&amp;gt;]) {&lt;br&gt;
+[&amp;lt; statements&amp;gt;]&lt;br&gt;
+}    例如: public int getAge() {return age;}&lt;/p&gt;
+&lt;p&gt;​		JAVA里面有&lt;strong&gt;class&lt;/strong&gt;关键字定义一个类，后面加上自定义的类名即可。如这里定义的person类，使用class person定义了一个person类，然后在person这个类的类体里面定义person这个类应该具有的成员变量（即属性）和方法，如这里定义的int id和int age这个两个成员变量，或者叫属性，这个id表示人的身份证号码，人应该具有这个属性，age表示人的年龄，这也是人应该具有的。这样就在person这个类里面定义了两个人应该有的属性，接下来就是定义方法了，这里定义了三个方法，分别是getAge()、setAge(int i)和getId()，分别用来获取人的年龄，设置人的年龄，获取人的id，getAge()方法获取了人的年龄后，将获取到的值返回，所以使用了return age语句，getId()方法也使用了return id语句用于返回获取到的id的值。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;22-成员变量&#34;&gt;2.2 成员变量&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610160936.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;**在JAVA里面的任何变量首先应该要声明，然后再赋值，然后再使用。**成员变量和局部变量有一个重要区别：&lt;strong&gt;成员变量在类里面声明时如果不进行初始化，那么JAVA会默认给它初始化，而局部变量JAVA不会默认给它初始化，所以在方法里面声明一个局部变量如果不给它初始化时就会出错&lt;/strong&gt;。默认初始化大多数都是0，boolean类型的为false，引用类型的为null，如过不记得JAVA对成员变量默认的初始化是多少的话，那就这样做，定义一个成员变量，不给它初始化，然后直接打印这个成员变量，打印出来的结果就是JAVA默认的初始化的值。&lt;/p&gt;
+&lt;h3 id=&#34;23-java面向对象的基本概念引用&#34;&gt;2.3 Java面向对象的基本概念——引用&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610161110.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		&lt;strong&gt;引用类型和基本类型有着巨大的区别&lt;/strong&gt;，当声明一个int i=0时，系统会马上给这个i分配一个内存空间（在栈内存里面分配一小块区域用来装数字0），里面装着一个值为0，以后使用i这个名字马上就可以访问这个内存空间里面的值，这就是基本数据类型，所以&lt;strong&gt;基础类型就只占一块内存&lt;/strong&gt;。基础类型之外的类型全都叫引用类型，我们定义一个Mouse m，这个m就是一个引用类型的数据。引用类型有什么重要的特征——&lt;strong&gt;引用类型占&lt;strong&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/strong&gt;块内存&lt;/strong&gt;。我们定义好这个类之后，需要使用new关键字把这个类的对象实例化出来，也就是真真正正造出一个对象出来才能使用这个对象。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如何在内存中区分类和对象&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;类是静态的概念，是位于代码区里面。对象是new出来的，它是位于堆内存，为什么对象要位于堆内存？因为堆内存是用来动态分配内存的，只有在运行当中才会new一个对象放堆内存里面，那这个对象到底有多大个，这个东西你不知道，你没有办法提前知道，所以你没有办法提前分配内存给这个对象，你只有在运行期间才能去分配它。什么叫运行期间？敲JAVAC这个命令那是在编译期间，编译完成后再敲JAVA命令，那就是运行期间了。只有在运行期间，才能够明白这个对象到底要分配多大的空间给它，所以把它放在堆内存里面，堆内存比较大，动态分配内存用它。如果这个对象不用了，那它就是垃圾，那么就等着垃圾收集器把它收集回去，释放掉占用的内存。&lt;/p&gt;
+&lt;p&gt;​		记住，&lt;strong&gt;以后一提到引用，脑子里马上浮现引用那就是一小块内存指向一大块内存。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;24-对象的创建和使用&#34;&gt;2.4 对象的创建和使用&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;必须使用new关键字创建对象。&lt;/li&gt;
+&lt;li&gt;使用对象(引用) .成员变量或来引用对象的成员变量。&lt;/li&gt;
+&lt;li&gt;使用对象(引用) .方法(参数列表)来调用对象的方法。&lt;/li&gt;
+&lt;li&gt;同一类的每个对象有不同的成员变量存储空间。&lt;/li&gt;
+&lt;li&gt;同一类的每个对象共享该类的方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;25-类和对象的关系&#34;&gt;2.5 类和对象的关系&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610162714.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;在内存中分析类和对象的关系&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;假设这里有一个类C，我们定义了一个类class C，然后在这个类里面定义了两个成员变量: int i和int j。定义好了这两个成员变量以后，我们写了一个main()方法（public static void main(Strng[] args)），程序开始执行。第一句我们写了 C c1 = new C()，这句的代码是我们相当于在堆内存里创建了一个对象，同时也创建了这个对象的一个引用对象c1，c1位于栈内存中，c1这个引用对象指向堆中一大块内存，这一大块内存里面装着new出来的那个对象。这里面我们一般来说是new出来两个对象c1和c2，当然，实际上，严格来讲，c1和c2叫做对象的引用，有时候，简称new出来了两个对象，c1和c2。你脑子里马上要浮现出两块内存，c1指向一块，c2指向一块。局部变量是分配在栈内存里面的，main方法里面的c1和c2都是局部变量，所以在栈里面分配了两小块内存出来，一块是c1的，一块是c2的，c1这块内存里面装着一个值，或者叫装着一个地址，这个地址是什么，我们不知道，我们只知道根据这个值就能找到new出来的C这个类里面的一个对象，而在这个对象里面有它自己的成员变量i和j，里面的两小块内存是分别用来装i和j的值的，因为每一个对象都有自己不同的成员变量的值，所以c1指向的那块对内存里面又分成一小块一小块内存，每一个小块的内存都装着这个对象的成员变量（或者叫属性）。如这里的第一小块装着i的值，第二小块装着j的值，所以当我们去访问第一小块里面装着的成员变量时，我们应该这样写：c1.i，这样就拿到了i的值，c1.j，这样就拿到了j的值。同理，c2这个对象也指向了一个new出来的C这个类里面的另一个对象，这个对象也有成员变量i和j，只不过和c1指向的那个对象里的i和j的值不同而已。要访问这个这个对象的成员变量时 ，也是要c2.i，c2.j这样去访问。&lt;/p&gt;
+&lt;h3 id=&#34;26-构造方法&#34;&gt;2.6 构造方法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;使用new+构造方法创建-一个新的对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;构造函数是定义在Java类中的一个用来初始化对象的函数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;构造函数与类同名且没有返回值。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;例如: Person 类的构造函数:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Person(){
+    int id;
+    int age;
+    Person(int n,int i){
+        id = n;
+        age = i;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在面向对象里面有一个特殊的方法，叫构造方法。&lt;/p&gt;
+&lt;p&gt;构造方法是用来创建一个新的对象的，与new组合在一起用，使用new+构造方法创建一个新的对象。你new一个东西的时候，实际上你调用的是一个构造方法，构造方法就是把自己构造成一个新的对象，所以叫构造方法，构造一个新对象用的方法叫构造方法。&lt;/p&gt;
+&lt;p&gt;构造方法比较特殊，构造方法的名字必须和类的名字完全一模一样，包括大小写，并且没有返回值。如原来定义的一个person类，在类里面声明了两个成员变量id与age，这时候你可以再为这个person类定义一个它的构造方法person(int n，int i)，这个方法的名字和类名完全相同，并且没有返回值，也就是在这个方法前面不能写任何的方法的返回类型修饰符，连void都不可以写。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;构造方法范例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Person {
+    int id;  //在person这类里面定义两个成员变量id和age,
+    int age=20;  //给成员变量age赋了初值为20
+
+    /**这里就是person这个类的一个构造方法
+     * 构造方法的规则很简单，和类名要完全一样，一点都不能错，包括大小写。
+     * 并且没有返回值，不能写void在它前面修饰
+     * @param _id
+     * @param _age
+     */
+    public Person(int _id,int _age ) {
+        id = _id;
+        age = _age;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​		构造方法写好后就和new组合在一起使用，new的作用是构建一个新对象，创造一个新对象，所以new的时候实际当中调用的是构造方法。只有调用了这个构造方法才能构造出一个新的对象。例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args) {
+    Person tom = new Person(1, 25); // 调用person这个构造方法创建一个新的对象，并给这个对象的成员变量赋初始值
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610161822.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​	&lt;strong&gt;下面是在main方法里面调用person构造方法时的内存分析情况：&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610161855.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610161922.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		&lt;strong&gt;当方法调用完成之后，栈里面为它分配的空间全部都要消失，即把这个方法调用时分配给它的内存空间释放出来&lt;/strong&gt;，所以这个构造方法person调用完成之后，栈内存里面分配的两小块内存_id和_age自动消失了。这样就把它们所占的空间让了出来，让其他的方法去占用。而new出来的对象则永远留在了堆内存里面。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610162016.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		&lt;strong&gt;声明一个类，若没有在类中指定其构造方法（构造函数）时，编译器会为这个类自动添加形如类名( ){ }的构造函数。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class  point{//这里声明一个类时并没有给它指定其构造方法。
+     int  x;
+     int  y;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​		但在main方法里面我们却可以这样使用：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args){
+     point  p = new  point();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​		这里这样写是可以的，当没有给这个类指明构造方法时，系统会默认地给这个类加上point ( ) { }这样一个空的构造方法。所以才可以在main方法中使用point p = new point(); 实际上你调用的就是编译器默认给它加上的point ( ) { }这个构造方法，在这个构造方法当中，默认地把类里面的成员变量x和y初始值设为0。正是因为系统给它默认加上这么一个构造方法，所以才能在main方法里面调用。但&lt;strong&gt;要记住一点，一旦给这个类里面指定了构造方法，那么系统就不会再给这个类添加构造方法了&lt;/strong&gt;。&lt;/p&gt;
+">Java基础总结-面向对象</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/java-ji-chu-ji-chu-yu-fa/"" data-c="
+          &lt;p&gt;✍️JavaSE是Java Standard Edtion的缩写，译成中文就是Java标准版，也是Java的核心。无论是JavaEE(Java企业版)还是JavaME(Java微型版)都是以JavaSE为基础。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2 id=&#34;1-标识符&#34;&gt;1、标识符&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Java对各种变量、方法和类等要素命名时使用的字符序列称为标识符。
+&lt;ul&gt;
+&lt;li&gt;凡是自己可以起名字的地方都叫标识符，都遵守标识符的规则&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Java标识符命名规则:
+&lt;ul&gt;
+&lt;li&gt;标识符应以字母、下划线、美元符开头。&lt;/li&gt;
+&lt;li&gt;Java 标识符大小写敏感，长度无限制。&lt;/li&gt;
+&lt;li&gt;Java 标识符大小写敏感，长度无限制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;约定俗成: Java标识符选取因注意&amp;quot;见名知意&amp;quot;且不能与Java语言的关键字重名。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-关键字&#34;&gt;2、关键字&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Java中一些赋以特定的含义，用做专门用途的字符串称为关键字( keyword)。大多数编辑器会将关键字用特殊方式标出&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;所有Java关键字都是小写英文。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;所有Java关键字都是小写英文。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610115950.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-java基础数据类型&#34;&gt;3、Java基础数据类型&lt;/h2&gt;
+&lt;h3 id=&#34;31-java常量&#34;&gt;3.1 Java常量&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Java 的常量值用字符串表示，区分为不同的数据类型。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如整型常量123&lt;/li&gt;
+&lt;li&gt;实型常量3.14&lt;/li&gt;
+&lt;li&gt;字符常量&#39;a&#39;&lt;/li&gt;
+&lt;li&gt;逻辑常量true. false&lt;/li&gt;
+&lt;li&gt;字符串常量&amp;quot;helloworld&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意:区分字符常量和字符串常量&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意:“常量”这个名词还会用在另外其它语境中表示值不可变的变量&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;32-java变量&#34;&gt;3.2 Java变量&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Java变量是程序中最基本的存储单元，其要素包括变量名，变量类型和作用域。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java程序中每一个变量都属于特定的数据类型，在使用前必须对其声明，声明格式为:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;例如：int i=100;&lt;br&gt;
+float f=12.3f;&lt;/p&gt;
+&lt;p&gt;​			double d1, d2, d3 = 0.123;&lt;br&gt;
+​			String s=&amp;quot;hello&amp;quot;;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从本质上讲，变量其实是内存中的一-小块区域，使用变量名来访问这块区域，因此，每一个变量使用前必须要先申请(声明)，然后必须进行赋值(填充内容)，才能使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一个程序在运行的时候，实际上这个程序是位于内存里面，然后才开始运行。一个.exe文件存放在硬盘上是无法运行的，在硬盘上看到的.exe文件无非就是一个文件而已，当我们双击这个.exe文件时，运行起来的时候实际上是整个.exe文件被放在了在内存里面，然后操作系统找到main方法，也就是程序的入口，然后就开始执行了。执行的过程之中，会不断地在内存里面分配一些区域，变量在内存里面就是一小块区域，变量有两个概念，一个是变量的名字，另一个是变量的值，即这一小块区域是有名字的，里面装着一个值，因此以后要想访问这小块区域里面的内容就可以根据这小块区域的名字来访问了。因此，变量的本质就是一小块内存区域。就变量来说，该在内存里面分配多大的存储空间呢？不同的变量类型分配不同大小的存储空间，每一个变量都是属于特定的数据类型的，声明成不同的数据类型，它就在内存里面分配不同的存储空间。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;变量作用域：变量的作用域只在“{ }”有效，出了这个“{ }”就没有作用了&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;33-java变量分类&#34;&gt;3.3 Java变量分类&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;按被声明的位置划分:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;局部变量:方法或语句块内部定义的变量&lt;/li&gt;
+&lt;li&gt;成员变量:方法外部、类的内部定义的变量&lt;/li&gt;
+&lt;li&gt;注意:类外面(与类对应的大括号外面)不能有变量的声明&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;按所属的数据类型划分:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基本数据类型变量&lt;/li&gt;
+&lt;li&gt;引用数据类型变量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;34-java局部变量和成员变量&#34;&gt;3.4 Java局部变量和成员变量&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;方法体内部声明的变量(包括形参)称为局部变量:&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;方法体内部是指与方法对应的大括号内部&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在方法体外，类体内声明的变量成为成员变量&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void method(){
+int i;
+int j= i+5://编译出错，变量i还未被初始化
+double d= 3.14;
+Dog dog;
+dog = new Dog(22,7,1964);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;35-java数据类型划分&#34;&gt;3.5 Java数据类型划分&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610124522.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;Java中定义了4类8种基本数据类型。
+&lt;ul&gt;
+&lt;li&gt;逻辑型一boolean&lt;/li&gt;
+&lt;li&gt;文本型一char&lt;/li&gt;
+&lt;li&gt;整数型一byte, short, int, long&lt;/li&gt;
+&lt;li&gt;浮点数型一float, double&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-java数据类型讲解&#34;&gt;4、Java数据类型讲解&lt;/h2&gt;
+&lt;h3 id=&#34;41-boolean-布尔型&#34;&gt;4.1 boolean--布尔型&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;boolean类型适于逻辑运算，一般用于程序流程控制。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;boolean类型数据只允许取值true或false，不可以0或非0的整数替代true和false，这点和C语言不同。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用法举例:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;boolean flag;
+flag = true;
+if(f1ag) {
+    //do something
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;42-char-字符型&#34;&gt;4.2 char--字符型&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;char型数据用来表示通常意义上字符”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字符常量为用单引号括起来的单个字符，例如:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;char eChar = &#39;a&#39;; char cChar =&#39;中‘；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java字符采用Unicode编码，每个字符占两个字节，因而可用十六进制编码形式表示，例如:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;char c1 =’\u0061&#39;;&lt;/li&gt;
+&lt;li&gt;注: Unicode是全球语言统一编码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java语言中还允许使用转义字符\来将其后的字符转变为其它的含义，例如:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;@ char c2= &#39;\n&#39;;
+&lt;ul&gt;
+&lt;li&gt;&#39;\n&#39;代表换行符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;全球的文字放到计算机里面表示全是0和1，Unicode是统一了全世界国家文字的一种编码方式，用这样的编码可以把全世界国家的文字连接在一起。Unicode编码又分为两种，一种是Utf-8，另一种是Utf-16。JAVA所采用的是Utf-16，每一个字符占2个字节，任何国家的文字放到Unicode里面都是占2个字节。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;43-整数类型&#34;&gt;4.3 整数类型&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Java各整数类型有固定的表数范围和字段长度，其不受具体操作系统的影响，以保证Java程序的可移植性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java语言整型常量的:三种表示形式:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;十进制整数，如: 12, -314, 0。&lt;/li&gt;
+&lt;li&gt;八进制整数，要求以0开头，如: 012。&lt;/li&gt;
+&lt;li&gt;十六进制数，要求0x或0X开头，如: 0x12。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java语言的整型常量默认为int型，声明long型常 量可以后加工或L’，如1:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;int i1= 600; //正确 long l1 = 888888888L; l1必须加否则会出错&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610125719.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;C语言编译好的程序为什么不能移植，如把.exe文件放到Linux下是执行不了的，一个很大很大的原因在于C语言定义的变量在不同的操作系统上所占的大小是不一样的，声明一个int类型的变量，在Windows下面占32位，但放到Linux下面就有可能只占16位，那么这时候很可能表示的大小就不一样了，在Windows下声明一个很大的数，在Linux下面很可能就会溢出。因此这就是C语言为什么在编译完成之后不能移植的原因。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;44-浮点类型&#34;&gt;4.4 浮点类型&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;与整数类型类似，Java浮 点类型有固定的表数范围和字段长度，不受平台影响。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java浮点类型常量有两种表示形式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;十进制数形式，例如:3.14&lt;/li&gt;
+&lt;li&gt;⑥科学记数法形式，如3.14e2  3.14E2  100E2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java浮点型常量默认为double型，如要声明一个常量为float型，则需在数字后面加f或F，如:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;double d= 12345.6; //正确 float f= 12.3f; //必须加f否则会出错&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下面列出Java的各种浮点类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610130037.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;45-基本数据类型的转换&#34;&gt;4.5 基本数据类型的转换&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;boolean类型不可以转换为其他的数据类型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;整型，字符型，浮点型的数据在混合运算中相互转换，转换时遵循以下原则:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;容量小的类型自动转换为容量大的数据类型:数据类型按容量大小排序为:
+&lt;ul&gt;
+&lt;li&gt;byte,short,char-&amp;gt;int-&amp;gt;long-&amp;gt;float-&amp;gt;double&lt;/li&gt;
+&lt;li&gt;byte,short,char之间不会互相转换， 他们三者在计算时首先回转换为int类型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;容量大的数据类型转换为容量小的数据类型时，要加上强制转换符，但可能造成精度降低或溢出:使用时要格外注意。&lt;/li&gt;
+&lt;li&gt;有多种类型的数据混合运算时，系统首先自动的将所有数据转换成容量最大的那一:种数据类型，然后再进行计算。&lt;/li&gt;
+&lt;li&gt;实数常量(如: 1.2)默认为double。&lt;/li&gt;
+&lt;li&gt;整数常量(如: 123) 默认为int。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;类型转换测试&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class TestConvert {
+    public static void main(String arg[]) {
+        int i1 = 123;
+        int i2 = 456;
+        double d1 = (i1+i2)*1.2;//系统将转换为double型运算
+        float f1 = (float)((i1+i2)*1.2);//需要加强制转换符
+        byte b1 = 67;
+        byte b2 = 89;
+        byte b3 = (byte)(b1+b2);//系统将转换为int型运算，需要强制转换符
+        System.out.println(b3);
+        double d2 = 1e200;
+        float f2 = (float)d2;//会产生溢出
+        System.out.println(f2);
+        float f3 = 1.23f;//必须加f
+        long l1 = 123;
+        long l2 = 30000000000L;//必须加l
+        float f = l1+l2+f3;//系统将转换为float型计算
+        long l = (long)f;//强制转换会舍去小数部分（不是四舍五入）
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;5-运算符&#34;&gt;5、运算符&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610130557.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;51-算数运算符自加和自减运算符&#34;&gt;5.1 算数运算符（自加和自减运算符)&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610130722.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;52-逻辑运算符&#34;&gt;5.2 逻辑运算符&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610130816.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;53-赋值运算符&#34;&gt;5.3 赋值运算符&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610131019.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;赋值运算符，就是将符号右边的值，赋给左边的变量。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args){ 
+    int i = 5; 
+    i+=5;//计算方式 i=i+5 变量i先加5，再赋值变量i 
+    System.out.println(i); //输出结果是10 
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;54-比较运算符&#34;&gt;5.4 比较运算符&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610131143.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;比较运算符，是两个数据之间进行比较的运算，运算结果都是布尔值 true 或者 false 。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args) { 
+    System.out.println(1==1);//true 
+    System.out.println(1&amp;lt;2);//true 
+    System.out.println(3&amp;gt;4);//false 
+    System.out.println(3&amp;lt;=4);//true 
+    System.out.println(3&amp;gt;=4);//false 
+    System.out.println(3!=4);//true 
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;55-逻辑运算符&#34;&gt;5.5 逻辑运算符&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610152457.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;逻辑运算符，是用来连接两个布尔类型结果的运算符，运算结果都是布尔值 true 或者 false&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args) { 
+    System.out.println(true &amp;amp;&amp;amp; true);//true 
+    System.out.println(true &amp;amp;&amp;amp; false);//false 
+    System.out.println(false &amp;amp;&amp;amp; true);//false，右边不计算 
+    System.out.println(false || false);//falase 
+    System.out.println(false || true);//true 
+    System.out.println(true || false);//true，右边不计算				
+    System.out.println(!false);//true 
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;56-三元运算符&#34;&gt;5.6 三元运算符&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;三元运算符格式：&lt;br&gt;
+数据类型 变量名 = 布尔类型表达式？结果1：结果2&lt;/li&gt;
+&lt;li&gt;三元运算符计算方式：
+&lt;ul&gt;
+&lt;li&gt;布尔类型表达式结果是true，三元运算符整体结果为结果1，赋值给变量。&lt;/li&gt;
+&lt;li&gt;布尔类型表达式结果是false，三元运算符整体结果为结果2，赋值给变量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args) { 
+	int i = (1==2 ? 100 : 200); 
+    System.out.println(i);//200 
+    int j = (3&amp;lt;=4 ? 500 : 600); 
+    System.out.println(j);//500 
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6-语句&#34;&gt;6、语句&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610151654.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;61-条件语句&#34;&gt;6.1 条件语句&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;if语句&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610151746.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分支语句(switch语句)&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610151816.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610151831.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610152413.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;62-循环语句&#34;&gt;6.2 循环语句&lt;/h3&gt;
+&lt;h4 id=&#34;621-for循环语句&#34;&gt;6.2.1 for循环语句&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610151930.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/h4&gt;
+&lt;p&gt;学会画内存分析图分析别人写的程序，这样就很容易分析出规律，分析出规律也就明白了别人的算法，也就很容易读懂别人的程序。&lt;/p&gt;
+&lt;h4 id=&#34;622-while循环和do-while循环&#34;&gt;6.2.2 while循环和do while循环&lt;/h4&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610152239.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;623-break和continue语句&#34;&gt;6.2.3 break和continue语句&lt;/h4&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610152202.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;7-方法&#34;&gt;7、方法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Java的方法类似于其它语言的函数，是一段用来完成特定功能的代码片段&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;形式参数:在方法被调用时用 于接收外界输入的数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实参:调用方法时实际传给方法的数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;返回值:方法在执行完毕后返还给调用它的环境的数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;返回值类型:事先约定的返回值的数据类型，如无返回值，必须给出返回值类型void.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java语言中使用下述形式调用方法:对象名方法名(实参列表)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实参的数目、数据类型和次序必须和所调用方法声明的形参列表匹配，&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;retun语句终止方法的运行并指定要返回的数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java中进行函数调用中传递参数时，遵循值传递的原则:基本类型传递的是该数据值本身。引用类型传递的是对对象的引用，而不是对象本身。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;方法执行到return语句后，这个方法的执行就结束了，&lt;strong&gt;方法可以有返回值，但可以不用这个返回值&lt;/strong&gt;。方法首先要定义，然后才能调用。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class TestMethod{
+    public static void main(String args[]){
+        m();
+        m1(3);
+        m2(2,3);
+        int i = m3(4,5);
+        System.out.println(i);
+    }
+    //以下定义的都是静态方法，静态方法可以在main()方法里面直接调用
+    public static void m(){
+            System.out.println(&amp;quot;Hello!&amp;quot;);
+            System.out.println(&amp;quot;World!&amp;quot;);
+        }
+
+    public static void m1(int i){
+            if(i==5){
+                    return;
+                }
+            System.out.println(i);
+        }
+
+    public static void m2(int i,int j){
+            System.out.println(i+j);
+        }
+
+    public static int m3(int i,int j){
+            return i+j;
+        }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;8-变量的作用域&#34;&gt;8、变量的作用域&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;变量的作用域只在“{ }”有效，出了这个“{ }”就没有作用了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;9-递归调用&#34;&gt;9、递归调用&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;递归：在一个方法内部对自身的调用就称为递归&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610153500.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610153511.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;范例：使用递归计算第5个斐波那契数列数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/*计算第5个斐波那契数列数*/
+/*
+斐波那契数列特点：f(1)=1,f(2)=1,f(3)=f(1)+f(2),f(4)=(f2)+(f3)……依次类推。
+即后一个数都是等于前两个数的和，这样的数列就是斐波那契数列。
+*/
+/*
+使用递归调用的方法计算
+*/
+public class Fab{
+    public static void main(String args[]){
+        System.out.println(f(5));
+    }
+
+    public static int f(int n){
+            if(n==1||n==2){
+                    return 1;
+                }else{
+                        return f(n-1)+f(n-2);
+                    }
+        }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​	整个在内存中执行过程如下图所示&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610153613.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;10-程序的执行过程&#34;&gt;10、程序的执行过程&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;21&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200610153705.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+">Java基础总结-基础语法</a>
       </div>
       
       <div class="item">
