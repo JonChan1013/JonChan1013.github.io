@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-13T19:57:34.166Z</updated>
+    <updated>2020-06-14T19:23:30.928Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -388,6 +388,132 @@ public class MultipleObjectServlet extends HttpServlet {
 &lt;input type=&quot;button&quot; value=&quot;OK&quot; onclick=&quot;but()&quot;/&gt;
 &lt;/body&gt;
 &lt;/html&gt;
+</code></pre>
+<h5 id="3423-在-json-中通过-map-传递数据">3.4.2.3 在 JSON 中通过 Map 传递数据</h5>
+<p>​		在 JSON 格式中可以直接使用 Map 作为传递数据的模型。因为 Map 结构本身就是 key与 value 的结构与 JSON 格式对象模型完全匹配，所以我们可以直接将一个 Map 对象转换为JSON 格式的字符串对象。这对于我们来说是一件非常方便的事情，如果我们返回的数据并没有对应的模型来存放数据，那么我们可以通过 Map 来解决。</p>
+<p>MapModelServlet类：</p>
+<pre><code class="language-java">@WebServlet(&quot;/map.do&quot;)
+public class MapModelServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //一个map对象对应一个json
+        Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+        map.put(&quot;userid&quot;,11);
+        map.put(&quot;url&quot;,&quot;map.do&quot;);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String s = objectMapper.writeValueAsString(map);
+        resp.setContentType(&quot;application/json&quot;);
+
+        PrintWriter pw = resp.getWriter();
+        pw.print(s);
+        pw.flush();
+        pw.close();
+    }
+}
+</code></pre>
+<p>mapDemo.jsp</p>
+<pre><code class="language-jsp">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;script&gt;
+        function but(){
+            var xhr = new XMLHttpRequest();
+            xhr.open(&quot;get&quot;,&quot;map.do&quot;);
+            xhr.send();
+            xhr.onreadystatechange = function(){
+
+                if(xhr.readyState == 4 &amp;&amp; xhr.status == 200){
+                    alert(xhr.responseText);
+                    //通过javaScript的内置对象JSON中的parse函数将JSON格式的字符串对转换成javascript对象
+                    var obj = JSON.parse(xhr.responseText);
+                    alert(obj.userid+&quot; &quot;+obj.url);
+                    document.getElementById(&quot;span&quot;).innerHTML=obj.userid+&quot;&lt;br/&gt;&quot;+obj.url;
+                }
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h3&gt;Map模型的使用&lt;/h3&gt;
+&lt;hr/&gt;
+&lt;span id=&quot;span&quot;&gt;&lt;/span&gt;
+&lt;input type=&quot;button&quot; value=&quot;OK&quot; onclick=&quot;but()&quot;/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="343-在请求中通过-json-格式传递数据">3.4.3 在请求中通过 JSON 格式传递数据</h4>
+<p>我们除了可以在响应中通过 JSON 格式来传递数据以外，在请求中也可以使用 JSON 格式传递数据。如果在请求中使用 JSON 格式传递数据，那么提交方式需要使用 POST 方式，通过 JavaScript 中的 JSON.stringify()函数将 JavaScript 对象转换为 JSON 格式数据。通过 send方法将参数传递到 Servlet 中，在 Servlet 中通过字符输入流获取 JSON 格式数据。</p>
+<p>在请求中使用 Jackson 处理 JSON 格式数据的步骤：</p>
+<ol>
+<li>添加 jackson-annotations.jar、jackson-core.jar、jackson-databind.jar</li>
+<li>在页面的 JavaScript 中通过 JSON.stringify()函数将 JavaScript 对象转换为 JSON 格式的数据</li>
+<li>将请求方式修改为 POST 方式</li>
+<li>通过 send()函数将 JSON 格式的数据提交到服务端。</li>
+<li>在 Servlet 中通过字符输入流读取请求体中 JSON 格式的数据</li>
+<li>通过 jackson API 将获取到的 JSON 格式的数据转换为 Java 对象</li>
+</ol>
+<p>requestDemo.jsp</p>
+<pre><code class="language-jsp">&lt;%@ page contentType=&quot;text/html; charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;script&gt;
+        function but() {
+            var id = document.getElementById(&quot;userid&quot;).value;
+            var name = document.getElementById(&quot;username&quot;).value;
+            var obj = {
+                userid: id,
+                username: name
+            }
+            var content = json.stringify(obj);
+            alert(content);
+            var xhr = new XMLHttpRequest();
+            xhr.open(&quot;post&quot;, &quot;json.do&quot;);
+            //这样在/json.do请求的时候会将我们转换完的json串传递到servlet
+            xhr.send(content);
+            xhr.onreadystatechange = function () {
+
+                if (xhr.readyState == 4 &amp;&amp; xhr.status == 200) {
+                    alert(xhr.responseText);
+                    //通过javaScript的内置对象JSON中的parse函数将JSON格式的字符串对转换成javascript对象
+                    var obj = JSON.parse(xhr.responseText);
+                    alert(obj.userid + &quot; &quot; + obj.username);
+                    document.getElementById(&quot;span&quot;).innerHTML = obj.userid + &quot;&lt;br/&gt;&quot; + obj.username;
+                }
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h3&gt;在请求中通过json格式传递数据&lt;/h3&gt;
+&lt;hr/&gt;
+用户ID：&lt;input name=&quot;userid&quot; id=&quot;userid&quot;/&gt;&lt;br/&gt;
+用户姓名：&lt;input name=&quot;username&quot; id=&quot;username&quot;/&gt;&lt;br/&gt;
+&lt;span id=&quot;span&quot;&gt;&lt;/span&gt;
+&lt;input type=&quot;button&quot; value=&quot;OK&quot; onclick=&quot;but()&quot;/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<p>RequestJsonServlet类：</p>
+<pre><code class="language-java">@WebServlet(&quot;/json.do&quot;)
+public class RequestJsonServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //通过字符输入流从请求体中获取提交的json格式的数据
+        req.setCharacterEncoding(&quot;utf-8&quot;);
+        String s = req.getReader().readLine();
+
+        //使用jackson将json格式数据转换成java对象
+        ObjectMapper objectMapper = new ObjectMapper();
+        User user = objectMapper.readValue(s, User.class);
+        System.out.println(user.getUserid()+&quot;&quot;+user.getUsername());
+
+        PrintWriter pw = resp.getWriter();
+        pw.print(&quot;OK&quot;);
+        pw.flush();
+        pw.close();
+    }
+}
 </code></pre>
 ]]></content>
     </entry>
@@ -3979,6 +4105,1057 @@ class Person{
 }
 </code></pre>
 <p>​		这里这样写是可以的，当没有给这个类指明构造方法时，系统会默认地给这个类加上point ( ) { }这样一个空的构造方法。所以才可以在main方法中使用point p = new point(); 实际上你调用的就是编译器默认给它加上的point ( ) { }这个构造方法，在这个构造方法当中，默认地把类里面的成员变量x和y初始值设为0。正是因为系统给它默认加上这么一个构造方法，所以才能在main方法里面调用。但<strong>要记住一点，一旦给这个类里面指定了构造方法，那么系统就不会再给这个类添加构造方法了</strong>。</p>
+<h2 id="3-封装">3、封装</h2>
+<h3 id="31-封装概述">3.1 封装概述</h3>
+<ul>
+<li>
+<p>概述：</p>
+<p>​		面向对象编程语言是对客观世界的模拟，客观世界里成员变量都是隐藏在对象内部的，外界无法直接操作和修改。<br>
+封装可以被认为是一个保护屏障，防止该类的代码和数据被其他类随意访问。要访问该类的数据，必须通过指定的<br>
+方式。适当的封装可以让代码更容易理解与维护，也加强了代码的安全性。</p>
+</li>
+<li>
+<p>原则：</p>
+<p>​		将属性隐藏起来，若需要访问某个属性，提供公共方法对其访问。</p>
+</li>
+</ul>
+<h3 id="32-封装的步骤">3.2 封装的步骤</h3>
+<ol>
+<li>使用 private 关键字来修饰成员变量。</li>
+<li>对需要访问的成员变量，提供对应的一对 getXxx 方法 、 setXxx 方法。</li>
+</ol>
+<h3 id="33-封装的操作private关键字">3.3 封装的操作——private关键字</h3>
+<p><strong>private的含义</strong>：</p>
+<ol>
+<li>private是一个权限修饰符，代表最小权限。</li>
+<li>可以修饰成员变量和成员方法。</li>
+<li>被private修饰后的成员变量和成员方法，只在本类中才能访问。</li>
+</ol>
+<p><strong>private的使用格式</strong> ：</p>
+<p>​	private 数据类型 变量名 ；</p>
+<ol>
+<li>使用 private 修饰成员变量，代码如下：</li>
+</ol>
+<pre><code class="language-java">public class Student {
+  private String name;
+  private int age;
+}
+</code></pre>
+<ol start="2">
+<li>提供 getXxx 方法 / setXxx 方法，可以访问成员变量，代码如下：</li>
+</ol>
+<pre><code class="language-java">public class Student {
+  private String name;
+  private int age;
+ 
+  public void setName(String n) {
+    name = n;
+  }
+ 
+  public String getName() {
+    return name;
+  }
+ 
+  public void setAge(int a) {
+    age = a;
+  }
+ 
+  public int getAge() {
+    return age;
+  }
+}
+</code></pre>
+<h3 id="34-封装的优化1-this关键字">3.4 封装的优化1----this关键字</h3>
+<ul>
+<li>在类的方法定义中使用的this关键字代表使用该方法的对象的引用。</li>
+<li>当必须指出当前使用方法的对象是谁时要使用this.</li>
+<li>有时使用this可以处理方法中成员变量和参数重名的情况。</li>
+<li>this可以看作是一一个变量，它的值是当前对象的引用</li>
+</ul>
+<pre><code class="language-java">public class Student {
+  private String name;
+  private int age;
+ 
+  public void setName(String name) {
+    //name = name;
+    this.name = name;
+  }
+ 
+  public String getName() {
+    return name;
+  }
+ 
+  public void setAge(int age) {
+    //age = age;
+    this.age = age;
+  }
+ 
+  public int getAge() {
+    return age;
+  }
+}
+</code></pre>
+<p>小贴士：方法中只有一个变量名时，默认也是使用 this 修饰，可以省略不写。</p>
+<p><strong>this是一个引用，它指向自身的这个对象。</strong></p>
+<p>看内存分析图：<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615022306.png" alt="" loading="lazy"></p>
+<p>​		假设我们在堆内存new了一个对象，在这个对象里面你想象着他有一个引用this，this指向这个对象自己，所以这就是this，这个new出来的对象名字是什么，我们不知道，不知道也没关系，因为这并不影响这个对象在内存里面的存在，这个对象只要在内存中存在，他就一定有一个引用this。</p>
+<p>看下面的例子分析：</p>
+<pre><code class="language-java">
+public class Leaf {
+
+    int i = 0;
+
+    public Leaf(int i) {
+        this.i = i;
+    }
+
+    Leaf increament() {
+        i++;
+        return this;
+    }
+
+    void print() {
+        System.out.println(&quot;i = &quot; + i);
+    }
+
+    public static void main(String[] args) {
+        Leaf leaf = new Leaf(100);
+        leaf.increament().increament().print();
+    }
+}
+</code></pre>
+<figure data-type="image" tabindex="14"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615022412.png" alt="" loading="lazy"></figure>
+<p><strong>在内存中分析main方法的执行过程:</strong></p>
+<p>首先分析第一句话：<strong>Leaf leaf = new Leaf(100);</strong></p>
+<p>程序执行到这里的时候，栈空间里面有一个变量leaf，它指向了我们new出来的在堆空间里面的Leaf对象。new这个Leaf对象的时候，调用了构造方法Leaf(),这个构造方法里面有一个形参i，所以在栈空间里面给构造方法分配有一小块内存，名字叫i用来装传递过来的实参。这里传过来的实参是100，所以i里面装的值就是100。得到这个值之后，构造方法继续执行，执行this.i = i;这里就是把栈空间里面的i的值通过值传递给Leaf对象里面的成员变量i，所以成员变量i的值也变成了100。内存中的布局如下图所示：</p>
+<figure data-type="image" tabindex="15"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615022457.png" alt="" loading="lazy"></figure>
+<p>​		构造方法执行完之后，为这个构造方法分配的内存消失，所以栈里面的i所标记的那一小块内存会消失。因此第一句话执行完之后，内存中的布局如下图所示：</p>
+<figure data-type="image" tabindex="16"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615022536.png" alt="" loading="lazy"></figure>
+<p>接下来分析第二句话：<strong>leaf.increament().increament().print();</strong></p>
+<p>首先逐个分析：leaf.increament()，这里是调用increament()方法，是对new出来的那个Leaf对象调用的，leaf是Leaf对象的引用对象，因此通过这个引用对象来调用increament()方法，即相当于是Leaf对象自己调用了increament()方法。increament()方法的定义如下：</p>
+<pre><code class="language-java">Leaf increament(){
+　　i++;
+　　return this;
+}
+</code></pre>
+<p>​		因此Leaf对象调用increament()方法时，首先执行方法体里面的第一句话i++;这样就把Leaf对象的成员变量i的值由原来的100变成了101。此时的内存布局如下图所示:</p>
+<figure data-type="image" tabindex="17"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615022622.png" alt="" loading="lazy"></figure>
+<p>接下来执行方法体里面的第二句话：<strong>return this;</strong></p>
+<p>这里把this作为返回值，当有返回值的时候，首先会在栈里面给这个返回值分配一小块临时的存储空间。这块存储空间里面的内容是this里面的内容。this指向它自身，所以栈内存里面的那块临时存储空间里面装的this也是指向堆内存里面的Leaf对象。</p>
+<p>​		所以leaf.increament().increament().print();这句话里面left.increament()这一小句话执行完之后，内存中的布局如下图所示:</p>
+<figure data-type="image" tabindex="18"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615022741.png" alt="" loading="lazy"></figure>
+<p>leaf.increament().increament().print();这句话里面的left.increament()这一小句话执行完之后，返回一个this，此时leaf.increament().increament().print();就相当于是this.increament().print();</p>
+<p>接着栈里面的存储在临时空间里面的this调用increament()方法，而this指的就是Leaf对象，所以又是Leaf对象调用increament()方法。Leaf对象调用increament()方法时，又会执行方法体里面的i++，所以此时i又由原来的101变成了102。然后又执行return this，所以栈内存里面又多了一块临时存储空间，里面装的值也是this，这个this又是指向堆内存里面的Leaf对象。因此此时这个Leaf对象有了四个指向他自己的引用对象。</p>
+<p>leaf.increament().increament().print();这句话里面的leaf.increament().increament()这一小句话执行完之后,都返回了一个this，所以此时的leaf.increament().increament().print();就相当于是这样子的：this.this.print();</p>
+<p>接下来又是栈里面的那个新的this调用print()方法，使用this来调用，那就相当于是Leaf对象来调用，Leaf对象自己调用print()方法将自己的i属性的值打印出来，所以打印出来的结果应该是102。</p>
+<p>因此main方法里面的整个程序执行完之后，内存中的布局如下图所示：</p>
+<figure data-type="image" tabindex="19"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615022842.png" alt="" loading="lazy"></figure>
+<p>​		this的总结：this一般出现在方法里面，当这个方法还没有调用的时候，this指的是谁并不知道。但是实际当中，你如果new了一个对象出来，那么this指的就是当前这个对象。对哪个对象调用方法，this指的就是调用方法的这个对象（你对哪个对象调用这个方法，this指的就是谁）。如果再new一个对象，这个对象他也有自己的this，他自己的this就当然指的是他自己了。</p>
+<h3 id="35-封装的优化2-构造方法">3.5 封装的优化2----构造方法</h3>
+<p>​		当一个对象被创建时候，构造方法用来初始化该对象，给对象的成员变量赋初始值。</p>
+<blockquote>
+<p>小贴士：无论你与否自定义构造方法，所有的类都有构造方法，因为Java自动提供了一个无参数构造方法，一旦自己定义了构造方法，Java自动提供的默认无参数构造方法就会失效。</p>
+</blockquote>
+<p><strong>构造方法的定义格式：</strong></p>
+<pre><code class="language-java">修饰符 构造方法名(参数列表){
+    // 方法体
+}
+</code></pre>
+<p>​		构造方法的写法上，方法名与它所在的类名相同。它没有返回值，所以不需要返回值类型，甚至不需要void。使用<br>
+构造方法后，代码如下：</p>
+<pre><code class="language-java">public class Student {
+  private String name;
+  private int age;
+  // 无参数构造方法
+  public Student() {} 
+  // 有参数构造方法
+  public Student(String name,int age) {
+    this.name = name;
+    this.age = age; 
+  }
+}
+</code></pre>
+<p><strong>注意事项:</strong></p>
+<ol>
+<li>如果你不提供构造方法，系统会给出无参数构造方法。</li>
+<li>如果你提供了构造方法，系统将不再提供无参数构造方法。</li>
+<li>构造方法是可以重载的，既可以定义参数，也可以不定义参数。</li>
+</ol>
+<h3 id="36-标准代码javabean">3.6 标准代码——JavaBean</h3>
+<p>​		JavaBean 是 Java语言编写类的一种标准规范。符合 JavaBean 的类，要求类必须是具体的和公共的，并且具有无参数的构造方法，提供用来操作成员变量的 set 和 get 方法。</p>
+<pre><code class="language-java">public class ClassName{
+  //成员变量
+  //构造方法
+  //无参构造方法【必须】
+  //有参构造方法【建议】
+  //成员方法    
+  //getXxx()
+  //setXxx()
+}
+</code></pre>
+<p>编写符合 JavaBean 规范的类，以学生类为例，标准代码如下：</p>
+<pre><code class="language-java">public class Student {
+  //成员变量
+  private String name;
+  private int age;
+ 
+  //构造方法
+  public Student() {}
+ 
+  public Student(String name,int age) {
+    this.name = name;
+    this.age = age;
+  }
+ 
+  //成员方法
+  publicvoid setName(String name) {
+    this.name = name;
+  }
+ 
+  public String getName() {
+    return name;
+  }
+ 
+  publicvoid setAge(int age) {
+    this.age = age;
+  }
+ 
+  publicint getAge() {
+    return age;
+  }
+}
+</code></pre>
+<p>测试类，代码如下：</p>
+<pre><code class="language-java">public class TestStudent {
+  public static void main(String[] args) {
+    //无参构造使用
+    Student s= new Student();
+    s.setName(&quot;柳岩&quot;);
+    s.setAge(18);
+    System.out.println(s.getName()+&quot;‐‐‐&quot;+s.getAge());
+      //带参构造使用
+    Student s2= new Student(&quot;赵丽颖&quot;,18);
+    System.out.println(s2.getName()+&quot;‐‐‐&quot;+s2.getAge());
+  }
+}
+</code></pre>
+<h2 id="4-继承">4、继承</h2>
+<h3 id="41-继承的概述">4.1 继承的概述</h3>
+<p>​		多个类中存在相同属性和行为时，将这些内容抽取到单独一个类中，那么多个类无需再定义这些属性和行为，只要继承那一个类即可。如图所示：</p>
+<figure data-type="image" tabindex="20"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615023612.png" alt="" loading="lazy"></figure>
+<p>​		其中，多个类可以称为子类，单独那一个类称为父类、超类（superclass）或者基类。<br>
+​		继承描述的是事物之间的所属关系，这种关系是： is-a 的关系。例如，图中兔子属于食草动物，食草动物属于动物。可见，父类更通用，子类更具体。我们通过继承，可以使多种事物之间形成一种关系体系。<br>
+<strong>定义：</strong></p>
+<ul>
+<li>继承：就是子类继承父类的属性和行为，使得子类对象具有与父类相同的属性、相同的行为。子类可以直接访问父类中的非私有的属性和行为。</li>
+</ul>
+<p><strong>好处：</strong></p>
+<ol>
+<li>提高<strong>代码的复用性。</strong></li>
+<li>类与类之间产生了关系，是<strong>多态的前提。</strong></li>
+</ol>
+<h3 id="42-继承的格式">4.2 继承的格式</h3>
+<p>通过 extends 关键字，可以声明一个子类继承另外一个父类，定义格式如下：</p>
+<pre><code class="language-java">class 父类 {
+    ...
+}
+ 
+class 子类 extends 父类 {
+    ...
+}
+</code></pre>
+<p>继承演示，代码如下:</p>
+<pre><code class="language-java">/*
+ * 定义员工类Employee，做为父类
+  */
+class Employee {
+    String name; // 定义name属性
+    // 定义员工的工作方法
+    public void work() {
+        System.out.println(&quot;尽心尽力地工作&quot;);
+    }
+}
+ 
+/*
+ * 定义讲师类Teacher 继承 员工类Employee
+ */
+class Teacher extends Employee {
+    // 定义一个打印name的方法
+    public void printName() {
+        System.out.println(&quot;name=&quot; + name);
+    }
+}
+ 
+/*
+ * 定义测试类
+ */
+public class ExtendDemo01 {
+    public static void main(String[] args) {
+        // 创建一个讲师类对象
+        Teacher t = new Teacher();
+      
+        // 为该员工类的name属性进行赋值
+        t.name = &quot;小明&quot;; 
+      
+        // 调用该员工的printName()方法
+        t.printName(); // name = 小明
+        
+        // 调用Teacher类继承来的work()方法
+        t.work();  // 尽心尽力地工作
+    }
+}
+</code></pre>
+<h3 id="43-继承后的特点成员变量">4.3 继承后的特点——成员变量</h3>
+<p>当类之间产生了关系后，其中各类中的成员变量，又产生了哪些影响呢？</p>
+<h4 id="成员变量不重名">成员变量不重名：</h4>
+<p>如果子类父类中出现不重名的成员变量，这时的访问是没有影响的。代码如下：</p>
+<pre><code class="language-java">class Fu {
+    // Fu中的成员变量。
+    int num = 5;
+}
+class Zi extends Fu {// Zi中的成员变量
+    int num2 = 6;
+    // Zi中的成员方法
+    public void show() {
+        // 访问父类中的num，
+        System.out.println(&quot;Fu num=&quot;+num); // 继承而来，所以直接访问。
+        // 访问子类中的num2
+        System.out.println(&quot;Zi num2=&quot;+num2);
+    }
+}
+class ExtendDemo02 {
+    public static void main(String[] args) {
+        // 创建子类对象
+        Zi z = new Zi(); 
+        // 调用子类中的show方法
+        z.show();  
+    }
+}
+ 
+演示结果：
+Fu num = 5
+Zi num2 = 6
+</code></pre>
+<h4 id="成员变量重名">成员变量重名:</h4>
+<p>如果子类父类中出现重名的成员变量，这时的访问是有影响的。代码如下：</p>
+<pre><code class="language-java"> 
+
+    // Zi中的成员变量
+    int num2 = 6;
+    // Zi中的成员方法
+    public void show() {
+        // 访问父类中的num，
+        System.out.println(&quot;Fu num=&quot;+num); // 继承而来，所以直接访问。
+        // 访问子类中的num2
+        System.out.println(&quot;Zi num2=&quot;+num2);
+    }
+}
+class ExtendDemo02 {
+    public static void main(String[] args) {
+        // 创建子类对象
+        Zi z = new Zi(); 
+        // 调用子类中的show方法
+        z.show();  
+    }
+}
+ 
+演示结果：
+Fu num = 5
+Zi num2 = 6
+
+class Fu {
+    // Fu中的成员变量。
+    int num = 5;
+}
+class Zi extends Fu {
+    // Zi中的成员变量
+    int num = 6;
+    public void show() {
+        // 访问父类中的num
+        System.out.println(&quot;Fu num=&quot; + num);
+        // 访问子类中的num
+        System.out.println(&quot;Zi num=&quot; + num);
+    }
+}
+class ExtendsDemo03 {
+    public static void main(String[] args) {
+        // 创建子类对象
+        Zi z = new Zi(); 
+        // 调用子类中的show方法
+        z.show(); 
+    }
+}
+演示结果：
+Fu num = 6
+Zi num = 6
+</code></pre>
+<p>​		子父类中出现了同名的成员变量时，在子类中需要访问父类中非私有成员变量时，需要使用 super 关键字，修饰父类成员变量，类似于之前学过的 this 。</p>
+<p>使用格式：</p>
+<pre><code class="language-java">super.父类成员变量名
+</code></pre>
+<p>子类方法需要修改，代码如下：</p>
+<pre><code class="language-java">class Zi extends Fu {
+    // Zi中的成员变量
+    int num = 6;
+    public void show() {
+        //访问父类中的num
+        System.out.println(&quot;Fu num=&quot; + super.num);
+        //访问子类中的num
+        System.out.println(&quot;Zi num=&quot; + this.num);
+    }
+}
+演示结果：
+Fu num = 5
+Zi num = 6
+</code></pre>
+<blockquote>
+<p>小贴士：Fu 类中的成员变量是非私有的，子类中可以直接访问。若Fu 类中的成员变量私有了，子类是不能直接访问的。通常编码时，我们遵循封装的原则，使用private修饰成员变量，那么如何访问父类的私有成员变量呢？对！可以在父类中提供公共的getXxx方法和setXxx方法。</p>
+</blockquote>
+<h3 id="44-继承后的特点成员方法">4.4  继承后的特点——成员方法</h3>
+<p>当类之间产生了关系，其中各类中的成员方法，又产生了哪些影响呢？</p>
+<h4 id="成员方法不重名">成员方法不重名:</h4>
+<p>如果子类父类中出现<strong>不重名</strong>的成员方法，这时的调用是<strong>没有影响</strong>的。对象调用方法时，会先在子类中查找有没有对应的方法，若子类中存在就会执行子类中的方法，若子类中不存在就会执行父类中相应的方法。代码如下:</p>
+<pre><code class="language-java">class Fu{
+    public void show(){
+        System.out.println(&quot;Fu类中的show方法执行&quot;);
+    }
+}
+class Zi extends Fu{
+    public void show2(){
+        System.out.println(&quot;Zi类中的show2方法执行&quot;);
+    }
+}
+public  class ExtendsDemo04{
+    public static void main(String[] args) {
+        Zi z = new Zi();
+        //子类中没有show方法，但是可以找到父类方法去执行
+             z.show(); 
+        z.show2();
+    }
+}
+ 
+</code></pre>
+<p><strong>成员方法重名——重写(Override):</strong></p>
+<p>如果子类父类中出现<strong>重名</strong>的成员方法，这时的访问是一种特殊情况，叫做<strong>方法重写</strong> (Override)。</p>
+<ul>
+<li><strong>方法重写</strong> ：子类中出现与父类一模一样的方法时（返回值类型，方法名和参数列表都相同），会出现覆盖效果，也称为重写或者复写。<strong>声明不变，重新实现。</strong></li>
+</ul>
+<p>代码如下:</p>
+<pre><code class="language-java">class Fu {
+    public void show() {
+        System.out.println(&quot;Fu show&quot;);
+    }
+}
+class Zi extends Fu {
+    //子类重写了父类的show方法
+    public void show() {
+        System.out.println(&quot;Zi show&quot;);
+    }
+}
+public class ExtendsDemo05{
+    public static void main(String[] args) {
+        Zi z = new Zi();
+        // 子类中有show方法，只执行重写后的show方法
+        z.show();  // Zi show
+    }
+}
+</code></pre>
+<h4 id="重写的应用">重写的应用:</h4>
+<p>​		子类可以根据需要，定义特定于自己的行为。既沿袭了父类的功能名称，又根据子类的需要重新实现父类方法，从而进行扩展增强。比如新的手机增加来电显示头像的功能，代码如下：</p>
+<pre><code class="language-java">class Phone{
+	public void sendMessage(){
+    	System.out.println(&quot;发短信&quot;);
+	}
+	public void call(){
+    	System.out.println(&quot;打电话&quot;);
+	}
+	public void showNum(){
+    	System.out.println(&quot;来电显示号码&quot;);
+	}
+}
+
+//智能手机类
+class NewPhone extends Phone {
+    //重写父类的来电显示号码功能，并增加自己的显示姓名和图片功能
+    public void showNum(){
+        //调用父类已经存在的功能使用super
+        super.showNum();
+        //增加自己特有显示姓名和图片功能
+        System.out.println(&quot;显示来电姓名&quot;);
+        System.out.println(&quot;显示头像&quot;);
+    }
+}
+ 
+public class ExtendsDemo06 {
+    public static void main(String[] args) {
+        // 创建子类对象
+        NewPhone np = new NewPhone()；
+        
+        // 调用父类继承而来的方法
+        np.call();
+      
+        // 调用子类重写的方法
+        np.showNum();
+    }
+}
+</code></pre>
+<blockquote>
+<p>小贴士：这里重写时，用到super.父类成员方法，表示调用父类的成员方法。</p>
+</blockquote>
+<p><strong>注意事项:</strong></p>
+<ol>
+<li>子类方法覆盖父类方法，必须要保证权限大于等于父类权限。</li>
+<li>子类方法覆盖父类方法，返回值类型、函数名和参数列表都要一模一样。</li>
+</ol>
+<h3 id="45-继承后的特点构造方法">4.5 继承后的特点——构造方法</h3>
+<p>当类之间产生了关系，其中各类中的构造方法，又产生了哪些影响呢？<br>
+首先我们要回忆两个事情，构造方法的定义格式和作用。</p>
+<ol>
+<li>构造方法的名字是与类名一致的。所以子类是无法继承父类构造方法的。</li>
+<li>构造方法的作用是初始化成员变量的。所以子类的初始化过程中，必须先执行父类的初始化动作。子类的构造方法中默认有一个 super() ，表示调用父类的构造方法，父类成员变量初始化后，才可以给子类使用。代码如下：</li>
+</ol>
+<pre><code class="language-java">class Fu {
+  private int n;
+  Fu(){
+    System.out.println(&quot;Fu()&quot;);
+  }
+}
+
+class Zi extends Fu {
+  Zi(){
+    // super（），调用父类构造方法
+    super();
+    System.out.println(&quot;Zi（）&quot;);
+  }  
+}
+
+public class ExtendsDemo07{
+  public static void main (String args[]){
+    Zi zi = new Zi();
+  }
+}
+
+输出结果：
+Fu（）
+Zi（）
+</code></pre>
+<h3 id="46-super和this">4.6 super和this</h3>
+<h4 id="父类空间优先于子类对象产生">父类空间优先于子类对象产生</h4>
+<p>在每次创建子类对象时，先初始化父类空间，再创建其子类对象本身。目的在于子类对象中包含了其对应的父类空间，便可以包含其父类的成员，如果父类成员非private修饰，则子类可以随意使用父类成员。代码体现在子类的构造方法调用时，一定先调用父类的构造方法。理解图解如下：<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615025331.png" alt="" loading="lazy"></p>
+<h4 id="super和this的含义">super和this的含义：</h4>
+<ul>
+<li>super ：代表父类的存储空间标识(可以理解为父亲的引用)。</li>
+<li>this ：代表当前对象的引用(谁调用就代表谁)。</li>
+</ul>
+<h4 id="super和this的用法">super和this的用法:</h4>
+<ol>
+<li>访问成员</li>
+</ol>
+<pre><code class="language-java">this.成员变量       ‐‐    本类的
+super.成员变量      ‐‐    父类的
+ 
+this.成员方法名()    ‐‐    本类的    
+super.成员方法名()   ‐‐    父类的
+</code></pre>
+<p>用法演示，代码如下：</p>
+<pre><code class="language-java">class Animal {
+    public void eat() {
+        System.out.println(&quot;animal : eat&quot;);
+    }
+}
+ 
+class Cat extends Animal {
+    public void eat() {
+        System.out.println(&quot;cat : eat&quot;);
+    }
+    public void eatTest() {
+        this.eat();   // this  调用本类的方法
+        super.eat();  // super 调用父类的方法
+    }
+}
+ 
+public class ExtendsDemo08 {
+    public static void main(String[] args) {
+        Animal a = new Animal();
+        a.eat();
+        Cat c = new Cat();
+        c.eatTest();
+    }
+}
+ 
+输出结果为：
+animal : eat
+cat : eat
+animal : eat
+</code></pre>
+<ol start="2">
+<li>访问构造方法</li>
+</ol>
+<pre><code class="language-java">this(...)       ‐‐    本类的构造方法
+super(...)      ‐‐    父类的构造方法
+</code></pre>
+<blockquote>
+<p>​		子类的每个构造方法中均有默认的super()，调用父类的空参构造。手动调用父类构造会覆盖默认的super()。super() 和 this() 都必须是在构造方法的第一行，所以不能同时出现。</p>
+</blockquote>
+<h3 id="47-继承的特点">4.7 继承的特点</h3>
+<ol>
+<li>Java只支持单继承，不支持多继承。</li>
+</ol>
+<pre><code class="language-java">//一个类只能有一个父类，不可以有多个父类。
+class C extends A{}     //ok
+class C extends A，B...  //error
+</code></pre>
+<ol start="2">
+<li>Java支持多层继承(继承体系)。</li>
+</ol>
+<pre><code class="language-java">class A{}
+class B extends A{}
+class C extends B{}
+</code></pre>
+<blockquote>
+<p>顶层父类是Object类。所有的类默认继承Object，作为父类。</p>
+</blockquote>
+<ol start="3">
+<li>子类和父类是一种相对的概念。</li>
+</ol>
+<h2 id="5-多态">5、多态</h2>
+<h3 id="51-概述">5.1 概述</h3>
+<p>多态是继封装、继承之后，面向对象的第三大特性。<br>
+生活中，比如跑的动作，小猫、小狗和大象，跑起来是不一样的。再比如飞的动作，昆虫、鸟类和飞机，飞起来也是不一样的。可见，同一行为，通过不同的事物，可以体现出来的不同的形态。多态，描述的就是这样的状态。</p>
+<p>定义：</p>
+<ul>
+<li>多态： 是指同一行为，具有多个不同表现形式。</li>
+</ul>
+<p>前提（重点）：</p>
+<ul>
+<li>继承或者实现【二选一】</li>
+</ul>
+<ol start="2">
+<li>方法的重写【意义体现：不重写，无意义】</li>
+<li>父类引用指向子类对象【格式体现】</li>
+</ol>
+<h3 id="52-多态的体现">5.2 多态的体现</h3>
+<p>多态体现的格式：</p>
+<pre><code class="language-java">父类类型 变量名 = new 子类对象；
+变量名.方法名();
+</code></pre>
+<blockquote>
+<p>父类类型：指子类对象继承的父类类型，或者实现的父接口类型。</p>
+</blockquote>
+<p>代码如下:</p>
+<pre><code class="language-java">Fu f = new Zi();
+f.method();
+</code></pre>
+<p><strong>当使用多态方式调用方法时，首先检查父类中是否有该方法，如果没有，则编译错误；如果有，执行的是子类重写后方法。</strong><br>
+代码如下：<br>
+定义父类：</p>
+<pre><code class="language-java">public abstract class Animal {  
+    public abstract void eat();  
+}  
+</code></pre>
+<p>定义子类：</p>
+<pre><code class="language-java">class Cat extends Animal {  
+    public void eat() {  
+        System.out.println(&quot;吃鱼&quot;);  
+    }  
+}  
+ 
+class Dog extends Animal {  
+    public void eat() {  
+        System.out.println(&quot;吃骨头&quot;);  
+    }  
+}
+</code></pre>
+<p>定义测试类：</p>
+<pre><code class="language-java">public class Test {
+    public static void main(String[] args) {
+        // 多态形式，创建对象
+        Animal a1 = new Cat();  
+        // 调用的是 Cat 的 eat
+        a1.eat();          
+ 
+        // 多态形式，创建对象
+        Animal a2 = new Dog(); 
+        // 调用的是 Dog 的 eat
+        a2.eat();               
+    }  
+}
+</code></pre>
+<h3 id="53-多态的好处">5.3 多态的好处</h3>
+<p>实际开发的过程中，父类类型作为方法形式参数，传递子类对象给方法，进行方法的调用，更能体现出多态的扩展性与便利。代码如下：<br>
+定义父类：</p>
+<pre><code class="language-java">public abstract class Animal {  
+    public abstract void eat();  
+} 
+</code></pre>
+<p>定义子类：</p>
+<pre><code class="language-java">class Cat extends Animal {  
+    public void eat() {  
+        System.out.println(&quot;吃鱼&quot;);  
+    }  
+}  
+ 
+class Dog extends Animal {  
+    public void eat() {  
+        System.out.println(&quot;吃骨头&quot;);  
+    }  
+}
+</code></pre>
+<p>定义测试类：</p>
+<pre><code class="language-java">public class Test {
+    public static void main(String[] args) {
+        // 多态形式，创建对象
+        Cat c = new Cat();  
+        Dog d = new Dog(); 
+ 
+        // 调用showCatEat 
+        showCatEat(c);
+        // 调用showDogEat 
+         showDogEat(d); 
+ 
+        /*
+        以上两个方法, 均可以被showAnimalEat(Animal a)方法所替代
+        而执行效果一致
+        */
+        showAnimalEat(c);
+        showAnimalEat(d); 
+    }
+ 
+    public static void showCatEat (Cat c){
+        c.eat(); 
+    }
+ 
+    public static void showDogEat (Dog d){
+        d.eat();
+    }
+ 
+    public static void showAnimalEat (Animal a){
+        a.eat();
+    }
+}
+</code></pre>
+<p>由于多态特性的支持，showAnimalEat方法的Animal类型，是Cat和Dog的父类类型，父类类型接收子类对象，当然可以把Cat对象和Dog对象，传递给方法。<br>
+当eat方法执行时，多态规定，执行的是子类重写的方法，那么效果自然与showCatEat、showDogEat方法一致，所以showAnimalEat完全可以替代以上两方法。<br>
+不仅仅是替代，在扩展性方面，无论之后再多的子类出现，我们都不需要编写showXxxEat方法了，直接使用showAnimalEat都可以完成。<br>
+所以，多态的好处，体现在，可以使程序编写的更简单，并有良好的扩展。</p>
+<h3 id="54-引用类型转换">5.4 引用类型转换</h3>
+<p>多态的转型分为向上转型与向下转型两种：</p>
+<h4 id="向上转型">向上转型</h4>
+<ul>
+<li>向上转型：多态本身是子类类型向父类类型向上转换的过程，这个过程是默认的。当父类引用指向一个子类对象时，便是向上转型。<br>
+使用格式：</li>
+</ul>
+<pre><code class="language-java">父类类型  变量名 = new 子类类型();
+如：Animal a = new Cat();
+</code></pre>
+<h4 id="向下转型">向下转型</h4>
+<p>向下转型：父类类型向子类类型向下转换的过程，这个过程是强制的。</p>
+<p>一个已经向上转型的子类对象，将父类引用转为子类引用，可以使用强制类型转换的格式，便是向下转型。<br>
+使用格式：</p>
+<pre><code class="language-java">子类类型 变量名 = (子类类型) 父类变量名;
+如:Cat c =(Cat) a;
+</code></pre>
+<h4 id="为什么要转型">为什么要转型</h4>
+<p>当使用多态方式调用方法时，首先检查父类中是否有该方法，如果没有，则编译错误。也就是说，不能调用子类拥有，而父类没有的方法。编译都错误，更别说运行了。这也是多态给我们带来的一点&quot;小麻烦&quot;。所以，想要调用子类特有的方法，必须做向下转型。<br>
+转型演示，代码如下：<br>
+定义类：</p>
+<pre><code class="language-java">abstract class Animal {  
+    abstract void eat();  
+}  
+ 
+class Cat extends Animal {  
+    public void eat() {  
+        System.out.println(&quot;吃鱼&quot;);  
+    }  
+    public void catchMouse() {  
+        System.out.println(&quot;抓老鼠&quot;);  
+    }  
+}  
+ 
+class Dog extends Animal {  
+    public void eat() {  
+        System.out.println(&quot;吃骨头&quot;);  
+    }  
+    public void watchHouse() {  
+        System.out.println(&quot;看家&quot;);  
+    }  
+}
+</code></pre>
+<p>定义测试类：</p>
+<pre><code class="language-java">public class Test {
+    public static void main(String[] args) {
+        // 向上转型  
+        Animal a = new Cat();  
+        a.eat();                // 调用的是 Cat 的 eat
+ 
+        // 向下转型  
+        Cat c = (Cat)a;       
+        c.catchMouse();         // 调用的是 Cat 的 catchMouse
+    }  
+}
+</code></pre>
+<h4 id="转型的异常">转型的异常</h4>
+<p>转型的过程中，一不小心就会遇到这样的问题，请看如下代码：</p>
+<pre><code class="language-java">public class Test {
+    public static void main(String[] args) {
+        // 向上转型  
+        Animal a = new Cat();  
+        a.eat();               // 调用的是 Cat 的 eat
+ 
+        // 向下转型  
+        Dog d = (Dog)a;       
+        d.watchHouse();        // 调用的是 Dog 的 watchHouse 【运行报错】
+    }  
+}
+</code></pre>
+<p>这段代码可以通过编译，但是运行时，却报出了 ClassCastException ，类型转换异常！这是因为，明明创建了Cat类型对象，运行时，当然不能转换成Dog对象的。这两个类型并没有任何继承关系，不符合类型转换的定义。<br>
+为了避免ClassCastException的发生，Java提供了 instanceof 关键字，给引用变量做类型的校验，格式如下：</p>
+<ul>
+<li>变量名 instanceof 数据类型</li>
+<li>如果变量属于该数据类型，返回true。</li>
+<li>如果变量不属于该数据类型，返回false。</li>
+</ul>
+<p>所以，转换前，我们最好先做一个判断，代码如下：</p>
+<pre><code class="language-java">public class Test {
+    public static void main(String[] args) {
+        // 向上转型  
+        Animal a = new Cat();  
+        a.eat();               // 调用的是 Cat 的 eat
+ 
+        // 向下转型  
+        if (a instanceof Cat){
+            Cat c = (Cat)a;       
+            c.catchMouse();        // 调用的是 Cat 的 catchMouse
+        } else if (a instanceof Dog){
+            Dog d = (Dog)a;       
+            d.watchHouse();       // 调用的是 Dog 的 watchHouse
+        }
+    }  
+}
+</code></pre>
+<h3 id="55-面向对象最核心的机制动态绑定也叫多态的理解">5.5 面向对象最核心的机制——动态绑定（也叫多态）的理解</h3>
+<figure data-type="image" tabindex="21"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615031915.png" alt="" loading="lazy"></figure>
+<h4 id="551-通过下面的例子理解动态绑定即多态">5.5.1 通过下面的例子理解动态绑定，即多态</h4>
+<pre><code class="language-java">class Animal {
+    /**
+     * 声明一个私有的成员变量name。
+     */
+    private String name;
+
+    /**
+     * 在Animal类自定义的构造方法
+     * @param name
+     */
+    Animal(String name) {
+        this.name = name;
+    }
+
+    /**
+     * 在Animal类里面自定义一个方法enjoy
+     */
+    public void enjoy() {
+        System.out.println(&quot;动物的叫声……&quot;);
+    }
+}
+
+/**
+ * 子类Cat从父类Animal继承下来，Cat类拥有了Animal类所有的属性和方法。
+ * @author gacl
+ *
+ */
+class Cat extends Animal {
+    /**
+     * 在子类Cat里面定义自己的私有成员变量
+     */
+    private String eyesColor;
+
+    /**
+     * 在子类Cat里面定义Cat类的构造方法
+     * @param n
+     * @param c
+     */
+    Cat(String n, String c) {
+        /**
+         * 在构造方法的实现里面首先使用super调用父类Animal的构造方法Animal(String name)。
+         * 把子类对象里面的父类对象先造出来。
+         */
+        super(n);
+        eyesColor = c;
+    }
+
+    /**
+     * 子类Cat对从父类Animal继承下来的enjoy方法不满意，在这里重写了enjoy方法。
+     */
+    public void enjoy() {
+        System.out.println(&quot;我养的猫高兴地叫了一声……&quot;);
+    }
+}
+
+/**
+ * 子类Dog从父类Animal继承下来，Dog类拥有了Animal类所有的属性和方法。
+ * @author gacl
+ *
+ */
+class Dog extends Animal {
+    /**
+     * 在子类Dog里面定义自己的私有成员变量
+     */
+    private String furColor;
+
+    /**
+     * 在子类Dog里面定义Dog类的构造方法
+     * @param n
+     * @param c
+     */
+    Dog(String n, String c) {
+        /**
+         * 在构造方法的实现里面首先使用super调用父类Animal的构造方法Animal(String name)。
+         * 把子类对象里面的父类对象先造出来。
+         */
+        super(n);
+        furColor = c;
+    }
+
+    /**
+     * 子类Dog对从父类Animal继承下来的enjoy方法不满意，在这里重写了enjoy方法。
+     */
+    public void enjoy() {
+        System.out.println(&quot;我养的狗高兴地叫了一声……&quot;);
+    }
+}
+
+/**
+ * 子类Bird从父类Animal继承下来，Bird类拥有Animal类所有的属性和方法
+ * @author gacl
+ *
+ */
+class Bird extends Animal {
+    /**
+     * 在子类Bird里面定义Bird类的构造方法
+     */
+    Bird() {
+        /**
+         * 在构造方法的实现里面首先使用super调用父类Animal的构造方法Animal(String name)。
+         * 把子类对象里面的父类对象先造出来。
+         */
+        super(&quot;bird&quot;);
+    }
+
+    /**
+     * 子类Bird对从父类Animal继承下来的enjoy方法不满意，在这里重写了enjoy方法。
+     */
+    public void enjoy() {
+        System.out.println(&quot;我养的鸟高兴地叫了一声……&quot;);
+    }
+}
+
+/**
+ * 定义一个类Lady(女士)
+ * @author gacl
+ *
+ */
+class Lady {
+    /**
+     * 定义Lady类的私有成员变量name和pet
+     */
+    private String name;
+    private Animal pet;
+
+    /**
+     * 在Lady类里面定义自己的构造方法Lady()，
+     * 这个构造方法有两个参数，分别为String类型的name和Animal类型的pet，
+     * 这里的第二个参数设置成Animal类型可以给我们的程序带来最大的灵活性，
+     * 因为作为养宠物来说，可以养猫，养狗，养鸟，只要是你喜欢的都可以养，
+     * 因此把它设置为父类对象的引用最为灵活。
+     * 因为这个Animal类型的参数是父类对象的引用类型，因此当我们传参数的时候，
+     * 可以把这个父类的子类对象传过去，即传Dog、Cat和Bird等都可以。
+     * @param name
+     * @param pet
+     */
+    Lady(String name, Animal pet) {
+        this.name = name;
+        this.pet = pet;
+    }
+
+    /**
+     * 在Lady类里面自定义一个方法myPetEnjoy()
+     * 方法体内是让Lady对象养的宠物自己调用自己的enjoy()方法发出自己的叫声。
+     */
+    public void myPetEnjoy() {
+        pet.enjoy();
+    }
+}
+
+public class TestPolymoph {
+    public static void main(String args[]) {
+        /**
+         * 在堆内存里面new了一只蓝猫对象出来，这个蓝猫对象里面包含有一个父类对象Animal。
+         */
+        Cat c = new Cat(&quot;Catname&quot;, &quot;blue&quot;);
+        /**
+         * 在堆内存里面new了一只黑狗对象出来，这个黑狗对象里面包含有一个父类对象Animal。
+         */
+        Dog d = new Dog(&quot;Dogname&quot;, &quot;black&quot;);
+        /**
+         * 在堆内存里面new了一只小鸟对象出来，这个小鸟对象里面包含有一个父类对象Animal。
+         */
+        Bird b = new Bird();
+
+        /**
+         * 在堆内存里面new出来3个小姑娘，名字分别是l1，l2，l3。
+         * l1养了一只宠物是c(Cat)，l2养了一只宠物是d(Dog)，l3养了一只宠物是b(Bird)。
+         * 注意：调用Lady类的构造方法时，传递过来的c，d，b是当成Animal来传递的，
+         * 因此使用c，d，b这三个引用对象只能访问父类Animal里面的enjoy()方法。
+         */
+        Lady l1 = new Lady(&quot;l1&quot;, c);
+        Lady l2 = new Lady(&quot;l2&quot;, d);
+        Lady l3 = new Lady(&quot;l3&quot;, b);
+        /**
+         * 这三个小姑娘都调用myPetEnjoy()方法使自己养的宠物高兴地叫起来。
+         */
+        l1.myPetEnjoy();
+        l2.myPetEnjoy();
+        l3.myPetEnjoy();
+    }
+}
+</code></pre>
+<p>运行结果：<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615032029.png" alt="" loading="lazy"></p>
+<h4 id="552-画内存图理解动态绑定多态">5.5.2 画内存图理解动态绑定（多态）</h4>
+<p>首先从main方法的第一句话开始分析：</p>
+<p>Cat c = new Cat(&quot;Catname&quot;,&quot;blue&quot;);</p>
+<p>程序执行到这里，栈空间里有一个变量c，c里面装着一系列的值，通过这些值可以找到位于堆内存里面new出来的Cat对象。因此c是Cat对象的一个引用，通过c可以看到这个Cat对象的全部。c指向new出来的Cat对象。在new这个Cat对象的时候，调用了Cat对象的构造方法Cat(String n,String c)，定义如下：</p>
+<p>Cat(String n,String c){</p>
+<p><strong>super(n);</strong></p>
+<p>eyesColor=c;</p>
+<p>}</p>
+<p>因此在构造子类对象时首先使用父类对象的引用super调用父类的构造方法Animal(String name),定义如下：</p>
+<p>Animal(String name){</p>
+<p>this.name=name;</p>
+<p>}</p>
+<p>因此会把传过来的字符串“Catname”传递给父类对象的name属性。当Cat(String n,String c)构造方法调用结束后，真真正正在堆内存里面new出了一只Cat，这只Cat里面包含有父类对象Animal，这个Animal对象有自己的属性name，name属性的值为调用父类构造方法时传递过来的字符串Catname。除此之外，这只Cat还有自己的私有成员变量eyesColor，eyesColor属性的属性值为调用子类构造方法时传递过来的字符串blue。所以执行完这句话以后，内存中的布局是栈内存里面有一个引用c，c指向堆内存里面new出来的一只Cat，而这只Cat对象里面又包含有父类对象Animal，Animal对象有自己的属性name，属性值为Catname，Cat除了拥有从Animal类继承下来的name属性外，还拥有一个自己私有的属性eyesColor，属性值为blue。这就是执行完第一句话以后整个内存布局的情况如下图所示：</p>
+<figure data-type="image" tabindex="22"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615032133.png" alt="" loading="lazy"></figure>
+<p>接着看这句话：Lady l1 = new Lady(“l1”,c);</p>
+<figure data-type="image" tabindex="23"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615032154.png" alt="" loading="lazy"></figure>
+<p>程序执行到这里,首先在栈内存里面多了一个引用变量l1,l1里面装着一个值，通过这个值可以找到在堆内存里面new出来的Lady对象。l1就是这个Lady对象的引用，l1指向Lady对象。在创建Lady对象时，调用Lady类的构造方法：Lady(String name,Animal pet)，其定义如下：</p>
+<p>Lady(String name,Animal pet){</p>
+<p>this.name=name;</p>
+<p>this.pet=pet;</p>
+<p>}</p>
+<p>这个构造方法有两个参数，分别是String类型的name和Animal类型的pet，pet参数是一个父类对象的引用类型，这里把l1和c作为实参传递给了构造方法，接着在构造方法里面执行this.name=name，把传递过来的l1由传给Lady对象的name属性，因此Lady对象的name属性值为l1，这里也把前面new出来的那只Cat的引用c传递给了构造方法里面的参数pet，接着在构造方法里面执行this.pet=pet，pet参数又把c传过来的内容传递给Lady对象的pet属性，因此pet属性的属性值就是可以找到Cat对象的地址，因此Lady对象的pet属性也成为了Cat对象的引用对象了，通过pet里面装着的值是可以找到Cat对象的，因此pet也指向了Cat，但并不是全部指向Cat，pet指向的只是位于Cat对象内部的Animal对象，这是因为在调用构造方法时，是把c当成一个Animal对象的引用传过来的，把c作为一个Animal对象传递给了pet，所以得到的pet也是一个Animal对象的引用，因此这个pet引用指向的只能是位于Cat对象里面的Animal对象。在我pet引用对象眼里，你Cat对象就是一只普通的Animal，访问你的时候只能访问得到你里面的name属性，而你的eyesColor属性我是访问不到的，我能访问到你的name属性，访问的是位于你内部里面的父对象的name属性，因为我pet引用本身就是一个父类对象的引用，因此我可以访问父类对象的全部属性，而你子类对象Cat自己新增加的成员我pet引用是访问不了的。不过现在我pet引用不去访问你父类对象的成员变量name了，而是去访问你的成员方法enjoy了。首先是使用Lady对象的引用l1去调用Lady对象的myPetEnjoy()方法，myPetEnjoy()方法定义如下：</p>
+<p>public void myPetEnjoy(){</p>
+<p>pet.enjoy();</p>
+<p>｝</p>
+<p>然后在myPetEnjoy()方法体里面又使用pet引用对象去调用父类对象里面的enjoy方法。</p>
+<p><strong>方法是放在代码区(code seg)里面的，里面的方法就是一句句代码。<strong>因此当</strong>使用pet引用去访问父类对象的方法时，首先是找到这个父类对象，然后看看它里面的方法到底在哪里存着，找到那个方法再去执行</strong>。这里头就比较有意思了，code seg里面有很多个enjoy方法，有父类的enjoy()方法，也有子类重写了从父类继续下来的enjoy()方法，那么调用的时候到底调用的是哪一个呢？是根据谁来确定呢？注意：这是根据你实际当中的对象来确定的，你实际当中new出来的是谁，就调用谁的enjoy方法，当你找这个方法的时候，通过pet引用能找得到这个方法，但调用代码区里面的哪一个enjoy方法不是通过引用类型来确定的，如果是通过引用类型pet来确定，那么调用的肯定是Animal的enjoy()方法，可是现在是根据实际的类型来确定，我们的程序运行以后才在堆内存里面创建出一只Cat，然后根据你实际当中new出来的类型来判断我到底应该调用哪一个enjoy()方法。如果是根据实际类型，那么调用的就应该是Cat的enjoy()方法。如果是根据引用类型，那么调用的就应该是Animal的enjoy()方法。现在动态绑定这种机制指的是实际当中new的是什么类型，就调用谁的enjoy方法。所以说虽然你是根据我父类里面的enjoy方法来调用，可是实际当中却是你new的是谁调用的就是谁的enjoy()方法。即实际当中调用的却是子类里面重写后的那个enjoy方法。当然，讲一点更深的机制，你实际当中找这个enjoy方法的时候，在父类对象的内部有一个enjoy方法的指针，指针指向代码区里面父类的Animal的enjoy方法，只不过当你new这个对象的时候，这个指针随之改变，你new的是什么对象，这个指针就指向这个对象重写后的那个enjoy方法，所以这就叫做动态绑定。只有在动起来的时候，也就是在程序运行期间，new出了这个对象了以后你才能确定到底要调用哪一个方法。我实际当中的地址才会绑定到相应的方法的地址上面，所以叫动态绑定。调这个方法的时候，只要你这个方法重写了，实际当中调哪一个，要看你实际当中new的是哪个对象，这就叫多态，也叫动态绑定。<strong>动态绑定带来莫大的好处是使程序的可扩展性达到了最好</strong>，我们原来做这个可扩展性的时候，首先都是要在方法里面判断一下这只动物是哪一类里面的动物，通过if (object instanceof class)这样的条件来判断这个new出来的对象到底是属于哪一个类里面的，如果是一只猫，就调用猫的enjoy方法，如果是一条狗，就调用狗的enjoy方法。如果我现在增加了一个Bird类，那么扩展的时候，你又得在方法里面写判断这只鸟属于哪一个类然后才能调用这只鸟的enjoy方法。每增加一个对象，你都要在方法里面增加一段判断这个对象到底属于哪个类里面的代码然后才能执行这个对象相应的方法。即每增加一个新的对象，都要改变方法里面的处理代码，而现在，你不需要再改变方法里面的处理代码了，因为有了动态绑定。你要增加哪一个对象，你实际当中把这个对象new出来就完了，不再用去修改对象的处理方法里面的代码了。也就是当你实际当中要增加别的东西的时候，很简单，你直接加上去就成了，不用去改原来的结构，你要在你们家大楼的旁边盖一个厨房，很简单，直接在旁边一盖就行了，大楼的主要支柱什么的你都不用动，这就可以让可扩展性达到了极致，这就为将来的可扩展打下了基础，<strong>也只有动态绑定（多态）这种机制能帮助我们做到这一点——让程序的可扩展性达到极致。因此动态绑定是面向对象的核心，如果没有动态绑定，那么面向对象绝对不可能发展得像现在这么流行，所以动态绑定是面向对象核心中的核心。</strong></p>
+<p>**总结动态绑定（多态）：动态绑定是指在“执行期间”（而非编译期间）判断所引用的实际对象类型，根据其实际的类型调用其相应的方法。**所以实际当中找要调用的方法时是动态的去找的，new的是谁就找谁的方法，这就叫动态绑定。动态绑定帮助我们的程序的可扩展性达到了极致。</p>
+<p><strong>多态的存在有三个必要的条件：</strong></p>
+<ol>
+<li><strong>要有继承（两个类之间存在继承关系，子类继承父类）</strong></li>
+<li><strong>要有重写（在子类里面重写从父类继承下来的方法）</strong></li>
+<li><strong>父类引用指向子类对象</strong></li>
+</ol>
+<p>这三个条件一旦满足，当你调用父类里面被重写的方法的时候，实际当中new的是哪个子类对象，就调用子类对象的方法（这个方法是从父类继承下来后重写后的方法）。</p>
+<p>面向对象比较强调类和类之间，对象和对象之间的一种组织关系，如果能把这种组织关系组织得比较好的话，你的程序想扩展性比较好，比较健壮，维护性比较好这些都可以达到，关键看你的设计到底好还是不好。</p>
 ]]></content>
     </entry>
     <entry>
