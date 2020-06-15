@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-15T18:14:09.773Z</updated>
+    <updated>2020-06-15T18:22:17.433Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -10,6 +10,56 @@
     <logo>https://jonchan1013.github.io/images/avatar.png</logo>
     <icon>https://jonchan1013.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, CY的学习博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Mybatis]]></title>
+        <id>https://jonchan1013.github.io/post/mybatis/</id>
+        <link href="https://jonchan1013.github.io/post/mybatis/">
+        </link>
+        <updated>2020-06-15T18:19:24.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="1-简介">1、简介</h2>
+<h3 id="11-什么是mybatis">1.1、什么是Mybatis</h3>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616022004.png" alt="" loading="lazy"></figure>
+<ul>
+<li>MyBatis 是一款优秀的<strong>持久层框架</strong></li>
+<li>它支持定制化 SQL、存储过程以及高级映射。</li>
+<li>MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。</li>
+<li>MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的 POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</li>
+<li>MyBatis 本是<a href="https://baike.baidu.com/item/apache/6265">apache</a>的一个开源项目<a href="https://baike.baidu.com/item/iBatis">iBatis</a>, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。</li>
+<li>2013年11月迁移到Github。</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="1-简介">1、简介</h2>
+<h3 id="11-什么是mybatis">1.1、什么是Mybatis</h3>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616022004.png" alt="" loading="lazy"></figure>
+<ul>
+<li>MyBatis 是一款优秀的<strong>持久层框架</strong></li>
+<li>它支持定制化 SQL、存储过程以及高级映射。</li>
+<li>MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。</li>
+<li>MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的 POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</li>
+<li>MyBatis 本是<a href="https://baike.baidu.com/item/apache/6265">apache</a>的一个开源项目<a href="https://baike.baidu.com/item/iBatis">iBatis</a>, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。</li>
+<li>2013年11月迁移到Github。</li>
+</ul>
+<!-- more -->
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Git]]></title>
+        <id>https://jonchan1013.github.io/post/git/</id>
+        <link href="https://jonchan1013.github.io/post/git/">
+        </link>
+        <updated>2020-06-15T18:15:09.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="1-git简介">1、Git简介</h2>
+<h3 id="11-git概念">1.1 Git概念</h3>
+<p>Git 是一个免费的、开源的分布式版本控制系统，可以快速高效地处理从小型到大型的<br>
+项目。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="1-git简介">1、Git简介</h2>
+<h3 id="11-git概念">1.1 Git概念</h3>
+<p>Git 是一个免费的、开源的分布式版本控制系统，可以快速高效地处理从小型到大型的<br>
+项目。</p>
+<!-- more -->
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Linux]]></title>
         <id>https://jonchan1013.github.io/post/linux/</id>
@@ -76,7 +126,7 @@
 <p>按照提示进行安装，点击“下一步”</p>
 <figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615174914.png" alt="" loading="lazy"></figure>
 <p>勾选“我接受许可协议中的条款”</p>
-<figure data-type="image" tabindex="4"><img src="C:%5CUsers%5CCY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200615174937394.png" alt="image-20200615174937394" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616021318.png" alt="" loading="lazy"></figure>
 <p>路径可以修改也可以不修改。但是路径尽量不要包含中文。示例中把路径修改了。</p>
 <figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615174849.png" alt="" loading="lazy"></figure>
 <p>取消勾选后点击下一步</p>
@@ -7037,541 +7087,6 @@ public class TestPolymoph {
 </ol>
 <p>这三个条件一旦满足，当你调用父类里面被重写的方法的时候，实际当中new的是哪个子类对象，就调用子类对象的方法（这个方法是从父类继承下来后重写后的方法）。</p>
 <p>面向对象比较强调类和类之间，对象和对象之间的一种组织关系，如果能把这种组织关系组织得比较好的话，你的程序想扩展性比较好，比较健壮，维护性比较好这些都可以达到，关键看你的设计到底好还是不好。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Java基础总结-基础语法]]></title>
-        <id>https://jonchan1013.github.io/post/java-ji-chu-ji-chu-yu-fa/</id>
-        <link href="https://jonchan1013.github.io/post/java-ji-chu-ji-chu-yu-fa/">
-        </link>
-        <updated>2018-06-04T03:16:11.000Z</updated>
-        <summary type="html"><![CDATA[<p>✍️JavaSE是Java Standard Edtion的缩写，译成中文就是Java标准版，也是Java的核心。无论是JavaEE(Java企业版)还是JavaME(Java微型版)都是以JavaSE为基础。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>✍️JavaSE是Java Standard Edtion的缩写，译成中文就是Java标准版，也是Java的核心。无论是JavaEE(Java企业版)还是JavaME(Java微型版)都是以JavaSE为基础。</p>
-<!-- more -->
-<h2 id="1-标识符">1、标识符</h2>
-<ul>
-<li>Java对各种变量、方法和类等要素命名时使用的字符序列称为标识符。
-<ul>
-<li>凡是自己可以起名字的地方都叫标识符，都遵守标识符的规则</li>
-</ul>
-</li>
-<li>Java标识符命名规则:
-<ul>
-<li>标识符应以字母、下划线、美元符开头。</li>
-<li>Java 标识符大小写敏感，长度无限制。</li>
-<li>Java 标识符大小写敏感，长度无限制。</li>
-</ul>
-</li>
-<li>约定俗成: Java标识符选取因注意&quot;见名知意&quot;且不能与Java语言的关键字重名。</li>
-</ul>
-<h2 id="2-关键字">2、关键字</h2>
-<ul>
-<li>
-<p>Java中一些赋以特定的含义，用做专门用途的字符串称为关键字( keyword)。大多数编辑器会将关键字用特殊方式标出</p>
-</li>
-<li>
-<p>所有Java关键字都是小写英文。</p>
-</li>
-<li>
-<p>所有Java关键字都是小写英文。</p>
-<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610115950.png" alt="" loading="lazy"></figure>
-</li>
-</ul>
-<h2 id="3-java基础数据类型">3、Java基础数据类型</h2>
-<h3 id="31-java常量">3.1 Java常量</h3>
-<ul>
-<li>
-<p>Java 的常量值用字符串表示，区分为不同的数据类型。</p>
-<ul>
-<li>如整型常量123</li>
-<li>实型常量3.14</li>
-<li>字符常量'a'</li>
-<li>逻辑常量true. false</li>
-<li>字符串常量&quot;helloworld&quot;</li>
-</ul>
-</li>
-<li>
-<p>注意:区分字符常量和字符串常量</p>
-</li>
-<li>
-<p>注意:“常量”这个名词还会用在另外其它语境中表示值不可变的变量</p>
-</li>
-</ul>
-<h3 id="32-java变量">3.2 Java变量</h3>
-<ul>
-<li>
-<p>Java变量是程序中最基本的存储单元，其要素包括变量名，变量类型和作用域。</p>
-</li>
-<li>
-<p>Java程序中每一个变量都属于特定的数据类型，在使用前必须对其声明，声明格式为:</p>
-<ul>
-<li>
-<p>例如：int i=100;<br>
-float f=12.3f;</p>
-<p>​			double d1, d2, d3 = 0.123;<br>
-​			String s=&quot;hello&quot;;</p>
-</li>
-</ul>
-</li>
-<li>
-<p>从本质上讲，变量其实是内存中的一-小块区域，使用变量名来访问这块区域，因此，每一个变量使用前必须要先申请(声明)，然后必须进行赋值(填充内容)，才能使用</p>
-</li>
-<li>
-<p>一个程序在运行的时候，实际上这个程序是位于内存里面，然后才开始运行。一个.exe文件存放在硬盘上是无法运行的，在硬盘上看到的.exe文件无非就是一个文件而已，当我们双击这个.exe文件时，运行起来的时候实际上是整个.exe文件被放在了在内存里面，然后操作系统找到main方法，也就是程序的入口，然后就开始执行了。执行的过程之中，会不断地在内存里面分配一些区域，变量在内存里面就是一小块区域，变量有两个概念，一个是变量的名字，另一个是变量的值，即这一小块区域是有名字的，里面装着一个值，因此以后要想访问这小块区域里面的内容就可以根据这小块区域的名字来访问了。因此，变量的本质就是一小块内存区域。就变量来说，该在内存里面分配多大的存储空间呢？不同的变量类型分配不同大小的存储空间，每一个变量都是属于特定的数据类型的，声明成不同的数据类型，它就在内存里面分配不同的存储空间。</p>
-</li>
-<li>
-<p>变量作用域：变量的作用域只在“{ }”有效，出了这个“{ }”就没有作用了</p>
-</li>
-</ul>
-<h3 id="33-java变量分类">3.3 Java变量分类</h3>
-<ul>
-<li>
-<p>按被声明的位置划分:</p>
-<ul>
-<li>局部变量:方法或语句块内部定义的变量</li>
-<li>成员变量:方法外部、类的内部定义的变量</li>
-<li>注意:类外面(与类对应的大括号外面)不能有变量的声明</li>
-</ul>
-</li>
-<li>
-<p>按所属的数据类型划分:</p>
-<ul>
-<li>基本数据类型变量</li>
-<li>引用数据类型变量</li>
-</ul>
-</li>
-</ul>
-<h3 id="34-java局部变量和成员变量">3.4 Java局部变量和成员变量</h3>
-<ul>
-<li>
-<p>方法体内部声明的变量(包括形参)称为局部变量:</p>
-</li>
-<li>
-<p>方法体内部是指与方法对应的大括号内部</p>
-</li>
-<li>
-<p>在方法体外，类体内声明的变量成为成员变量</p>
-<pre><code class="language-java">public void method(){
-int i;
-int j= i+5://编译出错，变量i还未被初始化
-double d= 3.14;
-Dog dog;
-dog = new Dog(22,7,1964);
-}
-</code></pre>
-</li>
-</ul>
-<h3 id="35-java数据类型划分">3.5 Java数据类型划分</h3>
-<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610124522.png" alt="" loading="lazy"></figure>
-<ul>
-<li>Java中定义了4类8种基本数据类型。
-<ul>
-<li>逻辑型一boolean</li>
-<li>文本型一char</li>
-<li>整数型一byte, short, int, long</li>
-<li>浮点数型一float, double</li>
-</ul>
-</li>
-</ul>
-<h2 id="4-java数据类型讲解">4、Java数据类型讲解</h2>
-<h3 id="41-boolean-布尔型">4.1 boolean--布尔型</h3>
-<ul>
-<li>
-<p>boolean类型适于逻辑运算，一般用于程序流程控制。</p>
-</li>
-<li>
-<p>boolean类型数据只允许取值true或false，不可以0或非0的整数替代true和false，这点和C语言不同。</p>
-</li>
-<li>
-<p>用法举例:</p>
-<pre><code class="language-java">boolean flag;
-flag = true;
-if(f1ag) {
-    //do something
-}
-</code></pre>
-</li>
-</ul>
-<h3 id="42-char-字符型">4.2 char--字符型</h3>
-<ul>
-<li>
-<p>char型数据用来表示通常意义上字符”</p>
-</li>
-<li>
-<p>字符常量为用单引号括起来的单个字符，例如:</p>
-<ul>
-<li>char eChar = 'a'; char cChar ='中‘；</li>
-</ul>
-</li>
-<li>
-<p>Java字符采用Unicode编码，每个字符占两个字节，因而可用十六进制编码形式表示，例如:</p>
-<ul>
-<li>char c1 =’\u0061';</li>
-<li>注: Unicode是全球语言统一编码</li>
-</ul>
-</li>
-<li>
-<p>Java语言中还允许使用转义字符\来将其后的字符转变为其它的含义，例如:</p>
-<ul>
-<li>@ char c2= '\n';
-<ul>
-<li>'\n'代表换行符</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>全球的文字放到计算机里面表示全是0和1，Unicode是统一了全世界国家文字的一种编码方式，用这样的编码可以把全世界国家的文字连接在一起。Unicode编码又分为两种，一种是Utf-8，另一种是Utf-16。JAVA所采用的是Utf-16，每一个字符占2个字节，任何国家的文字放到Unicode里面都是占2个字节。</p>
-</li>
-</ul>
-<h3 id="43-整数类型">4.3 整数类型</h3>
-<ul>
-<li>
-<p>Java各整数类型有固定的表数范围和字段长度，其不受具体操作系统的影响，以保证Java程序的可移植性。</p>
-</li>
-<li>
-<p>Java语言整型常量的:三种表示形式:</p>
-<ul>
-<li>十进制整数，如: 12, -314, 0。</li>
-<li>八进制整数，要求以0开头，如: 012。</li>
-<li>十六进制数，要求0x或0X开头，如: 0x12。</li>
-</ul>
-</li>
-<li>
-<p>Java语言的整型常量默认为int型，声明long型常 量可以后加工或L’，如1:</p>
-<ul>
-<li>int i1= 600; //正确 long l1 = 888888888L; l1必须加否则会出错</li>
-</ul>
-</li>
-</ul>
-<figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610125719.png" alt="" loading="lazy"></figure>
-<ul>
-<li>C语言编译好的程序为什么不能移植，如把.exe文件放到Linux下是执行不了的，一个很大很大的原因在于C语言定义的变量在不同的操作系统上所占的大小是不一样的，声明一个int类型的变量，在Windows下面占32位，但放到Linux下面就有可能只占16位，那么这时候很可能表示的大小就不一样了，在Windows下声明一个很大的数，在Linux下面很可能就会溢出。因此这就是C语言为什么在编译完成之后不能移植的原因。</li>
-</ul>
-<h3 id="44-浮点类型">4.4 浮点类型</h3>
-<ul>
-<li>
-<p>与整数类型类似，Java浮 点类型有固定的表数范围和字段长度，不受平台影响。</p>
-</li>
-<li>
-<p>Java浮点类型常量有两种表示形式</p>
-<ul>
-<li>十进制数形式，例如:3.14</li>
-<li>⑥科学记数法形式，如3.14e2  3.14E2  100E2</li>
-</ul>
-</li>
-<li>
-<p>Java浮点型常量默认为double型，如要声明一个常量为float型，则需在数字后面加f或F，如:</p>
-<ul>
-<li>double d= 12345.6; //正确 float f= 12.3f; //必须加f否则会出错</li>
-</ul>
-</li>
-<li>
-<p>下面列出Java的各种浮点类型</p>
-</li>
-</ul>
-<figure data-type="image" tabindex="4"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610130037.png" alt="" loading="lazy"></figure>
-<h3 id="45-基本数据类型的转换">4.5 基本数据类型的转换</h3>
-<ul>
-<li>
-<p>boolean类型不可以转换为其他的数据类型。</p>
-</li>
-<li>
-<p>整型，字符型，浮点型的数据在混合运算中相互转换，转换时遵循以下原则:</p>
-<ul>
-<li>容量小的类型自动转换为容量大的数据类型:数据类型按容量大小排序为:
-<ul>
-<li>byte,short,char-&gt;int-&gt;long-&gt;float-&gt;double</li>
-<li>byte,short,char之间不会互相转换， 他们三者在计算时首先回转换为int类型</li>
-</ul>
-</li>
-<li>容量大的数据类型转换为容量小的数据类型时，要加上强制转换符，但可能造成精度降低或溢出:使用时要格外注意。</li>
-<li>有多种类型的数据混合运算时，系统首先自动的将所有数据转换成容量最大的那一:种数据类型，然后再进行计算。</li>
-<li>实数常量(如: 1.2)默认为double。</li>
-<li>整数常量(如: 123) 默认为int。</li>
-</ul>
-</li>
-<li>
-<p>类型转换测试</p>
-<pre><code class="language-java">public class TestConvert {
-    public static void main(String arg[]) {
-        int i1 = 123;
-        int i2 = 456;
-        double d1 = (i1+i2)*1.2;//系统将转换为double型运算
-        float f1 = (float)((i1+i2)*1.2);//需要加强制转换符
-        byte b1 = 67;
-        byte b2 = 89;
-        byte b3 = (byte)(b1+b2);//系统将转换为int型运算，需要强制转换符
-        System.out.println(b3);
-        double d2 = 1e200;
-        float f2 = (float)d2;//会产生溢出
-        System.out.println(f2);
-        float f3 = 1.23f;//必须加f
-        long l1 = 123;
-        long l2 = 30000000000L;//必须加l
-        float f = l1+l2+f3;//系统将转换为float型计算
-        long l = (long)f;//强制转换会舍去小数部分（不是四舍五入）
-    }
-}
-</code></pre>
-</li>
-</ul>
-<h2 id="5-运算符">5、运算符</h2>
-<figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610130557.png" alt="" loading="lazy"></figure>
-<h3 id="51-算数运算符自加和自减运算符">5.1 算数运算符（自加和自减运算符)</h3>
-<figure data-type="image" tabindex="6"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610130722.png" alt="" loading="lazy"></figure>
-<h3 id="52-逻辑运算符">5.2 逻辑运算符</h3>
-<figure data-type="image" tabindex="7"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610130816.png" alt="" loading="lazy"></figure>
-<h3 id="53-赋值运算符">5.3 赋值运算符</h3>
-<figure data-type="image" tabindex="8"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610131019.png" alt="" loading="lazy"></figure>
-<ul>
-<li>
-<p>赋值运算符，就是将符号右边的值，赋给左边的变量。</p>
-<pre><code class="language-java">public static void main(String[] args){ 
-    int i = 5; 
-    i+=5;//计算方式 i=i+5 变量i先加5，再赋值变量i 
-    System.out.println(i); //输出结果是10 
-}
-</code></pre>
-</li>
-</ul>
-<h3 id="54-比较运算符">5.4 比较运算符</h3>
-<figure data-type="image" tabindex="9"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610131143.png" alt="" loading="lazy"></figure>
-<ul>
-<li>
-<p>比较运算符，是两个数据之间进行比较的运算，运算结果都是布尔值 true 或者 false 。</p>
-<pre><code class="language-java">public static void main(String[] args) { 
-    System.out.println(1==1);//true 
-    System.out.println(1&lt;2);//true 
-    System.out.println(3&gt;4);//false 
-    System.out.println(3&lt;=4);//true 
-    System.out.println(3&gt;=4);//false 
-    System.out.println(3!=4);//true 
-}
-</code></pre>
-</li>
-</ul>
-<h3 id="55-逻辑运算符">5.5 逻辑运算符</h3>
-<figure data-type="image" tabindex="10"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610152457.png" alt="" loading="lazy"></figure>
-<ul>
-<li>
-<p>逻辑运算符，是用来连接两个布尔类型结果的运算符，运算结果都是布尔值 true 或者 false</p>
-<pre><code class="language-java">public static void main(String[] args) { 
-    System.out.println(true &amp;&amp; true);//true 
-    System.out.println(true &amp;&amp; false);//false 
-    System.out.println(false &amp;&amp; true);//false，右边不计算 
-    System.out.println(false || false);//falase 
-    System.out.println(false || true);//true 
-    System.out.println(true || false);//true，右边不计算				
-    System.out.println(!false);//true 
-}
-</code></pre>
-</li>
-</ul>
-<h3 id="56-三元运算符">5.6 三元运算符</h3>
-<ul>
-<li>三元运算符格式：<br>
-数据类型 变量名 = 布尔类型表达式？结果1：结果2</li>
-<li>三元运算符计算方式：
-<ul>
-<li>布尔类型表达式结果是true，三元运算符整体结果为结果1，赋值给变量。</li>
-<li>布尔类型表达式结果是false，三元运算符整体结果为结果2，赋值给变量。</li>
-</ul>
-</li>
-</ul>
-<pre><code class="language-java">public static void main(String[] args) { 
-	int i = (1==2 ? 100 : 200); 
-    System.out.println(i);//200 
-    int j = (3&lt;=4 ? 500 : 600); 
-    System.out.println(j);//500 
-}
-</code></pre>
-<h2 id="6-语句">6、语句</h2>
-<figure data-type="image" tabindex="11"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610151654.png" alt="" loading="lazy"></figure>
-<h3 id="61-条件语句">6.1 条件语句</h3>
-<ol>
-<li>
-<p>if语句</p>
-<figure data-type="image" tabindex="12"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610151746.png" alt="" loading="lazy"></figure>
-</li>
-<li>
-<p>分支语句(switch语句)</p>
-<figure data-type="image" tabindex="13"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610151816.png" alt="" loading="lazy"></figure>
-</li>
-</ol>
-<figure data-type="image" tabindex="14"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610151831.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="15"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610152413.png" alt="" loading="lazy"></figure>
-<h3 id="62-循环语句">6.2 循环语句</h3>
-<h4 id="621-for循环语句">6.2.1 for循环语句<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610151930.png" alt="" loading="lazy"></h4>
-<p>学会画内存分析图分析别人写的程序，这样就很容易分析出规律，分析出规律也就明白了别人的算法，也就很容易读懂别人的程序。</p>
-<h4 id="622-while循环和do-while循环">6.2.2 while循环和do while循环</h4>
-<figure data-type="image" tabindex="16"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610152239.png" alt="" loading="lazy"></figure>
-<h4 id="623-break和continue语句">6.2.3 break和continue语句</h4>
-<figure data-type="image" tabindex="17"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610152202.png" alt="" loading="lazy"></figure>
-<h2 id="7-方法">7、方法</h2>
-<ul>
-<li>
-<p>Java的方法类似于其它语言的函数，是一段用来完成特定功能的代码片段</p>
-</li>
-<li>
-<p>形式参数:在方法被调用时用 于接收外界输入的数据。</p>
-</li>
-<li>
-<p>实参:调用方法时实际传给方法的数据。</p>
-</li>
-<li>
-<p>返回值:方法在执行完毕后返还给调用它的环境的数据。</p>
-</li>
-<li>
-<p>返回值类型:事先约定的返回值的数据类型，如无返回值，必须给出返回值类型void.</p>
-</li>
-<li>
-<p>Java语言中使用下述形式调用方法:对象名方法名(实参列表)</p>
-</li>
-<li>
-<p>实参的数目、数据类型和次序必须和所调用方法声明的形参列表匹配，</p>
-</li>
-<li>
-<p>retun语句终止方法的运行并指定要返回的数据。</p>
-</li>
-<li>
-<p>Java中进行函数调用中传递参数时，遵循值传递的原则:基本类型传递的是该数据值本身。引用类型传递的是对对象的引用，而不是对象本身。</p>
-</li>
-<li>
-<p>方法执行到return语句后，这个方法的执行就结束了，<strong>方法可以有返回值，但可以不用这个返回值</strong>。方法首先要定义，然后才能调用。</p>
-<pre><code class="language-java">public class TestMethod{
-    public static void main(String args[]){
-        m();
-        m1(3);
-        m2(2,3);
-        int i = m3(4,5);
-        System.out.println(i);
-    }
-    //以下定义的都是静态方法，静态方法可以在main()方法里面直接调用
-    public static void m(){
-            System.out.println(&quot;Hello!&quot;);
-            System.out.println(&quot;World!&quot;);
-        }
-
-    public static void m1(int i){
-            if(i==5){
-                    return;
-                }
-            System.out.println(i);
-        }
-
-    public static void m2(int i,int j){
-            System.out.println(i+j);
-        }
-
-    public static int m3(int i,int j){
-            return i+j;
-        }
-}
-</code></pre>
-</li>
-</ul>
-<h2 id="8-变量的作用域">8、变量的作用域</h2>
-<ul>
-<li>变量的作用域只在“{ }”有效，出了这个“{ }”就没有作用了</li>
-</ul>
-<h2 id="9-递归调用">9、递归调用</h2>
-<ul>
-<li>递归：在一个方法内部对自身的调用就称为递归</li>
-</ul>
-<figure data-type="image" tabindex="18"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610153500.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="19"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610153511.png" alt="" loading="lazy"></figure>
-<ul>
-<li>范例：使用递归计算第5个斐波那契数列数</li>
-</ul>
-<pre><code class="language-java">/*计算第5个斐波那契数列数*/
-/*
-斐波那契数列特点：f(1)=1,f(2)=1,f(3)=f(1)+f(2),f(4)=(f2)+(f3)……依次类推。
-即后一个数都是等于前两个数的和，这样的数列就是斐波那契数列。
-*/
-/*
-使用递归调用的方法计算
-*/
-public class Fab{
-    public static void main(String args[]){
-        System.out.println(f(5));
-    }
-
-    public static int f(int n){
-            if(n==1||n==2){
-                    return 1;
-                }else{
-                        return f(n-1)+f(n-2);
-                    }
-        }
-}
-</code></pre>
-<p>​	整个在内存中执行过程如下图所示</p>
-<figure data-type="image" tabindex="20"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610153613.png" alt="" loading="lazy"></figure>
-<h2 id="10-程序的执行过程">10、程序的执行过程</h2>
-<figure data-type="image" tabindex="21"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610153705.png" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Java环境变量配置]]></title>
-        <id>https://jonchan1013.github.io/post/java-ji-chu/</id>
-        <link href="https://jonchan1013.github.io/post/java-ji-chu/">
-        </link>
-        <updated>2018-02-05T01:04:05.000Z</updated>
-        <summary type="html"><![CDATA[<p>✍️学习java的第一步就要搭建java的学习环境，首先是要安装JDK，JDK安装好之后，还需要在电脑上配置&quot;JAVA_HOME”、&quot;path”、&quot;classpath&quot;这三个环境变量才能够把java的开发环境搭建好。在没安装过jdk的环境下，path环境变量是系统变量，本来存在的，而JAVA_HOME和classpath是不存在的。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>✍️学习java的第一步就要搭建java的学习环境，首先是要安装JDK，JDK安装好之后，还需要在电脑上配置&quot;JAVA_HOME”、&quot;path”、&quot;classpath&quot;这三个环境变量才能够把java的开发环境搭建好。在没安装过jdk的环境下，path环境变量是系统变量，本来存在的，而JAVA_HOME和classpath是不存在的。</p>
-<!-- more -->
-<ol>
-<li>
-<p>配置JAVA_HOME变量<br>
-操作步骤：计算机→右键“属性”→高级系统设置→高级→环境变量，如下图所示：<br>
-<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610095005.png" alt="" loading="lazy"><br>
-<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610095133.png" alt="" loading="lazy"><br>
-<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610095235.png" alt="" loading="lazy"><br>
-点击系统变量下面的“【新建】”，弹出一个新建系统变量对话框，首先在变量名写上JAVA_HOME，顾名思义，JAVA_HOME的含义就是JDK的安装路径，，然后在变量值写JDK的安装路径，如这里设置的变量值是&quot;C:\Program Files (x86)\Java\jdk1.8.0&quot;，设置好变量值之后，点击【确定】按钮，JAVA_HOME环境变量就设置完成，如下图所示：系统变量中多了一个&quot;JAVA_HOME&quot;变量</p>
-</li>
-<li>
-<p>配置path环境变量<br>
-操作步骤：计算机→右键“属性”→高级系统设置→高级→环境变量<br>
-找到系统变量中的Path变量，点击【编辑】按钮，弹出编辑系统变量的对话框，可以看到，Path变量中设置有很多的目录，每个目录之间使用;(分号)隔开,将%JAVA_HOME%\bin;添加到Path变量的变量值中，点击【确定】按钮，Path环境变量的就设置完成了，如下图所示：<br>
-<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610095552.png" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>配置ClassPath变量<br>
-设置Classpath的目的，在于告诉Java执行环境，在哪些目录下可以找到您所要执行的Java程序(.class文件)，关于这个ClassPath变量，其实可以不用配置了<br>
-<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610095445.png" alt="" loading="lazy"></p>
-</li>
-<li>
-<p>JAVA_HOME变量、Path变量、ClassPath变量的说明</p>
-<ol>
-<li>设置JAVA_HOME变量的目的
-<ol>
-<li>为了方便引用，比如，JDK安装在C:\Program Files (x86)\Java\jdk1.8.0目录里，则设置JAVA_HOME为该目录路径, 那么以后要使用这个路径的时候, 只需输入%JAVA_HOME%即可, 避免每次引用都输入很长的路径串;</li>
-<li>归一原则, 当JDK路径被迫改变的时候, 仅需更改JAVA_HOME的变量值即可。</li>
-<li>第三方软件会引用约定好的JAVA_HOME变量, 典型的就是tomcat服务器，如果不配置JAVA_HOME变量，那么tomcat服务器根本运行不起来</li>
-</ol>
-</li>
-<li>Path变量(重点说明)<br>
-操作系统用path的路径来找可执行程序(.exe程序)，在windows下当我们敲任何一个命令时，实际上就是在执行一个可执行文件，如输入notepad命令就可以打开一个记事本<br>
-<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610100042.png" alt="" loading="lazy"><br>
-实际上是执行了c:\Windows下的notepad.exe这个可执行文件，和用鼠标双击notepad.exe后能够打开一个记事本的效果是一样的<br>
-<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200610100137.png" alt="" loading="lazy"><br>
-当在命令窗口敲一个命令时，系统就会去自动寻找这个命令对应的可执行文件(.exe)，如果这个文件不存在，就当然无法执行这个命令了。这个可执行文件的根目录必须设置在path环境变量中。</li>
-<li>在命令窗口显示path设置的环境变量<br>
-直接输入“echo %path%”命令就可以显示设置的path环境变量的所有根目录了，只要是根目录里面存在相应的.exe文件，敲入命令时就能执行这个相应的.exe文件。因为notepad.exe所在的Windows目录已经添加到了Path环境变量中了，这就解释了为什么输入命令notepad就可以打开一个记事本，所以前面配置java开发环境时，将%JAVA_HOME%\bin添加到Path变量中的目的就是希望可以在命令行窗口下使用javac和java这两个命令来执行javac.exe和java.exe这两个可执行程序。</li>
-<li>Classpath变量说明<br>
-使用javac命令编译.java文件时，如果需要其他的类，也是通过classpath去找的，<br>
-　　使用java命令执行.class文件时，执行的.class文件是通过classpath去找的。<br>
-　　classpath表示的是要查找的类所在的路径。</li>
-</ol>
-</li>
-<li>
-<p>用户变量和系统变量的区别<br>
-用户变量，顾名思义，是针对某一个特定的用户的，只对特定的用户有效，而系统变量，则对任何用户都有效。</p>
-</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
