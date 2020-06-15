@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-15T09:42:14.361Z</updated>
+    <updated>2020-06-15T09:49:56.993Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -36,6 +36,49 @@
 <p>语言。使用 C 语言研发出了 Unix 操作系统。</p>
 <p>很多开始仿照 Unix，市场上出现了很多类似操作系统，相互告侵权。</p>
 <p>Liuns 带领了 Unix 原班人马开发出了 Liuns，后更名为 Liunx。</p>
+<table>
+<thead>
+<tr>
+<th>Linux 内核发明人</th>
+<th>林纳斯·本纳第克特·托瓦兹（Linus Benedict Torvalds）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内核特点</td>
+<td>基于 Unix 实现。支持多用户、多进程、多线程和多 CPU</td>
+</tr>
+<tr>
+<td>应用领域</td>
+<td>智能设备、后台服务器、云计算、大数据等</td>
+</tr>
+<tr>
+<td>Linux 家族</td>
+<td>Ubuntu、Fedora、CentOS、RedHat、Android 等</td>
+</tr>
+</tbody>
+</table>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615174439.png" alt="" loading="lazy"></figure>
+<p>发展到目前，Liunx 不是一个具体的操作系统，而是一类操作系统的统称。具体版本称为发行版。</p>
+<ul>
+<li>Red Hat：目前被 IBM 收购了。收费版。目前全球最大的 Linux 供应商。</li>
+<li><strong>Cent OS</strong>：Red Hat 推出的<strong>免费</strong>版。</li>
+<li>Ubuntu：界面比较友好。</li>
+</ul>
+<h2 id="2-vmware-安装及使用">2、VMWare 安装及使用</h2>
+<h3 id="21-vmware-简介">2.1  VMWare 简介</h3>
+<p>​		VMWare 就是虚拟机软件。目前最新版本是 VMware Workstation Pro15。使用VMWare 就是使用软件来模拟一台真实的计算机。由于虚拟机安装在当前计算机中，所以虚拟机硬件配置上限就是当前计算机硬件配置。</p>
+<h3 id="22-硬件要求">2.2 硬件要求</h3>
+<p>​		虚拟机运行过程中比较耗费内存，为了应对后面的课程，建议同学们电脑内存至少 8G以上。如果可以最好是 16GB。当然了，即使 4G 内存也可以运行，只是那时电脑会非常非常的卡。</p>
+<h3 id="23-安装步骤">2.3 安装步骤</h3>
+<p>运行安装程序</p>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615174703.png" alt="" loading="lazy"></figure>
+<p>按照提示进行安装，点击“下一步”</p>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615174914.png" alt="" loading="lazy"></figure>
+<p>勾选“我接受许可协议中的条款”</p>
+<figure data-type="image" tabindex="4"><img src="C:%5CUsers%5CCY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200615174937394.png" alt="image-20200615174937394" loading="lazy"></figure>
+<p>路径可以修改也可以不修改。但是路径尽量不要包含中文。示例中把路径修改了。</p>
+<figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615174849.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
