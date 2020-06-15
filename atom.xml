@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-15T18:22:17.433Z</updated>
+    <updated>2020-06-15T18:23:57.954Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -24,8 +24,6 @@
 <li>它支持定制化 SQL、存储过程以及高级映射。</li>
 <li>MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。</li>
 <li>MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的 POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</li>
-<li>MyBatis 本是<a href="https://baike.baidu.com/item/apache/6265">apache</a>的一个开源项目<a href="https://baike.baidu.com/item/iBatis">iBatis</a>, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。</li>
-<li>2013年11月迁移到Github。</li>
 </ul>
 ]]></summary>
         <content type="html"><![CDATA[<h2 id="1-简介">1、简介</h2>
@@ -36,10 +34,12 @@
 <li>它支持定制化 SQL、存储过程以及高级映射。</li>
 <li>MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。</li>
 <li>MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的 POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</li>
+</ul>
+<!-- more -->
+<ul>
 <li>MyBatis 本是<a href="https://baike.baidu.com/item/apache/6265">apache</a>的一个开源项目<a href="https://baike.baidu.com/item/iBatis">iBatis</a>, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。</li>
 <li>2013年11月迁移到Github。</li>
 </ul>
-<!-- more -->
 ]]></content>
     </entry>
     <entry>
