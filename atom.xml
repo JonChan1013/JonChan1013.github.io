@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-15T09:49:56.993Z</updated>
+    <updated>2020-06-15T18:14:09.773Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -79,6 +79,561 @@
 <figure data-type="image" tabindex="4"><img src="C:%5CUsers%5CCY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200615174937394.png" alt="image-20200615174937394" loading="lazy"></figure>
 <p>路径可以修改也可以不修改。但是路径尽量不要包含中文。示例中把路径修改了。</p>
 <figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615174849.png" alt="" loading="lazy"></figure>
+<p>取消勾选后点击下一步</p>
+<figure data-type="image" tabindex="6"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615181534.png" alt="" loading="lazy"></figure>
+<p>点击“下一步”。桌面和开始菜单是否创建快捷方式可以根据自己的习惯进行操作。</p>
+<figure data-type="image" tabindex="7"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615181655.png" alt="" loading="lazy"></figure>
+<p>点击完成进行安装</p>
+<figure data-type="image" tabindex="8"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615181728.png" alt="" loading="lazy"></figure>
+<p>点击许可证输入许可信息</p>
+<figure data-type="image" tabindex="9"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615181802.png" alt="" loading="lazy"></figure>
+<p>点击“完成”完成安装</p>
+<figure data-type="image" tabindex="10"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615181853.png" alt="" loading="lazy"></figure>
+<h3 id="24-安装结果">2.4 安装结果</h3>
+<p>VMWare 每次新建虚拟机就相当于产生一台电脑。</p>
+<p>安装完成之后产生两个虚拟网卡。这是保证 Windows 是虚拟机中系统互通的。</p>
+<figure data-type="image" tabindex="11"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615181941.png" alt="" loading="lazy"></figure>
+<h3 id="25-卸载">2.5 卸载</h3>
+<p>VMWare 使用 windows 的程序卸载可能无法卸载干净。要使用安装包的卸载功能进行卸载。</p>
+<p>双击安装包<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615182110.png" alt="" loading="lazy"></p>
+<p>后点击下一步，会出现下面的界面，点击“删除按钮进行删除”</p>
+<figure data-type="image" tabindex="12"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615182139.png" alt="" loading="lazy"></figure>
+<h2 id="3-安装linux">3、安装Linux</h2>
+<ol>
+<li>新建虚拟机</li>
+</ol>
+<figure data-type="image" tabindex="13"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615182223.png" alt="" loading="lazy"></figure>
+<ol start="2">
+<li>选择安装模式</li>
+</ol>
+<figure data-type="image" tabindex="14"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615182303.png" alt="" loading="lazy"></figure>
+<ol start="3">
+<li>选择 Linux 镜像文件</li>
+</ol>
+<figure data-type="image" tabindex="15"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615182554.png" alt="" loading="lazy"></figure>
+<ol start="4">
+<li>输入用户名以及密码</li>
+</ol>
+<figure data-type="image" tabindex="16"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615182621.png" alt="" loading="lazy"></figure>
+<ol start="5">
+<li>
+<p>指定虚拟系统安装位置</p>
+<p>建立放到空间大的磁盘中，目录名称尽量不要含有中文。</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="17"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615182717.png" alt="" loading="lazy"></figure>
+<ol start="6">
+<li>
+<p>指定磁盘容量</p>
+<p>默认就可以</p>
+<figure data-type="image" tabindex="18"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615182801.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>配置信息提示</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="19"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615182835.png" alt="" loading="lazy"></figure>
+<ol start="8">
+<li>开始安装</li>
+</ol>
+<figure data-type="image" tabindex="20"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615182901.png" alt="" loading="lazy"></figure>
+<ol start="9">
+<li>注意事项</li>
+</ol>
+<p>​		在安装时，VMWare 默认会去指定的虚拟机目录查找 Linux 的镜像文件，此时我们需要<br>
+停止安装重新指定镜像文件位置。</p>
+<figure data-type="image" tabindex="21"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183355.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="22"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183417.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="23"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183608.png" alt="" loading="lazy"></figure>
+<ol start="10">
+<li>选择安装界面的语言</li>
+</ol>
+<figure data-type="image" tabindex="24"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183637.png" alt="" loading="lazy"></figure>
+<ol start="11">
+<li>配置安装位置</li>
+</ol>
+<figure data-type="image" tabindex="25"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183702.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="26"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183721.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="27"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183740.png" alt="" loading="lazy"></figure>
+<ol start="12">
+<li>设置 root 用户密码</li>
+</ol>
+<figure data-type="image" tabindex="28"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183809.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="29"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183826.png" alt="" loading="lazy"></figure>
+<ol start="13">
+<li>安装完毕后重启 Linux</li>
+</ol>
+<figure data-type="image" tabindex="30"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183849.png" alt="" loading="lazy"></figure>
+<ol start="14">
+<li>配置 Linux</li>
+</ol>
+<figure data-type="image" tabindex="31"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183910.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="32"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183924.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="33"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183942.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="34"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615183956.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="35"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615184010.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="36"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615184022.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="37"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615184142.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="38"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615184159.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="39"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615184213.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="40"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200615184343.png" alt="" loading="lazy"></figure>
+<h2 id="4-目录结构及路径">4、目录结构及路径</h2>
+<h3 id="41-linux-系统目录结构">4.1  Linux 系统目录结构</h3>
+<ol>
+<li>/</li>
+</ol>
+<p>​		根目录.Unix 和 Linux 中,没有盘符. 一个硬盘,一个根.</p>
+<ol start="2">
+<li>
+<p>/bin</p>
+<p>系统的常用命令目录. 包括控制台命令, 系统可执行文件, 系统的核心二进制文件等</p>
+</li>
+<li>
+<p>/etc</p>
+<p>发布目录, 相当于 windows 系统中的 windows 目录, 保存系统中的所有核心内容.</p>
+<p>要求控制权限高, 建议不要随便读写</p>
+</li>
+<li>
+<p>/usr</p>
+<p>用户目录, 相当于 windows 系统中的 program files 目录. 常用于安装系统所有用户共</p>
+<p>用的软件,资源的</p>
+</li>
+<li>
+<p>/root</p>
+<p>root 根用户的用户目录. 相当于 windows 系统中的 C:/users/administrator 目录</p>
+<p>称为用户主目录</p>
+</li>
+<li>
+<p>/home</p>
+<p>保存其他用户主目录的目录</p>
+<p>如: Linux 系统中有 oldlu 用户. 那么一定有/home/oldlu 目录存在. 代表用户的主目录</p>
+</li>
+<li>
+<p>/var</p>
+<p>系统运行过程的数据目录</p>
+</li>
+</ol>
+<h3 id="42-路径">4.2 路径</h3>
+<ol>
+<li>
+<p>全路径</p>
+<p>从 filesystem 根目录开始寻找文件。</p>
+<p>写法： 以 / 开头。例如找 usr 下 local 中内容，路径： /usr/local</p>
+</li>
+<li>
+<p>相对路径</p>
+<p>从当前资源路径开始寻找，找到其他资源路径过程。</p>
+<p>写法：一定不是以/开头。找当前资源的子目录直接写子目录名称，如果向上跳一级文</p>
+<p>件夹写法 ： ../</p>
+</li>
+<li>
+<p>特殊路径写法</p>
+<p>/ 表示磁盘根</p>
+<p>~ 表示/root ，root 文件夹的根目录</p>
+</li>
+</ol>
+<h2 id="5-linux常用命令">5、Linux常用命令</h2>
+<p>Linux 系统中的命令是严格区分大小写的。</p>
+<h3 id="51-pwd">5.1 pwd</h3>
+<p>​		print working directory - 输出当前工作目录, 光标所在位置的目录</p>
+<h3 id="52-cd">5.2 cd</h3>
+<p>​		change directory - 切换目录</p>
+<p>​		特殊目录符号 : 当前目录 - ‘.’ , 父目录 - ‘..’</p>
+<p><strong>使用方式:</strong></p>
+<ol>
+<li>
+<p>切换固定位置</p>
+<p>使用根目录作为定位标准, 绝对寻址</p>
+<p>cd /xxx/yyy/zzz</p>
+</li>
+<li>
+<p>切换相对位置</p>
+<p>在当前目录位置开始相对寻址</p>
+<p>cd xxx/yyy/zzz</p>
+</li>
+<li>
+<p>进入主目录</p>
+<p>直接进入用户主目录</p>
+<p>cd</p>
+<p>cd ~</p>
+</li>
+</ol>
+<h3 id="53-ls">5.3 ls</h3>
+<p>list - 列表目录中的内容.默认显示当前目录下的文件列表</p>
+<p><strong>使用方式:</strong></p>
+<ol>
+<li>
+<p>列表当前目录</p>
+<p>ls</p>
+</li>
+<li>
+<p>列表指定目录</p>
+</li>
+</ol>
+<p>ls 目录位置(绝对路径|相对路径)</p>
+<ol start="3">
+<li>
+<p>看全部内容</p>
+<p>ls -a [目录]</p>
+<p>list all - 查看所有, 包括隐藏文件. Linux 中隐藏文件都是以’. ’开头的文件</p>
+</li>
+<li>
+<p>列表查看目录内容</p>
+<p>ls -l [目录]</p>
+<p>显示当前目录下的文件属性：大小、权限、日期、符号链接。</p>
+<p>ll - 简化命令不代表全部 Linux 系统可用.</p>
+<p>list list - 以列表的信息,显示指定目录中的内容. 列表代表的是文件的详情.</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="41"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616011631.png" alt="" loading="lazy"></figure>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>拥有者权限</th>
+<th>同组权限</th>
+<th>其他权限</th>
+<th>类型</th>
+<th>拥有者</th>
+<th>所在组</th>
+<th>容量</th>
+<th>时间</th>
+<th>文件名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>rw-</td>
+<td>---</td>
+<td>---</td>
+<td>1</td>
+<td>root</td>
+<td>root</td>
+<td>3326</td>
+<td>Nov 8 01:23</td>
+<td>anaconda-ks.cfg</td>
+</tr>
+<tr>
+<td>d</td>
+<td>rwx</td>
+<td>r-x</td>
+<td>r-x</td>
+<td>2</td>
+<td>rooy</td>
+<td>root</td>
+<td>4096</td>
+<td>Nov 8 01:36</td>
+<td>Desktop</td>
+</tr>
+</tbody>
+</table>
+<p>4.1 类型</p>
+<pre><code class="language-html">- | 1 代表文件
+d | 2 代表目录
+</code></pre>
+<p>4.2 权限</p>
+<p>​		分为不同的角色: 文件的所有者, 就是创建文件的用户. 所在组, 和所有者同一个组的</p>
+<p>其他用户. 其他用户, 和所有者不在一个组的用户</p>
+<p>​		rwx: read write execut</p>
+<p>​		‘-’ 代表没有对应权限.</p>
+<p>4.3 容量</p>
+<p>​		单位是字节. 所有的目录固定容量为 4096.</p>
+<p>4.4 命令参数</p>
+<p>所有以 - 开头的命令后缀信息, 都是命令参数. 多参数可以并行使用. 如: ls -al</p>
+<h3 id="54-clear">5.4 clear</h3>
+<p>​		clear - 清空屏幕</p>
+<h3 id="55-touch">5.5 touch</h3>
+<p>​		创建空白文件</p>
+<p>​		在 Linux 系统中,文件不需要强制后缀名</p>
+<p>​		如: 文本文件可以定义为, a | a.txt | a.text</p>
+<ol>
+<li>
+<p>使用方式</p>
+<p>touch 文件名</p>
+<p>touch 目录/文件名</p>
+</li>
+</ol>
+<h3 id="56-cat">5.6 cat</h3>
+<p>​		查看文件的全部内容.</p>
+<p>​		一次性显示文件中所有内容.</p>
+<h3 id="57-more">5.7 more</h3>
+<p>​		分屏显示文件内容, 显示后,使用空格显示下一屏, 回车显示下一行,q 退出分屏显示</p>
+<p>ctrl+c,退出命令.</p>
+<h3 id="58-head">5.8 head</h3>
+<p>​		显示文件的前多少行, 默认显示前 10 行</p>
+<p>​		head -number filename</p>
+<p>​		查看文件中的前多少行</p>
+<h3 id="59-tail">5.9 tail</h3>
+<p>​		显示文件末尾多少行.默认显示末尾 10 行</p>
+<p>​		tail -number filename</p>
+<h3 id="510-mkdir">5.10 mkdir</h3>
+<p>​		make directory - 创建目录</p>
+<p><strong>使用方式：</strong></p>
+<ol>
+<li>
+<p>相对创建一个子目录</p>
+<p>mkdir directoryName</p>
+</li>
+<li>
+<p>绝对创建一个目录</p>
+<p>mkdir /directoryName</p>
+</li>
+<li>
+<p>一次性创建多级目录</p>
+<p>mkdir -p parentDirectoryName/childDirectoryName</p>
+</li>
+</ol>
+<h3 id="511-cp">5.11 cp</h3>
+<p>​		copy - 复制命令</p>
+<p><strong>使用方式：</strong></p>
+<p>​		cp source target</p>
+<p>​		cp 源信息 目录信息</p>
+<ol>
+<li>复制文件</li>
+</ol>
+<p>​	cp fileName newFileName</p>
+<p>​	cp directoryName/fileName directoryName/[newFileName]</p>
+<p>​	cp /directoryName/fileName /directoryName/[newFileName]</p>
+<ol start="2">
+<li>
+<p>复制目录</p>
+<p>cp -r directoryName newDirectoryName</p>
+</li>
+</ol>
+<h3 id="512-rm">5.12 rm</h3>
+<p>​		remove - 删除</p>
+<p><strong>使用方式:</strong></p>
+<p>​	rm source</p>
+<p>​	rm 要删除的资源</p>
+<ol>
+<li>
+<p>删除文件需提示</p>
+<p>​	rm fileName</p>
+<p>​	rm directoryName/fileName</p>
+<p>​	rm / directoryName/fileName</p>
+<p>​	-f force 忽略不存在的文件，从不给出提示</p>
+<p>​	-r recursive 指示 rm 将参数中列出的全部目录和子目录均递归地删除</p>
+</li>
+<li>
+<p>删除文件不需提示</p>
+<p>​	rm -f fileName</p>
+<p>​	rm -f directoryName/fileName</p>
+<p>​	rm -f /directoryName/fileName</p>
+</li>
+<li>
+<p>删除目录需提示</p>
+<p>​	rm -r directoryName</p>
+</li>
+<li>
+<p>删除目录不需提示</p>
+<p>​	rm -rf directoryName</p>
+</li>
+</ol>
+<h3 id="513-mv">5.13 mv</h3>
+<p>​		move - 移动或重命名. 相当于剪切和重命名</p>
+<p><strong>使用方式：</strong></p>
+<p>​		mv source target 移动</p>
+<p>​		mv source newName 重命名</p>
+<ol>
+<li>
+<p>移动文件到指定位置</p>
+<p>​	mv fileName directoryName</p>
+</li>
+<li>
+<p>为文件重命名</p>
+</li>
+</ol>
+<p>​	mv fileName newFileName</p>
+<h3 id="514-vi-vim">5.14 vi | vim</h3>
+<p>​		编辑文件, vim 是增强命令. 不代表所有的 Linux 都支持</p>
+<p>​		vim 增强在有高亮显示</p>
+<p><strong>使用方式:</strong></p>
+<p>​		vi fileName</p>
+<p><strong>命令模式:</strong></p>
+<p>​		是控制编辑的文件的状态的,如:保存,退出编辑等</p>
+<ol>
+<li>
+<p>进入编辑模式:</p>
+<p>​	a - append, 追加的方式进入编辑模式</p>
+<p>​	i - insert, 插入的方式进入编辑模式</p>
+<p>​	o - under line , 在光标所在位置之下,新增一行,进入编辑模式</p>
+<p>​	O - pre line, 在光标所在位置之上,新增一行, 进入编辑模式</p>
+</li>
+<li>
+<p>dd</p>
+<p>​	dd - delete line 删除指定行, 默认 1 行</p>
+</li>
+<li>
+<p>:w</p>
+<p>​	write - 保存</p>
+</li>
+<li>
+<p>:q</p>
+<p>​	quit - 退出 vi 编辑器</p>
+</li>
+<li>
+<p>:wq</p>
+<p>​	保存并退出</p>
+</li>
+<li>
+<p>:q!</p>
+<p>​	强制退出不保存</p>
+</li>
+<li>
+<p>:set nu</p>
+<p>​	显示行号</p>
+</li>
+<li>
+<p>/keywords</p>
+<p>​	搜索关键字, keywords 是关键字的命名</p>
+</li>
+<li>
+<p>G</p>
+<p>​	光标跳转到文件尾</p>
+</li>
+<li>
+<p>gg</p>
+<p>​	光标跳转到文件头</p>
+</li>
+</ol>
+<p><strong>编辑模式：</strong></p>
+<p>​		是编辑文件内容的</p>
+<p>​		进入命令模式 - esc</p>
+<h3 id="515-reboot">5.15 reboot</h3>
+<p>​		reboot 用来重启 Linux 系统和 Windows 系统中的 restart 一样。但是机器重启必须</p>
+<p>要 root 用户才有权限。</p>
+<h3 id="516-halt">5.16 halt</h3>
+<p>​		halt 命令用来关闭正在运行的 Linux 操作系统。</p>
+<h2 id="6-linux常用配置">6、Linux常用配置</h2>
+<h3 id="61-设置系统时区">6.1 设置系统时区</h3>
+<h4 id="611-安装系统时可设置时区">6.1.1 安装系统时可设置时区</h4>
+<figure data-type="image" tabindex="42"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616014040.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="43"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616014053.png" alt="" loading="lazy"></figure>
+<h3 id="62-通过-linux-命令设置时区">6.2 通过 Linux 命令设置时区</h3>
+<h4 id="621-查看系统当前时间">6.2.1 查看系统当前时间</h4>
+<p>date 命令</p>
+<figure data-type="image" tabindex="44"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616014153.png" alt="" loading="lazy"></figure>
+<h4 id="622-修改时区">6.2.2 修改时区</h4>
+<ol>
+<li>
+<p>获取当前时区配置</p>
+<p>tzselect 命令<br>
+选择 Asia 亚洲</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="45"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616014241.png" alt="" loading="lazy"></figure>
+<p>​	选择中国</p>
+<figure data-type="image" tabindex="46"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616014303.png" alt="" loading="lazy"></figure>
+<p>​	选择北京时间</p>
+<figure data-type="image" tabindex="47"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616014323.png" alt="" loading="lazy"></figure>
+<p>得到时区配置信息</p>
+<figure data-type="image" tabindex="48"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616014342.png" alt="" loading="lazy"></figure>
+<ol start="2">
+<li>
+<p>修改 .bash_profile 文件设置时区</p>
+<p>.bash_profile 文件在当前用户的目录下，时区一旦修改仅对当前用户生效。</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="49"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616014420.png" alt="" loading="lazy"></figure>
+<p>​		使用 vim 编辑 .bash_profile 文件</p>
+<figure data-type="image" tabindex="50"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616014439.png" alt="" loading="lazy"></figure>
+<p>​		将获取到的时区配置信息添加到该文件中</p>
+<figure data-type="image" tabindex="51"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616014507.png" alt="" loading="lazy"></figure>
+<p>​		注销当前登录用户，重新登录</p>
+<h3 id="63-通过-linux-的操作界面设置时区">6.3 通过 Linux 的操作界面设置时区</h3>
+<p>​		如果安装 Linux 时选择带有 GUI 的，那么可以通过 GUI 设置时区，该设置方式对所有用户生效。</p>
+<figure data-type="image" tabindex="52"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616014607.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="53"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616015218.png" alt="" loading="lazy"></figure>
+<h3 id="63-网络配置">6.3 网络配置</h3>
+<h4 id="631-开启网络">6.3.1 开启网络</h4>
+<p>​		CentOS8 中默认没有开始网络配置。需要手动开启。</p>
+<p>​		启用 ens33 网络配置。默认只有 ens33</p>
+<p>​		nmcli c up ens33</p>
+<p>​		vim /etc/sysconfig/network-scripts/ifcfg-ens33</p>
+<p>​		先点击键盘的 i 键，左下角出现--insert-- 才能开始进行编辑。</p>
+<p>​		修改最后一行 ONBOOT=yes，表示开启此网卡设置启动。</p>
+<figure data-type="image" tabindex="54"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616015446.png" alt="" loading="lazy"></figure>
+<p>​		点击键盘”ESC”退出编辑状态后，不考虑光标位置，直接输入:wq，然后回车。</p>
+<p>通过下面命令查看 ip 地址</p>
+<p>ifconfig 命令</p>
+<h4 id="632-修改网段">6.3.2 修改网段</h4>
+<p>​		VMware 菜单编辑 --&gt; 虚拟网络编辑器 --&gt; 右下角 “更改设置” --&gt; 选择“VMNet 8” -- &gt; 修改子网 IP 为自己希望的网段 --&gt; DHCP 设置中修改两处网段</p>
+<figure data-type="image" tabindex="55"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616015555.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="56"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616015607.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="57"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616015621.png" alt="" loading="lazy"></figure>
+<h4 id="632-设置网络类型">6.3.2 设置网络类型</h4>
+<p>​		在 VMWare 中默认使用 NAT 模式</p>
+<p>​		NAT 模式：“Network Address Translation，网络地址转换”，允许一个整体机构以一个公用 IP 地址出现在 Internet 上。顾名思义，它是一种把内部私有网络地址（IP 地址）通过 NAT 转发成合法公有网络 IP 地址的技术。</p>
+<p>​		优点：可以节省 IP 资源</p>
+<p>​		缺点：由于网段不同，局域网内其他设备无法访问虚拟机中的操作系统</p>
+<figure data-type="image" tabindex="58"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616015726.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="59"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616015753.png" alt="" loading="lazy"></figure>
+<h3 id="64-快照与克隆">6.4 快照与克隆</h3>
+<h4 id="641快照">6.4.1快照</h4>
+<ol>
+<li>
+<p>创建快照</p>
+<p>​	快照功能是在关机状态使用的。<br>
+​	快照就是类似 windows 的还原点。还原系统。使用快照可以还原系统也可以克隆系统。</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="60"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616015902.png" alt="" loading="lazy"></figure>
+<ol start="2">
+<li>删除快照</li>
+</ol>
+<figure data-type="image" tabindex="61"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616015925.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="62"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616015944.png" alt="" loading="lazy"></figure>
+<h4 id="642-克隆功能">6.4.2 克隆功能</h4>
+<p>​		要求：关闭状态</p>
+<p>​		可以帮助快速生成一台虚拟机</p>
+<figure data-type="image" tabindex="63"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616020018.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="64"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616020032.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="65"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616020045.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="66"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616020055.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="67"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616020107.png" alt="" loading="lazy"></figure>
+<h2 id="7-xshell-安装及使用">7、XShell 安装及使用</h2>
+<p>​		一款 Windows 中使用的 Linux 客户端命令工具。</p>
+<p>​		常见的 Linux 客户端工具：</p>
+<p>​		XShell、FinallShell、SecureCRT 等</p>
+<h3 id="71-安装-xshell">7.1 安装 Xshell</h3>
+<p>​		Xshell 版本：6</p>
+<h3 id="72-xshell-的使用">7.2 Xshell 的使用</h3>
+<h4 id="721-创建连接">7.2.1 创建连接</h4>
+<figure data-type="image" tabindex="68"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616020310.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="69"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616020350.png" alt="" loading="lazy"></figure>
+<h4 id="722-使用-xsehll-连接-linux-系统">7.2.2  使用 Xsehll 连接 Linux 系统</h4>
+<figure data-type="image" tabindex="70"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616020512.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="71"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616020551.png" alt="" loading="lazy"></figure>
+<h2 id="8-linux-的文件上传与下载">8、Linux 的文件上传与下载</h2>
+<h3 id="81-xftp-安装及使用">8.1 Xftp 安装及使用</h3>
+<p>​		Xftp 和 Xshell 是同一个公司的产品。Xftp 是基于 FTP 协议的工具。可以方便的实现互联网中主机和主机之间的文件传输。</p>
+<figure data-type="image" tabindex="72"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616020701.png" alt="" loading="lazy"></figure>
+<h2 id="9-linux-中文件的压缩与解压缩">9、Linux 中文件的压缩与解压缩</h2>
+<h3 id="91-targz-格式">9.1 *.tar.gz 格式</h3>
+<p>​		tar.gz 是 Linux 中的一种文件压缩格式，可是使用 tar 命令实现对文件的压缩与解压处理。</p>
+<h4 id="911-tar-命令参数介绍">9.1.1  tar 命令参数介绍</h4>
+<pre><code class="language-html">	-c: 创建压缩文件
+	-C: 指定解压文件存放的位置
+	-x：解压-t：查看内容
+	-z：有 gzip 属性的
+	-v：显示所有过程
+	-f: 使用文件名字，切记，这个参数是最后一个参数，后面只能接文件名
+</code></pre>
+<h4 id="912-创建-targz-压缩文件">9.1.2 创建 tar.gz 压缩文件</h4>
+<p>​		tar -czvf 压缩文件的名称.tar.gz 源文件或者目录名称</p>
+<h4 id="913-解压-targz-文件">9.1.3 解压 tar.gz 文件</h4>
+<p>​		tar -zxvf 解压文件名称</p>
+<h3 id="92-zip-格式">9.2 *.zip 格式</h3>
+<p>​		如果压缩文件格式为.zip 那么需要使用 unzip 命令解压.zip 压缩包。</p>
+<h4 id="921-unzip-参数介绍">9.2.1 unzip 参数介绍</h4>
+<pre><code class="language-java">-n：解压缩时不要覆盖原有的文件
+-d&lt;目录&gt;：指定文件解压缩后所要存储的目录
+-v：执行时显示详细的信息；
+</code></pre>
+<h4 id="922-解压-zip-文件">9.2.2 解压 zip 文件</h4>
+<p>unzip 压缩文件.zip</p>
+<p>unzip 压缩文件.zip -d 解压到指定目录</p>
 ]]></content>
     </entry>
     <entry>
