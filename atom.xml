@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-15T09:08:37.694Z</updated>
+    <updated>2020-06-15T09:42:14.361Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -10,6 +10,34 @@
     <logo>https://jonchan1013.github.io/images/avatar.png</logo>
     <icon>https://jonchan1013.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, CY的学习博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Linux]]></title>
+        <id>https://jonchan1013.github.io/post/linux/</id>
+        <link href="https://jonchan1013.github.io/post/linux/">
+        </link>
+        <updated>2020-06-15T09:31:03.000Z</updated>
+        <summary type="html"><![CDATA[<p>👩‍💻目前在中大型互联网项目中，Linux操作系统已成为不可或缺的技术，是程序员必备技能。同时也为其他高级技术的使用提供了有效的保障。</p>
+<h2 id="1-linux的简介">1、Linux的简介</h2>
+<h3 id="11-定位">1.1 定位</h3>
+<p>服务器操作系统</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👩‍💻目前在中大型互联网项目中，Linux操作系统已成为不可或缺的技术，是程序员必备技能。同时也为其他高级技术的使用提供了有效的保障。</p>
+<h2 id="1-linux的简介">1、Linux的简介</h2>
+<h3 id="11-定位">1.1 定位</h3>
+<p>服务器操作系统</p>
+<!-- more -->
+<h3 id="12-历史">1.2 历史</h3>
+<p>肯·汤姆森（Ken Thompson）在 MULTICS 操作系统上研发游戏“Space Travel”，</p>
+<p>发现运行速度慢且成本比较高（每次 75 美元），找到丹尼斯·里奇（Dennis Ritchie）我们</p>
+<p>能不能研发一个操作系统让这个游戏运行效率更高，成本更低。使用一台被人遗弃的计算机</p>
+<p>上（连操作系统都没有）使用汇编语言仅仅一个月就开发了一个系统。发现使用汇编开发操</p>
+<p>作系统满足不了要求。肯·汤姆森就和丹尼斯·里奇商量我们能不能研究一个语言来写系统内</p>
+<p>核，后来就研究出了 B 语言。使用 B 语言写发现还是不行，最后就研发出了大名鼎鼎的 C</p>
+<p>语言。使用 C 语言研发出了 Unix 操作系统。</p>
+<p>很多开始仿照 Unix，市场上出现了很多类似操作系统，相互告侵权。</p>
+<p>Liuns 带领了 Unix 原班人马开发出了 Liuns，后更名为 Liunx。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[LeetCode刷题]]></title>
         <id>https://jonchan1013.github.io/post/leetcode-shua-ti/</id>
