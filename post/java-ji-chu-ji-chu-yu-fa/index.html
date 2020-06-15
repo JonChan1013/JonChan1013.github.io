@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Java基础总结-基础语法 | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1592163200478">
+<link rel="shortcut icon" href="/favicon.ico?v=1592212114609">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -2443,6 +2443,7 @@ public class SingleObjectServlet extends HttpServlet {
         resp.setContentType(&amp;quot;application/json&amp;quot;);
 
         PrintWriter pw = resp.getWriter();
+        //将数据输出到前端
         pw.print(s);
         pw.flush();
         pw.close();
@@ -2678,6 +2679,1260 @@ public class RequestJsonServlet extends HttpServlet {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;344-jackson-的常用注解&#34;&gt;3.4.4 Jackson 的常用注解&lt;/h3&gt;
+&lt;h5 id=&#34;3441jsonproperty&#34;&gt;3.4.4.1@JsonProperty&lt;/h5&gt;
+&lt;p&gt;​		此注解用于属性上，作用是把该属性的名称序列化为另外一个名称，如把 username 属性序列化为 name，@JsonProperty(&amp;quot;name&amp;quot;)。&lt;/p&gt;
+&lt;h5 id=&#34;3442-jsonignore&#34;&gt;3.4.4.2 @JsonIgnore&lt;/h5&gt;
+&lt;p&gt;​		此注解用于属性或者方法上（一般都是定义在属性上），用来完全忽略被注解的字段和方法对应的属性，返回的 json 数据即不包含该属性。&lt;/p&gt;
+&lt;h5 id=&#34;3443-jsonformat&#34;&gt;3.4.4.3  @JsonFormat&lt;/h5&gt;
+&lt;p&gt;​		此注解用于属性或者方法上（一般都是定义在属性上），可以方便的把 Date 类型属性的值直接转化为我们想要的样式。如：@JsonFormat(pattern=&amp;quot;yyyy-MM-dd hh:mm:ss&amp;quot;)&lt;/p&gt;
+&lt;h4 id=&#34;345-jackson-工具类的使用&#34;&gt;3.4.5 Jackson 工具类的使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+* JSON 转换工具类
+*/
+public class JsonUtils {
+
+// 定义 jackson 对象
+private static final ObjectMapper MAPPER = new ObjectMapper();
+/**
+* 将对象转换成 json 字符串。
+* &amp;lt;p&amp;gt;Title: pojoToJson&amp;lt;/p&amp;gt;
+* &amp;lt;p&amp;gt;Description: &amp;lt;/p&amp;gt;
+* @param data
+* @return
+*/
+public static String objectToJson(Object data) {
+try {
+	String string = MAPPER.writeValueAsString(data);
+	return string;
+} catch (JsonProcessingException e) {
+	e.printStackTrace();
+}
+	return null;
+}
+
+/**
+* 将 json 结果集转化为对象
+* @param jsonData json 数据
+* @param beanType 对象中的 object 类型
+* @return
+*/
+public static &amp;lt;T&amp;gt; T jsonToPojo(String jsonData, Class&amp;lt;T&amp;gt; beanType)
+{
+	try {
+		T t = MAPPER.readValue(jsonData, beanType);
+		return t;
+		} catch (Exception e) {
+		e.printStackTrace();
+		}
+		return null;
+}
+/**
+* 将 json 数据转换成 pojo 对象 list
+* &amp;lt;p&amp;gt;Title: jsonToList&amp;lt;/p&amp;gt;
+* &amp;lt;p&amp;gt;Description: &amp;lt;/p&amp;gt;
+* @param jsonData
+* @param beanType
+* @return
+*/
+public static &amp;lt;T&amp;gt;List&amp;lt;T&amp;gt; jsonToList(String jsonData, Class&amp;lt;T&amp;gt;
+beanType) {
+	JavaType javaType =MAPPER.getTypeFactory().constructParametricType(List.class,
+beanType);
+try {
+	List&amp;lt;T&amp;gt; list = MAPPER.readValue(jsonData, javaType);
+	return list;
+	} catch (Exception e) {
+	e.printStackTrace();
+}
+	return null;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-jquery-的-ajax-使用&#34;&gt;4、Jquery 的 Ajax 使用&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200615094159.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		在 JQuery 中提供了对 Ajax 的封装，让我们在使用 Ajax 技术时变得更加容易。在 JQuery中提供了很多的基于 Ajax 发送异步请求的方法，如：&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;、&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;.ajax()、&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05724em;&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;、&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;.get()、&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;、&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;.post()、&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;、&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;.getJSON()。&lt;/p&gt;
+&lt;h3 id=&#34;41-ajax的使用&#34;&gt;4.1  $.ajax()的使用&lt;/h3&gt;
+&lt;h4 id=&#34;411-语法结构&#34;&gt;4.1.1 语法结构&lt;/h4&gt;
+&lt;p&gt;$.ajax({name:value,name:value......})&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200615094350.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;jqueryAjaxDemo.jsp&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;%@ page contentType=&amp;quot;text/html;charset=UTF-8&amp;quot; language=&amp;quot;java&amp;quot; %&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+    &amp;lt;script src=&amp;quot;js/jquery.js&amp;quot;/&amp;gt;
+    &amp;lt;script&amp;gt;
+        function but() {
+            $.ajax({
+                type:&amp;quot;get&amp;quot;,
+                url:&amp;quot;jqueryAjax.do&amp;quot;,
+                success:function (result) {
+                    $(&amp;quot;#span&amp;quot;).html(result)
+                }
+            })
+        }
+    &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;span id=&amp;quot;span&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;ok&amp;quot; onclick=&amp;quot;but()&amp;quot;/&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;jqueryAjaxServlet类：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@WebServlet(&amp;quot;/jqueryAjax.do&amp;quot;)
+public class jqueryAjaxServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter pw = resp.getWriter();
+        //将数据输出到前端
+        pw.print(&amp;quot;hello,jqueryAjax&amp;quot;);
+        pw.flush();
+        pw.close();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;412-ajax在异步请求中提交数据&#34;&gt;4.1.2 $.ajax()在异步请求中提交数据&lt;/h4&gt;
+&lt;p&gt;​		在$.ajax()方法中通过 data 属性来存放提交的数据，支持 JSON 格式的数据。&lt;/p&gt;
+&lt;h5 id=&#34;4121-提交普通格式数据&#34;&gt;4.1.2.1 提交普通格式数据&lt;/h5&gt;
+&lt;p&gt;​		在 data 属 性 中 我 们 可 以 通 过 两 种 方 式 来 指 定 需 要 提 交 的 数 据 。 一 种 是 通 过&lt;br&gt;
+name=value&amp;amp;name=value 的结构。另一种是通过 JavaScript 对象来指定提交数据。无论使用哪种方式在 Servlet 中都是通过 request.getParameter 方法根据 name 获取 value 的。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;通过标准格式指定提交数据&lt;/p&gt;
+&lt;p&gt;data:”name=value&amp;amp;name=value.....”&lt;br&gt;
+在 Servlet 中通过 request.getParameter 来获取提交的数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过 JavaScript 对象指定提交数据&lt;/p&gt;
+&lt;p&gt;data:{&lt;br&gt;
+userid:100,&lt;br&gt;
+username:”oldlu”&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在 Servlet 中通过 request.getParameter 来获取提交的数据。&lt;/p&gt;
+&lt;p&gt;dataDemo.jsp&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;%@ page contentType=&amp;quot;text/html;charset=UTF-8&amp;quot; language=&amp;quot;java&amp;quot; %&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+    &amp;lt;script src=&amp;quot;js/jquery.js&amp;quot;/&amp;gt;
+    &amp;lt;script&amp;gt;
+        function but() {
+            var id = $(&amp;quot;#userid&amp;quot;).val;
+            var name = $(&amp;quot;#username&amp;quot;).val;
+            $.ajax({
+                type:&amp;quot;get&amp;quot;,
+                url:&amp;quot;data.do&amp;quot;,
+                //通过标准格式
+               /* data:&amp;quot;id=&amp;quot;+id+&amp;quot;&amp;amp;name=&amp;quot;+name,*/
+                //通过JavaScript对象
+                data:{
+                    id:id,
+                    name:name
+                },
+                success:function (result) {
+                    $(&amp;quot;#span&amp;quot;).html(result)
+                }
+            })
+        }
+    &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+用户ID：&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;userid&amp;quot;&amp;gt;
+用户名：&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;username&amp;quot;&amp;gt;
+&amp;lt;span id=&amp;quot;span&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;ok&amp;quot; onclick=&amp;quot;but()&amp;quot;/&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;DataServlet类：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@WebServlet(&amp;quot;/data.do&amp;quot;)
+public class DataServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter(&amp;quot;id&amp;quot;);
+        String name = req.getParameter(&amp;quot;name&amp;quot;);
+
+        PrintWriter pw = resp.getWriter();
+        pw.print(id+&amp;quot; &amp;quot;+name);
+        pw.flush();
+        pw.close();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;4122-提交-json-格式数据&#34;&gt;4.1.2.2 提交 JSON 格式数据&lt;/h5&gt;
+&lt;p&gt;在$.ajax()中提交 JSON 格式的数据需要使用 post 方式提交，通过 JSON.stringify()函数将JavaScript 对象转换成 JSON 格式的字符串。在 Servlet 中通过字符输入获取提交的 JSON 格式的数据。&lt;/p&gt;
+&lt;p&gt;​		data:JSON.stringify({name:value,name:value......})&lt;br&gt;
+在 Servlet 中通过 req.getReader().readLine()来获取提交的数据。&lt;/p&gt;
+&lt;p&gt;jsonDataDemo.jsp&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;%@ page contentType=&amp;quot;text/html;charset=UTF-8&amp;quot; language=&amp;quot;java&amp;quot; %&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+    &amp;lt;script src=&amp;quot;js/jquery.js&amp;quot;/&amp;gt;
+    &amp;lt;script&amp;gt;
+        function but() {
+            var id = $(&amp;quot;#userid&amp;quot;).val;
+            var name = $(&amp;quot;#username&amp;quot;).val;
+            $.ajax({
+                type:&amp;quot;post&amp;quot;,
+                url:&amp;quot;jsonData.do&amp;quot;,
+                //将JavaScript 对象转换成 JSON 格式的字符串
+                data:JSON.stringify({
+                    id:id,
+                    name:name
+                }),
+                success:function (result) {
+                    $(&amp;quot;#span&amp;quot;).html(result)
+                }
+            })
+        }
+    &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+用户ID：&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;userid&amp;quot;&amp;gt;
+用户名：&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;username&amp;quot;&amp;gt;
+&amp;lt;span id=&amp;quot;span&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;ok&amp;quot; onclick=&amp;quot;but()&amp;quot;/&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;JsonDataServlet类：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@WebServlet(&amp;quot;/jsonData.do&amp;quot;)
+public class JsonDataServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String s= req.getReader().readLine();
+        PrintWriter pw = resp.getWriter();
+        pw.print(s);
+        pw.flush();
+        pw.close();
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;4123-ajax处理响应中的-json-格式数据&#34;&gt;4.1.2.3 $.ajax()处理响应中的 JSON 格式数据&lt;/h5&gt;
+&lt;p&gt;$.ajax()方法会根据 dataType 属性中的值自动对响应的数据做类型处理。如果响应的是一个 JSON 格式的数据，那么 dataType 的值为“JSON”,在回调函数中我们得到的直接就是JSON 字符串转换完的 JavaScript 对象。不需要在使用 JSON.parse()做格式的转换处理。&lt;/p&gt;
+&lt;p&gt;jsonConvertDemo.jsp&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;%@ page contentType=&amp;quot;text/html;charset=UTF-8&amp;quot; language=&amp;quot;java&amp;quot; %&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+    &amp;lt;script src=&amp;quot;js/jquery.js&amp;quot;/&amp;gt;
+    &amp;lt;script&amp;gt;
+        function but() {
+            var id = $(&amp;quot;#userid&amp;quot;).val;
+            var name = $(&amp;quot;#username&amp;quot;).val;
+            $.ajax({
+                type:&amp;quot;post&amp;quot;,
+                url:&amp;quot;jsonConvert.do&amp;quot;,
+                //将json格式的字符串转换为JavaScript对象
+                datatype:&amp;quot;json&amp;quot;,
+                //将JavaScript 对象转换成 JSON 格式的字符串
+                data:JSON.stringify({
+                    id:id,
+                    name:name
+                }),
+                success:function (result) {
+                    alert(result.id+&amp;quot; &amp;quot;+result.name);
+                    $(&amp;quot;#span&amp;quot;).html(result.id+&amp;quot; &amp;quot;+result.name);
+                }
+            })
+        }
+    &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+用户ID：&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;userid&amp;quot;&amp;gt;
+用户名：&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;username&amp;quot;&amp;gt;
+&amp;lt;span id=&amp;quot;span&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;ok&amp;quot; onclick=&amp;quot;but()&amp;quot;/&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;JsonConvertServletl类：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@WebServlet(&amp;quot;/jsonConvert.do&amp;quot;)
+public class JsonConvertServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType(&amp;quot;application/json&amp;quot;);
+        String s = req.getReader().readLine();
+        PrintWriter pw = resp.getWriter();
+        pw.print(s);
+        pw.flush();
+        pw.close();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;42-get的使用&#34;&gt;4.2 $.get()的使用&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;方&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;法&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;是&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;.get()方法是&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.03588em;&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;方&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;法&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;是&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;.ajax()方法基于 get 方式发送异步请求的简化版。&lt;/p&gt;
+&lt;h4 id=&#34;421-语法结构&#34;&gt;4.2.1 语法结构&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;$.get(url,function(result)) //function相当于回调函数
+$.get(url,data,function(result))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;422-通过标准格式指定提交数据&#34;&gt;4.2.2 通过标准格式指定提交数据&lt;/h4&gt;
+&lt;p&gt;$.get(url,”name=value&amp;amp;name=value”,function(result))&lt;/p&gt;
+&lt;h4 id=&#34;423-通过-javascript-对象指定提交数据&#34;&gt;4.2.3 通过 JavaScript 对象指定提交数据&lt;/h4&gt;
+&lt;p&gt;$.get(url,{userid:1,username:”oldlu”,......},function(result))&lt;/p&gt;
+&lt;p&gt;getDemo.jsp&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;%@ page contentType=&amp;quot;text/html;charset=UTF-8&amp;quot; language=&amp;quot;java&amp;quot; %&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+    &amp;lt;script src=&amp;quot;js/jquery.js&amp;quot;/&amp;gt;
+    &amp;lt;script&amp;gt;
+        function but() {
+            var id = $(&amp;quot;#userid&amp;quot;).val;
+            var name = $(&amp;quot;#username&amp;quot;).val;
+            /*$.get(&amp;quot;data.do&amp;quot;,&amp;quot;id=&amp;quot;+id+&amp;quot;&amp;amp;name=&amp;quot;+name,function (result) {
+                $(&amp;quot;#span&amp;quot;).html(result)
+            })*/
+            $.get(&amp;quot;data.do&amp;quot;,{id:id,name:name},function (result) {
+                $(&amp;quot;#span&amp;quot;).html(result);
+            })
+        }
+    &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+用户ID：&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;userid&amp;quot;&amp;gt;
+用户名：&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;username&amp;quot;&amp;gt;
+&amp;lt;span id=&amp;quot;span&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;ok&amp;quot; onclick=&amp;quot;but()&amp;quot;/&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;DataServletle类：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@WebServlet(&amp;quot;/data.do&amp;quot;)
+public class DataServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter(&amp;quot;id&amp;quot;);
+        String name = req.getParameter(&amp;quot;name&amp;quot;);
+
+        PrintWriter pw = resp.getWriter();
+        pw.print(id+&amp;quot; &amp;quot;+name);
+        pw.flush();
+        pw.close();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;43-post的使用&#34;&gt;4.3 $.post()的使用&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;方&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;法&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;是&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;.post()方法是&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;方&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;法&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;是&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;.ajax()方法基于 post 方式发送异步请求的简化版。&lt;/p&gt;
+&lt;h4 id=&#34;431-语法结构&#34;&gt;4.3.1 语法结构&lt;/h4&gt;
+&lt;p&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;.post(url,function(result))
+&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.10764em;&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;.post(url,data,function(result))&lt;/p&gt;
+&lt;h4 id=&#34;432-通过标准格式指定提交数据&#34;&gt;4.3.2 通过标准格式指定提交数据&lt;/h4&gt;
+&lt;p&gt;$.post(url,”name=value&amp;amp;name=value”,function(result))&lt;/p&gt;
+&lt;h4 id=&#34;433-通过-javascript-对象指定提交数据&#34;&gt;4.3.3 通过 JavaScript 对象指定提交数据&lt;/h4&gt;
+&lt;p&gt;$.post(url,userid:1,username:”oldlu”,......},function(result))&lt;/p&gt;
+&lt;h3 id=&#34;44-getjson的使用&#34;&gt;4.4 $.getJSON()的使用&lt;/h3&gt;
+&lt;p&gt;​		&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;J&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;方&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;法&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;是&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;.getJSON()方法是&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.03588em;&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.09618em;&#34;&gt;J&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.10903em;&#34;&gt;N&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;方&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;法&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;是&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;.ajax()方法基于 get 方式发送异步请求，并将响应结果中 JSON 格式的字符串对象自动转换为 JavaScript 对象。在使用该方法时要求返回的数据必须是 JSON 格式类型。$.getJSON()方法和 resp.setContentType(“application/json”)是一起使用的。&lt;/p&gt;
+&lt;h4 id=&#34;441-语法结构&#34;&gt;4.4.1 语法结构&lt;/h4&gt;
+&lt;p&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;J&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;.getJSON(url,function(result))
+&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.03588em;&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.09618em;&#34;&gt;J&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.10903em;&#34;&gt;N&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.10764em;&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;.getJSON(url,data,function(result))&lt;/p&gt;
+&lt;h4 id=&#34;442-通过标准格式指定提交数据&#34;&gt;4.4.2 通过标准格式指定提交数据&lt;/h4&gt;
+&lt;p&gt;$.getJSON(url,”name=value&amp;amp;name=value”,function(result))&lt;br&gt;
+要求返回的数据格式必须是 JSON 格式。&lt;/p&gt;
+&lt;h4 id=&#34;443-通过-javascript-对象指定提交数据&#34;&gt;4.4.3 通过 JavaScript 对象指定提交数据&lt;/h4&gt;
+&lt;p&gt;$.getJSON(url{userid:1,username:”oldlu”,......},function(result))&lt;br&gt;
+要求返回的数据格式必须是 JSON 格式。&lt;/p&gt;
+&lt;p&gt;getJsonDemo.jsp&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;%@ page contentType=&amp;quot;text/html;charset=UTF-8&amp;quot; language=&amp;quot;java&amp;quot; %&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+    &amp;lt;script src=&amp;quot;js/jquery.js&amp;quot;/&amp;gt;
+    &amp;lt;script&amp;gt;
+        function but() {
+            var id = $(&amp;quot;#userid&amp;quot;).val;
+            var name = $(&amp;quot;#username&amp;quot;).val;
+            $.getJSON(&amp;quot;getJson.do&amp;quot;,{id:id,name:name},function (result) {
+                $(&amp;quot;#span&amp;quot;).html(result.userid+&amp;quot; &amp;quot;+result.username);
+            })
+        }
+    &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+用户ID：&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;userid&amp;quot;&amp;gt;
+用户名：&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;username&amp;quot;&amp;gt;
+&amp;lt;span id=&amp;quot;span&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;ok&amp;quot; onclick=&amp;quot;but()&amp;quot;/&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;GetJsonServlet类：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@WebServlet(&amp;quot;/getJson.do&amp;quot;)
+public class GetJsonServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter(&amp;quot;id&amp;quot;);
+        String name = req.getParameter(&amp;quot;name&amp;quot;);
+
+        HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+        map.put(&amp;quot;userid&amp;quot;,id);
+        map.put(&amp;quot;username&amp;quot;,name);
+        String s= JsonUtils.objectToJson(map);
+        resp.setContentType(&amp;quot;application/json&amp;quot;);
+
+        PrintWriter pw = resp.getWriter();
+        pw.print(s);
+        pw.flush();
+        pw.close();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;45-serialize方法的使用&#34;&gt;4.5 serialize()方法的使用&lt;/h3&gt;
+&lt;p&gt;将 form 表单中的数据自动拼接成 name=value&amp;amp;name=value 结构。&lt;/p&gt;
+&lt;h4 id=&#34;451-语法结构&#34;&gt;4.5.1 语法结构&lt;/h4&gt;
+&lt;p&gt;var param = $(“form”).serialize();&lt;br&gt;
+param 的值为：name=value&amp;amp;name=value&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;%@ page contentType=&amp;quot;text/html;charset=UTF-8&amp;quot; language=&amp;quot;java&amp;quot; %&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+    &amp;lt;script src=&amp;quot;js/jquery.js&amp;quot;/&amp;gt;
+    &amp;lt;script&amp;gt;
+        function but() {
+            var param = $(&amp;quot;form&amp;quot;).serialize();
+            alert(param);
+            $.ajax({
+                type: &amp;quot;get&amp;quot;,
+                url: &amp;quot;data.do&amp;quot;,
+                //通过标准格式
+                data:param,
+                success: function (result) {
+                    $(&amp;quot;#span&amp;quot;).html(result)
+                }
+            })
+        }
+    &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;form&amp;gt;
+    用户ID：&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;userid&amp;quot;&amp;gt;
+    用户名：&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;username&amp;quot;&amp;gt;
+&amp;lt;/form&amp;gt;
+
+&amp;lt;span id=&amp;quot;span&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;ok&amp;quot; onclick=&amp;quot;but()&amp;quot;/&amp;gt;
+&amp;lt;/body&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;5-ajax实战案例&#34;&gt;5、Ajax实战案例&lt;/h2&gt;
+&lt;p&gt;需求:&lt;br&gt;
+创建 User 类，包含 uesrid、username、usersex、userbirth 属性。&lt;/p&gt;
+&lt;p&gt;​		在用户管理页面中通过 Ajax 技术完成对用户数据载入、添加用户、更新用户、删除用户操作。&lt;/p&gt;
+&lt;h3 id=&#34;51-搭建环境&#34;&gt;5.1 搭建环境&lt;/h3&gt;
+&lt;h4 id=&#34;511-创建user类&#34;&gt;5.1.1 创建User类&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class User {
+    private int userid;
+    private String username;
+    private String usersex;
+    @JsonFormat(pattern = &amp;quot;yyyy-MM-dd&amp;quot;)
+    private Date userbirth;
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsersex() {
+        return usersex;
+    }
+
+    public void setUsersex(String usersex) {
+        this.usersex = usersex;
+    }
+
+    public Date getUserbirth() {
+        return userbirth;
+    }
+
+    public void setUserbirth(Date userbirth) {
+        this.userbirth = userbirth;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;512-在页面中创建表格&#34;&gt;5.1.2 在页面中创建表格&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;%@ page contentType=&amp;quot;text/html;charset=UTF-8&amp;quot; language=&amp;quot;java&amp;quot; %&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;用户管理&amp;lt;/title&amp;gt;
+    &amp;lt;script src=&amp;quot;js/jquery.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;script&amp;gt;
+    &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+
+&amp;lt;table align=&amp;quot;center&amp;quot; width=&amp;quot;60%&amp;quot; border=&amp;quot;1&amp;quot;&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;ID：&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;userid&amp;quot; id=&amp;quot;userid&amp;quot;/&amp;gt;&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;姓名：&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;username&amp;quot; id=&amp;quot;username&amp;quot;/&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;性别：&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;usersex&amp;quot; id=&amp;quot;usersex&amp;quot;/&amp;gt;&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;生日：&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;userbirth&amp;quot;
+                   id=&amp;quot;userbirth&amp;quot;/&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr align=&amp;quot;center&amp;quot;&amp;gt;
+        &amp;lt;td colspan=&amp;quot;4&amp;quot;&amp;gt;
+            &amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;添加用户&amp;quot; id=&amp;quot;add&amp;quot; /&amp;gt;
+            &amp;lt;input type=&amp;quot;button&amp;quot; value=&amp;quot;更新用户&amp;quot; id=&amp;quot;update&amp;quot;/&amp;gt;
+        &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;hr/&amp;gt;
+&amp;lt;table align=&amp;quot;center&amp;quot; width=&amp;quot;60%&amp;quot; bgcolor=&amp;quot;&amp;quot; border=&amp;quot;1&amp;quot;
+       id=&amp;quot;myTable&amp;quot;&amp;gt;
+    &amp;lt;thead&amp;gt;
+    &amp;lt;tr align=&amp;quot;center&amp;quot;&amp;gt;
+        &amp;lt;td&amp;gt;ID&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;姓名&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;性别&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;生日&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;操作&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;/thead&amp;gt;
+    &amp;lt;tbody id=&amp;quot;tBody&amp;quot;&amp;gt;&amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200615120307.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;52-加载用户数据&#34;&gt;5.2 加载用户数据&lt;/h3&gt;
+&lt;h4 id=&#34;521-通过ajax完成页面数据初始化&#34;&gt;5.2.1 通过Ajax完成页面数据初始化&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;script&amp;gt;
+        $(function () {
+            //获取页面初始化数据
+            getData();
+        });
+
+        //获取页面初始化数据
+        function getData() {
+            $.getJSON(&amp;quot;user.do&amp;quot;, {flag: &amp;quot;getData&amp;quot;}, function (result) {
+                init(result);
+            });
+        }
+
+        //遍历数据生成数据
+        function init(obj) {
+            var str = &amp;quot;&amp;quot;;
+            $.each(obj, function () {
+                str += &amp;quot;&amp;lt;tr align=&#39;center&#39;&amp;gt;&amp;lt;td id = &#39;&amp;quot; + this.userid + &amp;quot;&#39; &amp;gt; &amp;quot; + this.userid + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.username + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.usersex + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.userbirth + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;lt;a href=&#39;#&#39; onclick=&#39;preUpdateUser()&#39;&amp;gt;选择更新&amp;amp;nbsp;&amp;amp;nbsp;&amp;lt;/a&amp;gt;&amp;lt;a href=&#39;#&#39; onclick=&#39;deleteUser(&amp;quot; + this.userid + &amp;quot;)&#39;&amp;gt;删除&amp;lt;/a&amp;gt;&amp;lt;/td &amp;gt; &amp;lt; /tr&amp;gt;&amp;quot;
+            });
+            $(&amp;quot;#tBody&amp;quot;).prepend(str);
+        }
+    &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;522-创建-servlet-处理页面数据初始化请求&#34;&gt;5.2.2 创建 Servlet 处理页面数据初始化请求&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@WebServlet(&amp;quot;/user.do&amp;quot;)
+public class UserServlet extends HttpServlet {
+    //生成模拟数据初始化
+    @Override
+    public void init() throws ServletException {
+        User user = new User();
+        user.setUserid(1);
+        user.setUsername(&amp;quot;Oldlu&amp;quot;);
+        user.setUsersex(&amp;quot;male&amp;quot;);
+        user.setUserbirth(new Date());
+        User user2 = new User();
+        user2.setUserid(2);
+        user2.setUsername(&amp;quot;Kevin&amp;quot;);
+        user2.setUsersex(&amp;quot;male&amp;quot;);
+        user2.setUserbirth(new Date());
+        List&amp;lt;User&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+        list.add(user);
+        list.add(user2);
+        ServletContext servletContext = this.getServletContext();
+        servletContext.setAttribute(&amp;quot;list&amp;quot;, list);
+
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doPost(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String flag = req.getParameter(&amp;quot;flag&amp;quot;);
+        if (&amp;quot;getData&amp;quot;.equals(flag)) {
+            this.getData(req, resp);
+        }
+    }
+
+    //获取页面初始化数据
+    private void getData(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List&amp;lt;User&amp;gt; list = (List&amp;lt;User&amp;gt;) this.getServletContext().getAttribute(&amp;quot;list&amp;quot;);
+        String s = JsonUtils.objectToJson(list);
+        resp.setContentType(&amp;quot;application/json&amp;quot;);
+        PrintWriter pw = resp.getWriter();
+        pw.print(s);
+        pw.flush();
+        pw.close();
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200615144207.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;53-添加用户操作&#34;&gt;5.3 添加用户操作&lt;/h3&gt;
+&lt;h4 id=&#34;531-通过-ajax-完成添加用户&#34;&gt;5.3.1 通过 Ajax 完成添加用户&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;script&amp;gt;
+        $(function () {
+            //获取页面初始化数据
+            getData();
+            //添加按钮绑定点击事件
+            $(&amp;quot;#add&amp;quot;).click(function () {
+                addorupdateUser(&amp;quot;addUser&amp;quot;);
+            });
+        });
+
+        //获取页面初始化数据
+        function getData() {
+            $.getJSON(&amp;quot;user.do&amp;quot;, {flag: &amp;quot;getData&amp;quot;}, function (result) {
+                init(result);
+            });
+        }
+
+        //遍历数据生成数据
+        function init(obj) {
+            var str = &amp;quot;&amp;quot;;
+            $.each(obj, function () {
+                str += &amp;quot;&amp;lt;tr align=&#39;center&#39;&amp;gt;&amp;lt;td id = &#39;&amp;quot; + this.userid + &amp;quot;&#39; &amp;gt; &amp;quot; + this.userid + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.username + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.usersex + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.userbirth + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;lt;a href=&#39;#&#39; onclick=&#39;preUpdateUser()&#39;&amp;gt;选择更新&amp;amp;nbsp;&amp;amp;nbsp;&amp;lt;/a&amp;gt;&amp;lt;a href=&#39;#&#39; onclick=&#39;deleteUser(&amp;quot; + this.userid + &amp;quot;)&#39;&amp;gt;删除&amp;lt;/a&amp;gt;&amp;lt;/td &amp;gt; &amp;lt; /tr&amp;gt;&amp;quot;
+            });
+            $(&amp;quot;#tBody&amp;quot;).prepend(str);
+        }
+
+        //用户添加或者更新
+        function addorupdateUser(flag) {
+            var userid = $(&amp;quot;#userid&amp;quot;).val();
+            var username = $(&amp;quot;#username&amp;quot;).val();
+            var usersex = $(&amp;quot;#usersex&amp;quot;).val();
+            var userbirth = $(&amp;quot;#userbirth&amp;quot;).val();
+            var data = {
+                userid: userid,
+                username: username,
+                usersex: usersex,
+                userbirth: userbirth,
+                flag: flag
+            }
+            //刷新页面
+            location.reload();
+            $.get(&amp;quot;user.do&amp;quot;, data, function (result) {
+                alert(result);
+            });
+        }
+    &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;532-在-servlet-中处理添加用户请求&#34;&gt;5.3.2 在 Servlet 中处理添加用户请求&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 用户管理 Servlet
+ */
+@WebServlet(&amp;quot;/user.do&amp;quot;)
+public class UserServlet extends HttpServlet {
+    //生成模拟数据初始化
+    @Override
+    public void init() throws ServletException {
+        User user = new User();
+        user.setUserid(1);
+        user.setUsername(&amp;quot;Oldlu&amp;quot;);
+        user.setUsersex(&amp;quot;male&amp;quot;);
+        user.setUserbirth(new Date());
+        User user2 = new User();
+        user2.setUserid(2);
+        user2.setUsername(&amp;quot;Kevin&amp;quot;);
+        user2.setUsersex(&amp;quot;male&amp;quot;);
+        user2.setUserbirth(new Date());
+        List&amp;lt;User&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+        list.add(user);
+        list.add(user2);
+        ServletContext servletContext = this.getServletContext();
+        servletContext.setAttribute(&amp;quot;list&amp;quot;, list);
+
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doPost(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String flag = req.getParameter(&amp;quot;flag&amp;quot;);
+        if (&amp;quot;getData&amp;quot;.equals(flag)) {
+            this.getData(req, resp);
+        }else if(&amp;quot;addUser&amp;quot;.equals(flag)){
+            try {
+                this.addUser(req, resp);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //获取页面初始化数据
+    private void getData(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List&amp;lt;User&amp;gt; list = (List&amp;lt;User&amp;gt;) this.getServletContext().getAttribute(&amp;quot;list&amp;quot;);
+        String s = JsonUtils.objectToJson(list);
+        resp.setContentType(&amp;quot;application/json&amp;quot;);
+        PrintWriter pw = resp.getWriter();
+        pw.print(s);
+        pw.flush();
+        pw.close();
+    }
+
+    //处理添加用户请求
+    private void addUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ParseException {
+        User user = createUser(req);
+        //从ServletContext中取出list
+        ServletContext servletContext = this.getServletContext();
+        //getAttribute返回的是一个object对象
+        List&amp;lt;User&amp;gt; list = (List&amp;lt;User&amp;gt;) servletContext.getAttribute(&amp;quot;list&amp;quot;);
+        list.add(user);
+        resp.setContentType(&amp;quot;text/plain;charset=utf-8&amp;quot;);
+        PrintWriter pw = resp.getWriter();
+        pw.print(&amp;quot;添加成功&amp;quot;);
+        pw.flush();
+        pw.close();
+    }
+
+    //获取请求数据
+    private User createUser(HttpServletRequest req) throws ParseException {
+        String userid = req.getParameter(&amp;quot;userid&amp;quot;);
+        String username = req.getParameter(&amp;quot;username&amp;quot;);
+        String usersex = req.getParameter(&amp;quot;usersex&amp;quot;);
+        String userbirth = req.getParameter(&amp;quot;userbirth&amp;quot;);
+
+        User user = new User();
+        user.setUserid(Integer.parseInt(userid));
+        user.setUsername(username);
+        user.setUsersex(usersex);
+
+        SimpleDateFormat sf = new SimpleDateFormat(&amp;quot;yyyy-MM-dd&amp;quot;);
+        Date parse = sf.parse(userbirth);
+        user.setUserbirth(parse);
+
+        return user;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;解决时区问题:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@JsonFormat(pattern = &amp;quot;yyyy-MM-dd&amp;quot;,timezone = &amp;quot;GMT+8&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200615153808.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200615153820.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;54-更新用户操作&#34;&gt;5.4 更新用户操作&lt;/h3&gt;
+&lt;h4 id=&#34;541-通过-ajax-完成预更新用户选择&#34;&gt;5.4.1 通过 Ajax 完成预更新用户选择&lt;/h4&gt;
+&lt;p&gt;实现选择更新数据回填文本框&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;script&amp;gt;
+        $(function () {
+            //获取页面初始化数据
+            getData();
+            //添加按钮绑定点击事件
+            $(&amp;quot;#add&amp;quot;).click(function () {
+                addorupdateUser(&amp;quot;addUser&amp;quot;);
+            });
+        });
+
+        //获取页面初始化数据
+        function getData() {
+            $.getJSON(&amp;quot;user.do&amp;quot;, {flag: &amp;quot;getData&amp;quot;}, function (result) {
+                init(result);
+            });
+        }
+
+        //遍历数据生成数据
+        function init(obj) {
+            var str = &amp;quot;&amp;quot;;
+            $.each(obj, function () {
+                str += &amp;quot;&amp;lt;tr align=&#39;center&#39;&amp;gt;&amp;lt;td id = &#39;&amp;quot; + this.userid + &amp;quot;&#39; &amp;gt; &amp;quot; + this.userid + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.username + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.usersex + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.userbirth + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;lt;a href=&#39;#&#39; onclick=&#39;preUpdateUser(&amp;quot; + this.userid + &amp;quot;)&#39;&amp;gt;选择更新&amp;amp;nbsp;&amp;amp;nbsp;&amp;lt;/a&amp;gt;&amp;lt;a href=&#39;#&#39; onclick=&#39;deleteUser(&amp;quot; + this.userid + &amp;quot;)&#39;&amp;gt;删除&amp;lt;/a&amp;gt;&amp;lt;/td &amp;gt; &amp;lt; /tr&amp;gt;&amp;quot;
+            });
+            $(&amp;quot;#tBody&amp;quot;).prepend(str);
+        }
+
+        //用户添加或者更新
+        function addorupdateUser(flag) {
+            var userid = $(&amp;quot;#userid&amp;quot;).val();
+            var username = $(&amp;quot;#username&amp;quot;).val();
+            var usersex = $(&amp;quot;#usersex&amp;quot;).val();
+            var userbirth = $(&amp;quot;#userbirth&amp;quot;).val();
+            var data = {
+                userid: userid,
+                username: username,
+                usersex: usersex,
+                userbirth: userbirth,
+                flag: flag
+            }
+            //刷新页面
+            location.reload();
+            $.get(&amp;quot;user.do&amp;quot;, data, function (result) {
+                alert(result);
+            });
+        }
+
+        //更新之前数据选择
+        function preUpdateUser(userid) {
+            var arr = new Array();
+            //根据传进来的userid拼接
+            $(&amp;quot;#&amp;quot;+userid).closest(&amp;quot;tr&amp;quot;).children().each(function (index, ele) {
+                if (index &amp;lt;= 3) {
+                    arr[index] = ele.innerText;
+                }
+            })
+            $(&amp;quot;#userid&amp;quot;).val(arr[0]);
+            $(&amp;quot;#username&amp;quot;).val(arr[1]);
+            $(&amp;quot;#usersex&amp;quot;).val(arr[2]);
+            $(&amp;quot;#userbirth&amp;quot;).val(arr[3]);
+
+            $(&amp;quot;#userid&amp;quot;).Attr(&amp;quot;readonly&amp;quot;);
+        }
+    &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200615160446.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;542-通过-ajax-完成更新用户&#34;&gt;5.4.2 通过 Ajax 完成更新用户&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;script&amp;gt;
+        $(function () {
+            //获取页面初始化数据
+            getData();
+            //添加按钮绑定点击事件
+            $(&amp;quot;#add&amp;quot;).click(function () {
+                addorupdateUser(&amp;quot;addUser&amp;quot;);
+            });
+            //更新按钮绑定点击事件
+            $(&amp;quot;#update&amp;quot;).click(function () {
+                addorupdateUser(&amp;quot;updateUser&amp;quot;);
+            })
+        });
+
+        //获取页面初始化数据
+        function getData() {
+            $.getJSON(&amp;quot;user.do&amp;quot;, {flag: &amp;quot;getData&amp;quot;}, function (result) {
+                init(result);
+            });
+        }
+
+        //遍历数据生成数据
+        function init(obj) {
+            var str = &amp;quot;&amp;quot;;
+            $.each(obj, function () {
+                str += &amp;quot;&amp;lt;tr align=&#39;center&#39;&amp;gt;&amp;lt;td id = &#39;&amp;quot; + this.userid + &amp;quot;&#39; &amp;gt; &amp;quot; + this.userid + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.username + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.usersex + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.userbirth + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;lt;a href=&#39;#&#39; onclick=&#39;preUpdateUser(&amp;quot; + this.userid + &amp;quot;)&#39;&amp;gt;选择更新&amp;amp;nbsp;&amp;amp;nbsp;&amp;lt;/a&amp;gt;&amp;lt;a href=&#39;#&#39; onclick=&#39;deleteUser(&amp;quot; + this.userid + &amp;quot;)&#39;&amp;gt;删除&amp;lt;/a&amp;gt;&amp;lt;/td &amp;gt; &amp;lt; /tr&amp;gt;&amp;quot;
+            });
+            $(&amp;quot;#tBody&amp;quot;).prepend(str);
+        }
+
+        //用户添加或者更新
+        function addorupdateUser(flag) {
+            var userid = $(&amp;quot;#userid&amp;quot;).val();
+            var username = $(&amp;quot;#username&amp;quot;).val();
+            var usersex = $(&amp;quot;#usersex&amp;quot;).val();
+            var userbirth = $(&amp;quot;#userbirth&amp;quot;).val();
+            var data = {
+                userid: userid,
+                username: username,
+                usersex: usersex,
+                userbirth: userbirth,
+                flag: flag
+            }
+            //刷新页面
+            location.reload();
+            $.get(&amp;quot;user.do&amp;quot;, data, function (result) {
+                alert(result);
+            });
+        }
+
+        //更新之前数据选择
+        function preUpdateUser(userid) {
+            var arr = new Array();
+            $(&amp;quot;#&amp;quot;+userid).closest(&amp;quot;tr&amp;quot;).children().each(function (index, ele) {
+                if (index &amp;lt;= 3) {
+                    arr[index] = ele.innerText;
+                }
+            })
+            $(&amp;quot;#userid&amp;quot;).val(arr[0]);
+            $(&amp;quot;#username&amp;quot;).val(arr[1]);
+            $(&amp;quot;#usersex&amp;quot;).val(arr[2]);
+            $(&amp;quot;#userbirth&amp;quot;).val(arr[3]);
+
+            $(&amp;quot;#userid&amp;quot;).Attr(&amp;quot;readonly&amp;quot;);
+        }
+    &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;543-在-servlet-中处理更新用户请求&#34;&gt;5.4.3 在 Servlet 中处理更新用户请求&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/** 用户管理 Servlet 
+ *
+ * */
+@WebServlet(&amp;quot;/user.do&amp;quot;)
+public class UserServlet extends HttpServlet {
+  // 生成模拟数据初始化
+  @Override
+  public void init() throws ServletException {
+    User user = new User();
+    user.setUserid(1);
+    user.setUsername(&amp;quot;Oldlu&amp;quot;);
+    user.setUsersex(&amp;quot;male&amp;quot;);
+    user.setUserbirth(new Date());
+    User user2 = new User();
+    user2.setUserid(2);
+    user2.setUsername(&amp;quot;Kevin&amp;quot;);
+    user2.setUsersex(&amp;quot;male&amp;quot;);
+    user2.setUserbirth(new Date());
+    List&amp;lt;User&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+    list.add(user);
+    list.add(user2);
+    ServletContext servletContext = this.getServletContext();
+    servletContext.setAttribute(&amp;quot;list&amp;quot;, list);
+  }
+
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    this.doPost(req, resp);
+  }
+
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    String flag = req.getParameter(&amp;quot;flag&amp;quot;);
+    if (&amp;quot;getData&amp;quot;.equals(flag)) {
+      this.getData(req, resp);
+    } else if (&amp;quot;addUser&amp;quot;.equals(flag)) {
+      try {
+        this.addUser(req, resp);
+      } catch (ParseException e) {
+        e.printStackTrace();
+      }
+    } else if (&amp;quot;updateUser&amp;quot;.equals(flag)) {
+      try {
+        this.updateUser(req, resp);
+      } catch (ParseException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  // 获取页面初始化数据
+  private void getData(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    List&amp;lt;User&amp;gt; list = (List&amp;lt;User&amp;gt;) this.getServletContext().getAttribute(&amp;quot;list&amp;quot;);
+    String s = JsonUtils.objectToJson(list);
+    resp.setContentType(&amp;quot;application/json&amp;quot;);
+    PrintWriter pw = resp.getWriter();
+    pw.print(s);
+    pw.flush();
+    pw.close();
+  }
+
+  // 处理添加用户请求
+  private void addUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ParseException {
+    User user = createUser(req);
+    // 从ServletContext中取出list
+    ServletContext servletContext = this.getServletContext();
+    // getAttribute返回的是一个object对象
+    List&amp;lt;User&amp;gt; list = (List&amp;lt;User&amp;gt;) servletContext.getAttribute(&amp;quot;list&amp;quot;);
+    list.add(user);
+    resp.setContentType(&amp;quot;text/plain;charset=utf-8&amp;quot;);
+    PrintWriter pw = resp.getWriter();
+    pw.print(&amp;quot;添加成功&amp;quot;);
+    pw.flush();
+    pw.close();
+  }
+
+  // 处理更新用户请求
+  private void updateUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ParseException {
+    User user = this.createUser(req);
+    ServletContext servletContext = this.getServletContext();
+    List&amp;lt;User&amp;gt; list = (List&amp;lt;User&amp;gt;) servletContext.getAttribute(&amp;quot;list&amp;quot;);
+
+    //避免在迭代中更改集合的长度
+      User u=null;
+      for (User temp :list ) {
+          if(temp.getUserid() == user.getUserid()){
+              u = temp;
+              break;
+          }
+      }
+      if(u != null){
+          list.remove(u);
+      }
+      list.add(user);
+      resp.setContentType(&amp;quot;text/plain;charset=utf-8&amp;quot;);
+      PrintWriter pw = resp.getWriter();
+      pw.print(&amp;quot;更新成功&amp;quot;);
+      pw.flush();
+      pw.close();
+  }
+
+  // 获取请求数据
+  private User createUser(HttpServletRequest req) throws ParseException {
+    String userid = req.getParameter(&amp;quot;userid&amp;quot;);
+    String username = req.getParameter(&amp;quot;username&amp;quot;);
+    String usersex = req.getParameter(&amp;quot;usersex&amp;quot;);
+    String userbirth = req.getParameter(&amp;quot;userbirth&amp;quot;);
+
+    User user = new User();
+    user.setUserid(Integer.parseInt(userid));
+    user.setUsername(username);
+    user.setUsersex(usersex);
+
+    SimpleDateFormat sf = new SimpleDateFormat(&amp;quot;yyyy-MM-dd&amp;quot;);
+    Date parse = sf.parse(userbirth);
+    user.setUserbirth(parse);
+
+    return user;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200615163605.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200615163622.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200615163635.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;55删除用户操作&#34;&gt;5.5删除用户操作&lt;/h3&gt;
+&lt;h4 id=&#34;551-通过-ajax-完成删除用户&#34;&gt;5.5.1 通过 Ajax 完成删除用户&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;script&amp;gt;
+        $(function () {
+            //获取页面初始化数据
+            getData();
+            //添加按钮绑定点击事件
+            $(&amp;quot;#add&amp;quot;).click(function () {
+                addorupdateUser(&amp;quot;addUser&amp;quot;);
+            });
+            //更新按钮绑定点击事件
+            $(&amp;quot;#update&amp;quot;).click(function () {
+                addorupdateUser(&amp;quot;updateUser&amp;quot;);
+            })
+        });
+
+        //获取页面初始化数据
+        function getData() {
+            $.getJSON(&amp;quot;user.do&amp;quot;, {flag: &amp;quot;getData&amp;quot;}, function (result) {
+                init(result);
+            });
+        }
+
+        //遍历数据生成数据
+        function init(obj) {
+            var str = &amp;quot;&amp;quot;;
+            $.each(obj, function () {
+                str += &amp;quot;&amp;lt;tr align=&#39;center&#39;&amp;gt;&amp;lt;td id = &#39;&amp;quot; + this.userid + &amp;quot;&#39; &amp;gt; &amp;quot; + this.userid + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.username + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.usersex + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;quot; + this.userbirth + &amp;quot;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;lt;a href=&#39;#&#39; onclick=&#39;preUpdateUser(&amp;quot; + this.userid + &amp;quot;)&#39;&amp;gt;选择更新&amp;amp;nbsp;&amp;amp;nbsp;&amp;lt;/a&amp;gt;&amp;lt;a href=&#39;#&#39; onclick=&#39;deleteUser(&amp;quot; + this.userid + &amp;quot;)&#39;&amp;gt;删除&amp;lt;/a&amp;gt;&amp;lt;/td &amp;gt; &amp;lt; /tr&amp;gt;&amp;quot;
+            });
+            $(&amp;quot;#tBody&amp;quot;).prepend(str);
+        }
+
+        //用户添加或者更新
+        function addorupdateUser(flag) {
+            var userid = $(&amp;quot;#userid&amp;quot;).val();
+            var username = $(&amp;quot;#username&amp;quot;).val();
+            var usersex = $(&amp;quot;#usersex&amp;quot;).val();
+            var userbirth = $(&amp;quot;#userbirth&amp;quot;).val();
+            var data = {
+                userid: userid,
+                username: username,
+                usersex: usersex,
+                userbirth: userbirth,
+                flag: flag
+            }
+            //刷新页面
+            location.reload();
+            $.get(&amp;quot;user.do&amp;quot;, data, function (result) {
+                alert(result);
+            });
+        }
+
+        //更新之前数据选择
+        function preUpdateUser(userid) {
+            var arr = new Array();
+            $(&amp;quot;#&amp;quot; + userid).closest(&amp;quot;tr&amp;quot;).children().each(function (index, ele) {
+                if (index &amp;lt;= 3) {
+                    arr[index] = ele.innerText;
+                }
+            })
+            $(&amp;quot;#userid&amp;quot;).val(arr[0]);
+            $(&amp;quot;#username&amp;quot;).val(arr[1]);
+            $(&amp;quot;#usersex&amp;quot;).val(arr[2]);
+            $(&amp;quot;#userbirth&amp;quot;).val(arr[3]);
+
+            $(&amp;quot;#userid&amp;quot;).Attr(&amp;quot;readonly&amp;quot;);
+        }
+
+        //删除用户
+        function deleteUser(userid) {
+            $(&amp;quot;#&amp;quot; + userid).closest(&amp;quot;tr&amp;quot;).remove();
+            $.get(&amp;quot;user.do&amp;quot;, {userid: userid}, function (result) {
+                alert(result);
+            })
+        }
+    &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;552-在-servlet-处理删除用户请求&#34;&gt;5.5.2 在 Servlet 处理删除用户请求&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/** 用户管理 Servlet
+ *
+ * */
+@WebServlet(&amp;quot;/user.do&amp;quot;)
+public class UserServlet extends HttpServlet {
+  // 生成模拟数据初始化
+  @Override
+  public void init() throws ServletException {
+    User user = new User();
+    user.setUserid(1);
+    user.setUsername(&amp;quot;Oldlu&amp;quot;);
+    user.setUsersex(&amp;quot;male&amp;quot;);
+    user.setUserbirth(new Date());
+    User user2 = new User();
+    user2.setUserid(2);
+    user2.setUsername(&amp;quot;Kevin&amp;quot;);
+    user2.setUsersex(&amp;quot;male&amp;quot;);
+    user2.setUserbirth(new Date());
+    List&amp;lt;User&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+    list.add(user);
+    list.add(user2);
+    ServletContext servletContext = this.getServletContext();
+    servletContext.setAttribute(&amp;quot;list&amp;quot;, list);
+  }
+
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    this.doPost(req, resp);
+  }
+
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    String flag = req.getParameter(&amp;quot;flag&amp;quot;);
+    if (&amp;quot;getData&amp;quot;.equals(flag)) {
+      this.getData(req, resp);
+    } else if (&amp;quot;addUser&amp;quot;.equals(flag)) {
+      try {
+        this.addUser(req, resp);
+      } catch (ParseException e) {
+         e.printStackTrace();
+      }
+    } else if (&amp;quot;updateUser&amp;quot;.equals(flag)) {
+      try {
+        this.updateUser(req, resp);
+      } catch (ParseException e) {
+        e.printStackTrace();
+      }
+    }else{
+        try {
+            this.deleteUser(req,resp);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+  }
+
+  // 获取页面初始化数据
+  private void getData(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    List&amp;lt;User&amp;gt; list = (List&amp;lt;User&amp;gt;) this.getServletContext().getAttribute(&amp;quot;list&amp;quot;);
+    String s = JsonUtils.objectToJson(list);
+    resp.setContentType(&amp;quot;application/json&amp;quot;);
+    PrintWriter pw = resp.getWriter();
+    pw.print(s);
+    pw.flush();
+    pw.close();
+  }
+
+  // 处理添加用户请求
+  private void addUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ParseException {
+    User user = createUser(req);
+    // 从ServletContext中取出list
+    ServletContext servletContext = this.getServletContext();
+    // getAttribute返回的是一个object对象
+    List&amp;lt;User&amp;gt; list = (List&amp;lt;User&amp;gt;) servletContext.getAttribute(&amp;quot;list&amp;quot;);
+    list.add(user);
+    resp.setContentType(&amp;quot;text/plain;charset=utf-8&amp;quot;);
+    PrintWriter pw = resp.getWriter();
+    pw.print(&amp;quot;添加成功&amp;quot;);
+    pw.flush();
+    pw.close();
+  }
+
+  // 处理更新用户请求
+  private void updateUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ParseException {
+    User user = this.createUser(req);
+    ServletContext servletContext = this.getServletContext();
+    List&amp;lt;User&amp;gt; list = (List&amp;lt;User&amp;gt;) servletContext.getAttribute(&amp;quot;list&amp;quot;);
+
+    //避免在迭代中更改集合的长度
+      User u = null;
+      for (User temp :list ) {
+          if(temp.getUserid() == user.getUserid()){
+              u = temp;
+              break;
+          }
+      }
+      if(u != null){
+          list.remove(u);
+      }
+      list.add(user);
+      resp.setContentType(&amp;quot;text/plain;charset=utf-8&amp;quot;);
+      PrintWriter pw = resp.getWriter();
+      pw.print(&amp;quot;更新成功&amp;quot;);
+      pw.flush();
+      pw.close();
+  }
+
+  //处理删除用户数据
+    private void deleteUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ParseException {
+        String userid = req.getParameter(&amp;quot;userid&amp;quot;);
+        ServletContext servletContext = this.getServletContext();
+        List&amp;lt;User&amp;gt; list = (List&amp;lt;User&amp;gt;) servletContext.getAttribute(&amp;quot;list&amp;quot;);
+        User user = null;
+        for (User temp : list) {
+            if((temp.getUserid()+&amp;quot;&amp;quot;).equals(userid)){
+                user = temp;
+                break;
+            }
+        }
+        if(user != null){
+            list.remove(user);
+        }
+        resp.setContentType(&amp;quot;text/plain;charset=utf-8&amp;quot;);
+        PrintWriter pw = resp.getWriter();
+        pw.print(&amp;quot;删除成功&amp;quot;);
+        pw.flush();
+        pw.close();
+    }
+
+  // 获取请求数据
+  private User createUser(HttpServletRequest req) throws ParseException {
+    String userid = req.getParameter(&amp;quot;userid&amp;quot;);
+    String username = req.getParameter(&amp;quot;username&amp;quot;);
+    String usersex = req.getParameter(&amp;quot;usersex&amp;quot;);
+    String userbirth = req.getParameter(&amp;quot;userbirth&amp;quot;);
+
+    User user = new User();
+    user.setUserid(Integer.parseInt(userid));
+    user.setUsername(username);
+    user.setUsersex(usersex);
+
+    SimpleDateFormat sf = new SimpleDateFormat(&amp;quot;yyyy-MM-dd&amp;quot;);
+    Date parse = sf.parse(userbirth);
+    user.setUserbirth(parse);
+
+    return user;
+  }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200615170710.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200615170722.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 ">Ajax</a>
       </div>
       
