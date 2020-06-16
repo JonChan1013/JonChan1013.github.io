@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-16T09:22:52.383Z</updated>
+    <updated>2020-06-16T09:25:16.017Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -40,13 +40,11 @@
         <updated>2020-06-16T09:13:10.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="1-git简介">1、Git简介</h2>
 <h3 id="11-git概念">1.1 Git概念</h3>
-<p>Git 是一个免费的、开源的分布式版本控制系统，可以快速高效地处理从小型到大型的<br>
-项目。</p>
+<p>Git 是一个免费的、开源的分布式版本控制系统，可以快速高效地处理从小型到大型的项目。</p>
 ]]></summary>
         <content type="html"><![CDATA[<h2 id="1-git简介">1、Git简介</h2>
 <h3 id="11-git概念">1.1 Git概念</h3>
-<p>Git 是一个免费的、开源的分布式版本控制系统，可以快速高效地处理从小型到大型的<br>
-项目。</p>
+<p>Git 是一个免费的、开源的分布式版本控制系统，可以快速高效地处理从小型到大型的项目。</p>
 <!-- more -->
 <h3 id="12-其他常见的版本控制工具">1.2 其他常见的版本控制工具</h3>
 <p>Subversion(简称 SVN)、CVS 等</p>
