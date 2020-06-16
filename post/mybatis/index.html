@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Mybatis | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1592282167525">
+<link rel="shortcut icon" href="/favicon.ico?v=1592298874026">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -632,11 +632,15 @@
   <div class="nav">
     <div class="nav-prev">
       
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="Git" href="https://jonchan1013.github.io/post/git/">Git</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="Git" href="https://jonchan1013.github.io/post/git/">上一篇</a>
+      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="Git" href="https://jonchan1013.github.io/post/git/">Git</a>
-        <a class="nav-mobile-next" title="Git" href="https://jonchan1013.github.io/post/git/">下一篇</a>
+        <a class="nav-pc-next" title="Linux" href="https://jonchan1013.github.io/post/linux/">Linux</a>
+        <a class="nav-mobile-next" title="Linux" href="https://jonchan1013.github.io/post/linux/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
@@ -1678,25 +1682,6 @@
     <div class="result" id="result">
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/mybatis/"" data-c="
-          &lt;h2 id=&#34;1-简介&#34;&gt;1、简介&lt;/h2&gt;
-&lt;h3 id=&#34;11-什么是mybatis&#34;&gt;1.1、什么是Mybatis&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616022004.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;MyBatis 是一款优秀的&lt;strong&gt;持久层框架&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;它支持定制化 SQL、存储过程以及高级映射。&lt;/li&gt;
-&lt;li&gt;MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。&lt;/li&gt;
-&lt;li&gt;MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的 POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;!-- more --&gt;
-&lt;ul&gt;
-&lt;li&gt;MyBatis 本是&lt;a href=&#34;https://baike.baidu.com/item/apache/6265&#34;&gt;apache&lt;/a&gt;的一个开源项目&lt;a href=&#34;https://baike.baidu.com/item/iBatis&#34;&gt;iBatis&lt;/a&gt;, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。&lt;/li&gt;
-&lt;li&gt;2013年11月迁移到Github。&lt;/li&gt;
-&lt;/ul&gt;
-">Mybatis</a>
-      </div>
-      
-      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/git/"" data-c="
           &lt;h2 id=&#34;1-git简介&#34;&gt;1、Git简介&lt;/h2&gt;
 &lt;h3 id=&#34;11-git概念&#34;&gt;1.1 Git概念&lt;/h3&gt;
@@ -1836,7 +1821,205 @@
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616123204.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h4 id=&#34;3115-删除分支命令&#34;&gt;3.11.5 删除分支命令&lt;/h4&gt;
 &lt;p&gt;​			git branch –d 分支名&lt;/p&gt;
+&lt;h2 id=&#34;4-远程仓库操作以码云为例&#34;&gt;4、远程仓库操作（以码云为例）&lt;/h2&gt;
+&lt;h3 id=&#34;41-在码云注册账号&#34;&gt;4.1 在码云注册账号&lt;/h3&gt;
+&lt;p&gt;​		地址： https://gitee.com/&lt;/p&gt;
+&lt;h3 id=&#34;42-创建-ssh-key&#34;&gt;4.2 创建 SSH key&lt;/h3&gt;
+&lt;p&gt;​		因为数据保存在远程服务器，服务器需要对你的身份进行识别，SSH key 可以让你的电脑和码云之间建立安全的加密连接。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;运行命令 ssh-keygen -t rsa -C &amp;quot;你的邮箱&amp;quot;,会有三次提示输入，直接回车即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616141511.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;在用户目录下生成 .ssh 目录，里面有一个 id_rsa.pub 文件，保存的就是公钥。&lt;/p&gt;
+&lt;p&gt;​		登录码云，在 SSH 公钥文本框里粘贴 id_rsa.pub 文件的内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616141941.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;C:%5CUsers%5CCY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200616142238298.png&#34; alt=&#34;image-20200616142238298&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616142257.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;43-验证秘钥是否添加成功&#34;&gt;4.3 验证秘钥是否添加成功&lt;/h3&gt;
+&lt;p&gt;​		执行命令 ssh -T git@git.oschina.net&lt;/p&gt;
+&lt;p&gt;​		Git 使用 SSH 连接第一次验证服务器的 key 时，需要你进行确认，此时输入 yes 回车即可。&lt;/p&gt;
+&lt;p&gt;​		再次执行 ssh -T git@git.oschina.net&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616142426.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;44-创建远程仓库&#34;&gt;4.4 创建远程仓库&lt;/h3&gt;
+&lt;p&gt;​		在码云中新建仓库&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;21&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616142510.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;45-克隆远程仓库到本地&#34;&gt;4.5 克隆远程仓库到本地&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;22&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616142647.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;复制远程仓库地址&lt;/li&gt;
+&lt;li&gt;在 bash 窗口中执行    git clone  复制的地址   ，回车&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;23&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616142937.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;进入克隆目录，添加新文件&lt;/li&gt;
+&lt;li&gt;执行 git add . 将工作区所有内容上传到暂存区&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;24&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616143243.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;执行 git commit -m ‘本次提交的注释’ 提交到本地仓库&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;25&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616143411.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;执行     git push 别名  分支名   其中别名和分支名可省略。将本地仓库所有内容上传到远程仓库码云 ，码云刷新可看到最新内容&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;26&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616143523.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;27&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616143935.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;git pull 拉取远程库内容&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;28&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616144150.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;5-远程库扩展操作&#34;&gt;5、远程库扩展操作&lt;/h2&gt;
+&lt;h3 id=&#34;51-创建远程库地址别名&#34;&gt;5.1 创建远程库地址别名&lt;/h3&gt;
+&lt;p&gt;​		git remote -v 查看当前所有远程地址别名&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;29&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616144307.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		git remote add  别名  远程地址         增加远程地址&lt;br&gt;
+​		git remote remove 别名              删除远程地址&lt;/p&gt;
+&lt;h3 id=&#34;52-解决冲突&#34;&gt;5.2 解决冲突&lt;/h3&gt;
+&lt;p&gt;要点：&lt;br&gt;
+如果不是基于 GitHub 远程库的最新版所做的修改，不能推送，必须先拉取。&lt;br&gt;
+拉取下来后如果进入冲突状态，则修改-&amp;gt;add-&amp;gt;commit 即可。&lt;/p&gt;
+&lt;h3 id=&#34;53-远程仓库邀请成员&#34;&gt;5.3 远程仓库邀请成员&lt;/h3&gt;
+&lt;p&gt;​		设置-&amp;gt;数据管理-&amp;gt;私有仓库成员-&amp;gt;选中仓库-&amp;gt;邀请成员&lt;/p&gt;
+&lt;h2 id=&#34;6-git常用命令集&#34;&gt;6、Git常用命令集&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;mkdir： XX（创建一个空目录 XX 指目录名）
+pwd： 显示当前目录的路径
+git init 把当前的目录变成可以管理的 git 仓库，生成隐藏的.git 文件。
+git add XX 把 XX 文件添加到暂存区。
+git commit -m “XX” 提交文件 -m 后面的是注释
+git status 查看仓库状态
+git diff XX 查看 XX 文件修改了哪些内容
+git log 查看历史记录
+git reset -hard HEAD^ 或者 git reset -hard HEAD~ 回退到上一个版本（如果想回退到 100个版本，使用 git reset -hard HEAD~100）
+cat XX 查看 XX 文件内容
+git reflog 查看历史记录的版本号 id
+git checkout --XX 把 XX 文件在工作区的修改全部撤销
+git rm XX 删除 XX 文件
+git remote add origin https://gitee.com/oldlu_wk/gittest.git 关联一个远程库
+git push -u （第一次提交要用-u 以后不需要）origin master 把当前 master 分支推送到远
+程库
+git clone https://gitee.com/oldlu_wk/gittest.git 从远程库中克隆
+git checkout -b dev 创建 dev 分支 并切换到 dev 分支上
+git branch 查看当前所有分支
+git checkout master 切换回 master 分支
+git merge dev 在当前分支上合并 dev 分支
+git branch -d dev 删除 dev 分支
+git branch name 创建分支
+git stash 把当前的工作隐藏起来等以后恢复现场后继续工作
+git stash list 查看所有被隐藏的文件列表
+git stash apply 恢复被隐藏的文件，但是内容不删除
+git stash drop 删除文件
+git stash pop 恢复文件的同时也删除文件
+git remote 查看远程库的信息
+git remote -v 查看远程库的详细信息
+git push origin master Git 会把 master 分支推送到远程库对应的远程分支上
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;7-idea-中操作-git&#34;&gt;7、IDEA 中操作 Git&lt;/h2&gt;
+&lt;h3 id=&#34;71-使用-idea-提交代码&#34;&gt;7.1 使用 IDEA 提交代码&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在 idea 中配置 git 路径&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;30&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616154539.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在远程仓库上创建仓库&lt;/p&gt;
+&lt;p&gt;​	创建本地仓库&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;31&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616154734.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;32&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616154930.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		红色表示未管理&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;将项目添加到缓存&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;33&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616155102.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;34&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616155150.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		这时会变成绿色，表示已加入到缓存&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;提交项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;35&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616155509.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提交并上传&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;36&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616155548.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;37&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616155656.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		此时为正常颜色意思是已提交到本地仓库&lt;/p&gt;
+&lt;p&gt;​		注：蓝色意思为本地仓库有这文件，但add后未提交（只要在idea中任意一文件做出add，后续修改了改文件，idea会自动帮我们add）&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;添加远程仓库地址&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;38&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616160611.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;39&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616160650.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;查看上传状态&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;40&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616161330.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​	如果上传时出现 Push rejected: Push to origin/master was rejected，是因为本地和远程版本冲突&lt;/p&gt;
+&lt;p&gt;解决办法：&lt;br&gt;
+1.选择你要上传代码的文件夹，鼠标右键 git Bash Here&lt;br&gt;
+2.输入下面两行命令&lt;br&gt;
+git pull origin master --allow-unrelated-histories    --把远程仓库中的内容 pull 到本地工作目录&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;41&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616161543.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		git push -u origin master -f          --在 pull 下来的项目中做修改，通过以上命令 push 到远程仓库了&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;42&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616161723.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;新建文件会提示：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;43&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616162102.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		提交文件：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;44&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616162131.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		可以选择提交并push&lt;/p&gt;
+&lt;p&gt;​		&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616162310.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;72-在-idea-中用-git-获取新项目代码&#34;&gt;7.2 在 idea 中用 git 获取新项目代码&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;45&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616164233.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;输入远程仓库地址，克隆远程仓库&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;46&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616164302.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;73-解决冲突&#34;&gt;7.3 解决冲突&lt;/h3&gt;
+&lt;h4 id=&#34;731-产生冲突的原因&#34;&gt;7.3.1 产生冲突的原因&lt;/h4&gt;
+&lt;p&gt;​		冲突产生的根本原因是：两个人修改了同一个文件的同一块区域，在前者已经提交代码到远程仓库的情况下，后者修改代码前没有使用 pull 命令更新代码，而是修改完代码后再使用 pull 命令，这时就会产生冲突。这也是最常见的冲突，下面介绍解决冲突的办法也主要针对这种冲突。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;47&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616164517.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;732-预防冲突&#34;&gt;7.3.2 预防冲突&lt;/h4&gt;
+&lt;p&gt;​		在修改代码前，使用 pull 命令更新代码，能够保证在开始修改代码前本地的代码与远程仓库中的版本一致，这样能够大大降低冲突发生的概率。&lt;/p&gt;
+&lt;h4 id=&#34;733-解决冲突&#34;&gt;7.3.3 解决冲突&lt;/h4&gt;
+&lt;p&gt;​		按照图片中的步骤，顺序不能乱，先 stash，然后 pull，最后 unstash&lt;br&gt;
+第一步：暂存代码，idea 会恢复到上次更新后的代码，将修改的代码隔离出去&lt;br&gt;
+第二步：将远程仓库的代码拉下来&lt;/p&gt;
+&lt;p&gt;第三步：将暂存的代码还原回来&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;48&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616165110.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;49&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616165209.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;50&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616165257.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;51&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616165743.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;从左至右：&lt;br&gt;
+本地代码更新后的代码---&amp;gt;合并后的代码---&amp;gt;暂存文件的代码&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;52&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616165637.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 ">Git</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/mybatis/"" data-c="
+          &lt;h2 id=&#34;1-简介&#34;&gt;1、简介&lt;/h2&gt;
+&lt;h3 id=&#34;11-什么是mybatis&#34;&gt;1.1、什么是Mybatis&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616022004.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;MyBatis 是一款优秀的&lt;strong&gt;持久层框架&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;它支持定制化 SQL、存储过程以及高级映射。&lt;/li&gt;
+&lt;li&gt;MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。&lt;/li&gt;
+&lt;li&gt;MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的 POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- more --&gt;
+&lt;ul&gt;
+&lt;li&gt;MyBatis 本是&lt;a href=&#34;https://baike.baidu.com/item/apache/6265&#34;&gt;apache&lt;/a&gt;的一个开源项目&lt;a href=&#34;https://baike.baidu.com/item/iBatis&#34;&gt;iBatis&lt;/a&gt;, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。&lt;/li&gt;
+&lt;li&gt;2013年11月迁移到Github。&lt;/li&gt;
+&lt;/ul&gt;
+">Mybatis</a>
       </div>
       
       <div class="item">
