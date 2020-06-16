@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-16T09:25:16.017Z</updated>
+    <updated>2020-06-16T09:47:37.663Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -30,6 +30,61 @@
 发布于 2004 年 10 月 4 日。<br>
 ​		Nginx 是一个很强大的高性能 Web 和反向代理服务，它具有很多非常优越的特性：在连接高并发的情况下，Nginx 是 Apache 服务不错的替代品：Nginx 在美国是做虚拟主机生意的老板们经常选择的软件平台之一。</p>
 <!-- more -->
+<h3 id="12-nginx作用">1.2 Nginx作用</h3>
+<ul>
+<li>http 协议代理</li>
+<li>搭建虚拟主机</li>
+<li>服务的反向代理</li>
+<li>在反向代理中配置集群的负载均衡</li>
+</ul>
+<h2 id="2-代理方式">2、代理方式</h2>
+<h3 id="21-正向代理">2.1 正向代理</h3>
+<p>​		正向代理，意思是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端才能使用正向代理。</p>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616173821.png" alt="" loading="lazy"></figure>
+<h3 id="22-反向代理">2.2 反向代理</h3>
+<p>​		反向代理（Reverse Proxy）方式是指以代理服务器来接受 internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 internet 上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。</p>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616173902.png" alt="" loading="lazy"></figure>
+<h3 id="23-二者的区别">2.3 二者的区别</h3>
+<p><strong>位置不同</strong><br>
+正向代理，架设在客户机和目标主机之间；<br>
+反向代理，架设在服务器端；<br>
+<strong>代理对象不同</strong><br>
+正向代理，代理客户端，服务端不知道实际发起请求的客户端；<br>
+反向代理，代理服务端，客户端不知道实际提供服务的服务端；</p>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616173959.png" alt="" loading="lazy"></figure>
+<h2 id="3-安装nginx">3、安装Nginx</h2>
+<h3 id="31-将nginx-安装包上传到linux-中">3.1 将Nginx 安装包上传到Linux 中</h3>
+<p>​		使用的 Nginx 版本为 nginx-1.8.0.tar.gz</p>
+<h3 id="32-nginx-安装环境">3.2 nginx 安装环境</h3>
+<p>nginx 是 C 语言开发，建议在 linux 上运行</p>
+<ul>
+<li>
+<p>gcc<br>
+安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc环境，需要安装 gcc：</p>
+<p><strong>yum install gcc-c++</strong></p>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616174224.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>PCRE<br>
+PCRE(Perl Compatible Regular Expressions)是一个 Perl 库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库。<br>
+<strong>yum install -y pcre pcre-devel</strong><br>
+注：pcre-devel 是使用 pcre 开发的一个二次开发库。nginx 也需要此库。</p>
+<figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616174300.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>zlib</p>
+<p>zlib 库提供了很多种压缩和解压缩的方式，nginx 使用zlib 对http 包的内容进行gzip，所以需要在 linux 上安装 zlib 库。<br>
+<strong>yum install -y zlib zlib-devel</strong></p>
+<figure data-type="image" tabindex="6"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616174444.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>openssl<br>
+OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及 SSL 协议，并提供丰富的应用程序供测试或其它目的使用。<br>
+nginx 不仅支持 http 协议，还支持 https（即在 ssl 协议上传输 http），所以需要在linux 安装 openssl 库。<br>
+<strong>yum install -y openssl openssl-devel</strong></p>
+<figure data-type="image" tabindex="7"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616174646.png" alt="" loading="lazy"></figure>
+</li>
+</ul>
 ]]></content>
     </entry>
     <entry>

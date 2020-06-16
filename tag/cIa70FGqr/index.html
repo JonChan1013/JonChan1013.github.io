@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1592299396212">
+<link rel="shortcut icon" href="/favicon.ico?v=1592300848358">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1166,6 +1166,61 @@
 发布于 2004 年 10 月 4 日。&lt;br&gt;
 ​		Nginx 是一个很强大的高性能 Web 和反向代理服务，它具有很多非常优越的特性：在连接高并发的情况下，Nginx 是 Apache 服务不错的替代品：Nginx 在美国是做虚拟主机生意的老板们经常选择的软件平台之一。&lt;/p&gt;
 &lt;!-- more --&gt;
+&lt;h3 id=&#34;12-nginx作用&#34;&gt;1.2 Nginx作用&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;http 协议代理&lt;/li&gt;
+&lt;li&gt;搭建虚拟主机&lt;/li&gt;
+&lt;li&gt;服务的反向代理&lt;/li&gt;
+&lt;li&gt;在反向代理中配置集群的负载均衡&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-代理方式&#34;&gt;2、代理方式&lt;/h2&gt;
+&lt;h3 id=&#34;21-正向代理&#34;&gt;2.1 正向代理&lt;/h3&gt;
+&lt;p&gt;​		正向代理，意思是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端才能使用正向代理。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616173821.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;22-反向代理&#34;&gt;2.2 反向代理&lt;/h3&gt;
+&lt;p&gt;​		反向代理（Reverse Proxy）方式是指以代理服务器来接受 internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 internet 上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616173902.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;23-二者的区别&#34;&gt;2.3 二者的区别&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;位置不同&lt;/strong&gt;&lt;br&gt;
+正向代理，架设在客户机和目标主机之间；&lt;br&gt;
+反向代理，架设在服务器端；&lt;br&gt;
+&lt;strong&gt;代理对象不同&lt;/strong&gt;&lt;br&gt;
+正向代理，代理客户端，服务端不知道实际发起请求的客户端；&lt;br&gt;
+反向代理，代理服务端，客户端不知道实际提供服务的服务端；&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616173959.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;3-安装nginx&#34;&gt;3、安装Nginx&lt;/h2&gt;
+&lt;h3 id=&#34;31-将nginx-安装包上传到linux-中&#34;&gt;3.1 将Nginx 安装包上传到Linux 中&lt;/h3&gt;
+&lt;p&gt;​		使用的 Nginx 版本为 nginx-1.8.0.tar.gz&lt;/p&gt;
+&lt;h3 id=&#34;32-nginx-安装环境&#34;&gt;3.2 nginx 安装环境&lt;/h3&gt;
+&lt;p&gt;nginx 是 C 语言开发，建议在 linux 上运行&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;gcc&lt;br&gt;
+安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc环境，需要安装 gcc：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;yum install gcc-c++&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616174224.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PCRE&lt;br&gt;
+PCRE(Perl Compatible Regular Expressions)是一个 Perl 库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库。&lt;br&gt;
+&lt;strong&gt;yum install -y pcre pcre-devel&lt;/strong&gt;&lt;br&gt;
+注：pcre-devel 是使用 pcre 开发的一个二次开发库。nginx 也需要此库。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616174300.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;zlib&lt;/p&gt;
+&lt;p&gt;zlib 库提供了很多种压缩和解压缩的方式，nginx 使用zlib 对http 包的内容进行gzip，所以需要在 linux 上安装 zlib 库。&lt;br&gt;
+&lt;strong&gt;yum install -y zlib zlib-devel&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616174444.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;openssl&lt;br&gt;
+OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及 SSL 协议，并提供丰富的应用程序供测试或其它目的使用。&lt;br&gt;
+nginx 不仅支持 http 协议，还支持 https（即在 ssl 协议上传输 http），所以需要在linux 安装 openssl 库。&lt;br&gt;
+&lt;strong&gt;yum install -y openssl openssl-devel&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616174646.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 ">Nginx</a>
       </div>
       
