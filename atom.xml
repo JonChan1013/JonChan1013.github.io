@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:4000</id>
+    <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-17T02:16:41.789Z</updated>
+    <updated>2020-06-17T08:16:05.685Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://localhost:4000"/>
-    <link rel="self" href="http://localhost:4000/atom.xml"/>
+    <link rel="alternate" href="https://jonchan1013.github.io"/>
+    <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>http://localhost:4000/images/avatar.png</logo>
-    <icon>http://localhost:4000/favicon.ico</icon>
+    <logo>https://jonchan1013.github.io/images/avatar.png</logo>
+    <icon>https://jonchan1013.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, CY的学习博客</rights>
     <entry>
+        <title type="html"><![CDATA[SpringBoot]]></title>
+        <id>https://jonchan1013.github.io/post/springboot/</id>
+        <link href="https://jonchan1013.github.io/post/springboot/">
+        </link>
+        <updated>2020-06-17T08:14:25.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="1-springboot介绍">1、SpringBoot介绍</h2>
+<h3 id="11-什么是springboot">1.1 什么是SpringBoot</h3>
+<pre><code>    Spring Boot 是一个框架，一种全新的编程规范，他的产生简化了框架的使用，所谓简
+</code></pre>
+<p>化是指简化了 Spring 众多框架中所需的大量且繁琐的配置文件，所以 Spring Boot 是一个服<br>
+务于框架的框架，服务范围是简化配置文件。所以从本质上来说，Spring Boot 其实就是 Spring<br>
+框架的另一种表现形式。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="1-springboot介绍">1、SpringBoot介绍</h2>
+<h3 id="11-什么是springboot">1.1 什么是SpringBoot</h3>
+<pre><code>    Spring Boot 是一个框架，一种全新的编程规范，他的产生简化了框架的使用，所谓简
+</code></pre>
+<p>化是指简化了 Spring 众多框架中所需的大量且繁琐的配置文件，所以 Spring Boot 是一个服<br>
+务于框架的框架，服务范围是简化配置文件。所以从本质上来说，Spring Boot 其实就是 Spring<br>
+框架的另一种表现形式。</p>
+<!-- more -->
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Spring]]></title>
-        <id>http://localhost:4000/post/spring/</id>
-        <link href="http://localhost:4000/post/spring/">
+        <id>https://jonchan1013.github.io/post/spring/</id>
+        <link href="https://jonchan1013.github.io/post/spring/">
         </link>
         <updated>2020-06-17T02:15:01.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="1-spring">1、Spring</h2>
@@ -38,12 +62,945 @@ SSM：SpringMVC+Spring+Mybatis!​<br>
 <p>官方下载地址：https://repo.spring.io/release/org/springframework/spring/</p>
 <p>Github：https://github.com/spring-projects/spring-framework</p>
 <p>Maven仓库：导入webmvc包会自动导入相关依赖；jdbc用于和Mybatis整合。</p>
+<pre><code class="language-xml">&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+    &lt;version&gt;5.2.0.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+    &lt;version&gt;5.2.0.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="12-优点">1.2 优点</h3>
+<ul>
+<li>
+<p>Spring是一个开源的免费的框架（容器）！</p>
+</li>
+<li>
+<p>Spring是一个轻量级的、非入侵式的框架！</p>
+</li>
+<li>
+<p>控制反转（IOC）、面向切面编程（AOP）！</p>
+</li>
+<li>
+<p>支持事务的处理，对框架整合的支持！</p>
+<p><mark><strong>总结一句话：Spring就是一个轻量级的控制反转（IOC）和面向切面编程的框架！</strong></mark></p>
+</li>
+</ul>
+<h3 id="13-组成">1.3 组成</h3>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617110747.png" alt="" loading="lazy"></figure>
+<h3 id="14-拓展">1.4 拓展</h3>
+<p>在Spring的官网有这个介绍：现代化的java开发！说白了就是基于Spring的开发！</p>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617111004.png" alt="" loading="lazy"></figure>
+<ul>
+<li>Spring Boot
+<ul>
+<li>一个快速开发的脚手架。</li>
+<li>基于Spring Boot可以快速的开发单个微服务。</li>
+<li>约定大于配置！</li>
+</ul>
+</li>
+<li>Spring Cloud
+<ul>
+<li>SpringCloud是基于SpringBoot实现的。</li>
+</ul>
+</li>
+</ul>
+<p>因为现在大多数公司都在使用SpringBoot进行快速开发，学习SpringBoot的前提，需要完全掌握Spring以及SpringMVC！承上启下的作用。</p>
+<p><strong>弊端：发展了太久之后，违背了原来的理念！配置十分繁琐，人称：“配置地狱”。</strong></p>
+<h2 id="2-ioc理论推导">2、IOC理论推导</h2>
+<p>1.UserDao接口</p>
+<p>2.UserDaoImpl实现类</p>
+<p>3.UserService业务接口</p>
+<p>4.UserServiceImpl业务实现类</p>
+<p>在我们之前的业务中，用户的需求可能会影响我们原来的代码，我们需要根据用户的需求去修改源代码!如果程序代码量十分大，修改一次的成本代价十分昂贵！</p>
+<p>我们使用一个Set接口实现，已经发生了革命性的变化！</p>
+<pre><code class="language-java">private UserDao userDao;
+
+//利用set进行动态实现值的注入！
+public void setUserDao(UserDao userDao){
+    this.userDao = userDao;
+}
+</code></pre>
+<ul>
+<li>之前，程序是主动创建对象！控制权在程序员手上！</li>
+<li>使用了set注入后，程序不再具有主动性，而是变成了被动的接收对象！</li>
+</ul>
+<p>这种思想，从本质上解决了问题，我们程序员不用再去管理对象的创建了。系统的耦合性大大降低，可以更加专注在业务的实现上。这是IOC的原型！</p>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617140229.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617140305.png" alt="" loading="lazy"></figure>
+<h3 id="21-ioc本质">2.1 IOC本质</h3>
+<p>**控制反转IOC（Inversion of Control），是一种设计思想，DI（依赖注入）是实现IOC的一种方法，**也有人认为DI是IoC的另一种说法。没有IoC的程序中，我们使用面向对象编程，对象的创建与对象间的依赖关系完全硬编码在程序中，对象的创建由程序自己控制，控制反转后将对象的创建转移给第三方，个人认为所谓控制反转就是：获得依赖对象的方式反转了。</p>
+<p>采用XML方式配置Bean的时候，Bean的定义信息是和实现分离的，而采用注解的方式可以把两者合为一体，Bean的定义信息直接以注解的形式定义在实现类中，从而达到了零配置的目的。</p>
+<p><strong>控制反转是一种通过描述（XML或注解）并通过第三方去生产或获取特定对象的方式。在Spring中实现控制反转的是IoC容器，其实现方式是依赖注入（Dependency Injection,DI）</strong>。</p>
+<h2 id="3-hello-spring">3、Hello Spring</h2>
+<p>beans.xml官网配置文件：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<p>bean对象添加：</p>
+<pre><code class="language-xml">&lt;bean id=&quot;mysqlImpl&quot; class=&quot;com.kuang.dao.UserDaoMysqlImpl&quot;&gt;&lt;/bean&gt;
+&lt;bean id=&quot;oracleImpl&quot; class=&quot;com.kuang.dao.UserDaoOracleImpl&quot;&gt;&lt;/bean&gt;
+
+&lt;bean id=&quot;UserServiceImpl&quot; class=&quot;com.kuang.service.UserServiceImpl&quot;&gt;
+    &lt;!--
+        ref：引用Spring容器中已经创建好的对象
+        value：具体的值，基本数据类型
+        --&gt;
+    &lt;property name=&quot;userDao&quot; ref=&quot;mysqlImpl&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>Test方法：</p>
+<pre><code class="language-java">//解析beans.xml文件，生成管理相应的Bean对象
+ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+//getBean:参数即为spring配置文件中bean的id
+Hello hello = (Hello) context.getBean(&quot;hello&quot;);
+System.out.println(hello.toString());
+</code></pre>
+<h3 id="思考问题"><strong>思考问题</strong>？</h3>
+<ul>
+<li>
+<p>Hello对象是谁创建的？</p>
+<p>hello对象是由Spring创建的。</p>
+</li>
+<li>
+<p>Hello对象的属性是怎么设置的？</p>
+<p>hello对象的属性是由Spring容器设置的。</p>
+</li>
+</ul>
+<p>这个过程就叫做控制反转：</p>
+<p>控制：谁来控制对象的创建，传统应用程序的对象是由程序本身控制创建的，使用Spring后，对象是由Spring来创建的。</p>
+<p>反转：程序本身不创建对象，而变成被动的接收对象。</p>
+<p>依赖注入：就是利用set方法来进行注入。</p>
+<p>IoC是一种编程思想，由主动的编程编程被动的接收。</p>
+<p>可以通过new ClassPathXmlApplicationContext去浏览一下底层源码。</p>
+<p><strong>OK，到了现在，我们彻底不用在程序中去改动了，要实现不同的操作，只需要在xml配置文件中进行修改，所谓的IoC，一句话搞定：对象由Spring来创建，管理，装配！</strong></p>
+<p>IDEA快捷创建beans.xml文件，自动导入spring配置信息：</p>
+<figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617141027.png" alt="" loading="lazy"></figure>
+<h2 id="4-ioc创建对象的方式">4、IOC创建对象的方式</h2>
+<ol>
+<li>
+<p>使用无参构造创建对象，默认方式！</p>
+</li>
+<li>
+<p>假设我们要使用有参构造创建对象。</p>
+<p>1.下标赋值：</p>
+<pre><code class="language-xml">&lt;!--第一种，下标赋值！--&gt;
+&lt;bean id=&quot;user&quot; class=&quot;com.kuang.pojo.User&quot;&gt;
+    &lt;constructor-arg index=&quot;0&quot; value=&quot;憨批&quot; /&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>2.类型赋值:</p>
+<pre><code class="language-xml">&lt;!--第二种，通过类型创建，不建议使用，重复类型难以分辨--&gt;
+&lt;bean id=&quot;user&quot; class=&quot;com.kuang.pojo.User&quot;&gt;
+    &lt;constructor-arg type=&quot;java.lang.String&quot; value=&quot;大憨批&quot; /&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>3.参数名赋值:</p>
+<pre><code class="language-xml">&lt;!--第三种，直接通过参数名来设置--&gt;
+&lt;bean id=&quot;user&quot; class=&quot;com.kuang.pojo.User&quot;&gt;
+    &lt;constructor-arg name=&quot;name&quot; value=&quot;臭憨批&quot; /&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>总结：在配置文件加载的时候，容器中管理的对象就已经初始化了！</p>
+</li>
+</ol>
+<h2 id="5-spring配置">5、Spring配置</h2>
+<h3 id="51-别名">5.1 别名</h3>
+<pre><code class="language-xml">&lt;!--别名，如果添加了别名，我们也可以使用别名获取到--&gt;
+&lt;alias name=&quot;user&quot; alias=&quot;userNew&quot;&gt;&lt;/alias&gt;
+</code></pre>
+<h3 id="52-bean到底是什么">5.2 Bean到底是什么？</h3>
+<p>bean就相当于定义一个组件，这个组件是用于具体实现某个功能的。这里的所定义的bean就相当于给了你一个简洁方便的方法来调用这个组件实现你要完成的功能。</p>
+<p>1、Java面向对象，对象有方法和属性，那么就需要对象实例来调用方法和属性（即实例化）；<br>
+2、凡是有方法或属性的类都需要实例化，这样才能具象化去使用这些方法和属性；<br>
+3、规律：凡是子类及带有方法或属性的类都要加上注册Bean到Spring IoC的注解；（@Component , @Repository , @ Controller , @Service , @Configration）<br>
+4、把Bean理解为类的代理或代言人（实际上确实是通过反射、代理来实现的），这样它就能代表类拥有该拥有的东西了<br>
+5、我们都在微博上@过某某，对方会优先看到这条信息，并给你反馈，那么在Spring中，你标识一个@符号，那么Spring就会来看看，并且从这里拿到一个Bean（注册）或者给出一个Bean（使用）</p>
+<h3 id="53-怎么使用bean">5.3 怎么使用bean</h3>
+<p>对于我们的spring最主要的应该就是由这些bean组成的bean工厂，每个bean实现一个功能<br>
+例如：你写的第一个bean</p>
+<pre><code class="language-xml">&lt;bean id=&quot;userAction&quot; class=&quot;com.neusoft.gmsbs.gms.user.action.UserAction&quot;
+scope=&quot;prototype&quot;&gt;
+&lt;property name=&quot;userBO&quot; ref=&quot;userBO&quot; /&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>id相当于定义了你的这个bean的别名，如果你需要他的话只要关联这个别名就可以了，也就相当于下面的一样，在你的userAction中需要实现userBO这个功能，我关联它，那么在action中set注入就可以使用了！<br>
+至于其他的属性看下面：<br>
+Id : 标识该bean的名称，通过factory.getBean(“id”)来获得实例。<br>
+Class : 该bean的类路径。<br>
+Singleton : 默认为true，即单实例模式，每次getBean(“id”)时获取的都是同一个实例，如果设置为false，即原型模式，则每次获取的是新创建的实例。</p>
+<h3 id="54-bean的配置">5.4 Bean的配置</h3>
+<p>ID,name 或class<br>
+一般情况下，转配一个Bean时，通过指定一个ID属性作为Bean的名称<br>
+1.<strong>id</strong>属性在IOC容器中必须是唯一的<br>
+2.如果Bean的名称中含有特殊字符，就需要使用<strong>name</strong>属性<br>
+3.<strong>class</strong>用于设置一个类的完全路径名称，主要作用是ioc容器生成类的实例</p>
+<pre><code class="language-xml">&lt;!--
+    id:bean的唯一标识符，相当于我们学的对象名；
+    class：bean对象所对应的全限定名：包名+类名；
+    name：也是别名，可以同时取多个别名，逗号分割
+--&gt;
+&lt;bean id=&quot;userT&quot; class=&quot;com.kuang.pojo.UserT&quot; name=&quot;user2,u2&quot;&gt;
+&lt;/bean&gt;
+</code></pre>
+<h3 id="54-import">5.4 import</h3>
+<p>这个import，一般用于团队开发使用，他可以将多个配置文件，导入合并为一个。</p>
+<p>假设，现在项目中有多个人开发，这三个人负责不同的类开发，不同的类需要注册在不同的bean中，我们可以利用import将所有人的beans.xml合并为一个总的！</p>
+<ul>
+<li>张三</li>
+<li>李四</li>
+<li>王五</li>
+<li>applicationContext.xml</li>
+</ul>
+<pre><code class="language-xml">&lt;import resource=&quot;beans.xml&quot;/&gt;
+&lt;import resource=&quot;beans2.xml&quot;/&gt;
+&lt;import resource=&quot;beans3.xml&quot;/&gt;
+
+</code></pre>
+<p>使用的时候，直接使用总的配置就可以了。</p>
+<h2 id="6-依赖注入">6、依赖注入</h2>
+<h3 id="61-构造器注入">6.1 构造器注入</h3>
+<p>之前已经介绍过</p>
+<h3 id="62-set方式注入重点">6.2 Set方式注入【重点】</h3>
+<ul>
+<li>依赖注入：Set注入！
+<ul>
+<li>依赖：bean对象的创建依赖于容器！</li>
+<li>注入：bean对象中的所有属性，由容器来注入！</li>
+</ul>
+</li>
+</ul>
+<p>【环境搭建】</p>
+<ol>
+<li>复杂类型</li>
+</ol>
+<pre><code class="language-java">public class Address {
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+}
+</code></pre>
+<ol start="2">
+<li>真实测试对象</li>
+</ol>
+<pre><code class="language-java">public class Student {
+    private String name;
+    private Address address;
+    private String[] books;
+    private List&lt;String&gt; hobbies;
+    private Map&lt;String,String&gt; card;
+    private Set&lt;String&gt; games;
+    private String wife;
+    private Properties info;
+}
+</code></pre>
+<ol start="3">
+<li>beans.xml</li>
+</ol>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    &lt;bean id=&quot;student&quot; class=&quot;com.kuang.pojo.Student&quot;&gt;
+        &lt;!--第一种，普通值注入--&gt;
+        &lt;property name=&quot;name&quot; value=&quot;憨批&quot;/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+<ol start="4">
+<li>测试类</li>
+</ol>
+<pre><code class="language-java">public class MyTest {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+        Student student = (Student) context.getBean(&quot;student&quot;);
+        System.out.println(student.getName());
+    }
+}
+</code></pre>
+<p><mark><strong>完善注入：</strong></mark></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+    &lt;bean id=&quot;address&quot; class=&quot;com.kuang.pojo.Address&quot;/&gt;
+
+    &lt;bean id=&quot;student&quot; class=&quot;com.kuang.pojo.Student&quot;&gt;
+        &lt;!--第一种，普通值注入，value--&gt;
+        &lt;property name=&quot;name&quot; value=&quot;憨批&quot;/&gt;
+        &lt;!--第二种，Bean注入，ref--&gt;
+        &lt;property name=&quot;address&quot; ref=&quot;address&quot;/&gt;
+        &lt;!--数组注入--&gt;
+        &lt;property name=&quot;books&quot;&gt;
+            &lt;array&gt;
+                &lt;value&gt;红楼梦&lt;/value&gt;
+                &lt;value&gt;西游记&lt;/value&gt;
+                &lt;value&gt;水浒传&lt;/value&gt;
+                &lt;value&gt;三国演义&lt;/value&gt;
+            &lt;/array&gt;
+        &lt;/property&gt;
+        &lt;!--List注入--&gt;
+        &lt;property name=&quot;hobbies&quot;&gt;
+            &lt;list&gt;
+                &lt;value&gt;听歌&lt;/value&gt;
+                &lt;value&gt;敲代码&lt;/value&gt;
+                &lt;value&gt;看电影&lt;/value&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+        &lt;!--Map--&gt;
+        &lt;property name=&quot;card&quot;&gt;
+            &lt;map&gt;
+                &lt;entry key=&quot;身份证&quot; value=&quot;1555555555&quot;/&gt;
+                &lt;entry key=&quot;银行卡&quot; value=&quot;5555555555&quot;/&gt;
+            &lt;/map&gt;
+        &lt;/property&gt;
+        &lt;!--Set--&gt;
+        &lt;property name=&quot;games&quot;&gt;
+            &lt;set&gt;
+                &lt;value&gt;lol&lt;/value&gt;
+                &lt;value&gt;wow&lt;/value&gt;
+            &lt;/set&gt;
+        &lt;/property&gt;
+        &lt;!--null--&gt;
+        &lt;property name=&quot;wife&quot;&gt;
+            &lt;null/&gt;
+        &lt;/property&gt;
+        &lt;!--Properties--&gt;
+        &lt;property name=&quot;info&quot;&gt;
+            &lt;props&gt;
+                &lt;prop key=&quot;driver&quot;&gt;com.mysql.jdbc.Driver&lt;/prop&gt;
+                &lt;prop key=&quot;url&quot;&gt;jdbc:mysql://localhost:3306/news&lt;/prop&gt;
+                &lt;prop key=&quot;root&quot;&gt;root&lt;/prop&gt;
+                &lt;prop key=&quot;password&quot;&gt;123456&lt;/prop&gt;
+            &lt;/props&gt;
+        &lt;/property&gt;
+
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<h3 id="63-扩展方式注入">6.3 扩展方式注入</h3>
+<p>我们可以使用c和p命令空间进行注入：</p>
+<p>使用：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:p=&quot;http://www.springframework.org/schema/p&quot;
+       xmlns:c=&quot;http://www.springframework.org/schema/c&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+    &lt;!--p命名空间注入，可以直接注入属性的值：property--&gt;
+    &lt;bean id=&quot;user&quot; class=&quot;com.kuang.pojo.User&quot; p:name=&quot;憨批&quot; p:age=&quot;18&quot;/&gt;
+
+    &lt;!--c命名空间注入，通过构造器注入：construct-args--&gt;
+    &lt;bean id=&quot;user2&quot; class=&quot;com.kuang.pojo.User&quot; c:age=&quot;18&quot; c:name=&quot;憨批&quot;/&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<p>测试：</p>
+<pre><code class="language-java">@Test
+public void test2(){
+    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;userBeans.xml&quot;);
+    User user = context.getBean(&quot;user2&quot;, User.class);
+    System.out.println(user);
+}
+</code></pre>
+<p>注意点：p和c命名空间不能直接使用，需要导入xml约束！</p>
+<pre><code class="language-xml">xmlns:p=&quot;http://www.springframework.org/schema/p&quot;
+xmlns:c=&quot;http://www.springframework.org/schema/c&quot;
+</code></pre>
+<h3 id="64-bean的作用域">6.4 bean的作用域</h3>
+<figure data-type="image" tabindex="6"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617145745.png" alt="" loading="lazy"></figure>
+<ol>
+<li>代理模式（Spring默认机制）：get到的都是同一个对象！</li>
+</ol>
+<pre><code class="language-xml">&lt;bean id=&quot;user2&quot; class=&quot;com.kuang.pojo.User&quot; c:age=&quot;18&quot; c:name=&quot;憨批&quot; scope=&quot;singleton&quot;/&gt;
+
+</code></pre>
+<ol start="2">
+<li>原型模式：每次从容器中get的时候，都会产生一个新的对象！</li>
+</ol>
+<pre><code class="language-xml">&lt;bean id=&quot;user2&quot; class=&quot;com.kuang.pojo.User&quot; c:age=&quot;18&quot; c:name=&quot;憨批&quot; scope=&quot;prototype&quot;/&gt;
+
+</code></pre>
+<ol start="3">
+<li>其余的request、session、application、这些个只能在web开发中使用。</li>
+</ol>
+<p>从上面的例子也印证了我上面的总结的内容：<br>
+1、凡是子类及带属性、方法的类都注册Bean到Spring中，交给它管理；<br>
+2、@Bean 用在方法上，告诉Spring容器，你可以从下面这个方法中拿到一个Bean</p>
+<h2 id="7-bean的自动装配">7、Bean的自动装配</h2>
+<ul>
+<li>自动装配是Spring满足bean依赖的一种方式！</li>
+<li>Spring会在上下文中自动寻找，并自动给bean装配属性！</li>
+</ul>
+<p>在Spring中有三种装配的方式：</p>
+<ol>
+<li>在xml中显式配置；</li>
+<li>在java中显式配置；</li>
+<li>隐式的自动装配bean</li>
+</ol>
+<h3 id="71-测试">7.1 测试</h3>
+<p>环境搭建：一个人有两个宠物！</p>
+<h3 id="72-byname自动装配">7.2 ByName自动装配</h3>
+<pre><code class="language-xml">&lt;!--
+    byName:会自动在容器上下文中查找和自己对象set方法后面的值对应的beanid！
+--&gt;
+&lt;bean id=&quot;people&quot; class=&quot;com.kuang.pojo.People&quot; autowire=&quot;byName&quot;&gt;
+    &lt;property name=&quot;name&quot; value=&quot;憨批&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<h3 id="73-bytype自动装配">7.3  ByType自动装配</h3>
+<pre><code class="language-xml">&lt;!--
+    byType:会自动在容器上下文中查找，和自己对象属性类型相同的bean！必须保证类型全局唯一。
+--&gt;
+&lt;bean id=&quot;people&quot; class=&quot;com.kuang.pojo.People&quot; autowire=&quot;byType&quot;&gt;
+    &lt;property name=&quot;name&quot; value=&quot;憨批&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>小结：</p>
+<ul>
+<li>byName的时候，需要保证所有bean的id唯一，并且这个bean需要和自动注入的属性的set方法的值一致！</li>
+<li>byType的时候，需要保证所有bean的class唯一，并且这个bean需要和自动注入的属性的类型一致！</li>
+</ul>
+<h3 id="74-使用注解实现自动装配">7.4 使用注解实现自动装配</h3>
+<p>jdk1.5支持注解，Spring2.5开始支持注解。</p>
+<p>要使用注解须知：</p>
+<ol>
+<li>导入约束：context约束。</li>
+<li>配置注解的支持：<a href="context:annot-config/">context:annot-config/</a></li>
+</ol>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+
+    &lt;context:annotation-config/&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<p><strong>@Autowired</strong></p>
+<p>直接在属性上使用即可！也可以在set方式上使用！</p>
+<p>使用Autowired我们可以不用编写Set方法了，前提是你这个自动装配的属性在IoC（Spring）容器中存在，且符合名字byName！</p>
+<p>科普：</p>
+<pre><code class="language-java">@Nullable	字段标记了这个注解，说明这个字段可以为null
+    public People(@Nullable String name){
+    this.name = name;
+}
+</code></pre>
+<pre><code class="language-java">public @interface Autowired {
+    boolean required() default true;
+}
+</code></pre>
+<p>测试代码:</p>
+<pre><code class="language-java">public class People {
+    //如果显式定义了Autowired的required属性为false，说明这个对象可以为null，否则不允许为空
+    @Autowired(required = false)
+    private Dog dog;
+    @Autowired
+    private Cat cat;
+    private String name;
+}
+</code></pre>
+<p>如果@Autowired自动装配的环境比较复杂，自动装配无法通过一个注解@Autowired完成的时候，我们可以使用@Qualifier(value=”xxx”)去配置@Autowired的使用，指定一个唯一的bean对象注入！</p>
+<pre><code class="language-java">public class People {
+    @Autowired
+    @Qualifier(value=&quot;dog11&quot;)
+    private Dog dog;
+    @Autowired
+	@Qualifier(value=&quot;cat11&quot;)
+    private Cat cat;
+    private String name;
+}
+</code></pre>
+<p><strong>@Resource注解</strong></p>
+<pre><code class="language-java">public class People {
+    @Resource(name = &quot;cat2&quot;)
+    private Cat cat;
+}
+</code></pre>
+<p>小结：</p>
+<p><strong>@Resource和@Autowired的区别：</strong></p>
+<ul>
+<li>都是用来自动装配的，都可以放在属性字段上；</li>
+<li>@Autowired通过byType的方式实现，而且必须要求这个对象存在！【常用】</li>
+<li>@Resource默认通过byName的方式实现，如果找不到名字，则通过byType实现！如果两个都找不到的情况下，就报错！</li>
+<li>执行顺序不同：@Autowired通过byType的方式实现，@Resource默认通过byName的方式实现。</li>
+</ul>
+<h2 id="8-使用注解开发">8、使用注解开发</h2>
+<p>在spring4之后，要使用注解开发，必须要保证aop的包导入了。</p>
+<figure data-type="image" tabindex="7"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617153338.png" alt="" loading="lazy"></figure>
+<p>使用注解需要导入context约束，增加注解的支持！</p>
+<pre><code class="language-xml">&lt;!--指定要扫描的包，这个包下的注解会生效--&gt;
+&lt;context:component-scan base-package=&quot;com.kuang.pojo&quot;/&gt;
+
+</code></pre>
+<ol>
+<li>bean</li>
+<li>属性如何注入</li>
+</ol>
+<pre><code class="language-java">//等价于&lt;bean id=&quot;user&quot; class=&quot;com.kuang.pojo.User&quot;/&gt;
+//@Component 组件
+@Component
+public class User {
+    //相当于&lt;property name=&quot;name&quot; value=&quot;小憨批&quot;/&gt;
+    public String name;
+    @Value(&quot;小憨批&quot;)
+    public void setName(String name){
+        this.name = name;
+    }
+}
+</code></pre>
+<ol start="3">
+<li>衍生的注解</li>
+</ol>
+<p>@Component有几个衍生注解，我们在web开发中，会按照mvc三层架构分层！</p>
+<ul>
+<li>dao【@Repository】</li>
+<li>service【@Service】</li>
+<li>controller【@Controller】</li>
+</ul>
+<p>这四个注解功能都是一样的，都是代表将某个类注册到Spring中，装配Bean！</p>
+<ol start="4">
+<li>自动装配</li>
+</ol>
+<pre><code class="language-xml">-@Autowired:自动装配通过类型，名字
+	如果Autowired不能唯一自动装配上属性，则需要通过@Qualifier(value=&quot;xxx&quot;)
+-@Nullable:字段标记了这个注解，说明这个字段可以为null
+-@Resource:自动装配通过名字，类型
+</code></pre>
+<ol start="5">
+<li>作用域</li>
+</ol>
+<pre><code class="language-xml">@Scope(&quot;singleton&quot;)
+public class User {
+    //相当于&lt;property name=&quot;name&quot; value=&quot;小憨批&quot;/&gt;
+    public String name;
+    @Value(&quot;小憨批&quot;)
+    public void setName(String name){
+        this.name = name;
+    }
+}
+</code></pre>
+<ol start="6">
+<li>
+<p>小结</p>
+<p><strong>xml与注解：</strong></p>
+</li>
+</ol>
+<ul>
+<li>
+<p>xml更加万能，适用于任何场合！维护简单方便。</p>
+</li>
+<li>
+<p>注解，不是自己的类使用不了，维护相对复杂！</p>
+<p><strong>xml与注解最佳实践：</strong></p>
+</li>
+<li>
+<p>xml用来管理bean；</p>
+</li>
+<li>
+<p>注解只负责完成属性的注入；</p>
+</li>
+<li>
+<p>我们在使用的过程中，只需要注意一个问题：必须让注解生效，就需要开启注解的支持。</p>
+</li>
+</ul>
+<pre><code class="language-xml"> &lt;!--指定要扫描的包，这个包下的注解会生效--&gt;
+&lt;context:component-scan base-package=&quot;com.kuang&quot;/&gt;
+&lt;context:annotation-config/&gt;
+</code></pre>
+<h2 id="9-使用java的方式配置spring">9. 使用java的方式配置Spring</h2>
+<p>我们现在要完全不适用Spring的xml配置了，全权交给java来做！</p>
+<p>javaConfig是Spring的一个子项目，在Spring4之后，它成为了一个核心功能。</p>
+<p>实体类：</p>
+<pre><code class="language-java">@Component
+public class User {
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    @Value(&quot;小笨蛋&quot;)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;User{&quot; +
+                &quot;name='&quot; + name + '\'' +
+                '}';
+    }
+}
+</code></pre>
+<pre><code class="language-java">import com.kuang.pojo.User;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+
+//这个也会被Spring容器托管，注册到容器中，因为本来就是一个@Component
+//@Configuration代表这是一个配置类，就和我们之前看的beans.xml
+@Configuration
+@ComponentScan(&quot;com.kuang.pojo&quot;)
+@Import(KuangConfig2.class )
+public class KuangConfig {
+    //注册一个bean，就相当于我们之前写的一个bean标签
+    //这个方法的名字，就相当于bean标签中的id属性
+    //这个方法的返回值，就相当于bean标签中的class属性
+    @Bean
+    public User getUser(){
+        return new User();//就是返回要注入到bean的对象
+    }
+}
+</code></pre>
+<p>测试类：</p>
+<pre><code class="language-java">public class MyTest {
+    public static void main(String[] args) {
+        //如果完全使用了配置类方式去做，我们就只能通过AnnotationConfig上下文来获取容器，通过配置类的class对象加载！
+        ApplicationContext context = new AnnotationConfigApplicationContext(KuangConfig.class);
+        User getUser = (User) context.getBean(&quot;getUser&quot;);
+        System.out.println(getUser.getName());
+    }
+}
+</code></pre>
+<p>这种纯java的配置方式，在SpringBoot中随处可见！</p>
+<h2 id="10-代理模式">10、代理模式</h2>
+<p>为什么要学习代理模式？因为这就是SpringAOP的底层！【SpringAOP 和 SpringMVC 面试必问】</p>
+<p>代理模式的分类：</p>
+<ul>
+<li>静态代理</li>
+<li>动态代理</li>
+</ul>
+<figure data-type="image" tabindex="8"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617154558.png" alt="" loading="lazy"></figure>
+<h3 id="101-静态代理">10.1 静态代理</h3>
+<p>角色分析：</p>
+<ul>
+<li>抽象角色：一般会使用接口或者抽象类来解决</li>
+<li>真实角色：被代理的角色</li>
+<li>代理角色：代理真是角色，代理真实角色后，我们一般会做一些附属操作。</li>
+<li>客户：访问代理对象的人！</li>
+</ul>
+<p>代码步骤：</p>
+<ol>
+<li>
+<p>接口</p>
+<pre><code class="language-java">//租房
+public interface Rent {
+    public void rent();
+}
+</code></pre>
+</li>
+<li>
+<p>真实角色</p>
+<pre><code class="language-java">//房东
+public class Host implements Rent {
+    public void rent(){
+        System.out.println(&quot;房东要出租房子！&quot;);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>代理角色</p>
+<pre><code class="language-java">public class Proxy implements Rent {
+    private Host host;
+
+    public Proxy() {
+    }
+    public Proxy(Host host) {
+        this.host = host;
+    }
+
+    public void rent(){
+        seeHouse();
+        host.rent();
+        hetong();
+        fee();
+    }
+    //看房
+    public void seeHouse(){
+        System.out.println(&quot;中介带你看房&quot;);
+    }
+    //签合同
+    public void hetong(){
+        System.out.println(&quot;签合同&quot;);
+    }
+    //收费
+    public void fee(){
+        System.out.println(&quot;收取中介费用&quot;);
+    }
+}
+</code></pre>
+<p>代理模式的好处：</p>
+<ul>
+<li>可以使真实角色的操作更加纯粹！不用去关注一些公共的业务</li>
+<li>公共也就交给代理角色！实现了业务的分工！</li>
+<li>公共业务发生扩展的时候，方便集中管理！</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>一个真实角色就会产生一个代理角色，代码量会翻倍，开发效率会变低</li>
+</ul>
+</li>
+</ol>
+<h3 id="102-加深理解">10.2 加深理解</h3>
+<p>聊聊AOP</p>
+<figure data-type="image" tabindex="9"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617154837.png" alt="" loading="lazy"></figure>
+<h3 id="103-动态代理">10.3 动态代理</h3>
+<ul>
+<li>动态代理和静态代理角色一样</li>
+<li>动态代理的代理类是动态生成的，不是我们直接写好的。</li>
+<li>动态代理分为两大类：基于接口的动态代理，基于类的动态代理
+<ul>
+<li>基于接口——JDK动态代理</li>
+<li>基于类：cglib</li>
+<li>java字节码实现：javasisit</li>
+</ul>
+</li>
+</ul>
+<p>需要了解两个类：Proxy：代理；InvocationHandler：调用处理程序</p>
+<p>动态代理的好处：</p>
+<ul>
+<li>可以使真实角色的操作更加纯粹！不用去关注一些公共的业务</li>
+<li>公共也就交给代理角色！实现了业务的分工！</li>
+<li>公共业务发生扩展的时候，方便集中管理！</li>
+<li>一个动态代理类代理类代理的是一个接口，一般就是对应的一类业务</li>
+<li>一个动态代理类可以代理多个类，只要是实现了同一个接口即可！</li>
+</ul>
+<h2 id="11-aop">11、AOP</h2>
+<h3 id="111-什么是aop">11.1 什么是AOP</h3>
+<p>AOP（Aspect Oriented Programming）意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生泛型，利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的频率。</p>
+<figure data-type="image" tabindex="10"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617155008.png" alt="" loading="lazy"></figure>
+<h3 id="112-aop在spring中的作用">11.2 AOP在Spring中的作用</h3>
+<p><mark>提供声明式事务；允许用户自定义切面</mark></p>
+<ul>
+<li>横切关注点：跨越应用程序多个模块的方法或功能。即是，与我们业务逻辑无关的，但是我们需要关注的部分，就是横切关注点，如日志、安全、缓存、事务等等……</li>
+<li>切面（ASPECT）：横切关注点被模块化的特殊对象，即是一个类。</li>
+<li>通知（Advice）：切面必须要完成的工作，即是类中的一个方法。</li>
+<li>目标（Target）：被通知对象。</li>
+<li>代理（Proxy）：向目标对象应用通知之后创建的对象。</li>
+<li>切入点（PointCut）：切面通知执行的“地点”的定义。</li>
+<li>连接点（jointPoint）：与切入点匹配的执行点。</li>
+</ul>
+<figure data-type="image" tabindex="11"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617155041.png" alt="" loading="lazy"></figure>
+<p>SpringAOP中，通过Advice定义横切逻辑，Spring中支持5种类型的Advice：</p>
+<figure data-type="image" tabindex="12"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617155102.png" alt="" loading="lazy"></figure>
+<p>即AOP在不改变原有代码的情况下，去增加新的功能。</p>
+<h3 id="113-使用spring实现aop">11.3 使用Spring实现AOP</h3>
+<p>【重点】使用AOP织入，需要导入一个依赖包。</p>
+<pre><code class="language-xml">&lt;!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.aspectj&lt;/groupId&gt;
+    &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;
+    &lt;version&gt;1.9.5&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>方式一：使用Spring的API接口【主要SpringAPI接口实现】</p>
+<p>方式二：自定义来实现AOP【主要是切面定义】</p>
+<p>方式三：使用注解实现</p>
+<h2 id="12-整合mybatis">12、整合Mybatis</h2>
+<p>环境搭建：</p>
+<pre><code class="language-mysql">/*
+ Navicat Premium Data Transfer
+
+ Source Server         : 本地
+ Source Server Type    : MySQL
+ Source Server Version : 80018
+ Source Host           : localhost:3306
+ Source Schema         : mybatis
+
+ Target Server Type    : MySQL
+ Target Server Version : 80018
+ File Encoding         : 65001
+
+ Date: 05/12/2019 17:56:22
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for bolg
+-- ----------------------------
+DROP TABLE IF EXISTS `bolg`;
+CREATE TABLE `bolg` (
+  `id` varchar(50) NOT NULL COMMENT '博客id',
+  `title` varchar(100) NOT NULL COMMENT '博客标题',
+  `author` varchar(30) NOT NULL COMMENT '博客作者',
+  `creat_time` datetime NOT NULL COMMENT '创建时间',
+  `views` int(30) NOT NULL COMMENT '浏览量'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of bolg
+-- ----------------------------
+BEGIN;
+INSERT INTO `bolg` VALUES ('1', 'Mybatis如此简单', '尹锐', '2019-12-04 20:32:07', 9999);
+INSERT INTO `bolg` VALUES ('2', 'Java如此简单2', '尹锐2', '2019-12-04 20:32:07', 1000);
+INSERT INTO `bolg` VALUES ('3', 'Spring如此简单', '尹锐', '2019-12-04 20:32:07', 9999);
+INSERT INTO `bolg` VALUES ('4', '微服务如此简单', '尹锐', '2019-12-04 20:32:07', 9999);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for student
+-- ----------------------------
+DROP TABLE IF EXISTS `student`;
+CREATE TABLE `student` (
+  `id` int(10) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  `tid` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fktid` (`tid`),
+  CONSTRAINT `fktid` FOREIGN KEY (`tid`) REFERENCES `teacher` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of student
+-- ----------------------------
+BEGIN;
+INSERT INTO `student` VALUES (1, '小明', 1);
+INSERT INTO `student` VALUES (2, '小红', 1);
+INSERT INTO `student` VALUES (3, '小张', 1);
+INSERT INTO `student` VALUES (4, '小李', 1);
+INSERT INTO `student` VALUES (5, '小王', 1);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for teacher
+-- ----------------------------
+DROP TABLE IF EXISTS `teacher`;
+CREATE TABLE `teacher` (
+  `id` int(10) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of teacher
+-- ----------------------------
+BEGIN;
+INSERT INTO `teacher` VALUES (1, '秦老师');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(20) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  `pwd` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+BEGIN;
+INSERT INTO `user` VALUES (1, '狂神', '123456');
+INSERT INTO `user` VALUES (2, '张三', '123456');
+INSERT INTO `user` VALUES (3, '李四', '123890');
+INSERT INTO `user` VALUES (4, '王五', '23333');
+COMMIT;
+
+SET FOREIGN_KEY_CHECKS = 1;
+</code></pre>
+<p>步骤：</p>
+<ol>
+<li>导入相关jar包
+<ul>
+<li>junit</li>
+<li>Mybatis</li>
+<li>mysql数据库</li>
+<li>spring相关的</li>
+<li>aop织入</li>
+<li>mybatis-spring【new知识点】</li>
+</ul>
+</li>
+<li>编写配置文件</li>
+<li>测试</li>
+</ol>
+<h3 id="121-回忆mybatis">12.1 回忆mybatis</h3>
+<ol>
+<li>编写实体类</li>
+<li>编写核心配置文件</li>
+<li>编写接口</li>
+<li>编写Mapper.xml</li>
+<li>测试</li>
+</ol>
+<h3 id="122-mybatis-spring">12.2 Mybatis-Spring</h3>
+<ol>
+<li>编写数据源配置</li>
+<li>sqlSessionFactory</li>
+<li>sqlSessionTemplate</li>
+<li>需要给接口加实现类</li>
+<li>将自己写的实现类，注入到Spring中</li>
+<li>测试</li>
+</ol>
+<h2 id="13-声明式事务">13、 声明式事务</h2>
+<h3 id="131-回顾事务">13.1 回顾事务</h3>
+<ul>
+<li>把一组业务当成一个业务来做：要么都成功，要么都失败。</li>
+<li>事务在项目开发中，十分的重要，涉及到数据的一致性问题，不能马虎。</li>
+<li>确保完整性和一致性。</li>
+</ul>
+<p>事务ADID原则：</p>
+<ul>
+<li>原子性</li>
+<li>一致性</li>
+<li>隔离性
+<ul>
+<li>多个业务可能操作同一个资源，防止数据损坏</li>
+</ul>
+</li>
+<li>持久性
+<ul>
+<li>事务一旦提交，无论系统发生什么问题，结果都不会再被影响，被持久化的写到存储器中。</li>
+</ul>
+</li>
+</ul>
+<p>13.2 Spring中的事务管理</p>
+<ul>
+<li>声明式事务：AOP</li>
+<li>编程式事务：需要在代码中，进行事务的管理</li>
+</ul>
+<p>思考：</p>
+<p>为什么需要事务？</p>
+<ul>
+<li>如果不配置事务，可能存在数据提交不一致的情况</li>
+<li>如果我们不在Spring中去配置声明式事务，我们就需要在代码中手动配置事务</li>
+<li>事务在项目的开发中十分重要，涉及到数据的一致性和完整性问题，不容马虎</li>
+</ul>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Nginx]]></title>
-        <id>http://localhost:4000/post/nginx/</id>
-        <link href="http://localhost:4000/post/nginx/">
+        <id>https://jonchan1013.github.io/post/nginx/</id>
+        <link href="https://jonchan1013.github.io/post/nginx/">
         </link>
         <updated>2020-06-16T09:19:26.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="1-nginx">1、Nginx</h2>
@@ -782,8 +1739,8 @@ root html;
     </entry>
     <entry>
         <title type="html"><![CDATA[Git]]></title>
-        <id>http://localhost:4000/post/git/</id>
-        <link href="http://localhost:4000/post/git/">
+        <id>https://jonchan1013.github.io/post/git/</id>
+        <link href="https://jonchan1013.github.io/post/git/">
         </link>
         <updated>2020-06-16T09:13:10.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="1-git简介">1、Git简介</h2>
@@ -1110,8 +2067,8 @@ git pull origin master --allow-unrelated-histories    --把远程仓库中的内
     </entry>
     <entry>
         <title type="html"><![CDATA[Mybatis]]></title>
-        <id>http://localhost:4000/post/mybatis/</id>
-        <link href="http://localhost:4000/post/mybatis/">
+        <id>https://jonchan1013.github.io/post/mybatis/</id>
+        <link href="https://jonchan1013.github.io/post/mybatis/">
         </link>
         <updated>2020-06-15T18:19:24.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="1-简介">1、简介</h2>
@@ -1142,8 +2099,8 @@ git pull origin master --allow-unrelated-histories    --把远程仓库中的内
     </entry>
     <entry>
         <title type="html"><![CDATA[Linux]]></title>
-        <id>http://localhost:4000/post/linux/</id>
-        <link href="http://localhost:4000/post/linux/">
+        <id>https://jonchan1013.github.io/post/linux/</id>
+        <link href="https://jonchan1013.github.io/post/linux/">
         </link>
         <updated>2020-06-15T09:31:03.000Z</updated>
         <summary type="html"><![CDATA[<p>👩‍💻目前在中大型互联网项目中，Linux操作系统已成为不可或缺的技术，是程序员必备技能。同时也为其他高级技术的使用提供了有效的保障。</p>
@@ -1768,8 +2725,8 @@ d | 2 代表目录
     </entry>
     <entry>
         <title type="html"><![CDATA[LeetCode刷题]]></title>
-        <id>http://localhost:4000/post/leetcode-shua-ti/</id>
-        <link href="http://localhost:4000/post/leetcode-shua-ti/">
+        <id>https://jonchan1013.github.io/post/leetcode-shua-ti/</id>
+        <link href="https://jonchan1013.github.io/post/leetcode-shua-ti/">
         </link>
         <updated>2020-06-13T03:54:48.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="70-爬楼梯">70、爬楼梯</h2>
@@ -1830,8 +2787,8 @@ d | 2 代表目录
     </entry>
     <entry>
         <title type="html"><![CDATA[Ajax]]></title>
-        <id>http://localhost:4000/post/ajax/</id>
-        <link href="http://localhost:4000/post/ajax/">
+        <id>https://jonchan1013.github.io/post/ajax/</id>
+        <link href="https://jonchan1013.github.io/post/ajax/">
         </link>
         <updated>2020-06-12T10:34:35.000Z</updated>
         <summary type="html"><![CDATA[<p>✍️Ajax 即“Asynchronous Javascript And XML”（异步 JavaScript 和 XML），是指一种创建交互式、快速动态应用的网页开发技术，无需重新加载整个网页的情况下，能够更新页面局部数据的技术。<br>
@@ -3530,8 +4487,8 @@ public class UserServlet extends HttpServlet {
     </entry>
     <entry>
         <title type="html"><![CDATA[jQuery]]></title>
-        <id>http://localhost:4000/post/jquery/</id>
-        <link href="http://localhost:4000/post/jquery/">
+        <id>https://jonchan1013.github.io/post/jquery/</id>
+        <link href="https://jonchan1013.github.io/post/jquery/">
         </link>
         <updated>2020-06-11T01:32:04.000Z</updated>
         <summary type="html"><![CDATA[<p>✍️ jQuery 是一个 JavaScript 库。 jQuery 极大地简化了 JavaScript 编程......</p>
@@ -4498,8 +5455,8 @@ jQuery具有强大的选择器功能</li>
     </entry>
     <entry>
         <title type="html"><![CDATA[JavaWeb]]></title>
-        <id>http://localhost:4000/post/javaweb/</id>
-        <link href="http://localhost:4000/post/javaweb/">
+        <id>https://jonchan1013.github.io/post/javaweb/</id>
+        <link href="https://jonchan1013.github.io/post/javaweb/">
         </link>
         <updated>2019-09-14T17:34:28.000Z</updated>
         <summary type="html"><![CDATA[<p>✍️JAVAEE的核心内容：Servlet和JSP、Tomcat服务器等。此外Maven的配置、Servlet的原理、Cookie和Session、JSP、监听器和过滤器、JDBC......</p>
@@ -6675,77 +7632,6 @@ INSERT INTO account(`name`,money) VALUES('C',1000);
         }
     }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Intellij IDEA常用快捷键]]></title>
-        <id>http://localhost:4000/post/intellij-idea-chang-yong-kuai-jie-jian/</id>
-        <link href="http://localhost:4000/post/intellij-idea-chang-yong-kuai-jie-jian/">
-        </link>
-        <updated>2019-01-03T07:17:39.000Z</updated>
-        <summary type="html"><![CDATA[<h3 id="️最常用快捷键">✍️最常用快捷键</h3>
-<ol>
-<li>Alt+回车 导入包,自动修正</li>
-<li>Ctrl+N  查找类</li>
-</ol>
-]]></summary>
-        <content type="html"><![CDATA[<h3 id="️最常用快捷键">✍️最常用快捷键</h3>
-<ol>
-<li>Alt+回车 导入包,自动修正</li>
-<li>Ctrl+N  查找类<!-- more -->
-</li>
-<li>Ctrl+Shift+N 查找文件</li>
-<li>Ctrl+Alt+L  格式化代码</li>
-<li>Ctrl+Alt+O 优化导入的类和包</li>
-<li>Alt+Insert 生成代码(如get,set方法,构造函数等)</li>
-<li>Ctrl+E或者Alt+Shift+C  最近更改的代码</li>
-<li>Ctrl+R 替换文本</li>
-<li>Ctrl+F 查找文本</li>
-<li>Ctrl+Shift+Space 自动补全代码</li>
-<li>Ctrl+空格 代码提示</li>
-<li>Ctrl+Alt+Space 类名或接口名提示</li>
-<li>Ctrl+P 方法参数提示</li>
-<li>Ctrl+Shift+Alt+N 查找类中的方法或变量</li>
-<li>Alt+Shift+C 对比最近修改的代码</li>
-<li>Shift+F6  重构-重命名</li>
-<li>Ctrl+Shift+先上键</li>
-<li>Ctrl+X 删除行</li>
-<li>Ctrl+D 复制行</li>
-<li>Ctrl+/ 或 Ctrl+Shift+/  注释（// 或者/<em>...</em>/ ）</li>
-<li>Ctrl+J  自动代码</li>
-<li>Ctrl+E 最近打开的文件</li>
-<li>Ctrl+H 显示类结构图</li>
-<li>Ctrl+Q 显示注释文档</li>
-<li>Alt+F1 查找代码所在位置</li>
-<li>Alt+1 快速打开或隐藏工程面板</li>
-<li>Ctrl+Alt+ left/right 返回至上次浏览的位置</li>
-<li>Alt+ left/right 切换代码视图</li>
-<li>Alt+ Up/Down 在方法间快速移动定位</li>
-<li>Ctrl+Shift+Up/Down 代码向上/下移动。</li>
-<li>F2 或Shift+F2 高亮错误或警告快速定位</li>
-<li>代码标签输入完成后，按Tab，生成代码。</li>
-<li>选中文本，按Ctrl+Shift+F7 ，高亮显示所有该文本，按Esc高亮消失。</li>
-<li>Ctrl+W 选中代码，连续按会有其他效果</li>
-<li>选中文本，按Alt+F3 ，逐个往下查找相同文本，并高亮显示。</li>
-<li>Ctrl+Up/Down 光标跳转到第一行或最后一行下</li>
-<li>Ctrl+B 快速打开光标处的类或方法</li>
-<li>Ctrl＋E，可以显示最近编辑的文件列表</li>
-<li>Shift＋Click可以关闭文件</li>
-<li>Ctrl＋[或]可以跳到大括号的开头结尾</li>
-<li>Ctrl＋Shift＋Backspace可以跳转到上次编辑的地方</li>
-<li>Ctrl＋F12，可以显示当前文件的结构</li>
-<li>Ctrl＋F7可以查询当前元素在当前文件中的引用，然后按F3可以选择</li>
-<li>Ctrl＋Shift＋N，可以快速打开文件</li>
-<li>Alt＋Q可以看到当前方法的声明</li>
-<li>Ctrl＋W可以选择单词继而语句继而行继而函数</li>
-<li>Alt＋F1可以将正在编辑的元素在各个面板中定位</li>
-<li>Ctrl＋Shift＋Insert可以选择剪贴板内容并插入</li>
-<li>Alt＋Insert可以生成构造器/Getter/Setter等</li>
-<li>Ctrl＋Alt＋V 可以引入变量。例如把括号内的SQL赋成一个变量</li>
-<li>Ctrl＋Alt＋T可以把代码包在一块内，例如try/catch</li>
-<li>Alt＋Up and Alt＋Down可在方法间快速移动</li>
-</ol>
-<p>👨‍💻👨‍💻👨‍💻👨‍💻👨‍💻</p>
 ]]></content>
     </entry>
 </feed>
