@@ -1,19 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://jonchan1013.github.io</id>
+    <id>http://localhost:4000</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-16T12:31:51.170Z</updated>
+    <updated>2020-06-17T02:16:41.789Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://jonchan1013.github.io"/>
-    <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>https://jonchan1013.github.io/images/avatar.png</logo>
-    <icon>https://jonchan1013.github.io/favicon.ico</icon>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2020, CY的学习博客</rights>
     <entry>
+        <title type="html"><![CDATA[Spring]]></title>
+        <id>http://localhost:4000/post/spring/</id>
+        <link href="http://localhost:4000/post/spring/">
+        </link>
+        <updated>2020-06-17T02:15:01.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="1-spring">1、Spring</h2>
+<h3 id="11-简介">1.1 简介</h3>
+<p>Spring：春天—-&gt;给软件行业带来了春天！<br>
+2002，首次推出了Spring框架的雏形：interface21框架！<br>
+Spring框架即以interface21框架为基础，经过重新设计，并不断丰富内涵，于2004年3月24日，发布了1.0正式版。<br>
+Rod Johnson，Spring Framework创始人，著名作者。很难想象其学历，真的让好多人大吃一惊，他是悉尼大学的博士，然而他的专业不是计算机，而是音乐学。<br>
+spring理念：使现有的技术更加容易使用，本身是一个大杂烩，整合了现有的技术框架。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="1-spring">1、Spring</h2>
+<h3 id="11-简介">1.1 简介</h3>
+<p>Spring：春天—-&gt;给软件行业带来了春天！<br>
+2002，首次推出了Spring框架的雏形：interface21框架！<br>
+Spring框架即以interface21框架为基础，经过重新设计，并不断丰富内涵，于2004年3月24日，发布了1.0正式版。<br>
+Rod Johnson，Spring Framework创始人，著名作者。很难想象其学历，真的让好多人大吃一惊，他是悉尼大学的博士，然而他的专业不是计算机，而是音乐学。<br>
+spring理念：使现有的技术更加容易使用，本身是一个大杂烩，整合了现有的技术框架。</p>
+<!-- more -->
+<p>SSH：Struct2+Spring+Hibernate!<br>
+SSM：SpringMVC+Spring+Mybatis!​<br>
+官网：https://spring.io/projects/spring-framework#overview</p>
+<p>官方下载地址：https://repo.spring.io/release/org/springframework/spring/</p>
+<p>Github：https://github.com/spring-projects/spring-framework</p>
+<p>Maven仓库：导入webmvc包会自动导入相关依赖；jdbc用于和Mybatis整合。</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Nginx]]></title>
-        <id>https://jonchan1013.github.io/post/nginx/</id>
-        <link href="https://jonchan1013.github.io/post/nginx/">
+        <id>http://localhost:4000/post/nginx/</id>
+        <link href="http://localhost:4000/post/nginx/">
         </link>
         <updated>2020-06-16T09:19:26.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="1-nginx">1、Nginx</h2>
@@ -85,12 +115,675 @@ nginx 不仅支持 http 协议，还支持 https（即在 ssl 协议上传输 ht
 <figure data-type="image" tabindex="7"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616174646.png" alt="" loading="lazy"></figure>
 </li>
 </ul>
+<h2 id="3-编译安装">3、编译安装</h2>
+<p>​		解压：tar -zxvf nginx-1.8.0.tar.gz</p>
+<p>​		进入到 nginx 的根目录<br>
+​		cd nginx-1.8.0</p>
+<h3 id="31-配置安装参数">3.1 配置安装参数</h3>
+<p>./configure</p>
+<p>参数设置如下：<br>
+./configure <br>
+--prefix=/usr/local/nginx <br>
+--pid-path=/var/run/nginx/nginx.pid <br>
+--lock-path=/var/lock/nginx.lock <br>
+--error-log-path=/var/log/nginx/error.log <br>
+--http-log-path=/var/log/nginx/access.log <br>
+--with-http_gzip_static_module <br>
+--http-client-body-temp-path=/var/temp/nginx/client <br>
+--http-proxy-temp-path=/var/temp/nginx/proxy <br>
+--http-fastcgi-temp-path=/var/temp/nginx/fastcgi <br>
+--http-uwsgi-temp-path=/var/temp/nginx/uwsgi <br>
+--http-scgi-temp-path=/var/temp/nginx/scgi</p>
+<p>注意：上边将临时文件目录指定为/var/temp/nginx，需要在/var 下创建 temp 及 nginx</p>
+<p>目录</p>
+<h3 id="32-编译安装">3.2 编译安装</h3>
+<p>编译：make</p>
+<p>编译安装 make install</p>
+<h2 id="4-操作nginx">4、操作Nginx</h2>
+<h3 id="41-启动nginx">4.1 启动nginx</h3>
+<p>​		cd /usr/local/nginx/sbin/<br>
+​		./nginx<br>
+​		注意：执行./nginx 启动 nginx，这里可以-c 指定加载的 nginx 配置文件，如下：<br>
+​		./nginx -c /usr/local/nginx/conf/nginx.conf<br>
+​		如果不指定-c，nginx 在启动时默认加载 conf/nginx.conf 文件，此文件的地址也可以在编译安装 nginx 时指定./configure 的参数（--conf-path= 指向配置文件（nginx.conf））</p>
+<h3 id="42-停止nginx">4.2 停止nginx</h3>
+<p>方式 1：快速停止：<br>
+cd /usr/local/nginx/sbin<br>
+./nginx -s stop<br>
+此方式相当于先查出 nginx 进程 id 再使用 kill 命令强制杀掉进程。</p>
+<p>方式 2：完整停止(建议使用)：<br>
+cd /usr/local/nginx/sbin<br>
+./nginx -s quit<br>
+此方式停止步骤是待 nginx 进程处理任务完毕进行停止。</p>
+<h3 id="43-重启nginx">4.3 重启nginx</h3>
+<p>方式 1：先停止再启动（建议使用）：<br>
+对nginx 进行重启相当于先停止nginx 再启动nginx，即先执行停止命令再执行启动命令。<br>
+如下：<br>
+./nginx -s quit<br>
+./nginx</p>
+<p>方式 2：重新加载配置文件：<br>
+当 nginx 的配置文件 nginx.conf 修改后，要想让配置生效需要重启 nginx，使用-s reload 不用先停止 nginx 再启动 nginx 即可将配置信息在 nginx 中生效，如下：<br>
+./nginx -s reload</p>
+<h3 id="44-测试">4.4 测试</h3>
+<p>​		nginx 安装成功，启动 nginx，即可访问虚拟机上的 nginx<br>
+​		Nginx 默认的是侦听 80 端口</p>
+<figure data-type="image" tabindex="8"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616232418.png" alt="" loading="lazy"></figure>
+<p>注：启动前记得关闭防火墙</p>
+<figure data-type="image" tabindex="9"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200616232514.png" alt="" loading="lazy"></figure>
+<h2 id="5-nginx的使用">5、Nginx的使用</h2>
+<h3 id="51-配置虚拟主机">5.1 配置虚拟主机</h3>
+<h4 id="511虚拟主机的介绍">5.1.1虚拟主机的介绍</h4>
+<p>​		虚拟主机是一种特殊的软硬件技术，它可以将网络上的每一台计算机分成多个虚拟主机，每个虚拟主机可以独立对外提供 www 服务，这样就可以实现一台主机对外提供多个web 服务，每个虚拟主机之间是独立的，互不影响的。<br>
+​		虚拟主机技术是互联网服务器采用的节省服务器硬件成本的技术，虚拟主机技术主要应用于 HTTP（Hypertext Transfer Protocol，超文本传输协议）服务，将一台服务器的某项或者全部服务内容逻辑划分为多个服务单位，对外表现为多个服务器，从而充分利用服务器硬<br>
+件资源。</p>
+<figure data-type="image" tabindex="10"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617092815.png" alt="" loading="lazy"></figure>
+<h4 id="512-nginx的虚拟主机配置方式">5.1.2 nginx的虚拟主机配置方式</h4>
+<p>Nginx 支持三种类型的虚拟主机配置</p>
+<ol>
+<li>基于 IP 的虚拟主机</li>
+<li>基于端口的虚拟主机</li>
+<li>基于域名的虚拟主机</li>
+</ol>
+<h4 id="513-基于ip-的虚拟主机配置方式">5.1.3 基于IP 的虚拟主机配置方式</h4>
+<ol>
+<li>
+<p>需求</p>
+<p>一台 Linux 服务器绑定两个 ip:192.168.70.144、192.168.70.188<br>
+访问不同的 ip 请求不同的 html 目录，即：<br>
+访问 http://192.168.70.144 将访问“html144”目录下的 html 网页<br>
+访问 http://192.168.70.188 将访问“html188”目录下的 html 网页</p>
+</li>
+<li>
+<p>创建 HTML 目录</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="11"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617093104.png" alt="" loading="lazy"></figure>
+<ol start="3">
+<li>Linux 绑定多 IP</li>
+</ol>
+<p>​		Linux 操作系统允许绑定多 IP。使用 IP 别名的方式，在一块物理网卡上可以绑定多个 lP地址。这样就能够在使用单一网卡的同一个服务器上运行多个基于 IP 的虚拟主机。但是在绑定多 IP 时需要将动态的 IP 分配方式修改为静态的指定 IP</p>
+<ol>
+<li>
+<p>将动态 IP 修改为静态IP</p>
+<p>cd /etc/sysconfig/network-scripts</p>
+<pre><code>IPADDR=192.168.10.144
+NETMASK=255.255.255.0
+GATEWAY=192.168.10.2
+DNS1=114.114.114.114
+</code></pre>
+</li>
+<li>
+<p>IP 绑定<br>
+将/etc/sysconfig/network-scripts/ifcfg-eth0 文件复制一份，命名为ifcfg-eth0:1<br>
+修改其中内容：<br>
+DEVICE=eth0:1<br>
+IPADDR=192.168.70.188</p>
+<p>其他项不用修改<br>
+重启系统</p>
+</li>
+<li>
+<p>修改 Nginx 的配置文件完成基于 IP 的虚拟主机配置</p>
+<p>Nginx 的配置文件 nginx.conf</p>
+<p>如上述配置文件所示，主要由 6 个部分组成：<br>
+main：用于进行 nginx 全局信息的配置<br>
+events：用于 nginx 工作模式的配置<br>
+http：用于进行 http 协议信息的一些配置<br>
+server：用于进行服务器访问信息的配置<br>
+location：用于进行访问路由的配置<br>
+upstream：用于进行负载均衡的配置</p>
+<p>Nginx.conf:</p>
+<pre><code>user root;
+worker_processes 1;
+
+#error_log logs/error.log;
+#error_log logs/error.log notice;
+#error_log logs/error.log info;
+
+#pid logs/nginx.pid;
+
+events {
+worker_connections 1024;
+
+}
+
+http {
+
+include mime.types;
+default_type application/octet-stream;
+
+#log_format main '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+# '$status $body_bytes_sent &quot;$http_referer&quot; '
+# '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+#access_log logs/access.log main;
+
+sendfile on;
+#tcp_nopush on;
+
+
+#keepalive_timeout 0;
+keepalive_timeout 65;
+
+#gzip on;
+
+#一个 Server 就是一个虚拟主机
+server {
+listen 80;
+#为虚拟机指定 IP 或者是域名
+server_name 192.168.70.144;
+
+#主要配置路由访问信息
+location / {
+#用于指定访问根目录时，访问虚拟主机的 web 目录
+root html144;
+#在不指定访问具体资源时，默认的展示资源的列表
+index index.html index.htm;
+
+}
+
+error_page 500 502 503 504 /50x.html;
+location = /50x.html {
+root html;
+
+}
+
+}
+
+#一个 Server 就是一个虚拟主机
+server {
+listen 80;
+#为虚拟机指定 IP 或者是域名
+server_name 192.168.70.188;
+
+#主要配置路由访问信息
+location / {
+#用于指定访问根目录时，访问虚拟主机的 web 目录
+root html188;
+#在不指定访问具体资源时，默认的展示资源的列表
+index index.html index.htm;
+
+}
+
+error_page 500 502 503 504 /50x.html;
+location = /50x.html {
+root html;
+
+}
+
+}
+
+}
+</code></pre>
+</li>
+</ol>
+<h4 id="514-基于端口的虚拟主机配置方式">5.1.4 基于端口的虚拟主机配置方式</h4>
+<ol>
+<li>
+<p>需求</p>
+<p>Nginx 对提供 8080 与 9090 两个端口的监听服务<br>
+请求 8080 端口则访问 html8080 目录下的 index.html<br>
+请求 9090 端口则访问 html9090 目录下的 index.html</p>
+</li>
+<li>
+<p>创建 HTML 目录</p>
+<figure data-type="image" tabindex="12"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617094255.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 Nginx 的配置文件完成基于端口的虚拟主机配置</p>
+<p>Nginx.conf：</p>
+<pre><code>user root;
+worker_processes 1;
+
+#error_log logs/error.log;
+#error_log logs/error.log notice;
+#error_log logs/error.log info;
+
+#pid logs/nginx.pid;
+
+events {
+worker_connections 1024;
+
+}
+
+
+http {
+
+include mime.types;
+default_type application/octet-stream;
+
+#log_format main '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+# '$status $body_bytes_sent &quot;$http_referer&quot; '
+# '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+#access_log logs/access.log main;
+
+sendfile on;
+#tcp_nopush on;
+
+#keepalive_timeout 0;
+keepalive_timeout 65;
+
+#gzip on;
+
+#一个 Server 就是一个虚拟主机
+server {
+listen 80;
+#为虚拟机指定 IP 或者是域名
+server_name 192.168.70.144;
+
+#主要配置路由访问信息
+location / {
+#用于指定访问根目录时，访问虚拟主机的 web 目录
+root html144;
+#在不指定访问具体资源时，默认的展示资源的列表
+index index.html index.htm;
+
+}
+
+error_page 500 502 503 504 /50x.html;
+location = /50x.html {
+root html;
+
+}
+
+}
+
+#一个 Server 就是一个虚拟主机
+server {
+
+
+listen 80;
+#为虚拟机指定 IP 或者是域名
+server_name 192.168.70.188;
+
+#主要配置路由访问信息
+location / {
+#用于指定访问根目录时，访问虚拟主机的 web 目录
+root html188;
+#在不指定访问具体资源时，默认的展示资源的列表
+index index.html index.htm;
+
+}
+
+error_page 500 502 503 504 /50x.html;
+location = /50x.html {
+root html;
+
+}
+
+}
+
+#一个 Server 就是一个虚拟主机 基于端口
+server {
+listen 8080;
+#为虚拟机指定 IP 或者是域名
+server_name 192.168.70.188;
+
+#主要配置路由访问信息
+location / {
+#用于指定访问根目录时，访问虚拟主机的 web 目录
+root html8080;
+#在不指定访问具体资源时，默认的展示资源的列表
+index index.html index.htm;
+
+}
+
+error_page 500 502 503 504 /50x.html;
+location = /50x.html {
+root html;
+
+}
+
+}
+
+#一个 Server 就是一个虚拟主机
+server {
+
+
+listen 9090;
+#为虚拟机指定 IP 或者是域名
+server_name 192.168.70.188;
+
+#主要配置路由访问信息
+location / {
+#用于指定访问根目录时，访问虚拟主机的 web 目录
+root html9090;
+#在不指定访问具体资源时，默认的展示资源的列表
+index index.html index.htm;
+
+}
+
+error_page 500 502 503 504 /50x.html;
+location = /50x.html {
+root html;
+
+}
+
+}
+
+}
+</code></pre>
+</li>
+</ol>
+<h4 id="515-基于域名的虚拟主机配置方式">5.1.5 基于域名的虚拟主机配置方式</h4>
+<ol>
+<li>
+<p>两个域名指向同一个 nginx 服务器，用户访问不同的域名时显示不同的内容。<br>
+域名规划：</p>
+<ol>
+<li>www.baidu1.com</li>
+<li>www.baidu2.com</li>
+</ol>
+</li>
+<li>
+<p>创建 HTML 目录</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="13"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617095000.png" alt="" loading="lazy"></figure>
+<ol start="3">
+<li>
+<p>修改 windows 的 hosts 文件配置域名与 ip 的映射</p>
+<p>文件路径：C:\Windows\System32\drivers\etc</p>
+<figure data-type="image" tabindex="14"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617095443.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 Nginx 的配置文件完成基于域名的虚拟主机配置</p>
+<p>nginx.conf:</p>
+<pre><code>server {
+
+listen 80;
+#为虚拟机指定 IP 或者是域名
+server_name www.baidu1.com;
+
+#主要配置路由访问信息
+location / {
+#用于指定访问根目录时，访问虚拟主机的 web 目录
+root html-baidu1;
+#在不指定访问具体资源时，默认的展示资源的列表
+
+
+index index.html index.htm;
+
+}
+
+error_page 500 502 503 504 /50x.html;
+location = /50x.html {
+root html;
+
+}
+
+}
+
+#一个 Server 就是一个虚拟主机
+server {
+listen 80;
+#为虚拟机指定 IP 或者是域名
+server_name www.baidu2.cn;
+
+#主要配置路由访问信息
+location / {
+#用于指定访问根目录时，访问虚拟主机的 web 目录
+root html-baidu2;
+#在不指定访问具体资源时，默认的展示资源的列表
+index index.html index.htm;
+
+}
+
+error_page 500 502 503 504 /50x.html;
+location = /50x.html {
+root html;
+
+}
+
+}
+</code></pre>
+</li>
+</ol>
+<h3 id="52-nginx中配置服务的反向代理">5.2 Nginx中配置服务的反向代理</h3>
+<ol>
+<li>
+<p>需求</p>
+<p>安装两个 tomcat 服务，通过 nginx 反向代理。<br>
+本案例中使用两台虚拟机演示。<br>
+tomcat 安装到 192.168.70.143 环境中。端口为 8080 与 9090<br>
+Nginx 安装在 192.168.70.144 环境中</p>
+</li>
+<li>
+<p>安装环境</p>
+</li>
+<li>
+<p>安装tomcat</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="15"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617095811.png" alt="" loading="lazy"></figure>
+<ol start="4">
+<li>
+<p>配置tomcat</p>
+<ol>
+<li>
+<p>修改端口</p>
+<figure data-type="image" tabindex="16"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617095924.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改首页内容</p>
+<figure data-type="image" tabindex="17"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200617100050.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+</li>
+<li>
+<p>配置Nginx 实现服务的反向代理</p>
+<p>nginx.conf</p>
+<pre><code>user root;
+worker_processes 1;
+
+#error_log logs/error.log;
+#error_log logs/error.log notice;
+#error_log logs/error.log info;
+
+#pid logs/nginx.pid;
+
+events {
+worker_connections 1024;
+
+}
+
+http {
+
+include mime.types;
+default_type application/octet-stream;
+
+sendfile on;
+keepalive_timeout 65;
+
+upstream tomcat_server1{
+server 192.168.70.143:8080;
+
+}
+
+upstream tomcat_server2{
+server 192.168.70.143:9090;
+
+}
+
+server {
+listen 80;
+#为虚拟机指定 IP 或者是域名
+server_name www.baidu1.com;
+
+#主要配置路由访问信息
+location / {
+#用于指定访问根目录时，访问虚拟主机的 web 目录
+proxy_pass http://tomcat_server1;
+
+#在不指定访问具体资源时，默认的展示资源的列表
+
+
+index index.html index.htm;
+
+}
+
+error_page 500 502 503 504 /50x.html;
+location = /50x.html {
+root html;
+
+}
+
+}
+
+#一个 Server 就是一个虚拟主机
+server {
+listen 80;
+#为虚拟机指定 IP 或者是域名
+server_name www.baidu2.cn;
+
+#主要配置路由访问信息
+location / {
+#用于指定访问根目录时，访问虚拟主机的 web 目录
+proxy_pass http://tomcat_server2;
+#在不指定访问具体资源时，默认的展示资源的列表
+index index.html index.htm;
+
+}
+
+error_page 500 502 503 504 /50x.html;
+location = /50x.html {
+root html;
+
+}
+
+}
+
+}
+</code></pre>
+<p>5.3 在反向代理中配置负载均衡</p>
+<h4 id=""></h4>
+</li>
+</ol>
+<h3 id="53-在反向代理中配置负载均衡">5.3 在反向代理中配置负载均衡</h3>
+<h4 id="531-什么是负载均衡">5.3.1 什么是负载均衡</h4>
+<p>​		负载均衡建立在现有网络结构之上，它提供了一种廉价有效透明的方法扩展网络设备和服务器的带宽、增加吞吐量、加强网络数据处理能力、提高网络的灵活性和可用性。<br>
+负载均衡，英文名称为 Load Balance，其意思就是分摊到多个操作单元上进行执行，例如 Web 服务器、FTP 服务器、企业关键应用服务器和其它关键任务服务器等，从而共同完成工作任务。</p>
+<h4 id="532-nginx-负载均衡策略">5.3.2 Nginx 负载均衡策略</h4>
+<ol>
+<li>
+<p>轮询（默认）<br>
+每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down 掉，能自动剔除。</p>
+</li>
+<li>
+<p>指定权重</p>
+<p>指定轮询几率，weight 和访问比率成正比，用于后端服务器性能不均的情况。<br>
+upstream backserver {<br>
+server 192.168.0.14 weight=10;<br>
+server 192.168.0.15 weight=10;</p>
+<p>}</p>
+</li>
+<li>
+<p>IP 绑定 ip_hash<br>
+每个请求按访问 ip 的 hash 结果分配，这样每个访客固定访问一个后端服务器，可以解决 session 的问题。<br>
+upstream backserver {<br>
+ip_hash;<br>
+server 192.168.0.14:88;<br>
+server 192.168.0.15:80;</p>
+</li>
+</ol>
+<p>}</p>
+<h4 id="533-需求">5.3.3 需求</h4>
+<p>nginx 作为负载均衡服务器，用户请求先到达 nginx，再由 nginx 根据负载配置<br>
+将请求转发至 tomcat 服务器。<br>
+nginx 负载均衡服务器：192.168.70.144<br>
+tomcat1 服务器：192.168.70.143:8080<br>
+tomcat2 服务器：192.168.70.143:9090</p>
+<h4 id="534-nginx-的集群配置">5.3.4 Nginx 的集群配置</h4>
+<pre><code>节点说明：
+在 http 节点里添加:
+
+#定义负载均衡设备的Ip 及设备状态
+upstream myServer {
+
+server 127.0.0.1:9090 down;
+server 127.0.0.1:8080 weight=2;
+server 127.0.0.1:6060;
+server 127.0.0.1:7070 backup;
+
+}
+
+在需要使用负载的 Server 节点下添加
+
+proxy_pass http://myServer;
+
+upstream 每个设备的状态:
+
+down 表示单前的 server 暂时不参与负载
+weight 默认为 1.weight 越大，负载的权重就越大
+fail_timeout:次失败后，暂停的时间 默认 10s
+max_fails ：允许请求失败的次数默认为 1.当超过最大次数时，返回
+backup：其它所有的非 backup 机器 down 或者忙的时候，请求 backup 机器。所以这台
+机器压力会最轻。
+
+nginx.conf
+
+user root;
+worker_processes 1;
+
+#error_log logs/error.log;
+#error_log logs/error.log notice;
+#error_log logs/error.log info;
+
+#pid logs/nginx.pid;
+
+events {
+worker_connections 1024;
+
+
+}
+
+http {
+
+include mime.types;
+default_type application/octet-stream;
+
+sendfile on;
+keepalive_timeout 65;
+
+upstream tomcat_server1{
+server 192.168.70.143:8080 weight=10;
+server 192.168.70.143:9090 weight=2;
+
+}
+
+server {
+listen 80;
+#为虚拟机指定 IP 或者是域名
+server_name www.baidu1.com;
+
+#主要配置路由访问信息
+location / {
+#用于指定访问根目录时，访问虚拟主机的 web 目录
+proxy_pass http://tomcat_server1;
+
+#在不指定访问具体资源时，默认的展示资源的列表
+index index.html index.htm;
+
+}
+
+error_page 500 502 503 504 /50x.html;
+location = /50x.html {
+root html;
+
+}
+
+}
+
+}
+</code></pre>
+<h3 id="54-http-协议代理">5.4 http 协议代理</h3>
+<p>​		由于 ftp服务器是基于 ftp协议处理的。那么现在我想在外部访问该图片，是没有办法访问的。他是不能处理 http协议的。所以我们需要拥有一个能够处理 http协议代理服务器。其实就是使用了 Nginx 的虚拟主机的方式。</p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Git]]></title>
-        <id>https://jonchan1013.github.io/post/git/</id>
-        <link href="https://jonchan1013.github.io/post/git/">
+        <id>http://localhost:4000/post/git/</id>
+        <link href="http://localhost:4000/post/git/">
         </link>
         <updated>2020-06-16T09:13:10.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="1-git简介">1、Git简介</h2>
@@ -417,8 +1110,8 @@ git pull origin master --allow-unrelated-histories    --把远程仓库中的内
     </entry>
     <entry>
         <title type="html"><![CDATA[Mybatis]]></title>
-        <id>https://jonchan1013.github.io/post/mybatis/</id>
-        <link href="https://jonchan1013.github.io/post/mybatis/">
+        <id>http://localhost:4000/post/mybatis/</id>
+        <link href="http://localhost:4000/post/mybatis/">
         </link>
         <updated>2020-06-15T18:19:24.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="1-简介">1、简介</h2>
@@ -449,8 +1142,8 @@ git pull origin master --allow-unrelated-histories    --把远程仓库中的内
     </entry>
     <entry>
         <title type="html"><![CDATA[Linux]]></title>
-        <id>https://jonchan1013.github.io/post/linux/</id>
-        <link href="https://jonchan1013.github.io/post/linux/">
+        <id>http://localhost:4000/post/linux/</id>
+        <link href="http://localhost:4000/post/linux/">
         </link>
         <updated>2020-06-15T09:31:03.000Z</updated>
         <summary type="html"><![CDATA[<p>👩‍💻目前在中大型互联网项目中，Linux操作系统已成为不可或缺的技术，是程序员必备技能。同时也为其他高级技术的使用提供了有效的保障。</p>
@@ -1075,8 +1768,8 @@ d | 2 代表目录
     </entry>
     <entry>
         <title type="html"><![CDATA[LeetCode刷题]]></title>
-        <id>https://jonchan1013.github.io/post/leetcode-shua-ti/</id>
-        <link href="https://jonchan1013.github.io/post/leetcode-shua-ti/">
+        <id>http://localhost:4000/post/leetcode-shua-ti/</id>
+        <link href="http://localhost:4000/post/leetcode-shua-ti/">
         </link>
         <updated>2020-06-13T03:54:48.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="70-爬楼梯">70、爬楼梯</h2>
@@ -1137,8 +1830,8 @@ d | 2 代表目录
     </entry>
     <entry>
         <title type="html"><![CDATA[Ajax]]></title>
-        <id>https://jonchan1013.github.io/post/ajax/</id>
-        <link href="https://jonchan1013.github.io/post/ajax/">
+        <id>http://localhost:4000/post/ajax/</id>
+        <link href="http://localhost:4000/post/ajax/">
         </link>
         <updated>2020-06-12T10:34:35.000Z</updated>
         <summary type="html"><![CDATA[<p>✍️Ajax 即“Asynchronous Javascript And XML”（异步 JavaScript 和 XML），是指一种创建交互式、快速动态应用的网页开发技术，无需重新加载整个网页的情况下，能够更新页面局部数据的技术。<br>
@@ -2837,8 +3530,8 @@ public class UserServlet extends HttpServlet {
     </entry>
     <entry>
         <title type="html"><![CDATA[jQuery]]></title>
-        <id>https://jonchan1013.github.io/post/jquery/</id>
-        <link href="https://jonchan1013.github.io/post/jquery/">
+        <id>http://localhost:4000/post/jquery/</id>
+        <link href="http://localhost:4000/post/jquery/">
         </link>
         <updated>2020-06-11T01:32:04.000Z</updated>
         <summary type="html"><![CDATA[<p>✍️ jQuery 是一个 JavaScript 库。 jQuery 极大地简化了 JavaScript 编程......</p>
@@ -3805,8 +4498,8 @@ jQuery具有强大的选择器功能</li>
     </entry>
     <entry>
         <title type="html"><![CDATA[JavaWeb]]></title>
-        <id>https://jonchan1013.github.io/post/javaweb/</id>
-        <link href="https://jonchan1013.github.io/post/javaweb/">
+        <id>http://localhost:4000/post/javaweb/</id>
+        <link href="http://localhost:4000/post/javaweb/">
         </link>
         <updated>2019-09-14T17:34:28.000Z</updated>
         <summary type="html"><![CDATA[<p>✍️JAVAEE的核心内容：Servlet和JSP、Tomcat服务器等。此外Maven的配置、Servlet的原理、Cookie和Session、JSP、监听器和过滤器、JDBC......</p>
@@ -5986,8 +6679,8 @@ INSERT INTO account(`name`,money) VALUES('C',1000);
     </entry>
     <entry>
         <title type="html"><![CDATA[Intellij IDEA常用快捷键]]></title>
-        <id>https://jonchan1013.github.io/post/intellij-idea-chang-yong-kuai-jie-jian/</id>
-        <link href="https://jonchan1013.github.io/post/intellij-idea-chang-yong-kuai-jie-jian/">
+        <id>http://localhost:4000/post/intellij-idea-chang-yong-kuai-jie-jian/</id>
+        <link href="http://localhost:4000/post/intellij-idea-chang-yong-kuai-jie-jian/">
         </link>
         <updated>2019-01-03T07:17:39.000Z</updated>
         <summary type="html"><![CDATA[<h3 id="️最常用快捷键">✍️最常用快捷键</h3>
@@ -6053,149 +6746,6 @@ INSERT INTO account(`name`,money) VALUES('C',1000);
 <li>Alt＋Up and Alt＋Down可在方法间快速移动</li>
 </ol>
 <p>👨‍💻👨‍💻👨‍💻👨‍💻👨‍💻</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Java基础总结-数组]]></title>
-        <id>https://jonchan1013.github.io/post/java-ji-chu-zong-jie-shu-zu/</id>
-        <link href="https://jonchan1013.github.io/post/java-ji-chu-zong-jie-shu-zu/">
-        </link>
-        <updated>2018-06-10T19:33:06.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="1-数组的基本概念">1、 数组的基本概念</h2>
-<ul>
-<li>数组可以看成是多个相同类型数据组合，对这些数据的统一管理。</li>
-<li>数组变量属引用类型，数组也可以看成是对象，数组中的每个元素相当于该对象的成员变量。</li>
-<li>数组的元素可以是任何数据类型，包括基本类型和引用类型。</li>
-<li>C和C++中的数组都可以分配在栈上面，而JAVA中的数组是只能分配在堆上面的，因为JAVA中的数组是引用类型。</li>
-</ul>
-]]></summary>
-        <content type="html"><![CDATA[<h2 id="1-数组的基本概念">1、 数组的基本概念</h2>
-<ul>
-<li>数组可以看成是多个相同类型数据组合，对这些数据的统一管理。</li>
-<li>数组变量属引用类型，数组也可以看成是对象，数组中的每个元素相当于该对象的成员变量。</li>
-<li>数组的元素可以是任何数据类型，包括基本类型和引用类型。</li>
-<li>C和C++中的数组都可以分配在栈上面，而JAVA中的数组是只能分配在堆上面的，因为JAVA中的数组是引用类型。</li>
-</ul>
-<!-- more -->
-<h2 id="2-一维数组">2、一维数组</h2>
-<p>一维数组的声明方式有2种：</p>
-<ul>
-<li>格式一：数组元素类型 数组名[ ]; 即type var[ ];</li>
-<li>格式二：数组元素类型[ ] 数组名; 即type[ ] var;</li>
-<li>格式二声明数组的方法与C#上声明一维数组的方法一样。</li>
-</ul>
-<p>例如：</p>
-<pre><code class="language-java">int a1[ ];  
-int[ ] a2;
-double b[ ];
-person[ ] p1;
-String s1[ ];
-</code></pre>
-<p><strong>注意：JAVA语言中声明数组时不能指定其长度(数组中的元素个数)</strong></p>
-<p>​    如：int a[5]; 这样声明一维数组是非法的。</p>
-<h2 id="3-数组的模型">3、数组的模型</h2>
-<ul>
-<li>一维数组：一维数组就是一行，一行小格。</li>
-<li>二维数组：二维数组就是一行加一列组成的一个平面分成的小格，有行有列。</li>
-<li>三维数组：三维数组就是一个立方体。</li>
-<li>人类对最多认识到三维空间。</li>
-</ul>
-<h2 id="4-数组对象的创建">4、数组对象的创建</h2>
-<p>JAVA中使用关键字<strong>new</strong>创建数组对象。</p>
-<p>格式为：数组名 = <strong>new</strong> 数组元素的类型[数组元素的个数]</p>
-<p>例如：<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200614033838.png" alt="" loading="lazy"></p>
-<h2 id="5-元素为引用数据类型的数组">5、元素为引用数据类型的数组</h2>
-<p><em><strong>注意：元素为引用数据类型的数组中的每一个元素都需要实例化。</strong></em></p>
-<p>例如：</p>
-<pre><code class="language-java">class Date{
-      int year; int moth; int day;
-      Date(int y; int m, int d){
-      　　year=y ;
-　　　　  month=m ;
-　　　　  day=d ;
-　　}
-}
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200614034019.png" alt="" loading="lazy"></figure>
-<h2 id="6-数组的初始化">6、数组的初始化</h2>
-<h3 id="61-动态初始化">6.1 动态初始化</h3>
-<p><em><strong>数组定义与为数组元素分配空间和赋值的操作分开进行</strong>。</em></p>
-<p>例如：</p>
-<pre><code class="language-java">public class Test{
-    public static void main(String args[ ]){
-    int a[ ];  //定义数组，即声明一个int类型的数组a[ ]
-    a=new int[3];  //给数组元素分配内存空间。
-    a[0]=3; a[1]=9; a[2]=8;  //给数组元素赋值。
-    Date days[ ];
-    days=new Date[3];
-    days[0]=new Date(1, 4, 2004);
-    days[1]=new Date(2, 4, 2004);
-    days[2]=new Date(3, 4, 2004);
-    }
-}
-
-class Date{
-    int year, month, day;
-    Date(int y, int m, int d){
-        year = y ;
-        month = m ;
-        day = d ;
-    }
-}
-</code></pre>
-<h3 id="62-静态初始化">6.2 静态初始化</h3>
-<p><em><strong>在定义数组的同时就为数组元素分配空间并赋值。</strong></em></p>
-<p>例如：</p>
-<pre><code class="language-java">puclic class Test{
-        public static void main(String args[ ]){
-            int a[ ] = { 3, 9, 8};   //在定义数组的同时给数组分配空间并赋值。
-            Date days[ ] = {
-                new Date(1, 4, 2004),
-                new Date(2 ,4 ,2004),
-                new Date(3 ,4, 2004)
-        };
-    }
-}
-class Date{
-    int year, month, day;
-    Date(int y, int m, int d){
-        year = y ;
-        month = m ;
-        day = d ;
-    }
-}
-</code></pre>
-<h2 id="7-数组元素的默认初始化">7、数组元素的默认初始化</h2>
-<p>​		数组是引用类型，它的元素相当于类的成员变量，因此给数组分配内存空间后，每个元素也被按照成员变量的规则被隐式初始化。</p>
-<pre><code class="language-java">public class Test{
-        public static void main(String args[ ]){
-            int a[ ] = new int[5];
-            Date[ ] days=new Date[3];
-            System.out.println(a[3]);
-            System.out.println(days[2]);
-    }
-}
-class Date{
-    int year, month, day;
-    Date(int y, int m, int d){
-        year = y ;
-        month = m ;
-        day = d ;
-    }
-}
-</code></pre>
-<p>输出结果：</p>
-<p>System.out.println(a[3]);  打印出来的结果是：0。</p>
-<p>System.out.println(days[2]); 打印出来的结果是：null(空)</p>
-<h2 id="8-数组元素的引用">8、数组元素的引用</h2>
-<p>​		定义并用运算符new为之分配内存空间后，才可以引用数组中的每个元素，数组元素的引用方式为：<strong>arrayName[index]，</strong> index为数组元素下标，可以是整型常量或整型表达式。如：<strong>a[3], b[i], c[6*i]。</strong></p>
-<p>数组元素下标从0开始；长度为n的数组的合法下标取值范围为<strong>0～n—1。</strong></p>
-<p>​    	每个数组都有一个属性length指明它的长度，例如：<strong>a.<strong><strong>length</strong></strong>的值为数组<strong><strong>a</strong></strong>的长度</strong>**(<strong><strong>元素个数</strong></strong>)****。**</p>
-<h2 id="9-二维数组">9、二维数组</h2>
-<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200614034607.png" alt="" loading="lazy"></figure>
-<p>二维数组初始化：<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200614034640.png" alt="" loading="lazy"></p>
-<h2 id="10-理解java中的各个维度的数组模型">10、理解JAVA中的各个维度的数组模型</h2>
-<figure data-type="image" tabindex="3"><img src="C:%5CUsers%5CCY%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200614034726096.png" alt="image-20200614034726096" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>
