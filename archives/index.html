@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1592449251786">
+<link rel="shortcut icon" href="/favicon.ico?v=1592460374775">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1273,7 +1273,399 @@
 化是指简化了 Spring 众多框架中所需的大量且繁琐的配置文件，所以 Spring Boot 是一个服&lt;br&gt;
 务于框架的框架，服务范围是简化配置文件。所以从本质上来说，Spring Boot 其实就是 Spring&lt;br&gt;
 框架的另一种表现形式。&lt;/p&gt;
-&lt;!-- more --&gt;">SpringBoot</a>
+&lt;!-- more --&gt;
+&lt;h3 id=&#34;12-spring-boot-特征&#34;&gt;1.2  Spring Boot 特征&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 Spring Boot 可以创建独立的 Spring 应用程序&lt;/li&gt;
+&lt;li&gt;在Spring Boot中直接嵌入了Tomcat、Jetty、Undertow 等Web 容器，所以在使用SpringBoot做 Web 开发时不需要部署 WAR 文件&lt;/li&gt;
+&lt;li&gt;通过提供自己的启动器(Starter)依赖，简化项目构建配置&lt;/li&gt;
+&lt;li&gt;尽量的自动配置 Spring 和第三方库&lt;/li&gt;
+&lt;li&gt;提供了生产就绪特征，如：度量指标，运行状况检查和外部化配置&lt;/li&gt;
+&lt;li&gt;绝对没有代码生成，也不需要 XML 配置文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;13-spring-boot-版本介绍&#34;&gt;1.3 Spring Boot 版本介绍&lt;/h3&gt;
+&lt;p&gt;SNAPSHOT：快照版，即开发版。&lt;br&gt;
+CURRENT：最新版，但是不一定是稳定版。&lt;br&gt;
+GA：General Availability，正式发布的版本。&lt;/p&gt;
+&lt;h2 id=&#34;2-创建基于-spring-boot-的项目&#34;&gt;2、创建基于 Spring Boot 的项目&lt;/h2&gt;
+&lt;h3 id=&#34;21-通过官网创建项目&#34;&gt;2.1 通过官网创建项目&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200618115707.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200618115730.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200618115745.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;22-通过-idea-的脚手架工具创建&#34;&gt;2.2 通过 IDEA 的脚手架工具创建&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200618115904.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;23-通过-idea-的-maven-项目创建&#34;&gt;2.3 通过 IDEA 的 Maven 项目创建&lt;/h3&gt;
+&lt;p&gt;maven创建好后修改pom文件&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0
+http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+&amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+&amp;lt;groupId&amp;gt;com.bjsxt&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;springbootdemo3&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+&amp;lt;parent&amp;gt;
+	&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
+	&amp;lt;version&amp;gt;2.2.0.RELEASE&amp;lt;/version&amp;gt;
+	&amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt;
+&amp;lt;/parent&amp;gt;
+&amp;lt;properties&amp;gt;
+	&amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt;
+&amp;lt;/properties&amp;gt;
+    &amp;lt;dependencies&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt;
+			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+			&amp;lt;exclusions&amp;gt;
+				&amp;lt;exclusion&amp;gt;
+					&amp;lt;groupId&amp;gt;org.junit.vintage&amp;lt;/groupId&amp;gt;
+					&amp;lt;artifactId&amp;gt;junit-vintage-engine&amp;lt;/artifactId&amp;gt;
+				&amp;lt;/exclusion&amp;gt;
+			&amp;lt;/exclusions&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+	&amp;lt;/dependencies&amp;gt;
+&amp;lt;build&amp;gt;
+	&amp;lt;plugins&amp;gt;
+		&amp;lt;plugin&amp;gt;
+			&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+		&amp;lt;/plugin&amp;gt;
+	&amp;lt;/plugins&amp;gt;
+&amp;lt;/build&amp;gt;
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-spring-boot-项目结构介绍&#34;&gt;3、Spring Boot 项目结构介绍&lt;/h2&gt;
+&lt;h3 id=&#34;31-pom文件&#34;&gt;3.1 POM文件&lt;/h3&gt;
+&lt;h4 id=&#34;311-继承&#34;&gt;3.1.1 继承&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;parent&amp;gt;
+	&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
+	&amp;lt;version&amp;gt;2.2.0.RELEASE&amp;lt;/version&amp;gt;
+	&amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt;
+&amp;lt;/parent&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Spring Boot 的父级依赖，只有继承它项目才是 Spring Boot 项目。&lt;br&gt;
+spring-boot-starter-parent 是一个特殊的 starter，它用来提供相关的 Maven 默认依赖。使用它之后，常用的包依赖可以省去 version 标签。&lt;/p&gt;
+&lt;h4 id=&#34;312-依赖&#34;&gt;3.1.2 依赖&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+	&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动器依赖&lt;/p&gt;
+&lt;h4 id=&#34;313-插件&#34;&gt;3.1.3 插件&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;build&amp;gt;
+	&amp;lt;plugins&amp;gt;
+		&amp;lt;plugin&amp;gt;
+			&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+		&amp;lt;/plugin&amp;gt;
+	&amp;lt;/plugins&amp;gt;
+&amp;lt;/build&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​		spring-boot-maven-plugin 插件是将 springboot 的应用程序打包成 jar 包的插件。将所有应用启动运行所需要的 jar 包都包含进来，从逻辑上将具备了独立运行的条件。当运行&amp;quot;mvnpackage&amp;quot;进行打包后，使用&amp;quot;java -jar&amp;quot;命令就可以直接运行。&lt;/p&gt;
+&lt;h3 id=&#34;32-启动类&#34;&gt;3.2 启动类&lt;/h3&gt;
+&lt;p&gt;Spring Boot 的启动类的作用是启动 Spring Boot 项目，是基于 Main 方法来运行的。&lt;br&gt;
+注意：启动类在启动时会做注解扫描(@Controller、@Service、@Repository......)，扫描位置为同包或者子包下的注解，所以启动类的位置应放于包的根下。&lt;/p&gt;
+&lt;h4 id=&#34;321-启动类与启动器区别&#34;&gt;3.2.1 启动类与启动器区别&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;启动类表示项目的启动入口&lt;/li&gt;
+&lt;li&gt;启动器表示 jar 包的坐标&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;322-创建启动类&#34;&gt;3.2.2 创建启动类&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+*Spring Boot 启动类
+*/
+@SpringBootApplication
+public class SpringBootDemo3Application {
+	public static void main(String[] args){
+		SpringApplication.run(SpringBootDemo3Application.class,args);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;32-启动器&#34;&gt;3.2 启动器&lt;/h3&gt;
+&lt;p&gt;Spring Boot 将所有的功能场景都抽取出来，做成一个个的 starter(启动器)，只需要在项目里面引入这些 starter 相关场景的所有依赖都会导入进来，要用什么功能就导入什么场景，在 jar 包管理上非常方便，最终实现一站式开发。&lt;br&gt;
+Spring Boot 提供了多达 44 个启动器。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter&lt;br&gt;
+这是 Spring Boot 的核心启动器，包含了自动配置、日志和 YAML。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-actuator&lt;br&gt;
+帮助监控和管理应用。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-web&lt;br&gt;
+支持全栈式 Web 开发，包括 Tomcat 和 spring-webmvc。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-amqp&lt;br&gt;
+通过 spring-rabbit 来支持 AMQP 协议（Advanced Message Queuing Protocol）。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-aop&lt;br&gt;
+支持面向方面的编程即 AOP，包括 spring-aop 和 AspectJ。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-artemis&lt;br&gt;
+通过 Apache Artemis 支持 JMS 的 API（Java Message Service API）。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-batch&lt;br&gt;
+支持 Spring Batch，包括 HSQLDB 数据库。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-cache&lt;br&gt;
+支持 Spring 的 Cache 抽象。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-cloud-connectors&lt;br&gt;
+支持 Spring Cloud Connectors，简化了在像 Cloud Foundry 或 Heroku 这样的云平台上连接服务。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-data-elasticsearch&lt;br&gt;
+支持 ElasticSearch 搜索和分析引擎，包括 spring-data-elasticsearch。&lt;br&gt;
+spring-boot-starter-data-gemfire&lt;br&gt;
+支持 GemFire 分布式数据存储，包括 spring-data-gemfire。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-data-jpa&lt;/p&gt;
+&lt;p&gt;支持 JPA（Java Persistence API），包括 spring-data-jpa、spring-orm、Hibernate。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-data-mongodb&lt;br&gt;
+支持 MongoDB 数据，包括 spring-data-mongodb。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-data-rest&lt;br&gt;
+通过 spring-data-rest-webmvc，支持通过 REST 暴露 Spring Data 数据仓库。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-data-solr&lt;br&gt;
+支持 Apache Solr 搜索平台，包括 spring-data-solr。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-freemarker&lt;br&gt;
+支持 FreeMarker 模板引擎。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-groovy-templates&lt;br&gt;
+支持 Groovy 模板引擎。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-hateoas&lt;br&gt;
+通过 spring-hateoas 支持基于 HATEOAS 的 RESTful Web 服务。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-hornetq&lt;br&gt;
+通过 HornetQ 支持 JMS。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-integration&lt;br&gt;
+支持通用的 spring-integration 模块。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-jdbc&lt;br&gt;
+支持 JDBC 数据库。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-jersey&lt;br&gt;
+支持 Jersey RESTful Web 服务框架。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-jta-atomikos&lt;br&gt;
+通过 Atomikos 支持 JTA 分布式事务处理。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-jta-bitronix&lt;br&gt;
+通过 Bitronix 支持 JTA 分布式事务处理。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-mail&lt;br&gt;
+支持 javax.mail 模块。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-mobile&lt;br&gt;
+支持 spring-mobile。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-mustache&lt;br&gt;
+支持 Mustache 模板引擎。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-redis&lt;br&gt;
+支持 Redis 键值存储数据库，包括 spring-redis。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-security&lt;br&gt;
+支持 spring-security。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-social-facebook&lt;br&gt;
+支持 spring-social-facebook&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-social-linkedin&lt;br&gt;
+支持 pring-social-linkedin&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-social-twitter&lt;br&gt;
+支持 pring-social-twitter&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-test&lt;br&gt;
+支持常规的测试依赖，包括 JUnit、Hamcrest、Mockito 以及 spring-test 模块。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-thymeleaf&lt;br&gt;
+支持 Thymeleaf 模板引擎，包括与 Spring 的集成。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-velocity&lt;br&gt;
+支持 Velocity 模板引擎。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-websocket&lt;br&gt;
+支持 WebSocket 开发。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-ws&lt;br&gt;
+支持 Spring Web Services。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-actuator&lt;br&gt;
+增加了面向产品上线相关的功能，比如测量和监控。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-remote-shell&lt;br&gt;
+增加了远程 ssh shell 的支持。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-jetty&lt;/p&gt;
+&lt;p&gt;引入了 Jetty HTTP 引擎（用于替换 Tomcat）。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-log4j&lt;br&gt;
+支持 Log4J 日志框架。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-logging&lt;br&gt;
+引入了 Spring Boot 默认的日志框架 Logback。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-tomcat&lt;br&gt;
+引入了 Spring Boot 默认的 HTTP 引擎 Tomcat。&lt;/p&gt;
+&lt;p&gt;spring-boot-starter-undertow&lt;br&gt;
+引入了 Undertow HTTP 引擎（用于替换 Tomcat）。&lt;/p&gt;
+&lt;h3 id=&#34;34-配置文件&#34;&gt;3.4 配置文件&lt;/h3&gt;
+&lt;p&gt;​		Spring Boot 提供一个名称为 application 的全局配置文件，支持两种格式 properteis 格式与 YAML 格式。&lt;/p&gt;
+&lt;h4 id=&#34;341-properties-格式&#34;&gt;3.4.1 Properties 格式&lt;/h4&gt;
+&lt;p&gt;配置 Tomcat 监听端口&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;server.port=8888
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;342-yaml-格式&#34;&gt;3.4.2 YAML 格式&lt;/h4&gt;
+&lt;p&gt;YAML 格式配置文件的扩展名可以是 yaml 或者 yml。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;基本格式要求&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;大小写敏感&lt;/li&gt;
+&lt;li&gt;使用缩进代表层级关系&lt;/li&gt;
+&lt;li&gt;相同的部分只出现一次&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;配置 Tomcat 监听端口&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+	port: 8888
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;343-配置文件存放位置&#34;&gt;3.4.3 配置文件存放位置&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;当前项目根目录中&lt;/li&gt;
+&lt;li&gt;当前项目根目录下的一个/config 子目录中&lt;/li&gt;
+&lt;li&gt;项目的 resources 即 classpath 根路径中&lt;/li&gt;
+&lt;li&gt;项目的 resources 即 classpath 根路径下的/config 目录中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;344-配置文件加载顺序&#34;&gt;3.4.4 配置文件加载顺序&lt;/h4&gt;
+&lt;h5 id=&#34;3441-不同格式的加载顺序&#34;&gt;3.4.4.1 不同格式的加载顺序&lt;/h5&gt;
+&lt;p&gt;​		如 果 同 一 个 目 录 下 ， 有 application.yml 也 有 application.properties ， 默 认 先 读 取application.properties。&lt;br&gt;
+​		如果同一个配置属性，在多个配置文件都配置了，默认使用第 1 个读取到的，后面读取的不覆盖前面读取到的。&lt;/p&gt;
+&lt;h5 id=&#34;3442-不同位置的加载顺序&#34;&gt;3.4.4.2 不同位置的加载顺序&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;当前项目根目录下的一个/config 子目录中(最高)&lt;br&gt;
+config/application.properties&lt;br&gt;
+config/application.yml&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当前项目根目录中(其次)&lt;br&gt;
+application.properties&lt;br&gt;
+application.yml&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;项目的 resources 即 classpath 根路径下的/config 目录中(一般)&lt;br&gt;
+resources/config/application.properties&lt;br&gt;
+resources/config/application.yml&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;项目的 resources 即 classpath 根路径中(最后)&lt;br&gt;
+resources/application.properties&lt;br&gt;
+resources/application.yml&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;345-配置文件中的占位符&#34;&gt;3.4.5 配置文件中的占位符&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;占位符语法&lt;/p&gt;
+&lt;p&gt;语法：${}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;占位符的作用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;quot;${}&amp;quot;中可以获取框架提供的方法中的值如：random.int 等。&lt;/li&gt;
+&lt;li&gt;占位符可以获取配置文件中的键的值赋给另一个键作为值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成随机数&lt;br&gt;
+&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;v&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;/mrow&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;类&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;似&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;随&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;机&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;数&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;没&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;有&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;&amp;quot;&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;&amp;quot;&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;连&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;接&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;{random.value} - 类似 uuid 的随机数，没有&amp;quot;-&amp;quot;连接
+&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.77777em;vertical-align:-0.08333em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.03588em;&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;e&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.77777em;vertical-align:-0.08333em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;类&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;似&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;随&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;机&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;数&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;没&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;有&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;连&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;接&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;{random.int} - 随机取整型范围内的一个值&lt;br&gt;
+&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;g&lt;/mi&gt;&lt;/mrow&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;随&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;机&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;取&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;长&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;整&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;型&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;范&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;围&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;内&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;一&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;个&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;值&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;{random.long} - 随机取长整型范围内的一个值
+&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.8888799999999999em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.03588em;&#34;&gt;g&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;随&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;机&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;取&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;长&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;整&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;型&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;范&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;围&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;内&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;一&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;个&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;值&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;{random.long(100,200)} - 随机生成长整型 100-200 范围内的一个值&lt;br&gt;
+&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;/mrow&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;生&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;成&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;一&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;个&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;有&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;短&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;杠&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;连&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;接&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;{random.uuid} - 生成一个 uuid，有短杠连接
+&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.77777em;vertical-align:-0.08333em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;生&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;成&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;一&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;个&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;有&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;短&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;杠&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;连&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;接&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;{random.int(10)} - 随机生成一个 10 以内的数&lt;br&gt;
+${random.int(100,200)} - 随机生成一个 100-200 范围以内的数&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;346-bootstrap-配置文件&#34;&gt;3.4.6 bootstrap 配置文件&lt;/h4&gt;
+&lt;h5 id=&#34;3461-bootstrap-配置文件介绍&#34;&gt;3.4.6.1 bootstrap 配置文件介绍&lt;/h5&gt;
+&lt;p&gt;​		Spring Boot 中有两种上下文对象，一种是 bootstrap, 另外一种是 application, bootstrap是应用程序的父上下文，也就是说 bootstrap 加载优先于 applicaton。bootstrap 主要用于从额外的资源来加载配置信息，还可以在本地外部配置文件中解密属性。这两个上下文共用一个环境，它是任何 Spring 应用程序的外部属性的来源。bootstrap 里面的属性会优先加载，它们默认也不能被本地相同配置覆盖。&lt;/p&gt;
+&lt;h5 id=&#34;3462-bootstrap-配置文件特征&#34;&gt;3.4.6.2 bootstrap 配置文件特征&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;boostrap 由父 ApplicationContext 加载，比 applicaton 优先加载。&lt;/li&gt;
+&lt;li&gt;boostrap 里面的属性不能被覆盖。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;3463-bootstrap-与-application-的应用场景&#34;&gt;3.4.6.3 bootstrap 与 application 的应用场景&lt;/h5&gt;
+&lt;p&gt;application 配置文件主要用于 Spring Boot 项目的自动化配置。&lt;br&gt;
+bootstrap 配置文件有以下几个应用场景。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 Spring Cloud Config 配置中心时，这时需要在 bootstrap 配置文件中添加连接到配置中心的配置属性来加载外部配置中心的配置信息。&lt;/li&gt;
+&lt;li&gt;一些固定的不能被覆盖的属性。&lt;/li&gt;
+&lt;li&gt;一些加密/解密的场景。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;35-spring-boot-的核心注解&#34;&gt;3.5 Spring Boot 的核心注解&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;@SpringBootApplication&lt;br&gt;
+是 SpringBoot 的启动类。&lt;br&gt;
+此注解等同于@Configuration+@EnableAutoConfiguration+@ComponentScan 的组合。&lt;/li&gt;
+&lt;li&gt;@SpringBootConfiguration&lt;br&gt;
+@SpringBootConfiguration 注解是@Configuration 注解的派生注解，跟@Configuration注解的功能一致，标注这个类是一个配置类，只不过@SpringBootConfiguration 是 Springboot的注解，而@Configuration 是 Spring 的注解&lt;/li&gt;
+&lt;li&gt;@Configuration&lt;br&gt;
+通过对 bean 对象的操作替代 spring 中 xml 文件&lt;/li&gt;
+&lt;li&gt;@EnableAutoConfiguration&lt;br&gt;
+Spring Boot 自动配置（auto-configuration）：尝试根据你添加的 jar 依赖自动配置你的Spring 应用。是@AutoConfigurationPackage 和@Import(AutoConfigurationImportSelector.class)注解的组合。&lt;/li&gt;
+&lt;li&gt;@AutoConfigurationPackage&lt;br&gt;
+@AutoConfigurationPackage 注解，自动注入主类下所在包下所有的加了注解的类（@Controller，@Service 等），以及配置类（@Configuration）&lt;/li&gt;
+&lt;li&gt;@Import({AutoConfigurationImportSelector.class})&lt;br&gt;
+直接导入普通的类&lt;br&gt;
+导入实现了 ImportSelector 接口的类&lt;br&gt;
+导入实现了 ImportBeanDefinitionRegistrar 接口的类&lt;/li&gt;
+&lt;li&gt;@ComponentScan&lt;br&gt;
+组件扫描，可自动发现和装配一些 Bean。&lt;/li&gt;
+&lt;li&gt;@ConfigurationPropertiesScan&lt;br&gt;
+@ConfigurationPropertiesScan 扫描配置属性。@EnableConfigurationProperties 注解的作用是使用 @ConfigurationProperties 注解的类生效。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;4-编写helloworld&#34;&gt;4、编写HelloWorld&lt;/h2&gt;
+&lt;h3 id=&#34;41-创建项目&#34;&gt;4.1 创建项目&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200618133340.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200618133358.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200618133412.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;通过maven方式创建SpringBoot项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200618133522.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200618133633.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200618133713.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;42-修改pom文件&#34;&gt;4.2 修改POM文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;SpringBootHelloWorld&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
+        &amp;lt;version&amp;gt;2.2.0.RELEASE&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+    &amp;lt;build&amp;gt;
+        &amp;lt;plugins&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;/plugin&amp;gt;
+        &amp;lt;/plugins&amp;gt;
+    &amp;lt;/build&amp;gt;
+&amp;lt;/project&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;43-修改-tomcat-端口&#34;&gt;4.3 修改 Tomcat 端口&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+	port: 8888
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;44-创建启动类&#34;&gt;4.4 创建启动类&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+* 启动类
+*/
+@SpringBootApplication
+public class SpringBootHelloWorldApplication {
+	public static void main(String[] args){
+		SpringApplication.run(SpringBootHelloWorldApplication.class,args);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;45-创建-controller&#34;&gt;4.5 创建 Controller&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+* 处理请求 Controller
+*/
+@RestController // @Controller+@ResponsBody 直接返回字符串
+public class HelloWorldController {
+	@RequestMapping(&amp;quot;/helloWorld&amp;quot;)
+	public String showHelloWorld(){
+		return &amp;quot;HelloWorld&amp;quot;;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+">SpringBoot</a>
       </div>
       
       <div class="item">
