@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-17T15:53:14.354Z</updated>
+    <updated>2020-06-18T03:00:58.899Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -16,23 +16,13 @@
         <link href="https://jonchan1013.github.io/post/springboot/">
         </link>
         <updated>2020-06-17T08:14:25.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="1-springboot介绍">1、SpringBoot介绍</h2>
-<h3 id="11-什么是springboot">1.1 什么是SpringBoot</h3>
-<pre><code>    Spring Boot 是一个框架，一种全新的编程规范，他的产生简化了框架的使用，所谓简
-</code></pre>
-<p>化是指简化了 Spring 众多框架中所需的大量且繁琐的配置文件，所以 Spring Boot 是一个服<br>
-务于框架的框架，服务范围是简化配置文件。所以从本质上来说，Spring Boot 其实就是 Spring<br>
-框架的另一种表现形式。</p>
-]]></summary>
         <content type="html"><![CDATA[<h2 id="1-springboot介绍">1、SpringBoot介绍</h2>
 <h3 id="11-什么是springboot">1.1 什么是SpringBoot</h3>
-<pre><code>    Spring Boot 是一个框架，一种全新的编程规范，他的产生简化了框架的使用，所谓简
-</code></pre>
-<p>化是指简化了 Spring 众多框架中所需的大量且繁琐的配置文件，所以 Spring Boot 是一个服<br>
+<p>​		Spring Boot 是一个框架，一种全新的编程规范，他的产生简化了框架的使用，所谓简<br>
+化是指简化了 Spring 众多框架中所需的大量且繁琐的配置文件，所以 Spring Boot 是一个服<br>
 务于框架的框架，服务范围是简化配置文件。所以从本质上来说，Spring Boot 其实就是 Spring<br>
 框架的另一种表现形式。</p>
-<!-- more -->
-]]></content>
+<!-- more -->]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Spring]]></title>
