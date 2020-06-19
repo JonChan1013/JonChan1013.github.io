@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-18T06:06:24.991Z</updated>
+    <updated>2020-06-19T03:49:11.873Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -418,6 +418,164 @@ public class HelloWorldController {
 	@RequestMapping(&quot;/helloWorld&quot;)
 	public String showHelloWorld(){
 		return &quot;HelloWorld&quot;;
+	}
+}
+</code></pre>
+<h3 id="46-spring-boot-在-controller-中常用注解">4.6 Spring Boot 在 Controller 中常用注解</h3>
+<ol>
+<li>
+<p>@RestController</p>
+<p>@RestController 相当于@Controller+@ResponseBody 注解<br>
+如果使用@RestController 注解 Controller 中的方法无法返回页面，相当于在方法上面自动 加 了 @ResponseBody 注 解 ， 所 以 没 办 法 跳 转 并 传 输 数 据 到 另 一 个 页 面 ， 所以InternalResourceViewResolver 也不起作用，返回的内容就是 Return 里的内容。</p>
+</li>
+<li>
+<p>@GetMapping<br>
+@GetMapping 注解是@RequestMapping(method = RequestMethod.GET)的缩写。</p>
+</li>
+<li>
+<p>@PostMapping<br>
+@PostMapping 注解是@RequestMapping(method = RequestMethod.POST)的缩写。</p>
+</li>
+<li>
+<p>@PutMapping<br>
+@PutMapping 注解是@RequestMapping(method = RequestMethod.PUT)的缩写。</p>
+</li>
+<li>
+<p>@DeleteMapping<br>
+@DeleteMapping 注解是@RequestMapping(method = RequestMethod.DELETE)的缩写。</p>
+</li>
+</ol>
+<h2 id="5-spring-boot-整合-web-层技术">5. Spring Boot 整合 Web 层技术</h2>
+<p>整合 Servlet</p>
+<h3 id="51-整合-servlet-方式一通过注解扫描完成-servlet-组件的注册">5.1 整合 Servlet 方式一（通过注解扫描完成 Servlet 组件的注册）</h3>
+<ol>
+<li>创建 Servlet</li>
+</ol>
+<pre><code class="language-java">/**
+* 整合 Servlet 方式一
+*/
+@WebServlet(name = &quot;FirstServlet&quot;,urlPatterns = &quot;/first&quot;)
+public class FirstServlet extends HttpServlet {
+	public void doGet(HttpServletRequest request,HttpServletResponse response){
+		System.out.println(&quot;First Servlet........&quot;);
+	}
+}
+</code></pre>
+<ol start="2">
+<li>修改启动类</li>
+</ol>
+<pre><code class="language-java">@SpringBootApplication
+@ServletComponentScan//在 spring Boot 启动时会扫描@WebServlet注解，并将该类实例化
+public class SpringbootwebApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbootwebApplication.class,args);
+	}
+}
+</code></pre>
+<h3 id="52-整合-servlet-方式二通过方法完成-servlet-组件的注册">5.2  整合 Servlet 方式二（通过方法完成 Servlet 组件的注册）</h3>
+<ol>
+<li>创建servlet</li>
+</ol>
+<pre><code class="language-java">/**
+* 整合 Servlet 方式二
+*/
+public class SecondServlet extends HttpServlet {
+	public void doGet(HttpServletRequest request,HttpServletResponse response){
+		System.out.println(&quot;Second Servlet........&quot;);
+	}
+}
+</code></pre>
+<ol start="2">
+<li>创建 Servlet 配置类</li>
+</ol>
+<pre><code class="language-java">/**
+* Servlet 配置类
+*/
+@Configuration
+public class ServletConfig {
+/**
+* 完成 Servlet 组件的注册
+*/
+	@Bean
+	public ServletRegistrationBean getServletRegistrationBean(){
+		ServletRegistrationBean bean = new ServletRegistrationBean(new SecondServlet());
+		bean.addUrlMappings(&quot;/second&quot;);
+		return bean;
+	}
+}
+</code></pre>
+<h3 id="53-整合-filter-方式一通过注解扫描完成-filter-组件注册">5.3 整合 Filter 方式一(通过注解扫描完成 Filter 组件注册)</h3>
+<ol>
+<li>创建 Filter</li>
+</ol>
+<pre><code class="language-java">/**
+* 整合 Filter 方式一
+*/
+//@WebFilter(filterName = &quot;FirstFilter&quot;,urlPatterns ={&quot;*.do&quot;,&quot;*.jsp&quot;})
+@WebFilter(filterName = &quot;FirstFilter&quot;,urlPatterns =&quot;/first&quot;)
+public class FirstFilter implements Filter{
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+	}
+	@Override
+	public void doFilter(ServletRequest servletRequest,ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+		System.out.println(&quot;进入 First Filter&quot;);
+        //chain.doFilter将请求转发给过滤器链下一个filter , 如果没有filter那就是你请求的资源
+		filterChain.doFilter(servletRequest,servletResponse);
+		System.out.println(&quot;离开 First Filter&quot;);
+	}
+	@Override
+	public void destroy() {
+    }
+}
+</code></pre>
+<ol start="2">
+<li>修改启动类</li>
+</ol>
+<pre><code class="language-java">@SpringBootApplication
+@ServletComponentScan//在 spring Boot 启动时会扫描@WebServlet,@WebFilter 注解，并将该类实例化
+public class SpringbootwebApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbootwebApplication.class,args);
+	}
+}
+</code></pre>
+<h3 id="54-整合-filter-方式二通过方法完成-filter-组件注册">5.4 整合 Filter 方式二(通过方法完成 Filter 组件注册)</h3>
+<ol>
+<li>创建 Filter</li>
+</ol>
+<pre><code class="language-java">/**
+* 整合 Filter 方式二
+*/
+public class SecondFilter implements Filter {
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+	}
+	@Override
+	public void doFilter(ServletRequest servletRequest,ServletResponse servletResponse, FilterChain filterChain)throws IOException, ServletException {
+		System.out.println(&quot;进入 Second Filter&quot;);
+		filterChain.doFilter(servletRequest,servletResponse);
+		System.out.println(&quot;离开 Second Filter&quot;);
+	}
+	@Override
+	public void destroy() {
+	}
+}
+</code></pre>
+<ol start="2">
+<li>创建 Filter 配置类</li>
+</ol>
+<pre><code class="language-java">/**
+* Filter 配置类
+*/
+@Configuration
+public class FilterConfig {
+	@Bean
+	public FilterRegistrationBean getFilterRegistrationBean(){
+		FilterRegistrationBean bean = new FilterRegistrationBean(new SecondFilter());
+		// bean.addUrlPatterns(new String[]{&quot;*.do&quot;,&quot;*.jsp&quot;});
+		bean.addUrlPatterns(&quot;/second&quot;);
+		return bean;	
 	}
 }
 </code></pre>

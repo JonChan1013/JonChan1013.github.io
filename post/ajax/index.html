@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Ajax | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1592460374775">
+<link rel="shortcut icon" href="/favicon.ico?v=1592538543325">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -3899,6 +3899,164 @@ public class HelloWorldController {
 	@RequestMapping(&amp;quot;/helloWorld&amp;quot;)
 	public String showHelloWorld(){
 		return &amp;quot;HelloWorld&amp;quot;;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;46-spring-boot-在-controller-中常用注解&#34;&gt;4.6 Spring Boot 在 Controller 中常用注解&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;@RestController&lt;/p&gt;
+&lt;p&gt;@RestController 相当于@Controller+@ResponseBody 注解&lt;br&gt;
+如果使用@RestController 注解 Controller 中的方法无法返回页面，相当于在方法上面自动 加 了 @ResponseBody 注 解 ， 所 以 没 办 法 跳 转 并 传 输 数 据 到 另 一 个 页 面 ， 所以InternalResourceViewResolver 也不起作用，返回的内容就是 Return 里的内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;@GetMapping&lt;br&gt;
+@GetMapping 注解是@RequestMapping(method = RequestMethod.GET)的缩写。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;@PostMapping&lt;br&gt;
+@PostMapping 注解是@RequestMapping(method = RequestMethod.POST)的缩写。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;@PutMapping&lt;br&gt;
+@PutMapping 注解是@RequestMapping(method = RequestMethod.PUT)的缩写。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;@DeleteMapping&lt;br&gt;
+@DeleteMapping 注解是@RequestMapping(method = RequestMethod.DELETE)的缩写。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-spring-boot-整合-web-层技术&#34;&gt;5. Spring Boot 整合 Web 层技术&lt;/h2&gt;
+&lt;p&gt;整合 Servlet&lt;/p&gt;
+&lt;h3 id=&#34;51-整合-servlet-方式一通过注解扫描完成-servlet-组件的注册&#34;&gt;5.1 整合 Servlet 方式一（通过注解扫描完成 Servlet 组件的注册）&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;创建 Servlet&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+* 整合 Servlet 方式一
+*/
+@WebServlet(name = &amp;quot;FirstServlet&amp;quot;,urlPatterns = &amp;quot;/first&amp;quot;)
+public class FirstServlet extends HttpServlet {
+	public void doGet(HttpServletRequest request,HttpServletResponse response){
+		System.out.println(&amp;quot;First Servlet........&amp;quot;);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;修改启动类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@SpringBootApplication
+@ServletComponentScan//在 spring Boot 启动时会扫描@WebServlet注解，并将该类实例化
+public class SpringbootwebApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbootwebApplication.class,args);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;52-整合-servlet-方式二通过方法完成-servlet-组件的注册&#34;&gt;5.2  整合 Servlet 方式二（通过方法完成 Servlet 组件的注册）&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;创建servlet&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+* 整合 Servlet 方式二
+*/
+public class SecondServlet extends HttpServlet {
+	public void doGet(HttpServletRequest request,HttpServletResponse response){
+		System.out.println(&amp;quot;Second Servlet........&amp;quot;);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;创建 Servlet 配置类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+* Servlet 配置类
+*/
+@Configuration
+public class ServletConfig {
+/**
+* 完成 Servlet 组件的注册
+*/
+	@Bean
+	public ServletRegistrationBean getServletRegistrationBean(){
+		ServletRegistrationBean bean = new ServletRegistrationBean(new SecondServlet());
+		bean.addUrlMappings(&amp;quot;/second&amp;quot;);
+		return bean;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;53-整合-filter-方式一通过注解扫描完成-filter-组件注册&#34;&gt;5.3 整合 Filter 方式一(通过注解扫描完成 Filter 组件注册)&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;创建 Filter&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+* 整合 Filter 方式一
+*/
+//@WebFilter(filterName = &amp;quot;FirstFilter&amp;quot;,urlPatterns ={&amp;quot;*.do&amp;quot;,&amp;quot;*.jsp&amp;quot;})
+@WebFilter(filterName = &amp;quot;FirstFilter&amp;quot;,urlPatterns =&amp;quot;/first&amp;quot;)
+public class FirstFilter implements Filter{
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+	}
+	@Override
+	public void doFilter(ServletRequest servletRequest,ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+		System.out.println(&amp;quot;进入 First Filter&amp;quot;);
+        //chain.doFilter将请求转发给过滤器链下一个filter , 如果没有filter那就是你请求的资源
+		filterChain.doFilter(servletRequest,servletResponse);
+		System.out.println(&amp;quot;离开 First Filter&amp;quot;);
+	}
+	@Override
+	public void destroy() {
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;修改启动类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@SpringBootApplication
+@ServletComponentScan//在 spring Boot 启动时会扫描@WebServlet,@WebFilter 注解，并将该类实例化
+public class SpringbootwebApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbootwebApplication.class,args);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;54-整合-filter-方式二通过方法完成-filter-组件注册&#34;&gt;5.4 整合 Filter 方式二(通过方法完成 Filter 组件注册)&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;创建 Filter&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+* 整合 Filter 方式二
+*/
+public class SecondFilter implements Filter {
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+	}
+	@Override
+	public void doFilter(ServletRequest servletRequest,ServletResponse servletResponse, FilterChain filterChain)throws IOException, ServletException {
+		System.out.println(&amp;quot;进入 Second Filter&amp;quot;);
+		filterChain.doFilter(servletRequest,servletResponse);
+		System.out.println(&amp;quot;离开 Second Filter&amp;quot;);
+	}
+	@Override
+	public void destroy() {
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;创建 Filter 配置类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+* Filter 配置类
+*/
+@Configuration
+public class FilterConfig {
+	@Bean
+	public FilterRegistrationBean getFilterRegistrationBean(){
+		FilterRegistrationBean bean = new FilterRegistrationBean(new SecondFilter());
+		// bean.addUrlPatterns(new String[]{&amp;quot;*.do&amp;quot;,&amp;quot;*.jsp&amp;quot;});
+		bean.addUrlPatterns(&amp;quot;/second&amp;quot;);
+		return bean;	
 	}
 }
 &lt;/code&gt;&lt;/pre&gt;
