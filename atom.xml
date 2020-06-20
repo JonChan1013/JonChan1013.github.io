@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-19T03:50:03.399Z</updated>
+    <updated>2020-06-20T20:14:54.518Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -579,6 +579,1458 @@ public class FilterConfig {
 	}
 }
 </code></pre>
+<h3 id="55-整合-listener-方式一通过注解扫描完成-listener-组件注册">5.5  整合 Listener 方式一(通过注解扫描完成 Listener 组件注册)</h3>
+<ol>
+<li>编写 Listener</li>
+</ol>
+<pre><code class="language-java">/**
+* 整合 Listener
+*/
+@WebListener
+public class FirstListener implements ServletContextListener{
+	public void contextDestroyed(ServletContextEvent event){
+	}
+	public void contextInitialized(ServletContextEvent event){
+		System.out.println(&quot;Listener ...Init......&quot;);
+	}
+}
+</code></pre>
+<ol start="2">
+<li>修改启动类</li>
+</ol>
+<pre><code class="language-java">@SpringBootApplication
+@ServletComponentScan//在 spring Boot 启动时会扫描@WebServlet,@WebFilter,@WebListener 注解，并将该类实例化
+public class SpringbootwebApplication {
+	public static void main(String[] args) {SpringApplication.run(SpringbootwebApplication.class, args);
+	}
+}
+</code></pre>
+<h3 id="56-整合-listener-方式二通过方法完成-listener-组件注册">5.6 整合 Listener 方式二(通过方法完成 Listener 组件注册)</h3>
+<ol>
+<li>编写 Listener</li>
+</ol>
+<pre><code class="language-java">/**
+* 整合 Listener 方式二
+*/
+public class SecondListener implementsServletContextListener {
+	public void contextDestroyed(ServletContextEvent event){
+	}
+	public void contextInitialized(ServletContextEvent event){
+		System.out.println(&quot;Second....Listener ...Init......&quot;);
+	}
+}
+</code></pre>
+<ol start="2">
+<li>创建 Listener 配置类</li>
+</ol>
+<pre><code class="language-java">/**
+* Listener 配置类
+*/
+@Configuration
+public class ListenerConfig {
+	@Bean
+	public ServletListenerRegistrationBean getServletListenerRegistrationBean(){
+		ServletListenerRegistrationBean bean = new ServletListenerRegistrationBean(new SecondListener());
+		return bean;
+	}
+}
+</code></pre>
+<h2 id="6-spring-boot-访问静态资源">6、Spring Boot 访问静态资源</h2>
+<p>​		在 SpringBoot 项目中没有我们之前常规 web 开发的 WebContent（WebApp），它只有<br>
+src 目录。在 src/main/resources 下面有两个文件夹，static 和 templates。SpringBoot 默认在 static<br>
+目录中存放静态页面，而 templates 中放动态页面。</p>
+<ol>
+<li>
+<p>static 目录</p>
+<p>​		Spring Boot 通过 classpath/static 目录访问静态资源。注意存放静态资源的目录名称必须<br>
+是 static。</p>
+</li>
+<li>
+<p>templates 目录</p>
+<p>​		在 Spring Boot 中不推荐使用 jsp 作为视图层技术，而是默认使用 Thymeleaf 来做动态页<br>
+面。Templates 目录这是存放 Thymeleaf 的页面。</p>
+</li>
+<li>
+<p>静态资源存放其他位置</p>
+<ol>
+<li>
+<p>Spring Boot 访问静态资源的位置</p>
+<p>classpath:/META‐INF/resources/<br>
+classpath:/resources/<br>
+classpath:/static/<br>
+classpath:/public/</p>
+</li>
+<li>
+<p>自定义静态资源位置</p>
+<pre><code class="language-properties">#配置静态资源访问路径
+spring.resources.static-locations=classpath:/suibian/,classpath:/static/
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="7-spring-boot-文件上传">7、Spring Boot 文件上传</h2>
+<ol>
+<li>创建项目</li>
+</ol>
+<figure data-type="image" tabindex="11"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200619113918.png" alt="" loading="lazy"></figure>
+<ol start="2">
+<li>
+<p>POM 文件</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0
+https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+&lt;parent&gt;
+&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+&lt;version&gt;2.2.0.RELEASE&lt;/version&gt;
+&lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+&lt;/parent&gt;
+&lt;groupId&gt;com.bjsxt&lt;/groupId&gt;
+&lt;artifactId&gt;springbootfileupload&lt;/artifactId&gt;
+&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+
+
+&lt;name&gt;springbootfileupload&lt;/name&gt;
+&lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+&lt;properties&gt;
+&lt;java.version&gt;1.8&lt;/java.version&gt;
+&lt;/properties&gt;
+&lt;dependencies&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+&lt;scope&gt;test&lt;/scope&gt;
+&lt;exclusions&gt;
+&lt;exclusion&gt;
+&lt;groupId&gt;org.junit.vintage&lt;/groupId&gt;
+&lt;artifactId&gt;junit-vintage-engine&lt;/artifactId&gt;
+&lt;/exclusion&gt;
+&lt;/exclusions&gt;
+&lt;/dependency&gt;
+&lt;/dependencies&gt;
+&lt;build&gt;
+&lt;plugins&gt;
+&lt;plugin&gt;
+&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+&lt;/plugin&gt;
+&lt;/plugins&gt;
+&lt;/build&gt;
+&lt;/project&gt;
+</code></pre>
+<ol start="3">
+<li>启动类</li>
+</ol>
+</li>
+</ol>
+<pre><code class="language-java">@SpringBootApplication
+public class SpringbootfileuploadApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootfileuploadApplication.class, args);
+	}
+}
+</code></pre>
+<ol start="4">
+<li>编写上传页面</li>
+</ol>
+<pre><code class="language-html">&lt;html&gt;
+	&lt;head&gt;
+	&lt;/head&gt;
+&lt;body&gt;
+	&lt;form action=&quot;/fileUploadController&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+		&lt;input type=&quot;file&quot; name=&quot;file&quot;/&gt;
+		&lt;input type=&quot;submit&quot; value=&quot;OKOK&quot;/&gt;
+	&lt;/form&gt;
+&lt;/body&gt;
+</code></pre>
+<ol start="5">
+<li>编写 Controller</li>
+</ol>
+<pre><code class="language-java">/**
+* 文件上传
+*/
+@RestController
+public class FileUploadController {
+	@PostMapping(&quot;/fileUploadController&quot;)
+	public String fileUpload(MultipartFile file)throws Exception{
+		System.out.println(file.getOriginalFilename());
+		file.transferTo(new File(&quot;c:/&quot;+file.getOriginalFilename()));
+		return &quot;OK&quot;;
+	}
+}
+</code></pre>
+<ol start="6">
+<li>修改上传文件大小</li>
+</ol>
+<pre><code class="language-properties">#配置单个上传文件的大小的限制
+spring.servlet.multipart.max-file-size=2MB
+#配置在一次请求中上传文件的总容量的限制
+spring.servlet.multipart.max-request-size=20MB
+</code></pre>
+<h2 id="8-spring-boot-整合视图层技术">8、Spring Boot 整合视图层技术</h2>
+<h3 id="81-spring-boot-整合-jsp-技术">8.1 Spring Boot 整合 JSP 技术</h3>
+<ol>
+<li>
+<p>创建项目</p>
+<figure data-type="image" tabindex="12"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200619142443.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 POM 文件，添加 JSP 引擎与 JSTL 标签库</p>
+</li>
+</ol>
+<pre><code class="language-xml">&lt;!--添加 jsp 引擎，SpringBoot 内置的 Tomat 中没有此依赖--&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
+	&lt;artifactId&gt;tomcat-embed-jasper&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!--添加 JSTL 坐标依赖--&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+	&lt;artifactId&gt;jstl&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<ol start="3">
+<li>
+<p>创建 webapp 目录</p>
+<figure data-type="image" tabindex="13"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200619142557.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>标记为 web 目录</p>
+</li>
+<li>
+<p>创建 JSP</p>
+<pre><code class="language-jsp">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot;
+language=&quot;java&quot; %&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Title&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h2&gt;Hello JSP&lt;/h2&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+<li>
+<p>修改配置文件，配置视图解析器</p>
+</li>
+</ol>
+<pre><code class="language-properties">spring.mvc.view.prefix=/WEB-INF/jsp/
+spring.mvc.view.suffix=.jsp
+</code></pre>
+<ol start="7">
+<li>
+<p>创建 Controller</p>
+<pre><code class="language-java">/**
+* 页面跳转 Controller
+*/
+@Controller
+public class PageController {
+	@GetMapping(&quot;/{page}&quot;)
+	public String showPage(@PathVariable String page){
+		return page;
+	}
+}
+</code></pre>
+<p>​		如果在 IDEA 中项目结构为聚合工程。那么在运行 jsp 是需要指定路径。如果项目结构为独立项目则不需要。</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="14"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200619142830.png" alt="" loading="lazy"></figure>
+<h3 id="82-spring-boot-整合-freemarker">8.2 Spring Boot 整合 Freemarker</h3>
+<ol>
+<li>
+<p>创建项目</p>
+<figure data-type="image" tabindex="15"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200619143010.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 POM 文件，添加 Freemarker 启动器</p>
+<pre><code class="language-xml">&lt;!--Freemarker 启动器依赖--&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-freemarker&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+</code></pre>
+</li>
+<li>
+<p>创建 User 实体</p>
+<pre><code class="language-java">public class User {
+    private String userName;
+    private String userSex;
+    private int userAge;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserSex() {
+        return userSex;
+    }
+
+    public void setUserSex(String userSex) {
+        this.userSex = userSex;
+    }
+
+    public int getUserAge() {
+        return userAge;
+    }
+
+    public void setUserAge(int userAge) {
+        this.userAge = userAge;
+    }
+
+    public User(String userName, String userSex, int userAge) {
+        this.userName = userName;
+        this.userSex = userSex;
+        this.userAge = userAge;
+    }
+
+    public User() {
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>创建 Controller</p>
+<pre><code class="language-java">@Controller
+public class UserController {
+    @GetMapping(&quot;/showUser&quot;)
+    public String showUser(Model model) {
+        List&lt;User&gt; list = new ArrayList&lt;&gt;();
+        list.add(new User(&quot;张三&quot;, &quot;M&quot;, 18));
+        list.add(new User(&quot;李四&quot;, &quot;M&quot;, 19));
+        list.add(new User(&quot;王五&quot;, &quot;M&quot;, 20));
+        model.addAttribute(&quot;list&quot;, list);
+        return &quot;userList&quot;;
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>创建视图</p>
+<p>userList.ftl</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;table border=&quot;1&quot; align=&quot;center&quot; width=&quot;50%&quot;&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Sex&lt;/th&gt;
+        &lt;th&gt;Age&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;#--#list是freemarker中迭代list的标记，相当于JSTL中的foreach；
+        list as user意思是从list中每迭代一个赋给user属性，然后就可以用user取里面的元素了--&gt;
+    &lt;#list list as user&gt;
+        &lt;tr&gt;
+            &lt;td&gt;${user.userName}&lt;/td&gt;
+            &lt;td&gt;${user.userSex}&lt;/td&gt;
+            &lt;td&gt;${user.userAge}&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/#list&gt;
+&lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+<li>
+<p>修改配置文件添加后缀</p>
+</li>
+</ol>
+<pre><code class="language-properties">spring.freemarker.suffix=.ftl
+</code></pre>
+<h3 id="83-spring-boot-整合-thymeleaf">8.3 Spring Boot 整合 Thymeleaf</h3>
+<h4 id="831-thymeleaf-介绍">8.3.1 Thymeleaf 介绍</h4>
+<p>​		Thymeleaf 的主要目标是将优雅的自然模板带到开发工作流程中，并将 HTML 在浏览器中正确显示，并且可以作为静态原型，让开发团队能更容易地协作。Thymeleaf 能够处理HTML，XML，JavaScript，CSS 甚至纯文本。<br>
+​		长期以来,jsp 在视图领域有非常重要的地位,随着时间的变迁,出现了一位新的挑战者:Thymeleaf,Thymeleaf 是原生的,不依赖于标签库.它能够在接受原始 HTML 的地方进行编辑和渲染.因为它没有与Servelet 规范耦合,因此Thymeleaf 模板能进入jsp 所无法涉足的领域。</p>
+<h4 id="832-thymeleaf-基本使用">8.3.2 Thymeleaf 基本使用</h4>
+<ol>
+<li>
+<p>创建项目</p>
+<figure data-type="image" tabindex="16"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200619174447.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 POM 文件，添加 Thymeleaf 启动器依赖</p>
+</li>
+</ol>
+<pre><code class="language-xml">&lt;!--添加 Thymeleaf 启动器依赖--&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<ol start="3">
+<li>创建 Controller</li>
+</ol>
+<pre><code class="language-java">/**
+* 页面跳转 Controller
+*/
+@Controller
+public class PageController {
+	/**
+	* 页面跳转方法
+	*/
+	@GetMapping(&quot;/show&quot;)
+	public String showPage(Model model){ model.addAttribute(&quot;msg&quot;,&quot;Hello Thymeleaf&quot;);
+		return &quot;index&quot;;
+	}
+}
+</code></pre>
+<ol start="4">
+<li>创建视图</li>
+</ol>
+<pre><code class="language-html">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01
+Transitional//EN&quot;
+&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;首页&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;span th:text=&quot;标题&quot;&gt;&lt;/span&gt;
+		&lt;hr/&gt;
+		&lt;span th:text=&quot;${msg}&quot;&gt;&lt;/span&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="833-thymeleaf-语法讲解">8.3.3 Thymeleaf 语法讲解</h4>
+<p>命名空间：xmlns:th=&quot;http://www.thymeleaf.org&quot;</p>
+<h5 id="8331-字符串与变量输出操作">8.3.3.1 字符串与变量输出操作</h5>
+<ol>
+<li>th:text<br>
+在页面中输出值</li>
+</ol>
+<pre><code class="language-html">&lt;span th:text=&quot;${msg}&quot;&gt;&lt;/span&gt;
+</code></pre>
+<ol start="2">
+<li>
+<p>th:value<br>
+可以将一个值放入到 input 标签的 value 中</p>
+<pre><code class="language-html">&lt;input th:value=&quot;${msg}&quot;&gt;
+</code></pre>
+</li>
+</ol>
+<h5 id="8332-字符串操作">8.3.3.2 字符串操作</h5>
+<p>​		Thymeleaf 提供了一些内置对象，内置对象可直接在模板中使用。这些对象是以#引用的。</p>
+<ol>
+<li>
+<p>使用内置对象的语法</p>
+<p>1）引用内置对象需要使用#<br>
+2）大部分内置对象的名称都以 s 结尾。如：strings、numbers、dates</p>
+<p>${#strings.isEmpty(key)}<br>
+判断字符串是否为空，如果为空返回 true，否则返回 false</p>
+<p>${#strings.contains(msg,'T')}<br>
+判断字符串是否包含指定的子串，如果包含返回 true，否则返回 false</p>
+<p>${#strings.startsWith(msg,'a')}<br>
+判断当前字符串是否以子串开头，如果是返回 true，否则返回 false</p>
+<p>${#strings.endsWith(msg,'a')}<br>
+判断当前字符串是否以子串结尾，如果是返回 true，否则返回 false</p>
+<p>${#strings.length(msg)}<br>
+返回字符串的长度</p>
+<p>${#strings.indexOf(msg,'h')}<br>
+查找子串的位置，并返回该子串的下标，如果没找到则返回-1</p>
+<p><span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;#&#039; at position 2: {#̲strings.substri…'>{#strings.substring(msg,2)}
+</span>{#strings.substring(msg,2,5)}<br>
+截取子串，用户与 jdk String 类下 SubString 方法相同</p>
+<p><span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;#&#039; at position 2: {#̲strings.toUpper…'>{#strings.toUpperCase(msg)}
+</span>{#strings.toLowerCase(msg)}<br>
+字符串转大小写。</p>
+<pre><code class="language-html">	&lt;hr/&gt;
+    &lt;span th:text=&quot;${#strings.isEmpty(msg)}&quot;&gt;&lt;/span&gt;
+    &lt;hr/&gt;
+    &lt;span th:text=&quot;${#strings.contains(msg,'s')}&quot;&gt;&lt;/span&gt;
+    &lt;hr/&gt;
+    &lt;span th:text=&quot;${#strings.length(msg)}&quot;&gt;&lt;/span&gt;
+</code></pre>
+</li>
+</ol>
+<h5 id="8333-日期格式化处理">8.3.3.3 日期格式化处理</h5>
+<p>​	${#dates.format(key)}<br>
+​	格式化日期，默认的以浏览器默认语言为格式化标准</p>
+<p>​	${#dates.format(key,'yyyy/MM/dd')}<br>
+​	按照自定义的格式做日期转换</p>
+<p>​	${#dates.year(key)}<br>
+​	${#dates.month(key)}<br>
+​	${#dates.day(key)}<br>
+​	Year：取年<br>
+​	Month：取月<br>
+​	Day：取日</p>
+<p>​	```html</p>
+<hr/>
+```html
+<span th:text="${#dates.format(date)}"></span>
+<hr/>
+<span th:text="${#dates.format(date,'yyyy/MM/dd')}"></span>
+<hr/>
+<span th:text="${#dates.year(date)}"></span>
+<span th:text="${#dates.month(date)}"></span>
+<span th:text="${#dates.day(date)}"></span>
+<hr/>
+```
+##### 8.3.3.4 条件判断
+<ol>
+<li>
+<p>th:if</p>
+<p>条件判断</p>
+<pre><code class="language-html">&lt;div&gt;
+        &lt;span th:if=&quot;${sex} == '男'&quot;&gt;
+            性别：男
+        &lt;/span&gt;
+        &lt;span th:if=&quot;${sex} == '女'&quot;&gt;
+            性别：女
+        &lt;/span&gt;
+    &lt;/div&gt;
+</code></pre>
+</li>
+<li>
+<p>th:switch / th:case</p>
+</li>
+</ol>
+<p>th:switch / th:case 与 Java 中的 switch 语句等效，有条件地显示匹配的内容。如果有多个匹配结果只选择第一个显示。<br>
+th:case=&quot;<em>&quot;表示 Java 中 switch 的 default，即没有 case 的值为 true 时则显示 th:case=&quot;</em>&quot;的内容。</p>
+<pre><code class="language-html">&lt;div th:switch=&quot;${id}&quot;&gt;
+        &lt;span th:case=&quot;1&quot;&gt;ID为1&lt;/span&gt;
+        &lt;span th:case=&quot;2&quot;&gt;ID为2&lt;/span&gt;
+        &lt;span th:case=&quot;3&quot;&gt;ID为3&lt;/span&gt;
+        &lt;span th:case=&quot;*&quot;&gt;ID为*&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<h5 id="8335-迭代遍历">8.3.3.5 迭代遍历</h5>
+<ol>
+<li>
+<p>th:each</p>
+<p>迭代器，用于循环迭代集合</p>
+<pre><code class="language-html">&lt;table border=&quot;1&quot; width=&quot;50%&quot;&gt;
+        &lt;tr&gt;
+            &lt;th&gt;ID&lt;/th&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Age&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr th:each=&quot;u : ${list}&quot;&gt;
+            &lt;td th:text=&quot;${u.id}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${u.name}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${u.age}&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+</code></pre>
+</li>
+<li>
+<p>th:each 状态变量</p>
+<ol>
+<li>index:当前迭代器的索引 从 0 开始</li>
+<li>count:当前迭代对象的计数 从 1 开始</li>
+<li>size:被迭代对象的长度</li>
+<li>odd/even:布尔值，当前循环是否是偶数/奇数 从 0 开始</li>
+<li>first:布尔值，当前循环的是否是第一条，如果是返回 true 否则返回 false</li>
+<li>last:布尔值，当前循环的是否是最后一条，如果是则返回 true 否则返回 false</li>
+</ol>
+<pre><code class="language-html">&lt;table border=&quot;1&quot; width=&quot;50%&quot;&gt;
+        &lt;tr&gt;
+            &lt;th&gt;ID&lt;/th&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Age&lt;/th&gt;
+            &lt;th&gt;Index&lt;/th&gt;
+            &lt;th&gt;Count&lt;/th&gt;
+            &lt;th&gt;Size&lt;/th&gt;
+            &lt;th&gt;Odd&lt;/th&gt;
+            &lt;th&gt;Even&lt;/th&gt;
+            &lt;th&gt;First&lt;/th&gt;
+            &lt;th&gt;Last&lt;/th&gt;
+        &lt;/tr&gt;
+    	&lt;!--迭代的状态变量放在第二位 --&gt;
+        &lt;tr th:each=&quot;u,suibian : ${list}&quot;&gt;
+            &lt;td th:text=&quot;${u.id}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${u.name}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${u.age}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${suibian.index}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${suibian.count}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${suibian.size}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${suibian.odd}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${suibian.even}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${suibian.first}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${suibian.last}&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+</code></pre>
+<h5 id="8336-theach-迭代-map">8.3.3.6 th:each 迭代 Map</h5>
+</li>
+</ol>
+<pre><code class="language-html">    &lt;table border=&quot;1&quot; width=&quot;50%&quot;&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Value&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr th:each=&quot;m : ${map}&quot;&gt;
+            &lt;!--结果是键值对形式--&gt;
+            &lt;td th:text=&quot;${m}&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;hr/&gt;
+    &lt;table border=&quot;1&quot; width=&quot;50%&quot;&gt;
+        &lt;tr&gt;
+            &lt;th&gt;ID&lt;/th&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Age&lt;/th&gt;
+            &lt;th&gt;Key&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr th:each=&quot;m : ${map}&quot;&gt;
+            &lt;td th:text=&quot;${m.value.id}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${m.value.name}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${m.value.age}&quot;&gt;&lt;/td&gt;
+            &lt;td th:text=&quot;${m.key}&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+</code></pre>
+<h5 id="8337-操作域对象">8.3.3.7 操作域对象</h5>
+<ol>
+<li>HttpServletRequest</li>
+</ol>
+<pre><code class="language-java">request.setAttribute(&quot;req&quot;, &quot;HttpServletRequest&quot;);
+</code></pre>
+<pre><code class="language-html">&lt;span th:text=&quot;${#httpServletRequest.getAttribute('req')}&quot;&gt;&lt;/span&gt;
+&lt;span th:text=&quot;${#request.getAttribute('req')}&quot;&gt;&lt;/span&gt;
+</code></pre>
+<ol start="2">
+<li>HttpSession</li>
+</ol>
+<pre><code class="language-java">request.getSession().setAttribute(&quot;ses&quot;, &quot;HttpSession&quot;);
+</code></pre>
+<pre><code class="language-html">&lt;span th:text=&quot;${session.ses}&quot;&gt;&lt;/span&gt;&lt;br/&gt;
+&lt;span th:text=&quot;${#session.getAttribute('ses')}&quot;&gt;&lt;/span&gt;&lt;br/&gt;
+</code></pre>
+<ol start="3">
+<li>ServletContext</li>
+</ol>
+<pre><code class="language-java">request.getSession().getServletContext().setAttribute(&quot;app&quot;,
+&quot;Application&quot;);
+</code></pre>
+<pre><code class="language-html">&lt;span th:text=&quot;${application.app}&quot;&gt;&lt;/span&gt;
+&lt;span th:text=&quot;${#servletContext.getAttribute('app')}&quot;&gt;&lt;/span&gt;
+</code></pre>
+<h5 id="8338-url表达式">8.3.3.8 URL表达式</h5>
+<ol>
+<li>
+<p>语法</p>
+<p>在 Thymeleaf 中 URL 表达式的语法格式为@{}</p>
+</li>
+<li>
+<p>URL 类型</p>
+<ol>
+<li>
+<p>绝对路径</p>
+<pre><code class="language-html">&lt;a th:href=&quot;@{http://www.baidu.com}&quot;&gt;打开百度&lt;/a&gt;
+</code></pre>
+</li>
+<li>
+<p>相对路径</p>
+<p>相对于当前项目的根：</p>
+<p>controller：</p>
+<pre><code class="language-java">//所有超链接都是基于get方式请求的
+@GetMapping(&quot;/show2&quot;)
+    public String show2(){
+        return &quot;index2&quot;;
+    }
+</code></pre>
+<pre><code class="language-html">&lt;a th:href=&quot;@{/show2}&quot;&gt;打开index2&lt;/a&gt;
+</code></pre>
+<p>相对于服务器路径的根</p>
+<pre><code class="language-html">&lt;a th:href=&quot;@{~/project2/resourcename}&quot;&gt;相对于服务器的根&lt;/a&gt;
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>在 URL 中传递参数</p>
+<ol>
+<li>
+<p>在普通格式的 URL 中传递参数</p>
+<p>controller:</p>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code class="language-java">     model.addAttribute(&quot;id&quot;,&quot;100&quot;);
+     model.addAttribute(&quot;name&quot;,&quot;cy&quot;);
+
+   @GetMapping(&quot;/show2&quot;)
+   public String show2(String id,String name){
+       System.out.println(id+&quot;\t&quot;+name);
+       return &quot;index2&quot;;
+</code></pre>
+<pre><code class="language-html">&lt;!-- url显示为：localhost:8080/show2?id=1&amp;name=admin--&gt; 
+&lt;a th:href=&quot;@{/show2?id=1&amp;name=admin}&quot;&gt;普通URL传递参数方式一(参数写死)&lt;/a&gt;
+
+&lt;!--url显示为：localhost:8080/show2?id=1&amp;name=kevin--&gt;
+&lt;a th:href=&quot;@{/show2(id=2,name=kevin)}&quot;&gt;普通URL传递参数方式二（括号）&lt;/a&gt;
+
+&lt;!--url显示为：localhost:8080/show2?id=100&amp;name=cy--&gt;
+&lt;a th:href=&quot;@{'/show2?id='+${id}+'&amp;name='+${name}}&quot;&gt;普通URL传递参数方式三(拼接)&lt;/a&gt;
+
+&lt;!--url显示为：localhost:8080/show2?id=100&amp;name=cy--&gt;
+&lt;a th:href=&quot;@{/show2(id=${id},name=${name})}&quot;&gt;普通URL传递参数方式四（括号）&lt;/a&gt;
+</code></pre>
+<p>​		2.在 restful 格式的 URL 中传递参数</p>
+<p>controller:</p>
+<pre><code class="language-java">    @GetMapping(&quot;/show3/{id}/{name}&quot;)
+	/*@PathVariable
+	获取的是请求路径中参数的值
+	@RequestParam
+	获取的是请求参数，一般是url问号后面的参数值
+	简单类来说@PathVariable是/get/1 @RequestParam是/get?id=1
+	*/
+    public String show3(@PathVariable String id,@PathVariable String name){
+        System.out.println(id+&quot;\t&quot;+name);
+        return &quot;index2&quot;;
+    }
+
+    @GetMapping(&quot;/show4/{id}&quot;)
+    public String show4(@PathVariable String id,String name){
+        System.out.println(id+&quot;\t&quot;+name);
+        return &quot;index2&quot;;
+    }
+</code></pre>
+<pre><code class="language-html">&lt;!--url显示为：localhost:8080/show3/200--&gt;
+&lt;a th:href=&quot;@{/show3/{id}(id=200)}&quot;&gt;restful格式传递参数方式一&lt;/a&gt;
+
+&lt;!--url显示为：localhost:8080/show3/200/admin--&gt;
+&lt;a th:href=&quot;@{/show3/{id}/{name}(id=200,name=admin)}&quot;&gt;restful格式传递参数方式二&lt;/a&gt;
+
+&lt;!--url显示为：localhost:8080/show4/200?name=admin--&gt;
+&lt;a th:href=&quot;@{/show4/{id}(id=200,name=admin)}&quot;&gt;restful格式传递参数方式三&lt;/a&gt;
+
+&lt;!--url显示为：localhost:8080/show4/200?name=cy--&gt;
+&lt;a th:href=&quot;@{/show4/{id}(id=${id},name=${name})}&quot;&gt;restful格式传递参数方式四&lt;/a&gt;
+
+</code></pre>
+<p>总结：在（）形式里面都可以用EL表达式进行取值</p>
+<h5 id="8339-在配置文件中配置thymeleaf">8.3.3.9 在配置文件中配置Thymeleaf</h5>
+<pre><code class="language-properties">spring.thymeleaf.prefix=classpath:/templates/suibian/
+spring.thymeleaf.suffix=.html
+spring.thymeleaf.mode=HTML #配置视图模板类型，如果视图模板使用的是 html5 需要配置
+spring.thymeleaf.encoding=utf-8
+spring.thymeleaf.servlet.content-type=text/html #响应类型
+#配置页面缓存
+spring.thymeleaf.cache=false
+</code></pre>
+<h2 id="9-spring-boot-整合持久层技术">9、 Spring Boot 整合持久层技术</h2>
+<h3 id="91-整合jdbc">9.1 整合JDBC</h3>
+<h4 id="911-搭建项目环境">9.1.1 搭建项目环境</h4>
+<ol>
+<li>
+<p>创建表</p>
+<pre><code class="language-mysql">CREATE TABLE `users` (
+`userid` int(11) NOT NULL AUTO_INCREMENT,
+`username` varchar(30) DEFAULT NULL,
+`usersex` varchar(10) DEFAULT NULL,
+PRIMARY KEY (`userid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+</code></pre>
+</li>
+<li>
+<p>创建项目</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="17"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200620152431.png" alt="" loading="lazy"></figure>
+<ol start="3">
+<li>
+<p>修改pom文件，添加相关依赖</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+	&lt;parent&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+		&lt;version&gt;2.2.0.RELEASE&lt;/version&gt;
+		&lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+	&lt;/parent&gt;
+	&lt;groupId&gt;com.bjsxt&lt;/groupId&gt;
+	&lt;artifactId&gt;springbootjdbc&lt;/artifactId&gt;
+	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+	&lt;name&gt;springbootjdbc&lt;/name&gt;
+	&lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+
+	&lt;properties&gt;
+		&lt;java.version&gt;1.8&lt;/java.version&gt;
+	&lt;/properties&gt;
+
+	&lt;dependencies&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+
+        &lt;!--Thymeleaf启动器坐标--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;!--JDBC启动器坐标--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;!--数据库驱动坐标--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;5.1.38&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!--Druid数据源依赖--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;druid&lt;/artifactId&gt;
+            &lt;version&gt;1.1.12&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+			&lt;exclusions&gt;
+				&lt;exclusion&gt;
+					&lt;groupId&gt;org.junit.vintage&lt;/groupId&gt;
+					&lt;artifactId&gt;junit-vintage-engine&lt;/artifactId&gt;
+				&lt;/exclusion&gt;
+			&lt;/exclusions&gt;
+		&lt;/dependency&gt;
+	&lt;/dependencies&gt;
+
+	&lt;build&gt;
+		&lt;plugins&gt;
+			&lt;plugin&gt;
+				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+			&lt;/plugin&gt;
+		&lt;/plugins&gt;
+	&lt;/build&gt;
+
+&lt;/project&gt;
+</code></pre>
+</li>
+</ol>
+<h4 id="912-配置数据源">9.1.2 配置数据源</h4>
+<h5 id="9121-通过自定义配置文件方式配置数据源信息">9.1.2.1 通过自定义配置文件方式配置数据源信息</h5>
+<ol>
+<li>通过@PropertySource 注解读取配置文件
+<ol>
+<li>添加 Druid 数据源依赖</li>
+</ol>
+</li>
+</ol>
+<pre><code class="language-xml">        &lt;!--Druid数据源依赖--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;druid&lt;/artifactId&gt;
+            &lt;version&gt;1.1.12&lt;/version&gt;
+</code></pre>
+<p>​		2. 创建 Properties 文件</p>
+<p>​		jdbc.properties</p>
+<pre><code class="language-properties">jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
+jdbc.username=root
+jdbc.password=root
+</code></pre>
+<ol start="3">
+<li>
+<p>创建配置类</p>
+<p>JdbcConfiguration类：</p>
+<pre><code class="language-java">/**
+
+
+* 数据源的 JDBC 配置类
+*/
+@Configuration
+@PropertySource(&quot;classpath:/jdbc.properties&quot;) //加载指定的Properties 配置文件
+public class JdbcConfiguration {
+	@Value(&quot;${jdbc.driverClassName}&quot;)
+	private String driverClassName;
+	@Value(&quot;${jdbc.url}&quot;)
+	private String url;
+	@Value(&quot;${jdbc.username}&quot;)
+	private String username;
+	@Value(&quot;${jdbc.password}&quot;)
+	private String password;
+	
+    /**
+	* 实例化 Druid
+	*/
+	@Bean
+	public DataSource getDataSource(){
+		DruidDataSource source = new DruidDataSource();
+		source.setPassword(this.password);
+		source.setUsername(this.username);
+		source.setUrl(this.url);
+		source.setDriverClassName(this.driverClassName);
+		return source;
+	}
+}
+</code></pre>
+<ol start="2">
+<li>
+<p>通过@ConfigurationProperties 注解读取配置信息</p>
+<ol>
+<li>
+<p>创建配置信息实体类</p>
+<p>​	JdbcProperties类：</p>
+<pre><code class="language-java">/**
+ * JDBC配置信息属性类
+ */
+@ConfigurationProperties(prefix = &quot;jdbc&quot;)//是SpringBoot的注解不能读取其他配置文件，只能读取SpringBoot的application配置文件
+public class JdbcProperties {
+
+    private String driverClassName;
+    private String url;
+    private String username;
+    private String password;
+
+    public String getDriverClassName() {
+        return driverClassName;
+    }
+
+    public void setDriverClassName(String driverClassName) {
+        this.driverClassName = driverClassName;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+
+</code></pre>
+<ol start="2">
+<li>
+<p>修改配置类</p>
+<p>JdbcConfiguration类：</p>
+</li>
+</ol>
+<pre><code class="language-java">/**
+ * 数据源的JDBC配置类
+ */
+//@Configuration
+//@PropertySource(&quot;classpath:/jdbc.properties&quot;)  //加载指定的Properties配置文件
+@EnableConfigurationProperties(JdbcProperties.class)//指定加载哪个配置信息属性类
+public class JdbcConfiguration {
+
+    //@Autowired
+   /* private JdbcProperties jdbcProperties;
+
+    //通过构造方法来注入
+    public JdbcConfiguration(JdbcProperties jdbcProperties){
+        this.jdbcProperties = jdbcProperties;
+    }*/
+
+    /**
+     * 实例化Druid
+     */
+    @Bean
+    public DataSource getDataSource(JdbcProperties
+jdbcProperties){
+        DruidDataSource source = new DruidDataSource();
+		source.setPassword(this.password);
+		source.setUsername(this.username);
+		source.setUrl(this.url);		source.setDriverClassName(this.driverClassName);
+		return source;
+    }
+}
+
+</code></pre>
+<ol start="3">
+<li>
+<p><strong>@ConfigurationProperties 注解的优雅使用方式（重点）</strong></p>
+<p>JdbcConfiguration类：</p>
+</li>
+</ol>
+<pre><code class="language-java">/**
+ * 数据源的JDBC配置类
+ */
+//@Configuration
+//@PropertySource(&quot;classpath:/jdbc.properties&quot;)  //加载指定的Properties配置文件
+//@EnableConfigurationProperties(JdbcProperties.class)//指定加载哪个配置信息属性类
+public class JdbcConfiguration {
+
+    //@Autowired
+   /* private JdbcProperties jdbcProperties;
+
+    //通过构造方法来注入
+    public JdbcConfiguration(JdbcProperties jdbcProperties){
+        this.jdbcProperties = jdbcProperties;
+    }*/
+
+    /**
+     * 实例化Druid
+     */
+    @Bean
+    //这个注解会将从配置文件中解析出来的内容，通过调用getDataSource方法所创建的source对象的setUsername、setPassword、setUrl、setDriverClassName这些方法，将解析出来的值直接注入到Datasource中
+    @ConfigurationProperties(prefix = &quot;jdbc&quot;)
+    public DataSource getDataSource(){
+        DruidDataSource source = new DruidDataSource();
+        return source;
+    }
+}
+
+</code></pre>
+<p>UserController类：</p>
+<pre><code class="language-java">@controller
+public class UserController{
+    
+    @AutoWried
+    private DataSource dataSource;
+    
+    @GetMapping(&quot;/showInfo&quot;)
+    public String showInfo(){
+        return &quot;ok&quot;;
+    }
+}
+</code></pre>
+<p>这时JdbcProperties类没有任何意义了，可以删了。</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h5 id="9122-通过-spring-boot-配置文件配置数据源">9.1.2.2 通过 Spring Boot 配置文件配置数据源</h5>
+<p>​		在 Spring Boot1.x 版 本 中 的 spring-boot-starter-jdbc 启 动 器 中 默 认 使 用 的 是org.apache.tomcat.jdbc.pool.DataSource 作为数据源<br>
+​		在 Spring Boot2.x 版 本 中 的 spring-boot-starter-jdbc 启 动 器 中 默 认 使 用 的 是com.zaxxer.hikariDataSource 作为数据源</p>
+<ol>
+<li>
+<p>使用 Spring Boot 默认的 HikariDataSource 数据源</p>
+<pre><code class="language-properties">spring.datasource.url=jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=root
+</code></pre>
+</li>
+<li>
+<p>使用第三方的数据源, 如： Druid</p>
+<pre><code class="language-properties">spring.datasource.url=jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.type=com.alibaba.druid.pool.DruidDataSo
+urce
+</code></pre>
+<p>总结：在SpringBoot中配置数据非常简单，只要在pom文件中加入你想使用的数据源的依赖，并且在配置文件中加入spring.datasource.type这个key，后面跟你所使用数据源value类的全名。</p>
+</li>
+</ol>
+<h4 id="913-详细设计">9.1.3 详细设计</h4>
+<figure data-type="image" tabindex="18"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200621040916.png" alt="" loading="lazy"></figure>
+<ol>
+<li>
+<p>视图层：</p>
+<p>addUser.html:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form th:action=&quot;@{/user/addUser}&quot; method=&quot;post&quot;&gt;
+    username：&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br/&gt;
+    usersex：&lt;input type=&quot;text&quot; name=&quot;usersex&quot;&gt;&lt;br/&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;增加&quot;&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>ok.html:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;操作成功！&lt;/h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>showUsers.html:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table border=&quot;1&quot; align=&quot;center&quot;&gt;
+    &lt;tr&gt;
+        &lt;th&gt;ID&lt;/th&gt;
+        &lt;th&gt;姓名&lt;/th&gt;
+        &lt;th&gt;性别&lt;/th&gt;
+        &lt;th&gt;操作&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr th:each=&quot;u : ${list}&quot;&gt;
+        &lt;td th:text=&quot;${u.userid}&quot;&gt;&lt;/td&gt;
+        &lt;td th:text=&quot;${u.username}&quot;&gt;&lt;/td&gt;
+        &lt;td th:text=&quot;${u.usersex}&quot;&gt;&lt;/td&gt;
+        &lt;td&gt;
+            &lt;a th:href=&quot;@{/user/preUpdateUser/(id=${u.userid})}&quot;&gt;修改&lt;/a&gt;
+            &lt;a th:href=&quot;@{/user/deleteUser(id=${u.userid})}&quot;&gt;删除&lt;/a&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>updateUser.html:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form th:action=&quot;@{/user/updateUser}&quot; method=&quot;post&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;userid&quot; th:value=&quot;${user.userid}&quot;&gt;
+    &lt;input type=&quot;text&quot; name=&quot;username&quot; th:value=&quot;${user.username}&quot;&gt;&lt;br/&gt;
+    &lt;input type=&quot;text&quot; name=&quot;usersex&quot; th:value=&quot;${user.usersex}&quot;&gt;&lt;br/&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;修改&quot;&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+<li>
+<p>controller层</p>
+<p>PageController：</p>
+<pre><code class="language-java">/**
+ * @date 2020-06-20 17:26
+ * 页面跳转
+ */
+@Controller
+public class PageController {
+    /*
+     * 页面跳转方法
+     * */
+    @RequestMapping(&quot;/{page}&quot;)
+    public String showPage(@PathVariable String page) {
+        return page;
+    }
+}
+</code></pre>
+<p>UsersController:</p>
+<pre><code class="language-java">@Controller
+@RequestMapping(&quot;/user&quot;)
+public class UsersController {
+    @Autowired
+    private UsersService usersService;
+
+    /**
+     * 添加用户
+     *
+     * @param users
+     * @return
+     */
+    @PostMapping(&quot;/addUser&quot;)
+    public String addUser(Users users) {
+        try {
+            usersService.addUser(users);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return &quot;error&quot;;
+        }
+        //重定向，防止表单重复提交
+        return &quot;redirect:/ok&quot;;
+    }
+
+    /**
+     * 查询所有用户
+     */
+    @GetMapping(&quot;/findUsersAll&quot;)
+    public String findUsersAll(Model model) {
+        try {
+            List&lt;Users&gt; list = usersService.findUsersAll();
+            model.addAttribute(&quot;list&quot;, list);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return &quot;error&quot;;
+        }
+        return &quot;showUsers&quot;;
+    }
+
+    /**
+     * 预更新用户的查询
+     */
+    @GetMapping(&quot;/preUpdateUser&quot;)
+    public String preUpdateUser(Integer id, Model model) {
+        try {
+            Users user = usersService.findUserById(id);
+            model.addAttribute(&quot;user&quot;, user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return &quot;error&quot;;
+        }
+        return &quot;updateUser&quot;;
+    }
+
+    /**
+     * 更新用户
+     */
+    @PostMapping(&quot;/updateUser&quot;)
+    public String updateUser(Users user){
+        try {
+            usersService.modifyUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return &quot;error&quot;;
+        }
+        return &quot;redirect:/ok&quot;;
+    }
+
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    @GetMapping(&quot;/deleteUser&quot;)
+    public String deleteUser(Integer id){
+        try {
+            usersService.dropUser(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return &quot;error&quot;;
+        }
+        return &quot;redirect:/ok&quot;;
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>service层</p>
+<p>UsersService接口:</p>
+<pre><code class="language-java">public interface UsersService {
+
+    void addUser(Users users);
+
+    List&lt;Users&gt; findUsersAll();
+
+    Users findUserById(Integer id);
+
+    void modifyUser(Users user);
+
+    void dropUser(Integer id);
+}
+</code></pre>
+<p>UsersServiceImpl:</p>
+<pre><code class="language-java">/**
+ * 用户管理业务层
+ */
+@Service
+public class UsersServiceImpl implements UsersService {
+    @Autowired
+    private UsersDao usersDao;
+
+    /**
+     * 添加用户
+     *
+     * @param users
+     */
+    @Override
+    @Transactional
+    public void addUser(Users users) {
+        usersDao.insertUsers(users);
+    }
+
+    /**
+     * 查询所有用户
+     *
+     * @return
+     */
+    @Override
+    public List&lt;Users&gt; findUsersAll() {
+        List&lt;Users&gt; list = usersDao.selectUsersAll();
+        return list;
+    }
+
+    /**
+     * 预更新查询
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Users findUserById(Integer id) {
+        Users user = usersDao.selectUserById(id);
+        return user;
+    }
+
+    /**
+     * 更新用户
+     * @param user
+     */
+    @Override
+    @Transactional
+    public void modifyUser(Users user) {
+        usersDao.updateUser(user);
+    }
+
+    /**
+     * 删除用户
+     * @param id
+     */
+    @Override
+    @Transactional
+    public void dropUser(Integer id) {
+        usersDao.delUserById(id);
+    }
+}
+
+</code></pre>
+</li>
+<li>
+<p>dao层</p>
+<p>UsersDao接口：</p>
+<pre><code class="language-java">public interface UsersDao {
+    
+    void insertUsers(Users users);
+
+    List&lt;Users&gt; selectUsersAll();
+
+    Users selectUserById(Integer id);
+
+    void updateUser(Users user);
+
+    void delUserById(Integer id);
+}
+
+</code></pre>
+<p>UsersDaImpl：</p>
+<pre><code class="language-java">/**
+ * 持久层
+ */
+@Repository
+public class UsersDaImpl implements UsersDao {
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    /**
+     * 添加用户
+     *
+     * @param users
+     */
+    @Override
+    public void insertUsers(Users users) {
+        String sql = &quot;insert into users(username,usersex) values(?,?)&quot;;
+        jdbcTemplate.update(sql, users.getUsername(), users.getUsersex());
+    }
+
+    @Override
+    public List&lt;Users&gt; selectUsersAll() {
+        String sql = &quot;select * from users&quot;;
+        return jdbcTemplate.query(sql, new RowMapper&lt;Users&gt;() {
+            /**
+             * 结果集映射
+             * @param resultSet
+             * @param i
+             * @return
+             * @throws SQLException
+             */
+            @Override
+            public Users mapRow(ResultSet resultSet, int i) throws SQLException {
+                Users users = new Users();
+                //自己做ORM的处理
+                users.setUserid(resultSet.getInt(&quot;userid&quot;));
+                users.setUsername(resultSet.getString(&quot;username&quot;));
+                users.setUsersex(resultSet.getString(&quot;usersex&quot;));
+                return users;
+            }
+        });
+    }
+
+    /**
+     * 预更新用户查询
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Users selectUserById(Integer id) {
+        Users user = new Users();
+        String sql = &quot;select * from users where userid=?&quot;;
+        Object[] objects = new Object[]{id};
+        jdbcTemplate.query(sql, objects, new RowCallbackHandler() {
+            @Override
+            public void processRow(ResultSet resultSet) throws SQLException {
+                user.setUserid(resultSet.getInt(&quot;userid&quot;));
+                user.setUsername(resultSet.getString(&quot;username&quot;));
+                user.setUsersex(resultSet.getString(&quot;usersex&quot;));
+            }
+        });
+        return user;
+    }
+
+    /**
+     * 更新用户
+     *
+     * @param user
+     */
+    @Override
+    public void updateUser(Users user) {
+        String sql = &quot;update users set username=?,usersex=? where userid=?&quot;;
+        jdbcTemplate.update(sql, user.getUsername(), user.getUsersex(), user.getUserid());
+    }
+
+    /**
+     * 删除用户
+     *
+     * @param id
+     */
+    @Override
+    public void delUserById(Integer id) {
+        String sql = &quot;delete from users where userid = ? &quot;;
+        jdbcTemplate.update(sql,id);
+    }
+}
+</code></pre>
+<p>实现效果：</p>
+<figure data-type="image" tabindex="19"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200621040455.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<figure data-type="image" tabindex="20"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200621040539.png" alt="" loading="lazy"></figure>
+<p>​	<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200621040622.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="21"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200621040708.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="22"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200621040728.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="23"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200621040803.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="24"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200621040823.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="25"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200621040839.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
