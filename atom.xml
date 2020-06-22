@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-22T02:22:57.115Z</updated>
+    <updated>2020-06-22T08:28:34.025Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -2820,6 +2820,746 @@ public class GlobalException3 implements HandlerExceptionResolver {
     }
 }
 </code></pre>
+<h3 id="102-spring-boot-整合-junit-单元测试">10.2 Spring Boot 整合 Junit 单元测试</h3>
+<p>SpringBoot2.x 使用 Junit5 作为测试平台</p>
+<ol>
+<li>
+<p>修改 POM 文件添加 Test 启动器</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+	&lt;scope&gt;test&lt;/scope&gt;
+	&lt;!--junit-vintage-engine 提供了 Junit3 与 Junit4 的运行平台--&gt;
+	&lt;exclusions&gt;
+		&lt;exclusion&gt;
+			&lt;groupId&gt;org.junit.vintage&lt;/groupId&gt;
+			&lt;artifactId&gt;junit-vintage-engine&lt;/artifactId&gt;
+		&lt;/exclusion&gt;
+	&lt;/exclusions&gt;
+&lt;/dependency&gt;
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>编写测试代码</p>
+<pre><code class="language-java">@SpringBootTest
+class SpringbootexcepionandjunitApplicationTests {
+	@Autowired
+	private UsersServiceImpl usersService;
+	@Test
+	void suibian() {
+		this.usersService.addUser();
+	}
+}
+</code></pre>
+</li>
+</ol>
+<h2 id="11-spring-boot-服务端数据校验">11、 Spring Boot 服务端数据校验</h2>
+<h3 id="111-spring-boot-对实体对象的校验">11.1 Spring Boot 对实体对象的校验</h3>
+<h4 id="1111-搭建项目环境">11.1.1 搭建项目环境</h4>
+<ol>
+<li>
+<p>创建项目</p>
+<figure data-type="image" tabindex="33"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622113358.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>创建实体</p>
+<pre><code class="language-java">
+public class Users {
+    private  Integer userid;
+    private String username;
+    private String usersex;
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsersex() {
+        return usersex;
+    }
+
+    public void setUsersex(String usersex) {
+        this.usersex = usersex;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Users{&quot; +
+                &quot;userid=&quot; + userid +
+                &quot;, username='&quot; + username + '\'' +
+                &quot;, usersex='&quot; + usersex + '\'' +
+                '}';
+    }
+}
+
+</code></pre>
+</li>
+<li>
+<p>创建Controller</p>
+<pre><code class="language-java">@Controller
+@RequestMapping(&quot;/user&quot;)
+public class UsersController {
+	/**
+	* 添加用户
+	*/
+	@RequestMapping(&quot;/addUser&quot;)
+	public String addUser(Users users){
+		System.out.println(users);
+		return &quot;ok&quot;;
+	}
+}
+</code></pre>
+</li>
+<li>
+<p>创建页面</p>
+<pre><code class="language-html">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
+        &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;../resources/favicon.ico&quot; th:href=&quot;@{/static/favicon.ico}&quot;/&gt;
+&lt;head&gt;
+    &lt;title&gt;addUser&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;form th:action=&quot;@{/user/addUser}&quot; method=&quot;post&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br/&gt;
+        &lt;input type=&quot;text&quot; name=&quot;usersex&quot;&gt;&lt;br/&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;OK&quot;/&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+</ol>
+<h4 id="1112-对实体对象做数据校验">11.1.2 对实体对象做数据校验</h4>
+<ol>
+<li>
+<p>Spring Boot 数据校验的技术特点</p>
+<p>Spring Boot 中使用了 Hibernate-validator 校验框架。</p>
+</li>
+<li>
+<p>对实体对象数据校验步骤</p>
+<ol>
+<li>
+<p>修改实体类添加校验规则</p>
+<pre><code class="language-java">import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+/**
+ * 以下注解是javax包下的
+ * @NotNull: 对基本数据类型的对象类型做非空校验
+ * @NotBlank：对字符串类型做非空校验
+ * @NotEmpty：对集合类型做非空校验
+ */
+public class Users {
+    @NotNull
+    private  Integer userid;
+    @NotBlank
+    private String username;
+    @NotBlank
+    private String usersex;
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsersex() {
+        return usersex;
+    }
+
+    public void setUsersex(String usersex) {
+        this.usersex = usersex;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Users{&quot; +
+                &quot;userid=&quot; + userid +
+                &quot;, username='&quot; + username + '\'' +
+                &quot;, usersex='&quot; + usersex + '\'' +
+                '}';
+    }
+}
+
+</code></pre>
+<ol start="2">
+<li>
+<p>在 Controller 中开启校验</p>
+<pre><code class="language-java">@Controller
+@RequestMapping(&quot;/user&quot;)
+public class UsersController {
+
+    /**
+     * 添加用户
+     */
+    @RequestMapping(&quot;/addUser&quot;)
+    public String addUser(@Validated Users users, BindingResult result){
+        if(result.hasErrors()){
+            /*List&lt;ObjectError&gt; list = result.getAllErrors();
+            for(ObjectError err:list){
+                FieldError fieldError = (FieldError) err;
+                String fieldName = fieldError.getField();
+                String msg = fieldError.getDefaultMessage();
+                System.out.println(fieldName+&quot;\t&quot;+msg);
+            } 平时不需要 */
+            return &quot;addUser&quot;;
+        }
+        System.out.println(users);
+        return &quot;ok&quot;;
+    }
+</code></pre>
+<ol start="3">
+<li>
+<p>在页面中获取提示信息</p>
+<pre><code class="language-html">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
+        &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;../resources/favicon.ico&quot; th:href=&quot;@{/static/favicon.ico}&quot;/&gt;
+&lt;head&gt;
+    &lt;title&gt;addUser&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;form th:action=&quot;@{/user/addUser}&quot; method=&quot;post&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;font color=&quot;red&quot;&gt;&lt;span th:errors=&quot;${Users.username}&quot;/&gt;&lt;/font&gt;&lt;br/&gt;
+        &lt;input type=&quot;text&quot; name=&quot;usersex&quot;&gt;&lt;font color=&quot;red&quot;&gt;&lt;span th:errors=&quot;${Users.usersex}&quot;/&gt;&lt;/font&gt;&lt;br/&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;OK&quot;/&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>自定义错误提示信息</p>
+<ol>
+<li>
+<p>在注解中定义提示信息</p>
+<pre><code class="language-java">@NotNull(message = &quot;用户 ID 不能为空&quot;)
+private Integer userid;
+@NotBlank(message = &quot;用户姓名不能为空&quot;)
+private String username;
+@NotBlank(message = &quot;用户性别不能为空&quot;)
+private String usersex;
+</code></pre>
+</li>
+<li>
+<p>在配置文件中定义提示信息</p>
+<pre><code class="language-java">	@NotNull(message =&quot;{userid.notnull}&quot; )
+    private  Integer userid;
+    @NotBlank(message = &quot;{username.notnull}&quot;)
+    private String username;
+    @NotBlank(message = &quot;{usersex.notnull}&quot;)
+    private String usersex;
+</code></pre>
+<p>配置文件名必须是 ValidationMessages.properties</p>
+<pre><code class="language-properties">userid.notnull=\u7528\u6237Id\u4e0d\u80fd\u4e3a\u7a7a-pro
+username.notnull=\u7528\u6237\u59d3\u540d\u4e0d\u80fd\u4e3a\u7a7a-pro
+usersex.notnull=\u7528\u6237\u6027\u522b\u4e0d\u80fd\u4e3a\u7a7a-pro
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>解决页面跳转异常</p>
+<p>​		在跳转页面的方法中注入一个对象，要求参数对象的变量名必须是对象类型名称首字母小写格式。</p>
+</li>
+</ol>
+<pre><code class="language-java">@Controller
+public class PageController {
+
+    /**
+     * 跳转页面方法
+     *解决异常的方式：可以在跳转页面的方法中注入一个Users对象
+     * 由于SprignMVC会将该对象放入到Model中传递，key的名称会使用该对象
+     * 的驼峰命名规则来作为key
+     */
+    @RequestMapping(&quot;/{page}&quot;)
+    public String showPage(@PathVariable String page, Users suibian){
+        return page;
+    }
+}
+
+</code></pre>
+<pre><code class="language-html">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
+        &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;../resources/favicon.ico&quot; th:href=&quot;@{/static/favicon.ico}&quot;/&gt;
+&lt;head&gt;
+    &lt;title&gt;addUser&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;form th:action=&quot;@{/user/addUser}&quot; method=&quot;post&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;font color=&quot;red&quot;&gt;&lt;span th:errors=&quot;${users.username}&quot;/&gt;&lt;/font&gt;&lt;br/&gt;
+        &lt;input type=&quot;text&quot; name=&quot;usersex&quot;&gt;&lt;font color=&quot;red&quot;&gt;&lt;span th:errors=&quot;${users.usersex}&quot;/&gt;&lt;/font&gt;&lt;br/&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;OK&quot;/&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ol start="5">
+<li>
+<p>修改参数 key 的名称</p>
+<p>PageController:</p>
+</li>
+</ol>
+<pre><code class="language-java">@Controller
+public class PageController {
+
+    /**
+     * 跳转页面方法
+     *解决异常的方式：可以在跳转页面的方法中注入一个Users对象
+     * 由于SprignMVC会将该对象放入到Model中传递，key的名称会使用该对象
+     * 的驼峰命名规则来作为key
+     * @ModelAttribute的作用是来指定当前做数据传递时SpringMVC放到Model中的key是什么
+     */
+    @RequestMapping(&quot;/{page}&quot;)
+    public String showPage(@PathVariable String page, @ModelAttribute(&quot;aa&quot;) Users suibian){
+        return page;
+    }
+}
+
+</code></pre>
+<p>​	UsersController:</p>
+<pre><code class="language-java">@Controller
+@RequestMapping(&quot;/user&quot;)
+public class UsersController {
+
+    /**
+     * 添加用户
+     */
+    @RequestMapping(&quot;/addUser&quot;)
+    public String addUser(@ModelAttribute(&quot;aa&quot;)@Validated Users users, BindingResult result){
+        if(result.hasErrors()){
+            List&lt;ObjectError&gt; list = result.getAllErrors();
+            for(ObjectError err:list){
+                FieldError fieldError = (FieldError) err;
+                String fieldName = fieldError.getField();
+                String msg = fieldError.getDefaultMessage();
+                System.out.println(fieldName+&quot;\t&quot;+msg);
+            }
+            return &quot;addUser&quot;;
+        }
+        System.out.println(users);
+        return &quot;ok&quot;;
+    }
+}
+</code></pre>
+<pre><code class="language-html">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
+        &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;../resources/favicon.ico&quot; th:href=&quot;@{/static/favicon.ico}&quot;/&gt;
+&lt;head&gt;
+    &lt;title&gt;addUser&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!--th:errors取自BindingResult--&gt;
+    &lt;form th:action=&quot;@{/user/addUser}&quot; method=&quot;post&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;font color=&quot;red&quot;&gt;&lt;span th:errors=&quot;${aa.username}&quot;/&gt;&lt;/font&gt;&lt;br/&gt;
+        &lt;input type=&quot;text&quot; name=&quot;usersex&quot;&gt;&lt;font color=&quot;red&quot;&gt;&lt;span th:errors=&quot;${aa.usersex}&quot;/&gt;&lt;/font&gt;&lt;br/&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;OK&quot;/&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ol start="6">
+<li>
+<p>其他校验规则</p>
+<p>@NotNull: 判断基本数据类型的对象类型是否为 null<br>
+@NotBlank: 判断字符串是否为 null 或者是空串(去掉首尾空格)。<br>
+@NotEmpty: 判断集合是否为空。<br>
+@Length: 判断字符的长度(最大或者最小)<br>
+@Min: 判断数值最小值<br>
+@Max: 判断数值最大值<br>
+@Email: 判断邮箱是否合法</p>
+</li>
+</ol>
+<h3 id="112-spring-boot-对-controller-中其他参数的校验">11.2  Spring Boot 对 Controller 中其他参数的校验</h3>
+<ol>
+<li>编写页面</li>
+</ol>
+<pre><code class="language-html">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
+        &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;../resources/favicon.ico&quot; th:href=&quot;@{/static/favicon.ico}&quot;/&gt;
+&lt;head&gt;
+    &lt;title&gt;findUser&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+这是一个查询页面
+&lt;form th:action=&quot;@{/user/findUser}&quot; method=&quot;post&quot;&gt;
+    &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;font color=&quot;red&quot;&gt;&lt;span th:text=&quot;${error}&quot;/&gt;&lt;/font&gt;&lt;br/&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;OK&quot;/&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ol start="2">
+<li>对参数指定校验规则</li>
+</ol>
+<pre><code class="language-java">@PostMapping(&quot;/findUser&quot;)
+public String findUser(@NotBlank(message = &quot;用户名不能为空&quot;) String username){
+	System.out.println(username);
+	return &quot;ok&quot;;
+}
+</code></pre>
+<ol start="3">
+<li>在 Controller 中开启校验</li>
+</ol>
+<pre><code class="language-java">@Controller
+@RequestMapping(&quot;/user&quot;)
+@Validated
+public class UsersController {
+
+    @PostMapping(&quot;/findUser&quot;)
+    public String findUser(@NotBlank(message = &quot;用户名不能为空&quot;) String username){
+        System.out.println(username);
+        return &quot;ok&quot;;
+    }
+}
+
+</code></pre>
+<ol start="4">
+<li>通过全局异常处理来跳转页面</li>
+</ol>
+<pre><code class="language-java">@Configuration
+public class GlobalException implements HandlerExceptionResolver {
+    @Override
+    public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object handler, Exception e) {
+        ModelAndView mv = new ModelAndView();
+        //判断不同异常类型，做不同视图的跳转
+        if(e instanceof NullPointerException){
+            mv.setViewName(&quot;error5&quot;);
+        }
+        if(e instanceof ArithmeticException){
+            mv.setViewName(&quot;error6&quot;);
+        }
+        if(e instanceof ConstraintViolationException){
+            mv.setViewName(&quot;findUser&quot;);
+        }
+        mv.addObject(&quot;error&quot;,e.getMessage().split(&quot;:&quot;)[1]);
+        return mv;
+    }
+}
+</code></pre>
+<h2 id="12-spring-boot-热部署">12、Spring Boot 热部署</h2>
+<p>通过 DevTools 工具实现热部署：</p>
+<ol>
+<li>
+<p>修改 POM 文件，添加 DevTools 依赖</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+	&lt;optional&gt;true&lt;/optional&gt;
+&lt;/dependency&gt;
+</code></pre>
+</li>
+<li>
+<p>配置 Idea</p>
+<ol>
+<li>
+<p>设置自动编译</p>
+<figure data-type="image" tabindex="34"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622134350.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>设置 Idea 的 Registry</p>
+<p>通过快捷键打开该设置项：Ctrl+Shift+Alt+/<br>
+勾选 complier.automake.allow.when.app.running</p>
+<figure data-type="image" tabindex="35"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622134732.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="13-spring-boot-度量指标监控与健康检查">13、Spring Boot 度量指标监控与健康检查</h2>
+<h3 id="131-使用-actuator-检查与监控">13.1 使用 Actuator 检查与监控</h3>
+<ol>
+<li>创建项目</li>
+</ol>
+<figure data-type="image" tabindex="36"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622144536.png" alt="" loading="lazy"></figure>
+<ol start="2">
+<li>需改 POM 文件，添加依赖</li>
+</ol>
+<pre><code class="language-xml">&lt;!--Actuator 坐标依赖--&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<ol start="3">
+<li>修改配置文件</li>
+</ol>
+<pre><code class="language-properties">#配置访问端点的根路径
+management.endpoints.web.base-path=/actuator
+
+#配置开启其他端点的 URI
+#开启所有的端点访问：*
+#指定开启端点访问：如：beans,env
+management.endpoints.web.exposure.include=*
+</code></pre>
+<ol start="4">
+<li>各项监控指标接口 URL 介绍</li>
+</ol>
+<figure data-type="image" tabindex="37"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622144724.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="38"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622144737.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="39"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622144748.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="40"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622144756.png" alt="" loading="lazy"></figure>
+<h3 id="132-使用可视化监控应用-spring-boot-admin">13.2 使用可视化监控应用 Spring Boot Admin</h3>
+<p><strong>使用步骤:</strong></p>
+<p>Spring Boot Admin 的使用是需要建立服务端与客户端。<br>
+服务端：独立的项目，会将搜集到的数据在自己的图形界面中展示。<br>
+客户端：需要监控的项目。<br>
+对应关系：一个服务端可以监控多个客户端。</p>
+<h4 id="1321-搭建服务端">13.2.1 搭建服务端</h4>
+<ol>
+<li>
+<p>创建项目</p>
+<figure data-type="image" tabindex="41"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622145305.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 POM 文件</p>
+<p>注意：目前在 Spring Boot Admin Starter Server2.1.6 版本中不支持 Spring Boot2.2.x 版本,只支持到 2.1.X</p>
+<pre><code class="language-xml">&lt;!--
+https://mvnrepository.com/artifact/de.codecentric/spring-
+boot-admin-starter-server --&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;de.codecentric&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-admin-starter-server&lt;/artifactId&gt;
+	&lt;version&gt;2.1.6&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+</li>
+<li>
+<p>修改配置文件</p>
+<pre><code class="language-properties">server.port=9090
+</code></pre>
+</li>
+<li>
+<p>修改启动类</p>
+<pre><code class="language-java">@SpringBootApplication
+@EnableAdminServer //开启 Spring Boot Admin 服务端
+public class SpringbootactuatorserverApplication {
+	public static void main(String[] args) {
+	SpringApplication.run(SpringbootactuatorserverApplication.class, args);
+	}
+}
+</code></pre>
+</li>
+</ol>
+<h4 id="1322-搭建客户端">13.2.2 搭建客户端</h4>
+<ol>
+<li>修改POM文件</li>
+</ol>
+<pre><code class="language-xml">&lt;!--
+https://mvnrepository.com/artifact/de.codecentric/spring-
+boot-admin-starter-client --&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;de.codecentric&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-admin-starter-client&lt;/artifactId&gt;
+	&lt;version&gt;2.1.6&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<ol start="2">
+<li>修改配置文件</li>
+</ol>
+<pre><code class="language-properties">#配置访问端点的根路径
+management.endpoints.web.base-path=/actuator
+
+#配置开启其他端点的 URI
+#开启所有的端点访问：*
+#指定开启端点访问：如：beans,env
+#这里暴露的会在服务端显示
+management.endpoints.web.exposure.include=*
+
+#指定服务端的访问地址
+spring.boot.admin.client.url=http://localhost:9090
+</code></pre>
+<ol start="3">
+<li>
+<p>效果图</p>
+<figure data-type="image" tabindex="42"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622150615.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<h2 id="14-spring-boot-的日志管理">14、Spring Boot 的日志管理</h2>
+<p>​		Spring Boot 默认使用 Logback 组件作为日志管理。Logback 是由 log4j 创始人设计的一个开源日志组件。<br>
+​		在 Spring Boot 项目中我们不需要额外的添加 Logback 的依赖，因为在 spring-boot-starter或者 spring-boot-starter-web 中已经包含了 Logback 的依赖。</p>
+<ol>
+<li>Logback 读取配置文件的步骤</li>
+</ol>
+<p>（1）在 classpath 下查找文件 logback-test.xml<br>
+（2）如果文件不存在，则查找 logback.xml<br>
+（3）如果两个文件都不存在，LogBack 用 BasicConfiguration 自动对自己进行最小化配置，这样既实现了上面我们不需要添加任何配置就可以输出到控制台日志信息。</p>
+<ol start="2">
+<li>添加 Logback 配置文件</li>
+</ol>
+<figure data-type="image" tabindex="43"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622160355.png" alt="" loading="lazy"></figure>
+<ol start="3">
+<li>
+<p>Logback配置文件</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+ &lt;configuration&gt;
+&lt;!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径--&gt;  
+    &lt;property name=&quot;LOG_HOME&quot; value=&quot;${catalina.base}/logs/&quot; /&gt;  
+    &lt;!-- 控制台输出 --&gt;   
+    &lt;appender name=&quot;Stdout&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;
+       &lt;!-- 日志输出编码 --&gt;  
+        &lt;layout class=&quot;ch.qos.logback.classic.PatternLayout&quot;&gt;   
+             &lt;!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符--&gt; 
+            &lt;pattern&gt;%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n   
+            &lt;/pattern&gt;   
+        &lt;/layout&gt;   
+    &lt;/appender&gt;   
+    &lt;!-- 按照每天生成日志文件 --&gt;   
+    &lt;appender name=&quot;RollingFile&quot;  class=&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt;   
+        &lt;rollingPolicy class=&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;&gt;
+            &lt;!--日志文件输出的文件名--&gt;
+            &lt;FileNamePattern&gt;${LOG_HOME}/server.%d{yyyy-MM-dd}.log&lt;/FileNamePattern&gt;   
+            &lt;MaxHistory&gt;30&lt;/MaxHistory&gt;
+        &lt;/rollingPolicy&gt;   
+        &lt;layout class=&quot;ch.qos.logback.classic.PatternLayout&quot;&gt;  
+            &lt;!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符--&gt; 
+            &lt;pattern&gt;%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n   
+            &lt;/pattern&gt;   
+       &lt;/layout&gt; 
+        &lt;!--日志文件最大的大小--&gt;
+       &lt;triggeringPolicy class=&quot;ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy&quot;&gt;
+         &lt;MaxFileSize&gt;10MB&lt;/MaxFileSize&gt;
+       &lt;/triggeringPolicy&gt;
+    &lt;/appender&gt;     
+
+    &lt;!-- 日志输出级别 --&gt;
+    &lt;root level=&quot;info&quot;&gt;   
+        &lt;appender-ref ref=&quot;Stdout&quot; /&gt;   
+        &lt;appender-ref ref=&quot;RollingFile&quot; /&gt;   
+    &lt;/root&gt; 
+
+
+
+&lt;!--日志异步到数据库 --&gt;  
+&lt;!--     &lt;appender name=&quot;DB&quot; class=&quot;ch.qos.logback.classic.db.DBAppender&quot;&gt;
+        日志异步到数据库 
+        &lt;connectionSource class=&quot;ch.qos.logback.core.db.DriverManagerConnectionSource&quot;&gt;
+           连接池 
+           &lt;dataSource class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;
+              &lt;driverClass&gt;com.mysql.jdbc.Driver&lt;/driverClass&gt;
+              &lt;url&gt;jdbc:mysql://127.0.0.1:3306/databaseName&lt;/url&gt;
+              &lt;user&gt;root&lt;/user&gt;
+              &lt;password&gt;root&lt;/password&gt;
+            &lt;/dataSource&gt;
+        &lt;/connectionSource&gt;
+  &lt;/appender&gt; --&gt;
+
+&lt;/configuration&gt;
+</code></pre>
+</li>
+<li>
+<p>在代码中使用 Logback</p>
+</li>
+</ol>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/logback&quot;)
+public class HelloController {
+
+    private final static Logger logger = LoggerFactory.getLogger(HelloController.class);
+
+    @RequestMapping(&quot;/showInfo&quot;)
+    public String showInfo(){
+        logger.info(&quot;记录日志&quot;);
+        return &quot;Hello Logback &quot;;
+    }
+}
+</code></pre>
+<figure data-type="image" tabindex="44"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622161037.png" alt="" loading="lazy"></figure>
+<ol start="5">
+<li>
+<p>在配置文件中屏蔽指定包的日志记录</p>
+<pre><code class="language-properties">#屏蔽指定包中的日志输出 logging.level.包名=off
+logging.level.org=off
+</code></pre>
+</li>
+</ol>
+<figure data-type="image" tabindex="45"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622161416.png" alt="" loading="lazy"></figure>
+<h2 id="15-spring-boot-项目打包与多环境配置">15、Spring Boot 项目打包与多环境配置</h2>
+<h2 id="151-spring-boot-项目打包">15.1 Spring Boot 项目打包</h2>
+<ol>
+<li>Spring Boot 的打包插件</li>
+</ol>
+<pre><code class="language-xml">&lt;build&gt;
+	&lt;plugins&gt;
+		&lt;plugin&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-maven-lugin&lt;/artifactId&gt;
+		&lt;/plugin&gt;
+	&lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+<ol start="2">
+<li>项目打包方式</li>
+</ol>
+<figure data-type="image" tabindex="46"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200622162322.png" alt="" loading="lazy"></figure>
+<ol start="3">
+<li>
+<p>运行命令</p>
+<p>注意：需要正确的配置环境变量。<br>
+运行命令：java -jar 项目的名称</p>
+</li>
+</ol>
+<h3 id="152-spring-boot-的多环境配置">15.2 Spring Boot 的多环境配置</h3>
+<p>语法结构：application-{profile}.properties/yml<br>
+profile：代表某个配置环境的标识</p>
+<p>示例：application-dev.properties/yml 开发环境<br>
+application-test.properties/yml 测试环境<br>
+application-prod.properties/yml 生产环境</p>
+<h4 id="1521-windows-环境下启动方式">15.2.1 Windows 环境下启动方式</h4>
+<p>​	java -jar xxx.jar --spring.profiles.active={profile}</p>
+<h4 id="1522-在-linux-环境下启动方式">15.2.2 在 Linux 环境下启动方式</h4>
+<ol>
+<li>
+<p>安装上传下载工具</p>
+<p>安装命令：yum install lrzsz -y<br>
+上传命令：rz<br>
+下载命令：sz 下载文件名</p>
+</li>
+<li>
+<p>启动脚本的使用</p>
+<p>修改脚本文件中的参数值<br>
+将启动脚本文件（sever.sh）上传到 Linux 中<br>
+分配执行权限：chmod 777<br>
+通过脚本启动命令：server.sh start<br>
+通过脚本关闭命令：server.sh stop</p>
 </li>
 </ol>
 ]]></content>
