@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>关于 | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1592684091983">
+<link rel="shortcut icon" href="/favicon.ico?v=1592792392411">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -3647,6 +3647,798 @@ public class UsersDaImpl implements UsersDao {
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;23&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200621040803.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;24&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200621040823.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;25&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200621040839.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;92-整合mybatis&#34;&gt;9.2 整合MyBatis&lt;/h3&gt;
+&lt;h4 id=&#34;921-搭建项目环境&#34;&gt;9.2.1 搭建项目环境&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;26&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200622005620.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改POM文件，添加相关依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+	xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+	&amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+	&amp;lt;parent&amp;gt;
+		&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+		&amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
+		&amp;lt;version&amp;gt;2.3.1.RELEASE&amp;lt;/version&amp;gt;
+		&amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt;
+	&amp;lt;/parent&amp;gt;
+	&amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;springbootmybatis&amp;lt;/artifactId&amp;gt;
+	&amp;lt;version&amp;gt;0.0.1-SNAPSHOT&amp;lt;/version&amp;gt;
+	&amp;lt;name&amp;gt;springbootmybatis&amp;lt;/name&amp;gt;
+	&amp;lt;description&amp;gt;Demo project for Spring Boot&amp;lt;/description&amp;gt;
+
+	&amp;lt;properties&amp;gt;
+		&amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt;
+	&amp;lt;/properties&amp;gt;
+
+	&amp;lt;dependencies&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;spring-boot-starter-thymeleaf&amp;lt;/artifactId&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;2.1.3&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;!--数据库驱动坐标--&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;5.1.38&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;!--Druid 数据源依赖--&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.1.12&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt;
+			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+			&amp;lt;exclusions&amp;gt;
+				&amp;lt;exclusion&amp;gt;
+					&amp;lt;groupId&amp;gt;org.junit.vintage&amp;lt;/groupId&amp;gt;
+					&amp;lt;artifactId&amp;gt;junit-vintage-engine&amp;lt;/artifactId&amp;gt;
+				&amp;lt;/exclusion&amp;gt;
+			&amp;lt;/exclusions&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+	&amp;lt;/dependencies&amp;gt;
+
+	&amp;lt;build&amp;gt;
+		&amp;lt;plugins&amp;gt;
+			&amp;lt;plugin&amp;gt;
+				&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+				&amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+			&amp;lt;/plugin&amp;gt;
+		&amp;lt;/plugins&amp;gt;
+	&amp;lt;/build&amp;gt;
+
+&amp;lt;/project&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;配置数据源&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test02?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;useSSL=false
+    data-username: root
+    data-password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;922-配置-maven-的-generator-插件&#34;&gt;9.2.2 配置 Maven 的 generator 插件&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;添加 generator 插件坐标&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;plugin&amp;gt;
+        &amp;lt;groupId&amp;gt;org.mybatis.generator&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;mybatis-generator-maven-plugin&amp;lt;/artifactId
+        &amp;lt;version&amp;gt;1.3.5&amp;lt;/version&amp;gt;
+        &amp;lt;dependencies&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;5.1.38&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+        &amp;lt;/dependencies&amp;gt;
+        &amp;lt;!--指定配置文件的路径--&amp;gt;
+        &amp;lt;configuration&amp;gt;
+            &amp;lt;configurationFile&amp;gt;${project.basedir}/src/main/res
+            &amp;lt;/configurationFile&amp;gt;
+            &amp;lt;verbose&amp;gt;true&amp;lt;/verbose&amp;gt;
+            &amp;lt;overwrite&amp;gt;true&amp;lt;/overwrite&amp;gt;
+        &amp;lt;/configuration&amp;gt;
+    &amp;lt;/plugin&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加 generator 配置文件&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;27&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200622010708.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加 generator 配置文件的 DTD 文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;28&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200622010812.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;29&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200622011008.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;运行 generator 插件生成代码&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;30&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200622011545.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;31&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200622011732.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;923-配置资源拷贝插件&#34;&gt;9.2.3 配置资源拷贝插件&lt;/h4&gt;
+&lt;p&gt;​		由于映射配置文件在自定义包中，项目运行时在resources中找不到映射配置文件，所以要配置资源拷贝插件&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;添加资源拷贝插件坐标&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt; &amp;lt;!--配置资源拷贝插件--&amp;gt;
+ &amp;lt;resources&amp;gt;
+     &amp;lt;resource&amp;gt;
+         &amp;lt;directory&amp;gt;src/main/java&amp;lt;/directory&amp;gt;
+         &amp;lt;includes&amp;gt;
+             &amp;lt;include&amp;gt;**/*.xml&amp;lt;/include&amp;gt;
+         &amp;lt;/includes&amp;gt;
+     &amp;lt;/resource&amp;gt;
+     &amp;lt;!--由于前面配置了路径，这样就不到到resources目录下处理文件，所以还要配置resources目录--&amp;gt;
+     &amp;lt;resource&amp;gt;
+         &amp;lt;directory&amp;gt;src/main/resources&amp;lt;/directory&amp;gt;
+         &amp;lt;includes&amp;gt;
+             &amp;lt;include&amp;gt;**/*.yml&amp;lt;/include&amp;gt;
+             &amp;lt;include&amp;gt;**/*.properties&amp;lt;/include&amp;gt;
+             &amp;lt;!--加载模板文件--&amp;gt;
+             &amp;lt;include&amp;gt;**/*.html&amp;lt;/include&amp;gt;
+             &amp;lt;!--加载静态文件--&amp;gt;
+             &amp;lt;include&amp;gt;/static/&amp;lt;/include&amp;gt;
+         &amp;lt;/includes&amp;gt;
+     &amp;lt;/resource&amp;gt;
+ &amp;lt;/resources&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改启动类添加@MapperScan 注解&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@SpringBootApplication
+@MapperScan(&amp;quot;com.cy.springbootmybatis.mapper&amp;quot;)//指定扫描接口与映射配置文件的包名
+public class SpringbootmybatisApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbootmybatisApplication.class, args);
+	}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;924-mybatis-的其他配置项&#34;&gt;9.2.4 MyBatis 的其他配置项&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;mybatis:
+#扫描 classpath 中 mapper 目录下的映射配置文件，针对于映射配置文件放到了 resources 目录下
+	mapper-locations: classpath:/mapper/*.xml
+#定义包别名，使用 pojo 时可以直接使用 pojo 的类型名称不用加包名
+	type-aliases-package: com.bjsxt.springbootmybatis.pojo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;由于本项目mapper目录不在resources目录下，且已经在启动类中添加了@MapperScan注解，故本项目不需要此配置&lt;/p&gt;
+&lt;h4 id=&#34;925-详细设计&#34;&gt;9.2.5 详细设计&lt;/h4&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;32&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200622091922.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;视图层&lt;/p&gt;
+&lt;p&gt;addUser.html:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot; xmlns:th=&amp;quot;http://www.thymeleaf.org&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;form th:action=&amp;quot;@{/user/addUser}&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;
+    username：&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;username&amp;quot;&amp;gt;&amp;lt;br/&amp;gt;
+    usersex：&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;usersex&amp;quot;&amp;gt;&amp;lt;br/&amp;gt;
+    &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;增加&amp;quot;&amp;gt;
+&amp;lt;/form&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ok.html:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;h2&amp;gt;成功！&amp;lt;/h2&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;showUsers.html:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot; xmlns:th=&amp;quot;http://www.thymeleaf.org&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;table border=&amp;quot;1&amp;quot; align=&amp;quot;center&amp;quot;&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;th&amp;gt;ID&amp;lt;/th&amp;gt;
+        &amp;lt;th&amp;gt;姓名&amp;lt;/th&amp;gt;
+        &amp;lt;th&amp;gt;性别&amp;lt;/th&amp;gt;
+        &amp;lt;th&amp;gt;操作&amp;lt;/th&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr th:each=&amp;quot;u : ${list}&amp;quot;&amp;gt;
+        &amp;lt;td th:text=&amp;quot;${u.userid}&amp;quot;&amp;gt;&amp;lt;/td&amp;gt;
+        &amp;lt;td th:text=&amp;quot;${u.username}&amp;quot;&amp;gt;&amp;lt;/td&amp;gt;
+        &amp;lt;td th:text=&amp;quot;${u.usersex}&amp;quot;&amp;gt;&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;
+            &amp;lt;a th:href=&amp;quot;@{/user/preUpdateUser(id=${u.userid})}&amp;quot;&amp;gt;修改&amp;lt;/a&amp;gt;
+            &amp;lt;a th:href=&amp;quot;@{/user/deleteUser(id=${u.userid})}&amp;quot;&amp;gt;删除&amp;lt;/a&amp;gt;
+        &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;updateUser.html:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot; xmlns:th=&amp;quot;http://www.thymeleaf.org&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;form th:action=&amp;quot;@{/user/updateUser}&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;
+    &amp;lt;input type=&amp;quot;hidden&amp;quot; name=&amp;quot;userid&amp;quot; th:value=&amp;quot;${user.userid}&amp;quot;&amp;gt;
+    &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;username&amp;quot; th:value=&amp;quot;${user.username}&amp;quot;&amp;gt;&amp;lt;br/&amp;gt;
+    &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;usersex&amp;quot; th:value=&amp;quot;${user.usersex}&amp;quot;&amp;gt;&amp;lt;br/&amp;gt;
+    &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;修改&amp;quot;&amp;gt;
+&amp;lt;/form&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;控制层&lt;/p&gt;
+&lt;p&gt;PageController:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 页面跳转controller
+ */
+@Controller
+public class PageController {
+
+    /**
+     * 页面跳转方法
+     */
+    @RequestMapping(&amp;quot;/{page}&amp;quot;)
+    public String showPage(@PathVariable String page) {
+        return page;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;UsersController:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 用户管理controller
+ */
+@Controller
+@RequestMapping(&amp;quot;/user&amp;quot;)
+public class UsersController {
+
+    @Autowired
+    private UsersService usersService;
+    /**
+     * 添加用户
+     */
+    @PostMapping(&amp;quot;/addUser&amp;quot;)
+    public String addUsers(Users users){
+        try {
+            usersService.addUsers(users);
+        }catch (Exception e){
+            e.printStackTrace();
+            return &amp;quot;error&amp;quot;;
+        }
+        return &amp;quot;redirect:/ok&amp;quot;;
+    }
+
+    /**
+     * 查询全部用户
+     */
+    @GetMapping(&amp;quot;/findUsersAll&amp;quot;)
+    public String findUsersAll(Model model){
+        try {
+            List&amp;lt;Users&amp;gt; list = usersService.findUsersAll();
+            model.addAttribute(&amp;quot;list&amp;quot;,list);
+        }catch (Exception e){
+            e.printStackTrace();
+            return &amp;quot;error&amp;quot;;
+        }
+        return &amp;quot;showUsers&amp;quot;;
+    }
+
+    /**
+     * 预更新用户的查询
+     */
+    @GetMapping(&amp;quot;/preUpdateUser&amp;quot;)
+    public String preUpdateUser(Integer id,Model model){
+        try {
+            Users user = usersService.findUserById(id);
+            model.addAttribute(&amp;quot;user&amp;quot;,user);
+        }catch (Exception e){
+            e.printStackTrace();
+            return &amp;quot;error&amp;quot;;
+        }
+        return &amp;quot;updateUser&amp;quot;;
+    }
+
+    /**
+     * 修改用户
+     */
+    @PostMapping(&amp;quot;/updateUser&amp;quot;)
+    public String updateUser(Users user){
+        try {
+            usersService.updateUser(user);
+        }catch (Exception e){
+            e.printStackTrace();
+            return &amp;quot;error&amp;quot;;
+        }
+        return &amp;quot;redirect:/ok&amp;quot;;
+    }
+
+    /**
+     * 删除用户
+     */
+    @GetMapping(&amp;quot;/deleteUser&amp;quot;)
+    public String deleteUser(Integer id){
+        try {
+            usersService.deleteUser(id);
+        }catch (Exception e){
+            e.printStackTrace();
+            return &amp;quot;error&amp;quot;;
+        }
+        return &amp;quot;redirect:/ok&amp;quot;;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;service层&lt;/p&gt;
+&lt;p&gt;UsersService接口：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface UsersService {
+
+    void addUsers(Users user);
+
+    List&amp;lt;Users&amp;gt; findUsersAll();
+
+    Users findUserById(Integer id);
+
+    void updateUser(Users user);
+
+    void deleteUser(Integer id);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;UsersServiceImpl类：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 用户管理业务层
+ */
+@Service
+public class UsersServiceImpl implements UsersService {
+    @Autowired
+    private UsersMapper usersMapper;
+
+    /**
+     * 增加用户
+     * @param users
+     */
+    @Override
+    public void addUsers(Users users) {
+        usersMapper.insert(users);
+    }
+
+    /**
+     * 查询所有用户
+     * @return
+     */
+    @Override
+    public List&amp;lt;Users&amp;gt; findUsersAll() {
+        UsersExample usersExample = new UsersExample();
+        return usersMapper.selectByExample(usersExample);
+    }
+
+    /**
+     * 预更新用户的查询
+     * @param id
+     * @return
+     */
+    @Override
+    public Users findUserById(Integer id) {
+        Users user = usersMapper.selectByPrimaryKey(id);
+        return user;
+    }
+
+    /**
+     * 修改用户
+     */
+    @Override
+    public void updateUser(Users user) {
+        usersMapper.updateByPrimaryKey(user);
+    }
+
+    /**
+     * 删除用户
+     * @param id
+     */
+    @Override
+    public void deleteUser(Integer id) {
+        usersMapper.deleteByPrimaryKey(id);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;mapper(generator插件自动生成)&lt;/p&gt;
+&lt;p&gt;UsersMapper.xml:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;!DOCTYPE mapper PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot; &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.cy.springbootmybatis.mapper.UsersMapper&amp;quot;&amp;gt;
+  &amp;lt;resultMap id=&amp;quot;BaseResultMap&amp;quot; type=&amp;quot;com.cy.springbootmybatis.pojo.Users&amp;quot;&amp;gt;
+    &amp;lt;id column=&amp;quot;userid&amp;quot; jdbcType=&amp;quot;INTEGER&amp;quot; property=&amp;quot;userid&amp;quot; /&amp;gt;
+    &amp;lt;result column=&amp;quot;username&amp;quot; jdbcType=&amp;quot;VARCHAR&amp;quot; property=&amp;quot;username&amp;quot; /&amp;gt;
+    &amp;lt;result column=&amp;quot;usersex&amp;quot; jdbcType=&amp;quot;VARCHAR&amp;quot; property=&amp;quot;usersex&amp;quot; /&amp;gt;
+  &amp;lt;/resultMap&amp;gt;
+  &amp;lt;sql id=&amp;quot;Example_Where_Clause&amp;quot;&amp;gt;
+    &amp;lt;where&amp;gt;
+      &amp;lt;foreach collection=&amp;quot;oredCriteria&amp;quot; item=&amp;quot;criteria&amp;quot; separator=&amp;quot;or&amp;quot;&amp;gt;
+        &amp;lt;if test=&amp;quot;criteria.valid&amp;quot;&amp;gt;
+          &amp;lt;trim prefix=&amp;quot;(&amp;quot; prefixOverrides=&amp;quot;and&amp;quot; suffix=&amp;quot;)&amp;quot;&amp;gt;
+            &amp;lt;foreach collection=&amp;quot;criteria.criteria&amp;quot; item=&amp;quot;criterion&amp;quot;&amp;gt;
+              &amp;lt;choose&amp;gt;
+                &amp;lt;when test=&amp;quot;criterion.noValue&amp;quot;&amp;gt;
+                  and ${criterion.condition}
+                &amp;lt;/when&amp;gt;
+                &amp;lt;when test=&amp;quot;criterion.singleValue&amp;quot;&amp;gt;
+                  and ${criterion.condition} #{criterion.value}
+                &amp;lt;/when&amp;gt;
+                &amp;lt;when test=&amp;quot;criterion.betweenValue&amp;quot;&amp;gt;
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                &amp;lt;/when&amp;gt;
+                &amp;lt;when test=&amp;quot;criterion.listValue&amp;quot;&amp;gt;
+                  and ${criterion.condition}
+                  &amp;lt;foreach close=&amp;quot;)&amp;quot; collection=&amp;quot;criterion.value&amp;quot; item=&amp;quot;listItem&amp;quot; open=&amp;quot;(&amp;quot; separator=&amp;quot;,&amp;quot;&amp;gt;
+                    #{listItem}
+                  &amp;lt;/foreach&amp;gt;
+                &amp;lt;/when&amp;gt;
+              &amp;lt;/choose&amp;gt;
+            &amp;lt;/foreach&amp;gt;
+          &amp;lt;/trim&amp;gt;
+        &amp;lt;/if&amp;gt;
+      &amp;lt;/foreach&amp;gt;
+    &amp;lt;/where&amp;gt;
+  &amp;lt;/sql&amp;gt;
+  &amp;lt;sql id=&amp;quot;Update_By_Example_Where_Clause&amp;quot;&amp;gt;
+    &amp;lt;where&amp;gt;
+      &amp;lt;foreach collection=&amp;quot;example.oredCriteria&amp;quot; item=&amp;quot;criteria&amp;quot; separator=&amp;quot;or&amp;quot;&amp;gt;
+        &amp;lt;if test=&amp;quot;criteria.valid&amp;quot;&amp;gt;
+          &amp;lt;trim prefix=&amp;quot;(&amp;quot; prefixOverrides=&amp;quot;and&amp;quot; suffix=&amp;quot;)&amp;quot;&amp;gt;
+            &amp;lt;foreach collection=&amp;quot;criteria.criteria&amp;quot; item=&amp;quot;criterion&amp;quot;&amp;gt;
+              &amp;lt;choose&amp;gt;
+                &amp;lt;when test=&amp;quot;criterion.noValue&amp;quot;&amp;gt;
+                  and ${criterion.condition}
+                &amp;lt;/when&amp;gt;
+                &amp;lt;when test=&amp;quot;criterion.singleValue&amp;quot;&amp;gt;
+                  and ${criterion.condition} #{criterion.value}
+                &amp;lt;/when&amp;gt;
+                &amp;lt;when test=&amp;quot;criterion.betweenValue&amp;quot;&amp;gt;
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                &amp;lt;/when&amp;gt;
+                &amp;lt;when test=&amp;quot;criterion.listValue&amp;quot;&amp;gt;
+                  and ${criterion.condition}
+                  &amp;lt;foreach close=&amp;quot;)&amp;quot; collection=&amp;quot;criterion.value&amp;quot; item=&amp;quot;listItem&amp;quot; open=&amp;quot;(&amp;quot; separator=&amp;quot;,&amp;quot;&amp;gt;
+                    #{listItem}
+                  &amp;lt;/foreach&amp;gt;
+                &amp;lt;/when&amp;gt;
+              &amp;lt;/choose&amp;gt;
+            &amp;lt;/foreach&amp;gt;
+          &amp;lt;/trim&amp;gt;
+        &amp;lt;/if&amp;gt;
+      &amp;lt;/foreach&amp;gt;
+    &amp;lt;/where&amp;gt;
+  &amp;lt;/sql&amp;gt;
+  &amp;lt;sql id=&amp;quot;Base_Column_List&amp;quot;&amp;gt;
+    userid, username, usersex
+  &amp;lt;/sql&amp;gt;
+  &amp;lt;select id=&amp;quot;selectByExample&amp;quot; parameterType=&amp;quot;com.cy.springbootmybatis.pojo.UsersExample&amp;quot; resultMap=&amp;quot;BaseResultMap&amp;quot;&amp;gt;
+    select
+    &amp;lt;if test=&amp;quot;distinct&amp;quot;&amp;gt;
+      distinct
+    &amp;lt;/if&amp;gt;
+    &amp;lt;include refid=&amp;quot;Base_Column_List&amp;quot; /&amp;gt;
+    from users
+    &amp;lt;if test=&amp;quot;_parameter != null&amp;quot;&amp;gt;
+      &amp;lt;include refid=&amp;quot;Example_Where_Clause&amp;quot; /&amp;gt;
+    &amp;lt;/if&amp;gt;
+    &amp;lt;if test=&amp;quot;orderByClause != null&amp;quot;&amp;gt;
+      order by ${orderByClause}
+    &amp;lt;/if&amp;gt;
+  &amp;lt;/select&amp;gt;
+  &amp;lt;select id=&amp;quot;selectByPrimaryKey&amp;quot; parameterType=&amp;quot;java.lang.Integer&amp;quot; resultMap=&amp;quot;BaseResultMap&amp;quot;&amp;gt;
+    select 
+    &amp;lt;include refid=&amp;quot;Base_Column_List&amp;quot; /&amp;gt;
+    from users
+    where userid = #{userid,jdbcType=INTEGER}
+  &amp;lt;/select&amp;gt;
+  &amp;lt;delete id=&amp;quot;deleteByPrimaryKey&amp;quot; parameterType=&amp;quot;java.lang.Integer&amp;quot;&amp;gt;
+    delete from users
+    where userid = #{userid,jdbcType=INTEGER}
+  &amp;lt;/delete&amp;gt;
+  &amp;lt;delete id=&amp;quot;deleteByExample&amp;quot; parameterType=&amp;quot;com.cy.springbootmybatis.pojo.UsersExample&amp;quot;&amp;gt;
+    delete from users
+    &amp;lt;if test=&amp;quot;_parameter != null&amp;quot;&amp;gt;
+      &amp;lt;include refid=&amp;quot;Example_Where_Clause&amp;quot; /&amp;gt;
+    &amp;lt;/if&amp;gt;
+  &amp;lt;/delete&amp;gt;
+  &amp;lt;insert id=&amp;quot;insert&amp;quot; parameterType=&amp;quot;com.cy.springbootmybatis.pojo.Users&amp;quot;&amp;gt;
+    insert into users (userid, username, usersex
+      )
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{usersex,jdbcType=VARCHAR}
+      )
+  &amp;lt;/insert&amp;gt;
+  &amp;lt;insert id=&amp;quot;insertSelective&amp;quot; parameterType=&amp;quot;com.cy.springbootmybatis.pojo.Users&amp;quot;&amp;gt;
+    insert into users
+    &amp;lt;trim prefix=&amp;quot;(&amp;quot; suffix=&amp;quot;)&amp;quot; suffixOverrides=&amp;quot;,&amp;quot;&amp;gt;
+      &amp;lt;if test=&amp;quot;userid != null&amp;quot;&amp;gt;
+        userid,
+      &amp;lt;/if&amp;gt;
+      &amp;lt;if test=&amp;quot;username != null&amp;quot;&amp;gt;
+        username,
+      &amp;lt;/if&amp;gt;
+      &amp;lt;if test=&amp;quot;usersex != null&amp;quot;&amp;gt;
+        usersex,
+      &amp;lt;/if&amp;gt;
+    &amp;lt;/trim&amp;gt;
+    &amp;lt;trim prefix=&amp;quot;values (&amp;quot; suffix=&amp;quot;)&amp;quot; suffixOverrides=&amp;quot;,&amp;quot;&amp;gt;
+      &amp;lt;if test=&amp;quot;userid != null&amp;quot;&amp;gt;
+        #{userid,jdbcType=INTEGER},
+      &amp;lt;/if&amp;gt;
+      &amp;lt;if test=&amp;quot;username != null&amp;quot;&amp;gt;
+        #{username,jdbcType=VARCHAR},
+      &amp;lt;/if&amp;gt;
+      &amp;lt;if test=&amp;quot;usersex != null&amp;quot;&amp;gt;
+        #{usersex,jdbcType=VARCHAR},
+      &amp;lt;/if&amp;gt;
+    &amp;lt;/trim&amp;gt;
+  &amp;lt;/insert&amp;gt;
+  &amp;lt;select id=&amp;quot;countByExample&amp;quot; parameterType=&amp;quot;com.cy.springbootmybatis.pojo.UsersExample&amp;quot; resultType=&amp;quot;java.lang.Long&amp;quot;&amp;gt;
+    select count(*) from users
+    &amp;lt;if test=&amp;quot;_parameter != null&amp;quot;&amp;gt;
+      &amp;lt;include refid=&amp;quot;Example_Where_Clause&amp;quot; /&amp;gt;
+    &amp;lt;/if&amp;gt;
+  &amp;lt;/select&amp;gt;
+  &amp;lt;update id=&amp;quot;updateByExampleSelective&amp;quot; parameterType=&amp;quot;map&amp;quot;&amp;gt;
+    update users
+    &amp;lt;set&amp;gt;
+      &amp;lt;if test=&amp;quot;record.userid != null&amp;quot;&amp;gt;
+        userid = #{record.userid,jdbcType=INTEGER},
+      &amp;lt;/if&amp;gt;
+      &amp;lt;if test=&amp;quot;record.username != null&amp;quot;&amp;gt;
+        username = #{record.username,jdbcType=VARCHAR},
+      &amp;lt;/if&amp;gt;
+      &amp;lt;if test=&amp;quot;record.usersex != null&amp;quot;&amp;gt;
+        usersex = #{record.usersex,jdbcType=VARCHAR},
+      &amp;lt;/if&amp;gt;
+    &amp;lt;/set&amp;gt;
+    &amp;lt;if test=&amp;quot;_parameter != null&amp;quot;&amp;gt;
+      &amp;lt;include refid=&amp;quot;Update_By_Example_Where_Clause&amp;quot; /&amp;gt;
+    &amp;lt;/if&amp;gt;
+  &amp;lt;/update&amp;gt;
+  &amp;lt;update id=&amp;quot;updateByExample&amp;quot; parameterType=&amp;quot;map&amp;quot;&amp;gt;
+    update users
+    set userid = #{record.userid,jdbcType=INTEGER},
+      username = #{record.username,jdbcType=VARCHAR},
+      usersex = #{record.usersex,jdbcType=VARCHAR}
+    &amp;lt;if test=&amp;quot;_parameter != null&amp;quot;&amp;gt;
+      &amp;lt;include refid=&amp;quot;Update_By_Example_Where_Clause&amp;quot; /&amp;gt;
+    &amp;lt;/if&amp;gt;
+  &amp;lt;/update&amp;gt;
+  &amp;lt;update id=&amp;quot;updateByPrimaryKeySelective&amp;quot; parameterType=&amp;quot;com.cy.springbootmybatis.pojo.Users&amp;quot;&amp;gt;
+    update users
+    &amp;lt;set&amp;gt;
+      &amp;lt;if test=&amp;quot;username != null&amp;quot;&amp;gt;
+        username = #{username,jdbcType=VARCHAR},
+      &amp;lt;/if&amp;gt;
+      &amp;lt;if test=&amp;quot;usersex != null&amp;quot;&amp;gt;
+        usersex = #{usersex,jdbcType=VARCHAR},
+      &amp;lt;/if&amp;gt;
+    &amp;lt;/set&amp;gt;
+    where userid = #{userid,jdbcType=INTEGER}
+  &amp;lt;/update&amp;gt;
+  &amp;lt;update id=&amp;quot;updateByPrimaryKey&amp;quot; parameterType=&amp;quot;com.cy.springbootmybatis.pojo.Users&amp;quot;&amp;gt;
+    update users
+    set username = #{username,jdbcType=VARCHAR},
+      usersex = #{usersex,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=INTEGER}
+  &amp;lt;/update&amp;gt;
+&amp;lt;/mapper&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;UsersMapper接口:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface UsersMapper {
+    long countByExample(UsersExample example);
+
+    int deleteByExample(UsersExample example);
+
+    int deleteByPrimaryKey(Integer userid);
+
+    int insert(Users record);
+
+    int insertSelective(Users record);
+
+    List&amp;lt;Users&amp;gt; selectByExample(UsersExample example);
+
+    Users selectByPrimaryKey(Integer userid);
+
+    int updateByExampleSelective(@Param(&amp;quot;record&amp;quot;) Users record, @Param(&amp;quot;example&amp;quot;) UsersExample example);
+
+    int updateByExample(@Param(&amp;quot;record&amp;quot;) Users record, @Param(&amp;quot;example&amp;quot;) UsersExample example);
+
+    int updateByPrimaryKeySelective(Users record);
+
+    int updateByPrimaryKey(Users record);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;10-springboot-中异常处理与单元测试&#34;&gt;10、 SpringBoot 中异常处理与单元测试&lt;/h2&gt;
+&lt;h3 id=&#34;101-异常处理&#34;&gt;10.1 异常处理&lt;/h3&gt;
+&lt;p&gt;SpringBoot 中对于异常处理提供了五种处理方式&lt;/p&gt;
+&lt;h4 id=&#34;1011-自定义错误页面&#34;&gt;10.1.1 自定义错误页面&lt;/h4&gt;
+&lt;p&gt;SpringBoot 默认的处理异常的机制：SpringBoot 默认的已经提供了一套处理异常的机制。一旦程序中出现了异常 SpringBoot 会向/error 的 url 发送请求。在 SpringBoot 中提供了一个名为 BasicErrorController 来处理/error 请求，然后跳转到默认显示异常的页面来展示异常信息。&lt;br&gt;
+如 果 我 们 需 要 将 所 有 的 异 常 同 一 跳 转 到 自 定 义 的 错 误 页 面 ， 需 要 再src/main/resources/templates 目录下创建 error.html 页面。注意：页面名称必须叫 error&lt;/p&gt;
+&lt;h4 id=&#34;1012-通过exceptionhandler-注解处理异常&#34;&gt;10.1.2 通过@ExceptionHandler 注解处理异常&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;修改 Controller&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Controller
+public class UsersController {
+    @RequestMapping(&amp;quot;showInfo&amp;quot;)
+    public String showInfo() {
+        String str = null;
+        str.length();
+        return &amp;quot;ok&amp;quot;;
+    }
+
+    @ExceptionHandler(value = {java.lang.NullPointerException.class})
+    public ModelAndView nullpointExcepitonHandler(Exception e) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject(&amp;quot;err&amp;quot;, e.toString());
+        mv.setViewName(&amp;quot;error1&amp;quot;);
+        return mv;
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;创建页面&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE HTML PUBLIC &amp;quot;-//W3C//DTD HTML 4.01
+Transitional//EN&amp;quot;
+&amp;quot;http://www.w3.org/TR/html4/loose.dtd&amp;quot;&amp;gt;
+&amp;lt;html xmlns:th=&amp;quot;http://www.thymeleaf.org&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;title&amp;gt;error1&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+出错了。。。
+&amp;lt;span th:text=&amp;quot;${err}&amp;quot;/&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;1013-通过controlleradvice-与exceptionhandler-注解处理异常&#34;&gt;10.1.3 通过@ControllerAdvice 与@ExceptionHandler 注解处理异常&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建全局异常处理类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 全局异常处理类
+ */
+@ControllerAdvice
+public class GlobalException {
+    @ExceptionHandler(value = {java.lang.NullPointerException.class} )
+    public ModelAndView nullpointExcepitonHandler(Exception e){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject(&amp;quot;err&amp;quot;,e.toString());
+        mv.setViewName(&amp;quot;error1&amp;quot;);
+        return mv;
+
+    }
+    @ExceptionHandler(value = {java.lang.ArithmeticException.class} )
+    public ModelAndView arithmeticExceptionHandler(Exception e){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject(&amp;quot;err&amp;quot;, e.toString());
+        mv.setViewName(&amp;quot;error2&amp;quot;);
+        return mv;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;1014-通过-simplemappingexceptionresolver-对象处理异常&#34;&gt;10.1.4 通过 SimpleMappingExceptionResolver 对象处理异常&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建全局异常处理类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Configuration
+public class GlobalException2 {
+
+    /**
+     * 此方法返回值必须是 SimpleMappingExceptionResolver 对象
+     * @return
+     */
+    @Bean
+    public SimpleMappingExceptionResolver
+    getSimpleMappingExceptionResolver() {
+        SimpleMappingExceptionResolver resolver = new SimpleMappingExceptionResolver();
+        Properties properties = new Properties();
+    /**
+    * 参数一：异常类型，并且是全名
+    * 参数二：视图名称
+    */
+        properties.put(&amp;quot;java.lang.NullPointerException&amp;quot;, &amp;quot;error3&amp;quot;);
+        properties.put(&amp;quot;java.lang.ArithmeticException&amp;quot;, &amp;quot;error4&amp;quot;);
+
+        resolver.setExceptionMappings(properties);
+        return resolver;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;缺点：不能传递异常信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;1015-通过自定义-handlerexceptionresolver-对象处理异常推荐&#34;&gt;10.1.5 通过自定义 HandlerExceptionResolver 对象处理异常（推荐）&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建全局异常处理类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 自定义 HandlerExceptionResolver 对象处理异常
+ * 必须要实现 HandlerExceptionResolver
+ */
+@Configuration
+public class GlobalException3 implements HandlerExceptionResolver {
+    @Override
+    public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object handler, Exception e) {
+        ModelAndView mv = new ModelAndView();
+        //判断不同异常类型，做不同视图的跳转
+        if (e instanceof NullPointerException) {
+            mv.setViewName(&amp;quot;error5&amp;quot;);
+        }
+        if (e instanceof ArithmeticException) {
+            mv.setViewName(&amp;quot;error6&amp;quot;);
+        }
+        mv.addObject(&amp;quot;error&amp;quot;, e.toString());
+        return mv;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 ">SpringBoot</a>
       </div>
       
