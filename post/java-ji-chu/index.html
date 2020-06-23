@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Java环境变量配置 | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1592814506715">
+<link rel="shortcut icon" href="/favicon.ico?v=1592880234716">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -7691,6 +7691,21 @@ d | 2 代表目录
 &lt;h3 id=&#34;81-xftp-安装及使用&#34;&gt;8.1 Xftp 安装及使用&lt;/h3&gt;
 &lt;p&gt;​		Xftp 和 Xshell 是同一个公司的产品。Xftp 是基于 FTP 协议的工具。可以方便的实现互联网中主机和主机之间的文件传输。&lt;/p&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;72&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616020701.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;82-使用-lrzsz-工具完成文件的上传与下载&#34;&gt;8.2 使用 lrzsz 工具完成文件的上传与下载&lt;/h3&gt;
+&lt;p&gt;lrzsz 是一款在 linux 里可代替 Xftp 上传和下载的程序&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装 lrzsz&lt;/p&gt;
+&lt;p&gt;yum install lrzsz -y&lt;/p&gt;
+&lt;p&gt;yum 是一个在 Fedora 和 RedHat 以及 SUSE 中的 Shell 前端软件包管理器。&lt;/p&gt;
+&lt;p&gt;yum 命令是基于 RPM 包管理的工具，能够从指定的服务器自动下载 RPM 包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;lrzsz 的使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;sz：将选定的文件发送到本地机器&lt;/p&gt;
+&lt;p&gt;rz：弹出一个文件选择窗口，从本地选择文件上传到 Linux&lt;/p&gt;
 &lt;h2 id=&#34;9-linux-中文件的压缩与解压缩&#34;&gt;9、Linux 中文件的压缩与解压缩&lt;/h2&gt;
 &lt;h3 id=&#34;91-targz-格式&#34;&gt;9.1 *.tar.gz 格式&lt;/h3&gt;
 &lt;p&gt;​		tar.gz 是 Linux 中的一种文件压缩格式，可是使用 tar 命令实现对文件的压缩与解压处理。&lt;/p&gt;
@@ -7716,6 +7731,212 @@ d | 2 代表目录
 &lt;h4 id=&#34;922-解压-zip-文件&#34;&gt;9.2.2 解压 zip 文件&lt;/h4&gt;
 &lt;p&gt;unzip 压缩文件.zip&lt;/p&gt;
 &lt;p&gt;unzip 压缩文件.zip -d 解压到指定目录&lt;/p&gt;
+&lt;h2 id=&#34;10-安装jdk&#34;&gt;10、安装JDK&lt;/h2&gt;
+&lt;h3 id=&#34;101-上传文件&#34;&gt;10.1 上传文件&lt;/h3&gt;
+&lt;p&gt;在/root 目录下新建一个 temp 目录用于存放临时文件&lt;/p&gt;
+&lt;p&gt;将 JDK 压缩文件上传到/root/temp 目录&lt;/p&gt;
+&lt;h3 id=&#34;102-解压文件&#34;&gt;10.2 解压文件&lt;/h3&gt;
+&lt;p&gt;使用 tar 命令解压文件&lt;/p&gt;
+&lt;h3 id=&#34;103-配置环境变量&#34;&gt;10.3 配置环境变量&lt;/h3&gt;
+&lt;p&gt;在 linux 中/etc/profile 此文件为环境变量配置文件。&lt;/p&gt;
+&lt;p&gt;export JAVA_HOME=/usr/local/jdk&lt;/p&gt;
+&lt;p&gt;export CLASSPATH=.:&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;J&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;V&lt;/mi&gt;&lt;msub&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;/msub&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;M&lt;/mi&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;/&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;/&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;.&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;JAVA_HOME/lib/dt.jar:&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.09618em;&#34;&gt;J&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.22222em;&#34;&gt;V&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.32833099999999993em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathdefault mtight&#34; style=&#34;margin-right:0.08125em;&#34;&gt;H&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.10903em;&#34;&gt;M&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05764em;&#34;&gt;E&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.01968em;&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05724em;&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;:&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;JAVA_HOME/lib/tools.jar&lt;/p&gt;
+&lt;p&gt;export PATH=&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;J&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;V&lt;/mi&gt;&lt;msub&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;/msub&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;M&lt;/mi&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;/&lt;/mi&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;JAVA_HOME/bin:&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.09618em;&#34;&gt;J&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.22222em;&#34;&gt;V&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.32833099999999993em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathdefault mtight&#34; style=&#34;margin-right:0.08125em;&#34;&gt;H&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.10903em;&#34;&gt;M&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05764em;&#34;&gt;E&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;:&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;PATH&lt;/p&gt;
+&lt;h3 id=&#34;104-让环境变量生效&#34;&gt;10.4 让环境变量生效&lt;/h3&gt;
+&lt;p&gt;永久生效：重启 Linux&lt;/p&gt;
+&lt;p&gt;临时生效：. /etc/profile 或者 source /etc/profile 有效范围是当前会话[终端]&lt;/p&gt;
+&lt;h3 id=&#34;105-查看配置是否成功&#34;&gt;10.5 查看配置是否成功&lt;/h3&gt;
+&lt;p&gt;java -version&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;73&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623095105.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;11-tomcat-配置步骤&#34;&gt;11、Tomcat 配置步骤&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;上传&lt;/p&gt;
+&lt;p&gt;上传 tomcat 压缩包/root/temp&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解压&lt;/p&gt;
+&lt;p&gt;tar zxf apache-tomcat-7.0.68.tar.gz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;复制&lt;/p&gt;
+&lt;p&gt;cp -r apache-tomcat-7.0.68 /usr/local/tomcat&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动&lt;/p&gt;
+&lt;p&gt;进入 tomcat 的 bin 文件夹&lt;/p&gt;
+&lt;p&gt;cd /usr/local/tomcat/bin&lt;/p&gt;
+&lt;p&gt;执行的命令为/启动文件&lt;/p&gt;
+&lt;p&gt;./startup.sh&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;74&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623095955.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看日志&lt;/p&gt;
+&lt;p&gt;tomcat/logs/catalina.out 文件是日志文件. 就是控制台输出的文件&lt;/p&gt;
+&lt;p&gt;tail -f tomcat/logs/catalina.out - 追加显示的模式查看文件末尾信息&lt;/p&gt;
+&lt;p&gt;tomcat/bin/startup.sh &amp;amp; tail -f tomcat/logs/catalina.out 启动同时查看日志&lt;/p&gt;
+&lt;p&gt;&amp;amp; - 命令连接符, 左侧命令执行结束后,立刻执行右侧命令.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关闭防火墙&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;关闭防火墙，重启失效&lt;/p&gt;
+&lt;p&gt;service firewalld stop&lt;/p&gt;
+&lt;p&gt;禁用防火墙&lt;/p&gt;
+&lt;p&gt;systemctl disable firewalld&lt;/p&gt;
+&lt;p&gt;启动防火墙&lt;/p&gt;
+&lt;p&gt;systemctl enable firewalld&lt;/p&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;测试应用&lt;/p&gt;
+&lt;p&gt;http://ip:port/&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;12-centos7安装mysql-8020&#34;&gt;12 Centos7安装mysql 8.0.20&lt;/h2&gt;
+&lt;h3 id=&#34;121-配置yum源&#34;&gt;12.1 配置yum源&lt;/h3&gt;
+&lt;h4 id=&#34;1211-下载mysql源安装包&#34;&gt;12.1.1 下载mysql源安装包&lt;/h4&gt;
+&lt;p&gt;在MySQL官网中下载YUM源rpm安装包：http://dev.mysql.com/downloads/repo/yum/&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;75&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623100618.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;76&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623100847.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;复制本次下载链接：https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm&lt;/p&gt;
+&lt;p&gt;执行下载命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;wget https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;1212-安装mysql源&#34;&gt;12.1.2 安装mysql源&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;yum localinstall mysql80-community-release-el8-1.noarch.rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;1213-检查是否安装成功&#34;&gt;12.1.3 检查是否安装成功&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;yum repolist enabled | grep &amp;quot;mysql.*-community.*&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;77&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623101456.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;1214-修改安装版本可选&#34;&gt;12.1.4 修改安装版本（可选）&lt;/h4&gt;
+&lt;p&gt;如果需要安装指定版本的mysql，可以修改/etc/yum.repos.d/mysql-community.repo源，改变默认安装的mysql版本。&lt;/p&gt;
+&lt;p&gt;例如要安装5.7版本，将5.7源的enabled=0改成enabled=1，将8.0的enabled=1改成enabled=0即可，如下（本次未做修改，直接安装最新版8.0.20）：&lt;/p&gt;
+&lt;h3 id=&#34;122-安装mysql&#34;&gt;12.2 安装mysql&lt;/h3&gt;
+&lt;p&gt;直接使用命令：yum install mysql-community-server即可。&lt;/p&gt;
+&lt;h3 id=&#34;123-启动mysql服务&#34;&gt;12.3 启动mysql服务&lt;/h3&gt;
+&lt;h4 id=&#34;1231-启动&#34;&gt;12.3.1 启动&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;service mysqld start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;1232-查看启动状态&#34;&gt;12.3.2 查看启动状态&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;service mysqld status
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;78&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623101751.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;1233-设置开机启动&#34;&gt;12.3.3 设置开机启动&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;systemctl enable mysqld
+systemctl daemon-reload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;124-配置及部分命令&#34;&gt;12.4 配置及部分命令&lt;/h3&gt;
+&lt;h4 id=&#34;1241-修改登录密码&#34;&gt;12.4.1 修改登录密码&lt;/h4&gt;
+&lt;p&gt;mysql安装完成之后，在/var/log/mysqld.log文件中给root生成了一个默认密码。通过下面的方式找到root默认密码，然后登录mysql进行修改：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;grep &#39;temporary password&#39; /var/log/mysqld.log
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;79&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623102259.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;本地MySQL客户端登录&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;mysql -u root -p
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;密码是上一步查询出来的。输入后回车。&lt;/p&gt;
+&lt;p&gt;然后修改密码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;你的密码&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注：mysql5.7及以上默认安装了密码安全检查插件（validate_password），默认密码检查策略要求密码必须包含：大小写字母、数字和特殊符号，并且长度不能少于8位。否则会提示ERROR 1819 (HY000): Your password does not satisfy the current policy requirements错误，&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;80&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623102637.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;1242-修改密码策略可选&#34;&gt;12.4.2 修改密码策略（可选）&lt;/h4&gt;
+&lt;p&gt;在/etc/my.cnf文件添加validate_password_policy配置，指定密码策略：&lt;/p&gt;
+&lt;p&gt;选择0（LOW），1（MEDIUM），2（STRONG）其中一种，选择2需要提供密码字典文件。&lt;/p&gt;
+&lt;p&gt;validate_password_policy=0&lt;/p&gt;
+&lt;p&gt;如果不需要密码策略，添加my.cnf文件中添加如下配置禁用即可：&lt;/p&gt;
+&lt;p&gt;validate_password = off&lt;/p&gt;
+&lt;p&gt;重新启动mysql服务使配置生效：systemctl restart mysqld&lt;/p&gt;
+&lt;h4 id=&#34;1242-添加远程登录用户&#34;&gt;12.4.2 添加远程登录用户&lt;/h4&gt;
+&lt;p&gt;默认只允许root帐户在本地登录，如果要在其它机器上连接mysql，必须修改root允许远程连接，或者添加一个允许远程连接的帐户。&lt;/p&gt;
+&lt;p&gt;修改root用户远程访问权限：&lt;/p&gt;
+&lt;p&gt;选择 mysql 数据库：use mysql;&lt;/p&gt;
+&lt;p&gt;在 mysql 数据库的 user 表中查看当前 root 用户的相关信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;select host, user from user;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;81&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623102949.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;查看表格中 root 用户的 host，默认应该显示的 localhost，只支持本地访问，不允许远程访问。&lt;/p&gt;
+&lt;p&gt;授权 root 用户的所有权限并设置远程访问&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;GRANT ALL ON *.* TO &#39;root&#39;@&#39;%&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可能会出现以下报错信息：&lt;/p&gt;
+&lt;p&gt;ERROR 1410 (42000): You are not allowed to create a user with GRANT&lt;/p&gt;
+&lt;p&gt;则可以使用下面命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;update user set host=&#39;%&#39; where user =&#39;root&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后使用下面命令使修改生效：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;flush privileges;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;1243-修改默认编码格式&#34;&gt;12.4.3 修改默认编码格式&lt;/h4&gt;
+&lt;p&gt;mysql8.0默认编码方式为utf8mb4，因此使用时不需要修改，可使用如下命令查看：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;SHOW VARIABLES WHERE Variable_name LIKE &#39;character_set_%&#39; OR Variable_name LIKE &#39;collation%&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;82&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623103509.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;修改mysql配置文件my.cnf（windows为my.ini）&lt;/p&gt;
+&lt;p&gt;my.cnf一般在etc/mysql/my.cnf位置。找到后请在以下三部分里后面添加如下内容：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;[client]
+
+default-character-set = utf8mb4
+
+[mysql]
+
+default-character-set = utf8mb4
+
+[mysqld]
+
+character-set-client-handshake = FALSE
+
+character-set-server = utf8mb4
+
+collation-server = utf8mb4_unicode_ci
+
+init_connect=&#39;SET NAMES utf8mb4&#39;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重启mysql即可。&lt;/p&gt;
+&lt;p&gt;collation_connection 、collation_database 、collation_server是什么没关系。但必须保证以下这几个变量必须是utf8mb4。：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;character_set_client  (客户端来源数据使用的字符集)
+character_set_connection     (连接层字符集)
+character_set_database   (当前选中数据库的默认字符集)
+character_set_results (查询结果字符集)
+character_set_server (默认的内部操作字符集)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;数据库连接参数中,characterEncoding=utf8会被自动识别为utf8mb4，也可以不加这个参数，会自动检测。&lt;/p&gt;
+&lt;p&gt;而autoReconnect=true是必须加上的。&lt;/p&gt;
+&lt;h4 id=&#34;1244-部分参数配置查询命令&#34;&gt;12.4.4 部分参数配置查询命令&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;#查询mysql最大连接数设置
+show global variables like &#39;max_conn%&#39;;
+SELECT @@MAX_CONNECTIONS AS &#39;Max Connections&#39;;
+
+# 查看最大链接数
+show global status like &#39;Max_used_connections&#39;;
+
+
+# 查看慢查询日志是否开启以及日志位置
+show variables like &#39;slow_query%&#39;;
+ 
+
+# 查看慢查询日志超时记录时间
+show variables like &#39;long_query_time&#39;;
+
+
+# 查看链接创建以及现在正在链接数
+show status like &#39;Threads%&#39;;
+ 
+
+# 查看数据库当前链接
+show processlist;
+
+
+# 查看数据库配置
+show variables like &#39;%quer%&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;125连接navicat&#34;&gt;12.5连接Navicat&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;83&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623103953.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;84&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623104159.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;85&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623104313.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 ">Linux</a>
       </div>
       
