@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Intellij IDEA常用快捷键 | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1592880234716">
+<link rel="shortcut icon" href="/favicon.ico?v=1592904749116">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -218,7 +218,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">15</span>
+        <span class="site-item-stat-count">16</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1738,6 +1738,185 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/zookeeper/"" data-c="
+          &lt;h2 id=&#34;1-zookeeper简介&#34;&gt;1、Zookeeper简介&lt;/h2&gt;
+&lt;p&gt;Zookeeper 官网：http://zookeeper.apache.org/&lt;br&gt;
+Zookeeper 是 Apache 的一个分布式服务框架，是 Apache Hadoop 的一个子项目。官方&lt;br&gt;
+文档上这么解释 Zookeeper，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，&lt;br&gt;
+如：统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等。&lt;br&gt;
+简单来说 zookeeper=文件系统+监听通知机制。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2 id=&#34;2-zookeeper存储结构&#34;&gt;2、Zookeeper存储结构&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623131938.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;21-znode&#34;&gt;2.1 Znode&lt;/h3&gt;
+&lt;p&gt;在 Zookeeper 中，znode 是一个跟 Unix 文件系统路径相似的节点，可以向节点存储数据或者获取数据。&lt;/p&gt;
+&lt;p&gt;Zookeeper 底层是一套数据结构。这个存储结构是一个树形结构，其上的每一个节点，我们称之为“znode”&lt;/p&gt;
+&lt;p&gt;Zookeeper 中的数据是按照“树”结构进行存储的。而且 znode 节点还分为 4 中不同的类型。&lt;/p&gt;
+&lt;p&gt;每一个 znode 默认能够存储 1MB 的数据（对于记录状态性质的数据来说，够了）&lt;/p&gt;
+&lt;p&gt;可以使用 zkCli 命令，登录到 Zookeeper 上，并通过 ls、create、delete、get、set等命令操作这些 znode 节点。&lt;/p&gt;
+&lt;h3 id=&#34;22-znode节点类型&#34;&gt;2.2 Znode节点类型&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;PERSISTENT-持久化目录节点&lt;/p&gt;
+&lt;p&gt;客户端与 zookeeper 断开连接后，该节点依旧存在。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PERSISTENT_SEQUENTIAL-持久化顺序编号目录节点&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;客户端与 zookeeper 断开连接后，该节点依旧存在，只是 Zookeeper 给该节点名称进行顺序编号。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;EPHEMERAL-临时目录节点&lt;/p&gt;
+&lt;p&gt;客户端与 zookeeper 断开连接后，该节点被删除。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;EPHEMERAL_SEQUENTIAL-临时顺序编号目录节点&lt;/p&gt;
+&lt;p&gt;客户端与 zookeeper 断开连接后，该节点被删除，只是 Zookeeper 给该节点名称进行顺序编号。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;3-监听通知机制&#34;&gt;3、监听通知机制&lt;/h3&gt;
+&lt;p&gt;​		Zookeeper 是使用观察者设计模式来设计的。当客户端注册监听它关心的目录节点时，当目录节点发生变化（数据改变、被删除、子目录节点增加删除）时，Zookeeper 会通知客户端。&lt;/p&gt;
+&lt;h2 id=&#34;4-安装-zookeeper&#34;&gt;4、安装 zookeeper&lt;/h2&gt;
+&lt;p&gt;​		官方资源包可在 zookeeper.apache.com 站点中下载。本次安装版本为：3.6.0。&lt;/p&gt;
+&lt;h3 id=&#34;41-安装单机版&#34;&gt;4.1 安装单机版&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装 Linux&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装 JDK&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上传 Zookeeper&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解压 Zookeeper 压缩包&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Zookeeper 目录结构&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623132527.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;bin：放置运行脚本和工具脚本，&lt;/li&gt;
+&lt;li&gt;conf：zookeeper 默认读取配置的目录，里面会有默认的配置文件&lt;/li&gt;
+&lt;li&gt;docs：zookeeper 相关的文档&lt;/li&gt;
+&lt;li&gt;lib：zookeeper 核心的 jar&lt;/li&gt;
+&lt;li&gt;logs：zookeeper 日志&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置 Zookeeper&lt;/p&gt;
+&lt;p&gt;Zookeeper 在启动时默认的去 conf 目录下查找一个名称为 zoo.cfg 的配置文件。在 zookeeper 应用目录中有子目录 conf。其中有配置文件模板：zoo_sample.cfg&lt;br&gt;
+cp zoo_sample.cfg zoo.cfg。zookeeper 应用中的配置文件为 conf/zoo.cfg。&lt;/p&gt;
+&lt;p&gt;修改配置文件 zoo.cfg - 设置数据缓存路径(这里把缓存放到Zookeeper根目录下新建的data文件夹)&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623132606.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623132629.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623132718.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动 Zookeeper&lt;/p&gt;
+&lt;p&gt;默认加载配置文件：./zkServer.sh start：默认的会去 conf 目录下加载 zoo.cfg 配置文件。&lt;br&gt;
+指定加载配置文件：./zkServer.sh start 配置文件的路径。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623132950.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623133029.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;停止 Zookeeper&lt;/p&gt;
+&lt;p&gt;./zkServer.sh stop&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看 Zookeeper 状态&lt;br&gt;
+./zkServer.sh status&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623134226.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用客户端连接单机版 Zookeeper&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;连接方式一&lt;/p&gt;
+&lt;p&gt;bin/zkCli.sh&lt;br&gt;
+默认连接地址为本机地址，默认连接端口为 2181&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623134503.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;连接方式二&lt;/p&gt;
+&lt;p&gt;bin/zkCli.sh -server ip:port&lt;br&gt;
+连接指定 IP 地址与端口&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;42-安装集群版&#34;&gt;4.2 安装集群版&lt;/h3&gt;
+&lt;h4 id=&#34;421-zookeeper-集群说明&#34;&gt;4.2.1 Zookeeper 集群说明&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Zookeeper 集群中的角色&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Zookeeper 集群中的角色主要有以下三类&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623142410.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623142420.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;422-集群安装&#34;&gt;4.2.2 集群安装&lt;/h4&gt;
+&lt;p&gt;​	使用 3 个 Zookeeper 应用搭建一个伪集群。应用部署位置是：192.168.233.130。客户端监听端口分别为：2181、2182、2183。投票选举端口分别为 2881/3881、2882/3882、2883/3883。&lt;/p&gt;
+&lt;p&gt;​	tar -zxf zookeeper-3.6.0.tar.gz&lt;br&gt;
+​	将解压后的 Zookeeper 应用目录重命名，便于管理&lt;br&gt;
+​	mv zookeeper-3.6.0 zookeeper01&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;提供数据缓存目录&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在 zookeeper01 应用目录中，创建 data 目录，用于缓存应用运行数据&lt;br&gt;
+cd zookeeper01&lt;br&gt;
+mkdir data&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;复制应用&lt;br&gt;
+复制两份 Zookeeper 应用。用于模拟集群中的 3 个节点。&lt;br&gt;
+cp -r zookeeper01 zookeeper02&lt;br&gt;
+cp -r zookeeper01 zookeeper03&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提供配置文件&lt;br&gt;
+在 zookeeper 应用目录中有子目录 conf。其中有配置文件模板：zoo_sample.cfg&lt;br&gt;
+cp zoo_sample.cfg zoo.cfg&lt;br&gt;
+zookeeper 应用中的配置文件为 conf/zoo.cfg。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改配置文件 zoo.cfg - 设置数据缓存路径&lt;br&gt;
+dataDir 参数值为应用运行缓存数据保存目录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提供应用唯一标识&lt;br&gt;
+在 Zookeeper 集群中，每个节点需要一个唯一标识。这个唯一标识要求是自然数。且唯一标识保存位置是：数据缓存目录(dataDir=/usr/local/zookeeper/data)的 myid 文件中。其中“数据缓存目录”为配置文件 zoo.cfg 中的配置参数在 data 目录中创建文件 myid ： touch myid&lt;/p&gt;
+&lt;p&gt;为应用提供唯一标识。本环境中使用 1、2、3 作为每个节点的唯一标识。&lt;br&gt;
+vi myid&lt;br&gt;
+简化方式为： echo [唯一标识] &amp;gt;&amp;gt; myid。 echo 命令为回声命令，系统会将命令发送的数据返回。 &#39;&amp;gt;&amp;gt;&#39;为定位，代表系统回声数据指定发送到什么位置。 此命令代表系统回声数据发送到 myid 文件中。 如果没有文件则创建文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623142717.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;修改配置文件 zoo.cfg - 设置监听客户端、投票、选举端口&lt;/p&gt;
+&lt;p&gt;vim zoo.cfg&lt;/p&gt;
+&lt;p&gt;clientPort=2181 #服务端口根据应用做对应修改,zk01-2181,zk02-2182,zk03-2183&lt;br&gt;
+server.1=192.168.0.179:2881:3881&lt;br&gt;
+server.2=192.168.0.179:2882:3882&lt;br&gt;
+server.3=192.168.0.179:2883:3883&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623165813.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623165851.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623165926.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623144201.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/1592902142716_59800662-2B29-4867-AACF-1D8BA6D57A80.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;423-编写启动-关闭集群脚本&#34;&gt;4.2.3 编写启动、关闭集群脚本&lt;/h4&gt;
+&lt;p&gt;在 Linux 中可以使用 chmod 命令为文件授权。&lt;br&gt;
+chmod 777 文件名&lt;br&gt;
+777 表示为文件分配可读，可写，可执行权限。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623165653.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+">Zookeeper</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/springboot/"" data-c="
@@ -5231,7 +5410,7 @@ logging.level.org=off
 &lt;/ol&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;45&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200622161416.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;15-spring-boot-项目打包与多环境配置&#34;&gt;15、Spring Boot 项目打包与多环境配置&lt;/h2&gt;
-&lt;h2 id=&#34;151-spring-boot-项目打包&#34;&gt;15.1 Spring Boot 项目打包&lt;/h2&gt;
+&lt;h3 id=&#34;151-spring-boot-项目打包&#34;&gt;15.1 Spring Boot 项目打包&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;Spring Boot 的打包插件&lt;/li&gt;
 &lt;/ol&gt;
@@ -6318,8 +6497,7 @@ nginx 不仅支持 http 协议，还支持 https（即在 ssl 协议上传输 ht
 --http-fastcgi-temp-path=/var/temp/nginx/fastcgi &lt;br&gt;
 --http-uwsgi-temp-path=/var/temp/nginx/uwsgi &lt;br&gt;
 --http-scgi-temp-path=/var/temp/nginx/scgi&lt;/p&gt;
-&lt;p&gt;注意：上边将临时文件目录指定为/var/temp/nginx，需要在/var 下创建 temp 及 nginx&lt;/p&gt;
-&lt;p&gt;目录&lt;/p&gt;
+&lt;p&gt;注意：上边将临时文件目录指定为/var/temp/nginx，需要在/var 下创建 temp 及 nginx目录&lt;/p&gt;
 &lt;h3 id=&#34;32-编译安装&#34;&gt;3.2 编译安装&lt;/h3&gt;
 &lt;p&gt;编译：make&lt;/p&gt;
 &lt;p&gt;编译安装 make install&lt;/p&gt;
