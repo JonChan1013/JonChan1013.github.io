@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Intellij IDEA常用快捷键 | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1592904749116">
+<link rel="shortcut icon" href="/favicon.ico?v=1592985865384">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -218,19 +218,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">16</span>
+        <span class="site-item-stat-count">17</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">28</span>
+        <span class="site-item-stat-count">33</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">28</span>
+        <span class="site-item-stat-count">33</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -1740,12 +1740,21 @@
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/dubbo/"" data-c="
+          &lt;h2 id=&#34;1-dubbo简介&#34;&gt;1、Dubbo简介&lt;/h2&gt;
+&lt;h3 id=&#34;11-dubbo是什么&#34;&gt;1.1 Dubbo是什么&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624160121.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+Dubbo 官网地址：http://dubbo.apache.org/zh-cn/&lt;br&gt;
+Dubbo 最早是 Alibaba 开源的分布式服务框架，它最大的特点是按照分层的方式来架构，使用这种方式可以使各个层之间解耦合（或者最大限度地松耦合）。从服务模型的角度来看，Dubbo 采用的是一种非常简单的模型，要么是提供方提供服务，要么是消费方消费服务，所以基于这一点可以抽象出服务提供方（Provider）和服务消费方（Consumer）两个角色。&lt;/p&gt;
+&lt;!-- more --&gt;
+">Dubbo</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/zookeeper/"" data-c="
           &lt;h2 id=&#34;1-zookeeper简介&#34;&gt;1、Zookeeper简介&lt;/h2&gt;
 &lt;p&gt;Zookeeper 官网：http://zookeeper.apache.org/&lt;br&gt;
-Zookeeper 是 Apache 的一个分布式服务框架，是 Apache Hadoop 的一个子项目。官方&lt;br&gt;
-文档上这么解释 Zookeeper，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，&lt;br&gt;
-如：统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等。&lt;br&gt;
+Zookeeper 是 Apache 的一个分布式服务框架，是 Apache Hadoop 的一个子项目。官方文档上这么解释 Zookeeper，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，如：统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等。&lt;br&gt;
 简单来说 zookeeper=文件系统+监听通知机制。&lt;/p&gt;
 &lt;!-- more --&gt;
 &lt;h2 id=&#34;2-zookeeper存储结构&#34;&gt;2、Zookeeper存储结构&lt;/h2&gt;
@@ -1777,7 +1786,7 @@ Zookeeper 是 Apache 的一个分布式服务框架，是 Apache Hadoop 的一�
 &lt;p&gt;客户端与 zookeeper 断开连接后，该节点被删除，只是 Zookeeper 给该节点名称进行顺序编号。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;3-监听通知机制&#34;&gt;3、监听通知机制&lt;/h3&gt;
+&lt;h2 id=&#34;3-监听通知机制&#34;&gt;3、监听通知机制&lt;/h2&gt;
 &lt;p&gt;​		Zookeeper 是使用观察者设计模式来设计的。当客户端注册监听它关心的目录节点时，当目录节点发生变化（数据改变、被删除、子目录节点增加删除）时，Zookeeper 会通知客户端。&lt;/p&gt;
 &lt;h2 id=&#34;4-安装-zookeeper&#34;&gt;4、安装 zookeeper&lt;/h2&gt;
 &lt;p&gt;​		官方资源包可在 zookeeper.apache.com 站点中下载。本次安装版本为：3.6.0。&lt;/p&gt;
@@ -1903,6 +1912,9 @@ vi myid&lt;br&gt;
 server.1=192.168.0.179:2881:3881&lt;br&gt;
 server.2=192.168.0.179:2882:3882&lt;br&gt;
 server.3=192.168.0.179:2883:3883&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：192.168.0.179代表zookeeper所在的服务器的IP，2881是zookeeper内部连接的端口号，3881是投票机制的端口&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623165813.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623165851.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623165926.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
@@ -1914,7 +1926,393 @@ server.3=192.168.0.179:2883:3883&lt;/p&gt;
 &lt;p&gt;在 Linux 中可以使用 chmod 命令为文件授权。&lt;br&gt;
 chmod 777 文件名&lt;br&gt;
 777 表示为文件分配可读，可写，可执行权限。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;启动 Zookeeper 集群脚本&lt;/p&gt;
+&lt;p&gt;zookeeper01/bin/zkServer.sh start&lt;br&gt;
+zookeeper02/bin/zkServer.sh start&lt;br&gt;
+zookeeper03/bin/zkServer.sh start&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关闭 Zookeeper 集群脚本&lt;/p&gt;
+&lt;p&gt;zookeeper01/bin/zkServer.sh stop&lt;/p&gt;
+&lt;p&gt;zookeeper02/bin/zkServer.sh stop&lt;br&gt;
+zookeeper03/bin/zkServer.sh stop&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200623165653.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;424-连接集群&#34;&gt;4.2.4 连接集群&lt;/h4&gt;
+&lt;p&gt;可以使用任何节点中的客户端工具连接集群中的任何节点。&lt;br&gt;
+./zkCli.sh -server 192.168.0.179:2183&lt;/p&gt;
+&lt;h2 id=&#34;5-zookeeper-常用命令&#34;&gt;5、Zookeeper 常用命令&lt;/h2&gt;
+&lt;h3 id=&#34;51-ls-命令&#34;&gt;5.1  ls 命令&lt;/h3&gt;
+&lt;p&gt;​	ls /path&lt;/p&gt;
+&lt;p&gt;​	使用 ls 命令查看 zookeeper 中的内容。在 ZooKeeper 控制台客户端中，没有默认列表功能，必须指定要列表资源的位置。 如： ls / 或者 ls /path&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624091621.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;52-create-命令&#34;&gt;5.2 create 命令&lt;/h3&gt;
+&lt;p&gt;​		create [-e] [-s] /path [data]&lt;br&gt;
+​		使用 create 命令创建一个新的 Znode。create [-e] [-s] path data - 创建节点，默认不加是永久节点，如： create /test 123 创建一个/test 的永久节点，节点携带数据信息 123。 create -e /test 123 创建一个临时节点/test，携带数据为 123，临时节点只在当前会话生命周期中有效，会话结束节点自动删除。&lt;/p&gt;
+&lt;p&gt;​		create -s /test 123 创建一个顺序节点/test，携带数据 123，创建的顺序节点由 ZooKeeper 自动为节点增加后缀信息，如-/test00000001 等。-e 和-s 参数可以联合使用。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624095012.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;53-get命令&#34;&gt;5.3 get命令&lt;/h3&gt;
+&lt;p&gt;get [-s] /path&lt;/p&gt;
+&lt;p&gt;get 命令获取 Znode 中的数据。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;21&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624095654.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;22&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624095710.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		get -s /path&lt;/p&gt;
+&lt;p&gt;​		-s 查看 Znode 详细信息&lt;/p&gt;
+&lt;p&gt;​		&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624095840.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;123456:存放的数据&lt;br&gt;
+cZxid:创建时 zxid(znode 每次改变时递增的事务 id)&lt;br&gt;
+ctime:创建时间戳&lt;br&gt;
+mZxid:最近一次更近的 zxid&lt;br&gt;
+mtime:最近一次更新的时间戳&lt;br&gt;
+pZxid:子节点的 zxid&lt;br&gt;
+cversion:子节点更新次数&lt;br&gt;
+dataversion:节点数据更新次数&lt;br&gt;
+aclVersion:节点 ACL(授权信息)的更新次数&lt;br&gt;
+ephemeralOwner: 如 果 该 节 点 为 ephemeral 节 点 ( 临 时 ， 生 命 周 期 与 session 一 样 ),&lt;br&gt;
+ephemeralOwner 值表示与该节点绑定的 session id. 如果该节点不是&lt;br&gt;
+ephemeral 节点, ephemeralOwner 值为 0.&lt;/p&gt;
+&lt;p&gt;dataLength:节点数据字节数&lt;br&gt;
+numChildren:子节点数量&lt;/p&gt;
+&lt;h3 id=&#34;54-set命令&#34;&gt;5.4 set命令&lt;/h3&gt;
+&lt;p&gt;set /path [data]&lt;br&gt;
+添加或修改 Znode 中的值&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;23&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624101639.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;55-delete-命令&#34;&gt;5.5 delete 命令&lt;/h3&gt;
+&lt;p&gt;delete /path&lt;br&gt;
+删除 Znode。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;24&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624101730.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;6-使用-java-api-操作-zookeeper&#34;&gt;6、使用 Java API 操作 Zookeeper&lt;/h2&gt;
+&lt;h3 id=&#34;61-创建znode&#34;&gt;6.1 创建Znode&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;创建项目&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;25&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624102928.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;修改 POM 文件添加依赖&lt;/p&gt;
+&lt;p&gt;该依赖为基于 Java 语言连接 Zookeeper 的客户端工具&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+	&amp;lt;groupId&amp;gt;org.apache.zookeeper&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;zookeeper&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;3.6.0&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;3创建 Znode 并添加数据&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 操作 Zookeeper 的 Znode
+ */
+public class ZnodeDemo implements Watcher {
+    public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
+        //创建一个Zookeeper对象 Zookeeper(&amp;quot;ip：端口，超时时间，回调处理器&amp;quot;)
+        ZooKeeper zooKeeper = new ZooKeeper(&amp;quot;124.70.181.124:2181,124.70.181.124:2182,124.70.181.124:2183&amp;quot;,150000,new ZnodeDemo());
+
+        //创建一个znode
+        String path = zooKeeper.create(&amp;quot;/zk01/zk01-01&amp;quot;, &amp;quot;123&amp;quot;.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+        System.out.println(path);
+    }
+
+    /**
+     * 事件通知回调方法
+     *
+     * @param watchedEvent
+     */
+    public void process(WatchedEvent watchedEvent) {
+        //获取连接事件
+        if (watchedEvent.getState() == Event.KeeperState.SyncConnected){
+            System.out.println(&amp;quot;连接成功！&amp;quot;);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;26&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624105903.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;27&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624105957.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;62-获取-znode-中的数据&#34;&gt;6.2 获取 Znode 中的数据&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 操作 Zookeeper 的 Znode
+ */
+public class ZnodeDemo implements Watcher {
+    public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
+        //创建一个Zookeeper对象 Zookeeper(&amp;quot;ip：端口，超时时间，回调处理器&amp;quot;)
+        ZooKeeper zooKeeper = new ZooKeeper(&amp;quot;124.70.181.124:2181,124.70.181.124:2182,124.70.181.124:2183&amp;quot;, 150000, new ZnodeDemo());
+
+        /*//创建一个znode
+        String path = zooKeeper.create(&amp;quot;/zk01/zk01-01&amp;quot;, &amp;quot;123&amp;quot;.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+        System.out.println(path);*/
+
+        //获取指定节点中的数据
+        byte[] data = zooKeeper.getData(&amp;quot;/zk04&amp;quot;, new ZnodeDemo(), new Stat());
+        System.out.println(new String(data));
+
+        //获取所有子节点中的数据
+        List&amp;lt;String&amp;gt; children = zooKeeper.getChildren(&amp;quot;/zk04&amp;quot;, new ZnodeDemo(), new Stat());
+        for (String child : children) {
+            byte[] childdata = zooKeeper.getData(&amp;quot;/zk04/&amp;quot; + child, new ZnodeDemo(), null);
+            System.out.println(new String(childdata));
+        }
+    }
+
+    /**
+     * 事件通知回调方法
+     *
+     * @param watchedEvent
+     */
+    public void process(WatchedEvent watchedEvent) {
+        //获取连接事件
+        if (watchedEvent.getState() == Event.KeeperState.SyncConnected) {
+            System.out.println(&amp;quot;连接成功！&amp;quot;);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;28&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624111556.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;29&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624111836.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;63-设置znode中的值&#34;&gt;6.3 设置Znode中的值&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;		//设置 Znode 中的值
+        //-1表示匹配任何版本
+        Stat stat = zooKeeper.setData(&amp;quot;/zk04/zk04-01&amp;quot;, &amp;quot;456&amp;quot;.getBytes(), -1);
+        System.out.println(stat);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;30&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624112812.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;31&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624112829.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;64-删除znode&#34;&gt;6.4 删除Znode&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;zooKeeper.delete(&amp;quot;/zk04/zk04-01&amp;quot;,-1);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;32&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624113023.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;7-zookeeper实战&#34;&gt;7、Zookeeper实战&lt;/h2&gt;
+&lt;p&gt;​		实战案例介绍：使用 Zookeeper 与 RMI 技术实现一个 RPC 框架。&lt;br&gt;
+​		RPC：RPC（Remote Procedure Call）远程过程调用。&lt;/p&gt;
+&lt;h3 id=&#34;71-基于-rmi-实现远程方法调用&#34;&gt;7.1 基于 RMI 实现远程方法调用&lt;/h3&gt;
+&lt;h4 id=&#34;711-rmi-简-介&#34;&gt;7.1.1 RMI 简 介&lt;/h4&gt;
+&lt;p&gt;RMI(Remote Method Invocation) 远程方法调用。&lt;br&gt;
+RMI 是从 JDK1.2 推出的功能，它可以实现在一个 Java 应用中可以像调用本地方法一样调用另一个服务器中 Java 应用（JVM）中的内容。&lt;br&gt;
+RMI 是 Java 语言的远程调用，无法实现跨语言。&lt;/p&gt;
+&lt;h4 id=&#34;712-执行流程&#34;&gt;7.1.2 执行流程&lt;/h4&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;33&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624142309.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;​		Registry(注册表)是放置所有服务器对象的命名空间。 每次服务端创建一个对象时，它都会使用 bind()或 rebind()方法注册该对象。 这些是使用称为绑定名称的唯一名称注册的。&lt;br&gt;
+​		要调用远程对象，客户端需要该对象的引用。即通过服务端绑定的名称从注册表中获取对象(lookup()方法)。&lt;/p&gt;
+&lt;h4 id=&#34;713-rmi-的-api-介绍&#34;&gt;7.1.3 RMI 的 API 介绍&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Remote 接口&lt;br&gt;
+java.rmi.Remote 定义了此接口为远程调用接口。如果接口被外部调用，需要继承此接口。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;34&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624142408.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RemoteException 类&lt;br&gt;
+java.rmi.RemoteException&lt;br&gt;
+继承了 Remote 接口的接口，如果方法是允许被远程调用的，需要抛出此异常。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;UnicastRemoteObject 类&lt;br&gt;
+java.rmi.server.UnicastRemoteObject&lt;br&gt;
+此类实现了 Remote 接口和 Serializable 接口。&lt;br&gt;
+自定义接口实现类除了实现自定义接口还需要继承此类。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;LocateRegistry 类&lt;br&gt;
+java.rmi.registry.LocateRegistry&lt;br&gt;
+可以通过 LocateRegistry 在本机上创建 Registry ，通过特定的端口就可以访问这个&lt;br&gt;
+Registry。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Naming 类&lt;br&gt;
+java.rmi.Naming&lt;br&gt;
+Naming 定义了发布内容可访问 RMI 名称。也是通过 Naming 获取到指定的远程方法。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;714-创建server端&#34;&gt;7.1.4 创建server端&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;35&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624142724.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建接口&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 定义允许远程调用接口，这样客户端就能知道服务端里有什么方法，该接口必须要实现 Remote 接口
+ * 允许被远程调用的方法必须要抛出 RemoteException
+ */
+public interface DemoService extends Remote {
+    String demo(String str) throws RemoteException;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建接口实现类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 接口实现类必须要继承 UnicastRemoteObject。
+ * 会自动添加构造方法，需要修改为 public
+ */
+public class DemoServiceImpl extends UnicastRemoteObject implements DemoService {
+    public DemoServiceImpl() throws RemoteException {
+    }
+
+    public String demo(String str) throws RemoteException {
+        return &amp;quot;Hello RMI&amp;quot; + str;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写主方法&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class DemoServer {
+    public static void main(String[] args) throws RemoteException, AlreadyBoundException, MalformedURLException {
+        //将对象实例化
+        DemoServiceImpl demoService = new DemoServiceImpl();
+        //创建本地注册表
+        LocateRegistry.createRegistry(8888);
+        //将对象绑定到注册表中
+        Naming.bind(&amp;quot;rmi://localhost:8888/demoService&amp;quot;,demoService);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;715-创建client端&#34;&gt;7.1.5 创建Client端&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;36&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624143249.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;复制服务端接口&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 定义允许远程调用接口，这样客户端就能知道服务端里有什么方法，该接口必须要实现 Remote 接口
+ * 允许被远程调用的方法必须要抛出 RemoteException
+ */
+public interface DemoService extends Remote {
+    String demo(String str) throws RemoteException;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建主方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class DemoClient {
+    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
+        DemoService demoService = (DemoService) Naming.lookup(&amp;quot;rmi://localhost:8888/demoService&amp;quot;);
+        String s = demoService.demo(&amp;quot;调用成功&amp;quot;);
+        System.out.println(s);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果：&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624143433.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;72-使用-zookeeper-作为注册中心实现-rpc&#34;&gt;7.2 使用 Zookeeper 作为注册中心实现 RPC&lt;/h3&gt;
+&lt;h4 id=&#34;721-创建服务端&#34;&gt;7.2.1 创建服务端&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;37&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624152139.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 POM 文件添加依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt; &amp;lt;dependency&amp;gt;
+     &amp;lt;groupId&amp;gt;org.apache.zookeeper&amp;lt;/groupId&amp;gt;
+     &amp;lt;artifactId&amp;gt;zookeeper&amp;lt;/artifactId&amp;gt;
+     &amp;lt;version&amp;gt;3.6.0&amp;lt;/version&amp;gt;
+ &amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建接口&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface UserService extends Remote {
+    String findUser(String str) throws RemoteException;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建接口实现类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class UserServiceImpl extends UnicastRemoteObject implements UserService {
+    public UserServiceImpl() throws RemoteException {
+    }
+
+    public String findUser(String str) throws RemoteException {
+        return &amp;quot;Hello Zookeeper&amp;quot;+str;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写主方法&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class UserServer implements Watcher {
+    public static void main(String[] args) throws IOException, AlreadyBoundException, KeeperException, InterruptedException {
+        UserServiceImpl userService = new UserServiceImpl();
+        LocateRegistry.createRegistry(8888);
+        String url = &amp;quot;rmi://localhost:8888/userService&amp;quot;;
+        Naming.bind(url,userService);
+
+        //将url信息放到zookeeper的节点中
+        ZooKeeper zooKeeper = new ZooKeeper(&amp;quot;124.70.181.124:2181,124.70.181.124:2182,124.70.181.124:2183&amp;quot;,150000,new UserServer());
+
+        //创建Znode
+        zooKeeper.create(&amp;quot;/zk01/service&amp;quot;,url.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);
+        System.out.println(&amp;quot;服务发布成功&amp;quot;);
+    }
+
+    public void process(WatchedEvent watchedEvent) {
+        if(watchedEvent.getState()==Event.KeeperState.SyncConnected){
+            System.out.println(&amp;quot;连接成功&amp;quot;);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;38&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624153911.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;39&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624154720.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;722-创建客户端&#34;&gt;7.2.2 创建客户端&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;40&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624155446.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 POM 文件添加依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+	&amp;lt;groupId&amp;gt;org.apache.zookeeper&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;zookeeper&amp;lt;/artifactId&amp;gt;
+	&amp;lt;version&amp;gt;3.6.0&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建接口&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//调用方不需要继承Remote，只有被调用方才需要实现
+public interface UserService {
+    String findUser(String str);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写主方法&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class ClientDemo implements Watcher {
+    public static void main(String[] args) throws IOException, KeeperException, InterruptedException, NotBoundException {
+        ZooKeeper zooKeeper = new ZooKeeper(&amp;quot;124.70.181.124:2181,124.70.181.124:2182,124.70.181.124:2183&amp;quot;,150000,new ClientDemo());
+        byte[] bytes = zooKeeper.getData(&amp;quot;/zk01/service&amp;quot;, new ClientDemo(), new Stat());
+        UserService userService =(UserService) Naming.lookup(new String(bytes));
+        String result = userService.findUser(&amp;quot; 调用成功&amp;quot;);
+        System.out.println(result);
+    }
+
+    public void process(WatchedEvent watchedEvent) {
+        if(watchedEvent.getState()==Event.KeeperState.SyncConnected){
+            System.out.println(&amp;quot;连接成功&amp;quot;);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;实现效果：&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624155630.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 ">Zookeeper</a>
       </div>
       
