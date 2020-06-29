@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1592985865384">
+<link rel="shortcut icon" href="/favicon.ico?v=1593402137541">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -307,12 +307,12 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>31<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>153<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>5701<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
@@ -328,6 +328,12 @@ Dubbo 官网地址：http://dubbo.apache.org/zh-cn/<br>
 Dubbo 最早是 Alibaba 开源的分布式服务框架，它最大的特点是按照分层的方式来架构，使用这种方式可以使各个层之间解耦合（或者最大限度地松耦合）。从服务模型的角度来看，Dubbo 采用的是一种非常简单的模型，要么是提供方提供服务，要么是消费方消费服务，所以基于这一点可以抽象出服务提供方（Provider）和服务消费方（Consumer）两个角色。</p>
 
         
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://jonchan1013.github.io/post/dubbo/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
         
       </div>
       
@@ -1740,6 +1746,931 @@ spring理念：使现有的技术更加容易使用，本身是一个大杂烩�
 Dubbo 官网地址：http://dubbo.apache.org/zh-cn/&lt;br&gt;
 Dubbo 最早是 Alibaba 开源的分布式服务框架，它最大的特点是按照分层的方式来架构，使用这种方式可以使各个层之间解耦合（或者最大限度地松耦合）。从服务模型的角度来看，Dubbo 采用的是一种非常简单的模型，要么是提供方提供服务，要么是消费方消费服务，所以基于这一点可以抽象出服务提供方（Provider）和服务消费方（Consumer）两个角色。&lt;/p&gt;
 &lt;!-- more --&gt;
+&lt;h3 id=&#34;12-发展历史&#34;&gt;1.2 发展历史&lt;/h3&gt;
+&lt;p&gt;​	Dubbo 是最开始是阿里巴巴内部使用的 RPC 框架。&lt;/p&gt;
+&lt;p&gt;​	2011 年对外提供。&lt;br&gt;
+​	2012 年停止更新。&lt;br&gt;
+​	2017 年开始继续更新。&lt;br&gt;
+​	2019 年捐献给 Apache，由 Apache 维护 2.7 以上版本。&lt;/p&gt;
+&lt;h3 id=&#34;13-dubbo能做什么&#34;&gt;1.3 Dubbo能做什么&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Dubbo 可实现透明化的远程方法调用，就像调用本地方法一样调用远程方法，只需简单配置即可，没有任何 API 侵入。&lt;/li&gt;
+&lt;li&gt;软负载均衡及容错机制，可在内网替代 F5 等硬件负载均衡器，降低成本，减少单点。&lt;/li&gt;
+&lt;li&gt;软负载均衡及容错机制，可在内网替代 F5 等硬件负载均衡器，降低成本，减少单点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;14-dubbo产生的背景&#34;&gt;1.4 Dubbo产生的背景&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624171428.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;单一应用架构（单体架构）&lt;/p&gt;
+&lt;p&gt;当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM) 是关键。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;垂直应用架构&lt;/p&gt;
+&lt;p&gt;当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率。&lt;br&gt;
+此时，用于加速前端页面开发的 Web 框架(MVC) 是关键。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分布式服务架构（RPC 架构）&lt;br&gt;
+当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。&lt;br&gt;
+此时，用于提高业务复用及整合的分布式服务框架(RPC) 是关键。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;流动计算架构（SOA 架构）&lt;/p&gt;
+&lt;p&gt;当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。&lt;br&gt;
+此时，用于提高机器利用率的资源调度和治理中心(SOA) 是关键。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-dubbo架构讲解&#34;&gt;2、Dubbo架构讲解&lt;/h2&gt;
+&lt;h3 id=&#34;21-架构图&#34;&gt;2.1 架构图&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200624171618.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;22-架构说明&#34;&gt;2.2 架构说明&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;虚线&lt;br&gt;
+虚线表示异步，实线表示同步。异步不阻塞线程性能高，同步阻塞线程必须等待响应结果才能继续执行，相对性能低。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Provider&lt;br&gt;
+暴露服务的服务提供方。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Container&lt;br&gt;
+服务运行容器。Dubbo 完全基于 Spring 实现的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Registry&lt;br&gt;
+服务注册与发现的注册中心。注册中心，放置所有 Provider 对外提供的信息。包含Provider 的 IP，访问端口，访问遵守的协议，对外提供的接口，接口中有哪些方法等相关信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Consumer&lt;br&gt;
+调用远程服务的服务消费方。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Monitor&lt;br&gt;
+统计服务的调用次调和调用时间的监控中心。监控中心，监控 Provider 的压力情况等。每隔 2 分钟 Consumer 和 Provider 会把调用次数发送给 Monitor，由 Monitor 进行统计。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;23-执行流程&#34;&gt;2.3 执行流程&lt;/h3&gt;
+&lt;ol start=&#34;0&#34;&gt;
+&lt;li&gt;start：启动 Spring 容器时会把 Provider 启动。&lt;/li&gt;
+&lt;li&gt;register：把 Provider 相关信息注册到 Registry 里&lt;/li&gt;
+&lt;li&gt;subscribe：Consumer 从 Registry 中订阅 Provider 的信息&lt;/li&gt;
+&lt;li&gt;notify：当Provider发生改变时，Registry通知给 Consumer&lt;/li&gt;
+&lt;li&gt;invoke：Consumer 根据 Registry 通知的信息进行调用 Provider 中方法。&lt;/li&gt;
+&lt;li&gt;count:Consumer 和 Provider 把调用次数信息异步发送给 Monitor 进行统计。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-dobbo支持的协议&#34;&gt;3、Dobbo支持的协议&lt;/h2&gt;
+&lt;h3 id=&#34;31-dubbo协议官方推荐协议&#34;&gt;3.1 Dubbo协议（官方推荐协议）&lt;/h3&gt;
+&lt;p&gt;优点：&lt;br&gt;
+采用 NIO 复用单一长连接，并使用线程池并发处理请求，减少握手和加大并发效率，性能较好（推荐使用）&lt;/p&gt;
+&lt;p&gt;缺点：&lt;br&gt;
+大文件上传时,可能出现问题(不使用 Dubbo 文件上传)&lt;/p&gt;
+&lt;h3 id=&#34;32-rmiremote-method-invocation协议&#34;&gt;3.2  RMI(Remote Method Invocation)协议&lt;/h3&gt;
+&lt;p&gt;优点:&lt;br&gt;
+JDK 自带的能力。&lt;br&gt;
+缺点:&lt;br&gt;
+偶尔连接失败.&lt;/p&gt;
+&lt;h3 id=&#34;33-hessian-协议&#34;&gt;3.3  Hessian 协议&lt;/h3&gt;
+&lt;p&gt;优点:&lt;br&gt;
+可与原生 Hessian 互操作，基于 HTTP 协议&lt;br&gt;
+缺点:&lt;br&gt;
+需 hessian.jar 支持，http 短连接的开销大&lt;/p&gt;
+&lt;h2 id=&#34;4-dubbo-支持的注册中心&#34;&gt;4、Dubbo 支持的注册中心&lt;/h2&gt;
+&lt;h3 id=&#34;41-zookeeper官方推荐&#34;&gt;4.1 Zookeeper(官方推荐)&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;优点:&lt;br&gt;
+支持分布式.很多周边产品.&lt;/li&gt;
+&lt;li&gt;缺点:&lt;br&gt;
+受限于 Zookeeper 软件的稳定性。Zookeeper 是一款专门为分布式架构提供辅助型处理的软件，稳定较优。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;42-multicast&#34;&gt;4.2  Multicast&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;优点:&lt;br&gt;
+去中心化,不需要单独安装软件.&lt;/li&gt;
+&lt;li&gt;缺点:&lt;br&gt;
+Provider 和 Consumer 和 Registry 不能跨机房(路由)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;43-redis&#34;&gt;4.3 Redis&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;优点:&lt;br&gt;
+支持集群,性能高&lt;/li&gt;
+&lt;li&gt;缺点:&lt;br&gt;
+要求服务器时间同步.否则可能出现集群失败问题.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;44-simple&#34;&gt;4.4 Simple&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;优点:&lt;br&gt;
+标准 RPC 服务.没有兼容问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;缺点:&lt;br&gt;
+不支持集群.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-dubbo-应用&#34;&gt;5、Dubbo 应用&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200628095739.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;Dubbo 在不同的版本中对于添加的依赖也是不同的。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200628195505.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;51-创建父工程&#34;&gt;5.1 创建父工程&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改POM 文件添加依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;parent&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;packaging&amp;gt;pom&amp;lt;/packaging&amp;gt;
+
+    &amp;lt;properties&amp;gt;
+        &amp;lt;spring.version&amp;gt;5.2.5.RELEASE&amp;lt;/spring.version&amp;gt;
+        &amp;lt;dubbo.version&amp;gt;2.7.6&amp;lt;/dubbo.version&amp;gt;
+        &amp;lt;curator.version&amp;gt;4.2.0&amp;lt;/curator.version&amp;gt;
+        &amp;lt;registry-zookeeper.version&amp;gt;2.7.6&amp;lt;/registry-zookeeper.version&amp;gt;
+        &amp;lt;servlet.version&amp;gt;3.1.0&amp;lt;/servlet.version&amp;gt;
+        &amp;lt;jsp.version&amp;gt;2.0&amp;lt;/jsp.version&amp;gt;
+        &amp;lt;jstl.version&amp;gt;1.2&amp;lt;/jstl.version&amp;gt;
+    &amp;lt;/properties&amp;gt;
+    &amp;lt;dependencyManagement&amp;gt;
+        &amp;lt;dependencies&amp;gt;
+            &amp;lt;!--Spring Context Dependence--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;spring-context&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+            &amp;lt;!--Spring MVC Dependence--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;spring-webmvc&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+            &amp;lt;!--Apache Dubbo Dependence--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;dubbo&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${dubbo.version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+            &amp;lt;!--Registry Zookeeper Dependence--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;dubbo-registry-zookeeper&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${registry-zookeeper.version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+            &amp;lt;!--Apache Curator Dependence--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;org.apache.curator&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;curator-framework&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${curator.version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+            &amp;lt;!--Servlet Dependence--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;javax.servlet&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;javax.servlet-api&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${servlet.version}&amp;lt;/version&amp;gt;
+                &amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+            &amp;lt;!--JSP Dependence--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;javax.servlet&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;jsp-api&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${jsp.version}&amp;lt;/version&amp;gt;
+                &amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+            &amp;lt;!--JSTL Dependence--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;javax.servlet.jsp.jstl&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;jstl&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${jstl.version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+        &amp;lt;/dependencies&amp;gt;
+    &amp;lt;/dependencyManagement&amp;gt;
+
+    &amp;lt;build&amp;gt;
+        &amp;lt;pluginManagement&amp;gt;
+            &amp;lt;plugins&amp;gt;
+                &amp;lt;!--Tomcat Plugin--&amp;gt;
+                &amp;lt;plugin&amp;gt;
+                    &amp;lt;groupId&amp;gt;org.apache.tomcat.maven&amp;lt;/groupId&amp;gt;
+                    &amp;lt;artifactId&amp;gt;tomcat7-maven-plugin&amp;lt;/artifactId&amp;gt;
+                    &amp;lt;version&amp;gt;2.2&amp;lt;/version&amp;gt;
+                &amp;lt;/plugin&amp;gt;
+            &amp;lt;/plugins&amp;gt;
+        &amp;lt;/pluginManagement&amp;gt;
+    &amp;lt;/build&amp;gt;
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;52-创建服务接口&#34;&gt;5.2  创建服务接口&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200628102304.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加接口&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface DemoDubboService {
+    String showMsg(String str);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;53-创建provider&#34;&gt;5.3  创建Provider&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200628135344.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改POM 文件添加依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;artifactId&amp;gt;parent&amp;lt;/artifactId&amp;gt;
+        &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;artifactId&amp;gt;provider&amp;lt;/artifactId&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;api&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--Spring Context Dependence--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-context&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--Apache Dubbo Dependence--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;dubbo&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--Registry Zookeeper Dependence--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;dubbo-registry-zookeeper&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--Apache Curator Dependence--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.curator&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;curator-framework&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加接口实现&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class DemoDubboServiceimpl implements DemoDubboService{
+    public String showMsg(String str) {
+        return &amp;quot;Hello Dubbo &amp;quot;+ str;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;54-添加dubbo-的配置文件&#34;&gt;5.4 添加Dubbo 的配置文件&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Dubbo 配置文件的存放位置&lt;/p&gt;
+&lt;p&gt;配置文件必须放到 resources/META-INF/spring/*.xml&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置文件内容&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用配置bean 标签配置接口实现类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
+       xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+       xmlns:dubbo=&amp;quot;http://dubbo.apache.org/schema/dubbo&amp;quot;
+       xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd        http://dubbo.apache.org/schema/dubbo        http://dubbo.apache.org/schema/dubbo/dubbo.xsd&amp;quot;&amp;gt;
+
+    &amp;lt;!--定义服务的名称(自定义)--&amp;gt;
+    &amp;lt;dubbo:application name=&amp;quot;myProvider&amp;quot; /&amp;gt;
+
+    &amp;lt;!--配置注册中心--&amp;gt;
+    &amp;lt;dubbo:registry address=&amp;quot;124.70.181.124:2181,124.70.181.124:2182,124.70.181.124:2183&amp;quot; protocol=&amp;quot;zookeeper&amp;quot; timeout=&amp;quot;10000&amp;quot;/&amp;gt;
+
+    &amp;lt;!--服务协议以及监听端口--&amp;gt;
+    &amp;lt;dubbo:protocol  name=&amp;quot;dubbo&amp;quot; port=&amp;quot;20880&amp;quot; /&amp;gt;
+
+    &amp;lt;!--注册接口--&amp;gt;
+	&amp;lt;dubbo:service interface=&amp;quot;com.bjsxt.dubbo.service.DemoDubboService&amp;quot; ref=&amp;quot;service&amp;quot;/&amp;gt;
+
+    &amp;lt;!--创建接口实现类--&amp;gt;
+	&amp;lt;bean id=&amp;quot;service&amp;quot; class=&amp;quot;com.bjsxt.dubbo.service.impl.DemoDubboServiceImpl&amp;quot;/&amp;gt;
+&amp;lt;/beans&amp;gt;
+  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用注解方式开发服务接口&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;需改配置文件&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
+       xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+       xmlns:dubbo=&amp;quot;http://dubbo.apache.org/schema/dubbo&amp;quot;
+       xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd        http://dubbo.apache.org/schema/dubbo        http://dubbo.apache.org/schema/dubbo/dubbo.xsd&amp;quot;&amp;gt;
+
+    &amp;lt;!--定义服务的名称(自定义)--&amp;gt;
+    &amp;lt;dubbo:application name=&amp;quot;myProvider&amp;quot; /&amp;gt;
+
+    &amp;lt;!--配置注册中心--&amp;gt;
+    &amp;lt;dubbo:registry address=&amp;quot;124.70.181.124:2181,124.70.181.124:2182,124.70.181.124:2183&amp;quot; protocol=&amp;quot;zookeeper&amp;quot; timeout=&amp;quot;10000&amp;quot;/&amp;gt;
+
+    &amp;lt;!--服务协议以及监听端口--&amp;gt;
+    &amp;lt;dubbo:protocol  name=&amp;quot;dubbo&amp;quot; port=&amp;quot;20880&amp;quot; /&amp;gt;
+
+    &amp;lt;!--扫描接口的位置的指定@Service：注意该注解并不是Spring的@Service--&amp;gt;
+    &amp;lt;dubbo:annotation  package=&amp;quot;com.cy.dubbo.service&amp;quot;/&amp;gt;
+&amp;lt;/beans&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改接口实现类&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200628135900.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Service //注意使用的是 Dubbo 的@Service 注解。
+//org.apache.dubbo.config.annotation.Service
+public class DemoDubboServiceimpl implements DemoDubboService{
+    public String showMsg(String str) {
+        return &amp;quot;Hello Dubbo &amp;quot;+ str;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动Provider&lt;/p&gt;
+&lt;p&gt;创建Dubbo 启动类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Dubbo的启动类
+ */
+public class Start {
+    public static void main(String[] args) {
+        Main.main(args);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;55-使用zookeeper-客户端工具查看注册信息&#34;&gt;5.5  使用Zookeeper 客户端工具查看注册信息&lt;/h3&gt;
+&lt;p&gt;​	ls /dubbo/服务接口名称/providers&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200628144412.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;注：url信息在Zookeeper中以一个节点的名字而不是信息存储&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;解码前&lt;/p&gt;
+&lt;p&gt;dubbo%3A%2F%2F192.168.92.1%3A20880%2Fcom.cy.dubbo.service.DemoDubboService%3Fanyhost%3Dtrue%26application%3DmyProvider%26deprecated%3Dfalse%26dubbo%3D2.0.2%26dynamic%3Dtrue%26generic%3Dfalse%26interface%3Dcom.cy.dubbo.service.DemoDubboService%26methods%3DshowMsg%26pid%3D36272%26release%3D2.7.6%26side%3Dprovider%26timestamp%3D1593326084675&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解码后&lt;/p&gt;
+&lt;p&gt;dubbo://192.168.92.1:20880/com.cy.dubbo.service.DemoDubboService?anyhost=true&amp;amp;application=myProvider&amp;amp;deprecated=false&amp;amp;dubbo=2.0.2&amp;amp;dynamic=true&amp;amp;generic=false&amp;amp;interface=com.cy.dubbo.service.DemoDubboService&amp;amp;methods=showMsg&amp;amp;pid=36272&amp;amp;release=2.7.6&amp;amp;side=provider&amp;amp;timestamp=1593326084675&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;56-创建consumer&#34;&gt;5.6 创建Consumer&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200628145857.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改POM 文件添加依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;artifactId&amp;gt;parent&amp;lt;/artifactId&amp;gt;
+        &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;artifactId&amp;gt;consumer&amp;lt;/artifactId&amp;gt;
+    &amp;lt;packaging&amp;gt;war&amp;lt;/packaging&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;api&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--Spring MVC Dependence--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-webmvc&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--Apache Dubbo Dependence--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;dubbo&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--Registry Zookeeper Dependence--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;dubbo-registry-zookeeper&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--Apache Curator Dependence--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.curator&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;curator-framework&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+
+        &amp;lt;!--Servlet Dependence--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;javax.servlet&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;javax.servlet-api&amp;lt;/artifactId&amp;gt;
+            &amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--JSP Dependence--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;javax.servlet&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;jsp-api&amp;lt;/artifactId&amp;gt;
+            &amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--JSTL Dependence--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;javax.servlet.jsp.jstl&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;jstl&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+
+    &amp;lt;build&amp;gt;
+        &amp;lt;plugins&amp;gt;
+            &amp;lt;!--Tomcat Plugin--&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.apache.tomcat.maven&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;tomcat7-maven-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;2.2&amp;lt;/version&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                    &amp;lt;port&amp;gt;8888&amp;lt;/port&amp;gt;
+                    &amp;lt;path&amp;gt;/&amp;lt;/path&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+            &amp;lt;/plugin&amp;gt;
+        &amp;lt;/plugins&amp;gt;
+    &amp;lt;/build&amp;gt;
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写配置文件&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Spring 配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;applicationContext-service.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
+       xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot; xmlns:p=&amp;quot;http://www.springframework.org/schema/p&amp;quot;
+       xmlns:aop=&amp;quot;http://www.springframework.org/schema/aop&amp;quot;
+       xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+       xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd
+   http://www.springframework.org/schema/aop
+   http://www.springframework.org/schema/aop/spring-aop.xsd
+   http://www.springframework.org/schema/util
+   http://www.springframework.org/schema/util/spring-util.xsd&amp;quot;&amp;gt;
+    &amp;lt;context:component-scan base-package=&amp;quot;com.cy.service&amp;quot;/&amp;gt;
+&amp;lt;/beans&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;SpringMVC 配置文件&lt;/p&gt;
+&lt;p&gt;springmvc.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
+       xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot; xmlns:p=&amp;quot;http://www.springframework.org/schema/p&amp;quot;
+       xmlns:aop=&amp;quot;http://www.springframework.org/schema/aop&amp;quot;
+       xmlns:mvc=&amp;quot;http://www.springframework.org/schema/mvc&amp;quot;
+       xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+       xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd
+   http://www.springframework.org/schema/aop
+   http://www.springframework.org/schema/aop/spring-aop.xsd
+   http://www.springframework.org/schema/util
+   http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd&amp;quot;&amp;gt;
+    &amp;lt;context:component-scan base-package=&amp;quot;com.cy.web.controller&amp;quot;/&amp;gt;
+    &amp;lt;mvc:annotation-driven/&amp;gt;
+    &amp;lt;bean class=&amp;quot;org.springframework.web.servlet.view.InternalResourceViewResolver&amp;quot;&amp;gt;
+        &amp;lt;property name=&amp;quot;prefix&amp;quot; value=&amp;quot;/WEB-INF/jsp/&amp;quot;/&amp;gt;
+        &amp;lt;property name=&amp;quot;suffix&amp;quot; value=&amp;quot;.jsp&amp;quot;/&amp;gt;
+    &amp;lt;/bean&amp;gt;
+&amp;lt;/beans&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dubbo 配置文件&lt;/p&gt;
+&lt;p&gt;applicationContext-dubbo.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
+       xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+       xmlns:dubbo=&amp;quot;http://dubbo.apache.org/schema/dubbo&amp;quot;
+       xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot; xmlns:dubbot=&amp;quot;http://dubbo.apache.org/schema/dubbo&amp;quot;
+       xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd&amp;quot;&amp;gt;
+    &amp;lt;!--配置服务名称--&amp;gt;
+    &amp;lt;dubbo:application name=&amp;quot;myConsumer&amp;quot;/&amp;gt;
+    &amp;lt;!--配置注册中心地址以及访问协议--&amp;gt;
+    &amp;lt;dubbo:registry address=&amp;quot;124.70.181.124:2181,124.70.181.124:2182,124.70.181.124:2183&amp;quot; protocol=&amp;quot;zookeeper&amp;quot; timeout=&amp;quot;10000&amp;quot;/&amp;gt;
+    &amp;lt;!--dubbo扫描自己@Reference注解--&amp;gt;
+    &amp;lt;dubbo:annotation package=&amp;quot;com.cy.service.impl&amp;quot;/&amp;gt;
+&amp;lt;/beans&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Web.xml 配置文件&lt;/p&gt;
+&lt;p&gt;web.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;web-app xmlns=&amp;quot;http://java.sun.com/xml/ns/javaee&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&amp;quot;
+         version=&amp;quot;3.0&amp;quot;&amp;gt;
+    &amp;lt;context-param&amp;gt;
+        &amp;lt;param-name&amp;gt;contextConfigLocation&amp;lt;/param-name&amp;gt;
+        &amp;lt;param-value&amp;gt;classpath:spring/applicationContext-*.xml&amp;lt;/param-value&amp;gt;
+    &amp;lt;/context-param&amp;gt;
+    &amp;lt;listener&amp;gt;
+        &amp;lt;listener-class&amp;gt;org.springframework.web.context.ContextLoaderListener&amp;lt;/listener-class&amp;gt;
+    &amp;lt;/listener&amp;gt;
+    &amp;lt;servlet&amp;gt;
+        &amp;lt;servlet-name&amp;gt;springmvc&amp;lt;/servlet-name&amp;gt;
+        &amp;lt;servlet-class&amp;gt;org.springframework.web.servlet.DispatcherServlet&amp;lt;/servlet-class&amp;gt;
+        &amp;lt;init-param&amp;gt;
+            &amp;lt;param-name&amp;gt;contextConfigLocation&amp;lt;/param-name&amp;gt;
+            &amp;lt;param-value&amp;gt;classpath:spring/springmvc.xml&amp;lt;/param-value&amp;gt;
+        &amp;lt;/init-param&amp;gt;
+        &amp;lt;load-on-startup&amp;gt;1&amp;lt;/load-on-startup&amp;gt;
+    &amp;lt;/servlet&amp;gt;
+    &amp;lt;servlet-mapping&amp;gt;
+        &amp;lt;servlet-name&amp;gt;springmvc&amp;lt;/servlet-name&amp;gt;
+        &amp;lt;url-pattern&amp;gt;/&amp;lt;/url-pattern&amp;gt;
+    &amp;lt;/servlet-mapping&amp;gt;
+    &amp;lt;!--SpringMVC中的编码过滤器--&amp;gt;
+    &amp;lt;filter&amp;gt;
+        &amp;lt;filter-name&amp;gt;encodeFilter&amp;lt;/filter-name&amp;gt;
+        &amp;lt;filter-class&amp;gt;org.springframework.web.filter.CharacterEncodingFilter&amp;lt;/filter-class&amp;gt;
+        &amp;lt;init-param&amp;gt;
+            &amp;lt;param-name&amp;gt;encoding&amp;lt;/param-name&amp;gt;
+            &amp;lt;param-value&amp;gt;utf-8&amp;lt;/param-value&amp;gt;
+        &amp;lt;/init-param&amp;gt;
+    &amp;lt;/filter&amp;gt;
+    &amp;lt;filter-mapping&amp;gt;
+        &amp;lt;filter-name&amp;gt;encodeFilter&amp;lt;/filter-name&amp;gt;
+        &amp;lt;url-pattern&amp;gt;/*&amp;lt;/url-pattern&amp;gt;
+    &amp;lt;/filter-mapping&amp;gt;
+&amp;lt;/web-app&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;57-实现远程调用&#34;&gt;5.7 实现远程调用&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建业务层&lt;/p&gt;
+&lt;p&gt;DemoService接口:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface DemoService {
+    public String showInf(String str);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;DemoServiceImpl:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Consumer的业务层
+ */
+@Service
+public class DemoServiceImpl implements DemoService {
+    //该注解针对DemoDubboService接口生成代理对象，通过代理对象远程调用provider中方法
+    @Reference
+    private DemoDubboService demoDubboService;
+
+    public String showInf(String str) {
+        return this.demoDubboService.showMsg(str);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建Controller层&lt;/p&gt;
+&lt;p&gt;DemoController:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RestController
+public class DemoController {
+    @Autowired
+    private DemoService demoService;
+
+    @RequestMapping(&amp;quot;/getMsg&amp;quot;)
+    public String getMsg(String str){
+        return this.demoService.showInf(str);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试结果&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200628195240.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;6-spring-boot-整合dubbo&#34;&gt;6、 Spring Boot 整合Dubbo&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629112338.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;61-创建服务接口&#34;&gt;6.1 创建服务接口&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629013311.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加接口&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface DemoDubboService {
+    public String showMsg(String str);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;62-创建provider&#34;&gt;6.2 创建Provider&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629013420.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;修改POM 文件添加依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+	xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+	&amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+	&amp;lt;parent&amp;gt;
+		&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+		&amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
+		&amp;lt;version&amp;gt;2.3.1.RELEASE&amp;lt;/version&amp;gt;
+		&amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt;
+	&amp;lt;/parent&amp;gt;
+	&amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;springbootdubbo_provider&amp;lt;/artifactId&amp;gt;
+	&amp;lt;version&amp;gt;0.0.1-SNAPSHOT&amp;lt;/version&amp;gt;
+	&amp;lt;name&amp;gt;springbootdubbo_provider&amp;lt;/name&amp;gt;
+	&amp;lt;description&amp;gt;Demo project for Spring Boot&amp;lt;/description&amp;gt;
+
+	&amp;lt;properties&amp;gt;
+		&amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt;
+	&amp;lt;/properties&amp;gt;
+
+	&amp;lt;dependencies&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;springboot_api&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;spring-boot-starter&amp;lt;/artifactId&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;dubbo-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;2.7.6&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;dubbo-registry-zookeeper&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;2.7.6&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt;
+			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+			&amp;lt;exclusions&amp;gt;
+				&amp;lt;exclusion&amp;gt;
+					&amp;lt;groupId&amp;gt;org.junit.vintage&amp;lt;/groupId&amp;gt;
+					&amp;lt;artifactId&amp;gt;junit-vintage-engine&amp;lt;/artifactId&amp;gt;
+				&amp;lt;/exclusion&amp;gt;
+			&amp;lt;/exclusions&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+	&amp;lt;/dependencies&amp;gt;
+
+	&amp;lt;build&amp;gt;
+		&amp;lt;plugins&amp;gt;
+			&amp;lt;plugin&amp;gt;
+				&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+				&amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+			&amp;lt;/plugin&amp;gt;
+		&amp;lt;/plugins&amp;gt;
+	&amp;lt;/build&amp;gt;
+
+&amp;lt;/project&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加接口实现&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Service //在Provider中使用的dubbo的@Service注解。
+public class DemoDubboServiceImpl implements DemoDubboService {
+    @Override
+    public String showMsg(String str) {
+        return &amp;quot;Hello Dubbo &amp;quot; + str;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在配置文件中配置Dubbo&lt;/p&gt;
+&lt;p&gt;application.yml：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;# 指定服务的名称
+dubbo:
+  application:
+    name: MYProvider
+  registry:
+    address: zookeeper://124.70.181.124:2181?backup=124.70.181.124:2182,124.70.181.124:2183
+    timeout: 10000
+# 配置服务所使用的的协议
+  protocol:
+    name: dubbo
+    port: 20880
+  scan:
+    base-packages: com.cy.springbootdubbo_provider.service.impl
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动Provider&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;通过spring-boot-starter-web 启动Dubbo&lt;/p&gt;
+&lt;p&gt;​		如果在项目中添加的是 spring-boot-starter-web 启动器，那么在启动 dubbo 后还会监听一个端口，因为在 web 启动器中内置了一个 Tomcat，Tomcat 的启动不会影响 dubbo 的运行，但是会多占用一个端口，未来在其他的 Provider 中还需要考虑端口分配的问题，避免端口抢占。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过spring-boot-starter 启动Dubbo&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;​		可以使用 spring-boot-starter 起来启动 Dubbo，在该启动器中并未包含 Tomcat 所以并不会监听端口。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629014059.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;解码后：dubbo://192.168.92.1:20880/com.cy.dubbo.service.DemoDubboService?anyhost=true&amp;amp;application=MYProvider&amp;amp;deprecated=false&amp;amp;dubbo=2.0.2&amp;amp;dynamic=true&amp;amp;generic=false&amp;amp;interface=com.cy.dubbo.service.DemoDubboService&amp;amp;methods=showMsg&amp;amp;pid=28764&amp;amp;release=2.7.6&amp;amp;side=provider&amp;amp;timestamp=1593365445283, dubbo://192.168.92.1:20880/com.cy.dubbo.service.DemoDubboService?anyhost=true&amp;amp;application=myProvider&amp;amp;deprecated=false&amp;amp;dubbo=2.0.2&amp;amp;dynamic=true&amp;amp;generic=false&amp;amp;interface=com.cy.dubbo.service.DemoDubboService&amp;amp;methods=showMsg&amp;amp;pid=39076&amp;amp;release=2.7.6&amp;amp;side=provider&amp;amp;timestamp=1593365347975&lt;/p&gt;
+&lt;h3 id=&#34;63-创建consumer&#34;&gt;6.3 创建consumer&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629111858.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改POM 文件添加依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+	xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+	&amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+	&amp;lt;parent&amp;gt;
+		&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+		&amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
+		&amp;lt;version&amp;gt;2.3.1.RELEASE&amp;lt;/version&amp;gt;
+		&amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt;
+	&amp;lt;/parent&amp;gt;
+	&amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;springbootdubbo_consumer&amp;lt;/artifactId&amp;gt;
+	&amp;lt;version&amp;gt;0.0.1-SNAPSHOT&amp;lt;/version&amp;gt;
+	&amp;lt;name&amp;gt;springbootdubbo_consumer&amp;lt;/name&amp;gt;
+	&amp;lt;description&amp;gt;Demo project for Spring Boot&amp;lt;/description&amp;gt;
+
+	&amp;lt;properties&amp;gt;
+		&amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt;
+	&amp;lt;/properties&amp;gt;
+
+	&amp;lt;dependencies&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;springboot_api&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;dubbo-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;2.7.6&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;dubbo-registry-zookeeper&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;2.7.6&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt;
+			&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+			&amp;lt;exclusions&amp;gt;
+				&amp;lt;exclusion&amp;gt;
+					&amp;lt;groupId&amp;gt;org.junit.vintage&amp;lt;/groupId&amp;gt;
+					&amp;lt;artifactId&amp;gt;junit-vintage-engine&amp;lt;/artifactId&amp;gt;
+				&amp;lt;/exclusion&amp;gt;
+			&amp;lt;/exclusions&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+	&amp;lt;/dependencies&amp;gt;
+
+	&amp;lt;build&amp;gt;
+		&amp;lt;plugins&amp;gt;
+			&amp;lt;plugin&amp;gt;
+				&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+				&amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+			&amp;lt;/plugin&amp;gt;
+		&amp;lt;/plugins&amp;gt;
+	&amp;lt;/build&amp;gt;
+
+&amp;lt;/project&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写配置文件&lt;/p&gt;
+&lt;p&gt;application.yml&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;# 指定服务的名称
+dubbo:
+  application:
+    name: MYConsumer
+  registry:
+    address: zookeeper://124.70.181.124:2181?backup=124.70.181.124:2182,124.70.181.124:2183
+    timeout: 10000
+  # 配置服务所使用的的协议
+  protocol:
+    name: dubbo
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实现远程调用&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建业务层&lt;/p&gt;
+&lt;p&gt;DemoService接口：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface DemoService {
+    public String getMsg(String str);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;DemoServiceImpl:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Service
+public class DemoServiceImpl implements DemoService {
+    @Reference
+    private DemoDubboService demoDubboService;
+
+    @Override
+    public String getMsg(String str) {
+        return this.demoDubboService.showMsg(str);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建Controller 层&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RestController
+public class DemoController {
+    @Autowired
+    private DemoService demoService;
+
+    @RequestMapping(&amp;quot;/getMsg&amp;quot;)
+    public String getMsg(String str){
+        return this.demoService.getMsg(str);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试结果：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629113307.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 ">Dubbo</a>
       </div>
       
