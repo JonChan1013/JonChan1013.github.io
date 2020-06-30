@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Hello Gridea | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1593498681732">
+<link rel="shortcut icon" href="/favicon.ico?v=1593504971647">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -218,7 +218,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">17</span>
+        <span class="site-item-stat-count">18</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1692,6 +1692,27 @@
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/fastdfs/"" data-c="
+          &lt;h2 id=&#34;1-简介&#34;&gt;1、简介&lt;/h2&gt;
+&lt;p&gt;FastDFS 是一个开源的轻量级分布式文件系统，它对文件进行管理，功能包括：文件存储、文件同步、文件访问（文件上传、文件下载）等，解决了大容量存储和负载均衡的问题。特别适合以文件为载体的在线服务，如相册网站、视频网站等等。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;技术论坛： http://bbs.chinaunix.net/forum-240-1.html&lt;br&gt;
+资源地址： https://sourceforge.net/projects/fastdfs/&lt;br&gt;
+源码资源： https://github.com/happyfish100&lt;/p&gt;
+&lt;p&gt;FastDFS 为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用 FastDFS 很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。&lt;br&gt;
+FastDFS 服务端有两个角色：跟踪器（tracker）和存储节点（storage）。跟踪器主要做调度工作，在访问上起负载均衡的作用。&lt;br&gt;
+存储节点存储文件，完成文件管理的所有功能：就是这样的存储、同步和提供存取接口，FastDFS 同时对文件的 metadata 进行管理。所谓文件的 meta data 就是文件的相关属性，以键值对（key value）方式表示，如：width=1024，其中的 key 为 width，value 为 1024。文件metadata 是文件属性列表，可以包含多个键值对。&lt;br&gt;
+跟踪器和存储节点都可以由一台或多台服务器构成。跟踪器和存储节点中的服务器均可以随时增加或下线而不会影响线上服务。其中跟踪器中的所有服务器都是对等的，可以根据服务器的压力情况随时增加或减少。&lt;br&gt;
+为了支持大容量，存储节点（服务器）采用了分卷（或分组）的组织方式。存储系统由一个或多个卷组成，卷与卷之间的文件是相互独立的，所有卷的文件容量累加就是整个存储系统中的文件容量。一个卷可以由一台或多台存储服务器组成，一个卷下的存储服务器中的文件都是相同的，卷中的多台存储服务器起到了冗余备份和负载均衡的作用。&lt;br&gt;
+在卷中增加服务器时，同步已有的文件由系统自动完成，同步完成后，系统自动将新增&lt;br&gt;
+服务器切换到线上提供服务。&lt;br&gt;
+当存储空间不足或即将耗尽时，可以动态添加卷。只需要增加一台或多台服务器，并将&lt;br&gt;
+它们配置为一个新的卷，这样就扩大了存储系统的容量。&lt;br&gt;
+FastDFS 中的文件标识分为两个部分：卷名和文件名，二者缺一不可。&lt;/p&gt;
+">FastDFS</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/dubbo/"" data-c="
           &lt;h2 id=&#34;1-dubbo简介&#34;&gt;1、Dubbo简介&lt;/h2&gt;
 &lt;h3 id=&#34;11-dubbo是什么&#34;&gt;1.1 Dubbo是什么&lt;/h3&gt;
@@ -2840,6 +2861,7 @@ Assembly 是 Mave 的打包插件，他的作用是可以帮助我们对 &lt;str
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;10-dubbo-实战案例&#34;&gt;10、Dubbo 实战案例&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;32&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630145113.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;101-案例介绍&#34;&gt;10.1 案例介绍&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -2858,7 +2880,7 @@ Maven、Spring Boot、Thymeleaf、Zookeeper、Dubbo、MySql&lt;/p&gt;
 &lt;p&gt;项目结构设计&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;32&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629172708.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;33&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629172708.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;102-创建表&#34;&gt;10.2 创建表&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;CREATE TABLE `users` (
 `userid` int(11) NOT NULL AUTO_INCREMENT,
@@ -2872,7 +2894,7 @@ PRIMARY KEY (`userid`)
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;创建项目&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;33&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629215828.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;34&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629215828.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;修改POM 文件&lt;/p&gt;
@@ -2950,7 +2972,7 @@ PRIMARY KEY (`userid`)
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;创建项目&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;34&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629220530.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;35&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629220530.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;修改POM文件&lt;/p&gt;
@@ -2987,7 +3009,7 @@ PRIMARY KEY (`userid`)
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;创建项目&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;35&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629221041.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;36&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200629221041.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;修改POM 文件&lt;/p&gt;
@@ -3086,7 +3108,7 @@ dubbo:
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;创建项目及模块&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;36&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630010949.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;37&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630010949.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;修改项目模块的POM 文件&lt;/p&gt;
@@ -3285,7 +3307,7 @@ public class ProviderApplication {
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;添加generatorConfig.xml 配置文件&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;37&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630012843.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;38&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630012843.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
 &amp;lt;!DOCTYPE generatorConfiguration
   PUBLIC &amp;quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&amp;quot;
@@ -3345,11 +3367,11 @@ public class ProviderApplication {
 &lt;p&gt;运行Mybatis Generator 插件&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;38&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630012929.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;39&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630012929.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;将实体类拷贝到pojo 项目中&lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;39&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630012953.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;40&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630012953.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;104-修改user_api-的pom-文件添加pojo-依赖&#34;&gt;10.4 修改user_api 的POM 文件添加pojo 依赖&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -3364,8 +3386,8 @@ public class ProviderApplication {
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;排除冲突依赖&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;40&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630013121.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;41&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630013248.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;41&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630013121.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;42&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630013248.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;!--Zookeeper Registry Dependency--&amp;gt;
@@ -4126,11 +4148,11 @@ password: root
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;项目打包&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;42&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630142002.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;43&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630142002.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;上传启Provider 项目与启动脚本&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;43&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630142028.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;44&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630142028.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;为启动脚本分配执行权限&lt;/p&gt;
@@ -4149,11 +4171,11 @@ password: root
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;项目打包&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;44&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630142002.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;45&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630142002.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;上传启Provider 项目与启动脚本&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;45&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630142328.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;46&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630142328.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;为启动脚本分配执行权限&lt;/p&gt;
@@ -4165,7 +4187,7 @@ password: root
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h5 id=&#34;10554-测试&#34;&gt;10.5.5.4 测试&lt;/h5&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;46&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630142421.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;47&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200630142421.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 ">Dubbo</a>
       </div>
       
