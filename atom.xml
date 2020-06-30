@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-06-30T08:16:18.552Z</updated>
+    <updated>2020-06-30T09:43:26.569Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -30,11 +30,141 @@ FastDFS 服务端有两个角色：跟踪器（tracker）和存储节点（stora
 存储节点存储文件，完成文件管理的所有功能：就是这样的存储、同步和提供存取接口，FastDFS 同时对文件的 metadata 进行管理。所谓文件的 meta data 就是文件的相关属性，以键值对（key value）方式表示，如：width=1024，其中的 key 为 width，value 为 1024。文件metadata 是文件属性列表，可以包含多个键值对。<br>
 跟踪器和存储节点都可以由一台或多台服务器构成。跟踪器和存储节点中的服务器均可以随时增加或下线而不会影响线上服务。其中跟踪器中的所有服务器都是对等的，可以根据服务器的压力情况随时增加或减少。<br>
 为了支持大容量，存储节点（服务器）采用了分卷（或分组）的组织方式。存储系统由一个或多个卷组成，卷与卷之间的文件是相互独立的，所有卷的文件容量累加就是整个存储系统中的文件容量。一个卷可以由一台或多台存储服务器组成，一个卷下的存储服务器中的文件都是相同的，卷中的多台存储服务器起到了冗余备份和负载均衡的作用。<br>
-在卷中增加服务器时，同步已有的文件由系统自动完成，同步完成后，系统自动将新增<br>
-服务器切换到线上提供服务。<br>
-当存储空间不足或即将耗尽时，可以动态添加卷。只需要增加一台或多台服务器，并将<br>
-它们配置为一个新的卷，这样就扩大了存储系统的容量。<br>
+在卷中增加服务器时，同步已有的文件由系统自动完成，同步完成后，系统自动将新增服务器切换到线上提供服务。<br>
+当存储空间不足或即将耗尽时，可以动态添加卷。只需要增加一台或多台服务器，并将它们配置为一个新的卷，这样就扩大了存储系统的容量。<br>
 FastDFS 中的文件标识分为两个部分：卷名和文件名，二者缺一不可。</p>
+<h3 id="11-架构图">1.1 架构图</h3>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200630172517.png" alt="" loading="lazy"></figure>
+<h3 id="12-上传流程">1.2 上传流程</h3>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200630172540.png" alt="" loading="lazy"></figure>
+<p>​	client 询问 tracker 上传到的 storage，不需要附加参数；<br>
+​	tracker 返回一台可用的 storage；<br>
+​	client 直接和 storage 通讯完成文件上传</p>
+<h3 id="13-下载流程">1.3 下载流程</h3>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200630172732.png" alt="" loading="lazy"></figure>
+<p>​	client 询问 tracker 下载文件的 storage，参数为文件标识（组名和文件名）；<br>
+​	tracker 返回一台可用的 storage；<br>
+​	client 直接和 storage 通讯完成文件下载。</p>
+<h3 id="14-术语简介">1.4 术语简介</h3>
+<ul>
+<li><strong>Tracker Server</strong>：跟踪服务器，主要做调度工作，在访问上起负载均衡的作用。记录 storageserver 的状态，是连接 Client 和 Storage server 的枢纽。</li>
+<li><strong>Storage Server</strong>：存储服务器，文件和 meta data 都保存到存储服务器上</li>
+<li><strong>group</strong>：组，也称为卷。同组内服务器上的文件是完全相同的</li>
+<li><strong>文件标识</strong>：包括两部分：组名和文件名（包含路径）</li>
+<li><strong>meta data</strong>：文件相关属性，键值对（Key Value Pair）方式，如：width=1024,heigth=768</li>
+</ul>
+<h3 id="15-同步机制">1.5 同步机制</h3>
+<p>​	同一组内的 storage server 之间是对等的，文件上传、删除等操作可以在任意一台 storage server 上进行；<br>
+​		文件同步只在同组内的 storage server 之间进行，采用 push 方式，即源服务器同步给目标服务器；<br>
+​		源头数据才需要同步，备份数据不需要再次同步，否则就构成环路了；<br>
+​		上述第二条规则有个例外，就是新增加一台storage server 时，由已有的一台storage server将已有的所有数据（包括源头数据和备份数据）同步给该新增服务器</p>
+<h3 id="16-fastdfs-运行时目录结构">1.6 FastDFS 运行时目录结构</h3>
+<h4 id="161-tracker-server-目录">1.6.1 Tracker Server 目录</h4>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200630173335.png" alt="" loading="lazy"></figure>
+<h4 id="162-storage-server-目录">1.6.2 Storage Server 目录</h4>
+<figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200630173358.png" alt="" loading="lazy"></figure>
+<h3 id="17-fastdfs-和其他文件存储的简单对比">1.7 FastDFS 和其他文件存储的简单对比</h3>
+<h4 id="171-fastdfs-和集中存储方式对比">1.7.1 FastDFS 和集中存储方式对比</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指标</th>
+<th style="text-align:center">FastDFS</th>
+<th style="text-align:center">NFS</th>
+<th style="text-align:center">集中存储设备如 NetApp 、NAS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">线性扩容性</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">差</td>
+<td style="text-align:center">差</td>
+</tr>
+<tr>
+<td style="text-align:center">文件高并发访问性能</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">差</td>
+<td style="text-align:center">一般</td>
+</tr>
+<tr>
+<td style="text-align:center">文件访问方式</td>
+<td style="text-align:center">专有 API</td>
+<td style="text-align:center">POSIX</td>
+<td style="text-align:center">支持 POSIX</td>
+</tr>
+<tr>
+<td style="text-align:center">硬件成本</td>
+<td style="text-align:center">较低</td>
+<td style="text-align:center">中等</td>
+<td style="text-align:center">高</td>
+</tr>
+<tr>
+<td style="text-align:center">相同内容文件只保存一份</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">不支持</td>
+<td style="text-align:center">不支持</td>
+</tr>
+</tbody>
+</table>
+<h4 id="172-fastdfs-和-mogilefs-对比">1.7.2 FastDFS 和 mogileFS 对比</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指标</th>
+<th style="text-align:center">FastDFS</th>
+<th style="text-align:center">mogileFS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">系统简洁性</td>
+<td style="text-align:center">简洁<br/>只有两个角色：tracker 和storage</td>
+<td style="text-align:center">一般<br/>有三个角色：tracker、storage和存储文件信息的 mysql db</td>
+</tr>
+<tr>
+<td style="text-align:center">系统性能</td>
+<td style="text-align:center">很高（没有使用数据库，文件同步直接点对点，不经过tracker 中转）</td>
+<td style="text-align:center">高（使用 mysql 来存储文件索 引 等 信 息 ， 文 件 同 步 通 过tracker 调度和中转）</td>
+</tr>
+<tr>
+<td style="text-align:center">系统稳定性</td>
+<td style="text-align:center">高（C 语言开发，可以支持高并发和高负载）</td>
+<td style="text-align:center">一般（Perl 语言开发，高并发和高负载支持一般）</td>
+</tr>
+<tr>
+<td style="text-align:center">RAID 方式</td>
+<td style="text-align:center">分组（组内冗余），灵活性较大</td>
+<td style="text-align:center">动态冗余，灵活性一般</td>
+</tr>
+<tr>
+<td style="text-align:center">通信协议</td>
+<td style="text-align:center">专有协议<br/>下载文件支持 HTTP</td>
+<td style="text-align:center">HTTP</td>
+</tr>
+<tr>
+<td style="text-align:center">技术文档</td>
+<td style="text-align:center">较详细</td>
+<td style="text-align:center">较少</td>
+</tr>
+<tr>
+<td style="text-align:center">文 件 附 加 属 性（meta data）</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">不支持</td>
+</tr>
+<tr>
+<td style="text-align:center">相同内容文件只保存一份</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">不支持</td>
+</tr>
+<tr>
+<td style="text-align:center">下载文件时支持文件偏移量（断点续传）</td>
+<td style="text-align:center">支持</td>
+<td style="text-align:center">不支持</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-安装">2、安装</h2>
 ]]></content>
     </entry>
     <entry>
