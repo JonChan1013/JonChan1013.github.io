@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-07-01T07:42:36.130Z</updated>
+    <updated>2020-07-01T07:46:17.957Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -925,6 +925,7 @@ public class TestDelete {
 </li>
 </ol>
 <h2 id="4-web-应用中使用-fastdfs">4、WEB 应用中使用 FastDFS</h2>
+<figure data-type="image" tabindex="10"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200701154535.png" alt="" loading="lazy"></figure>
 <h3 id="41-依赖">4.1 依赖</h3>
 <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
