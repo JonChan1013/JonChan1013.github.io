@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Mybatis | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1593590231381">
+<link rel="shortcut icon" href="/favicon.ico?v=1593657131238">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1690,6 +1690,267 @@
 ​        如果接口文档可以实时动态生成就不会出现上面问题。&lt;br&gt;
 ​        Swagger 可以完美的解决上面的问题。&lt;/p&gt;
 &lt;!-- more --&gt;
+&lt;h3 id=&#34;12-open-api-是什么&#34;&gt;1.2 Open API 是什么&lt;/h3&gt;
+&lt;p&gt;​		Open API 规范(OpenAPI Specification)以前叫做Swagger 规范，是&lt;br&gt;
+REST API 的API 描述格式。&lt;br&gt;
+​		Open API 文件允许描述整个API，包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;每个访问地址的类型。POST 或GET。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每个操作的参数。包括输入输出参数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;认证方法。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;连接信息，声明，使用团队和其他信息。&lt;br&gt;
+Open API 规范可以使用YAML 或JSON 格式进行编写。这样更利于我们和机器进行阅读。&lt;/p&gt;
+&lt;p&gt;OpenAPI 规范（OAS）为 RESTful API 定义了一个与语言无关的标准接口，允许人和计算机发现和理解服务的功能，而无需访问源代码，文档或通过网络流量检查。正确定义后，消费者可以使用最少量的实现逻辑来理解远程服务并与之交互。&lt;br&gt;
+然后，文档生成工具可以使用OpenAPI 定义来显示API，使用各种编程语言生成服务器和客户端的代码生成工具，测试工具以及许多其他用例。&lt;/p&gt;
+&lt;p&gt;源码和说明参照：&lt;/p&gt;
+&lt;p&gt;https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.&lt;br&gt;
+0.0.md#oasDocument&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;13-swagger-简介&#34;&gt;1.3 Swagger 简介&lt;/h3&gt;
+&lt;p&gt;​		Swagger 是一套围绕Open API 规范构建的开源工具，可以帮助设计，构建，记录和使用REST API。&lt;br&gt;
+​		Swagger 工具包括的组件：&lt;br&gt;
+​		Swagger Editor ：基于浏览器编辑器，可以在里面编写Open API规范。类似Markdown 具有实时预览描述文件的功能。&lt;br&gt;
+​		Swagger UI：将Open API 规范呈现为交互式API 文档。用可视化UI 展示描述文件。&lt;/p&gt;
+&lt;p&gt;​		Swagger Codegen：将 OpenAPI 规范生成为服务器存根和客户端库。通过Swagger Codegen 可以将描述文件生成 html 格式和cwiki 形式的接口文档，同时也可以生成多种言语的客户端和服务端代码。&lt;br&gt;
+​		Swagger Inspector：和 Swagger UI 有点类似，但是可以返回更多信息，也会保存请求的实际参数数据。&lt;br&gt;
+​		Swagger Hub：集成了上面所有项目的各个功能，你可以以项目和版本为单位，将你的描述文件上传到Swagger Hub 中。在 SwaggerHub 中可以完成上面项目的所有工作，需要注册账号，分免费版和收费版。&lt;br&gt;
+​		使用Swagger，就是把相关的信息存储在它定义的描述文件里面（yml 或 json 格式），再通过维护这个描述文件可以去更新接口文档，以及生成各端代码。&lt;/p&gt;
+&lt;h2 id=&#34;2-springfox&#34;&gt;2、Springfox&lt;/h2&gt;
+&lt;p&gt;​		使用 Swagger 时如果碰见版本更新或迭代时，只需要更改Swagger 的描述文件即可。但是在频繁的更新项目版本时很多开发人员认为即使修改描述文件（yml 或json）也是一定的工作负担，久而久之就直接修改代码，而不去修改描述文件了，这样基于描述文件生成接口文档也失去了意义。&lt;br&gt;
+​		Marty Pitt 编写了一个基于 Spring 的组件 swagger-springmvc。Spring-fox 就是根据这个组件发展而来的全新项目。&lt;br&gt;
+​		Spring-fox 是根据代码生成接口文档，所以正常的进行更新项目版本，修改代码即可，而不需要跟随修改描述文件。&lt;br&gt;
+​		Spring-fox 利用自身AOP 特性，把Swagger 集成进来，底层还是Swagger。但是使用起来确方便很多。&lt;br&gt;
+​		所以在实际开发中，都是直接使用spring-fox。&lt;br&gt;
+​		附：官网地址&lt;/p&gt;
+&lt;p&gt;​		http://springfox.github.io/springfox/&lt;/p&gt;
+&lt;p&gt;​		附：官方源码&lt;/p&gt;
+&lt;p&gt;​		https://github.com/springfox/springfox&lt;/p&gt;
+&lt;h2 id=&#34;3-swagger-极致用法&#34;&gt;3、Swagger 极致用法&lt;/h2&gt;
+&lt;h3 id=&#34;31-编写springboot-项目&#34;&gt;3.1  编写SpringBoot 项目&lt;/h3&gt;
+&lt;p&gt;​	编写SpringBoot 项目，项目中controller 中包含一个Handler，测试项目，保证程序可以正确运行。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RestController
+@RequestMapping(&amp;quot;/people&amp;quot;)
+public class DemoController {
+
+	@RequestMapping(&amp;quot;/getPeople&amp;quot;)
+	public People getPeople(Long id, String name){
+		People peo = new People();
+		peo.setId(id);
+		peo.setName(name);
+		peo.setAddress(&amp;quot;海淀&amp;quot;);
+		return peo;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;32-导入spring-fox-依赖&#34;&gt;3.2 导入Spring-fox 依赖&lt;/h3&gt;
+&lt;p&gt;​		在项目的pom.xml 中导入Spring-fox 依赖。目前最新版本为2.9.2，所以导入的依赖也是这个版本。其中 springfox-swagger2 是核心内容的封装。springfox-swagger-ui 是对swagger-ui 的封装。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+	&amp;lt;groupId&amp;gt;io.springfox&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;springfox-swagger2&amp;lt;/artifactId&amp;gt;
+	&amp;lt;version&amp;gt;2.9.2&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+	&amp;lt;groupId&amp;gt;io.springfox&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;springfox-swagger-ui&amp;lt;/artifactId&amp;gt;
+	&amp;lt;version&amp;gt;2.9.2&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;33-添加注解&#34;&gt;3.3 添加注解&lt;/h3&gt;
+&lt;p&gt;​		在SpringBoot 的&lt;strong&gt;启动类&lt;/strong&gt;中添加@EnableSwagger2 注解。&lt;br&gt;
+​		添加此注解后表示对当前项目中全部控制器进行扫描。应用Swagger2&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@SpringBootApplication
+@EnableSwagger2
+public class MyApp {
+	public static void main(String [] args){
+		SpringApplication.run(MyApp.class,args);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;34-访问swagger-ui&#34;&gt;3.4 访问swagger-ui&lt;/h3&gt;
+&lt;p&gt;​		启动项目后在浏览器中输入http://ip:port/swagger-ui.html 即可以访问到swagger-ui 页面，在页面中可以可视化的进行操作项目中所有接口。&lt;/p&gt;
+&lt;h2 id=&#34;4-swagger-ui-使用&#34;&gt;4、Swagger-UI 使用&lt;/h2&gt;
+&lt;p&gt;​		访问 swagger-ui.html 后可以在页面中看到所有需要生成接口文档的控制器名称。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200701174528.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;每个控制器中间包含多所有控制器方法的各种访问方式。如果使用的是@RequestMapping 进行映射，将显示下面的所有请求方式。如果使用@PostMapping 将只有Post 方式可以能访问，下面也就只显示Post 的一个。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200701174547.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;点击某个请求方式中try it out&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200701174601.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;会出现界面要求输入的值。输入完成后点击Execute 按钮，下面会出现Request URL 已经不同状态码相应回来的结果。&lt;/p&gt;
+&lt;h2 id=&#34;5-swagger-配置&#34;&gt;5、Swagger 配置&lt;/h2&gt;
+&lt;p&gt;可以在项目中创建SwaggerConfig，进行配置文档内容。&lt;/p&gt;
+&lt;h3 id=&#34;51-配置基本信息&#34;&gt;5.1 配置基本信息&lt;/h3&gt;
+&lt;p&gt;Docket：摘要对象，通过对象配置描述文件的信息。&lt;br&gt;
+apiInfo:设置描述文件中info。参数类型ApiInfo&lt;br&gt;
+select():返回 ApiSelectorBuilder 对象，通过对象调用 build()可以创建Docket 对象&lt;br&gt;
+ApiInfoBuilder：ApiInfo 构建器。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Configuration
+public class SwaggerConfig {
+	@Bean
+	public Docket getDocket(){
+        return new Docket(DocumentationType.SWAGGER_2)
+			.apiInfo(swaggerDemoApiInfo())
+			.select()
+			.build();
+}
+private ApiInfo swaggerDemoApiInfo(){
+	return new ApiInfoBuilder()
+		.contact(new Contact(&amp;quot;Swagger&amp;quot;, &amp;quot;http://www.百度.com&amp;quot;,&amp;quot;xxx@163.com&amp;quot;))
+		//文档标题
+		.title(&amp;quot;这里是 Swagger 的标题&amp;quot;)
+		//文档描述
+		.description(&amp;quot;这里是 Swagger 的描述&amp;quot;)
+		//文档版本
+		.version(&amp;quot;1.0.0&amp;quot;)
+		.build();
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;52-设置扫描的包&#34;&gt;5.2 设置扫描的包&lt;/h3&gt;
+&lt;p&gt;可以通过apis()方法设置哪个包中内容被扫描&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Bean
+public Docket getDocket() {
+	return new Docket(DocumentationType.SWAGGER_2)
+		.apiInfo(getApiInfo())
+		.select()
+        .apis(RequestHandlerSelectors.basePackage(&amp;quot;com.cy.controller&amp;quot;))
+		.build();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;53-自定义注解设置不需要生成接口文档的方法&#34;&gt;5.3 自定义注解设置不需要生成接口文档的方法&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;自定义注解&lt;/p&gt;
+&lt;p&gt;注解名称随意。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface NotIncludeSwagger {
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加规则&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;通 过 public ApiSelectorBuilder apis(Predicate&lt;RequestHandler&gt; selector)可以设置生成规则。&lt;br&gt;
+public static &lt;T&gt; Predicate&lt;T&gt; not(Predicate&lt;T&gt; predicate) :表示不允许的条件。&lt;br&gt;
+withMethodAnnotation：表示此注解是方法级别注解。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;添加NotIncludeSwagger 注解&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在不需要生成接口文档的方法上面添加@NotIncludeSwagger 注解后，该方法将不会被Swagger 进行生成在接口文档中。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@NotIncludeSwagger
+@RequestMapping(&amp;quot;/getPeople2&amp;quot;)
+public People getPeople2(Integer id, String name, String address){
+	People peo = new People();
+	peo.setId(id);
+	peo.setName(name);
+	peo.setAddress(address);
+	return peo;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;54-设置范围&#34;&gt;5.4 设置范围&lt;/h3&gt;
+&lt;p&gt;通过 public ApiSelectorBuilder paths(Predicate&lt;String&gt; selector)可以设置满足什么样规则的url 被生成接口文档。可以使用正则表达式进行匹配。&lt;br&gt;
+下面例子中表示只有以/demo/开头的 url 才能被swagger 生成接口文档。&lt;br&gt;
+如何希望全部扫描可以使用paths(PathSelectors.any())&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Bean
+public Docket getDocket(){
+	return new Docket(DocumentationType.SWAGGER_2)
+		.apiInfo(swaggerDemoApiInfo())
+		.select()
+		.paths(allowPaths())
+		.build();
+}
+private Predicate&amp;lt;String&amp;gt; allowPaths(){
+	return or(
+		regex(&amp;quot;/demo/.*&amp;quot;)
+	);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6-swagger2-常用注解&#34;&gt;6、Swagger2 常用注解&lt;/h2&gt;
+&lt;h3 id=&#34;61-api&#34;&gt;6.1 Api&lt;/h3&gt;
+&lt;p&gt;@Api 是类上注解。控制整个类生成接口信息的内容。&lt;br&gt;
+tags：类的名称。可以有多个值，多个值表示多个副本。&lt;br&gt;
+description:描述，已过时。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RestController
+@RequestMapping(&amp;quot;/people&amp;quot;)
+@Api(tags = {&amp;quot;mydemo&amp;quot;},description = &amp;quot;描述&amp;quot;)
+public class DemoController {
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在swagger-ui.html 中显示效果。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200702102613.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;62-apioperation&#34;&gt;6.2 ApiOperation&lt;/h3&gt;
+&lt;p&gt;@ApiOperation 写在方法上，对方法进行总体描述&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;value：接口描述&lt;/li&gt;
+&lt;li&gt;notes：提示信息&lt;br&gt;
+代码示例：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@ApiOperation(value=&amp;quot;接口描述&amp;quot;,notes = &amp;quot;接口提示信息&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在swagger-ui 中显示效果&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200702102714.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;63-apiparam&#34;&gt;6.3 ApiParam&lt;/h3&gt;
+&lt;p&gt;@ApiParam 写在方法参数前面。用于对参数进行描述或说明是否为必添项等说明。&lt;br&gt;
+name：参数名称&lt;br&gt;
+value：参数描述&lt;br&gt;
+required：是否是必须&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public People getPeople(Integer id, @ApiParam(value=&amp;quot;姓名&amp;quot;,required = true) Stringname, String address)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;swagger-ui 显示效果如下：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200702102804.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;64-apimodel&#34;&gt;6.4 ApiModel&lt;/h3&gt;
+&lt;p&gt;@ApiModel 是类上注解，主要应用Model，也就是说这个注解一&lt;br&gt;
+般都是写在实体类上。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;value：名称&lt;/li&gt;
+&lt;li&gt;description：描述&lt;br&gt;
+代码示例：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@ApiModel(value = &amp;quot;人类&amp;quot;,description = &amp;quot;描述&amp;quot;)
+public class People {
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;swagger-ui.html 效果展示&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200702102900.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;65-apimodelproperty&#34;&gt;6.5 ApiModelProperty&lt;/h3&gt;
+&lt;p&gt;@ApiModelProperty 可以用在方法或属性上。用于当对象作为参数时定义这个字段的内容。&lt;br&gt;
+value：描述&lt;br&gt;
+name：重写属性名&lt;br&gt;
+required：是否是必须的&lt;br&gt;
+example：示例内容&lt;br&gt;
+hidden：是否隐藏。&lt;br&gt;
+代码示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@ApiModelProperty(value = &amp;quot;姓名&amp;quot;,name = &amp;quot;name&amp;quot;,required = true,example = &amp;quot;张三&amp;quot;)
+private String name;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;swagger-ui.html 效果展示&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200702102946.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;66-apiignore&#34;&gt;6.6  ApiIgnore&lt;/h3&gt;
+&lt;p&gt;@ApiIgnore 用于方法或类或参数上，表示这个方法或类被忽略。和之前讲解的自定义注解@NotIncludeSwagger 效果类似。只是这个注解是Swagger 内置的注解，而@NotIncludeSwagger 是我们自定义的注解。&lt;/p&gt;
+&lt;h3 id=&#34;67-apiimplicitparam&#34;&gt;6.7 ApiImplicitParam&lt;/h3&gt;
+&lt;p&gt;@ApiImplicitParam 用在方法上，表示单独的请求参数，总体功能和@ApiParam 类似。&lt;br&gt;
+name：属性名&lt;br&gt;
+value：描述&lt;br&gt;
+required：是否是必须的&lt;br&gt;
+paramType：属性类型&lt;br&gt;
+dataType：数据类型&lt;br&gt;
+代码示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@PostMapping(&amp;quot;/getPeople&amp;quot;)
+@ApiImplicitParam(name = &amp;quot;address&amp;quot;,value = &amp;quot;地址&amp;quot;,required = true,paramType =&amp;quot;query&amp;quot;,dataType = &amp;quot;string&amp;quot;)
+public People getPeople(Integer id, @ApiParam(value=&amp;quot;姓名&amp;quot;,required = true) Stringname, String address){
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;swagger-ui.html 效果展示&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200702103120.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;如果希望在方法上配置多个参数时，使用@ApiImplicitParams 进行配置。示例如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@ApiImplicitParams(value={@ApiImplicitParam(name=&amp;quot;id&amp;quot;,value = &amp;quot;编号&amp;quot;,required =true),@ApiImplicitParam(name=&amp;quot;name&amp;quot;,value = &amp;quot;姓名&amp;quot;,required = true)})
+&lt;/code&gt;&lt;/pre&gt;
 ">Swagger</a>
       </div>
       
