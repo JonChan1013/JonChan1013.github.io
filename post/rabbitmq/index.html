@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>RabbitMQ | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1594110463102">
+<link rel="shortcut icon" href="/favicon.ico?v=1594111004819">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -218,19 +218,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">21</span>
+        <span class="site-item-stat-count">22</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">35</span>
+        <span class="site-item-stat-count">36</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">35</span>
+        <span class="site-item-stat-count">36</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -640,17 +640,18 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <h2 id="1-amqp-简介">1、AMQP 简介</h2>
+              <figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707162914.png" alt="" loading="lazy"></figure>
+<h2 id="1-amqp-简介">1、AMQP 简介</h2>
 <h3 id="11-amqp-是什么">1.1 AMQP 是什么?</h3>
 <p>AMQP(Advanced Message Queuing Protocol,高级消息队列协议)是进程之间传递异步消息的网络协议。</p>
 <!-- more -->
 <h3 id="12-amqp-工作过程">1.2 AMQP 工作过程</h3>
 <p>发布者(Publisher)发布消息(Message),经过交换机(Exchange)，交换机根据路由规则将收到消息分发给交换机绑定的队列(Queue)，最后 AMQP 代理会将消息投递给订阅了此队列的消费者，或者消费者按照需求自行获取。</p>
-<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171158.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171158.png" alt="" loading="lazy"></figure>
 <h3 id="13-队列">1.3 队列</h3>
 <p>队列是数据结构中概念。数据存储在一个队列中，数据是有顺序的，先进的先出，后进后出。其中一侧负责进数据，另一次负责出数据。</p>
 <p>MQ（消息队列）很多功能都是基于此队列结构实现的</p>
-<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171229.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171229.png" alt="" loading="lazy"></figure>
 <h2 id="2-rabbitmq-简介">2、RabbitMQ 简介</h2>
 <h3 id="21-rabbitmq-介绍">2.1 RabbitMQ 介绍</h3>
 <p>RabbitMQ 是由 Erlang 语言编写的基于 AMQP 的消息中间件。而消息中间件作为分布式系统重要组件之一，可以解决应用耦合，异步消息，流量削峰等问题。</p>
@@ -658,15 +659,15 @@
 <ol>
 <li>不使用 MQ 时</li>
 </ol>
-<figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171358.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171358.png" alt="" loading="lazy"></figure>
 <ol start="2">
 <li>使用 MQ 解决耦合</li>
 </ol>
-<figure data-type="image" tabindex="4"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171415.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171415.png" alt="" loading="lazy"></figure>
 <h3 id="22-rabbitmq-适用场景">2.2 RabbitMQ 适用场景</h3>
 <p>排队算法、秒杀活动、消息分发、异步处理、数据同步、处理耗时任务、流量销峰等。</p>
 <h2 id="3-rabbitmq-原理">3、RabbitMQ 原理</h2>
-<figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171458.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171458.png" alt="" loading="lazy"></figure>
 <h3 id="31-message">3.1 Message</h3>
 <p>消息。消息是不具名的，它由消息头消息体组成。消息体是不透明的，而消息头则由一系列可选属性组成，这些属性包括：routing-key(路由键)、priority(相对于其他消息的优先权)、delivery-mode(指出消息可能持久性存储)等。</p>
 <h3 id="32-publisher">3.2 Publisher</h3>
@@ -725,10 +726,10 @@
 <p>修改主机名<br>
 RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名。</p>
 <p>vim /etc/sysconfig/network</p>
-<figure data-type="image" tabindex="6"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706172227.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706172227.png" alt="" loading="lazy"></figure>
 <p>vim /etc/hosts</p>
 <p>新添加了一行，前面为服务器 ip，空格后面添加计算机主机名</p>
-<figure data-type="image" tabindex="7"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706172349.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706172349.png" alt="" loading="lazy"></figure>
 </li>
 <li>
 <p>安装依赖</p>
@@ -753,7 +754,7 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 <p>​	cd otp_src_22.0</p>
 <p>​	配置参数</p>
 <p>​	./configure --prefix=/usr/local/erlang --with-ssl --enable-threads --enable-smp-support --enable-kernel-poll --enable-hipe --without-javac</p>
-<figure data-type="image" tabindex="8"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706172649.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706172649.png" alt="" loading="lazy"></figure>
 <ol start="5">
 <li>
 <p>编译并安装</p>
@@ -763,7 +764,7 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 <p>make install</p>
 </li>
 </ol>
-<figure data-type="image" tabindex="9"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706173422.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706173422.png" alt="" loading="lazy"></figure>
 <ol start="6">
 <li>
 <p>修改环境变量</p>
@@ -773,8 +774,8 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 <p>export PATH=$PATH:/usr/local/erlang/bin</p>
 </li>
 </ol>
-<figure data-type="image" tabindex="10"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706173629.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="11"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706173647.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706173629.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706173647.png" alt="" loading="lazy"></figure>
 <h2 id="5-安装-rabbitmq">5、安装 RabbitMQ</h2>
 <ol>
 <li>
@@ -815,7 +816,7 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 <p>启动成功信息如下：</p>
 </li>
 </ol>
-<figure data-type="image" tabindex="12"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707031245.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="13"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707031245.png" alt="" loading="lazy"></figure>
 <ol start="6">
 <li>
 <p>查看 web 管理界面</p>
@@ -824,7 +825,7 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 <p>在浏览器中输入：http://124.70.181.124:15672/</p>
 </li>
 </ol>
-<figure data-type="image" tabindex="13"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707031918.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="14"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707031918.png" alt="" loading="lazy"></figure>
 <h2 id="6-rabbitmq-账户管理">6、RabbitMq 账户管理</h2>
 <ol>
 <li>创建账户</li>
@@ -854,7 +855,7 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 <p>http://ip:15672/</p>
 <p>用户名：admin</p>
 <p>密码：admin</p>
-<figure data-type="image" tabindex="14"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707094930.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="15"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707094930.png" alt="" loading="lazy"></figure>
 </li>
 </ol>
 <h2 id="7-exchange-交换器交换机">7、Exchange 交换器（交换机）</h2>
@@ -874,10 +875,10 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 </li>
 </ol>
 <p>在 RabbitMq 的 Web 管理界面中 Exchanges 选项卡就可以看见这四个交换器。</p>
-<figure data-type="image" tabindex="15"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707110332.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="16"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707162639.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="16"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707110332.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="17"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707162639.png" alt="" loading="lazy"></figure>
 <h3 id="71-direct-交换器">7.1 direct 交换器</h3>
-<figure data-type="image" tabindex="17"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707110359.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="18"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707110359.png" alt="" loading="lazy"></figure>
 <p>direct 交换器是 RabbitMQ 默认交换器。默认会进行<strong>公平调度</strong>。所有接受者依次从消息队列中获取值。Publisher 给哪个队列发消息，就一定是给哪个队列发送消息。对交换器</p>
 <p>绑定的其他队列没有任何影响。</p>
 <p>（代码演示）一个队列需要绑定多个消费者</p>
@@ -1009,8 +1010,8 @@ public class RabbitConsumerApplication {
     password: admin # 访问RabbitMQ的密码，默认guest
     virtual-host: /  # 访问RabbitMQ的哪一个虚拟主机，默认为 /
 </code></pre>
-<figure data-type="image" tabindex="18"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707111159.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="19"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707111241.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="19"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707111159.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="20"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707111241.png" alt="" loading="lazy"></figure>
 <ol start="5">
 <li>编写日志消息消费者（只消费error和warn日志）</li>
 </ol>
@@ -1053,8 +1054,8 @@ public class LogConsumer {
 }
 
 </code></pre>
-<figure data-type="image" tabindex="20"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707114704.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="21"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707114913.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="21"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707114704.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="22"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707114913.png" alt="" loading="lazy"></figure>
 <ol start="6">
 <li>编写publisher配置信息</li>
 </ol>
@@ -1104,7 +1105,7 @@ public class TestPublisher {
 
 </code></pre>
 <p>先启动consumer再启动publisher测试类：</p>
-<figure data-type="image" tabindex="22"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707133200.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="23"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707133200.png" alt="" loading="lazy"></figure>
 <ol start="8">
 <li>消费者集群搭建</li>
 </ol>
@@ -1120,11 +1121,11 @@ public class TestPublisher {
     }
 
 </code></pre>
-<figure data-type="image" tabindex="23"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707135016.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="24"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707135031.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="25"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707135214.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="24"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707135016.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="25"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707135031.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="26"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707135214.png" alt="" loading="lazy"></figure>
 <h3 id="72-fanout-交换器">7.2 fanout 交换器</h3>
-<figure data-type="image" tabindex="26"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707141028.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="27"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707141028.png" alt="" loading="lazy"></figure>
 <p>扇形交换器，实际上做的事情就是广播，fanout 会把消息发送给所有的绑定在当前交换器上的队列。<strong>对应 Consumer 依然采用公平调度方式。</strong></p>
 <p>注：不再需要routing-key</p>
 <p>（代码演示）一个交换器需要绑定多个队列</p>
@@ -1276,7 +1277,7 @@ public class UserMessageSender {
 </li>
 </ol>
 <h3 id="73-topic-交换器">7.3 topic 交换器</h3>
-<figure data-type="image" tabindex="27"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707150313.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="28"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707150313.png" alt="" loading="lazy"></figure>
 <p>允许在路由键（RoutingKey）中出现匹配规则。</p>
 <p>路由键的写法和包写法相同。com.cy.xxxx.xxx 格式。</p>
 <p>在绑定时可以带有下面特殊符号，中间可以出现:</p>
@@ -1423,8 +1424,8 @@ private TopicMessageSender topicMessageSender;
 
 </code></pre>
 <p>结果：</p>
-<figure data-type="image" tabindex="28"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707162555.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="29"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707162450.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="29"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707162555.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="30"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707162450.png" alt="" loading="lazy"></figure>
 
             </div>
             
@@ -1453,6 +1454,10 @@ private TopicMessageSender topicMessageSender;
   </div>
   <div class="nav">
     <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="Redis" href="https://jonchan1013.github.io/post/redis/">Redis</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="Redis" href="https://jonchan1013.github.io/post/redis/">上一篇</a>
       
     </div>
     <div class="nav-next">
@@ -2500,18 +2505,30 @@ private TopicMessageSender topicMessageSender;
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/redis/"" data-c="
+          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707163549.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-redis-介绍&#34;&gt;1、Redis 介绍&lt;/h2&gt;
+&lt;h3 id=&#34;11-redis-简介&#34;&gt;1.1 Redis 简介&lt;/h3&gt;
+&lt;p&gt;Remote Dictionary Server(Redis)是一个开源的使用 ANSI C 语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value 数据库，并提供多种语言的 API。&lt;br&gt;
+它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Map),列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。&lt;/p&gt;
+&lt;!-- more --&gt;
+">Redis</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/rabbitmq/"" data-c="
-          &lt;h2 id=&#34;1-amqp-简介&#34;&gt;1、AMQP 简介&lt;/h2&gt;
+          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707162914.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-amqp-简介&#34;&gt;1、AMQP 简介&lt;/h2&gt;
 &lt;h3 id=&#34;11-amqp-是什么&#34;&gt;1.1 AMQP 是什么?&lt;/h3&gt;
 &lt;p&gt;AMQP(Advanced Message Queuing Protocol,高级消息队列协议)是进程之间传递异步消息的网络协议。&lt;/p&gt;
 &lt;!-- more --&gt;
 &lt;h3 id=&#34;12-amqp-工作过程&#34;&gt;1.2 AMQP 工作过程&lt;/h3&gt;
 &lt;p&gt;发布者(Publisher)发布消息(Message),经过交换机(Exchange)，交换机根据路由规则将收到消息分发给交换机绑定的队列(Queue)，最后 AMQP 代理会将消息投递给订阅了此队列的消费者，或者消费者按照需求自行获取。&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706171158.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706171158.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;13-队列&#34;&gt;1.3 队列&lt;/h3&gt;
 &lt;p&gt;队列是数据结构中概念。数据存储在一个队列中，数据是有顺序的，先进的先出，后进后出。其中一侧负责进数据，另一次负责出数据。&lt;/p&gt;
 &lt;p&gt;MQ（消息队列）很多功能都是基于此队列结构实现的&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706171229.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706171229.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;2-rabbitmq-简介&#34;&gt;2、RabbitMQ 简介&lt;/h2&gt;
 &lt;h3 id=&#34;21-rabbitmq-介绍&#34;&gt;2.1 RabbitMQ 介绍&lt;/h3&gt;
 &lt;p&gt;RabbitMQ 是由 Erlang 语言编写的基于 AMQP 的消息中间件。而消息中间件作为分布式系统重要组件之一，可以解决应用耦合，异步消息，流量削峰等问题。&lt;/p&gt;
@@ -2519,15 +2536,15 @@ private TopicMessageSender topicMessageSender;
 &lt;ol&gt;
 &lt;li&gt;不使用 MQ 时&lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706171358.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706171358.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;使用 MQ 解决耦合&lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706171415.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706171415.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;22-rabbitmq-适用场景&#34;&gt;2.2 RabbitMQ 适用场景&lt;/h3&gt;
 &lt;p&gt;排队算法、秒杀活动、消息分发、异步处理、数据同步、处理耗时任务、流量销峰等。&lt;/p&gt;
 &lt;h2 id=&#34;3-rabbitmq-原理&#34;&gt;3、RabbitMQ 原理&lt;/h2&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706171458.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706171458.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;31-message&#34;&gt;3.1 Message&lt;/h3&gt;
 &lt;p&gt;消息。消息是不具名的，它由消息头消息体组成。消息体是不透明的，而消息头则由一系列可选属性组成，这些属性包括：routing-key(路由键)、priority(相对于其他消息的优先权)、delivery-mode(指出消息可能持久性存储)等。&lt;/p&gt;
 &lt;h3 id=&#34;32-publisher&#34;&gt;3.2 Publisher&lt;/h3&gt;
@@ -2586,10 +2603,10 @@ private TopicMessageSender topicMessageSender;
 &lt;p&gt;修改主机名&lt;br&gt;
 RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名。&lt;/p&gt;
 &lt;p&gt;vim /etc/sysconfig/network&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706172227.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706172227.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;vim /etc/hosts&lt;/p&gt;
 &lt;p&gt;新添加了一行，前面为服务器 ip，空格后面添加计算机主机名&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706172349.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706172349.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;安装依赖&lt;/p&gt;
@@ -2614,7 +2631,7 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 &lt;p&gt;​	cd otp_src_22.0&lt;/p&gt;
 &lt;p&gt;​	配置参数&lt;/p&gt;
 &lt;p&gt;​	./configure --prefix=/usr/local/erlang --with-ssl --enable-threads --enable-smp-support --enable-kernel-poll --enable-hipe --without-javac&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706172649.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706172649.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ol start=&#34;5&#34;&gt;
 &lt;li&gt;
 &lt;p&gt;编译并安装&lt;/p&gt;
@@ -2624,7 +2641,7 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 &lt;p&gt;make install&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706173422.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706173422.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ol start=&#34;6&#34;&gt;
 &lt;li&gt;
 &lt;p&gt;修改环境变量&lt;/p&gt;
@@ -2634,8 +2651,8 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 &lt;p&gt;export PATH=$PATH:/usr/local/erlang/bin&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706173629.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706173647.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706173629.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200706173647.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;5-安装-rabbitmq&#34;&gt;5、安装 RabbitMQ&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -2676,7 +2693,7 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 &lt;p&gt;启动成功信息如下：&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707031245.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707031245.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ol start=&#34;6&#34;&gt;
 &lt;li&gt;
 &lt;p&gt;查看 web 管理界面&lt;/p&gt;
@@ -2685,7 +2702,7 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 &lt;p&gt;在浏览器中输入：http://124.70.181.124:15672/&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707031918.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707031918.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;6-rabbitmq-账户管理&#34;&gt;6、RabbitMq 账户管理&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;创建账户&lt;/li&gt;
@@ -2715,7 +2732,7 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 &lt;p&gt;http://ip:15672/&lt;/p&gt;
 &lt;p&gt;用户名：admin&lt;/p&gt;
 &lt;p&gt;密码：admin&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707094930.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707094930.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;7-exchange-交换器交换机&#34;&gt;7、Exchange 交换器（交换机）&lt;/h2&gt;
@@ -2735,10 +2752,10 @@ RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名�
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;在 RabbitMq 的 Web 管理界面中 Exchanges 选项卡就可以看见这四个交换器。&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707110332.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707162639.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707110332.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707162639.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;71-direct-交换器&#34;&gt;7.1 direct 交换器&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707110359.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707110359.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;direct 交换器是 RabbitMQ 默认交换器。默认会进行&lt;strong&gt;公平调度&lt;/strong&gt;。所有接受者依次从消息队列中获取值。Publisher 给哪个队列发消息，就一定是给哪个队列发送消息。对交换器&lt;/p&gt;
 &lt;p&gt;绑定的其他队列没有任何影响。&lt;/p&gt;
 &lt;p&gt;（代码演示）一个队列需要绑定多个消费者&lt;/p&gt;
@@ -2870,8 +2887,8 @@ public class RabbitConsumerApplication {
     password: admin # 访问RabbitMQ的密码，默认guest
     virtual-host: /  # 访问RabbitMQ的哪一个虚拟主机，默认为 /
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707111159.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707111241.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707111159.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707111241.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ol start=&#34;5&#34;&gt;
 &lt;li&gt;编写日志消息消费者（只消费error和warn日志）&lt;/li&gt;
 &lt;/ol&gt;
@@ -2914,8 +2931,8 @@ public class LogConsumer {
 }
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707114704.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;21&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707114913.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;21&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707114704.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;22&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707114913.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ol start=&#34;6&#34;&gt;
 &lt;li&gt;编写publisher配置信息&lt;/li&gt;
 &lt;/ol&gt;
@@ -2965,7 +2982,7 @@ public class TestPublisher {
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;先启动consumer再启动publisher测试类：&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;22&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707133200.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;23&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707133200.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ol start=&#34;8&#34;&gt;
 &lt;li&gt;消费者集群搭建&lt;/li&gt;
 &lt;/ol&gt;
@@ -2981,11 +2998,11 @@ public class TestPublisher {
     }
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;23&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707135016.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;24&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707135031.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;25&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707135214.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;24&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707135016.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;25&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707135031.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;26&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707135214.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;72-fanout-交换器&#34;&gt;7.2 fanout 交换器&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;26&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707141028.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;27&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707141028.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;扇形交换器，实际上做的事情就是广播，fanout 会把消息发送给所有的绑定在当前交换器上的队列。&lt;strong&gt;对应 Consumer 依然采用公平调度方式。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;注：不再需要routing-key&lt;/p&gt;
 &lt;p&gt;（代码演示）一个交换器需要绑定多个队列&lt;/p&gt;
@@ -3137,7 +3154,7 @@ public class UserMessageSender {
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;73-topic-交换器&#34;&gt;7.3 topic 交换器&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;27&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707150313.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;28&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707150313.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;允许在路由键（RoutingKey）中出现匹配规则。&lt;/p&gt;
 &lt;p&gt;路由键的写法和包写法相同。com.cy.xxxx.xxx 格式。&lt;/p&gt;
 &lt;p&gt;在绑定时可以带有下面特殊符号，中间可以出现:&lt;/p&gt;
@@ -3284,8 +3301,8 @@ private TopicMessageSender topicMessageSender;
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;结果：&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;28&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707162555.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;29&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707162450.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;29&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707162555.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;30&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707162450.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 ">RabbitMQ</a>
       </div>
       
