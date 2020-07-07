@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Java基础总结-面向对象 | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1594111004819">
+<link rel="shortcut icon" href="/favicon.ico?v=1594114895899">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -3061,9 +3061,103 @@ public class TestPolymoph {
           &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707163549.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;1-redis-介绍&#34;&gt;1、Redis 介绍&lt;/h2&gt;
 &lt;h3 id=&#34;11-redis-简介&#34;&gt;1.1 Redis 简介&lt;/h3&gt;
-&lt;p&gt;Remote Dictionary Server(Redis)是一个开源的使用 ANSI C 语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value 数据库，并提供多种语言的 API。&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;Remote Dictionary Server(Redis)是一个开源的使用 ANSI C 语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value 数据库，并提供多种语言的 API。&lt;/strong&gt;&lt;br&gt;
 它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Map),列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。&lt;/p&gt;
 &lt;!-- more --&gt;
+&lt;h3 id=&#34;12-redis-的特点&#34;&gt;1.2 Redis 的特点&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;支持多种数据结构，如 string(字符串)、 list(双向链表)、dict(hash 表)、set(集合)、zset(排序 set)、hyperloglog(基数估算)&lt;/li&gt;
+&lt;li&gt;支持持久化操作，可以进行 aof 及 rdb 数据持久化到磁盘，从而进行数据备份或数据恢复等操作，较好的防止数据丢失的手段。&lt;/li&gt;
+&lt;li&gt;支持通过 Replication 进行数据复制，通过 master-slave 机制，可以实时进行数据的同步复制，支持多级复制和增量复制，master-slave 机制是 Redis 进行 HA 的重要手段。&lt;/li&gt;
+&lt;li&gt;单进程请求，所有命令串行执行，并发情况下不需要考虑数据一致性问题。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-安装-redis-单机版&#34;&gt;2、安装 Redis 单机版&lt;/h2&gt;
+&lt;p&gt;第一步 需要在 linux 系统中安装 gcc&lt;br&gt;
+命令：yum install -y gcc-c++&lt;br&gt;
+第二步 需要将下载好的 redis 压缩包添加到 linux 服务器中&lt;br&gt;
+版本：redis-3.0.0.tar.gz&lt;br&gt;
+redis 的版本：&lt;strong&gt;副版本号奇数版本号是测试版，不建议在生产环境中使用。&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;偶数版本时稳定版建议在生产环境中使用。&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;3.0 版本更新比较大。集成了集群技术&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;第三步 解压压缩包&lt;br&gt;
+命令：tar -zxvf redis......&lt;/p&gt;
+&lt;p&gt;第四步 编译 redis&lt;br&gt;
+命令：进入 redis 的解压完毕的根目录下 执行命令：make&lt;/p&gt;
+&lt;p&gt;第五步 安装 redis&lt;br&gt;
+命 令 ： 进 入 redis 的 解 压 完 毕 的 根 目 录 下 ， 执 行 命 令 ： make install&lt;br&gt;
+PREFIX=/usr/local/redis&lt;/p&gt;
+&lt;p&gt;第六步：启动 redis&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707170241.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;1）前端启动&lt;br&gt;
+在 bin 目录下执行命令： ./redis-server （ctrl+c）退出 redis&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707170339.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;2)修改拷贝过来的 redis.conf 配置文件&lt;br&gt;
+命令：vim redis.conf&lt;br&gt;
+将 daemonize no 改为 yes&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707170910.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;(3)启动 redis&lt;br&gt;
+在 bin 目录下执行命令：./redis-server redis.conf&lt;/p&gt;
+&lt;p&gt;(4)查看 redis 启动是否成功&lt;br&gt;
+输入命令：ps aux|grep redis&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;关闭 redis 的命令&lt;br&gt;
+./redis-cli shutdown&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;第七步：测试 redis&lt;br&gt;
+在 bin 目录下启动 redis 自带的客户端 ./redis-cli&lt;br&gt;
+常见 redis 命令：&lt;br&gt;
+ping---&amp;gt;pong&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707171333.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;3-redis-数据类型&#34;&gt;3、Redis 数据类型&lt;/h2&gt;
+&lt;h3 id=&#34;31-string字符串&#34;&gt;3.1 String(字符串)&lt;/h3&gt;
+&lt;p&gt;Redis 字符串是字节序列。Redis 字符串是二进制安全的，这意味着他们有一个已知的长度没有任何特殊字符终止，所以你可以存储任何东西，512 兆为上限&lt;/p&gt;
+&lt;p&gt;示例：&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; SET name kevin&lt;br&gt;
+OK&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; GET name&lt;br&gt;
+&amp;quot;kevin&amp;quot;&lt;/p&gt;
+&lt;p&gt;incr 让当前键值以 1 的数量递增，并返回递增后的值&lt;br&gt;
+incrby 可以指定参数一次增加的数值，并返回递增后的值&lt;br&gt;
+decr 让当前键值以 1 的数量递减 并返回递减后的值&lt;br&gt;
+decrby 可以指定参数一次递减的数值，并返回递减后的值&lt;br&gt;
+incrbyfloat 可以递增一个双精度浮点数&lt;br&gt;
+append 作用是向键值的末尾追加 value。如果键不存在则将该键的值设置为 value。返&lt;br&gt;
+回值是追加后字符串的总长度。&lt;br&gt;
+mget/mset 作用与 get/set 相似，不过 mget/mset 可以同时获得/设置多个键的键值&lt;br&gt;
+del 根据 key 来删除 value&lt;br&gt;
+flushdb 清除当前库的所有数据&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707172641.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;32-hashhash-表&#34;&gt;3.2 Hash(hash 表)&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707173524.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;Redis 的哈希是键值对的集合。 Redis 的哈希值是字符串字段和字符串值之间的映射，因此它们被用来表示对象&lt;br&gt;
+示例：&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; HSET key field value&lt;br&gt;
+OK&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; HGET key field&lt;br&gt;
+value&lt;br&gt;
+hset 存储一个哈希键值对的集合&lt;br&gt;
+hset key field value&lt;/p&gt;
+&lt;p&gt;hget 获取一个哈希键的值&lt;br&gt;
+hget key field&lt;/p&gt;
+&lt;p&gt;hmset 存储一个或多个哈希是键值对的集合&lt;br&gt;
+hmset key field1 value1 ......fieldN keyN&lt;/p&gt;
+&lt;p&gt;hmget 获取多个指定的键的值&lt;br&gt;
+hmget key field1 ... fieldN&lt;/p&gt;
+&lt;p&gt;Redis 的哈希是键值对的集合。 Redis 的哈希值是字符串字段和字符串值之间的映射，&lt;br&gt;
+因此它们被用来表示对象&lt;br&gt;
+示例：&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; HSET key field value&lt;br&gt;
+OK&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; HGET key field&lt;br&gt;
+value&lt;br&gt;
+hset 存储一个哈希键值对的集合&lt;br&gt;
+hset key field value&lt;/p&gt;
+&lt;p&gt;hget 获取一个哈希键的值&lt;br&gt;
+hget key field&lt;/p&gt;
+&lt;p&gt;hmset 存储一个或多个哈希是键值对的集合&lt;br&gt;
+hmset key field1 value1 ......fieldN keyN&lt;/p&gt;
+&lt;p&gt;hmget 获取多个指定的键的值&lt;br&gt;
+hmget key field1 ... fieldN&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707173657.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 ">Redis</a>
       </div>
       
