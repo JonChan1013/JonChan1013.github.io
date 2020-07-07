@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-07-06T05:14:43.860Z</updated>
+    <updated>2020-07-07T08:27:48.449Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -26,6 +26,785 @@
 <!-- more -->
 <h3 id="12-amqp-工作过程">1.2 AMQP 工作过程</h3>
 <p>发布者(Publisher)发布消息(Message),经过交换机(Exchange)，交换机根据路由规则将收到消息分发给交换机绑定的队列(Queue)，最后 AMQP 代理会将消息投递给订阅了此队列的消费者，或者消费者按照需求自行获取。</p>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171158.png" alt="" loading="lazy"></figure>
+<h3 id="13-队列">1.3 队列</h3>
+<p>队列是数据结构中概念。数据存储在一个队列中，数据是有顺序的，先进的先出，后进后出。其中一侧负责进数据，另一次负责出数据。</p>
+<p>MQ（消息队列）很多功能都是基于此队列结构实现的</p>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171229.png" alt="" loading="lazy"></figure>
+<h2 id="2-rabbitmq-简介">2、RabbitMQ 简介</h2>
+<h3 id="21-rabbitmq-介绍">2.1 RabbitMQ 介绍</h3>
+<p>RabbitMQ 是由 Erlang 语言编写的基于 AMQP 的消息中间件。而消息中间件作为分布式系统重要组件之一，可以解决应用耦合，异步消息，流量削峰等问题。</p>
+<h4 id="211-解决应用耦合">2.1.1 解决应用耦合</h4>
+<ol>
+<li>不使用 MQ 时</li>
+</ol>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171358.png" alt="" loading="lazy"></figure>
+<ol start="2">
+<li>使用 MQ 解决耦合</li>
+</ol>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171415.png" alt="" loading="lazy"></figure>
+<h3 id="22-rabbitmq-适用场景">2.2 RabbitMQ 适用场景</h3>
+<p>排队算法、秒杀活动、消息分发、异步处理、数据同步、处理耗时任务、流量销峰等。</p>
+<h2 id="3-rabbitmq-原理">3、RabbitMQ 原理</h2>
+<figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706171458.png" alt="" loading="lazy"></figure>
+<h3 id="31-message">3.1 Message</h3>
+<p>消息。消息是不具名的，它由消息头消息体组成。消息体是不透明的，而消息头则由一系列可选属性组成，这些属性包括：routing-key(路由键)、priority(相对于其他消息的优先权)、delivery-mode(指出消息可能持久性存储)等。</p>
+<h3 id="32-publisher">3.2 Publisher</h3>
+<p>消息的生产者。也是一个向交换器发布消息的客户端应用程序。</p>
+<h3 id="33-consumer">3.3 Consumer</h3>
+<p>消息的消费者。表示一个从消息队列中取得消息的客户端应用程序。</p>
+<h3 id="34-exchange">3.4 Exchange</h3>
+<p>交换器。用来接收生产者发送的消息并将这些消息路由给服务器中的队列。</p>
+<p>三种常用的交换器类型</p>
+<ol>
+<li>direct(发布与订阅 完全匹配)</li>
+<li>fanout(广播)</li>
+<li>topic(主题，规则匹配)</li>
+</ol>
+<h3 id="35-binding">3.5 Binding</h3>
+<p>绑定。用于消息队列和交换器之间的关联。一个绑定就是基于路由键将交换器和消息队列连接起来的路由规则，所以可以将交换器理解成一个由绑定构成的路由表。</p>
+<h3 id="36-queue">3.6 Queue</h3>
+<p>消息队列。用来保存消息直到发送给消费者。它是消息的容器，也是消息的终点。一个消息可投入一个或多个队列。消息一直在队列里面，等待消费者链接到这个队列将其取走。</p>
+<h3 id="37-routing-key">3.7 Routing-key</h3>
+<p>路由键。RabbitMQ 决定消息该投递到哪个队列的规则。（也可以理解为队列的名称，路由键是 key，队列是 value）</p>
+<p>队列通过路由键绑定到交换器。</p>
+<p>消息发送到 MQ 服务器时，消息将拥有一个路由键，即便是空的，RabbitMQ 也会将其和绑定使用的路由键进行匹配。</p>
+<p>如果相匹配，消息将会投递到该队列。</p>
+<p>如果不匹配，消息将会进入黑洞。</p>
+<h3 id="38-connection">3.8 Connection</h3>
+<p>链接。指 rabbit 服务器和服务建立的 TCP 链接。</p>
+<h3 id="39-channel">3.9 Channel</h3>
+<p>信道。</p>
+<p>1，Channel 中文叫做信道，是 TCP 里面的虚拟链接。例如：电缆相当于 TCP，信道是一个独立光纤束，一条 TCP 连接上创建多条信道是没有问题的。</p>
+<p>2，TCP 一旦打开，就会创建 AMQP 信道。</p>
+<p>3，无论是发布消息、接收消息、订阅队列，这些动作都是通过信道完成的。</p>
+<h3 id="310-virtual-host">3.10 Virtual Host</h3>
+<p>虚拟主机。表示一批交换器，消息队列和相关对象。虚拟主机是共享相同的身份认证和加密环境的独立服务器域。每个 vhost 本质上就是一个 mini 版的 RabbitMQ 服务器，拥有自己的队列、交换器、绑定和权限机制。vhost 是 AMQP 概念的基础，必须在链接时指定，RabbitMQ 默认的 vhost 是/</p>
+<h3 id="311-borker">3.11 Borker</h3>
+<p>表示消息队列服务器实体。</p>
+<h3 id="312-交换器和队列的关系">3.12 交换器和队列的关系</h3>
+<p>交换器是通过路由键和队列绑定在一起的，如果消息拥有的路由键跟队列和交换器的路由键匹配，那么消息就会被路由到该绑定的队列中。</p>
+<p>也就是说，消息到队列的过程中，消息首先会经过交换器，接下来交换器在通过路由键匹配分发消息到具体的队列中。</p>
+<p>路由键可以理解为匹配的规则。</p>
+<h3 id="313-rabbitmq-为什么需要信道为什么不是-tcp-直接通信">3.13 RabbitMQ 为什么需要信道？为什么不是 TCP 直接通信？</h3>
+<ol>
+<li>
+<p>TCP 的创建和销毁开销特别大。创建需要 3 次握手，销毁需要 4 次分手。</p>
+</li>
+<li>
+<p>如果不用信道，那应用程序就会以 TCP 链接 Rabbit，高峰时每秒成千上万条链接会造成资源巨大的浪费，而且操作系统每秒处理 TCP 链接数也是有限制的，必定造成性能瓶颈。</p>
+</li>
+<li>
+<p>信道的原理是一条线程一条通道，多条线程多条通道同用一条 TCP 链接。一条 TCP链接可以容纳无限的信道，即使每秒成千上万的请求也不会成为性能的瓶颈。</p>
+</li>
+</ol>
+<h2 id="4-erlang-安装">4、Erlang 安装</h2>
+<p>RabbitMQ 是使用 Erlang 语言编写的，所以需要先配置 Erlang</p>
+<ol>
+<li>
+<p>修改主机名<br>
+RabbitMQ 是通过主机名进行访问的，必须指定能访问的主机名。</p>
+<p>vim /etc/sysconfig/network</p>
+<figure data-type="image" tabindex="6"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706172227.png" alt="" loading="lazy"></figure>
+<p>vim /etc/hosts</p>
+<p>新添加了一行，前面为服务器 ip，空格后面添加计算机主机名</p>
+<figure data-type="image" tabindex="7"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706172349.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>安装依赖</p>
+</li>
+</ol>
+<p>yum -y install make gcc gcc-c++ kernel-devel m4 ncurses-devel openssl-devel unixODBC unixODBC-devel</p>
+<ol start="3">
+<li>
+<p>上传并解压<br>
+上传 otp_src_22.0.tar.gz 到/usr/local/tmp 目录中，进入目录并解压。<br>
+<strong>解压时注意，此压缩包不具有 gzip 属性，解压参数没有 z，只有 xf</strong></p>
+<p>cd /usr/local/tmp</p>
+<p>tar xf otp_src_22.0.tar.gz</p>
+</li>
+<li>
+<p>配置参数</p>
+<p>先新建/usr/local/erlang 文件夹，作为安装文件夹</p>
+<p>#mkdir -p /usr/local/erlang</p>
+</li>
+</ol>
+<p>​	进入文件夹</p>
+<p>​	cd otp_src_22.0</p>
+<p>​	配置参数</p>
+<p>​	./configure --prefix=/usr/local/erlang --with-ssl --enable-threads --enable-smp-support --enable-kernel-poll --enable-hipe --without-javac</p>
+<figure data-type="image" tabindex="8"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706172649.png" alt="" loading="lazy"></figure>
+<ol start="5">
+<li>
+<p>编译并安装</p>
+<p>编译</p>
+<p>make</p>
+<p>安装</p>
+<p>make install</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="9"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706173422.png" alt="" loading="lazy"></figure>
+<ol start="6">
+<li>
+<p>修改环境变量</p>
+<p>修改/etc/profile 文件</p>
+<p>#vim /etc/profile</p>
+<p>在文件中添加下面代码</p>
+<p>export PATH=$PATH:/usr/local/erlang/bin</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="10"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706173629.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200706173647.png" alt="" loading="lazy"></figure>
+<h2 id="5-安装-rabbitmq">5、安装 RabbitMQ</h2>
+<ol>
+<li>
+<p>上传并解压<br>
+上传 rabbitmq-server-generic-unix-3.7.17.tar.xz 到/usr/loca/tmp 中</p>
+<p>cd /usr/local/tmp</p>
+<p>tar xf rabbitmq-server-generic-unix-3.7.17.tar.xz</p>
+</li>
+<li>
+<p>复制到 local 下<br>
+复制解压文件到/usr/local 下，命名为 rabbitmq</p>
+<p>cp -r rabbitmq_server-3.7.17 /usr/local/rabbitmq</p>
+</li>
+<li>
+<p>配置环境变量</p>
+<p>vim /etc/profile</p>
+<p>在文件中添加</p>
+<p>export PATH=$PATH:/usr/local/rabbitmq/sbin</p>
+<p>解析文件</p>
+<p>source /etc/profile</p>
+</li>
+<li>
+<p>开启 web 管理插件<br>
+进入 rabbitmq/sbin 目录</p>
+<p>cd /usr/local/rabbitmq/sbin</p>
+<p>查看插件列表</p>
+<p>./rabbitmq-plugins list</p>
+<p>生效管理插件</p>
+<p>./rabbitmq-plugins enable rabbitmq_management</p>
+</li>
+<li>
+<p>后台运行<br>
+启动 rabbitmq。</p>
+<p>./rabbitmq-server（前台）</p>
+<p>./rabbitmq-server -detached（后台）</p>
+<p>停止命令，如果无法停止，使用 kill -9 进程号进行关闭</p>
+<p>./rabbitmqctl stop_app</p>
+<p>启动成功信息如下：</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="12"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707031245.png" alt="" loading="lazy"></figure>
+<ol start="6">
+<li>
+<p>查看 web 管理界面</p>
+<p>默认可以在安装 rabbitmq 的电脑上通过用户名：guest 密码 guest 进行访问 web 管理界面</p>
+<p>端口号：15672（放行端口，或关闭防火墙）</p>
+<p>在浏览器中输入：http://124.70.181.124:15672/</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="13"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707031918.png" alt="" loading="lazy"></figure>
+<h2 id="6-rabbitmq-账户管理">6、RabbitMq 账户管理</h2>
+<ol>
+<li>创建账户</li>
+</ol>
+<p>语法：./rabbitmqctl add_user username password</p>
+<pre><code>cd /usr/local/rabbitmq/sbin
+
+./rabbitmqctl add_user admin admin123
+</code></pre>
+<ol start="2">
+<li>
+<p>给用户授予管理员角色<br>
+其中 smallming 为新建用户的用户名</p>
+<p>./rabbitmqctl set_user_tags admin administrator</p>
+</li>
+<li>
+<p>给用户授权<br>
+“/” 表示 RabbitMQ 根虚拟主机</p>
+<p>admin 表示用户名</p>
+<p>&quot;.<em>&quot; &quot;.</em>&quot; &quot;.*&quot; 表示完整权限</p>
+<p>./rabbitmqctl set_permissions -p &quot;/&quot; admin &quot;.<em>&quot; &quot;.</em>&quot; &quot;.*&quot;</p>
+</li>
+<li>
+<p>登录<br>
+使用新建账户和密码在 windows 中访问 rabbitmq 并登录</p>
+<p>在浏览器地址栏输入：</p>
+<p>http://ip:15672/</p>
+<p>用户名：admin</p>
+<p>密码：admin</p>
+<figure data-type="image" tabindex="14"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707094930.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<h2 id="7-exchange-交换器交换机">7、Exchange 交换器（交换机）</h2>
+<p>交换器负责接收客户端传递过来的消息，并转发到对应的队列中。在 RabbitMQ 中支持四种交换器</p>
+<ol>
+<li>
+<p><strong>Direct Exchange：直连交换器（默认）</strong></p>
+</li>
+<li>
+<p><strong>Fanout Exchange：扇形交换器</strong></p>
+</li>
+<li>
+<p><strong>Topic Exchange：主题交换器</strong></p>
+</li>
+<li>
+<p><strong>Header Exchange：首部交换器。</strong></p>
+</li>
+</ol>
+<p>在 RabbitMq 的 Web 管理界面中 Exchanges 选项卡就可以看见这四个交换器。</p>
+<figure data-type="image" tabindex="15"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707110332.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="16"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707162639.png" alt="" loading="lazy"></figure>
+<h3 id="71-direct-交换器">7.1 direct 交换器</h3>
+<figure data-type="image" tabindex="17"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707110359.png" alt="" loading="lazy"></figure>
+<p>direct 交换器是 RabbitMQ 默认交换器。默认会进行<strong>公平调度</strong>。所有接受者依次从消息队列中获取值。Publisher 给哪个队列发消息，就一定是给哪个队列发送消息。对交换器</p>
+<p>绑定的其他队列没有任何影响。</p>
+<p>（代码演示）一个队列需要绑定多个消费者</p>
+<p>需要使用注解/API：</p>
+<p>org.springframework.amqp.core.Queue:队列</p>
+<p>AmqpTemplate：操作 RabbitMQ 的接口。负责发送或接收消息</p>
+<p>@RabbitListener(queues = &quot;&quot;) 注解某个方法为接收消息方法</p>
+<h4 id="711-代码">7.1.1 代码</h4>
+<ol>
+<li>父项目添加依赖</li>
+</ol>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.cy&lt;/groupId&gt;
+    &lt;artifactId&gt;amqp_rabbit&lt;/artifactId&gt;
+    &lt;packaging&gt;pom&lt;/packaging&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;modules&gt;
+        &lt;module&gt;amqp_rabbit_consumer&lt;/module&gt;
+    &lt;/modules&gt;
+
+    &lt;dependencyManagement&gt;
+        &lt;dependencies&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;
+                &lt;version&gt;2.2.5.RELEASE&lt;/version&gt;
+                &lt;scope&gt;import&lt;/scope&gt;
+                &lt;type&gt;pom&lt;/type&gt;
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+    &lt;/dependencyManagement&gt;
+
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;!-- Spring Boot提供的关于AMQP协议实现的启动器。可以使用AMQP协议快速的访问MQ消息中间件。 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;
+</code></pre>
+<ol start="2">
+<li>编写日志消息消费者（只消费Info日志）</li>
+</ol>
+<pre><code class="language-java">import org.springframework.amqp.rabbit.annotation.*;
+import org.springframework.stereotype.Component;
+
+/**
+ * 日志消息消费者，只消费Info日志。
+ * 日志消息存储在队列 log-info-queue
+ * 使用的交换器名称是 log-ex-direct
+ * 交换器类型是 direct
+ * 队列的路由键是 direct-rk-info
+ * &lt;p&gt;
+ * 注解RabbitListener - 监听注解。可以描述类型和方法。
+ * 类型 - 当前类型监听某个队列。
+ * 方法 - 当前方法监听某个队列。
+ * 属性 -
+ * bindings - QueueBinding[]类型，代表这个类型或方法监听的队列、交换器、路由键的绑定方式
+ * 注解QueueBinding -
+ * 属性 -
+ * value - 绑定监听的队列是什么
+ * exchange - 队列对应的交换器是什么
+ * key - 队列的路由键是什么
+ * 注解Queue - 描述一个队列
+ * 属性 -
+ * value|name - 队列名称
+ * autoDelete - 是否自动删除。默认为&quot;&quot;, 如果队列名称定义，不自动删除；队列名称不定义，队列为自动删除队列。
+ * 如果是自动删除，代表所有的consumer关闭后，队列自动删除。
+ * 注解Exchange - 描述一个交换器
+ * 属性 -
+ * value|name - 交换器名称
+ * type - 交换器的类型，可选direct|fanout|topic， 默认direct
+ * autoDelete - 是否自动删除，默认为false。不自动删除。
+ */
+@RabbitListener(bindings = {
+        @QueueBinding(
+                value = @Queue(value = &quot;log-info-queue&quot;, autoDelete = &quot;false&quot;),
+                exchange = @Exchange(value = &quot;log-ex-direct&quot;, type = &quot;direct&quot;, autoDelete = &quot;false&quot;),
+                key = &quot;direct-rk-info&quot;
+        )
+})
+@Component
+public class InfoLogConsumer {
+    /**
+     * 消息消费的方法。当队列log-info-queue中出现消息，立刻消费。
+     * &lt;p&gt;
+     * RabbitHandler注解 - 配合类型上的RabbitListener注解，标记当前的方法，是一个监听消息队列，消费消息的方法。
+     *如果RabbitListener注解在方法上，此注解就不需要了
+     * @param msg 消息内容。
+     */
+    @RabbitHandler
+    public void onMessage(String msg) {
+        System.out.println(&quot;InfoLogConsumer 消费消息：&quot; + msg);
+    }
+}
+
+</code></pre>
+<ol start="3">
+<li>创建springboot启动类</li>
+</ol>
+<pre><code class="language-java">@SpringBootApplication
+public class RabbitConsumerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(RabbitConsumerApplication.class, args);
+    }
+}
+</code></pre>
+<ol start="4">
+<li>编写配置文件</li>
+</ol>
+<pre><code class="language-yaml">spring:
+  rabbitmq:
+    host: 124.70.181.124  # RabbitMQ服务的地址，默认localhost
+    port: 5672  # RabbitMQ的端口，默认5672。
+    username: admin # 访问RabbitMQ的用户名，默认guest
+    password: admin # 访问RabbitMQ的密码，默认guest
+    virtual-host: /  # 访问RabbitMQ的哪一个虚拟主机，默认为 /
+</code></pre>
+<figure data-type="image" tabindex="18"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707111159.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="19"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707111241.png" alt="" loading="lazy"></figure>
+<ol start="5">
+<li>编写日志消息消费者（只消费error和warn日志）</li>
+</ol>
+<pre><code class="language-java">import org.springframework.amqp.rabbit.annotation.Exchange;
+import org.springframework.amqp.rabbit.annotation.Queue;
+import org.springframework.amqp.rabbit.annotation.QueueBinding;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
+
+/**
+ * 日志消息消费者，消费error和warn日志。
+ * error日志消息存储在队列 log-error-queue
+ * warn日志消息存储在队列 log-warn-queue
+ * 使用的交换器名称是 log-ex-direct
+ * 交换器类型是 direct
+ * error队列的路由键是 direct-rk-error
+ * warn队列的路由键是 direct-rk-warn
+ */
+@Component
+public class LogConsumer {
+    @RabbitListener(bindings = {
+            @QueueBinding(value = @Queue(value = &quot;log-error-queue&quot;, autoDelete = &quot;false&quot;),
+                    exchange = @Exchange(value = &quot;log-ex-direct&quot;, type = &quot;direct&quot;, autoDelete = &quot;false&quot;),
+                    key = &quot;direct-rk-error&quot;
+            )
+    })
+    public void onLogErrorMessage(String msg) {
+        System.out.println(&quot;错误日志信息：&quot; + msg);
+    }
+
+    @RabbitListener(bindings = {
+            @QueueBinding(value = @Queue(value = &quot;log-warn-queue&quot;, autoDelete = &quot;false&quot;),
+                    exchange = @Exchange(value = &quot;log-ex-direct&quot;, type = &quot;direct&quot;, autoDelete = &quot;false&quot;),
+                    key = &quot;direct-rk-warn&quot;
+            )
+    })
+    public void onLogWarnMessage(String msg) {
+        System.out.println(&quot;警告日志信息:&quot; + msg);
+    }
+}
+
+</code></pre>
+<figure data-type="image" tabindex="20"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707114704.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="21"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707114913.png" alt="" loading="lazy"></figure>
+<ol start="6">
+<li>编写publisher配置信息</li>
+</ol>
+<pre><code class="language-yaml">spring:
+  rabbitmq:
+    host: 124.70.181.124  # RabbitMQ服务的地址，默认localhost
+    port: 5672  # RabbitMQ的端口，默认5672。
+    username: admin # 访问RabbitMQ的用户名，默认guest
+    password: admin # 访问RabbitMQ的密码，默认guest
+    virtual-host: /  # 访问RabbitMQ的哪一个虚拟主机，默认为 /
+</code></pre>
+<ol start="7">
+<li>编写测试类</li>
+</ol>
+<pre><code class="language-java">/**
+ * 消息发送者测试类型
+ */
+@SpringBootTest(classes = RabbitPublisherApplication.class)
+@RunWith(SpringRunner.class)
+public class TestPublisher {
+
+    @Autowired
+    private LogMessageSender sender;
+
+    private String exchange = &quot;log-ex-direct&quot;;
+    private String rkInfo = &quot;direct-rk-info&quot;;
+    private String rkError = &quot;direct-rk-error&quot;;
+    private String rkWarn = &quot;direct-rk-warn&quot;;
+
+    @Test
+    public void testSend(){
+        Random r = new Random();
+        // 发送10条消息。
+        for(int i = 0 ; i &lt; 10; i++){
+            // rInt%3 - 0：投递消息到info；1：投递消息到error；2：投递消息到warn
+            int rInt = r.nextInt(100);
+            if(rInt%3 == 0){
+                this.sender.sendMessage(exchange, rkInfo, &quot;发送Info日志消息 - index=&quot;+i+&quot;；rInt=&quot;+rInt);
+            }else if(rInt%3 == 1){
+                this.sender.sendMessage(exchange, rkError, &quot;发送error日志消息 - index=&quot;+i+&quot;；rInt=&quot;+rInt);
+            }else{
+                this.sender.sendMessage(exchange, rkWarn, &quot;发送warn日志消息 - index=&quot;+i+&quot;；rInt=&quot;+rInt);
+            }
+        }
+    }
+}
+
+</code></pre>
+<p>先启动consumer再启动publisher测试类：</p>
+<figure data-type="image" tabindex="22"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707133200.png" alt="" loading="lazy"></figure>
+<ol start="8">
+<li>消费者集群搭建</li>
+</ol>
+<p>先复制一个消费者启动类，然后启动，集群就搭建完成了</p>
+<p>编写测试类：</p>
+<pre><code class="language-java">    @Test
+    public void testSend2Consumers(){
+        for(int i = 0; i &lt; 10; i++){
+            this.sender.sendMessage(exchange, rkInfo, &quot;info消息&quot;+i);
+            this.sender.sendMessage(exchange, rkError, &quot;error消息&quot;+i);
+            this.sender.sendMessage(exchange, rkWarn, &quot;warn消息&quot;+i);
+        }
+    }
+
+</code></pre>
+<figure data-type="image" tabindex="23"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707135016.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="24"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707135031.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="25"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707135214.png" alt="" loading="lazy"></figure>
+<h3 id="72-fanout-交换器">7.2 fanout 交换器</h3>
+<figure data-type="image" tabindex="26"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707141028.png" alt="" loading="lazy"></figure>
+<p>扇形交换器，实际上做的事情就是广播，fanout 会把消息发送给所有的绑定在当前交换器上的队列。<strong>对应 Consumer 依然采用公平调度方式。</strong></p>
+<p>注：不再需要routing-key</p>
+<p>（代码演示）一个交换器需要绑定多个队列</p>
+<p>需要使用注解/API：</p>
+<p>FanoutExchange：fanout 交换器</p>
+<p>Binding：绑定交换器和队列</p>
+<p>BindingBuilder：Binding 的构建器</p>
+<p>amq.fanout:内置 fanout 交换器名称</p>
+<h4 id="721-代码">7.2.1 代码</h4>
+<ol>
+<li>
+<p>编写实体类</p>
+<pre><code class="language-java">// 实体类型
+public class User implements Serializable {
+    // 定义一个序列化唯一ID。
+    public static final long serialVersionUID = 1L;
+    private Long id;
+    private String name;
+    private int age;
+
+    public User(){}
+
+    @Override
+    public String toString() {
+        return &quot;User{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, name='&quot; + name + '\'' +
+                &quot;, age=&quot; + age +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return age == user.age &amp;&amp;
+                Objects.equals(id, user.id) &amp;&amp;
+                Objects.equals(name, user.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+
+</code></pre>
+<ol start="2">
+<li>编写consumer</li>
+</ol>
+<p>第二个参数 routingKey 对于 fanout 没有意义的</p>
+<pre><code class="language-java">/**
+ * 广播交换器，消费者。
+ */
+@Component
+public class FanoutConsumers {
+    /**
+     * 消费消息的方法。
+     * 不再需要Routing-key
+     * @param user 消息体内容。
+     */
+    @RabbitListener(bindings = {
+            @QueueBinding(
+                    value = @Queue(value = &quot;queue-user-1&quot;, autoDelete = &quot;false&quot;),
+                    exchange = @Exchange(value = &quot;ex-fanout&quot;, type = &quot;fanout&quot;, autoDelete = &quot;false&quot;)
+            )
+    })
+    public void onMessage1(User user){
+        System.out.println(&quot;onMessage1 run : &quot; + user);
+    }
+
+    @RabbitListener(bindings = {
+            @QueueBinding(
+                    value = @Queue(value = &quot;queue-user-2&quot;, autoDelete = &quot;false&quot;),
+                    exchange = @Exchange(value = &quot;ex-fanout&quot;, type = &quot;fanout&quot;)
+            )
+    })
+    public void onMessage2(User user){
+        System.out.println(&quot;onMessage2 run : &quot; + user);
+    }
+}
+
+</code></pre>
+<ol start="3">
+<li>编写publisher</li>
+</ol>
+<pre><code class="language-java">/**
+ * 发送消息类型。消息发送到fanout交换器中。
+ * 交换器名称是： ex-fanout
+ */
+@Component
+public class UserMessageSender {
+    @Autowired
+    private AmqpTemplate template;
+
+    /**
+     * 发送消息方法。
+     * @param user
+     */
+    public void send(User user){
+        this.template.convertAndSend(&quot;ex-fanout&quot;, &quot;&quot;, user);
+    }
+}
+
+</code></pre>
+<ol start="4">
+<li>编写测试类</li>
+</ol>
+<pre><code class="language-java">@Autowired
+    private UserMessageSender userMessageSender;
+
+   @Test
+    public void testSendUserMessage2Fanout(){
+        for(int i = 0; i &lt; 3; i++){
+            User user = new User();
+            user.setId((long) i);
+            user.setName(&quot;姓名 - &quot; + i);
+            user.setAge(20+i);
+
+            this.userMessageSender.send(user);
+        }
+    }
+</code></pre>
+</li>
+</ol>
+<h3 id="73-topic-交换器">7.3 topic 交换器</h3>
+<figure data-type="image" tabindex="27"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707150313.png" alt="" loading="lazy"></figure>
+<p>允许在路由键（RoutingKey）中出现匹配规则。</p>
+<p>路由键的写法和包写法相同。com.cy.xxxx.xxx 格式。</p>
+<p>在绑定时可以带有下面特殊符号，中间可以出现:</p>
+<ul>
+<li>
+<p>*: 代表一个单词（两个.之间内容）</p>
+</li>
+<li>
+<p>#: 0 个或多个字符</p>
+</li>
+</ul>
+<p>接收方依然是公平调度，同一个队列中内容轮换获取值。</p>
+<p>需要使用注解/API：</p>
+<p>TopicExchange：Topic 交换器</p>
+<p>amq.topic:内置 topic 交换器名称</p>
+<h4 id="731-代码">7.3.1 代码</h4>
+<ol>
+<li>编写consumer</li>
+</ol>
+<pre><code class="language-java">/**
+ * 主题消息消费者。
+ */
+@Component
+public class TopicConsumers {
+    /**
+     * 短信消息消费者，对应的routingKey是 user.rk.sms | order.rk.sms | pay.rk.sms | reg.rk.sms 等。
+     * 分别代表，用户登录短信|订单下订成功通知短信|支付成功通知短信|注册码通知短信 等。
+     */
+    @RabbitListener(bindings = {
+            @QueueBinding(
+                    value = @Queue(value = &quot;queue-sms-topic&quot;, autoDelete = &quot;false&quot;),
+                    exchange = @Exchange(value = &quot;ex-topic&quot;, type = &quot;topic&quot;),
+                    key = &quot;*.rk.sms&quot;
+            )
+    })
+    public void onUserSMSMessage(String message){
+        System.out.println(&quot;用户短信消息内容是：&quot; + message);
+    }
+
+    /**
+     * 路由键包括： user.rk.email | reg.rk.email | pay.rk.email
+     * @param message
+     */
+    @RabbitListener(bindings = {
+            @QueueBinding(
+                    value = @Queue(value = &quot;queue-email-topic&quot;, autoDelete = &quot;false&quot;),
+                    exchange = @Exchange(value = &quot;ex-topic&quot;, type = &quot;topic&quot;),
+                    key = &quot;*.rk.email&quot;
+            )
+    })
+    public void onUserEmailMessage(String message){
+        System.out.println(&quot;用户邮件消息内容是：&quot; + message);
+    }
+
+    /**
+     * 所有的和 rk相关的消息，统一处理消费。
+     * 包含的路由键有： user.rk.sms | user.rk.email | reg.rk.sms | reg.rk.email 等。
+     * 不发短信，不发邮件，作为一个日志记录工具存在。
+     * @param message
+     */
+    @RabbitListener(bindings = {
+            @QueueBinding(
+                    value = @Queue(value = &quot;queue-all-topic&quot;, autoDelete = &quot;false&quot;),
+                    exchange = @Exchange(value = &quot;ex-topic&quot;, type = &quot;topic&quot;),
+                    key = &quot;*.rk.*&quot;
+            )
+    })
+    public void onUserServiceMessage(String message){
+        System.out.println(&quot;执行的消息处理逻辑是：&quot; + message);
+    }
+}
+
+
+</code></pre>
+<ol start="2">
+<li>编写publisher</li>
+</ol>
+<pre><code class="language-java">/**
+ * 发送消息到主题交换器
+ */
+@Component
+public class TopicMessageSender {
+    @Autowired
+    private AmqpTemplate template;
+
+    /**
+     * 发送消息的方法
+     * @param exchange
+     * @param routingKey
+     * @param message
+     */
+    public void send(String exchange, String routingKey, String message){
+        template.convertAndSend(exchange, routingKey, message);
+    }
+}
+
+</code></pre>
+<ol start="3">
+<li>编写测试类</li>
+</ol>
+<pre><code class="language-java">@Autowired
+private TopicMessageSender topicMessageSender;
+
+
+@Test
+    public void testSendMessage2Topic(){
+        // 随机数%6
+        // 0 rk - user.rk.sms *.rk.*  *.rk.sms
+        // 1 rk - user.rk.email   *.rk.* *.rk.email
+        // 2 rk - order.rk.sms *.rk.*  *.rk.sms
+        // 3 rk - order.rk.email  *.rk.* *.rk.email
+        // 4 rk - reg.rk.sms *.rk.*  *.rk.sms
+        // 5 rk - reg.rk.qq  *.rk.*
+        Random r = new Random();
+        for(int i = 0; i &lt; 10; i++){
+            int rInt = r.nextInt(100);
+            if(rInt%6 == 0){
+                this.topicMessageSender.send(&quot;ex-topic&quot;,
+                        &quot;user.rk.sms&quot;,
+                        &quot;用户登录验证码是123456 - 发送短信&quot;);
+            }else if(rInt%6 == 1){
+                this.topicMessageSender.send(&quot;ex-topic&quot;,
+                        &quot;user.rk.email&quot;,
+                        &quot;用户登录验证码是123456 - 发送到邮箱&quot;);
+            }else if(rInt%6 == 2){
+                this.topicMessageSender.send(&quot;ex-topic&quot;,
+                        &quot;order.rk.sms&quot;,
+                        &quot;订单下订成功 - 发送短信&quot;);
+            }else if(rInt%6 == 3){
+                this.topicMessageSender.send(&quot;ex-topic&quot;,
+                        &quot;order.rk.email&quot;,
+                        &quot;订单下订成功 - 发送到邮箱&quot;);
+            }else if(rInt%6 == 4){
+                this.topicMessageSender.send(&quot;ex-topic&quot;,
+                        &quot;reg.rk.sms&quot;,
+                        &quot;注册验证码是654321 - 发送短信&quot;);
+            }else if(rInt%6 == 5){
+                this.topicMessageSender.send(&quot;ex-topic&quot;,
+                        &quot;reg.rk.qq&quot;,
+                        &quot;注册验证码是654321 - 发送QQ信息&quot;);
+            }
+        }
+    }
+
+</code></pre>
+<p>结果：</p>
+<figure data-type="image" tabindex="28"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707162555.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="29"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200707162450.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
