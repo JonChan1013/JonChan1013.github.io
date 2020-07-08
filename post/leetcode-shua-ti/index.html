@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>LeetCode刷题 | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1594114895899">
+<link rel="shortcut icon" href="/favicon.ico?v=1594199987559">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1718,15 +1718,15 @@
           &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707163549.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;1-redis-介绍&#34;&gt;1、Redis 介绍&lt;/h2&gt;
 &lt;h3 id=&#34;11-redis-简介&#34;&gt;1.1 Redis 简介&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Remote Dictionary Server(Redis)是一个开源的使用 ANSI C 语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value 数据库，并提供多种语言的 API。&lt;/strong&gt;&lt;br&gt;
-它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Map),列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。&lt;/p&gt;
+&lt;p&gt;​		&lt;strong&gt;Remote Dictionary Server(Redis)是一个开源的使用 ANSI C 语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value 数据库，并提供多种语言的 API。&lt;/strong&gt;&lt;br&gt;
+​		它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Map),列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。&lt;/p&gt;
 &lt;!-- more --&gt;
 &lt;h3 id=&#34;12-redis-的特点&#34;&gt;1.2 Redis 的特点&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;支持多种数据结构，如 string(字符串)、 list(双向链表)、dict(hash 表)、set(集合)、zset(排序 set)、hyperloglog(基数估算)&lt;/li&gt;
 &lt;li&gt;支持持久化操作，可以进行 aof 及 rdb 数据持久化到磁盘，从而进行数据备份或数据恢复等操作，较好的防止数据丢失的手段。&lt;/li&gt;
 &lt;li&gt;支持通过 Replication 进行数据复制，通过 master-slave 机制，可以实时进行数据的同步复制，支持多级复制和增量复制，master-slave 机制是 Redis 进行 HA 的重要手段。&lt;/li&gt;
-&lt;li&gt;单进程请求，所有命令串行执行，并发情况下不需要考虑数据一致性问题。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;单进程&lt;/strong&gt;请求，所有命令串行执行，并发情况下不需要考虑数据一致性问题。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;2-安装-redis-单机版&#34;&gt;2、安装 Redis 单机版&lt;/h2&gt;
 &lt;p&gt;第一步 需要在 linux 系统中安装 gcc&lt;br&gt;
@@ -1768,9 +1768,9 @@ ping---&amp;gt;pong&lt;/p&gt;
 &lt;h3 id=&#34;31-string字符串&#34;&gt;3.1 String(字符串)&lt;/h3&gt;
 &lt;p&gt;Redis 字符串是字节序列。Redis 字符串是二进制安全的，这意味着他们有一个已知的长度没有任何特殊字符终止，所以你可以存储任何东西，512 兆为上限&lt;/p&gt;
 &lt;p&gt;示例：&lt;br&gt;
-redis 127.0.0.1:6379&amp;gt; SET name kevin&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; set name kevin&lt;br&gt;
 OK&lt;br&gt;
-redis 127.0.0.1:6379&amp;gt; GET name&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; get name&lt;br&gt;
 &amp;quot;kevin&amp;quot;&lt;/p&gt;
 &lt;p&gt;incr 让当前键值以 1 的数量递增，并返回递增后的值&lt;br&gt;
 incrby 可以指定参数一次增加的数值，并返回递增后的值&lt;br&gt;
@@ -1787,24 +1787,9 @@ flushdb 清除当前库的所有数据&lt;/p&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707173524.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;Redis 的哈希是键值对的集合。 Redis 的哈希值是字符串字段和字符串值之间的映射，因此它们被用来表示对象&lt;br&gt;
 示例：&lt;br&gt;
-redis 127.0.0.1:6379&amp;gt; HSET key field value&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; hset key field value&lt;br&gt;
 OK&lt;br&gt;
-redis 127.0.0.1:6379&amp;gt; HGET key field&lt;br&gt;
-value&lt;br&gt;
-hset 存储一个哈希键值对的集合&lt;br&gt;
-hset key field value&lt;/p&gt;
-&lt;p&gt;hget 获取一个哈希键的值&lt;br&gt;
-hget key field&lt;/p&gt;
-&lt;p&gt;hmset 存储一个或多个哈希是键值对的集合&lt;br&gt;
-hmset key field1 value1 ......fieldN keyN&lt;/p&gt;
-&lt;p&gt;hmget 获取多个指定的键的值&lt;br&gt;
-hmget key field1 ... fieldN&lt;/p&gt;
-&lt;p&gt;Redis 的哈希是键值对的集合。 Redis 的哈希值是字符串字段和字符串值之间的映射，&lt;br&gt;
-因此它们被用来表示对象&lt;br&gt;
-示例：&lt;br&gt;
-redis 127.0.0.1:6379&amp;gt; HSET key field value&lt;br&gt;
-OK&lt;br&gt;
-redis 127.0.0.1:6379&amp;gt; HGET key field&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; hget key field&lt;br&gt;
 value&lt;br&gt;
 hset 存储一个哈希键值对的集合&lt;br&gt;
 hset key field value&lt;/p&gt;
@@ -1815,6 +1800,1221 @@ hmset key field1 value1 ......fieldN keyN&lt;/p&gt;
 &lt;p&gt;hmget 获取多个指定的键的值&lt;br&gt;
 hmget key field1 ... fieldN&lt;/p&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707173657.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;33-list链表&#34;&gt;3.3  List(链表)&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707220524.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;Redis 的链表是简单的字符串列表，排序插入顺序。您可以添加元素到 Redis 的列表的&lt;br&gt;
+头部或尾部&lt;br&gt;
+示例：&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; lpush tutoriallist redis&lt;br&gt;
+(integer) 1&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; lpush tutoriallist mongodb&lt;br&gt;
+(integer) 2&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; lpush tutoriallist rabitmq&lt;br&gt;
+(integer) 3&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; lrange tutoriallist 0 10&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&amp;quot;rabitmq&amp;quot;&lt;/li&gt;
+&lt;li&gt;&amp;quot;mongodb&amp;quot;&lt;/li&gt;
+&lt;li&gt;&amp;quot;redis&lt;br&gt;
+lpush key value 向链表左侧添加&lt;br&gt;
+rpush key value 向链表右侧添加&lt;br&gt;
+lpop key 从左边移出一个元素&lt;br&gt;
+rpop key 从右边移出一个元素&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707222122.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;llen key 返回链表中元素的个数 相当于关系型数据库中 select count(*)&lt;br&gt;
+lrange key start end lrange 命令将返回索引从 start 到 stop 之间的所有元素。Redis 的列表起始索引为 0。&lt;br&gt;
+lrange 也支持负索引 lrange nn -2 -1 如 -1 表示最右边第一个元素 -2 表示最右边第二个元素，依次类推。&lt;br&gt;
+lindex key indexnumber 如果要将列表类型当做数组来用，lindex 命令是必不可少的。&lt;br&gt;
+lindex 命令用来返回指定索引的元素，索引从 0 开始，如果是负数表示从右边开始计算的索引，最右边元素的索引是-1。&lt;br&gt;
+Lset key indexnumber value 是另一个通过索引操作列表的命令，它会将索引为 index的元素赋值为 value。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707222706.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;34-set集合&#34;&gt;3.4 Set(集合)&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707223508.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;Redis 的集合是字符串的无序不重复集合。&lt;br&gt;
+示例：&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; sadd tutoriallist redis&lt;br&gt;
+(integer) 1&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; sadd tutoriallist mongodb&lt;br&gt;
+(integer) 1&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; sadd tutoriallist rabitmq&lt;br&gt;
+(integer) 1&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; sadd tutoriallist rabitmq&lt;br&gt;
+(integer) 0&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; smembers tutoriallist&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&amp;quot;rabitmq&amp;quot;&lt;/li&gt;
+&lt;li&gt;&amp;quot;mongodb&amp;quot;&lt;/li&gt;
+&lt;li&gt;&amp;quot;redis&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;sadd key value 添加一个 string 元素到,key 对应的 set 集合中，成功返回 1,如果元素已经在集合中返回 0&lt;br&gt;
+scard key 返回 set 的元素个数，如果 set 是空或者 key 不存在返回 0&lt;br&gt;
+smembers key 返回 key 对应 set 的所有元素，结果是无序的&lt;br&gt;
+sismember key value 判断 value 是否在 set 中，存在返回 1，0 表示不存在或者 key 不存在&lt;br&gt;
+srem key value 从 key 对应 set 中移除给定元素，成功返回 1，如果 value 在集合中不存在或者 key 不存在返回 0&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707223554.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;35-sortedset有序集合zset&#34;&gt;3.5  SortedSet(有序集合)zset&lt;/h3&gt;
+&lt;p&gt;Redis 的有序集合类似于 Redis 的集合，字符串不重复的集合。&lt;br&gt;
+示例：&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; zadd tutoriallist 0 redis&lt;br&gt;
+(integer) 1&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; zadd tutoriallist 0 mongodb&lt;br&gt;
+(integer) 1&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; zadd tutoriallist 0 rabitmq&lt;br&gt;
+(integer) 1&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; zadd tutoriallist 0 rabitmq&lt;br&gt;
+(integer) 0&lt;br&gt;
+redis 127.0.0.1:6379&amp;gt; ZRANGEBYSCORE tutoriallist 0 1000&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&amp;quot;redis&amp;quot;&lt;/li&gt;
+&lt;li&gt;&amp;quot;mongodb&amp;quot;&lt;/li&gt;
+&lt;li&gt;&amp;quot;rabitmq&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;zadd key score value 将一个或多个 value 及其 socre 加入到 set 中&lt;br&gt;
+zrange key start end 0 和-1 表示从索引为 0 的元素到最后一个元素（同 LRANGE 命令相似）&lt;/p&gt;
+&lt;p&gt;zrange key 0 -1 withscores 也可以连同 score 一块输出，使用 WITHSCORES 参数&lt;br&gt;
+zremrangebyscore key start end 可用于范围删除操作&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200707224101.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;36-redis-中的其他命令&#34;&gt;3.6 Redis 中的其他命令&lt;/h3&gt;
+&lt;p&gt;ping 测试 redis 是否链接 如果已链接返回 PONG&lt;br&gt;
+echo value 测试 redis 是否链接 如果已链接返回 echo 命令后给定的值&lt;br&gt;
+keys * 返回所有的 key 可以加*通配&lt;br&gt;
+exists key 判断 string 类型一个 key 是否存在 如果存在返回 1 否则返回 0&lt;br&gt;
+expire key time(s) 设置一个 key 的过期时间 单位秒。时间到达后会删除 key 及 value&lt;br&gt;
+ttl key 查询已设置过期时间的 key 的剩余时间 如果返回-2 表示该键值对已经被删除&lt;br&gt;
+persist 移除给定 key 的过期时间&lt;br&gt;
+select dbindex 选择数据库(0-15)&lt;br&gt;
+move key dbIndex 将当前数据库中的 key 转移到其他数据库中&lt;br&gt;
+dbsize 返回当前数据库中的 key 的数目&lt;br&gt;
+info 获取服务器的信息和统计&lt;br&gt;
+flushdb 删除当前选择的数据库中的 key&lt;br&gt;
+flushall 删除所有数据库中的所有 key&lt;br&gt;
+quit 退出连接&lt;/p&gt;
+&lt;h2 id=&#34;4-redis-的配置以及持久化方案&#34;&gt;4、Redis 的配置以及持久化方案&lt;/h2&gt;
+&lt;h3 id=&#34;41-redisconf-文件&#34;&gt;4.1 redis.conf 文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;#redis.conf
+# Redis configuration file example.
+# ./redis-server /path/to/redis.conf
+################################## INCLUDES
+###################################
+#这在你有标准配置模板但是每个 redis 服务器又需要个性设置的时候很有用。
+# include /path/to/local.conf
+# include /path/to/other.conf
+################################ GENERAL #####################################
+#是否在后台执行，yes：后台运行；no：不是后台运行（老版本默认）
+daemonize yes
+#3.2 里的参数，是否开启保护模式，默认开启。要是配置里没有指定 bind 和密码。开启该参数后，redis只会本地进行访问，拒绝外部访问。要是开启了密码 和 bind，可以开启。否 则最好关闭，设置为no。
+protected-mode yes
+#redis 的进程文件
+pidfile /var/run/redis/redis-server.pid
+#redis 监听的端口号。
+port 6379
+#此参数确定了 TCP 连接中已完成队列(完成三次握手之后)的长度， 当然此值必须不大于 Linux 系统定
+义的/proc/sys/net/core/somaxconn 值，默认是 511，而 Linux 的默认参数值是 128。当系统并发量大并且客户端速度缓慢的时候，可以将这二个参数一起参考设定。该内核参数默认值一般是 128，对于负载很大的服务程序来说大大的不够。一般会将它修改为 2048 或者更大。在/etc/sysctl.conf 中添加:net.core.somaxconn = 2048，然后在终端中执行 sysctl -p。
+tcp-backlog 511
+#指定 redis 只接收来自于该 IP 地址的请求，如果不进行设置，那么将处理所有请求
+#bind 127.0.0.1
+#配置 unix socket 来让 redis 支持监听本地连接。
+# unixsocket /var/run/redis/redis.sock
+#配置 unix socket 使用文件的权限
+# unixsocketperm 700
+# 此参数为设置客户端空闲超过 timeout，服务端会断开连接，为 0 则服务端不会主动断开连接，不能小于 0。
+timeout 0
+#tcp keepalive 参数。如果设置不为 0，就使用配置 tcp 的 SO_KEEPALIVE 值，使用 keepalive 有两个好处:检测挂掉的对端。降低中间设备出问题而导致网络看似连接却已经与对端端口的问题。在 Linux内核中，设置了 keepalive，redis 会定时给对端发送 ack。检测到对端关闭需要两倍的设置值。
+tcp-keepalive 0
+#指定了服务端日志的级别。级别包括：debug（很多信息，方便开发、测试），verbose（许多有用的信息，但是没有 debug 级别信息多），notice（适当的日志级别，适合生产环境），warn（只有非常重要的信息）
+loglevel notice
+#指定了记录日志的文件。空字符串的话，日志会打印到标准输出设备。后台运行的 redis 标准输出是/dev/null。
+logfile /var/log/redis/redis-server.log
+#是否打开记录 syslog 功能
+# syslog-enabled no
+#syslog 的标识符。
+# syslog-ident redis
+#日志的来源、设备
+# syslog-facility local0
+#数据库的数量，默认使用的数据库是 DB 0。可以通过”SELECT “命令选择一个 db
+databases 16
+################################ SNAPSHOTTING ################################
+# 快照配置
+# 注释掉“save”这一行配置项就可以让保存数据库功能失效
+# 设置 sedis 进行数据库镜像的频率。
+# 900 秒（15 分钟）内至少 1 个 key 值改变（则进行数据库保存--持久化）
+# 300 秒（5 分钟）内至少 10 个 key 值改变（则进行数据库保存--持久化）
+# 60 秒（1 分钟）内至少 10000 个 key 值改变（则进行数据库保存--持久化）
+save 900 1
+save 300 10
+save 60 10000
+#当 RDB 持久化出现错误后，是否依然进行继续进行工作，yes：不能进行工作，no：可以继续进行工作，可以通过 info 中的 rdb_last_bgsave_status 了解 RDB 持久化是否有错误
+stop-writes-on-bgsave-error yes
+#使用压缩 rdb 文件，rdb 文件压缩使用 LZF 压缩算法，yes：压缩，但是需要一些 cpu 的消耗。no：不压缩，需要更多的磁盘空间
+rdbcompression yes
+#是否校验 rdb 文件。从 rdb 格式的第五个版本开始，在 rdb 文件的末尾会带上 CRC64 的校验和。这跟有利于文件的容错性，但是在保存 rdb 文件的时候，会有大概 10%的性能损耗，所以如果你追求高性能，可以关闭该配置。
+rdbchecksum yes
+#rdb 文件的名称
+dbfilename dump.rdb
+#数据目录，数据库的写入会在这个目录。rdb、aof 文件也会写在这个目录
+dir /root/temp
+################################# REPLICATION
+#################################
+#复制选项，slave 复制对应的 master。
+# slaveof &amp;lt;masterip&amp;gt; &amp;lt;masterport&amp;gt;
+#如果 master 设置了 requirepass，那么 slave 要连上 master，需要有 master 的密码才行。
+masterauth 就是用来配置 master 的密码，这样可以在连上 master 后进行认证。
+# masterauth &amp;lt;master-password&amp;gt;
+#当从库同主机失去连接或者复制正在进行，从机库有两种运行方式：1) 如果slave-serve-stale-data 设置为 yes(默认设置)，从库会继续响应客户端的请求。2) 如果slave-serve-stale-data 设置为 no，除去 INFO 和 SLAVOF 命令之外的任何请求都会返回一个错误”SYNC with master in progress”。
+slave-serve-stale-data yes
+#作为从服务器，默认情况下是只读的（yes），可以修改成 NO，用于写（不建议）。
+slave-read-only yes
+#是否使用 socket 方式复制数据。目前 redis 复制提供两种方式，disk 和 socket。如果新的 slave连上来或者重连的 slave 无法部分同步，就会执行全量同步，master 会生成 rdb 文件。有 2 种方式：disk 方式是 master 创建一个新的进程把 rdb 文件保存到磁盘，再把磁盘上的 rdb 文件传递给 slave。socket 是 master 创建一个新的进程，直接把 rdb 文件以 socket 的方式发给 slave。disk 方式的时候，当一个 rdb 保存的过程中，多个 slave 都能共享这个 rdb 文件。socket 的方式就的一个个 slave顺序复制。在磁盘速度缓慢，网速快的情况下推荐用 socket 方式。
+repl-diskless-sync no
+#diskless 复制的延迟时间，防止设置为 0。一旦复制开始，节点不会再接收新 slave 的复制请求直到下一个 rdb 传输。所以最好等待一段时间，等更多的 slave 连上来。
+repl-diskless-sync-delay 5
+#slave 根据指定的时间间隔向服务器发送 ping 请求。时间间隔可以通过repl_ping_slave_period来设置，默认 10 秒。
+# repl-ping-slave-period 10
+#复制连接超时时间。master 和 slave 都有超时时间的设置。master 检测到 slave 上次发送的时间超过 repl-timeout，即认为 slave 离线，清除该 slave 信息。slave 检测到上次和 master 交互的时间超过 repl-timeout，则认为 master 离线。需要注意的是 repl-timeout 需要设置一个比repl-ping-slave-period 更大的值，不然会经常检测到超时。
+# repl-timeout 60
+#是否禁止复制 tcp 链接的 tcp nodelay 参数，可传递 yes 或者 no。默认是 no，即使用 tcp nodelay。如果 master 设置了 yes 来禁止 tcp nodelay 设置，在把数据复制给 slave 的时候，会减少包的数量和更小的网络带宽。但是这也可能带来数据的延迟。默认我们推荐更小的延迟，但是在数据量传输很大的场景下，建议选择 yes。
+repl-disable-tcp-nodelay no
+#复制缓冲区大小，这是一个环形复制缓冲区，用来保存最新复制的命令。这样在 slave 离线的时候，不需要完全复制 master 的数据，如果可以执行部分同步，只需要把缓冲区的部分数据复制给 slave，就能恢复正常复制状态。缓冲区的大小越大，slave 离线的时间可以更长，复制缓冲区只有在有 slave 连接的时候才分配内存。没有 slave 的一段时间，内存会被释放出来，默认 1m。
+# repl-backlog-size 5mb
+#master 没有 slave 一段时间会释放复制缓冲区的内存，repl-backlog-ttl 用来设置该时间长度。
+单位为秒。
+# repl-backlog-ttl 3600
+#当 master 不可用，Sentinel 会根据 slave 的优先级选举一个 master。最低的优先级的 slave，当选 master。而配置成 0，永远不会被选举。
+slave-priority 100
+#redis 提供了可以让 master 停止写入的方式，如果配置了 min-slaves-to-write，健康的 slave的个数小于 N，mater 就禁止写入。master 最少得有多少个健康的 slave 存活才能执行写命令。这个配置虽然不能保证 N 个 slave 都一定能接收到 master 的写操作，但是能避免没有足够健康的 slave 的时候，master 不能写入来避免数据丢失。设置为 0 是关闭该功能。
+# min-slaves-to-write 3
+#延迟小于 min-slaves-max-lag 秒的 slave 才认为是健康的 slave。
+# min-slaves-max-lag 10
+# 设置 1 或另一个设置为 0 禁用这个特性。
+# Setting one or the other to 0 disables the feature.
+# By default min-slaves-to-write is set to 0 (feature disabled) and
+# min-slaves-max-lag is set to 10.
+################################## SECURITY
+###################################
+#requirepass 配置可以让用户使用 AUTH 命令来认证密码，才能使用其他命令。这让 redis 可以使用在不受信任的网络中。为了保持向后的兼容性，可以注释该命令，因为大部分用户也不需要认证。使用requirepass 的时候需要注意，因为 redis 太快了，每秒可以认证 15w 次密码，简单的密码很容易被攻破，所以最好使用一个更复杂的密码。
+# requirepass foobared
+#把危险的命令给修改成其他名称。比如 CONFIG 命令可以重命名为一个很难被猜到的命令，这样用户不能使用，而内部工具还能接着使用。
+# rename-command CONFIG b840fc02d524045429941cc15f59e41cb7be6c52
+#设置成一个空的值，可以禁止一个命令
+# rename-command CONFIG &amp;quot;&amp;quot;
+################################### LIMITS
+####################################
+# 设置能连上 redis 的最大客户端连接数量。默认是 10000 个客户端连接。由于 redis 不区分连接是客户端连接还是内部打开文件或者和 slave 连接等，所以 maxclients 最小建议设置到 32。如果超过了maxclients，redis 会给新的连接发送’max number of clients reached’，并关闭连接。
+# maxclients 10000
+#redis 配置的最大内存容量。当内存满了，需要配合 maxmemory-policy 策略进行处理。注意 slave的输出缓冲区是不计算在 maxmemory 内的。所以为了防止主机内存使用完，建议设置的 maxmemory 需要更小一些。
+# maxmemory &amp;lt;bytes&amp;gt;
+#内存容量超过 maxmemory 后的处理策略。
+#volatile-lru：利用 LRU 算法移除设置过过期时间的 key。
+#volatile-random：随机移除设置过过期时间的 key。
+#volatile-ttl：移除即将过期的 key，根据最近过期时间来删除（辅以 TTL）
+#allkeys-lru：利用 LRU 算法移除任何 key。
+#allkeys-random：随机移除任何 key。
+#noeviction：不移除任何 key，只是返回一个写错误。
+#上面的这些驱逐策略，如果 redis 没有合适的 key 驱逐，对于写命令，还是会返回错误。redis 将不再接收写请求，只接收 get 请求。写命令包括：set setnx setex append incr decr rpush lpush rpushx lpushx linsert lset rpoplpush sadd sinter sinterstore sunion sunionstore sdiff sdiffstore zadd zincrby zunionstore zinterstore hset hsetnx hmset hincrby incrby decrby getset mset msetnx exec sort。
+# maxmemory-policy noeviction
+#lru 检测的样本数。使用 lru 或者 ttl 淘汰算法，从需要淘汰的列表中随机选择 sample 个 key，选出闲置时间最长的 key 移除。
+# maxmemory-samples 5
+############################## APPEND ONLY MODE ###############################
+#默认 redis 使用的是 rdb 方式持久化，这种方式在许多应用中已经足够用了。但是 redis 如果中途宕机，会导致可能有几分钟的数据丢失，根据 save 来策略进行持久化，Append Only File 是另一种持久化方式，可以提供更好的持久化特性。Redis 会把每次写入的数据在接收后都写入 appendonly.aof文件，每次启动时 Redis 都会先把这个文件的数据读入内存里，先忽略 RDB 文件。
+appendonly no
+#aof 文件名
+appendfilename &amp;quot;appendonly.aof&amp;quot;
+#aof 持久化策略的配置
+#no 表示不执行 fsync，由操作系统保证数据同步到磁盘，速度最快。
+#always 表示每次写入都执行 fsync，以保证数据同步到磁盘。
+#everysec 表示每秒执行一次 fsync，可能会导致丢失这 1s 数据。
+appendfsync everysec
+# 在 aof 重写或者写入 rdb 文件的时候，会执行大量 IO，此时对于everysec 和 always 的 aof 模式来说，执行 fsync 会造成阻塞过长时间，no-appendfsync-on-rewrite 字段设置为默认设置为 no。如果对延迟要求很高的应用，这个字段可以设置为 yes，否则还是设置为 no，这样对持久化特性来说这是更安全的选择。设置为 yes 表示 rewrite 期间对新写操作不 fsync,暂时存在内存中,等 rewrite 完成后再写入，默认为 no，建议 yes。Linux 的默认 fsync 策略是 30 秒。可能丢失 30 秒数据。
+no-appendfsync-on-rewrite no
+#aof 自动重写配置。当目前 aof 文件大小超过上一次重写的 aof 文件大小的百分之多少进行重写，即当aof 文件增长到一定大小的时候 Redis 能够调用 bgrewriteaof 对日志文件进行重写。当前 AOF 文件大小是上次日志重写得到 AOF 文件大小的二倍（设置为 100）时，自动启动新的日志重写过程。
+auto-aof-rewrite-percentage 100
+#设置允许重写的最小 aof 文件大小，避免了达到约定百分比但尺寸仍然很小的情况还要重写
+auto-aof-rewrite-min-size 64mb
+#aof 文件可能在尾部是不完整的，当 redis 启动的时候，aof 文件的数据被载入内存。重启可能发生在redis 所在的主机操作系统宕机后，尤其在 ext4 文件系统没有加上 data=ordered 选项（redis 宕机或者异常终止不会造成尾部不完整现象。）出现这种现象，可以选择让 redis 退出，或者导入尽可能多的数据。如果选择的是 yes，当截断的 aof 文件被导入的时候，会自动发布一个 log 给客户端然后 load。如果是 no，用户必须手动 redis-check-aof 修复 AOF 文件才可以。
+aof-load-truncated yes
+################################ LUA SCRIPTING ###############################
+# 如果达到最大时间限制（毫秒），redis 会记个 log，然后返回 error。当一个脚本超过了最大时限。只有 SCRIPT KILL 和 SHUTDOWN NOSAVE 可以用。第一个可以杀没有调 write 命令的东西。要是已经调用了 write，只能用第二个命令杀。
+lua-time-limit 5000
+################################ REDIS CLUSTER ###############################
+#集群开关，默认是不开启集群模式。
+# cluster-enabled yes
+#集群配置文件的名称，每个节点都有一个集群相关的配置文件，持久化保存集群的信息。这个文件并不需要手动配置，这个配置文件有 Redis 生成并更新，每个 Redis 集群节点需要一个单独的配置文件，请确保与实例运行的系统中配置文件名称不冲突
+# cluster-config-file nodes-6379.conf
+#节点互连超时的阀值。集群节点超时毫秒数
+# cluster-node-timeout 15000
+#在进行故障转移的时候，全部 slave 都会请求申请为 master，但是有些 slave 可能与 master 断开连接一段时间了，导致数据过于陈旧，这样的 slave 不应该被提升为 master。该参数就是用来判断 slave节点与 master 断线的时间是否过长。判断方法是：
+#比较 slave 断开连接的时间和(node-timeout * slave-validity-factor) +
+repl-ping-slave-period
+#如果节点超时时间为三十秒, 并且 slave-validity-factor 为 10,假设默认的repl-ping-slave-period 是 10 秒，即如果超过 310 秒 slave 将不会尝试进行故障转移
+# cluster-slave-validity-factor 10
+#master 的 slave 数量大于该值，slave 才能迁移到其他孤立 master 上，如这个参数若被设为 2，那么只有当一个主节点拥有 2 个可工作的从节点时，它的一个从节点会尝试迁移。
+# cluster-migration-barrier 1
+#默认情况下，集群全部的 slot 有节点负责，集群状态才为 ok，才能提供服务。设置为 no，可以在 slot没有全部分配的时候提供服务。不建议打开该配置，这样会造成分区的时候，小分区的 master 一直在接受写请求，而造成很长时间数据不一致。
+# cluster-require-full-coverage yes
+################################## SLOW LOG
+###################################
+###slog log 是用来记录 redis 运行中执行比较慢的命令耗时。当命令的执行超过了指定时间，就记录在 slow log 中，slog log 保存在内存中，所以没有 IO 操作。
+#执行时间比 slowlog-log-slower-than 大的请求记录到 slowlog 里面，单位是微秒，所以 1000000就是 1 秒。注意，负数时间会禁用慢查询日志，而 0 则会强制记录所有命令。
+slowlog-log-slower-than 10000
+#慢查询日志长度。当一个新的命令被写进日志的时候，最老的那个记录会被删掉。这个长度没有限制。只要有足够的内存就行。你可以通过 SLOWLOG RESET 来释放内存。
+slowlog-max-len 128
+################################ LATENCY MONITOR
+##############################
+#延迟监控功能是用来监控 redis 中执行比较缓慢的一些操作，用 LATENCY 打印 redis 实例在跑命令时的耗时图表。只记录大于等于下边设置的值的操作。0 的话，就是关闭监视。默认延迟监控功能是关闭的，如果你需要打开，也可以通过 CONFIG SET 命令动态设置。
+latency-monitor-threshold 0
+############################# EVENT NOTIFICATION
+##############################
+#键空间通知使得客户端可以通过订阅频道或模式，来接收那些以某种方式改动了 Redis 数据集的事件。因为开启键空间通知功能需要消耗一些 CPU ，所以在默认配置下，该功能处于关闭状态。
+#notify-keyspace-events 的参数可以是以下字符的任意组合，它指定了服务器该发送哪些类型的通知：
+##K 键空间通知，所有通知以 __keyspace@__ 为前缀
+##E 键事件通知，所有通知以 __keyevent@__ 为前缀
+##g DEL 、 EXPIRE 、 RENAME 等类型无关的通用命令的通知
+##$ 字符串命令的通知
+##l 列表命令的通知
+##s 集合命令的通知
+##h 哈希命令的通知
+##z 有序集合命令的通知
+##x 过期事件：每当有过期键被删除时发送
+##e 驱逐(evict)事件：每当有键因为 maxmemory 政策而被删除时发送
+##A 参数 g$lshzxe 的别名
+#输入的参数中至少要有一个 K 或者 E，否则的话，不管其余的参数是什么，都不会有任何 通知被分发。详细使用可以参考 http://redis.io/topics/notifications
+notify-keyspace-events &amp;quot;&amp;quot;
+############################### ADVANCED CONFIG
+###############################
+#数据量小于等于 hash-max-ziplist-entries 的用 ziplist，大于 hash-max-ziplist-entries用 hash
+hash-max-ziplist-entries 512 #value 大小小于等于 hash-max-ziplist-value 的用ziplist，大于 hash-max-ziplist-value 用 hash。
+hash-max-ziplist-value 64
+#数据量小于等于 list-max-ziplist-entries 用 ziplist，大于 list-max-ziplist-entries用 list。
+list-max-ziplist-entries 512#value 大小小于等于 list-max-ziplist-value 的用ziplist，大于 list-max-ziplist-value 用 list。
+list-max-ziplist-value 64
+#数据量小于等于 set-max-intset-entries 用 iniset，大于 set-max-intset-entries 用 set。
+set-max-intset-entries 512
+#数据量小于等于 zset-max-ziplist-entries 用 ziplist，大于 zset-max-ziplist-entries用 zset。
+zset-max-ziplist-entries 128#value 大小小于等于 zset-max-ziplist-value 用 ziplist，大于 zset-max-ziplist-value 用 zset。
+zset-max-ziplist-value 64
+#value 大小小于等于 hll-sparse-max-bytes 使用稀疏数据结构（sparse），大于hll-sparse-max-bytes 使用稠密的数据结构（dense）。一个比 16000 大的 value 是几乎没用的，建议的 value 大概为 3000。如果对 CPU 要求不高，对空间要求较高的，建议设置到 10000 左右。
+hll-sparse-max-bytes 3000
+#Redis 将在每 100 毫秒时使用 1 毫秒的 CPU 时间来对 redis 的 hash 表进行重新 hash，可以降低内存的使用。当你的使用场景中，有非常严格的实时性需要，不能够接受 Redis 时不时的对请求有 2 毫秒的延迟的话，把这项配置为 no。如果没有这么严格的实时性要求，可以设置为 yes，以便能够尽可能快的释放内存。
+activerehashing yes
+##对客户端输出缓冲进行限制可以强迫那些不从服务器读取数据的客户端断开连接，用来强制关闭传输缓慢的客户端。
+#对于 normal client，第一个 0 表示取消 hard limit，第二个 0 和第三个 0 表示取消 soft limit，normal client 默认取消限制，因为如果没有寻问，他们是不会接收数据的。
+client-output-buffer-limit normal 0 0 0#对于 slave client 和 MONITER client，如果client-output-buffer 一旦超过 256mb，又或者超过 64mb 持续 60 秒，那么服务器就会立即断开客户端连接。
+client-output-buffer-limit slave 256mb 64mb 60#对于 pubsub client，如果client-output-buffer 一旦超过 32mb，又或者超过 8mb 持续 60 秒，那么服务器就会立即断开客户端连接。
+client-output-buffer-limit pubsub 32mb 8mb 60
+#redis 执行任务的频率为 1s 除以 hz。
+hz 10
+#在 aof 重写的时候，如果打开了 aof-rewrite-incremental-fsync 开关，系统会每 32MB 执行一次 fsync。这对于把文件写入磁盘是有帮助的，可以避免过大的延迟峰值。
+aof-rewrite-incremental-fsync yes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;42-redis-的数据持久化&#34;&gt;4.2 Redis 的数据持久化&lt;/h3&gt;
+&lt;h4 id=&#34;421-rdb-方式&#34;&gt;4.2.1 RDB 方式&lt;/h4&gt;
+&lt;p&gt;对内存中数据库状态进行快照&lt;br&gt;
+RDB 方式：将 Redis 在内存中的数据库状态保存到磁盘里面，RDB 文件是一个经过压缩的二进制文件，通过该文件可以还原生成 RDB 文件时的数据库状态（默认下，持久化到dump.rdb 文件，并且在 redis 重启后，自动读取其中文件，据悉，通常情况下一千万的字符串类型键，1GB 的快照文件，同步到内存中的 时间是 20-30 秒）&lt;br&gt;
+RDB 的生成方式：&lt;br&gt;
+1）执行命令手动生成&lt;br&gt;
+有两个 Redis 命令可以用于生成 RDB 文件，一个是 SAVE，另一个是 BGSAVE SAVE命令会阻塞 Redis 服务器进程，直到 RDB 文件创建完毕为止，在服务器进程阻塞期间，服务器不能处理任何命令请求，BGSAVE 命令会派生出一个子进程，然后由子进程负责创建RDB 文件，服务器进程（父进程）继续处理命令请求，创建 RDB 文件结束之前，客户端发送的 BGSAVE 和 SAVE 命令会被服务器拒绝&lt;br&gt;
+2）通过配置自动生成&lt;br&gt;
+可以设置服务器配置的 save 选项，让服务器每隔一段时间自动执行一次 &lt;strong&gt;BGSAVE&lt;/strong&gt; 命令，可以通过 save 选项设置多个保存条件，但只要其中任意一个条件被满足，服务器就会执行 BGSAVE 命令&lt;br&gt;
+例如：&lt;br&gt;
+save 900 1&lt;br&gt;
+save 300 10&lt;br&gt;
+save 60 10000&lt;br&gt;
+那么只要满足以下三个条件中的任意一个，BGSAVE 命令就会被执行&lt;br&gt;
+服务器在 900 秒之内，对数据库进行了至少 1 次修改&lt;br&gt;
+服务器在 300 秒之内，对数据库进行了至少 10 次修改&lt;br&gt;
+服务器在 60 秒之内，对数据库进行了至少 10000 次修改&lt;/p&gt;
+&lt;h4 id=&#34;422-aof-方式&#34;&gt;4.2.2 AOF 方式&lt;/h4&gt;
+&lt;p&gt;AOF 持久化方式在 redis 中默认是关闭的，需要修改配置文件开启该方式。&lt;br&gt;
+AOF：把每条命令都写入文件，类似 mysql 的 binlog 日志&lt;br&gt;
+AOF 方式：是通过保存 Redis 服务器所执行的写命令来记录数据库状态的文件。&lt;br&gt;
+AOF 文件刷新的方式，有三种：&lt;br&gt;
+appendfsync always - 每提交一个修改命令都调用 fsync 刷新到 AOF 文件，非常非常慢，但也非常安全&lt;br&gt;
+appendfsync everysec - 每秒钟都调用 fsync 刷新到 AOF 文件，很快，但可能会丢失一秒以内的数据&lt;br&gt;
+appendfsync no - 依靠 OS 进行刷新，redis 不主动刷新 AOF，这样最快，但安全性就差&lt;br&gt;
+默认并推荐每秒刷新，这样在速度和安全上都做到了兼顾&lt;/p&gt;
+&lt;p&gt;AOF 数据恢复方式&lt;br&gt;
+服务器在启动时，通过载入和执行 AOF 文件中保存的命令来还原服务器关闭之前的数据库状态，具体过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;载入 AOF 文件&lt;/li&gt;
+&lt;li&gt;创建模拟客户端&lt;/li&gt;
+&lt;li&gt;从 AOF 文件中读取一条命令&lt;/li&gt;
+&lt;li&gt;使用模拟客户端执行命令&lt;/li&gt;
+&lt;li&gt;循环读取并执行命令，直到全部完成&lt;/li&gt;
+&lt;li&gt;如果同时启用了 RDB 和 AOF 方式，AOF 优先，启动时只加载 AOF 文件恢复数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;5-安装-redis-集群&#34;&gt;5、安装 Redis 集群&lt;/h2&gt;
+&lt;h3 id=&#34;51-redis-集群介绍&#34;&gt;5.1 Redis 集群介绍&lt;/h3&gt;
+&lt;p&gt;​		Redis3.0 版本之后支持 Cluster。&lt;strong&gt;集群要求集群节点中必须要支持主备模式，也就说集中的主节点(Master)至少要有一个从节点(Slave)&lt;/strong&gt;&lt;br&gt;
+​		每一个蓝色的圈都代表着一个 redis 集群中的主节点。它们任何两个节点之间都是相互连通的。客户端可以与任何一个节点相连接，然后就可以访问集群中的任何一个节点。对其进行存取和其他操作&lt;/p&gt;
+&lt;h4 id=&#34;511-redis-cluster-架构图&#34;&gt;5.1.1 Redis-Cluster 架构图&lt;/h4&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200708010154.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;512-redis-cluster-选举容错&#34;&gt;5.1.2 Redis-Cluster 选举:容错&lt;/h4&gt;
+&lt;p&gt;​		Redis 之间通过互相的 ping-pong 判断是否节点可以连接上。如果有一半以上的节点去ping 一个节点的时候没有回应，集群就认为这个节点宕机了，然后去连接它的从节点。如果某个节点和所有从节点全部挂掉，我们集群就进入 fail 状态。还有就是如果有一半以上的主节点宕机，那么我们集群同样进入 fail 了状态。这就是我们的 redis 的投票机制，具体原理如下图所示：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200708010227.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;投票过程是集群中所有 master 参与,如果半数以上 master 节点与 master 节点通信超时(cluster-node-timeout),认为当前 master 节点挂掉.&lt;br&gt;
+什么时候整个集群不可用(cluster_state:fail)?&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果集群任意 master 挂掉,且当前 master 没有 slave。此时集群进入 fail 状态,也可以理解成集群的 slot 映射[0-16383]不完整时进入 fail 状态。&lt;/li&gt;
+&lt;li&gt;如果集群超过半数以上 master 挂掉，无论是否有 slave，集群进入 fail 状态.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;513-redis-cluster-数据存储&#34;&gt;5.1.3 Redis-Cluster 数据存储&lt;/h4&gt;
+&lt;p&gt;​		当我们的存取的 key 到达的时候，redis 会根据 crc16 的算法得出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，通过这个值，去找到对应的插槽所对应的节点，然后直接自动跳转到这个对应的节点上进行存取操作。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200708010312.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;例如：在 Node1 执行 set name kevin&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用 CRC16 算法对 key 进行计算，得到一个数字，然后对数字进行取余。&lt;br&gt;
+CRC16 : name = 26384&lt;br&gt;
+26384%16384 = 10000&lt;/li&gt;
+&lt;li&gt;查找到包含 10000 插槽的节点，比如是 node2，自动跳转到 node2&lt;/li&gt;
+&lt;li&gt;在 node2 上执行 set name kevin 命令完成数据的插入&lt;/li&gt;
+&lt;li&gt;如果在 node1 上执行 get name，先使用 CRC16 算法对 key 进行计算，在使用16384 取余，得到插槽的下标，然后跳到拥有该插槽的 node2 中执行 get name 命令，并返回结果。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;52-安装集群&#34;&gt;5.2 安装集群&lt;/h3&gt;
+&lt;h4 id=&#34;521-需求&#34;&gt;5.2.1 需求&lt;/h4&gt;
+&lt;p&gt;搭建一个 Redis 的最小集群，使用伪集群方式。&lt;br&gt;
+Redis 中最小的集群三对主从。&lt;br&gt;
+在 192.168.0.179 中安装 6 个 redis 实例。&lt;br&gt;
+如果使用已经使用过的单机版创建集群时，需要删除 dump.rdb 与 apeendonly.aof 文件。&lt;br&gt;
+6 个 redis 实例的端口分配：8001、8002、8003、8004、8005、8006&lt;/p&gt;
+&lt;h4 id=&#34;522-集群步骤&#34;&gt;5.2.2 集群步骤&lt;/h4&gt;
+&lt;p&gt;redis 集群时需要使用一个 ruby 的脚本来完成集群。&lt;/p&gt;
+&lt;p&gt;第一步 安装 ruby 环境&lt;br&gt;
+命令： yum install ruby&lt;/p&gt;
+&lt;p&gt;第二步 安装 ruby 的包管理器&lt;br&gt;
+命令：yum install rubygems&lt;/p&gt;
+&lt;p&gt;第三步 进入到 redis 的安装目录下的 src 目录下找到到 redis-trib.rb 这个文件 这是集群时需要的脚本&lt;/p&gt;
+&lt;p&gt;第四步 这个脚本的执行需要依赖于一些其他的 ruby 包 所以我们还要下载一个&lt;br&gt;
+redis-3.0.0.gem&lt;br&gt;
+将这个文件上传到 linux 服务器中&lt;/p&gt;
+&lt;p&gt;第五步 安装这个 ruby 包&lt;br&gt;
+命令：gem install redis-3.0.0.gem&lt;/p&gt;
+&lt;p&gt;第六步 先启动 redis 的 6 个实例&lt;br&gt;
+先在 local 目录下创建一个目录名称为：redis-cluster&lt;br&gt;
+命令：mkdir redis-cluster&lt;/p&gt;
+&lt;p&gt;第七步 将安装好的 redis 下的 bin 目录拷贝到 redis-cluster 目录下 并起名为 redis01&lt;br&gt;
+命令：进入到 redis 目录下执行：cp -r bin ../redis-cluster/redis01&lt;/p&gt;
+&lt;p&gt;第九步 修改 redis.conf 配置文件&lt;br&gt;
+命令：vim redis.conf&lt;br&gt;
+(1)修改端口：默认的为 6379 将六个 redis 实例的端口改成从 7001-7006 在配置文件&lt;br&gt;
+的 port 属性中。&lt;br&gt;
+(2)修改开启集群 在配置文件中搜索 cluster 找到后 将默认为注释的 cluster-enabled yes 去掉注释&lt;/p&gt;
+&lt;p&gt;第十步 将这个 redis01 拷贝 6 份到当前这个目录下&lt;br&gt;
+命令：cp -r redis01/ redis02&lt;br&gt;
+cp -r redis01/ redis03&lt;br&gt;
+cp -r redis01/ redis04&lt;br&gt;
+cp -r redis01/ redis05&lt;br&gt;
+cp -r redis01/ redis06&lt;/p&gt;
+&lt;p&gt;第十一步 修改拷贝的这些 redis 的端口&lt;br&gt;
+命令：&lt;br&gt;
+[root@localhost redis-cluster]# vim redis02/redis.conf&lt;br&gt;
+[root@localhost redis-cluster]# vim redis03/redis.conf&lt;br&gt;
+[root@localhost redis-cluster]# vim redis04/redis.conf&lt;br&gt;
+[root@localhost redis-cluster]# vim redis05/redis.conf&lt;br&gt;
+[root@localhost redis-cluster]# vim redis06/redis.conf&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200708011226.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;第十二步 把创建集群的 ruby 脚本复制到 redis-cluster 中&lt;br&gt;
+命令：[root@localhost src]# cp *.rb /usr/local/redis-cluster/&lt;/p&gt;
+&lt;p&gt;第十二步 创建一个能够批量启动的脚本程序&lt;br&gt;
+命令：vim startall.sh&lt;/p&gt;
+&lt;p&gt;第十三步 在脚本文件中添加命令&lt;br&gt;
+命令：&lt;/p&gt;
+&lt;p&gt;cd redis01&lt;br&gt;
+./redis-server redis.conf&lt;br&gt;
+cd ..&lt;br&gt;
+cd redis02&lt;br&gt;
+./redis-server redis.conf&lt;br&gt;
+cd ..&lt;br&gt;
+cd redis03&lt;br&gt;
+./redis-server redis.conf&lt;br&gt;
+cd ..&lt;br&gt;
+cd redis04&lt;br&gt;
+./redis-server redis.conf&lt;br&gt;
+cd ..&lt;br&gt;
+cd redis05&lt;br&gt;
+./redis-server redis.conf&lt;br&gt;
+cd ..&lt;br&gt;
+cd redis06&lt;br&gt;
+./redis-server redis.conf&lt;br&gt;
+cd ..&lt;/p&gt;
+&lt;p&gt;第十四步 将批量启动脚本设置为可执行权限&lt;br&gt;
+命令:chmod +x startall.sh&lt;/p&gt;
+&lt;p&gt;第十五步 执行这个批量启动的脚本&lt;br&gt;
+命令：[root@localhost redis-cluster]# ./startall.sh&lt;/p&gt;
+&lt;p&gt;第十六步 查看 redis 是否启动成功&lt;br&gt;
+命令：ps aux|grep redis&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200708013049.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;第十七步 创建集群&lt;br&gt;
+命 令 ： ./redis-trib.rb create --replicas 1 192.168.0.179:8001 192.168.0.179:8002 192.168.0.179:8003 192.168.0.179:8004 192.168.0.179:8005 192.168.0.179:8006&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200708013922.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;如果控制台输出如下信息表集群成功&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200708014103.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;测试 Redis 集群&lt;br&gt;
+测试 Redis 集群：可以连接集群中的任意一个节点进行测试 注意一定要有-c 参数，否则能连上，但是无法操作 redis 集群&lt;br&gt;
+命令：[root@localhost redis-cluster]# ./redis01/redis-cli -h 192.168.0.179 -p 8001 -c&lt;/p&gt;
+&lt;p&gt;关闭 Redis 集群&lt;br&gt;
+命令：./redis-cli -h 192.168.0.179 -p 8001 shutdown&lt;/p&gt;
+&lt;p&gt;也可以编写一个批量关闭的脚本&lt;br&gt;
+命令：vim shutdown.sh&lt;br&gt;
+redis01 /redis-cli -h 192.168.0.179 -p 8001 shutdown&lt;br&gt;
+redis02 /redis-cli -h 192.168.0.179 -p 8002 shutdown&lt;br&gt;
+redis03 /redis-cli -h 192.168.0.179 -p 8003 shutdown&lt;br&gt;
+redis04 /redis-cli -h 192.168.0.179 -p 8004 shutdown&lt;br&gt;
+redis05 /redis-cli -h 192.168.0.179 -p 8005 shutdown&lt;br&gt;
+redis06 /redis-cli -h 192.168.0.179 -p 8006 shutdown&lt;/p&gt;
+&lt;h2 id=&#34;6-使用-jedisapi-操作-redis&#34;&gt;6、使用 JedisAPI 操作 Redis&lt;/h2&gt;
+&lt;p&gt;Jedis 集成了 redis 的一些命令操作，封装了对 redis 命令的 Java 客户端。&lt;/p&gt;
+&lt;h3 id=&#34;61-使用-jedis-操作-redis-单机版&#34;&gt;6.1 使用 Jedis 操作 Redis 单机版&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;创建工程&lt;/li&gt;
+&lt;li&gt;修改 POM 文件添加 Jedis 坐标&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;JedisDemo&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;redis.clients&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;jedis&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;2.9.0&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试 Jedis 操作 Redis 单机版&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	/**
+     * Jedis单机版测试
+     */
+    public static void testJedisSingle(){
+        //创建一个Jedis对象
+        Jedis jedis = new Jedis(&amp;quot;124.70.181.124&amp;quot;,6379);
+        //调用Jedis的API完成对Redis的操作。在jedis中方法的命名与操作Redis的命令相同
+        String result = jedis.set(&amp;quot;key1&amp;quot;, &amp;quot;hello&amp;quot;);
+        System.out.println(result);
+        String str = jedis.get(&amp;quot;key1&amp;quot;);
+        System.out.println(str);
+        System.out.println(&amp;quot;--------------------------&amp;quot;);
+        Long rel = jedis.hset(&amp;quot;user&amp;quot;, &amp;quot;username&amp;quot;, &amp;quot;cy&amp;quot;);
+        System.out.println(rel);
+        String hrel = jedis.hget(&amp;quot;user&amp;quot;, &amp;quot;username&amp;quot;);
+        System.out.println(hrel);
+        jedis.close();
+
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;测试使用连接池操作 Redis 单机版&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;	/**
+     * 使用连接池
+     */
+    public static void testJedisPool(){
+        //创建连接池
+        JedisPool pool = new JedisPool(&amp;quot;124.70.181.124&amp;quot;,6379);
+        //取出实例
+        Jedis jedis = pool.getResource();
+        String s = jedis.hget(&amp;quot;user&amp;quot;, &amp;quot;username&amp;quot;);
+        System.out.println(s);
+        jedis.close();
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;62-使用-jedis-操作-redis-集群&#34;&gt;6.2 使用 Jedis 操作 Redis 集群&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; 	/**
+     * 集群测试
+     */
+    public static void testJedisCluster() throws IOException {
+        //创建HostAndPort:集群中的的一个节点
+        Set&amp;lt;HostAndPort&amp;gt; nodes=new HashSet&amp;lt;&amp;gt;();
+        nodes.add(new HostAndPort(&amp;quot;124.70.181.124&amp;quot;,8001));
+        nodes.add(new HostAndPort(&amp;quot;124.70.181.124&amp;quot;,8002));
+        nodes.add(new HostAndPort(&amp;quot;124.70.181.124&amp;quot;,8003));
+        nodes.add(new HostAndPort(&amp;quot;124.70.181.124&amp;quot;,8004));
+        nodes.add(new HostAndPort(&amp;quot;124.70.181.124&amp;quot;,8005));
+        nodes.add(new HostAndPort(&amp;quot;124.70.181.124&amp;quot;,8006));
+        // 创建操作集群的jedis对象
+        JedisCluster jedisCluster = new JedisCluster(nodes);
+        //在jedisCluster中方法的命名与操作Redis的命令相同
+        jedisCluster.set(&amp;quot;name&amp;quot;,&amp;quot;cy&amp;quot;);
+        String name = jedisCluster.get(&amp;quot;name&amp;quot;);
+        System.out.println(name);
+        jedisCluster.close();
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;7-spring-整合-jedis&#34;&gt;7、Spring 整合 Jedis&lt;/h2&gt;
+&lt;h3 id=&#34;71-整合单机版&#34;&gt;7.1 整合单机版&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;创建工程&lt;/li&gt;
+&lt;li&gt;修改 POM 文件添加 Jedis 与 Spring 的坐标&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+  &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+  &amp;lt;groupId&amp;gt;com.bjsxt&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;springJedisDemo&amp;lt;/artifactId&amp;gt;
+  &amp;lt;version&amp;gt;0.0.1-SNAPSHOT&amp;lt;/version&amp;gt;
+  
+  &amp;lt;dependencies&amp;gt;
+		&amp;lt;dependency&amp;gt;
+			&amp;lt;groupId&amp;gt;redis.clients&amp;lt;/groupId&amp;gt;
+			&amp;lt;artifactId&amp;gt;jedis&amp;lt;/artifactId&amp;gt;
+			&amp;lt;version&amp;gt;2.9.0&amp;lt;/version&amp;gt;
+		&amp;lt;/dependency&amp;gt;
+		
+		&amp;lt;dependency&amp;gt;
+		        &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+				&amp;lt;artifactId&amp;gt;spring-context&amp;lt;/artifactId&amp;gt;
+				&amp;lt;version&amp;gt;4.1.3.RELEASE&amp;lt;/version&amp;gt;
+			&amp;lt;/dependency&amp;gt;
+			&amp;lt;dependency&amp;gt;
+				&amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+				&amp;lt;artifactId&amp;gt;spring-beans&amp;lt;/artifactId&amp;gt;
+				&amp;lt;version&amp;gt;4.1.3.RELEASE&amp;lt;/version&amp;gt;
+			&amp;lt;/dependency&amp;gt;
+	&amp;lt;/dependencies&amp;gt;
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;创建 JedisDao 接口与接口实现类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;JedisDao&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface JedisDao {
+	
+	public String set(String key,String value);
+	public String get(String key);
+	public Long hset(String hkey,String key,String value);
+	public String hget(String hkey,String key);
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;JedisDaoImplSingle&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class JedisDaoImplSingle implements JedisDao {
+	
+	@Autowired
+	private JedisPool jedisPool;
+	
+
+	@Override
+	public String set(String key, String value) {
+		Jedis jedis = this.jedisPool.getResource();
+		return jedis.set(key, value);
+	}
+
+	@Override
+	public String get(String key) {
+		Jedis jedis = this.jedisPool.getResource();
+		return jedis.get(key);
+	}
+
+	@Override
+	public Long hset(String hkey, String key, String value) {
+		Jedis jedis = this.jedisPool.getResource();
+		return jedis.hset(hkey, key, value);
+	}
+
+	@Override
+	public String hget(String hkey, String key) {
+		Jedis jedis = this.jedisPool.getResource();
+		return jedis.hget(hkey, key);
+	}
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;在 Spring 配置文件中整合 Jedis&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
+	xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xmlns:p=&amp;quot;http://www.springframework.org/schema/p&amp;quot;
+	xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot;
+	xmlns:mvc=&amp;quot;http://www.springframework.org/schema/mvc&amp;quot;
+	xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd&amp;quot;&amp;gt;
+	&amp;lt;context:component-scan base-package=&amp;quot;com.cy.jedisdao&amp;quot;/&amp;gt;
+	&amp;lt;!-- jedisPool的配置 --&amp;gt;
+	&amp;lt;bean id=&amp;quot;poolconfig&amp;quot; class=&amp;quot;redis.clients.jedis.JedisPoolConfig&amp;quot;&amp;gt;
+	        &amp;lt;!-- 最大连接数 --&amp;gt;
+		&amp;lt;property name=&amp;quot;maxTotal&amp;quot; value=&amp;quot;30&amp;quot; /&amp;gt;
+		&amp;lt;!-- 最大空闲连接数 --&amp;gt;
+		&amp;lt;property name=&amp;quot;maxIdle&amp;quot; value=&amp;quot;10&amp;quot; /&amp;gt;
+		&amp;lt;!-- 每次释放连接的最大数目 --&amp;gt;
+		&amp;lt;property name=&amp;quot;numTestsPerEvictionRun&amp;quot; value=&amp;quot;1024&amp;quot; /&amp;gt;
+		&amp;lt;!-- 释放连接的扫描间隔（毫秒） --&amp;gt;
+		&amp;lt;property name=&amp;quot;timeBetweenEvictionRunsMillis&amp;quot; value=&amp;quot;30000&amp;quot; /&amp;gt;
+		&amp;lt;!-- 连接最小空闲时间 --&amp;gt;
+		&amp;lt;property name=&amp;quot;minEvictableIdleTimeMillis&amp;quot; value=&amp;quot;1800000&amp;quot; /&amp;gt;
+		&amp;lt;!-- 连接空闲多久后释放, 当空闲时间&amp;gt;该值 且 空闲连接&amp;gt;最大空闲连接数 时直接释放 --&amp;gt;
+		&amp;lt;property name=&amp;quot;softMinEvictableIdleTimeMillis&amp;quot; value=&amp;quot;10000&amp;quot; /&amp;gt;
+		&amp;lt;!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 --&amp;gt;
+		&amp;lt;property name=&amp;quot;maxWaitMillis&amp;quot; value=&amp;quot;1500&amp;quot; /&amp;gt;
+		&amp;lt;!-- 在获取连接的时候检查有效性, 默认false --&amp;gt;
+		&amp;lt;property name=&amp;quot;testOnBorrow&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;
+		&amp;lt;!-- 在空闲时检查有效性, 默认false --&amp;gt;
+		&amp;lt;property name=&amp;quot;testWhileIdle&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;
+		&amp;lt;!-- 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true --&amp;gt;
+		&amp;lt;property name=&amp;quot;blockWhenExhausted&amp;quot; value=&amp;quot;false&amp;quot; /&amp;gt;
+	&amp;lt;/bean&amp;gt;
+	&amp;lt;!-- 配置JedidesPool --&amp;gt;
+	&amp;lt;bean id=&amp;quot;jedisPool&amp;quot; class=&amp;quot;redis.clients.jedis.JedisPool&amp;quot;&amp;gt;
+		&amp;lt;constructor-arg name=&amp;quot;poolConfig&amp;quot;&amp;gt;
+			&amp;lt;ref bean=&amp;quot;poolconfig&amp;quot;/&amp;gt;
+		&amp;lt;/constructor-arg&amp;gt;
+		&amp;lt;constructor-arg name=&amp;quot;host&amp;quot;&amp;gt;
+			&amp;lt;value&amp;gt;124.70.181.124&amp;lt;/value&amp;gt;
+		&amp;lt;/constructor-arg&amp;gt;
+		&amp;lt;constructor-arg name=&amp;quot;port&amp;quot;&amp;gt;
+			&amp;lt;value&amp;gt;6379&amp;lt;/value&amp;gt;
+		&amp;lt;/constructor-arg&amp;gt;
+	&amp;lt;/bean&amp;gt;
+    	&amp;lt;!-- JedisDaoImplSingle --&amp;gt;
+	&amp;lt;bean id=&amp;quot;jedisDaoImplSingle&amp;quot; class=&amp;quot;com.cy.jedisdao.impl.JedisDaoImplSingle&amp;quot;&amp;gt;&amp;lt;/bean&amp;gt; 
+&amp;lt;/beans&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;测试单机版&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;public class Test {&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void main(String[] args) {
+	Test.testJedisSingle();
+}
+
+/**
+ * 测试单机版Jedis
+ */
+public static void testJedisSingle(){
+	ApplicationContext ac = new ClassPathXmlApplicationContext(&amp;quot;applicationContext-Jedis.xml&amp;quot;);
+	JedisDao jd = (JedisDao)ac.getBean(&amp;quot;jedisDaoImplSingle&amp;quot;);
+	String str = jd.set(&amp;quot;hello&amp;quot;, &amp;quot;Redis&amp;quot;);
+	System.out.println(str);
+	String result = jd.get(&amp;quot;hello&amp;quot;);
+	System.out.println(result);
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;72-整合集群版&#34;&gt;7.2 整合集群版&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;添加 JedisDao 实现类。基于 JedisCluster 的实现&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class JedisDaoImplCluster implements JedisDao {
+
+	@Autowired
+	private JedisCluster jedisCluster;
+	
+	@Override
+	public String set(String key, String value) {
+		return this.jedisCluster.set(key, value);
+	}
+
+	@Override
+	public String get(String key) {
+		return this.jedisCluster.get(key);
+	}
+
+	@Override
+	public Long hset(String hkey, String key, String value) {
+		return this.jedisCluster.hset(hkey, key, value);
+	}
+
+	@Override
+	public String hget(String hkey, String key) {
+		return this.jedisCluster.hget(hkey, key);
+	}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;在 Spring 配置文件中整合 JedisCluster&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
+	xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xmlns:p=&amp;quot;http://www.springframework.org/schema/p&amp;quot;
+	xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot;
+	xmlns:mvc=&amp;quot;http://www.springframework.org/schema/mvc&amp;quot;
+	xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd&amp;quot;&amp;gt;
+	&amp;lt;context:component-scan base-package=&amp;quot;com.cy.jedisdao&amp;quot;/&amp;gt;
+	&amp;lt;!-- jedisPool的配置 --&amp;gt;
+	&amp;lt;bean id=&amp;quot;poolconfig&amp;quot; class=&amp;quot;redis.clients.jedis.JedisPoolConfig&amp;quot;&amp;gt;
+	        &amp;lt;!-- 最大连接数 --&amp;gt;
+		&amp;lt;property name=&amp;quot;maxTotal&amp;quot; value=&amp;quot;30&amp;quot; /&amp;gt;
+		&amp;lt;!-- 最大空闲连接数 --&amp;gt;
+		&amp;lt;property name=&amp;quot;maxIdle&amp;quot; value=&amp;quot;10&amp;quot; /&amp;gt;
+		&amp;lt;!-- 每次释放连接的最大数目 --&amp;gt;
+		&amp;lt;property name=&amp;quot;numTestsPerEvictionRun&amp;quot; value=&amp;quot;1024&amp;quot; /&amp;gt;
+		&amp;lt;!-- 释放连接的扫描间隔（毫秒） --&amp;gt;
+		&amp;lt;property name=&amp;quot;timeBetweenEvictionRunsMillis&amp;quot; value=&amp;quot;30000&amp;quot; /&amp;gt;
+		&amp;lt;!-- 连接最小空闲时间 --&amp;gt;
+		&amp;lt;property name=&amp;quot;minEvictableIdleTimeMillis&amp;quot; value=&amp;quot;1800000&amp;quot; /&amp;gt;
+		&amp;lt;!-- 连接空闲多久后释放, 当空闲时间&amp;gt;该值 且 空闲连接&amp;gt;最大空闲连接数 时直接释放 --&amp;gt;
+		&amp;lt;property name=&amp;quot;softMinEvictableIdleTimeMillis&amp;quot; value=&amp;quot;10000&amp;quot; /&amp;gt;
+		&amp;lt;!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 --&amp;gt;
+		&amp;lt;property name=&amp;quot;maxWaitMillis&amp;quot; value=&amp;quot;1500&amp;quot; /&amp;gt;
+		&amp;lt;!-- 在获取连接的时候检查有效性, 默认false --&amp;gt;
+		&amp;lt;property name=&amp;quot;testOnBorrow&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;
+		&amp;lt;!-- 在空闲时检查有效性, 默认false --&amp;gt;
+		&amp;lt;property name=&amp;quot;testWhileIdle&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;
+		&amp;lt;!-- 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true --&amp;gt;
+		&amp;lt;property name=&amp;quot;blockWhenExhausted&amp;quot; value=&amp;quot;false&amp;quot; /&amp;gt;
+	&amp;lt;/bean&amp;gt;
+	&amp;lt;!-- 配置JedidesPool --&amp;gt;
+	&amp;lt;bean id=&amp;quot;jedisPool&amp;quot; class=&amp;quot;redis.clients.jedis.JedisPool&amp;quot;&amp;gt;
+		&amp;lt;constructor-arg name=&amp;quot;poolConfig&amp;quot;&amp;gt;
+			&amp;lt;ref bean=&amp;quot;poolconfig&amp;quot;/&amp;gt;
+		&amp;lt;/constructor-arg&amp;gt;
+		&amp;lt;constructor-arg name=&amp;quot;host&amp;quot;&amp;gt;
+			&amp;lt;value&amp;gt;124.70.181.124&amp;lt;/value&amp;gt;
+		&amp;lt;/constructor-arg&amp;gt;
+		&amp;lt;constructor-arg name=&amp;quot;port&amp;quot;&amp;gt;
+			&amp;lt;value&amp;gt;6379&amp;lt;/value&amp;gt;
+		&amp;lt;/constructor-arg&amp;gt;
+	&amp;lt;/bean&amp;gt;
+	&amp;lt;!-- JedisDaoImplSingle --&amp;gt;
+	&amp;lt;!-- &amp;lt;bean id=&amp;quot;jedisDaoImplSingle&amp;quot; class=&amp;quot;com.bjsxt.jedisdao.impl.JedisDaoImplSingle&amp;quot;&amp;gt;&amp;lt;/bean&amp;gt; --&amp;gt;
+	
+	
+	&amp;lt;!-- JedislCluster --&amp;gt;
+     &amp;lt;!-- 这里等同于做了
+        创建HostAndPort:集群中的的一个节点
+        Set&amp;lt;HostAndPort&amp;gt; nodes=new HashSet&amp;lt;&amp;gt;();
+        nodes.add(new HostAndPort(&amp;quot;124.70.181.124&amp;quot;,8001));
+        nodes.add(new HostAndPort(&amp;quot;124.70.181.124&amp;quot;,8002));
+        nodes.add(new HostAndPort(&amp;quot;124.70.181.124&amp;quot;,8003));
+        nodes.add(new HostAndPort(&amp;quot;124.70.181.124&amp;quot;,8004));
+        nodes.add(new HostAndPort(&amp;quot;124.70.181.124&amp;quot;,8005));
+        nodes.add(new HostAndPort(&amp;quot;124.70.181.124&amp;quot;,8006));
+        创建操作集群的jedis对象
+        JedisCluster jedisCluster = new JedisCluster(nodes);
+        --&amp;gt; 
+	&amp;lt;bean id=&amp;quot;jedisCluster&amp;quot; class=&amp;quot;redis.clients.jedis.JedisCluster&amp;quot;&amp;gt;
+		&amp;lt;constructor-arg name=&amp;quot;nodes&amp;quot;&amp;gt;
+			&amp;lt;set&amp;gt;
+				&amp;lt;bean class=&amp;quot;redis.clients.jedis.HostAndPort&amp;quot;&amp;gt;
+					&amp;lt;constructor-arg name=&amp;quot;host&amp;quot;&amp;gt;
+					 &amp;lt;value&amp;gt;124.70.181.124&amp;lt;/value&amp;gt;
+					&amp;lt;/constructor-arg&amp;gt;
+					&amp;lt;constructor-arg name=&amp;quot;port&amp;quot;&amp;gt;
+					  &amp;lt;value&amp;gt;8001&amp;lt;/value&amp;gt;
+					&amp;lt;/constructor-arg&amp;gt;
+				&amp;lt;/bean&amp;gt;
+				&amp;lt;bean class=&amp;quot;redis.clients.jedis.HostAndPort&amp;quot;&amp;gt;
+					&amp;lt;constructor-arg name=&amp;quot;host&amp;quot;&amp;gt;
+					 &amp;lt;value&amp;gt;124.70.181.124&amp;lt;/value&amp;gt;
+					&amp;lt;/constructor-arg&amp;gt;
+					&amp;lt;constructor-arg name=&amp;quot;port&amp;quot;&amp;gt;
+					  &amp;lt;value&amp;gt;8002&amp;lt;/value&amp;gt;
+					&amp;lt;/constructor-arg&amp;gt;
+				&amp;lt;/bean&amp;gt;
+				&amp;lt;bean class=&amp;quot;redis.clients.jedis.HostAndPort&amp;quot;&amp;gt;
+					&amp;lt;constructor-arg name=&amp;quot;host&amp;quot;&amp;gt;
+					 &amp;lt;value&amp;gt;124.70.181.124&amp;lt;/value&amp;gt;
+					&amp;lt;/constructor-arg&amp;gt;
+					&amp;lt;constructor-arg name=&amp;quot;port&amp;quot;&amp;gt;
+					  &amp;lt;value&amp;gt;8003&amp;lt;/value&amp;gt;
+					&amp;lt;/constructor-arg&amp;gt;
+				&amp;lt;/bean&amp;gt;
+				&amp;lt;bean class=&amp;quot;redis.clients.jedis.HostAndPort&amp;quot;&amp;gt;
+					&amp;lt;constructor-arg name=&amp;quot;host&amp;quot;&amp;gt;
+					 &amp;lt;value&amp;gt;124.70.181.124&amp;lt;/value&amp;gt;
+					&amp;lt;/constructor-arg&amp;gt;
+					&amp;lt;constructor-arg name=&amp;quot;port&amp;quot;&amp;gt;
+					  &amp;lt;value&amp;gt;8004&amp;lt;/value&amp;gt;
+					&amp;lt;/constructor-arg&amp;gt;
+				&amp;lt;/bean&amp;gt;
+				&amp;lt;bean class=&amp;quot;redis.clients.jedis.HostAndPort&amp;quot;&amp;gt;
+					&amp;lt;constructor-arg name=&amp;quot;host&amp;quot;&amp;gt;
+					 &amp;lt;value&amp;gt;124.70.181.124&amp;lt;/value&amp;gt;
+					&amp;lt;/constructor-arg&amp;gt;
+					&amp;lt;constructor-arg name=&amp;quot;port&amp;quot;&amp;gt;
+					  &amp;lt;value&amp;gt;8005&amp;lt;/value&amp;gt;
+					&amp;lt;/constructor-arg&amp;gt;
+				&amp;lt;/bean&amp;gt;
+				&amp;lt;bean class=&amp;quot;redis.clients.jedis.HostAndPort&amp;quot;&amp;gt;
+					&amp;lt;constructor-arg name=&amp;quot;host&amp;quot;&amp;gt;
+					 &amp;lt;value&amp;gt;124.70.181.124&amp;lt;/value&amp;gt;
+					&amp;lt;/constructor-arg&amp;gt;
+					&amp;lt;constructor-arg name=&amp;quot;port&amp;quot;&amp;gt;
+					  &amp;lt;value&amp;gt;8006&amp;lt;/value&amp;gt;
+					&amp;lt;/constructor-arg&amp;gt;
+				&amp;lt;/bean&amp;gt;
+			&amp;lt;/set&amp;gt;
+		&amp;lt;/constructor-arg&amp;gt;
+		&amp;lt;constructor-arg name=&amp;quot;poolConfig&amp;quot;&amp;gt;
+			&amp;lt;ref bean=&amp;quot;poolconfig&amp;quot;/&amp;gt;
+		&amp;lt;/constructor-arg&amp;gt;
+	&amp;lt;/bean&amp;gt;
+	
+	&amp;lt;!-- JedisDaoImplCluster --&amp;gt;
+	&amp;lt;bean id=&amp;quot;jedisDaoImplCluster&amp;quot; class=&amp;quot;com.cy.jedisdao.impl.JedisDaoImplCluster&amp;quot;&amp;gt;&amp;lt;/bean&amp;gt;
+&amp;lt;/beans&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试集群版&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Test {
+
+	public static void main(String[] args) {
+		//Test.testJedisSingle();
+		Test.testJedisCluster();
+	}
+
+	/**
+	 * 测试单机版Jedis
+	 */
+	public static void testJedisSingle(){
+		ApplicationContext ac = new ClassPathXmlApplicationContext(&amp;quot;applicationContext-Jedis.xml&amp;quot;);
+		JedisDao jd = (JedisDao)ac.getBean(&amp;quot;jedisDaoImplSingle&amp;quot;);
+		String str = jd.set(&amp;quot;hello&amp;quot;, &amp;quot;Redis&amp;quot;);
+		System.out.println(str);
+		String result = jd.get(&amp;quot;hello&amp;quot;);
+		System.out.println(result);
+	}
+	
+	/**
+	 * 测试集群版Jedis
+	 */
+	public static void testJedisCluster(){
+		ApplicationContext ac = new ClassPathXmlApplicationContext(&amp;quot;applicationContext-Jedis.xml&amp;quot;);
+		JedisDao jd = (JedisDao)ac.getBean(&amp;quot;jedisDaoImplCluster&amp;quot;);
+		String str = jd.set(&amp;quot;name&amp;quot;, &amp;quot;cy&amp;quot;);
+		System.out.println(str);
+		String result = jd.get(&amp;quot;name&amp;quot;);
+		System.out.println(result);
+	}
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;8-redis-desktop-manager-的使用&#34;&gt;8、Redis Desktop Manager 的使用&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;21&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200708143600.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;22&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200708143629.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;23&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200708143700.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;9-实战案例&#34;&gt;9、实战案例&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;需求&lt;br&gt;
+1）实现用户添加功能。&lt;br&gt;
+2）实现用户查询功能，并使用 Redis 作为查询缓存。&lt;br&gt;
+3）实现用户更新功能，同步缓存。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据库的表结构&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;CREATE TABLE `users` (
+`userid` int(11) NOT NULL AUTO_INCREMENT,
+`username` varchar(30) DEFAULT NULL,
+`userage` int(11) DEFAULT NULL,
+PRIMARY KEY (`userid`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;创建项目&lt;/li&gt;
+&lt;li&gt;修改 POM 文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;usermanger&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;packaging&amp;gt;war&amp;lt;/packaging&amp;gt;
+
+    &amp;lt;parent&amp;gt;
+        &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;redis-parent&amp;lt;/artifactId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;redis.clients&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;jedis&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!-- 单元测试 --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!-- 日志处理 --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.slf4j&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;slf4j-log4j12&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!-- Mybatis --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.mybatis&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;mybatis&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.mybatis&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;mybatis-spring&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!-- MySql --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!-- 连接池 --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!-- Spring --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-context&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-beans&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-webmvc&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-jdbc&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-aspects&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!-- JSP相关 --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;jstl&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;jstl&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;javax.servlet&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;servlet-api&amp;lt;/artifactId&amp;gt;
+            &amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;javax.servlet&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;jsp-api&amp;lt;/artifactId&amp;gt;
+            &amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!-- Jackson Json处理工具包 --&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.fasterxml.jackson.core&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;jackson-databind&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;${jackson.version}&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+
+    &amp;lt;build&amp;gt;
+        &amp;lt;resources&amp;gt;
+            &amp;lt;resource&amp;gt;
+                &amp;lt;directory&amp;gt;src/main/java&amp;lt;/directory&amp;gt;
+                &amp;lt;includes&amp;gt;
+                    &amp;lt;include&amp;gt;**/*.xml&amp;lt;/include&amp;gt;
+                &amp;lt;/includes&amp;gt;
+            &amp;lt;/resource&amp;gt;
+            &amp;lt;resource&amp;gt;
+                &amp;lt;directory&amp;gt;src/main/resources&amp;lt;/directory&amp;gt;
+                &amp;lt;includes&amp;gt;
+                    &amp;lt;include&amp;gt;**/*.xml&amp;lt;/include&amp;gt;
+                    &amp;lt;include&amp;gt;**/*.properties&amp;lt;/include&amp;gt;
+                &amp;lt;/includes&amp;gt;
+            &amp;lt;/resource&amp;gt;
+        &amp;lt;/resources&amp;gt;
+        &amp;lt;!-- tomcat插件，由于子项目不一定每个都是web项目，所以该插件只是声明，并未开启 --&amp;gt;
+        &amp;lt;plugins&amp;gt;
+            &amp;lt;!-- 配置Tomcat插件 --&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.apache.tomcat.maven&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;tomcat7-maven-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;configuration&amp;gt;
+                    &amp;lt;path&amp;gt;/&amp;lt;/path&amp;gt;
+                    &amp;lt;port&amp;gt;8080&amp;lt;/port&amp;gt;
+                &amp;lt;/configuration&amp;gt;
+            &amp;lt;/plugin&amp;gt;
+        &amp;lt;/plugins&amp;gt;
+    &amp;lt;/build&amp;gt;
+&amp;lt;/project&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;框架整合&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;24&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200708164009.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;添加用户&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;根据用户 ID 查询用户&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建 findUser.jsp&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;%@ page language=&amp;quot;java&amp;quot; contentType=&amp;quot;text/html; charset=UTF-8&amp;quot;
+    pageEncoding=&amp;quot;UTF-8&amp;quot;%&amp;gt;
+&amp;lt;!DOCTYPE html PUBLIC &amp;quot;-//W3C//DTD HTML 4.01 Transitional//EN&amp;quot; &amp;quot;http://www.w3.org/TR/html4/loose.dtd&amp;quot;&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html; charset=UTF-8&amp;quot;&amp;gt;
+&amp;lt;title&amp;gt;Insert title here&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+	&amp;lt;form action=&amp;quot;/user/findUserById&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;
+		用户ID:&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;userid&amp;quot;/&amp;gt;
+		&amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;OKOK&amp;quot;/&amp;gt;
+	&amp;lt;/form&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;UserMapper 与 UserMapper 映射配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;UserMapper 接口&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface UserMapper {
+
+	public void insertUser(Users user);
+	
+	public List&amp;lt;Users&amp;gt; selectUserAll();
+	
+	Users findUserById(int userid);
+	
+	void updateUser(Users users);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;映射配置文件&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE mapper PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot; &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot; &amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.bjsxt.mapper.UserMapper&amp;quot; &amp;gt;
+
+  &amp;lt;insert id=&amp;quot;insertUser&amp;quot; parameterType=&amp;quot;com.bjsxt.pojo.Users&amp;quot;&amp;gt;
+  		insert into users(username,userage) values(#{username},#{userage})
+  &amp;lt;/insert&amp;gt;
+  
+  &amp;lt;select id=&amp;quot;selectUserAll&amp;quot; resultType=&amp;quot;com.bjsxt.pojo.Users&amp;quot;&amp;gt;
+  		select * from users
+  &amp;lt;/select&amp;gt;
+  
+  &amp;lt;select id=&amp;quot;findUserById&amp;quot; resultType=&amp;quot;com.bjsxt.pojo.Users&amp;quot;&amp;gt;
+  		select * from users where userid = #{userid}
+  &amp;lt;/select&amp;gt;
+  
+  &amp;lt;select id=&amp;quot;updateUser&amp;quot; parameterType=&amp;quot;com.bjsxt.pojo.Users&amp;quot;&amp;gt;
+  		update users set username = #{username},userage = #{userage} where userid=#{userid}
+  &amp;lt;/select&amp;gt;
+&amp;lt;/mapper&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;实现业务&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Service
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	private UserMapper userMapper;
+
+	@Autowired
+	private JedisDao jedisDao;
+
+	@Value(&amp;quot;${REDIS_USERS_PRIFX}&amp;quot;)
+	private String REDIS_USERS_PRIFX;
+
+	@Override
+	public void addUser(Users users) {
+		this.userMapper.insertUser(users);
+	}
+
+	@Override
+	public Users findUserById(int userid) {
+        //先在redis中查询，如果没有再从数据库中查询并将查询结果放入redis中，并且返回user到controller
+		try {
+			// 查询缓存
+			String json = this.jedisDao.get(this.REDIS_USERS_PRIFX + &amp;quot;:&amp;quot; + userid);
+			// 在缓存中是否命中
+			if (json != null &amp;amp;&amp;amp; json.length() &amp;gt; 0) {
+				System.out.println(&amp;quot;.........................&amp;quot;);
+				Users user = JsonUtils.jsonToPojo(json, Users.class);
+				return user;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// 查询数据库
+		Users user = this.userMapper.findUserById(userid);
+		System.out.println(&amp;quot;,,,,,,,,,,,,,,,,,,,,,,,,,,,,,&amp;quot;);
+		try {
+			// 放入到redis中
+			String res = JsonUtils.objectToJson(user);
+			this.jedisDao.set(this.REDIS_USERS_PRIFX + &amp;quot;:&amp;quot; + userid, res);
+			this.jedisDao.expire(this.REDIS_USERS_PRIFX + &amp;quot;:&amp;quot; + userid, 60);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+
+	@Override
+	public void updateUser(Users users) {
+		this.userMapper.updateUser(users);
+		try{
+			//同步redis
+			this.jedisDao.del(this.REDIS_USERS_PRIFX+&amp;quot;:&amp;quot;+users.getUserid());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;controller&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Controller
+@RequestMapping(&amp;quot;/user&amp;quot;)
+public class UserController {
+
+	@Autowired
+	private UserService userService;
+	/**
+	 * 添加用户
+	 */
+	@RequestMapping(&amp;quot;/addUser&amp;quot;)
+	public String addUser(Users user){
+		this.userService.addUser(user);
+		return &amp;quot;ok&amp;quot;;
+	}
+	
+	/**
+	 * 根据用户ID查询用户
+	 */
+	@RequestMapping(&amp;quot;/findUserById&amp;quot;)
+	public String showUser(Model model,int userid){
+		Users users = this.userService.findUserById(userid);
+		model.addAttribute(&amp;quot;users&amp;quot;, users);
+		return &amp;quot;showUser&amp;quot;;
+	}
+	
+	/**
+	 * 更新用户
+	 */
+	@RequestMapping(&amp;quot;/updateUser&amp;quot;)
+	public String updateUser(Users users){
+		this.userService.updateUser(users);
+		return &amp;quot;ok&amp;quot;;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 ">Redis</a>
       </div>
       
