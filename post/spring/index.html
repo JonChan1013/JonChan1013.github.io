@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Spring | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1594891210091">
+<link rel="shortcut icon" href="/favicon.ico?v=1595093920239">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -2703,6 +2703,715 @@ SET FOREIGN_KEY_CHECKS = 1;
 &lt;p&gt;在海量数据下，对 MySQL 或 Oracle 进行模糊查询或条件查询的效率是很低的。而搜索功能在绝大多数项目中都是必须的，如何提升搜索效率是很多互联网项目必须要考虑的问题。&lt;br&gt;
 既然使用关系型数据库进行搜索效率比较低，最直接的解决方案就是使用专用搜索工具进行搜索，从而提升搜索效率。&lt;/p&gt;
 &lt;!-- more --&gt;
+&lt;h3 id=&#34;12-常见搜索解决方案&#34;&gt;1.2 常见搜索解决方案&lt;/h3&gt;
+&lt;p&gt;基于 Apache Lucene（全文检索工具库）实现搜索。但是 Lucene 的使用对于绝大多数的程序员都是“噩梦级”的。&lt;/p&gt;
+&lt;p&gt;基于谷歌 API 实现搜索。&lt;/p&gt;
+&lt;p&gt;基于百度 API 实现搜索。&lt;/p&gt;
+&lt;h3 id=&#34;13-solr-简介&#34;&gt;1.3 Solr 简介&lt;/h3&gt;
+&lt;p&gt;Solr 是基于 Apache Lucene 构建的用于搜索和分析的开源解决方案。可提供可扩展索引、搜索功能、高亮显示和文字解析功能。&lt;/p&gt;
+&lt;p&gt;Solr 本质就是一个 Java web 项目，且内嵌了 Jetty 服务器，所以安装起来非常方便。客户端操作 Solr 的过程和平时我们所写项目一样，就是请求 Solr 中控制器，处理完数据后把结果响应给客户端。&lt;/p&gt;
+&lt;h3 id=&#34;14-正向索引和反向索引&#34;&gt;1.4 正向索引和反向索引&lt;/h3&gt;
+&lt;p&gt;只要讨论搜索就不得不提的两个概念：正向索引（forward index）和反向索引(invertedindex)。&lt;/p&gt;
+&lt;p&gt;正向索引：从文档内容到词组的过程。每次搜索的时候需要搜索所有文档，每个文档比较搜索条件和词组。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;文档&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;词组&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;I am a chinese&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;I,am,a,chinses&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;反向索引：是正向索引的逆向。建立词组和文档的映射关系。通过找到词组就能找到文档内容。（和新华字典找字很像）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;词组&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;文档&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;I,am,a,chinses&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;I am a chinese&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;2-solr-搜索原理&#34;&gt;2、Solr 搜索原理&lt;/h2&gt;
+&lt;h3 id=&#34;21-搜索原理&#34;&gt;2.1 搜索原理&lt;/h3&gt;
+&lt;p&gt;Solr 能够提升检索效率的主要原因就是&lt;strong&gt;分词和索引（反向索引）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;分词：会对搜索条件/存储内容进行分词，分成日常所使用的词语。&lt;/p&gt;
+&lt;p&gt;索引：存储在 Solr 中内容会按照程序员的要求来是否建立索引。如果要求建立索引会把存储内容中关键字（分词）建立索引。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718221615.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;22-solr-中数据存储说明&#34;&gt;2.2 Solr 中数据存储说明&lt;/h3&gt;
+&lt;p&gt;Solr 为了给内容建立索引，所以 Solr 就必须具备数据存储能力。所有需要被搜索的内容都需要存储在 Solr 中，在开发中需要把数据库中数据添加到 Solr 中进行初始化，每次修改数据库中数据还需要同步 Solr 中的数据。&lt;/p&gt;
+&lt;p&gt;Solr 中数据存储是存储在 Document 对象中，对象中可以包含的属性和属性类型都定义在 schema.xml 中。如果需要自定义属性或自定义属性类型都需要修改 schema.xml 配置文件。从 Solr5 开始 schema.xml 更改名称为 managed-schema(没有扩展名)&lt;/p&gt;
+&lt;h2 id=&#34;3-solr-单机版安装&#34;&gt;3、 Solr 单机版安装&lt;/h2&gt;
+&lt;p&gt;Solr 是使用 Java 编写，所以必选先安装 JDK。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;上传并解压&lt;br&gt;
+上传压缩包 solr-8.2.0.tgz 到/usr/local/tmp 中。&lt;/p&gt;
+&lt;p&gt;解压&lt;/p&gt;
+&lt;p&gt;cd /usr/local/tmp&lt;/p&gt;
+&lt;p&gt;tar zxf solr-8.2.0.tgz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;复制到/usr/local 中&lt;/p&gt;
+&lt;p&gt;cp -r solr-8.2.0 ../solr&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改启动参数&lt;br&gt;
+修改启动参数，否则启动时报警告。提示设置 SOLR_ULIMIT_CHECKS=false&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;cd /usr/local/solr/bin&lt;/p&gt;
+&lt;p&gt;vim solr.in.sh&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718221843.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;启动 Solr&lt;br&gt;
+Solr 内嵌 Jetty，直接启动即可。默认监听 &lt;strong&gt;8983 端口。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Solr 默认不推荐 root 账户启动，如果是 root 账户启动需要添加-force 参数。&lt;/p&gt;
+&lt;p&gt;./solr start -force&lt;/p&gt;
+&lt;h2 id=&#34;4-可视化管理界面&#34;&gt;4、可视化管理界面&lt;/h2&gt;
+&lt;p&gt;在关闭防火墙的前提下，可以在 windows 的浏览器中访问 Solr。&lt;/p&gt;
+&lt;p&gt;输入: http://124.70.181.124:8983 就可以访问 Solr 的可视化管理界面。&lt;/p&gt;
+&lt;p&gt;左侧有 5 个菜单。分别是：&lt;/p&gt;
+&lt;p&gt;（1）Dashboard：面板显示 Solr 的总体信息。&lt;/p&gt;
+&lt;p&gt;（2）Logging：日志&lt;/p&gt;
+&lt;p&gt;（3）Core Admin：Solr 的核心。类似于数据的 Database&lt;/p&gt;
+&lt;p&gt;（4）Java Perperties：所有 Java 相关属性。&lt;/p&gt;
+&lt;p&gt;（5）Thread Dump：线程相关信息。&lt;/p&gt;
+&lt;p&gt;（6）如果有 Core，将显示在此处。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718222009.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;5-新建核心&#34;&gt;5、新建核心&lt;/h2&gt;
+&lt;p&gt;Solr 安装完成后默认是没有核心的。需要手动配置。&lt;/p&gt;
+&lt;p&gt;需要在 solr/server/solr 下新建文件夹，并给定配置文件，否则无法建立。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718222032.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;新建目录&lt;br&gt;
+在/usr/local/solr/server/solr 中新建自定义名称目录。此处示例名称为 testcore。&lt;/p&gt;
+&lt;p&gt;cd /usr/local/solr/server/solr&lt;/p&gt;
+&lt;p&gt;mkdir testcore&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;复制配置文件&lt;br&gt;
+在 configsets 里面包含了_default 和 sample_techproducts_configs。里面都是配置文件示例。_default 属于默认配置，较纯净。sample_techproducts_configs 是带有了一些配置示例。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;cp -r configsets/_default/conf/ testcore/&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;填写 Core 信息&lt;br&gt;
+在可视化管理界面中 Core Admin 中编写信息后点击 Add Core 后，短暂延迟后testcore 就会创建成功。schema 处不用更改。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718222147.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;出现 testcore&lt;br&gt;
+在客户端管理界面中，选择新建的 Core 后，就可以按照自己项目的需求进行操作了。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718222200.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;6-分词-analysis&#34;&gt;6、 分词 Analysis&lt;/h2&gt;
+&lt;p&gt;在 Solr 可 视 化 管 理 界 面 中 ， Core 的 管 理 菜 单 项 中 都 会 有 Analysis 。 表 示 根 据Scheme.xml(managed-schema)中配置要求进行解析。&lt;/p&gt;
+&lt;p&gt;对英文解析就比较简单了，只要按照空格把英文语句拆分成英文单词即可。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718222225.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;但是如果条件是中文时，把一句话按照字进行拆分就不是很合理了。正确的方式是按照合理的词组进行拆分。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718222236.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;61-中文分词器安装及配置步骤&#34;&gt;6.1 中文分词器安装及配置步骤&lt;/h3&gt;
+&lt;p&gt;上传 ik-analyzer.jar 到 webapps 中。&lt;/p&gt;
+&lt;p&gt;去 https://search.maven.org/search?q=com.github.magese 下 载 对 应 版 本 的ik-analyzer。可以在&amp;quot;软件/Analyzer&amp;quot;中直接获取。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;上传 jar 到指定目录&lt;br&gt;
+上传 ik-analyzer-8.2.0.jar 到&lt;/p&gt;
+&lt;p&gt;/usr/local/solr/server/solr-webapp/webapp/WEB-INF/lib 目录中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改配置文件&lt;br&gt;
+修改/usr/local/solr/server/solr/testcore/conf/managed-schema&lt;/p&gt;
+&lt;p&gt;vim /usr/local/solr/server/solr/testcore/conf/managed-schema&lt;/p&gt;
+&lt;p&gt;添加下面内容。&lt;/p&gt;
+&lt;p&gt;排版：Esc 退出编辑状态下：gg=G&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;field name=&amp;quot;myfield&amp;quot; type=&amp;quot;text_ik&amp;quot; indexed=&amp;quot;true&amp;quot; stored=&amp;quot;true&amp;quot; /&amp;gt;
+
+    &amp;lt;fieldType name=&amp;quot;text_ik&amp;quot; class=&amp;quot;solr.TextField&amp;quot;&amp;gt;
+      &amp;lt;analyzer type=&amp;quot;index&amp;quot;&amp;gt;
+        &amp;lt;tokenizer class=&amp;quot;org.wltea.analyzer.lucene.IKTokenizerFactory&amp;quot; 
+          useSmart=&amp;quot;false&amp;quot; conf=&amp;quot;ik.conf&amp;quot;/&amp;gt;
+        &amp;lt;filter class=&amp;quot;solr.LowerCaseFilterFactory&amp;quot;/&amp;gt;
+      &amp;lt;/analyzer&amp;gt;
+      &amp;lt;analyzer type=&amp;quot;query&amp;quot;&amp;gt;
+        &amp;lt;tokenizer class=&amp;quot;org.wltea.analyzer.lucene.IKTokenizerFactory&amp;quot; 
+          useSmart=&amp;quot;true&amp;quot; conf=&amp;quot;ik.conf&amp;quot;/&amp;gt;
+        &amp;lt;filter class=&amp;quot;solr.LowerCaseFilterFactory&amp;quot;/&amp;gt;
+      &amp;lt;/analyzer&amp;gt;
+    &amp;lt;/fieldType&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重启&lt;/p&gt;
+&lt;p&gt;cd /usr/local/solr/bin&lt;/p&gt;
+&lt;p&gt;./solr stop -all&lt;/p&gt;
+&lt;p&gt;./solr start -force&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;验证&lt;br&gt;
+可以在可视化管理界面中找到 myfield 属性进行验证。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718222452.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;62-managed-schema-配置说明&#34;&gt;6.2 managed-schema 配置说明&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;fieldType/&gt;
+表 示 定 义 一 个 属 性 类 型 。 在 Solr 中 属 性 类 型 都 是 自 定 义 的 。 在 上 面 配 置 中name=&#34;text_ik&#34;为自定义类型。当某个属性取值为 text_ik 时 IK Analyzer 才能生效。
+&lt;/li&gt;
+&lt;li&gt;
+&lt;field/&gt;
+表示向 Document 中添加一个属性。
+&lt;p&gt;常用属性：&lt;/p&gt;
+&lt;p&gt;name: 属性名&lt;/p&gt;
+&lt;p&gt;type:属性类型。所有类型都是 solr 使用&lt;fieldType&gt;配置的&lt;/p&gt;
+&lt;p&gt;indexed: 是否建立索引&lt;/p&gt;
+&lt;p&gt;stored: solr 是否把该属性值响应给搜索用户。&lt;/p&gt;
+&lt;p&gt;required：该属性是否是必须的。默认 id 是必须的。&lt;/p&gt;
+&lt;p&gt;multiValued：如果为 true，表示该属性为复合属性，此属性中包含了多个其他的属性。常用在多个列作为搜索条件时，把这些列定义定义成一个新的复合属性，通过搜索一个复合属性就可以实现搜索多个列。当设置为 true 时与&lt;copyField source=&#34;&#34; dest=&#34;&#34;/&gt;结合使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;uniqueKey&gt;
+唯一主键，Solr 中默认定义 id 属性为唯一主键。ID 的值是不允许重复的。
+&lt;/li&gt;
+&lt;li&gt;
+&lt;dynamicField&gt;
+名称中允许*进行通配。代表满足特定名称要求的一组属性。
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;7-dataimport&#34;&gt;7、 Dataimport&lt;/h2&gt;
+&lt;p&gt;可以使用 Solr 自带的 Dataimport 功能把数据库中数据快速导入到 solr 中.&lt;/p&gt;
+&lt;p&gt;必须保证 managed-schema 和数据库中表的列对应。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;修改配置文件&lt;br&gt;
+修改 solrconfig.xml，添加下面内容&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!-- 配置数据导入的处理器 --&amp;gt;
+
+ &amp;lt;requestHandler name=&amp;quot;/dataimport&amp;quot; class=&amp;quot;org.apache.solr.handler.dataimport.DataImportHandler&amp;quot;&amp;gt;
+
+	&amp;lt;lst name=&amp;quot;defaults&amp;quot;&amp;gt;
+
+		&amp;lt;!-- 加载 data-config.xml --&amp;gt;
+
+		&amp;lt;str name=&amp;quot;config&amp;quot;&amp;gt;data-config.xml&amp;lt;/str&amp;gt;
+
+	&amp;lt;/lst&amp;gt;
+
+ &amp;lt;/requestHandler&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新建 data-config.xml&lt;/p&gt;
+&lt;p&gt;和 solrconfig.xml 同一目录下新建 data-config.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;dataConfig&amp;gt;
+	&amp;lt;dataSource 
+		type=&amp;quot;JdbcDataSource&amp;quot;  
+		driver=&amp;quot;com.mysql.jdbc.Driver&amp;quot;
+		url=&amp;quot;jdbc:mysql://124.70.181.124:3306/ego2&amp;quot;
+		user=&amp;quot;root&amp;quot;
+		password=&amp;quot;Chenyong.123&amp;quot;/&amp;gt;&amp;lt;/dataSource&amp;gt;
+
+&amp;lt;document&amp;gt;
+
+	&amp;lt;entity name=&amp;quot;product&amp;quot; query=&amp;quot;SELECT id,title from tb_item&amp;quot;&amp;gt;
+
+	&amp;lt;!--实现数据库的列和索引库的字段的映射
+		column 指定数据库的列表
+		name 指定索引库的字段名字，必须和 schema.xml 中定义的一样
+	--&amp;gt;
+	&amp;lt;field column=&amp;quot;id&amp;quot; name=&amp;quot;id&amp;quot;/&amp;gt;
+	&amp;lt;field column=&amp;quot;title&amp;quot; name=&amp;quot;myfield&amp;quot;/&amp;gt;
+&amp;lt;/entity&amp;gt;
+&amp;lt;/document&amp;gt;
+
+&amp;lt;/dataConfig&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加 jar&lt;br&gt;
+向 solr-webapp 中添加三个 jar。在 dist 中两个还有一个数据库驱动。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718222810.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;操作&lt;br&gt;
+重启 solr 后，在可视化管理页面中进行数据导入。&lt;/p&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;p&gt;点击导入按钮后，要记得点击刷新按钮。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;8-菜单项目-documents-使用办法&#34;&gt;8、菜单项目 Documents 使用办法&lt;/h2&gt;
+&lt;p&gt;以 XML 格式举例&lt;/p&gt;
+&lt;h3 id=&#34;81-新增修改&#34;&gt;8.1 新增/修改&lt;/h3&gt;
+&lt;p&gt;当 id 不存在时新增，当 id 存在修改。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;doc&amp;gt;
+
+&amp;lt;field name=&amp;quot;id&amp;quot;&amp;gt;8&amp;lt;/field&amp;gt;
+
+&amp;lt;field name=&amp;quot;name&amp;quot;&amp;gt;明天更大卖&amp;lt;/field&amp;gt;
+
+&amp;lt;field name=&amp;quot;price&amp;quot;&amp;gt;98&amp;lt;/field&amp;gt;
+
+&amp;lt;/doc&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;82-删除&#34;&gt;8.2  删除&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;根据主键删除&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;delete&amp;gt;
+
+&amp;lt;id&amp;gt;8&amp;lt;/id&amp;gt;
+
+&amp;lt;/delete&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;根据条件删除&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;delete&amp;gt;
+
+&amp;lt;query&amp;gt;*:*&amp;lt;/query&amp;gt;
+
+&amp;lt;/delete&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;9-菜单项目-query-查询使用办法&#34;&gt;9、菜单项目 query 查询使用办法&lt;/h2&gt;
+&lt;h3 id=&#34;91-查询全部&#34;&gt;9.1  查询全部&lt;/h3&gt;
+&lt;p&gt;只要在 q 参数中写入*:*既是搜索全部数据。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718223217.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;92-条件查询&#34;&gt;9.2 条件查询&lt;/h3&gt;
+&lt;p&gt;在 q 参数部分写入 字段名:搜索条件值， 既是条件搜索&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718223236.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;93-分页查询&#34;&gt;9.3 分页查询&lt;/h3&gt;
+&lt;p&gt;在条件 start,rows 中输入从第几条数据开始查询，查询多少条数据。下标从 0 开始。类似 MySQL 数据库中的 limit。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718223256.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;94-查询排序&#34;&gt;9.4 查询排序&lt;/h3&gt;
+&lt;p&gt;在 sort 条件中输入 字段名 排序规则。 排序规则包括 asc 和 desc。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718223320.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;95-高亮查询&#34;&gt;9.5 高亮查询&lt;/h3&gt;
+&lt;p&gt;选中 hl 高亮复选框，在 hl.fl 中输入高亮显示的字段名称，在 hl.simple.pre 中输入高亮前缀，在 hl.simple.post 中输入高亮后缀。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200718223339.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;10-使用-solrj-操作-solr&#34;&gt;10、使用 SolrJ 操作 Solr&lt;/h2&gt;
+&lt;p&gt;SolrJ 是 Solr 提供的 Java 客户端 API。通过 SolrJ 可以实现 Java 程序对 Solr 中数据的操作。&lt;/p&gt;
+&lt;p&gt;大前提：添加 SolrJ 依赖。依赖版本和 Solr 版本严格对应&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt; &amp;lt;dependencies&amp;gt;
+     &amp;lt;dependency&amp;gt;
+         &amp;lt;groupId&amp;gt;org.apache.solr&amp;lt;/groupId&amp;gt;
+         &amp;lt;artifactId&amp;gt;solr-solrj&amp;lt;/artifactId&amp;gt;
+         &amp;lt;version&amp;gt;8.2.0&amp;lt;/version&amp;gt;
+     &amp;lt;/dependency&amp;gt;
+ &amp;lt;/dependencies&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 使用SolrJ访问Solr服务。
+ */
+public class FirstAccess {
+    public static void main(String[] args) {
+        search();
+    }
+
+    // 搜索数据
+    public static void search(){
+        HttpSolrClient client = null;
+        try{
+            String url = &amp;quot;http://124.70.181.124:8983/solr/testcore&amp;quot;;
+            client = new HttpSolrClient.Builder(url).build();
+
+            // 创建搜索条件对象。
+            SolrQuery params = new SolrQuery();
+            // 提供搜索关键字， q  *:*
+            params.setQuery(&amp;quot;title_zh_cn:管理&amp;quot;);
+
+            // 排序
+            params.setSort(&amp;quot;id&amp;quot;, SolrQuery.ORDER.asc);
+
+            // 分页
+            params.setStart(0); // 第几行开始查询
+            params.setRows(3); // 查询多少行
+
+            // 高亮
+            // 开启高亮
+            params.setHighlight(true);
+            // 设置高亮字段，如果有多个高亮字段，多次调用当前方法。
+            params.addHighlightField(&amp;quot;title_zh_cn&amp;quot;);
+            // 设置高亮前缀
+            params.setHighlightSimplePre(&amp;quot;&amp;lt;span style=&#39;color:red&#39;&amp;gt;&amp;quot;);
+            // 设置高亮后缀
+            params.setHighlightSimplePost(&amp;quot;&amp;lt;/span&amp;gt;&amp;quot;);
+
+            // 搜索数据
+            QueryResponse response = client.query(params);
+
+            // 从响应中获取高亮结果数据集合 {主键:{字段名:[&amp;quot;高亮数据&amp;quot;, &amp;quot;高亮数据&amp;quot;]}}
+            Map&amp;lt;String, Map&amp;lt;String, List&amp;lt;String&amp;gt;&amp;gt;&amp;gt; highlightMap = response.getHighlighting();
+
+            // 获取搜索返回结果集合  SolrDocumentList 是List接口的实现。 固定泛型是 SolrDocument
+            SolrDocumentList docList = response.getResults();
+            System.out.println(&amp;quot;本次查询返回数据行数&amp;quot; + docList.size());
+            System.out.println(&amp;quot;本次搜索总计数据行数&amp;quot; + docList.getNumFound());
+            for(SolrDocument doc : docList){
+                System.out.print(doc + &amp;quot;【 id = &amp;quot; + doc.getFieldValue(&amp;quot;id&amp;quot;)
+                        + &amp;quot;， title_zh_cn = &amp;quot; + doc.getFieldValue(&amp;quot;title_zh_cn&amp;quot;) + &amp;quot;】&amp;quot;);
+
+                // 输出高亮
+                // 根据当前文档主键查询高亮数据
+                Map&amp;lt;String, List&amp;lt;String&amp;gt;&amp;gt; entry = highlightMap.get(doc.getFieldValue(&amp;quot;id&amp;quot;));
+                if(null != entry &amp;amp;&amp;amp; entry.size() &amp;gt; 0){
+                    // 有高亮数据
+                    List&amp;lt;String&amp;gt; hlStrList = entry.get(&amp;quot;title_zh_cn&amp;quot;);
+                    System.out.println(&amp;quot; 高亮数据内容是：【&amp;quot; + hlStrList + &amp;quot;】&amp;quot;);
+                }
+
+                System.out.println();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                client.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // 删除数据
+    public static void delete(){
+        HttpSolrClient client = null;
+        try{
+            String url = &amp;quot;http://124.70.181.124:8983/solr/testcore&amp;quot;;
+            client = new HttpSolrClient.Builder(url).build();
+
+            // 删除数据
+            client.deleteById(&amp;quot;2000&amp;quot;);  // 删除单数据
+
+            client.deleteById(Arrays.asList(&amp;quot;100&amp;quot;, &amp;quot;101&amp;quot;, &amp;quot;102&amp;quot;, &amp;quot;103&amp;quot;)); // 批量删除
+
+            client.deleteByQuery(&amp;quot;title_zh_cn:角色&amp;quot;); // 条件删除， 条件格式 -  字段名:条件数据
+
+            client.commit();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                client.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // 保存数据到Solr，如果主键字段id值唯一就是新增，不唯一就是覆盖（更新）
+    public static void save(){
+        HttpSolrClient client = null;
+        try {
+            // 创建客户端
+            String url = &amp;quot;http://124.70.181.124:8983/solr/testcore&amp;quot;;
+            client = new HttpSolrClient.Builder(url).build();
+
+            // 创建要保存的数据对象
+            SolrInputDocument doc = new SolrInputDocument();
+            doc.addField(&amp;quot;id&amp;quot;, &amp;quot;2000&amp;quot;);
+            doc.addField(&amp;quot;title_zh_cn&amp;quot;, &amp;quot;SolrJ保存数据-二次执行&amp;quot;);
+
+            // 执行数据保存
+            client.add(doc);
+
+            // 事务管理
+            client.commit(); // 提交当前url指向的core collection
+            // client.commit(&amp;quot;testcore&amp;quot;);  // 提供core collection名称，指定提交事务
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            // 回收资源
+            try {
+                client.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;11-spring-data-for-apache-solr&#34;&gt;11、 Spring Data for Apache Solr&lt;/h2&gt;
+&lt;h3 id=&#34;111-spring-data-简介&#34;&gt;11.1 Spring Data 简介&lt;/h3&gt;
+&lt;p&gt;Spring Data 是 Spring 的顶级项目。里面包含了 N 多个二级子项目，每个子项目对应一种技术或工具。其目的为了让数据访问更加简单，更加方便的和 Spring 进行整合。&lt;/p&gt;
+&lt;p&gt;Spring Data 项目如果单独使用是还需要配置 XML 配置文件的，当和 Spring Boot整合后使用起来非常方便。spring-boot-starter-data-xx 就是对应的启动器。&lt;/p&gt;
+&lt;h3 id=&#34;112-实现步骤&#34;&gt;11.2 实现步骤&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;添加依赖&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;dependencyManagement&amp;gt;
+        &amp;lt;dependencies&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;spring-boot-dependencies&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;2.2.5.RELEASE&amp;lt;/version&amp;gt;
+                &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;
+                &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+        &amp;lt;/dependencies&amp;gt;
+    &amp;lt;/dependencyManagement&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-starter&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt;
+            &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-starter-data-solr&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;编写配置文件&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;spring:
+  data:
+    solr:
+      host: http://124.70.181.124:8983/solr # 配置solr服务器所在地址
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写实体类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@SolrDocument(collection = &amp;quot;testcore&amp;quot;)
+public class Menu implements Serializable {
+    // @Id - 代表当前字段是唯一主键字段。 在高亮查询的时候，需要检查。
+    @Field(value = &amp;quot;id&amp;quot;)
+    @Id
+    private Long id;
+    @Field(value = &amp;quot;myfield&amp;quot;)
+    private String title;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Menu(Long id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
+    public Menu() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Menu menu = (Menu) o;
+        return Objects.equals(id, menu.id) &amp;amp;&amp;amp;
+                Objects.equals(title, menu.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title);
+    }
+
+    @Override
+    public String toString() {
+        return &amp;quot;Menu{&amp;quot; +
+                &amp;quot;id=&amp;quot; + id +
+                &amp;quot;, title=&amp;quot; + title +
+                &#39;}&#39;;
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写测试类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * SpringBootTest测试类型
+ */
+@SpringBootTest(classes = {FirstSolrApp.class})
+@RunWith(SpringRunner.class)
+public class TestSolr {
+    /**
+     * SpringData的所有子工程，几乎都会提供一个XxxTemplate类型，
+     * 这个Template是用来实现客户端服务器数据交互的对象。
+     */
+    @Autowired
+    private SolrTemplate template;
+
+    /**
+     * 保存数据
+     * 使用SpringData开发数据访问的时候，不要回收资源，因为SpringData会自动维护数据源连接池
+     */
+    @Test
+    public void testSave() {
+        //创建要保存的对象
+        SolrInputDocument doc = new SolrInputDocument();
+        doc.addField(&amp;quot;id&amp;quot;, &amp;quot;2000&amp;quot;);
+        doc.addField(&amp;quot;myfield&amp;quot;, &amp;quot;使用SpringDataForApacheSolr实现数据保存&amp;quot;);
+        //数据保存。主键唯一是新增，不是则为覆盖
+        UpdateResponse response = template.saveBean(&amp;quot;testcore&amp;quot;, doc);
+
+        System.out.println(response.getStatus() == 0 ? &amp;quot;保存成功&amp;quot; : &amp;quot;保存失败&amp;quot;);
+
+        //提交事务
+        template.commit(&amp;quot;testcore&amp;quot;);
+    }
+
+    /**
+     * 输出数据
+     */
+    @Test
+    public void testDelete() {
+        //主键删除唯一数据
+        UpdateResponse response = template.deleteByIds(&amp;quot;testcore&amp;quot;, &amp;quot;2000&amp;quot;);
+        System.out.println(response.getStatus() == 0 ? &amp;quot;删除成功&amp;quot; : &amp;quot;删除失败&amp;quot;);
+
+        //根据主键批量删除数据
+        response = template.deleteByIds(&amp;quot;testcore&amp;quot;, Arrays.asList(&amp;quot;20001&amp;quot;, &amp;quot;2002&amp;quot;));
+        System.out.println(response.getStatus() == 0 ? &amp;quot;批量删除成功&amp;quot; : &amp;quot;批量删除失败&amp;quot;);
+
+        //根据查询条件删除
+        SimpleQuery query = new SimpleQuery();
+        // Criteria.where(&amp;quot;title_zh_cn&amp;quot;) - 提供一个搜索条件，对应的字段名是什么
+        // criteria.is(&amp;quot;参数&amp;quot;) - 为这个搜索条件绑定具体的参数值
+        query.addCriteria(Criteria.where(&amp;quot;myfield&amp;quot;).is(&amp;quot;Spring&amp;quot;));
+        response = template.delete(&amp;quot;testcore&amp;quot;, query);
+        System.out.println(response.getStatus() == 0 ? &amp;quot;条件删除成功&amp;quot; : &amp;quot;条件删除失败&amp;quot;);
+
+        //提交事务
+        template.commit(&amp;quot;testcore&amp;quot;);
+
+    }
+
+    /**
+     * 搜索数据
+     */
+    @Test
+    public void testSearch(){
+        //创建搜索条件
+        SimpleQuery query = new SimpleQuery();
+        query.addCriteria(Criteria.where(&amp;quot;myfield&amp;quot;).is(&amp;quot;数据&amp;quot;));
+
+        //分页
+        query.setOffset(0L); //第几行开始查询
+        query.setRows(3); //查询多少数据
+        //排序
+        query.addSort(Sort.by(Sort.Direction.DESC,&amp;quot;id&amp;quot;));
+
+        //执行搜索
+        // 参数 ：collection - 索引库名称， query - 搜索条件， Class - 实体类对象
+        ScoredPage&amp;lt;Menu&amp;gt; scoredPage = template.queryForPage(&amp;quot;testcore&amp;quot;, query, Menu.class);
+
+        //处理结果
+        System.out.println(&amp;quot;总计数据行数:&amp;quot;+scoredPage.getTotalElements());
+        System.out.println(&amp;quot;总计页码数:&amp;quot;+scoredPage.getTotalPages());
+        //搜索的结果集合
+        List&amp;lt;Menu&amp;gt; list = scoredPage.getContent();
+        System.out.println(list);
+    }
+
+    /**
+     * 高亮搜索
+     */
+    @Test
+    public void testHighlightSearch(){
+        SimpleHighlightQuery query = new SimpleHighlightQuery();
+        query.addCriteria(Criteria.where(&amp;quot;myfield&amp;quot;).is(&amp;quot;数据&amp;quot;));
+        // 设置高亮
+        // 创建高亮设置对象
+        HighlightOptions options = new HighlightOptions();
+        // 设置高亮字段名
+        options.addField(&amp;quot;myfield&amp;quot;);
+        // 设置高亮前后缀
+        options.setSimplePrefix(&amp;quot;&amp;lt;span&amp;gt;&amp;quot;);
+        options.setSimplePostfix(&amp;quot;&amp;lt;/span&amp;gt;&amp;quot;);
+        query.setHighlightOptions(options);
+
+        // 搜索
+        HighlightPage&amp;lt;Menu&amp;gt; page = template.queryForHighlightPage(&amp;quot;testcore&amp;quot;, query, Menu.class);
+        List&amp;lt;Menu&amp;gt; result = new ArrayList&amp;lt;&amp;gt;();
+        // 获取搜索结果中高亮处理过的结果。
+        List&amp;lt;HighlightEntry&amp;lt;Menu&amp;gt;&amp;gt; list = page.getHighlighted();
+        for(HighlightEntry&amp;lt;Menu&amp;gt; entry: list){
+            // 获取entry中的高亮数据集合
+            List&amp;lt;HighlightEntry.Highlight&amp;gt; highlights = entry.getHighlights();
+            // 获取没有经过高亮处理的结果对象
+            Menu menu = entry.getEntity();
+            for (HighlightEntry.Highlight highlight : highlights){
+                // 判断高亮数据的字段是否是自己需要的。
+                if(highlight.getField().getName().equals(&amp;quot;myfield&amp;quot;)) {
+                    // 获取高亮处理的字符串
+                    String highlightString = highlight.getSnipplets().get(0);
+                    // 把高亮处理的字符串赋值给对象。
+                    menu.setTitle(highlightString);
+                }
+            }
+            result.add(menu);
+        }
+        System.out.println(result);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;12-solrcloud&#34;&gt;12、SolrCloud&lt;/h2&gt;
+&lt;p&gt;Solr 可以搭建具备容错能力和高可用的 Solr 集群。集群中集群配置、自动负载均衡和查询故障转移、Zookeeper 集群实现集群协调管理，这些全部功能统称为 SolrCloud。&lt;/p&gt;
+&lt;p&gt;SolrCloud 是基于 Zookeeper 进行管理的。在 Solr 中已经内置了 Zookeeper 相关内容，当执行集群创建命令会自动创建 Zookeeper 相关内容。这个使用的是 Zookeeper 的集群管理功能实现的。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建&lt;br&gt;
+SolrCloud 已经包含在了 Solr 中，可以直接启动 Solr 集群。&lt;/p&gt;
+&lt;p&gt;./solr -e cloud -noprompt -force&lt;/p&gt;
+&lt;p&gt;此命令等同于# ./solr -e cloud -force 全部参数为默认值。&lt;/p&gt;
+&lt;p&gt;运行成功后会在 example 文件夹多出 cloud 文件夹。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;停止&lt;/p&gt;
+&lt;p&gt;./solr stop -all&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重新运行&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;./solr start -c -p 8983 -s ../example/cloud/node1/solr/ -force&lt;/p&gt;
+&lt;p&gt;./solr start -c -p 7574 -z localhost:9983 -s ../example/cloud/node2/solr/ -force&lt;/p&gt;
 ">Solr</a>
       </div>
       
