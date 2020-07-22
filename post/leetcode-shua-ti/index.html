@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>LeetCode刷题 | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1595099002228">
+<link rel="shortcut icon" href="/favicon.ico?v=1595444853412">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -218,7 +218,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">27</span>
+        <span class="site-item-stat-count">28</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1714,11 +1714,1551 @@
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/logstash_kibana/"" data-c="
+          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200723030527.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-logstash-简介&#34;&gt;1、LogStash 简介&lt;/h2&gt;
+&lt;h3 id=&#34;11-什么是logstash&#34;&gt;1.1 什么是LogStash&lt;/h3&gt;
+&lt;p&gt;官方文字说明：Logstash 是开源的服务器端数据处理管道，能够同时从多个来源采集数据，转换数据，然后将数据发送到您最喜欢的“存储库”中。&lt;br&gt;
+通俗说明：Logstash 是一款强大的数据处理工具，常用作日志处理。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200723030716.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+到目前为止，Logstash 已经有超过 200 个可用的插件，以及创建和贡献自己的灵活性。社区生态非常完善，对于我们可以放心的使用。&lt;/p&gt;
+">Logstash_Kibana</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/elasticsearch/"" data-c="
           &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200719014000.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;1-什么是-elastic-search&#34;&gt;1、什么是 Elastic Search&lt;/h2&gt;
 &lt;p&gt;ElasticSearch 是一个基于 Lucene 的搜索服务器。它提供了一个分布式的全文搜索引擎，其对外服务是基于 RESTful web 接口发布的。Elasticsearch 是用 Java 开发的应用，并作为 Apache 许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到近实时搜索，稳定，可靠，快速，安装使用方便。&lt;/p&gt;
 &lt;!-- more --&gt;
+&lt;h3 id=&#34;11-相关概念&#34;&gt;1.1 相关概念&lt;/h3&gt;
+&lt;h4 id=&#34;111-cluster&#34;&gt;1.1.1  cluster&lt;/h4&gt;
+&lt;p&gt;集群。ElasticSearch 集群由一或多个节点组成，其中有一个主节点，这个主节点是可以通过选举产生的，主从节点是对于集群内部来说的。ElasticSearch 的一个概念就是去中心化，字面上理解就是无中心节点，这是对于集群外部来说的，因为从外部看 ElasticSearch集群，在逻辑上是个整体，你与集群中的任何一个节点通信和与整个 ElasticSearch 集群通信是等价的。也就是说，主节点的存在不会产生单点安全隐患、并发访问瓶颈等问题。&lt;/p&gt;
+&lt;h4 id=&#34;112-shards&#34;&gt;1.1.2 shards&lt;/h4&gt;
+&lt;p&gt;primary shard：代表索引的主分片，ElasticSearch 可以把一个完整的索引分成多个primary shard，这样的好处是可以把一个大的索引拆分成多个分片，分布存储在不同的ElasticSearch 节点上，从而形成分布式存储，并为搜索访问提供分布式服务，提高并发处理能。primary shard 的数量只能在索引创建时指定，并且索引创建后不能再更改 primaryshard 数量。&lt;/p&gt;
+&lt;h4 id=&#34;113-replicas&#34;&gt;1.1.3 replicas&lt;/h4&gt;
+&lt;p&gt;replica shard：代表索引主分片的副本，ElasticSearch 可以设置多个 replica shard。replica shard 的作用：一是提高系统的容错性，当某个节点某个 primary shard 损坏或丢失时可以从副本中恢复。二是提高 ElasticSearch 的查询效率，ElasticSearch 会自动对搜索请求进行负载均衡，将并发的搜索请求发送给合适的节点，增强并发处理能力。&lt;/p&gt;
+&lt;h4 id=&#34;114-index&#34;&gt;1.1.4  Index&lt;/h4&gt;
+&lt;p&gt;索引。相当于关系型数据库中的表。其中存储若干相似结构的 Document 数据。如：客户索引，订单索引，商品索引等。ElasticSearch 中的索引不像数据库表格一样有强制的数据结构约束，在理论上，可以存储任意结构的数据。但了为更好的为业务提供搜索数据支撑，还是要设计合适的索引体系来存储不同的数据。&lt;/p&gt;
+&lt;h4 id=&#34;115-type&#34;&gt;1.1.5 Type&lt;/h4&gt;
+&lt;p&gt;类型。每个索引中都必须有唯一的一个 Type，Type 是 Index 中的一个逻辑分类。ElasticSearch 中的数据 Document 是存储在索引下的 Type 中的。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;注 意 ： ElasticSearch5.x 及 更 低 版 本 中 ， 一 个 Index 中 可 以 有 多 个 Type 。ElasticSearch6.x 版本之后，type 概念被弱化，一个 index 中只能有唯一的一个 type。且在 7.x 版本之后，删除 type 定义。&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id=&#34;116-document&#34;&gt;1.1.6  Document&lt;/h4&gt;
+&lt;p&gt;文档。ElasticSearch 中的最小数据单元。一个 Document 就是一条数据，一般使用JSON 数据结构表示。每个 Index 下的 Type 中都可以存储多个 Document。一个 Document中可定义多个 field，field 就是数据字段。如：学生数据（{&amp;quot;name&amp;quot;:&amp;quot;张三&amp;quot;, &amp;quot;age&amp;quot;:20,&amp;quot;gender&amp;quot;:&amp;quot;男&amp;quot;}）。&lt;/p&gt;
+&lt;h4 id=&#34;117-反向索引倒排索引&#34;&gt;1.1.7 反向索引|倒排索引&lt;/h4&gt;
+&lt;p&gt;对数据进行分析，抽取出数据中的词条，以词条作为 key，对应数据的存储位置作为value，实现索引的存储。这种索引称为倒排索引。倒排索引是 Document 写入 ElasticSearch时分析维护的。&lt;/p&gt;
+&lt;p&gt;如：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;数据&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;商品主键&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;商品名&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;商品描述&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;荣耀 10&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;更贵的手机&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;荣耀 8&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;相对便宜的手机&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;IPHONE X&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;要卖肾买的手机&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200720091147.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;12-elasticsearch-常见使用场景&#34;&gt;1.2 ElasticSearch 常见使用场景&lt;/h3&gt;
+&lt;p&gt;维基百科：全文检索，高亮显示，搜索推荐&lt;/p&gt;
+&lt;p&gt;The Guardian（国外的一个新闻网站），此平台可以对用户的行为（点击、浏览、收藏、评论）、社区网络数据（对新闻的评论等）进行数据分析，为新闻的发布者提供相关的公众反馈。&lt;/p&gt;
+&lt;p&gt;Stack Overflow（国外的程序异常讨论论坛）&lt;/p&gt;
+&lt;p&gt;Github（开源代码管理），在千亿级别的代码行中搜索信息&lt;/p&gt;
+&lt;p&gt;电子商务平台等。&lt;/p&gt;
+&lt;h3 id=&#34;13-为什么不用数据库做搜索&#34;&gt;1.3 为什么不用数据库做搜索？&lt;/h3&gt;
+&lt;h4 id=&#34;131-查询语法复杂度高&#34;&gt;1.3.1  查询语法复杂度高。&lt;/h4&gt;
+&lt;p&gt;如：电商系统中搜索商品数据 - select * from products where name like &#39;%关键字%&#39; and price bewteen xxx and yyy and ......。不同的用户提供的查询条件不同，需要提供的动态 SQL 过于复杂。&lt;/p&gt;
+&lt;h4 id=&#34;132-关键字索引不全面搜索结果不符合要求&#34;&gt;1.3.2 关键字索引不全面，搜索结果不符合要求&lt;/h4&gt;
+&lt;p&gt;如：电商系统中查询商品数据，条件为商品名包含&#39;笔记本电脑&#39;。那么对此关键字的分析结果为-笔记本、电脑、笔记等。对应的查询语法应该为 - select * from products where name like &#39;%笔记本%&#39; or name like &#39;%电脑%&#39; .......&lt;/p&gt;
+&lt;h4 id=&#34;133-效率问题&#34;&gt;1.3.3 效率问题&lt;/h4&gt;
+&lt;p&gt;数据量越大，查询反应效率越低。&lt;/p&gt;
+&lt;h2 id=&#34;2-linux-安装-elasticsearch&#34;&gt;2、Linux 安装 ElasticSearch&lt;/h2&gt;
+&lt;p&gt;使用的 ElasticSearch 的版本是 6.8.4。ElasticSearch6.x 要求 Linux 内核必须是 3.5+版本以上。&lt;/p&gt;
+&lt;p&gt;在 linux 操作系统中，查看内核版本的命令是： uname -a&lt;/p&gt;
+&lt;p&gt;课堂使用的 Linux 是 CentOS8。内核使用的是 4.4。&lt;/p&gt;
+&lt;p&gt;ElasticSearch6.X 版本要求 JDK 版本至少是 1.8.0_131。 提供 1.8.0_161JDK 安装包。&lt;/p&gt;
+&lt;h3 id=&#34;21-为-elasticsearch-提供完善的系统配置&#34;&gt;2.1  为 ElasticSearch 提供完善的系统配置&lt;/h3&gt;
+&lt;p&gt;ElasticSearch 在 Linux 中安装部署的时候，需要系统为其提供若干系统配置。如：应用可启动的线程数、应用可以在系统中划分的虚拟内存、应用可以最多创建多少文件等。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;修改限制信息&lt;br&gt;
+vi /etc/security/limits.conf&lt;/p&gt;
+&lt;p&gt;是修改系统中允许应用最多创建多少文件等的限制权限。Linux 默认来说，一般限制应用最多创建的文件是 65535 个。但是 ElasticSearch 至少需要 65536 的文件创建权限。修改后的内容为：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;* soft nofile 65536&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;* hard nofile 65536&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改线程开启限制&lt;br&gt;
+在 CentOS6.5 版本中编辑下述的配置文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;vi /etc/security/limits.d/90-nproc.conf&lt;/p&gt;
+&lt;p&gt;在 CentOS7+版本中编辑配置文件是：&lt;/p&gt;
+&lt;p&gt;vi /etc/security/limits.conf&lt;/p&gt;
+&lt;p&gt;是修改系统中允许用户启动的进程开启多少个线程。默认的 Linux 限制 root 用户开启的进程可以开启任意数量的线程，其他用户开启的进程可以开启 1024 个线程。必须修改限制数为 4096+。因为 ElasticSearch 至少需要 4096 的线程池预备。ElasticSearch 在 5.x版本之后，强制要求在 linux 中不能使用 root 用户启动 ElasticSearch 进程。所以必须使用其他用户启动 ElasticSearch 进程才可以。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;* soft nproc 4096&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;root soft nproc unlimited&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;注意：Linux 低版本内核为线程分配的内存是 128K。4.x 版本的内核分配的内存更大。如果虚拟机的内存是 1G，最多只能开启 3000+个线程数。至少为虚拟机分配 1.5G 以上的内存。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;修改系统控制权限&lt;br&gt;
+CentOS6.5 中的配置文件为：&lt;/p&gt;
+&lt;p&gt;vi /etc/sysctl.conf&lt;/p&gt;
+&lt;p&gt;CentOS8 中的配置文件为：&lt;/p&gt;
+&lt;p&gt;vi /etc/sysctl.d/99-sysctl.conf&lt;/p&gt;
+&lt;p&gt;系统控制文件是管理系统中的各种资源控制的配置文件。ElasticSearch 需要开辟一个65536 字节以上空间的虚拟内存。Linux 默认不允许任何用户和应用直接开辟虚拟内存。&lt;/p&gt;
+&lt;p&gt;新增内容为：&lt;/p&gt;
+&lt;p&gt;vm.max_map_count=655360&lt;/p&gt;
+&lt;p&gt;使用命令： sysctl -p 。 让系统控制权限配置生效。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;22-安装-elasticsearch&#34;&gt;2.2 安装 ElasticSearch&lt;/h3&gt;
+&lt;p&gt;ElasticSearch 是 java 开发的应用。在 6.8.4 版本中，要求 JDK 至少是 1.8.0_131 版本以上。&lt;/p&gt;
+&lt;p&gt;ElasticSearch 的安装过程非常简单。解压立刻可以使用。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;解压缩安装压缩包&lt;br&gt;
+tar -zxf elasticsearch-6.8.4.tar.gz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;移动 ElasticSearch&lt;br&gt;
+mv elasticsearch-6.8.4 /usr/local/elasticsearch/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 ElasticSearch 应用的所有者&lt;br&gt;
+因为 ElasticSearch 不允许 root 用户启动，而课堂案例中，ElasticSearch 是 root 用户 解 压 缩 的 。 所 以 解 压 后 的 ElasticSearch 应 用 属 于 root 用 户 。 所 以 我 们 需 要 将ElasticSearch 应用的所有者修改为其他用户。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;chown -R user.user  /usr/local/elasticsearch&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;切换用户&lt;/p&gt;
+&lt;p&gt;su user&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改配置&lt;br&gt;
+修改 config/elasticsearch 的配置文件，设置可访问的客户端。0.0.0.0 代表任意客户端访问。&lt;/p&gt;
+&lt;p&gt;vi config/elasticsearch.yml&lt;/p&gt;
+&lt;p&gt;增加下述内容：&lt;/p&gt;
+&lt;p&gt;network.host: 0.0.0.0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动&lt;br&gt;
+前台启动&lt;/p&gt;
+&lt;p&gt;/usr/local/elasticsearch/bin/elasticsearch&lt;/p&gt;
+&lt;p&gt;关闭： ctrl + c&lt;/p&gt;
+&lt;p&gt;后台启动&lt;/p&gt;
+&lt;p&gt;/usr/local/elasticsearch/bin/elasticsearch -d&lt;/p&gt;
+&lt;p&gt;关闭：&lt;/p&gt;
+&lt;p&gt;jps 命令查看 ElasticSearch 线程的编号&lt;/p&gt;
+&lt;p&gt;kill -9 ElasticSearch 线程编号&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试连接&lt;br&gt;
+curl http://localhost:9200&lt;/p&gt;
+&lt;p&gt;返回如下结果：&lt;/p&gt;
+&lt;p&gt;{&lt;/p&gt;
+&lt;p&gt;&amp;quot;name&amp;quot; : &amp;quot;L6WdN7y&amp;quot;,&lt;/p&gt;
+&lt;p&gt;&amp;quot;cluster_name&amp;quot; : &amp;quot;elasticsearch&amp;quot;,&lt;/p&gt;
+&lt;p&gt;&amp;quot;cluster_uuid&amp;quot; : &amp;quot;s7_GSd9YQnaH10VQBKCQ5w&amp;quot;,&lt;/p&gt;
+&lt;p&gt;&amp;quot;version&amp;quot; : {&lt;/p&gt;
+&lt;p&gt;&amp;quot;number&amp;quot; : &amp;quot;6.3.1&amp;quot;,&lt;/p&gt;
+&lt;p&gt;&amp;quot;build_flavor&amp;quot; : &amp;quot;default&amp;quot;,&lt;/p&gt;
+&lt;p&gt;&amp;quot;build_type&amp;quot; : &amp;quot;tar&amp;quot;,&lt;/p&gt;
+&lt;p&gt;&amp;quot;build_hash&amp;quot; : &amp;quot;eb782d0&amp;quot;,&lt;/p&gt;
+&lt;p&gt;&amp;quot;build_date&amp;quot; : &amp;quot;2019-06-29T21:59:26.107521Z&amp;quot;,&lt;/p&gt;
+&lt;p&gt;&amp;quot;build_snapshot&amp;quot; : false,&lt;/p&gt;
+&lt;p&gt;&amp;quot;lucene_version&amp;quot; : &amp;quot;7.3.1&amp;quot;,****&lt;/p&gt;
+&lt;p&gt;&amp;quot;minimum_wire_compatibility_version&amp;quot; : &amp;quot;5.6.0&amp;quot;,&lt;/p&gt;
+&lt;p&gt;&amp;quot;minimum_index_compatibility_version&amp;quot; : &amp;quot;5.0.0&amp;quot;&lt;/p&gt;
+&lt;p&gt;},&lt;/p&gt;
+&lt;p&gt;&amp;quot;tagline&amp;quot; : &amp;quot;You Know, for Search&amp;quot;&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;23-搭建集群&#34;&gt;2.3 搭建集群&lt;/h3&gt;
+&lt;p&gt;修改配置文件$elasticsearch_home/config/elasticsearch.yml&lt;/p&gt;
+&lt;p&gt;增加配置：&lt;/p&gt;
+&lt;p&gt;发现的节点 IP&lt;/p&gt;
+&lt;p&gt;discovery.zen.ping.unicast.hosts: [&amp;quot;ip1&amp;quot;, &amp;quot;ip2&amp;quot;]&lt;/p&gt;
+&lt;p&gt;最小集群数：常用计算公式 - 总数/2 + 1&lt;/p&gt;
+&lt;p&gt;discovery.zen.minimum_master_nodes: min_nodes_count&lt;/p&gt;
+&lt;h3 id=&#34;24-安装-kibana&#34;&gt;2.4 安装 Kibana&lt;/h3&gt;
+&lt;p&gt;Kibana 是一个基于 WEB 的 ElasticSearch 管理控制台。现阶段安装 Kibana 主要是为了方便学习。&lt;/p&gt;
+&lt;p&gt;在 Linux 中安装 Kibana 很方便。解压，启动即可。Kibana 要求的环境配置是小于ElasticSearch 的要求的。&lt;/p&gt;
+&lt;p&gt;tar -zxf kibana-6.3.1-linux-x86_64.tar.gz&lt;/p&gt;
+&lt;p&gt;修改 config/kibana.yml&lt;/p&gt;
+&lt;p&gt;vi config/kibana.yml&lt;/p&gt;
+&lt;p&gt;新增内容： server.host: &amp;quot;0.0.0.0&amp;quot;&lt;/p&gt;
+&lt;p&gt;bin/kibana&lt;/p&gt;
+&lt;p&gt;访问时，使用浏览器访问 http://192.168.2.119:5601/&lt;/p&gt;
+&lt;h2 id=&#34;3-常用-elasticsearch-管理操作&#34;&gt;3、常用 ElasticSearch 管理操作&lt;/h2&gt;
+&lt;h3 id=&#34;31-查看健康状态&#34;&gt;3.1 查看健康状态&lt;/h3&gt;
+&lt;p&gt;GET _cat/health?v&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200721170056.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;status：green、yellow、red&lt;/p&gt;
+&lt;p&gt;green：每个索引的 primary shard 和 replica shard 都是 active 的&lt;/p&gt;
+&lt;p&gt;yellow：每个索引的 primary shard 都是 active 的，但部分的 replica shard 不是 active的&lt;/p&gt;
+&lt;p&gt;red：不是所有的索引的 primary shard 都是 active 状态的。&lt;/p&gt;
+&lt;h3 id=&#34;32-创建索引&#34;&gt;3.2 创建索引&lt;/h3&gt;
+&lt;p&gt;命令语法：PUT 索引名{索引配置参数}&lt;/p&gt;
+&lt;p&gt;index 名称必须是小写的，且不能以下划线&#39;_&#39;，&#39;-&#39;，&#39;+&#39;开头。&lt;/p&gt;
+&lt;p&gt;在 ElasticSearch 中，默认的创建索引的时候，会分配 5 个 primary shard，并为每个primary shard 分配一个 replica shard（在 ES7 版本后，默认创建 1 个 primary shard）。在 ElasticSearch 中，默认的限制是：如果磁盘空间不足 15%的时候，不分配 replica shard。如果磁盘空间不足 5%的时候，不再分配任何的 primary shard。ElasticSearch 中对 shard的分布是有要求的。ElasticSearch 尽可能保证 primary shard 平均分布在多个节点上。Replica shard 会保证不和他备份的那个 primary shard 分配在同一个节点上。&lt;/p&gt;
+&lt;p&gt;创建默认索引&lt;/p&gt;
+&lt;p&gt;PUT test_index1&lt;/p&gt;
+&lt;p&gt;创建索引时指定分片。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;PUT test_index2
+{
+	&amp;quot;settings&amp;quot;:{
+		&amp;quot;number_of_shards&amp;quot; : 2,
+		&amp;quot;number_of_replicas&amp;quot; : 1
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;33-修改索引&#34;&gt;3.3 修改索引&lt;/h3&gt;
+&lt;p&gt;命令语法：PUT 索引名/&lt;em&gt;settings{索引配置参数}&lt;br&gt;
+&lt;strong&gt;注意：索引一旦创建，primary shard 数量不可变化，可以改变 replica shard 数量。&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;PUT test_index2/_settings
+{
+	&amp;quot;number_of_replicas&amp;quot; : 2
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;34-删除索引&#34;&gt;3.4  删除索引&lt;/h3&gt;
+&lt;p&gt;命令语法：DELETE 索引名 1[, 索引名 2 ...]&lt;/p&gt;
+&lt;p&gt;DELETE test_index1&lt;/p&gt;
+&lt;h3 id=&#34;35-查看索引信息&#34;&gt;3.5  查看索引信息&lt;/h3&gt;
+&lt;p&gt;GET _cat/indices?v&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200721171902.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;36-检查分片信息&#34;&gt;3.6 检查分片信息&lt;/h3&gt;
+&lt;p&gt;查看索引的 shard 信息。&lt;/p&gt;
+&lt;p&gt;GET _cat/shards?v&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200721171928.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;37-新增-document&#34;&gt;3.7 新增 Document&lt;/h3&gt;
+&lt;p&gt;在索引中增加文档。在 index 中增加 document。&lt;/p&gt;
+&lt;p&gt;ElasticSearch 有自动识别机制。如果增加的 document 对应的 index 不存在，自动创建 index；如果 index 存在，type 不存在，则自动创建 type。如果 index 和 type 都存在，则使用现有的 index 和 type。&lt;/p&gt;
+&lt;h4 id=&#34;371-put-语法&#34;&gt;3.7.1 PUT 语法&lt;/h4&gt;
+&lt;p&gt;此操作为手工指定 id 的 Document 新增方式。&lt;/p&gt;
+&lt;p&gt;语法：PUT 索引名/类型名/唯一 ID{字段名:字段值}&lt;/p&gt;
+&lt;p&gt;如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;PUT test_index/my_type/1
+{
+	&amp;quot;name&amp;quot;:&amp;quot;test_doc_01&amp;quot;,
+	&amp;quot;remark&amp;quot;:&amp;quot;first test elastic search&amp;quot;,
+	&amp;quot;order_no&amp;quot;:1
+}
+
+PUT test_index/my_type/2
+{
+	&amp;quot;name&amp;quot;:&amp;quot;test_doc_02&amp;quot;,
+	&amp;quot;remark&amp;quot;:&amp;quot;second test elastic search&amp;quot;,
+	&amp;quot;order_no&amp;quot;:2
+}
+
+PUT test_index/my_type/3
+{
+	&amp;quot;name&amp;quot;:&amp;quot;test_doc_03&amp;quot;,
+	&amp;quot;remark&amp;quot;:&amp;quot;third test elastic search&amp;quot;,
+	&amp;quot;order_no&amp;quot;:3
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200721172149.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;如果使用 PUT 语法对同 id 的 Document 执行多次操作。是一种覆盖操作。如果需要ElasticSearch 辅助检查 PUT 的 Document 是否已存在，可以使用强制新增语法。使用强制新增语法时，如果 Document 的 id 在 ElasticSearch 中已存在，则会报错。（version conflict, document already exists）&lt;br&gt;
+语法：&lt;/p&gt;
+&lt;p&gt;PUT 索引名/类型名/唯一 ID/_create{字段名:字段值}&lt;/p&gt;
+&lt;p&gt;或&lt;/p&gt;
+&lt;p&gt;PUT 索引名/类型名/唯一 ID?op_type=create{字段名:字段值}。&lt;/p&gt;
+&lt;p&gt;如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;PUT test_index/my_type/1/_create
+{
+	&amp;quot;name&amp;quot;:&amp;quot;new_test_doc_01&amp;quot;,
+	&amp;quot;remark&amp;quot;:&amp;quot;first test elastic search&amp;quot;,
+	&amp;quot;order_no&amp;quot;:1
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;372-post-语法&#34;&gt;3.7.2 POST 语法&lt;/h4&gt;
+&lt;p&gt;此操作为 ElasticSearch 自动生成 id 的新增 Document 方式。此语法格式和 PUT 请求的数据新增，只有唯一的区别，就是可以自动生成主键 id，其他的和 PUT 请求新增数据完全一致。&lt;/p&gt;
+&lt;p&gt;语法：POST 索引名/类型名{字段名:字段值}&lt;/p&gt;
+&lt;p&gt;如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;POST test_index/my_type
+{
+	&amp;quot;name&amp;quot;:&amp;quot;test_doc_04&amp;quot;,
+	&amp;quot;remark&amp;quot;:&amp;quot;forth test elastic search&amp;quot;,
+	&amp;quot;order_no&amp;quot;:4
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;38-查询-document&#34;&gt;3.8 查询 Document&lt;/h3&gt;
+&lt;h4 id=&#34;381-get-id-单数据查询&#34;&gt;3.8.1 GET ID 单数据查询&lt;/h4&gt;
+&lt;p&gt;语法：GET 索引名/类型名/唯一 ID&lt;/p&gt;
+&lt;p&gt;如：&lt;/p&gt;
+&lt;p&gt;GET test_index/my_type/1&lt;/p&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200721172429.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;382-get-_mget-批量查询&#34;&gt;3.8.2 GET _mget 批量查询&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;批量查询可以提高查询效率。推荐使用（相对于单数据查询来说）。&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+语法如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET _mget
+{
+	&amp;quot;docs&amp;quot; : [
+	{
+		&amp;quot;_index&amp;quot; : &amp;quot;索引名&amp;quot;,
+		&amp;quot;_type&amp;quot; : &amp;quot;类型名&amp;quot;,
+		&amp;quot;_id&amp;quot; : &amp;quot;唯一 ID 值&amp;quot;
+	}, {}, {}
+	]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/_mget:
+{
+	&amp;quot;docs&amp;quot; : [
+	{
+		&amp;quot;_type&amp;quot; : &amp;quot;类型名&amp;quot;,
+		&amp;quot;_id&amp;quot; : &amp;quot;唯一 ID 值&amp;quot;
+	}, {}, {}
+	]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/类型名/_mget
+{
+	&amp;quot;docs&amp;quot; : [
+	{
+		&amp;quot;_id&amp;quot; : &amp;quot;唯一 ID 值&amp;quot;
+	},
+	{
+		&amp;quot;_id&amp;quot; : &amp;quot;唯一 ID 值&amp;quot;
+	}
+	]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;39-修改-document&#34;&gt;3.9 修改 Document&lt;/h3&gt;
+&lt;h4 id=&#34;391-替换-document全量替换&#34;&gt;3.9.1  替换 Document（全量替换）&lt;/h4&gt;
+&lt;p&gt;和新增的 PUT|POST 语法是一致。&lt;/p&gt;
+&lt;p&gt;PUT|POST 索引名/类型名/唯一 ID{字段名:字段值}&lt;br&gt;
+本操作相当于覆盖操作。全量替换的过程中，ElasticSearch 不会真的修改 Document中的数据，而是标记 ElasticSearch 中原有的 Document 为 deleted 状态，再创建一个新的 Document 来存储数据，当 ElasticSearch 中的数据量过大时，ElasticSearch 后台回收 deleted 状态的 Document。&lt;br&gt;
+如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;PUT test_index/my_type/1
+{
+	&amp;quot;name&amp;quot;:&amp;quot;new_test_doc_01&amp;quot;,
+	&amp;quot;remark&amp;quot;:&amp;quot;first test elastic search&amp;quot;,
+	&amp;quot;order_no&amp;quot;:1
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200722093619.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;392-更新-documentpartial-update&#34;&gt;3.9.2 更新 Document（partial update）&lt;/h4&gt;
+&lt;p&gt;语法：POST 索引名/类型名/唯一 ID/_update{doc:{字段名:字段值}}&lt;/p&gt;
+&lt;p&gt;只更新某 Document 中的部分字段。这种更新方式也是标记原有数据为 deleted 状态，创建一个新的 Document 数据，将新的字段和未更新的原有字段组成这个新的 Document，并创建。对比全量替换而言，只是操作上的方便，在底层执行上几乎没有区别。&lt;/p&gt;
+&lt;p&gt;如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;POST test_index/my_type/1/_update
+{
+	&amp;quot;doc&amp;quot;:{
+	&amp;quot;name&amp;quot;:&amp;quot; test_doc_01_for_update&amp;quot;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200722093937.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200722093949.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;310-删除-document&#34;&gt;3.10 删除 Document&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;ElasticSearch 中执行删除操作时，ElasticSearch 先标记 Document 为 deleted 状态，而不是直接物理删除。当 ElasticSearch 存储空间不足或工作空闲时，才会执行物理删除操作。标记为 deleted 状态的数据不会被查询搜索到。&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+语法：DELETE 索引名/类型名/唯一 ID&lt;/p&gt;
+&lt;p&gt;如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;DELETE test_index/my_type/1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200722094045.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;311-bulk-批量增删改&#34;&gt;3.11 bulk 批量增删改&lt;/h3&gt;
+&lt;p&gt;使用 bulk 语法执行批量增删改。语法格式如下：&lt;/p&gt;
+&lt;p&gt;POST _bulk&lt;br&gt;
+{ &amp;quot;action_type&amp;quot; : { &amp;quot;metadata_name&amp;quot; : &amp;quot;metadata_value&amp;quot; } }&lt;br&gt;
+{ document datas | action datas }&lt;/p&gt;
+&lt;p&gt;语法中的 action_type 可选值为：&lt;br&gt;
+create : 强制创建，相当于 PUT 索引名/类型名/唯一 ID/_create&lt;br&gt;
+index: 普通的 PUT 操作，相当于创建 Document 或全量替换&lt;br&gt;
+update: 更新操作（partial update）,相当于 POST 索引名/类型名/唯一 ID/_update&lt;br&gt;
+delete: 删除操作&lt;/p&gt;
+&lt;p&gt;案例如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;新增数据：
+POST _bulk
+{ &amp;quot;create&amp;quot; : { &amp;quot;_index&amp;quot; : &amp;quot;test_index&amp;quot; , &amp;quot;_type&amp;quot; : &amp;quot;my_type&amp;quot;, &amp;quot;_id&amp;quot; : &amp;quot;1&amp;quot; } }
+{ &amp;quot;field_name&amp;quot; : &amp;quot;field value&amp;quot; }
+
+PUT 操作新增或全量替换
+POST _bulk
+{ &amp;quot;index&amp;quot; : { &amp;quot;_index&amp;quot; : &amp;quot;test_index&amp;quot;, &amp;quot;_type&amp;quot; : &amp;quot;my_type&amp;quot; , &amp;quot;_id&amp;quot; : &amp;quot;2&amp;quot; } }
+{ &amp;quot;field_name&amp;quot; : &amp;quot;field value 2&amp;quot; }
+
+POST 更新数据
+POST _bulk
+{ &amp;quot;update&amp;quot; : { &amp;quot;_index&amp;quot; : &amp;quot;test_index&amp;quot;, &amp;quot;_type&amp;quot; : &amp;quot;my_type&amp;quot; , &amp;quot;_id&amp;quot; : 2, &amp;quot;_retry_on_conflict&amp;quot; : 3 } }
+{ &amp;quot;doc&amp;quot; : { &amp;quot;field_name&amp;quot; : &amp;quot;partial update field value&amp;quot; } }
+
+DELETE 删除数据
+POST _bulk
+{ &amp;quot;delete&amp;quot; : { &amp;quot;_index&amp;quot; : &amp;quot;test_index&amp;quot;, &amp;quot;_type&amp;quot; : &amp;quot;my_type&amp;quot;, &amp;quot;_id&amp;quot; : &amp;quot;2&amp;quot; } }
+
+批量写操作
+POST _bulk
+{ &amp;quot;create&amp;quot; : { &amp;quot;_index&amp;quot; : &amp;quot;test_index&amp;quot; , &amp;quot;_type&amp;quot; : &amp;quot;my_type&amp;quot;, &amp;quot;_id&amp;quot; : &amp;quot;10&amp;quot; } }
+{ &amp;quot;field_name&amp;quot; : &amp;quot;field value&amp;quot; }
+{ &amp;quot;index&amp;quot; : { &amp;quot;_index&amp;quot; : &amp;quot;test_index&amp;quot;, &amp;quot;_type&amp;quot; : &amp;quot;my_type&amp;quot; , &amp;quot;_id&amp;quot; : &amp;quot;20&amp;quot; } }
+{ &amp;quot;field_name&amp;quot; : &amp;quot;field value 2&amp;quot; }
+{ &amp;quot;update&amp;quot; : { &amp;quot;_index&amp;quot; : &amp;quot;test_index&amp;quot;, &amp;quot;_type&amp;quot; : &amp;quot;my_type&amp;quot; , &amp;quot;_id&amp;quot; : 20, &amp;quot;_retry_on_conflict&amp;quot; : 3 } }
+{ &amp;quot;doc&amp;quot; : { &amp;quot;field_name&amp;quot; : &amp;quot;partial update field value&amp;quot; } }
+{ &amp;quot;delete&amp;quot; : { &amp;quot;_index&amp;quot; : &amp;quot;test_index&amp;quot;, &amp;quot;_type&amp;quot; : &amp;quot;my_type&amp;quot;, &amp;quot;_id&amp;quot; : &amp;quot;2&amp;quot; } }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;注意：bulk 语法中要求一个完整的 json 串不能有换行。不同的 json 串必须使用换行分隔。多个操作中，如果有错误情况，不会影响到其他的操作，只会在批量操作返回结果中标记失败。bulk 语法批量操作时，bulk request 会一次性加载到内存中，如果请求数据量太大，性能反而下降（内存压力过高），需要反复尝试一个最佳的 bulk request size。一般从 1000~5000 条数据开始尝试，逐渐增加。如果查看 bulk request size 的话，一般是 5~15MB 之间为好。&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;&lt;strong&gt;bulk 语法要求 json 格式是为了对内存的方便管理，和尽可能降低内存的压力。如果json 格式没有特殊的限制，ElasticSearch 在解释 bulk 请求时，需要对任意格式的 json进行解释处理，需要对 bulk 请求数据做 json 对象会 json array 对象的转化，那么内存的占用量至少翻倍，当请求量过大的时候，对内存的压力会直线上升，且需要 jvm gc 进程对垃圾数据做频繁回收，影响 ElasticSearch 效率。&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;&lt;strong&gt;生成环境中，bulk api 常用。都是使用 java 代码实现循环操作。一般一次 bulk 请求，执行一种操作。如：批量新增 10000 条数据等。&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-分词器analyzer和标准化处理normalization&#34;&gt;4、分词器（analyzer）和标准化处理（normalization）&lt;/h2&gt;
+&lt;h3 id=&#34;41-什么是分词器&#34;&gt;4.1 什么是分词器&lt;/h3&gt;
+&lt;p&gt;分词器是一个字符串解析拆分工具。其作用是分析写入的 Document 中的文本数据field，并将 field 数据拆分成一个个有完整含义的、不可拆分的单词。&lt;/p&gt;
+&lt;p&gt;如：I think dogs is human&#39;s best friend.在写入此数据的时候，ElasticSearch 会使用分词器分析并拆分数据，将上述的语句切分成若干的单词，分别是：I、 think、 dogs、human&#39;s、 best、 friend。&lt;/p&gt;
+&lt;h3 id=&#34;42-什么是标准化处理&#34;&gt;4.2 什么是标准化处理&lt;/h3&gt;
+&lt;p&gt;标准化处理是用于完善分词器结果的。&lt;/p&gt;
+&lt;p&gt;分词器处理的文本结果，通常会有一些不需要的、有异议的、包含时态转化等情况的数据。在上述案例中的分词结果是：i、 think、 dogs、 human&#39;s、 best、 friend。其中i 是很少应用在搜索条件中的单词；dogs 是 dog 单词的复数形式，通常在搜索过程中使用dog 作为搜索条件更频繁一些；human&#39;s 是特殊的标记方式，通常不会在搜索中作为条件出现。那么 ElasticSearch 维护这些单词是没有太大必要的。这个时候就需要标准化处理了。&lt;/p&gt;
+&lt;p&gt;如：china 搜索时，如果条件为 cn 是否可搜索到。如：dogs，搜索时，条件为 dog是否可搜索到数据。如果可以使用简写（cn）或者单复数（dog&amp;amp;dogs）搜索到想要的结果，那么称为搜索引擎人性化。&lt;/p&gt;
+&lt;p&gt;normalization 是为了提升召回率的（recall），就是提升搜索能力的。&lt;/p&gt;
+&lt;p&gt;normalization 是配合分词器(analyzer)完成其功能的。&lt;/p&gt;
+&lt;h3 id=&#34;43-elasticsearch-默认提供的常见分词器&#34;&gt;4.3 ElasticSearch 默认提供的常见分词器&lt;/h3&gt;
+&lt;p&gt;要切分的语句：Set the shape to semi-transparent by calling set_trans(5)&lt;br&gt;
+standard analyzer - 是 ElasticSearch 中的默认分词器。标准分词器，处理英语语法的分词器。切分后的 key_words：set, the, shape, to, semi, transparent, by, calling,set_trans, 5。这种分词器也是 ElasticSearch 中默认的分词器。切分过程中不会忽略停止词（如：the、a、an 等）。会进行单词的大小写转换、过滤连接符（-）或括号等常见符号。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET _analyze
+{
+	&amp;quot;text&amp;quot;: &amp;quot;Set the shape to semi-transparent by calling set_trans(5)&amp;quot;,
+	&amp;quot;analyzer&amp;quot;: &amp;quot;standard&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;simple analyzer - 简单分词器。切分后的 key_words：set, the, shape, to, semi,transparent, by, calling, set, trans。就是将数据切分成一个个的单词。使用较少，经常会破坏英语语法。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET _analyze
+{
+	&amp;quot;text&amp;quot;: &amp;quot;Set the shape to semi-transparent by calling 	set_trans(5)&amp;quot;,
+	&amp;quot;analyzer&amp;quot;: &amp;quot;simple&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;whitespace analyzer - 空白符分词器。切分后的 key_words：Set, the, shape, to,semi-transparent, by, calling, set_trans(5)。就是根据空白符号切分数据。如：空格、制表符等。使用较少，经常会破坏英语语法。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET _analyze
+{
+	&amp;quot;text&amp;quot;: &amp;quot;Set the shape to semi-transparent by calling set_trans(5)&amp;quot;,
+	&amp;quot;analyzer&amp;quot;: &amp;quot;whitespace&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;language analyzer - 语言分词器，如英语分词器（english）等。切分后的 key_words：set, shape, semi, transpar, call, set_tran, 5。根据英语语法分词，会忽略停止词、转换大小写、单复数转换、时态转换等，应用分词器分词功能类似 standard analyzer。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET _analyze
+{
+	&amp;quot;text&amp;quot;: &amp;quot;Set the shape to semi-transparent by calling set_trans(5)&amp;quot;,
+	&amp;quot;analyzer&amp;quot;: &amp;quot;english&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;注意：ElasticSearch 中提供的常用分词器都是英语相关的分词器，对中文的分词都是一字一词。&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;44-安装中文分词器&#34;&gt;4.4  安装中文分词器&lt;/h3&gt;
+&lt;p&gt;IK 中文分词器，很少有直接下载使用的，都需要通过 github 下载源码，本地编译打包。&lt;/p&gt;
+&lt;p&gt;就是 maven 工程中的 package 能力。&lt;/p&gt;
+&lt;p&gt;github 上提供的源码不是伴随 ES 的每个版本提供，一般只有分词器无效后，才提供新的版本。通常都是伴随 ES 的次版本号提供 IK 分词器版本。下载对应的 IK 分词器源码，本地 package 打包，生成 zip 压缩包，既是 IK 在 ES 中的分词器安装包。&lt;/p&gt;
+&lt;p&gt;git clone https://github.com/medcl/elasticsearch-analysis-ik.git&lt;/p&gt;
+&lt;p&gt;git checkout tags/v6.5.0&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装 IK 分词器&lt;br&gt;
+ElasticSearch 是一个开箱即用的工具。插件安装方式也非常简单。&lt;/p&gt;
+&lt;p&gt;将 IK 分词器的 zip 压缩文件上传到 Linux，并在 ElasticSearch 安装目录的 plugins 目录中手工创建子目录，目录命名为 ik。将 zip 压缩文件解压缩到新建目录 ik 中。重新启动ElasticSearch 即可。&lt;/p&gt;
+&lt;p&gt;复制中文分词器 zip 压缩文件到 ElasticSearch 应用目录中：&lt;/p&gt;
+&lt;p&gt;cp elasticsearch-analysis-ik-6.8.4.zip /opt/es/plugins/&lt;/p&gt;
+&lt;p&gt;创建 IK 中文分词器的插件子目录：&lt;/p&gt;
+&lt;p&gt;mkdir /opt/es/plugins/ik/&lt;/p&gt;
+&lt;p&gt;移动压缩文件到 ik 插件目录中：&lt;/p&gt;
+&lt;p&gt;mv /opt/es/plugins/elasticsearch-analysis-ik-6.8.4.zip /usr/local/es/plugins/ik/&lt;/p&gt;
+&lt;p&gt;解压缩：&lt;/p&gt;
+&lt;p&gt;unzip /opt/es/plugins/ik/elasticsearch-analysis-ik-6.8.4.zip&lt;br&gt;
+&lt;em&gt;&lt;strong&gt;所有的分词器，都是针对词语的，不是语句的。拆分单元是词语，不是语句。&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试 IK 分词器&lt;br&gt;
+IK 分词器提供了两种 analyzer，分别是 ik_max_word 和 ik_smart。&lt;br&gt;
+&lt;em&gt;&lt;strong&gt;ik_max_word: 会将文本做最细粒度的拆分，比如会将“中华人民共和国国歌”拆分为“中华人民共和国,中华人民,中华,华人,人民共和国,人民,人,民,共和国,共和,国,国歌”，会穷尽各种可能的组合；&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;&lt;strong&gt;ik_smart: 会做最粗粒度的拆分，比如会将“中华人民共和国国歌”拆分为“中华人民共和国,国歌”。&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET _analyze
+{
+	&amp;quot;text&amp;quot; : &amp;quot;中华人民共和国国歌&amp;quot;,
+	&amp;quot;analyzer&amp;quot;: &amp;quot;ik_max_word&amp;quot;
+}
+
+
+GET _analyze
+{
+	&amp;quot;text&amp;quot; : &amp;quot;中华人民共和国国歌&amp;quot;,
+	&amp;quot;analyzer&amp;quot;: &amp;quot;ik_smart&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IK 配置文件&lt;br&gt;
+IK 的配置文件在 ElasticSearch 安装目录/plugins/ik/config/中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;配置文件有：&lt;/p&gt;
+&lt;p&gt;main.dic ： IK 中内置的词典。 main dictionary。记录了 IK 统计的所有中文单词。一行一词。文件中未记录的单词，IK 无法实现有效分词。如：雨女无瓜。不建议修改当前文件中的单词。这个是最核心的中文单词库。就好像，很多的网络词不会收集到辞海中一样。&lt;/p&gt;
+&lt;p&gt;quantifier.dic ： IK 内置的数据单位词典&lt;/p&gt;
+&lt;p&gt;suffix.dic ：IK 内置的后缀词典&lt;/p&gt;
+&lt;p&gt;surname.dic ：IK 内置的姓氏词典&lt;/p&gt;
+&lt;p&gt;stopword.dic ：IK 内置的英文停用词&lt;/p&gt;
+&lt;p&gt;preposition.dic ：IK 内置的中文停用词（介词）&lt;br&gt;
+&lt;em&gt;&lt;strong&gt;IKAnalyzer.cfg.xml&lt;/strong&gt;&lt;/em&gt; ： 用于配置自定义词库的&lt;br&gt;
+自定义词库是用户手工提供的特殊词典，类似网络热词，特定业务用词等。&lt;br&gt;
+&lt;em&gt;&lt;strong&gt;ext_dict - 自定义词库，配置方式为相对于 IKAnalyzer.cfg.xml 文件所在位置的相对路径寻址方式。相当于是用户自定义的一个 main.dic 文件。是对 main.dic 文件的扩展。&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;&lt;strong&gt;ext_stopwords - 自定义停用词，配置方式为相对于 IKAnalyzer.cfg.xml 文件所在位置的相对路径寻址方式。相当于是 preposition.dic 的扩展。&lt;/strong&gt;&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;&lt;strong&gt;注意：IK 的所有的 dic 词库文件，必须使用 UTF-8 字符集。不建议使用 windows 自带的文本编辑器编辑。Windows 中自带的文本编辑器是使用 GBK 字符集。IK 不识别，是乱码。&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-elasticsearch-中的-mapping-问题&#34;&gt;5、 ElasticSearch 中的 mapping 问题&lt;/h2&gt;
+&lt;p&gt;Mapping 在 ElasticSearch 中是非常重要的一个概念。决定了一个 index 中的 field 使用什么数据格式存储，使用什么分词器解析，是否有子字段等。&lt;/p&gt;
+&lt;p&gt;Mapping 决定了 index 中的 field 的特征。&lt;/p&gt;
+&lt;h3 id=&#34;51-mapping-核心数据类型&#34;&gt;5.1  mapping 核心数据类型&lt;/h3&gt;
+&lt;p&gt;ElasticSearch 中的数据类型有很多，在这里只介绍常用的数据类型。&lt;/p&gt;
+&lt;p&gt;文本（字符串）：text&lt;br&gt;
+整数：byte、short、integer、long&lt;br&gt;
+浮点型：float、double&lt;br&gt;
+布尔类型：boolean&lt;br&gt;
+日期类型：date&lt;br&gt;
+数组类型：array {a:[]}&lt;br&gt;
+对象类型：object {a:{}}&lt;br&gt;
+不分词的字符串（关键字）： keyword&lt;/p&gt;
+&lt;h3 id=&#34;52-dynamic-mapping-对字段的类型分配&#34;&gt;5.2 dynamic mapping 对字段的类型分配&lt;/h3&gt;
+&lt;p&gt;true or false -&amp;gt; boolean&lt;br&gt;
+123 -&amp;gt; long&lt;br&gt;
+123.123 -&amp;gt; double&lt;br&gt;
+2018-01-01 -&amp;gt; date&lt;br&gt;
+hello world -&amp;gt; text&lt;br&gt;
+[] -&amp;gt; array&lt;br&gt;
+{} -&amp;gt; object&lt;br&gt;
+在上述的自动 mapping 字段类型分配的时候，只有 text 类型的字段需要分词器。默认分词器是 standard 分词器。&lt;/p&gt;
+&lt;h3 id=&#34;53-查看索引-mapping&#34;&gt;5.3 查看索引 mapping&lt;/h3&gt;
+&lt;p&gt;可以通过命令查看已有 index 的 mapping 具体信息，语法如下：&lt;/p&gt;
+&lt;p&gt;GET 索引名/_mapping&lt;/p&gt;
+&lt;p&gt;如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET test_index/_mapping
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200722105155.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;54-custom-mapping&#34;&gt;5.4 custom mapping&lt;/h3&gt;
+&lt;p&gt;可以通过命令，在创建 index 和 type 的时候来定制 mapping 映射，也就是指定字段的类型和字段数据使用的分词器。&lt;br&gt;
+手工定制 mapping 时，只能***新增 mapping 设置，不能对已有的 mapping 进行修改。***&lt;br&gt;
+如：有索引 a，其中有类型 b，增加字段 f1 的 mapping 定义。后续可以增加字段 f2的 mapping 定义，但是不能修改 f1 字段的 mapping 定义。&lt;/p&gt;
+&lt;p&gt;通常都是手工创建 index，并进行各种定义。如：settings,mapping 等。&lt;/p&gt;
+&lt;h4 id=&#34;541-创建索引时指定-mapping&#34;&gt;5.4.1 创建索引时指定 mapping&lt;/h4&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;PUT 索引名称
+{
+	&amp;quot;mappings&amp;quot;:{
+		&amp;quot;类型名称&amp;quot;:{
+			&amp;quot;properties&amp;quot;:{
+				&amp;quot;字段名&amp;quot;:{
+					&amp;quot;type&amp;quot;:类型,
+					[&amp;quot;analyer&amp;quot;:字段的分词器,]
+					[&amp;quot;fields&amp;quot;:{
+						&amp;quot;子字段名称&amp;quot;:{
+							&amp;quot;type&amp;quot;:类型,
+							&amp;quot;ignore_above&amp;quot;:长度限制
+							}
+					}]
+				}
+			}
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;PUT /test_index
+{
+	&amp;quot;settings&amp;quot;: {
+		&amp;quot;number_of_shards&amp;quot;: 2,
+		&amp;quot;number_of_replicas&amp;quot;: 1
+},
+	&amp;quot;mappings&amp;quot;: {
+		&amp;quot;test_type&amp;quot;:{
+			&amp;quot;properties&amp;quot;: {
+				&amp;quot;author_id&amp;quot; : {
+					&amp;quot;type&amp;quot;: &amp;quot;byte&amp;quot;,
+					&amp;quot;index&amp;quot;: false
+				},
+			&amp;quot;title&amp;quot; : {
+				&amp;quot;type&amp;quot;: &amp;quot;text&amp;quot;,
+				&amp;quot;analyzer&amp;quot;: &amp;quot;ik_max_word&amp;quot;,
+				&amp;quot;fields&amp;quot;: {
+					&amp;quot;keyword&amp;quot; : {
+					&amp;quot;type&amp;quot;: &amp;quot;keyword&amp;quot;,
+					&amp;quot;ignore_above&amp;quot;: 256
+					}
+				}
+			},
+			&amp;quot;content&amp;quot; : {
+				&amp;quot;type&amp;quot;: &amp;quot;text&amp;quot;,
+                  &amp;quot;analyzer&amp;quot;: &amp;quot;ik_max_word&amp;quot;
+			},
+			&amp;quot;post_date&amp;quot; : {
+				&amp;quot;type&amp;quot;: &amp;quot;date&amp;quot;
+			}
+		}
+	}
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;quot;index&amp;quot; - 是否可以作为搜索索引。可选值：true | false&lt;/p&gt;
+&lt;p&gt;&amp;quot;analyzer&amp;quot; - 指定分词器。&lt;/p&gt;
+&lt;p&gt;&amp;quot;type&amp;quot; - 指定字段类型&lt;/p&gt;
+&lt;h4 id=&#34;542-为已有索引添加新的字段-mapping&#34;&gt;5.4.2 为已有索引添加新的字段 mapping&lt;/h4&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;PUT 索引名/_mapping/类型名
+{
+	&amp;quot;properties&amp;quot;:{
+		&amp;quot;新字段名&amp;quot;:{
+			&amp;quot;type&amp;quot;:类型,
+			&amp;quot;analyer&amp;quot;:字段的分词器,
+			&amp;quot;fields&amp;quot;:{
+				&amp;quot;子字段名&amp;quot;:{
+					&amp;quot;type&amp;quot;:类型,
+					&amp;quot;ignore_above&amp;quot;:长度
+				}
+			}
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;PUT /test_index/_mapping/test_type
+{
+	&amp;quot;properties&amp;quot; : {
+		&amp;quot;new_field&amp;quot; : { &amp;quot;type&amp;quot; : &amp;quot;text&amp;quot; , &amp;quot;analyzer&amp;quot; : &amp;quot;standard&amp;quot; }
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;543-测试不同的字段的分词器&#34;&gt;5.4.3 测试不同的字段的分词器&lt;/h4&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名称/_analyze
+{
+	&amp;quot;field&amp;quot;:&amp;quot;索引中的 text 类型的字段名&amp;quot;,
+	&amp;quot;text&amp;quot;:&amp;quot;要分词处理的文本数据&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用索引中的字段对应的分词器，对文本数据做分词处理。&lt;/p&gt;
+&lt;p&gt;如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET /test_index/_analyze
+{
+	&amp;quot;field&amp;quot;: &amp;quot;new_field&amp;quot;,
+	&amp;quot;text&amp;quot;: &amp;quot;中华人民共和国国歌&amp;quot;
+}
+
+GET /test_index/_analyze
+{
+	&amp;quot;field&amp;quot;: &amp;quot;content&amp;quot;,
+	&amp;quot;text&amp;quot;: &amp;quot;中华人民共和国国歌&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6-search-搜索详解&#34;&gt;6、 Search 搜索详解&lt;/h2&gt;
+&lt;h3 id=&#34;61-搜索学习测试数据&#34;&gt;6.1 搜索学习测试数据&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;PUT test_search
+{
+	&amp;quot;mappings&amp;quot;: {
+		&amp;quot;test_type&amp;quot; : {
+			&amp;quot;properties&amp;quot;: {
+				&amp;quot;dname&amp;quot; : {
+					&amp;quot;type&amp;quot; : &amp;quot;text&amp;quot;,
+					&amp;quot;analyzer&amp;quot;: &amp;quot;standard&amp;quot;
+				},
+				&amp;quot;ename&amp;quot; : {
+					&amp;quot;type&amp;quot; : &amp;quot;text&amp;quot;,
+					&amp;quot;analyzer&amp;quot;: &amp;quot;standard&amp;quot;
+				},
+				&amp;quot;eage&amp;quot; : {
+					&amp;quot;type&amp;quot;: &amp;quot;long&amp;quot;
+				},
+				&amp;quot;hiredate&amp;quot; : {
+					&amp;quot;type&amp;quot;: &amp;quot;date&amp;quot;
+				},
+				&amp;quot;gender&amp;quot; : {
+					&amp;quot;type&amp;quot; : &amp;quot;keyword&amp;quot;
+				}
+			}
+		}
+	}
+}
+
+
+POST test_search/test_type/_bulk
+{ &amp;quot;index&amp;quot;: {}}
+{ &amp;quot;dname&amp;quot; : &amp;quot;Sales Department&amp;quot;, &amp;quot;ename&amp;quot; : &amp;quot; 张 三 &amp;quot;, &amp;quot;eage&amp;quot;:20, &amp;quot;hiredate&amp;quot; : &amp;quot;2019-01-01&amp;quot;,&amp;quot;gender&amp;quot; : &amp;quot;男性&amp;quot; }
+{ &amp;quot;index&amp;quot;: {}}
+{ &amp;quot;dname&amp;quot; : &amp;quot;Sales Department&amp;quot;, &amp;quot;ename&amp;quot; : &amp;quot; 李 四 &amp;quot;, &amp;quot;eage&amp;quot;:21, &amp;quot;hiredate&amp;quot; : &amp;quot;2019-02-01&amp;quot;,&amp;quot;gender&amp;quot; : &amp;quot;男性&amp;quot; }
+{ &amp;quot;index&amp;quot;: {}}
+{ &amp;quot;dname&amp;quot; : &amp;quot;Development Department&amp;quot;, &amp;quot;ename&amp;quot; : &amp;quot; 王 五 &amp;quot;, &amp;quot;eage&amp;quot;:23, &amp;quot;hiredate&amp;quot; :&amp;quot;2019-01-03&amp;quot;, &amp;quot;gender&amp;quot; : &amp;quot;男性&amp;quot; }
+{ &amp;quot;index&amp;quot;: {}}
+{ &amp;quot;dname&amp;quot; : &amp;quot;Development Department&amp;quot;, &amp;quot;ename&amp;quot; : &amp;quot; 赵 六 &amp;quot;, &amp;quot;eage&amp;quot;:26, &amp;quot;hiredate&amp;quot; :&amp;quot;2018-01-01&amp;quot;, &amp;quot;gender&amp;quot; : &amp;quot;男性&amp;quot; }
+{ &amp;quot;index&amp;quot;: {}}
+{ &amp;quot;dname&amp;quot; : &amp;quot;Development Department&amp;quot;, &amp;quot;ename&amp;quot; : &amp;quot; 韩 梅 梅 &amp;quot;, &amp;quot;eage&amp;quot;:24, &amp;quot;hiredate&amp;quot; :&amp;quot;2019-03-01&amp;quot;, &amp;quot;gender&amp;quot; : &amp;quot;女性&amp;quot; }
+{ &amp;quot;index&amp;quot;: {}}
+{ &amp;quot;dname&amp;quot; : &amp;quot;Development Department&amp;quot;, &amp;quot;ename&amp;quot; : &amp;quot; 钱 虹 &amp;quot;, &amp;quot;eage&amp;quot;:29, &amp;quot;hiredate&amp;quot; :&amp;quot;2018-03-01&amp;quot;, &amp;quot;gender&amp;quot; : &amp;quot;女性&amp;quot; }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;62-query-string-search&#34;&gt;6.2 query string search&lt;/h3&gt;
+&lt;p&gt;search 的参数都是类似 http 请求头中的字符串参数提供搜索条件的。&lt;/p&gt;
+&lt;p&gt;GET&lt;br&gt;
+[/index_name/type_name/]_search[?parameter_name=parameter_value&amp;amp;...]&lt;/p&gt;
+&lt;h4 id=&#34;621-全搜索&#34;&gt;6.2.1 全搜索&lt;/h4&gt;
+&lt;p&gt;timeout 参数：是超时时长定义。代表每个节点上的每个 shard 执行搜索时最多耗时多久。不会影响响应的正常返回。只会影响返回响应中的数据数量。&lt;br&gt;
+如：索引 a 中，有 10 亿数据。存储在 5 个 shard 中，假设每个 shard 中 2 亿数据，执行全数据搜索的时候，需要耗时 1000 毫秒。定义 timeout 为 10 毫秒，代表的是 shard执行 10 毫秒，搜索出多少数据，直接返回。&lt;br&gt;
+在商业项目中，是禁止全数据搜索的。必须指定搜索的索引，类型和关键字。如果没有指定索引或类型，则代表开发目的不明确，需要重新做用例分析。如果没有关键字，称为索引内全搜索，也叫魔鬼搜索。&lt;/p&gt;
+&lt;p&gt;语法：&lt;br&gt;
+GET [索引名/类型名/]_search?timeout=10ms&lt;/p&gt;
+&lt;p&gt;结果：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;{
+	&amp;quot;took&amp;quot;: 144, #请求耗时多少毫秒
+	&amp;quot;timed_out&amp;quot;: false, #是否超时。默认情况下没有超时机制，也就是客户端等待 ElasticSearch 搜索结束（无论执行多久），提供超时机制的话，ElasticSearch 则在指定时长内处理搜索，在指定时长结束的时候，将搜索的结果直接返回（无论是否搜索结束）。指定超时的方式是传递参数，参数单位是：毫秒-ms。秒-s。分钟-m。
+	&amp;quot;_shards&amp;quot;: {
+		&amp;quot;total&amp;quot;: 1, #请求发送到多少个 shard 上
+		&amp;quot;successful&amp;quot;: 1,#成功返回搜索结果的 shard
+		&amp;quot;skipped&amp;quot;: 0, #停止服务的 shard
+		&amp;quot;failed&amp;quot;: 0 #失败的 shard
+	},
+	&amp;quot;hits&amp;quot;: {
+		&amp;quot;total&amp;quot;: 1, #返回了多少结果
+		&amp;quot;max_score&amp;quot;: 1, #搜索结果中，最大的相关度分数，相关度越大分数越高，_score 越大，排位越靠前。
+		&amp;quot;hits&amp;quot;: [ #搜索到的结果集合，默认查询前 10 条数据。
+		{
+			&amp;quot;_index&amp;quot;: &amp;quot;test_index&amp;quot;, #数据所在索引
+			&amp;quot;_type&amp;quot;: &amp;quot;my_type&amp;quot;, #数据所在类型
+			&amp;quot;_id&amp;quot;: &amp;quot;1&amp;quot;, #数据的 id
+			&amp;quot;_score&amp;quot;: 1, #数据的搜索相关度分数
+			&amp;quot;_source&amp;quot;: { # 数据的具体内容。
+				&amp;quot;field&amp;quot;: &amp;quot;value&amp;quot;
+			}
+		}
+	]
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;622-multi-index-搜索&#34;&gt;6.2.2 multi index 搜索&lt;/h4&gt;
+&lt;p&gt;所谓的 multi-index 就是从多个 index 中搜索数据。相对使用较少，只有在复合数据搜索的时候，可能出现。一般来说，如果真使用复合数据搜索，都会使用_all。&lt;br&gt;
+如：搜索引擎中的无条件搜索。（现在的应用中都被屏蔽了。使用的是默认搜索条件，执行数据搜索。 如： 电商中的搜索框默认值， 搜索引擎中的类别）&lt;br&gt;
+无条件搜索，在搜索应用中称为“魔鬼搜索”，代表的是，搜索引擎会执行全数据检索，效率极低，且对资源有非常高的压力。&lt;/p&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET _search
+GET 索引名 1,索引名 2/_search # 搜索多个 index 中的数据
+GET 索引名/类型名/_search # 所属一个 index 中 type 的数据
+GET prefix_*/_search # 通配符搜索
+GET *_suffix/_search
+GET 索引名 1,索引名 2/类型名/_search # 搜索多个 index 中 type 的数据
+GET _all/_search # _all 代表所有的索引
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;623-条件搜索&#34;&gt;6.2.3 条件搜索&lt;/h4&gt;
+&lt;p&gt;query string search 搜索是通过 HTTP 请求的请求头传递参数的，默认的 HTTP 请求头字符集是 ISO-8859-1，请求头传递中文会有乱码。&lt;/p&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/_search?q=字段名:搜索条件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;624-分页搜索&#34;&gt;6.2.4  分页搜索&lt;/h4&gt;
+&lt;p&gt;默认情况下，ElasticSearch 搜索返回结果是 10 条数据。从第 0 条开始查询。&lt;/p&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/_search?size=10 # size 查询数据的行数
+
+GET 索引名/_search?from=0&amp;amp;size=10 # from 从第几行开始查询，行号从 0 开始。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;625-搜索&#34;&gt;6.2.5 +/-搜索&lt;/h4&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/_search?q=字段名:条件
+
+GET 索引名/_search?q=+字段名:条件
+
+GET 索引名/_search?q=-字段名:条件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;+ ：和不定义符号含义一样，就是搜索指定的字段中包含 key words 的数据&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;- ： 与+符号含义相反，就是搜索指定的字段中不包含 key words 的数据&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;626-排序&#34;&gt;6.2.6 排序&lt;/h4&gt;
+&lt;p&gt;语法：GET 索引名/_search?sort=字段名:排序规则&lt;br&gt;
+排序规则： asc(升序) | desc(降序)&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET test_search/_search?sort=eage:asc
+GET test_search/_search?sort=eage:desc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;63-query-dsl&#34;&gt;6.3  query DSL&lt;/h3&gt;
+&lt;p&gt;DSL - Domain Specified Language ， 特殊领域的语言。&lt;/p&gt;
+&lt;p&gt;请求参数是请求体传递的。在 ElasticSearch 中，请求体的字符集默认为 UTF-8。&lt;/p&gt;
+&lt;p&gt;语法格式：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/_search
+{
+	&amp;quot;command&amp;quot;:{ &amp;quot;parameter_name&amp;quot; : &amp;quot;parameter_value&amp;quot;}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;631-查询所有数据&#34;&gt;6.3.1 查询所有数据&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/_search
+{
+	&amp;quot;query&amp;quot; : { &amp;quot;match_all&amp;quot; : {} }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;632-match-search&#34;&gt;6.3.2  match search&lt;/h4&gt;
+&lt;p&gt;全文检索。要求查询条件拆分后的任意词条与具体数据匹配就算搜索结果。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/_search
+{
+	&amp;quot;query&amp;quot;: {
+		&amp;quot;match&amp;quot;: {
+			&amp;quot;字段名&amp;quot;: &amp;quot;搜索条件&amp;quot;
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;633-phrase-search&#34;&gt;6.3.3 phrase search&lt;/h4&gt;
+&lt;p&gt;短语检索。要求查询条件必须和具体数据完全匹配才算搜索结果。其特征是：1-搜索条件不做任何分词解析；2-在搜索字段对应的倒排索引(正排索引)中进行精确匹配，不再是简单的全文检索。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/_search
+{
+	&amp;quot;query&amp;quot;: {
+		&amp;quot;match_phrase&amp;quot;: {
+			&amp;quot;字段名&amp;quot;: &amp;quot;搜索条件&amp;quot;
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;634-range&#34;&gt;6.3.4 range&lt;/h4&gt;
+&lt;p&gt;范围比较搜索&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/类型名/_search
+{
+	&amp;quot;query&amp;quot; : {
+		&amp;quot;range&amp;quot; : {
+			&amp;quot;字段名&amp;quot; : {
+				&amp;quot;gt&amp;quot; : 搜索条件 1,
+				&amp;quot;lte&amp;quot; : 搜索条件 2
+			}
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;635-term&#34;&gt;6.3.5 term&lt;/h4&gt;
+&lt;p&gt;词组比较，词组搜索。&lt;/p&gt;
+&lt;p&gt;忽略搜索条件分词，在 ElasticSearch 倒排索引中进行精确匹配。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/类型名/_search
+{
+	&amp;quot;query&amp;quot; : {
+		&amp;quot;term&amp;quot; : {
+			&amp;quot;字段名&amp;quot;: &amp;quot;搜索条件&amp;quot;
+		}
+	}
+}
+
+GET 索引名/类型名/_search
+{
+	&amp;quot;query&amp;quot; : {
+		&amp;quot;terms&amp;quot; : {
+			&amp;quot;字段名&amp;quot;: [&amp;quot;搜索条件 1&amp;quot;, &amp;quot;搜索条件 2&amp;quot;]
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;636-多条件复合搜索&#34;&gt;6.3.6  多条件复合搜索&lt;/h4&gt;
+&lt;p&gt;在一个请求体中，有多个搜索条件，就是复合搜索。如：搜索数据，条件为部门名称是Sales Department，员工年龄在 20 到 26 之间，部门员工姓名叫张三。上述条件中，部门名称为可选条件，员工年龄必须满足要求，部门员工姓名为可选要求。这种多条件搜索就是符合搜索。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/类型名/_search
+{
+	&amp;quot;query&amp;quot;: {
+		&amp;quot;bool&amp;quot;: {
+			&amp;quot;must&amp;quot;: [ #数组中的多个条件必须同时满足
+				{
+					&amp;quot;range&amp;quot;: {
+						&amp;quot;字段名&amp;quot;: {
+						&amp;quot;lt&amp;quot;: 条件
+						}
+					}
+				}
+				],
+			&amp;quot;must_not&amp;quot;:[ #数组中的多个条件必须都不满足
+				{
+					&amp;quot;match&amp;quot;: {
+						&amp;quot;字段名&amp;quot;: &amp;quot;条件&amp;quot;
+					}
+				},
+				{
+					&amp;quot;range&amp;quot;: {
+						&amp;quot;字段名&amp;quot;: {
+							&amp;quot;gte&amp;quot;: &amp;quot;搜索条件&amp;quot;
+						}
+					}
+				}
+				]
+			&amp;quot;should&amp;quot;: [# 数组中的多个条件有任意一个满足即可。
+				{
+					&amp;quot;match&amp;quot;: {
+						&amp;quot;字段名&amp;quot;: &amp;quot;条件&amp;quot;
+					}
+				},
+				{
+					&amp;quot;range&amp;quot;: {
+						&amp;quot;字段名&amp;quot;: {
+							&amp;quot;gte&amp;quot;: &amp;quot;搜索条件&amp;quot;
+       					 }
+					}
+				}
+				]
+			}
+		}
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;637-排序&#34;&gt;6.3.7  排序&lt;/h4&gt;
+&lt;p&gt;在 ElasticSearch 的搜索中，默认是使用相关度分数实现排序的。可以通过搜索语法实现定制化排序。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/类型名/_search
+{
+	&amp;quot;query&amp;quot;: {
+		[搜索条件]
+	},
+	&amp;quot;sort&amp;quot;: [
+		{
+			&amp;quot;字段名 1&amp;quot;: {
+				&amp;quot;order&amp;quot;: &amp;quot;asc&amp;quot;
+			}
+		},
+		{
+			&amp;quot;字段名 2&amp;quot;: {
+				&amp;quot;order&amp;quot;: &amp;quot;desc&amp;quot;
+			}
+		}
+	]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;注意：在 ElasticSearch 中，如果使用 text 类型的字段作为排序依据，会有问题。ElasticSearch 需要对 text 类型字段数据做分词处理。如果使用 text 类型字段做排序，ElasticSearch 给出的排序结果未必友好，毕竟分词后，先使用哪一个单词做排序都是不合理的。所以 ElasticSearch 中默认情况下不允许使用 text 类型的字段做排序，如果需要使用字符串做结果排序，则可使用 keyword 类型字段作为排序依据，因为 keyword 字段不做分词处理。&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id=&#34;638-分页&#34;&gt;6.3.8 分页&lt;/h4&gt;
+&lt;p&gt;DSL 分页也是使用 from 和 size 实现的。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名称/_search
+{
+	&amp;quot;query&amp;quot;:{
+		&amp;quot;match_all&amp;quot;:{}
+	},
+	&amp;quot;from&amp;quot;: 起始下标,
+	&amp;quot;size&amp;quot;: 查询记录数
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;639-highlight-display&#34;&gt;6.3.9  highlight display&lt;/h4&gt;
+&lt;p&gt;在搜索中，经常需要对搜索关键字做高亮显示，这个时候就可以使用 highlight 语法。&lt;/p&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET 索引名/_search
+{
+	&amp;quot;query&amp;quot;: {
+		&amp;quot;match&amp;quot;: {
+			&amp;quot;字段名&amp;quot;: &amp;quot;条件&amp;quot;
+		}
+	},
+	&amp;quot;highlight&amp;quot;: {
+		&amp;quot;fields&amp;quot;: {
+			&amp;quot;要高亮显示的字段名&amp;quot;: {
+				&amp;quot;fragment_size&amp;quot;: 5, #每个分段长度，默认 20
+				&amp;quot;number_of_fragments&amp;quot;: 1 #返回多少个分段，默认 3
+			}
+		},
+		&amp;quot;pre_tags&amp;quot;: [&amp;quot;前缀&amp;quot;],
+		&amp;quot;post_tags&amp;quot;: [&amp;quot;后缀&amp;quot;]
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;演示案例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;GET test_search/_search
+{
+	&amp;quot;query&amp;quot;: {
+		&amp;quot;bool&amp;quot;: {
+			&amp;quot;should&amp;quot;: [
+				{
+					&amp;quot;match&amp;quot;: {
+						&amp;quot;dname&amp;quot;: &amp;quot;Development department&amp;quot;
+					}
+				},
+				{
+					&amp;quot;match&amp;quot;: {
+					&amp;quot;gender&amp;quot;: &amp;quot;男性&amp;quot;
+				}
+			}
+		]
+		}
+	},
+	&amp;quot;highlight&amp;quot;: {
+		&amp;quot;fields&amp;quot;: {
+			&amp;quot;dname&amp;quot;: {
+				&amp;quot;fragment_size&amp;quot;: 20,
+				&amp;quot;number_of_fragments&amp;quot;: 1
+			},
+			&amp;quot;gender&amp;quot;: {
+				&amp;quot;fragment_size&amp;quot;: 20,
+				&amp;quot;number_of_fragments&amp;quot;: 1
+			}
+		},
+		&amp;quot;pre_tags&amp;quot;:[&amp;quot;&amp;lt;span style=&#39;color:red&#39;&amp;gt;&amp;quot;],
+		&amp;quot;post_tags&amp;quot;:[&amp;quot;&amp;lt;/span&amp;gt;&amp;quot;]
+	},
+	&amp;quot;from&amp;quot;: 2,
+	&amp;quot;size&amp;quot;: 2
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;fragment_size：代表字段数据如果过长，则分段，每个片段数据长度为多少。长度不是字符数量，是 ElasticSearch 内部的数据长度计算方式。默认不对字段做分段。number_of_fragments：代表搜索返回的高亮片段数量，默认情况下会将拆分后的所有片段都返回。&lt;/p&gt;
+&lt;p&gt;pre_tags：高亮前缀&lt;/p&gt;
+&lt;p&gt;post_tags：高亮后缀&lt;/p&gt;
+&lt;p&gt;很多搜索结果显示页面中都不会显示完整的数据，这样在数据过长的时候会导致页面效果 不 佳 ， 都 会 按 照 某 一 个 固 定 长 度 来 显 示 搜 索 结 果 ， 所 以 fragment_size 和number_of_fragments 参数还是很常用的。&lt;/p&gt;
+&lt;h2 id=&#34;7-spring-data-elasticsearch&#34;&gt;7、Spring Data ElasticSearch&lt;/h2&gt;
+&lt;p&gt;使用 Spring Data 下二级子项目 Spring Data Elasticsearch 进行操作。支持 POJO 方法操作 Elasticsearch。相比 Elasticsearch 提供的 API 更加简单更加方便。&lt;/p&gt;
+&lt;h3 id=&#34;71-修改-pom-文件添加依赖&#34;&gt;7.1 修改 POM 文件添加依赖&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+	&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;spring-boot-starter-data-elasticsearch&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;72-修改配置文件&#34;&gt;7.2 修改配置文件&lt;/h3&gt;
+&lt;p&gt;集群版多地址之间使用逗号分隔。&lt;/p&gt;
+&lt;p&gt;在 ElasticSearch5.x 以前的版本中，客户端使用的是 Transport 客户端，通过 TCP 协议和 9300 端口访问 ES。在 6.x 及之后的版本中，官方推荐使用 Rest 客户端，通过 Http协议和 9200 端口访问 ES。且在新版的 Spring Data Elasticsearch 框架中，Transport 客户端配置已经设置为过时配置，推荐使用 Rest 客户端。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;高版本新客户端&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;elasticsearch:
+    rest: # 配置ElasticsearchRestTemplate客户端的属性，是现在推荐使用的。
+      uris:
+        - http://124.70.181.124:9200
+        - http://124.70.181.124:9201
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;低版本常用客户端&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;spring:
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch # 必须提供的配置，集群的名称。
+      cluster-nodes: 124.70.181.124:9300,124.70.181.124:9301 # transport客户端的端口是9300
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;73-创建实体&#34;&gt;7.3 创建实体&lt;/h3&gt;
+&lt;p&gt;@Document 指定实体类和索引对应关系&lt;br&gt;
+indexName：索引名称&lt;br&gt;
+type: 索引类型&lt;br&gt;
+shards: 主分片数量&lt;br&gt;
+replicas：复制分片数量&lt;br&gt;
+@Id 指定主键&lt;br&gt;
+@Field 指定普通属性&lt;br&gt;
+type： 对应 Elasticsearch 中属性类型。使用 FiledType 枚举可以快速获取。测试发现没有 type 属性可能出现无法自动创建类型问题，所以一定要有 type 属性。&lt;br&gt;
+text 类型能被分词&lt;br&gt;
+keywords 不能被分词&lt;br&gt;
+index： 是否创建索引。作为搜索条件时 index 必须为 true&lt;br&gt;
+analyzer：指定分词器类型。&lt;br&gt;
+fielddata：指定是否为 text 类型字段创建正向索引。默认为 false，设置为 true则可以使用此字段排序。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 自定义类型，商品。
+ * 让自定义的类型和ElasticSearch中的一个索引产生关联。
+ *
+ * Document - spring data elasticsearch提供的注解， 描述类型，说明类型和索引的关系。
+ *  indexName - 对应的索引的名称。 必要属性。
+ *  shards - 创建索引时，设置的主分片数量。 默认5
+ *  replicas - 创建索引时，设置的副本分片数量。 默认1
+ *  type - 对应的类型的名称。
+ */
+@Document(indexName = &amp;quot;ego_item2&amp;quot;,shards = 2,replicas = 1,type = &amp;quot;item&amp;quot;)
+public class Item implements Serializable {
+    /**
+     * Id注解是Spring Data核心工程提供的，是所有的Spring Data二级子工程通用的。
+     * 代表主键字段。
+     */
+    @Id
+    private String id;
+    /**
+     * Field注解，描述实体类型中属性和ES索引中字段的关系。
+     * 且可以为这个字段配置自定义映射mapping
+     * 这个自定义映射必须通过代码逻辑调用设置映射的API才能生效。
+     *  name - 索引中对应的字段名称，默认和属性同名。
+     *  type - 索引中字段的类型，默认是FieldType.Auto，代表ES自动映射类型。
+     *  analyzer - 字段的分词器名称，默认是standard。
+     *  fielddata - 是否开启正向索引。默认关闭。
+     *   默认只为文本类型的字段创建反向索引，提供快速搜索逻辑。
+     *   fielddata设置为true，则会额外创建一个正向索引，支持排序。
+     *  index - 是否创建默认的反向索引或正向索引。 text文本类型字段默认创建反向索引，其他创建正向索引。
+     *   没有索引，就不能作为搜索条件。
+     */
+    @Field(name = &amp;quot;title&amp;quot;,type = FieldType.Text,analyzer = &amp;quot;ik_max_word&amp;quot;,fielddata = true)
+    private String title; // 商品名称，需要中文分词，且偶尔需要排序， 常用搜索条件之一
+    @Field(name = &amp;quot;sellPoint&amp;quot;,type = FieldType.Text,analyzer = &amp;quot;ik_max_word&amp;quot;)
+    private String sellPoint; // 卖点， 需要中文分词， 常用搜索条件之一
+    @Field(type = FieldType.Long)
+    private Long price; // 单价
+    @Field(type = FieldType.Integer,index = false)
+    private int num; // 库存
+
+    public Item() {
+    }
+
+    @Override
+    public String toString() {
+        return &amp;quot;Item{&amp;quot; +
+                &amp;quot;Id=&#39;&amp;quot; + id + &#39;\&#39;&#39; +
+                &amp;quot;, title=&#39;&amp;quot; + title + &#39;\&#39;&#39; +
+                &amp;quot;, sellPoint=&#39;&amp;quot; + sellPoint + &#39;\&#39;&#39; +
+                &amp;quot;, price=&amp;quot; + price +
+                &amp;quot;, num=&amp;quot; + num +
+                &#39;}&#39;;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return num == item.num &amp;amp;&amp;amp;
+                Objects.equals(id, item.id) &amp;amp;&amp;amp;
+                Objects.equals(title, item.title) &amp;amp;&amp;amp;
+                Objects.equals(sellPoint, item.sellPoint) &amp;amp;&amp;amp;
+                Objects.equals(price, item.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, sellPoint, price, num);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSellPoint() {
+        return sellPoint;
+    }
+
+    public void setSellPoint(String sellPoint) {
+        this.sellPoint = sellPoint;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;74-初始化索引&#34;&gt;7.4 初始化索引&lt;/h3&gt;
+&lt;p&gt;首先注入客户端对象&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+     * ES5.x以前，使用的客户端一般都是Transport客户端，数据交换客户端，通过端口9300，
+     * 借助协议TCP，实现数据的交换访问。
+     * Spring Data Elasticsearch 提供的客户端Template对象类型是 ElasticsearchTemplate
+     * 配置是：
+     * spring.data.elasticsearch.cluster-name = 集群名称
+     * spring.data.elasticsearch.cluster-nodes = 集群每个节点的地址， ip:port,ip:port
+     * &amp;lt;p&amp;gt;
+     * ES6.x以后，官方推荐使用Rest客户端，通过端口9200，借助协议HTTP，实现数据访问控制
+     * Spring Data Elasticsearch 提供的客户端Template对象类型是 ElasticsearchRestTemplate
+     */
+    // @Autowired
+    //  private ElasticsearchTemplate elasticsearchTemplate;
+
+    @Autowired
+    private ElasticsearchRestTemplate elasticsearchRestTemplate;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;createIndex(): 创建索引，创建出来的索引是不带有 mapping 信息的。返回值表示是否创建成功&lt;/p&gt;
+&lt;p&gt;putMapping():为已有的索引添加 mapping 信息。不具备创建索引的能力。返回值表示是否创建成功&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    /**
+     * 创建索引
+     * 创建索引，不包括映射信息，因为只扫描类型上的Document注解。
+     */
+    @Test
+    public void createIndexWithElasticsearchTemplate(){
+        boolean isCreated = elasticsearchTemplate.createIndex(Item.class);
+        System.out.println(&amp;quot;创建索引是否成功:&amp;quot;+isCreated);
+    }
+}
+
+    /**
+     * 创建索引，并设置映射。
+     * 需要通过两次访问实现，1、创建索引；2、设置映射。
+     */
+    @Test
+    public void testInitIndex() {
+        // 创建索引，根据类型上的Document注解创建
+        boolean isCreated = elasticsearchRestTemplate.createIndex(Item.class);
+        // 设置映射，根据属性上的Field注解设置
+        boolean isMapped = elasticsearchRestTemplate.putMapping(Item.class);
+        System.out.println(&amp;quot;创建索引是否成功&amp;quot; + isCreated);
+        System.out.println(&amp;quot;设置映射是否成功&amp;quot; + isMapped);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;75-删除索引&#34;&gt;7.5 删除索引&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 删除索引
+ */
+@Test
+public void deleteIndex() {
+    // 扫描Item类型上的Document注解，删除对应的索引。
+    boolean isDeleted = elasticsearchRestTemplate.deleteIndex(Item.class);
+    System.out.println(&amp;quot;删除Item对应索引是否成功&amp;quot; + isDeleted);
+    // 直接删除对应名称的索引。
+    isDeleted = elasticsearchRestTemplate.deleteIndex(&amp;quot;default_index&amp;quot;);
+    System.out.println(&amp;quot;删除default_index索引是否成功&amp;quot; + isDeleted);
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;76-添加文档&#34;&gt;7.6 添加文档&lt;/h3&gt;
+&lt;p&gt;如果索引和类型不存在，也可以执行进行新增，新增后自动创建索引和类型。但是 field通过动态 mapping 进行映射，elaticsearch 根据值类型进行判断每个属性类型，默认每个属性都是 standard 分词器，ik 分词器是不生效的。&lt;em&gt;&lt;strong&gt;所以一定要先通过代码进行初始化或直接在 elasticsearch 中通过命令创建所有 field 的 mapping&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id=&#34;761-新增单个文档&#34;&gt;7.6.1 新增单个文档&lt;/h4&gt;
+&lt;p&gt;如果对象的 id 属性没有赋值，让 ES 自动生成主键，存储时 id 属性没有值，_id 存储document 的主键值。&lt;/p&gt;
+&lt;p&gt;如果对象的 id 属性明确设置值，存储时 id 属性为设置的值，ES 中 document 对象的_id 也是设置的值。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    /**
+     * 新增数据到ES
+     */
+    @Test
+    public void testInsert() {
+        Item item = new Item();
+        item.setId(&amp;quot;111222333&amp;quot;);
+        item.setTitle(&amp;quot;Spring In Action VI&amp;quot;);
+        item.setSellPoint(&amp;quot;Spring系列书籍，非常好的一本Spring框架学习手册。唯一缺点没有中文版。&amp;quot;);
+        item.setPrice(9900L);
+        item.setNum(999);
+
+        IndexQuery indexQuery =
+                new IndexQueryBuilder() // 创建一个IndexQuery的构建器
+                        .withObject(item) // 设置要新增的Java对象
+                        .build(); // 构建IndexQuery类型的对象
+
+//        IndexQuery query = new IndexQuery();
+//        query.setObject(item); //效果同上
+        // index逻辑，相当于使用PUT请求，实现数据的新增。
+        String result = elasticsearchRestTemplate.index(indexQuery);
+        System.out.println(result);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;762-批量新增&#34;&gt;7.6.2 批量新增&lt;/h4&gt;
+&lt;p&gt;下面代码中使用的 IndexQueryBuilder()进行构建，可以一行代码完成。也可以使用上面的 IndexQuery()。效果是完全相同的，只是需要写多行。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 批量新增
+ * bulk操作
+ */
+@Test
+public void testBatchInsert() {
+    List&amp;lt;IndexQuery&amp;gt; queries = new ArrayList&amp;lt;&amp;gt;();
+    for (int i = 0; i &amp;lt; 3; i++) {
+        Item item = new Item();
+        item.setId(&amp;quot;2000&amp;quot; + i);
+        item.setTitle(&amp;quot;测试新增商品&amp;quot; + i);
+        item.setSellPoint(&amp;quot;测试新增商品卖点&amp;quot; + i);
+        item.setPrice(new Random().nextLong());
+        item.setNum(9999 - i);
+        queries.add(
+                new IndexQueryBuilder().withObject(item).build()
+        );
+    }
+    // 批量新增，使用的是bulk操作。
+    elasticsearchRestTemplate.bulkIndex(queries);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;77-删除操作&#34;&gt;7.7.  删除操作&lt;/h3&gt;
+&lt;p&gt;根据主键删除&lt;/p&gt;
+&lt;p&gt;delete(String indexName,String typeName,String id); 通过字符串指定索引，类型和 id 值&lt;/p&gt;
+&lt;p&gt;delete(Class,String id) 第一个参数传递实体类类类型，建议使用此方法，减少索引名和类型名由于手动编写出现错误的概率。&lt;/p&gt;
+&lt;p&gt;返回值为 delete 方法第二个参数值（删除文档的主键值）&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 删除数据
+ */
+@Test
+public void testDelete() {
+    //根据主键删除
+    String result = elasticsearchRestTemplate.delete(Item.class, &amp;quot;epYDynEBHt6IU1hpAxvL&amp;quot;);
+    System.out.println(result);
+
+    // 根据查询结果，删除查到的数据。 应用较少。
+    DeleteQuery deleteQuery = new DeleteQuery();
+    //deleteQuery.setIndex(&amp;quot;ego_item&amp;quot;);
+    //deleteQuery.setType(&amp;quot;item&amp;quot;);
+    deleteQuery.setQuery(
+            QueryBuilders.matchQuery(&amp;quot;title&amp;quot;, &amp;quot;Spring In Action VI&amp;quot;)
+    );
+    elasticsearchRestTemplate.delete(deleteQuery, Item.class);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;78-修改操作&#34;&gt;7.8 修改操作&lt;/h3&gt;
+&lt;p&gt;修改操作就是新增代码，只要保证主键 id 已经存在，新增就是修改。&lt;/p&gt;
+&lt;p&gt;如果使用部分更新，则需要通过 update 方法实现。具体如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    /**
+     * 修改数据
+     * 如果是全量替换，可以使用index方法实现，只要主键在索引中存在，就是全量替换。
+     * 如果是部分修改，则可以使用update实现。
+     */
+    @Test
+    public void testUpdate() throws IOException {
+        UpdateRequest request = new UpdateRequest();
+        request.doc(
+                XContentFactory.jsonBuilder()
+                        .startObject()
+                        .field(&amp;quot;name&amp;quot;, &amp;quot;测试update更新数据，商品名称&amp;quot;)
+                        .endObject()
+        );
+        UpdateQuery updateQuery =
+                new UpdateQueryBuilder()
+                        .withUpdateRequest(request)
+                        .withClass(Item.class)
+                        .withId(&amp;quot;20200&amp;quot;)
+                        .build();
+        elasticsearchRestTemplate.update(updateQuery);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;79-搜索操作&#34;&gt;7.9 搜索操作&lt;/h3&gt;
+&lt;h4 id=&#34;791-模糊搜索&#34;&gt;7.9.1  模糊搜索&lt;/h4&gt;
+&lt;p&gt;去所有 field 中搜索指定条件。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+void query(){
+	// NativeSearchQuery 构造方法参数。
+	// 北京去和所有 field 进行匹配，只要出现了北京就可以进行查询
+	QueryStringQueryBuilder queryStringQueryBuilder = QueryBuilders.queryStringQuery(&amp;quot;北京&amp;quot;);
+// 查询条件 SearchQuery 是接口，只能实例化实现类。
+	SearchQuery searchQuery = new NativeSearchQuery(queryStringQueryBuilder);
+	List&amp;lt;People&amp;gt; list = elasticsearchRestTemplate.queryForList(searchQuery,People.class);
+	for(People people : list){
+		System.out.println(people);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;792-使用-match_all-搜索所有文档&#34;&gt;7.9.2 使用 match_all 搜索所有文档&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    /**
+     * 搜素所有数据
+     */
+    @Test
+    public void testMatchAll() {
+        /**
+         * SearchQuery - 是Spring Data Elasticsearch中定义的一个搜索接口
+         * NativeSearchQuery - 是SearchQuery接口的实现类。
+         *  构造的时候，需要提供一个QueryBuilder类型的对象，
+         *  QueryBuilder是Elasticsearch的java客户端中定义的搜索条件类型。
+         *
+         * QueryBuilders - 是QueryBuilder类型的工具类，可以快速实现QueryBuilder类型对象的创建
+         *  工具类中，提供了大量的静态方法，方法命名和DSL搜索中的条件关键字相关。
+         *  如：match_all 对应 matchAllQuery()
+         *  如：match 对应 matchQuery()
+         *  如：range 对应 rangeQuery()
+         */
+        SearchQuery query = new NativeSearchQuery(
+                QueryBuilders.matchAllQuery()
+        );
+        List&amp;lt;Item&amp;gt; items = elasticsearchRestTemplate.queryForList(query, Item.class);
+        for (Item item : items) {
+            System.out.println(item);
+        }
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;793-使用-match-搜索文档&#34;&gt;7.9.3  使用 match 搜索文档&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    /**
+     * 条件搜索
+     */
+    @Test
+    public void testMatch() {
+        SearchQuery query = new NativeSearchQuery(
+                QueryBuilders.matchQuery(&amp;quot;title&amp;quot;, &amp;quot;华为荣耀&amp;quot;)
+        );
+        List&amp;lt;Item&amp;gt; items = elasticsearchRestTemplate.queryForList(query, Item.class);
+        for (Item item : items) {
+            System.out.println(item);
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;794-使用-match_phrase-搜索文档&#34;&gt;7.9.4 使用 match_phrase 搜索文档&lt;/h4&gt;
+&lt;p&gt;短语搜索是对条件不分词，但是文档中属性根据配置实体类时指定的分词类型进行分词。&lt;/p&gt;
+&lt;p&gt;如果属性使用 ik 分词器，从分词后的索引数据中进行匹配。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    /**
+     * 短语搜索
+     */
+    @Test
+    public void testMatchPhrase() {
+        SearchQuery query = new NativeSearchQuery(
+                QueryBuilders.matchPhraseQuery(&amp;quot;title&amp;quot;, &amp;quot;华为荣耀&amp;quot;)
+        );
+        List&amp;lt;Item&amp;gt; items = elasticsearchRestTemplate.queryForList(query, Item.class);
+        for (Item item : items) {
+            System.out.println(item);
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;795-使用-term词组-搜索文档&#34;&gt;7.9.5 使用 Term词组 搜索文档&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    /**
+     * 词组搜索
+     */
+    @Test
+    public void testTerm() {
+        SearchQuery query = new NativeSearchQuery(
+                QueryBuilders.termQuery(&amp;quot;title&amp;quot;, &amp;quot;华为荣耀&amp;quot;)
+        );
+        List&amp;lt;Item&amp;gt; items = elasticsearchRestTemplate.queryForList(query, Item.class);
+        for (Item item : items) {
+            System.out.println(item);
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;796-使用-range-搜索文档&#34;&gt;7.9.6 使用 range 搜索文档&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    /**
+     * 范围搜索 range
+     */
+    @Test
+    public void testRange() {
+        SearchQuery query = new NativeSearchQuery(
+                QueryBuilders.rangeQuery(&amp;quot;price&amp;quot;).lte(800000L).gte(200000L)
+        );
+        List&amp;lt;Item&amp;gt; items = elasticsearchRestTemplate.queryForList(query, Item.class);
+        for (Item item : items) {
+            System.out.println(item);
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;797-多条件搜索&#34;&gt;7.9.7 多条件搜索&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 复合条件搜索
+ */
+@Test
+public void testBool() {
+    // 创建一个Bool搜索条件。 相当于定义 bool:{ must:[], should:[], must_not:[] }
+    BoolQueryBuilder builder = QueryBuilders.boolQuery();
+    List&amp;lt;QueryBuilder&amp;gt; mustList = builder.must();
+    mustList.add(QueryBuilders.matchQuery(&amp;quot;title&amp;quot;, &amp;quot;华为&amp;quot;));
+    mustList.add(QueryBuilders.rangeQuery(&amp;quot;price&amp;quot;).gte(300000L));
+    SearchQuery query = new NativeSearchQuery(builder);
+    List&amp;lt;Item&amp;gt; items = elasticsearchRestTemplate.queryForList(query, Item.class);
+    for (Item item : items) {
+        System.out.println(item);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;798-分页与排序&#34;&gt;7.9.8 分页与排序&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    /**
+     * 分页和排序
+     * 所有的Spring Data子工程中的分页和排序逻辑使用的都是相似的方式。
+     * 根据PageRequest和Sort实现分页或排序。
+     */
+    @Test
+    public void testPageable() {
+        SearchQuery query = new NativeSearchQuery(
+                QueryBuilders.matchAllQuery()
+        );
+        // 设置分页 ，从第0页开始的两条
+        query.setPageable(PageRequest.of(0, 2));
+        // 设置排序
+        query.addSort(Sort.by(Sort.Direction.DESC, &amp;quot;price&amp;quot;));
+        // 设置分页的同时设置排序
+        // query.setPageable(PageRequest.of(0,2,Sort.by(Sort.Direction.DESC,&amp;quot;price&amp;quot;)));
+        List&amp;lt;Item&amp;gt; items = elasticsearchRestTemplate.queryForList(query, Item.class);
+        for (Item item : items) {
+            System.out.println(item);
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果实体类中主键只有@Id 注解，String id 对应 ES 中是 text 类型，text 类型是不允许被排序，所以如果必须按照主键进行排序时需要在实体类中设置主键类型&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Id
+@Field(type = FieldType.Keyword)
+private String id;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;799-高亮搜索&#34;&gt;7.9.9 高亮搜索&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;
+    /**
+     * 高亮
+     */
+    @Test
+    public void testHighlight(){
+        HighlightBuilder.Field field = new HighlightBuilder.Field(&amp;quot;title&amp;quot;);
+        field.preTags(&amp;quot;&amp;lt;em&amp;gt;&amp;quot;);
+        field.postTags(&amp;quot;&amp;lt;/em&amp;gt;&amp;quot;);
+
+        NativeSearchQuery query =
+                new NativeSearchQueryBuilder()
+                        // 排序
+                        .withSort(SortBuilders.fieldSort(&amp;quot;price&amp;quot;).order(SortOrder.ASC))
+                        // 分页
+                        .withPageable(PageRequest.of(0, 2))
+                        // 搜索条件
+                        .withQuery(QueryBuilders.matchQuery(&amp;quot;title&amp;quot;, &amp;quot;华为&amp;quot;))
+                        // 设置高亮字段
+                        .withHighlightFields(field)
+                        .build();
+
+        AggregatedPage&amp;lt;? extends Item&amp;gt; pageResult =
+                elasticsearchRestTemplate.queryForPage(query, Item.class, new SearchResultMapper() {
+                    // 处理搜索结果，搜索的完整结果，也就是那个集合。
+                    // response - 就是搜索的结果，相当于在Kibana中执行搜索的结果内容。
+                    // clazz - 就是返回结果的具体类型
+                    // pageable - 分页处理，就是queryForPage方法参数query中的pageable对象。
+                    @Override
+                    public &amp;lt;T&amp;gt; AggregatedPage&amp;lt;T&amp;gt; mapResults(SearchResponse response,
+                                                            Class&amp;lt;T&amp;gt; clazz,
+                                                            Pageable pageable) {
+                        // 获取搜索的结果数据
+                        SearchHit[] hits = response.getHits().getHits();
+                        List&amp;lt;T&amp;gt; resultList = new ArrayList&amp;lt;&amp;gt;();
+                        for(SearchHit hit : hits){
+                            // 搜索的source源
+                            Map&amp;lt;String, Object&amp;gt; map = hit.getSourceAsMap();
+                            Item item = new Item();
+                            item.setId(map.get(&amp;quot;id&amp;quot;).toString());
+                            item.setSellPoint(map.get(&amp;quot;sellPoint&amp;quot;).toString());
+                            item.setPrice(Long.parseLong(map.get(&amp;quot;price&amp;quot;).toString()));
+                            item.setNum(Integer.parseInt(map.get(&amp;quot;num&amp;quot;).toString()));
+                            // 高亮数据处理。key - 字段名， value - 是高亮数据结果
+                            Map&amp;lt;String, HighlightField&amp;gt; highlightFieldMap = hit.getHighlightFields();
+                            HighlightField highlightField = highlightFieldMap.get(&amp;quot;title&amp;quot;);
+                            if (highlightField == null){ // 没有高亮的title
+                                item.setTitle(map.get(&amp;quot;title&amp;quot;).toString());
+                            }else{ // 有高亮的title
+                                item.setTitle(highlightField.getFragments()[0].toString());
+                            }
+                            resultList.add((T)item);
+                        }
+                        // 返回处理后的结果
+
+                        return new AggregatedPageImpl&amp;lt;&amp;gt;(
+                                resultList, pageable, response.getHits().getTotalHits()
+                        );
+                    }
+
+                    // 不提供实现，这个是处理每个搜索结果的方法
+                    @Override
+                    public &amp;lt;T&amp;gt; T mapSearchHit(SearchHit searchHit, Class&amp;lt;T&amp;gt; type) {
+                        return null;
+                    }
+                });
+
+        for(Item item : pageResult.getContent()){
+            System.out.println(item);
+        }
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
 ">ElasticSearch</a>
       </div>
       
