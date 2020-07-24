@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Ajax | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1595444853412">
+<link rel="shortcut icon" href="/favicon.ico?v=1595556995674">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -218,7 +218,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">28</span>
+        <span class="site-item-stat-count">29</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -3503,6 +3503,16 @@ public class UserServlet extends HttpServlet {
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/spring-session/"" data-c="
+          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724101519.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-httpsession-回顾&#34;&gt;1、HttpSession 回顾&lt;/h2&gt;
+&lt;h3 id=&#34;11-什么是-httpsession&#34;&gt;1.1  什么是 HttpSession&lt;/h3&gt;
+&lt;p&gt;是JavaWeb 服务端提供的用来建立与客户端会话状态的对象。&lt;/p&gt;
+&lt;!-- more --&gt;
+">Spring Session</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/logstash_kibana/"" data-c="
           &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200723030527.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;1-logstash-简介&#34;&gt;1、LogStash 简介&lt;/h2&gt;
@@ -3512,6 +3522,403 @@ public class UserServlet extends HttpServlet {
 &lt;!-- more --&gt;
 &lt;p&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200723030716.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 到目前为止，Logstash 已经有超过 200 个可用的插件，以及创建和贡献自己的灵活性。社区生态非常完善，对于我们可以放心的使用。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724091204.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;12-为什么使用logstash&#34;&gt;1.2 为什么使用Logstash&lt;/h3&gt;
+&lt;p&gt;通常当系统发生故障时，工程师需要登录到各个服务器上，使用 grep / sed / awk 等Linux 脚本工具去日志里查找故障原因。在没有日志系统的情况下，首先需要定位处理请求的服务器，如果这台服务器部署了多个实例，则需要去每个应用实例的日志目录下去找日志文件。每个应用实例还会设置日志滚动策略（如：每天生成一个文件），还有日志压缩归档策略等。&lt;/p&gt;
+&lt;p&gt;这样一系列流程下来，对于我们排查故障以及及时找到故障原因，造成了比较大的麻烦。因此，如果我们能***把这些日志集中管理***，并提供集中检索功能，不仅可以提高诊断的效率，同时对系统情况有个全面的理解，避免事后救火的被动。&lt;br&gt;
+所以日志集中管理功能就可以使用 ELK 技术栈进行实现。Elasticsearch 只有数据存储和分析的能力，Kibana 就是可视化管理平台。还缺少数据收集和整理的角色，这个功能就是Logstash 负责的。&lt;/p&gt;
+&lt;h3 id=&#34;13-logstash-工作原理&#34;&gt;1.3  Logstash 工作原理&lt;/h3&gt;
+&lt;h4 id=&#34;131-data-source&#34;&gt;1.3.1 Data Source&lt;/h4&gt;
+&lt;p&gt;Logstash 支持的数据源有很多。例如对于日志功能来说只能能有日志记录和日志传递功能的日志都支持，Spring Boot 中默认推荐 logback 支持日志输出功能（输出到数据库、数据出到文件）。&lt;br&gt;
+我们就使用 logback 进行日志输出给 Logstash。&lt;/p&gt;
+&lt;h4 id=&#34;132-logstash-pipeline&#34;&gt;1.3.2 Logstash Pipeline&lt;/h4&gt;
+&lt;p&gt;整个整体就是 Logstash 的功能。&lt;br&gt;
+在 Logstash 中包含非常重要的三个功能：&lt;br&gt;
+a) Input&lt;br&gt;
+输入源，一般配置为自己监听的主机及端口。DataSource 向指定的 ip 及端口输出日志，Input 输入源监听到数据信息就可以进行收集。&lt;br&gt;
+b) Filter&lt;br&gt;
+过滤功能，对收集到的信息进行过滤（额外处理），也可以省略这个配置（不做处理）&lt;br&gt;
+c) Output&lt;br&gt;
+把收集到的信息发送给谁。在 ELK 技术栈中都是输出给 Elasticsearch，后面数据检索和数据分析的过程就给 Elasticsearch 了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;最终效果：通过整体步骤就可以把原来一行日志信息转换为 Elasticsearch 支持的Document 形式（键值对形式）的数据进行存储。&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724091938.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;2-安装logstash&#34;&gt;2、安装Logstash&lt;/h2&gt;
+&lt;p&gt;前面已经安装好了 Elasticsearch 和 Kibana。下面是安装 Logstash 的步骤&lt;br&gt;
+Logstash 是不需要必须和 Elasticsearch 安装到一起，如果独立安装到一台服务器，需要在服务器中先配置好 JDK 环境变量。在课堂中把 ELK 三个软件都装到一台服务器中。&lt;/p&gt;
+&lt;h3 id=&#34;21-安装logstash&#34;&gt;2.1 安装Logstash&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;上传 Logstash 并解压&lt;/p&gt;
+&lt;p&gt;上传压缩包到/usr/local/tmp 中后，解压压缩包。&lt;/p&gt;
+&lt;p&gt;tar zxf logstash-6.8.4.tar.gz&lt;/p&gt;
+&lt;p&gt;剪切到/usr/local 中并命名为 logstash&lt;/p&gt;
+&lt;p&gt;mv logstash-6.8.4 ../logstash&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进入到 logstash 配置文件夹中&lt;/p&gt;
+&lt;p&gt;cd /usr/local/logstash/config/&lt;/p&gt;
+&lt;p&gt;创建配置文件，名称自定义。&lt;/p&gt;
+&lt;p&gt;vim mylogstash.conf&lt;/p&gt;
+&lt;p&gt;配置解释说明：&lt;br&gt;
+input:接收日志输入配置&lt;br&gt;
+tcp: 协议&lt;br&gt;
+mode: logstash 服务&lt;br&gt;
+host:logstash 主机 ip&lt;br&gt;
+port：端口，自己指定。默认 4560&lt;br&gt;
+output：日志处理输出&lt;br&gt;
+elasticsearch: 交给 es 处理&lt;br&gt;
+action：es 中 index 命令。也就是新增命令。&lt;br&gt;
+hosts：es 的主机&lt;br&gt;
+index:存储日志的索引。如果不存在可以自动创建。默认的 type 名称为 doc&lt;br&gt;
+一定要先启动编辑状态（点击键盘i 键）在粘贴，如果没启用第一行是nput{少个i。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;input {
+		tcp {
+			mode =&amp;gt; &amp;quot;server&amp;quot;
+			host =&amp;gt; &amp;quot;192.168.8.140&amp;quot;
+			port =&amp;gt; 4560
+		}
+}
+filter {
+}
+output {
+		elasticsearch {
+			action =&amp;gt; &amp;quot;index&amp;quot;
+			hosts =&amp;gt; &amp;quot;192.168.8.140:9200&amp;quot;
+			index =&amp;gt; &amp;quot;test_log&amp;quot;
+		}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动 Logstash&lt;br&gt;
+进入到 bin 目录&lt;/p&gt;
+&lt;p&gt;cd /usr/local/logstash/bin&lt;/p&gt;
+&lt;p&gt;需要先启动 Elasticsearch 否则会频繁提示无法连接到 Elasticsearch&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724092726.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;启动 logstash&lt;/p&gt;
+&lt;p&gt;./logstash -f /usr/local/logstash/config/mylogstash.conf&lt;/p&gt;
+&lt;p&gt;如果启动完成没有出异常，提示 Successfully 说明安装成功。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724092738.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-使用logback-向logstash-中输出日志&#34;&gt;3、使用Logback 向Logstash 中输出日志&lt;/h2&gt;
+&lt;p&gt;需求：随意新建一个项目把输出到控制台的日志信息也输出到 Logstash 中。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;修改pom.xml&lt;br&gt;
+logstash-logback-encoder 就是转码后向 logstash 中输入的依赖。&lt;br&gt;
+注意：&lt;/p&gt;
+&lt;p&gt;如果导入的是 6.x 版本不会在控制台看见任何额外日志信息。&lt;br&gt;
+如果导入的是 5.x 版本会在控制台看见 logback.xml 加载的信息。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;parent&amp;gt;
+	&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+	&amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
+	&amp;lt;version&amp;gt;2.2.6.RELEASE&amp;lt;/version&amp;gt;
+&amp;lt;/parent&amp;gt;
+&amp;lt;dependencies&amp;gt;
+	&amp;lt;dependency&amp;gt;
+		&amp;lt;groupId&amp;gt;net.logstash.logback&amp;lt;/groupId&amp;gt;
+		&amp;lt;artifactId&amp;gt;logstash-logback-encoder&amp;lt;/artifactId&amp;gt;
+		&amp;lt;version&amp;gt;6.3&amp;lt;/version&amp;gt;
+	&amp;lt;/dependency&amp;gt;
+	&amp;lt;dependency&amp;gt;
+		&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+		&amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+	&amp;lt;/dependency&amp;gt;
+&amp;lt;/dependencies&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;导入logback.xml&lt;br&gt;
+将logback.xml文件粘贴到 resources 中。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724093405.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;logback.xml 文件内容如下，红色部分表示向 logstash 中输出日志信息。&lt;br&gt;
+红色中&lt;destination&gt;配置的是 logstash 配置文件中 input 里面 host 和 post 的信息。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!--该日志将日志级别不同的 log 信息保存到不同的文件中 --&amp;gt;
+&amp;lt;configuration&amp;gt;
+    &amp;lt;include resource=&amp;quot;org/springframework/boot/logging/logback/defaults.xml&amp;quot;&amp;gt;&amp;lt;/include&amp;gt;
+    &amp;lt;springProperty scope=&amp;quot;context&amp;quot; name=&amp;quot;egoSearchLogback&amp;quot; source=&amp;quot;spring.application.name&amp;quot;/&amp;gt;
+
+    &amp;lt;!-- 日志在工程中的输出位置 --&amp;gt;
+    &amp;lt;property name=&amp;quot;EGO-LOG-APPENDER&amp;quot; value=&amp;quot;%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}&amp;quot;&amp;gt;&amp;lt;/property&amp;gt;
+    &amp;lt;!-- 控制台的日志输出样式 --&amp;gt;
+    &amp;lt;appender name=&amp;quot;consoleAppender&amp;quot; class=&amp;quot;ch.qos.logback.core.ConsoleAppender&amp;quot;&amp;gt;
+        &amp;lt;filter class=&amp;quot;ch.qos.logback.classic.filter.ThresholdFilter&amp;quot;&amp;gt;
+            &amp;lt;level&amp;gt;INFO&amp;lt;/level&amp;gt;
+        &amp;lt;/filter&amp;gt;
+        &amp;lt;encoder&amp;gt;
+            &amp;lt;pattern&amp;gt;${EGO-LOG-APPENDER}&amp;lt;/pattern&amp;gt;
+            &amp;lt;charset&amp;gt;utf8&amp;lt;/charset&amp;gt;
+        &amp;lt;/encoder&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;!-- logstash 输出 --&amp;gt;
+    &amp;lt;appender name=&amp;quot;logstashAppender&amp;quot; class=&amp;quot;net.logstash.logback.appender.LogstashTcpSocketAppender&amp;quot;&amp;gt;
+        &amp;lt;destination&amp;gt;192.168.89.141:5044&amp;lt;/destination&amp;gt;
+        &amp;lt;!-- 日志输出编码 --&amp;gt;
+        &amp;lt;encoder charset=&amp;quot;UTF-8&amp;quot; class=&amp;quot;net.logstash.logback.encoder.LogstashEncoder&amp;quot;&amp;gt;&amp;lt;/encoder&amp;gt;
+    &amp;lt;/appender&amp;gt;
+    &amp;lt;!-- logstash 远程日志配置--&amp;gt;
+&amp;lt;appender name=&amp;quot;logstash&amp;quot;
+class=&amp;quot;net.logstash.logback.appender.LogstashTcpSocketAppender&amp;quot;&amp;gt;
+&amp;lt;destination&amp;gt;192.168.8.140:4560&amp;lt;/destination&amp;gt;
+&amp;lt;encoder charset=&amp;quot;UTF-8&amp;quot;
+class=&amp;quot;net.logstash.logback.encoder.LogstashEncoder&amp;quot; /&amp;gt;
+&amp;lt;/appender&amp;gt;
+    &amp;lt;root level=&amp;quot;DEBUG&amp;quot;&amp;gt;
+        &amp;lt;appender-ref ref=&amp;quot;consoleAppender&amp;quot;/&amp;gt;
+        &amp;lt;appender-ref ref=&amp;quot;logstashAppender&amp;quot;/&amp;gt;
+    &amp;lt;/root&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新建启动类&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;新建 com.cy.DemoApplication&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@SpringBootApplication
+public class DemoApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class,args);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-在kibana-中查看日志信息&#34;&gt;4、在Kibana 中查看日志信息&lt;/h2&gt;
+&lt;h3 id=&#34;41-使用命令方式查看&#34;&gt;4.1 使用命令方式查看&lt;/h3&gt;
+&lt;p&gt;可以直接在 Dev Tools 中输入命令查看日志信息。&lt;br&gt;
+输入： GET test_log/_search 查看全部。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724094359.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;42-是kibana-界面查看&#34;&gt;4.2  是Kibana 界面查看&lt;/h3&gt;
+&lt;p&gt;进入到 Kibana 后按图所示点击。创建索引表达式&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724094419.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;选择没有时间过滤后，点击“Create index pattern”按钮&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724094434.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;点击菜单中 Discover，选择右侧 test_log&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724094507.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;每条日志在 Elasticsearch 中存储形式&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724094920.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;IDEA 中控制台打印的原日志内容是下面内容。Logstash 作用就是把下面内容转换为上面Elasticsearch 存储的内容。在中间做了数据格式转换，收集数据放入 Elasticsearch 中的工作。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724094935.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;5-搭建日志系统&#34;&gt;5、搭建日志系统&lt;/h2&gt;
+&lt;p&gt;绝大多数项目在后台管理中都有日志管理。以前的日志信息是存储在 MySQL 中，日志随着项目运行时间会越来越多，一直存储在 MySQL 会导致查询降低。现在的日志信息通过ELK 技术栈进行操作。存储在 Elasticsearch 中，可以更好的分析日志内容及更快查询效率。&lt;/p&gt;
+&lt;p&gt;给定简单需求：&lt;br&gt;
+搭建日志系统，提供查询 Elasticsearch 中日志信息的接口。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;新建项目&lt;br&gt;
+名称为 ELK_Demo&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改pom.xml&lt;br&gt;
+搭建最基本的环境，实现需求，没有考虑 Spring Cloud 相关环境，如果考虑 Spring Cloud还需要配置 Eureka 等信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependencyManagement&amp;gt;
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-dependencies&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;2.2.5.RELEASE&amp;lt;/version&amp;gt;
+            &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;
+            &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+&amp;lt;/dependencyManagement&amp;gt;
+
+&amp;lt;dependencies&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;spring-boot-starter-data-elasticsearch&amp;lt;/artifactId&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+&amp;lt;/dependencies&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;创建配置文件&lt;br&gt;
+在 resources 下新建 application.yml 配置文件。&lt;br&gt;
+配置 Elasticsearch 相关配置信息。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;elasticsearch:
+  rest:  # 配置ElasticsearchRestTemplate客户端的属性，是现在推荐使用的。
+    uris:
+      - http://192.168.89.140:9200
+      - http://192.168.89.141:9200
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新建实体&lt;br&gt;
+根据 kibana 中查看到日志信息可以得出看出，除了 message 是类类型，里面包含一些其他属性外，其他的属性都是简单类型属性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724095948.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;新建 com.cy.pojo.Log。&lt;/p&gt;
+&lt;p&gt;注意@version 和@timestamp 要使用@JsonProperty 进行接收。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Data
+@Document(indexName = &amp;quot;test_log&amp;quot;,type = &amp;quot;doc&amp;quot;)
+public class Log {
+	@Id
+	private String id;
+	@Field(type= FieldType.Text)
+	private String host;
+	@Field(type= FieldType.Text)
+	private String message;
+	@Field(type= FieldType.Long)
+	private Long port;
+	@Field(type = FieldType.Date)
+	@JsonProperty(&amp;quot;@timestamp&amp;quot;)
+	private Date timestamp;
+	@Field(type = FieldType.Text)
+	@JsonProperty(&amp;quot;@version&amp;quot;)
+	private String version;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;新建service 及实现类&lt;/p&gt;
+&lt;p&gt;新建 com.cy.service.LogService 及实现类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface LogService {
+    List&amp;lt;Log&amp;gt; selectByPage(int page,int size);
+}
+
+------------------------------------------------
+    @Service
+public class LogServiceImpl implements LogService {
+	@Autowired
+	private ElasticsearchTemplate elasticsearchTemplate;
+	@Override
+	public List&amp;lt;Log&amp;gt; selectByPage(int page, int size) {
+		SearchQuery sq = new NativeSearchQuery(QueryBuilders.matchAllQuery());
+		sq.setPageable(PageRequest.of(page-1,size));
+		return elasticsearchTemplate.queryForList(sq,Log.class);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新建控制器&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;新建 com.cy.controller.LogController&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Controller
+public class LogController {
+	@Autowired
+	private LogService logService;
+	@RequestMapping(&amp;quot;/page&amp;quot;)
+	@ResponseBody
+	public List&amp;lt;Log&amp;gt; showPage(int page,int size){
+		return logService.selectByPage(page,size);
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;测试结果&lt;/p&gt;
+&lt;p&gt;在浏览器输入: http://localhost:8080/page?page=1&amp;amp;size=2&lt;/p&gt;
+&lt;p&gt;会看见下面的结果。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200724100358.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;6-logstashmysqlelasticsearch-实现数据增量导入双写一致&#34;&gt;6、LogStash+MySQL+Elasticsearch 实现数据增量导入（双写一致）&lt;/h2&gt;
+&lt;p&gt;原有系统中，如果使用了缓存应用，全文搜索服务等额外数据存储，则在代码实现中，要保证双写一致，即写数据库的同时，把数据的变量同步到其他存储中。&lt;br&gt;
+如果使用 LogStash，则可以实现数据的增量导入。&lt;br&gt;
+思路：写数据到数据库，LogStash 监听数据库中数据的变化，把增量数据读取，并保存到 ES 中。&lt;/p&gt;
+&lt;h3 id=&#34;61-环境准备&#34;&gt;6.1 环境准备&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;上传数据库驱动&lt;br&gt;
+LogStash 本身不提供数据库驱动，需要使用者提供数据库的驱动包，且 LogStash 中的数据库 JDBC 插件就是 Java 开发的。需要上传数据库驱动到 LogStash 所在主机。&lt;br&gt;
+Logstash5.x &amp;amp; 6.3.*以下版本，上传驱动不需要固定位置，任意位置即可。&lt;br&gt;
+Logstash6.8.4 版本的上传位置固定是：$LogStash_HOME/logstash_core/lib/jars/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;准备数据库表格&lt;br&gt;
+案例中使用电商项目中的商品表格，建表语句如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;CREATE TABLE `tb_item` (
+`id` bigint(20) NOT NULL COMMENT &#39;商品 id，同时也是商品编号&#39;,
+`title` varchar(100) NOT NULL COMMENT &#39;商品标题&#39;,
+`sell_point` varchar(500) DEFAULT NULL COMMENT &#39;商品卖点&#39;,
+`price` bigint(20) NOT NULL COMMENT &#39;商品价格，单位为：分&#39;,
+   `num` int(10) NOT NULL COMMENT &#39;库存数量&#39;,
+`barcode` varchar(30) DEFAULT NULL COMMENT &#39;商品条形码&#39;,
+`image` varchar(500) DEFAULT NULL COMMENT &#39;商品图片&#39;,
+`cid` bigint(10) NOT NULL COMMENT &#39;所属类目，叶子类目&#39;,
+`status` tinyint(4) NOT NULL DEFAULT &#39;1&#39; COMMENT &#39;商品状态，1-正常，2-下架，3-删除&#39;,
+`created` datetime NOT NULL COMMENT &#39;创建时间&#39;,
+`updated` datetime NOT NULL COMMENT &#39;更新时间&#39;,
+PRIMARY KEY (`id`),
+KEY `cid` (`cid`),
+KEY `status` (`status`),
+KEY `updated` (`updated`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&#39;商品表&#39;; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;LogStash 实现增量导入，需要有一个定位字段，这个字段的数据，可以表示数据的新旧，代表这个数据是否是一个需要导入到 ES 中的数据。案例中使用表格的 updated 字段作为定位字段，每次读取数据的时候，都会记录一个最大的 updated 时间，每次读取数据的时候，都读取 updated 大于等于记录的定位字段数据。每次查询的就都是最新的，要导入到 ES 中的数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;62-编写logstash-配置文件&#34;&gt;6.2 编写LogStash 配置文件&lt;/h3&gt;
+&lt;p&gt;在$LogStash_home/config/目录中，编写配置文件 ego-items-db2es.conf&lt;br&gt;
+vim config/ego-items-db2es.conf&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;input {
+  jdbc {
+	# 连接地址
+    jdbc_connection_string =&amp;gt; &amp;quot;jdbc:mysql://192.168.1.2:3306/ego?useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;serverTimezone=GMT%2B8&amp;quot;
+	
+	# 数据库用户名和密码
+    jdbc_user =&amp;gt; &amp;quot;root&amp;quot;
+    jdbc_password =&amp;gt; &amp;quot;root&amp;quot;
+
+	# 驱 动 类 ， 如 果 使 用 低 版 本 的 logstash ， 需 要 再 增 加 配 置jdbc_driver_library，配置驱动包所在位置
+    jdbc_driver_class =&amp;gt; &amp;quot;com.mysql.cj.jdbc.Driver&amp;quot;
+	# 是否开启分页逻辑
+    jdbc_paging_enabled =&amp;gt; true
+	# 分页的长度是多少
+    jdbc_page_size =&amp;gt; &amp;quot;2000&amp;quot;
+	# 时区
+    jdbc_default_timezone =&amp;gt; &amp;quot;Asia/Shanghai&amp;quot;
+
+	# 执行的 SQL
+    statement =&amp;gt; &amp;quot;select id, title, sell_point, price, image, updated from tb_item where updated &amp;gt;= :sql_last_value order by updated asc&amp;quot;
+
+	# 执行 SQL 的周期， [秒] 分钟 小时 天 月 年
+    schedule =&amp;gt; &amp;quot;* * * * *&amp;quot;
+	# 是否使用字段的值作为比较策略
+    use_column_value =&amp;gt; true
+	# 作为比较策略的字段名称
+    tracking_column =&amp;gt; &amp;quot;updated&amp;quot;
+	# 作为比较策略的字段类型，可选为 numberic 和 timestamp
+    tracking_column_type =&amp;gt; &amp;quot;timestamp&amp;quot;
+	# 记录最近的比较策略字段值的文件是什么，相对寻址路径是 logstash 的安装路径
+    last_run_metadata_path =&amp;gt; &amp;quot;./ego-items-db2es-last-value&amp;quot;
+	# 是否每次执行 SQL 的时候，都删除 last_run_metadata_path 文件内容
+    clean_run =&amp;gt; false
+	# 是否强制把 ES 中的字段名都定义为小写。
+    lowercase_column_names =&amp;gt; false
+  }
+}
+
+output {
+  elasticsearch {
+    hosts =&amp;gt; [&amp;quot;http://192.168.89.140:9200&amp;quot;, &amp;quot;http://192.168.89.141:9200&amp;quot;]
+    index =&amp;gt; &amp;quot;ego-items-index&amp;quot;
+    action =&amp;gt; &amp;quot;index&amp;quot;
+    document_id =&amp;gt; &amp;quot;%{id}&amp;quot;
+  }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;63-安装logstash-input-jdbc-插件&#34;&gt;6.3  安装logstash-input-jdbc 插件&lt;/h3&gt;
+&lt;p&gt;在 LogStash6.3.x 和 5.x 版本中，logstash-input-jdbc 插件是默认安装的。在 6.8.4 版本的LogStash 中是未安装的，需要手工安装。安装命令如下：&lt;br&gt;
+$Logstash_HOME/bin/logstash-plugin install logstash-input-jdbc&lt;/p&gt;
+&lt;h3 id=&#34;64-启动测试&#34;&gt;6.4 启动测试&lt;/h3&gt;
+&lt;p&gt;启动 LogStash 命令不变：&lt;br&gt;
+bin/logstash -f 配置文件&lt;/p&gt;
 ">Logstash_Kibana</a>
       </div>
       
