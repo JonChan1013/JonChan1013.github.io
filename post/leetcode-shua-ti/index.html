@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>LeetCode刷题 | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1595558308348">
+<link rel="shortcut icon" href="/favicon.ico?v=1596472171649">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -218,7 +218,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">29</span>
+        <span class="site-item-stat-count">30</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1712,6 +1712,2383 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/springcloud/"" data-c="
+          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200730014043.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-系统架构演变&#34;&gt;1、系统架构演变&lt;/h2&gt;
+&lt;p&gt;随着互联网的发展，网站应用的规模不断扩大。需求的激增，带来的是技术上的压力。系统架构也因此也不断的演进、升级、迭代。从单一应用，到垂直拆分，到分布式服务，到SOA，以及现在火热的微服务架构，还有在Google带领下来势汹涌的Service Mesh。我们到底是该乘坐微服务的船只驶向远方，还是偏安逸得过且过？&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h3 id=&#34;11-集中式架构&#34;&gt;1.1 集中式架构&lt;/h3&gt;
+&lt;p&gt;当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731105554.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：&lt;br&gt;
+系统开发速度快&lt;br&gt;
+维护成本低&lt;br&gt;
+适用于并发要求较低的系统&lt;/li&gt;
+&lt;li&gt;缺点：&lt;br&gt;
+代码耦合度高，后期维护困难&lt;br&gt;
+无法针对不同模块进行针对性优化&lt;br&gt;
+无法水平扩展&lt;br&gt;
+单点容错率低，并发能力差&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;12-垂直拆分&#34;&gt;1.2 垂直拆分&lt;/h3&gt;
+&lt;p&gt;当访问量逐渐增大，单一应用无法满足需求，此时为了应对更高的并发和业务需求，我们根据业务功能对系统进行拆分：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731105826.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：&lt;br&gt;
+系统拆分实现了流量分担，解决了并发问题&lt;br&gt;
+可以针对不同模块进行优化&lt;br&gt;
+方便水平扩展，负载均衡，容错率提高&lt;/li&gt;
+&lt;li&gt;缺点：&lt;br&gt;
+系统间相互独立，会有很多重复开发工作，影响开发效率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;13-分布式服务&#34;&gt;1.3 分布式服务&lt;/h3&gt;
+&lt;p&gt;当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731110007.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：&lt;br&gt;
+将基础服务进行了抽取，系统间相互调用，提高了代码复用和开发效率&lt;/li&gt;
+&lt;li&gt;缺点：&lt;br&gt;
+系统间耦合度变高，调用关系错综复杂，难以维护&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;14-面向服务架构soa&#34;&gt;1.4 面向服务架构（SOA）&lt;/h3&gt;
+&lt;p&gt;SOA（Service Oriented Architecture）面向服务的架构：它是一种设计方法，其中包含多个服务， 服务之间通过相互依赖最终提供一系列的功能。一个服务 通常以独立的形式存在与操作系统进程中。各个服务之间 通过网络调用。&lt;br&gt;
+SOA结构图：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731110053.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;ESB（企业服务总线），简单 来说 ESB 就是一根管道，用来连接各个服务节点。为了集 成不同系统，不同协议的服务，ESB 做了消息的转化解释和路由工作，让不同的服务互联互通。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SOA缺点&lt;/strong&gt;：每个供应商提供的ESB产品有偏差，自身实现较为复杂；应用服务粒度较大，ESB集成整合所有服务和协议、数据转换使得运维、测试部署困难。所有服务都通过一个通路通信，直接降低了通信速度。&lt;/p&gt;
+&lt;h3 id=&#34;15-微服务架构&#34;&gt;1.5 微服务架构&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;微服务架构是使用一套小服务来开发单个应用的方式或途径&lt;/strong&gt;，每个服务基于单一业务能力构建，运行在自己的进程中，并使用轻量级机制通信，通常是HTTP API，并能够通过自动化部署机制来独立部署。这些服务可以使用不同的编程语言实现，以及不同数据存储技术，并保持最低限度的集中式管理。&lt;br&gt;
+微服务结构图：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731110312.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;API Gateway网关是一个服务器，是系统的唯一入口。为每个客户端提供一个定制的API。API网关核心是，所有的客户端和消费端都通过统一的网关接入微服务，在网关层处理所有的非业务功能。如它还可以具有其它职责，如身份验证、监控、负载均衡、缓存、请求分片与管理、静态响应处理。通常，网关提供RESTful/HTTP的方式访问服务。而服务端通过服务注册中心进行服务注册和管理。&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;微服务的特点：&lt;br&gt;
+单一职责：微服务中每一个服务都对应唯一的业务能力，做到单一职责&lt;br&gt;
+微：微服务的服务拆分粒度很小，例如一个用户管理就可以作为一个服务。每个服务虽小，但“五脏俱全”。&lt;br&gt;
+面向服务：面向服务是说每个服务都要对外暴露Rest风格服务接口API。并不关心服务的技术实现，做到与平台和语言无关，也不限定用什么技术实现，只要提供Rest的接口即可。&lt;br&gt;
+自治：自治是说服务间互相独立，互不干扰
+&lt;ul&gt;
+&lt;li&gt;团队独立：每个服务都是一个独立的开发团队，人数不能过多。&lt;/li&gt;
+&lt;li&gt;技术独立：因为是面向服务，提供Rest接口，使用什么技术没有别人干涉&lt;/li&gt;
+&lt;li&gt;前后端分离：采用前后端分离开发，提供统一Rest接口，后端不用再为PC、移动端开发不同接口&lt;/li&gt;
+&lt;li&gt;数据库分离：每个服务都使用自己的数据源&lt;/li&gt;
+&lt;li&gt;部署独立，服务间虽然有调用，但要做到服务重启不影响其它服务。有利于持续集成和持续交付。每个服务都是独立的组件，可复用，可替换，降低耦合，易维护&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;微服务架构与SOA都是对系统进行拆分；微服务架构基于SOA思想，可以把微服务当做去除了ESB的SOA。ESB是SOA架构中的中心总线，设计图形应该是星形的，而微服务是去中心化的分布式软件架构。两者比较类似，但其实也有一些差别：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;SOA&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;微服务&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;组件大小&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;大块业务逻辑&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;单独任务或小块业务逻辑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;耦合&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;通常松耦合&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;总是松耦合&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;管理&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;着重中央管理&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;着重分散管理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;目标&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;确保应用能够交互操作&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;易维护、易扩展、更轻量级的交互&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;2-服务调用方式&#34;&gt;2、服务调用方式&lt;/h2&gt;
+&lt;h3 id=&#34;21-rpc和http&#34;&gt;2.1 RPC和HTTP&lt;/h3&gt;
+&lt;p&gt;无论是微服务还是SOA，都面临着服务间的远程调用。那么服务间的远程调用方式有哪些呢？&lt;br&gt;
+常见的远程调用方式有以下2种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;RPC&lt;/strong&gt;：Remote Produce Call远程过程调用，&lt;strong&gt;RPC基于Socket，工作在会话层。自定义数据格式&lt;/strong&gt;，速度快，效率高。早期的webservice，现在热门的dubbo，都是RPC的典型代表&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Http&lt;/strong&gt;：http其实是**一种网络传输协议，基于TCP，工作在应用层，规定了数据传输的格式。**现在客户端浏览器与服务端通信基本都是采用Http协议，也可以用来进行远程服务调用。缺点是消息封装臃肿，优势是对服务的提供和调用方没有任何技术限定，自由灵活，更符合微服务理念。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;现在热门的Rest风格，就可以通过http协议来实现。&lt;br&gt;
+&lt;strong&gt;区别&lt;/strong&gt;：RPC的机制是根据语言的API（language API）来定义的，而不是根据基于网络的应用来定义的。&lt;br&gt;
+如果你们公司全部采用Java技术栈，那么使用Dubbo作为微服务架构是一个不错的选择。&lt;br&gt;
+相反，如果公司的技术栈多样化，而且你更青睐Spring家族，那么Spring Cloud搭建微服务是不二之选。在我们的项目中，会选择Spring Cloud套件，因此会使用Http方式来实现服务间调用。&lt;/p&gt;
+&lt;h3 id=&#34;22-http客户端工具&#34;&gt;2.2 Http客户端工具&lt;/h3&gt;
+&lt;p&gt;既然微服务选择了Http，那么我们就需要考虑自己来实现对请求和响应的处理。不过开源世界已经有很多的http客户端工具，能够帮助我们做这些事情，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HttpClient&lt;/li&gt;
+&lt;li&gt;OKHttp&lt;/li&gt;
+&lt;li&gt;URLConnection&lt;br&gt;
+不过这些不同的客户端，API各不相同。而Spring也有对http的客户端进行封装，提供了工具类叫RestTemplate。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;23-spring的resttemplate&#34;&gt;2.3 Spring的RestTemplate&lt;/h3&gt;
+&lt;p&gt;Spring提供了一个RestTemplate模板工具类，对基于Http的客户端进行了封装，并且实现了对象与json的序列化和反序列化，非常方便。RestTemplate并没有限定Http的客户端类型，而是进行了抽象，目前常用的3种都有支持：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HttpClient&lt;/li&gt;
+&lt;li&gt;OkHttp&lt;/li&gt;
+&lt;li&gt;JDK原生的URLConnection（默认的）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在项目中的 HttpDemoApplication 注册一个RestTemplate 对象，可以在启动类位置注册：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication
+public class HttpDemoApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(HttpDemoApplication.class, args);
+    }
+
+    @Bean
+    public RestTemplate restTemplate(){
+         return new RestTemplate();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动springboot项目，在项目中的测试类中直接@Autowired 注入：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RunWith(SpringRunner.class)
+@SpringBootTest
+public class RestTemplateTest {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Test
+    public void test(){
+        //如果要测试需要启动spring boot项目，以便获取数据
+        String url = &amp;quot;http://localhost/user/8&amp;quot;;
+        User user = restTemplate.getForObject(url, User.class);
+        System.out.println(user);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过RestTemplate的getForObject()方法，传递url地址及实体类的字节码，RestTemplate会自动发起请求，接收响应，并且帮我们对响应结果进行反序列化。&lt;/p&gt;
+&lt;p&gt;了解完Http客户端工具，接下来就可以正式学习微服务了。&lt;/p&gt;
+&lt;h2 id=&#34;3-初识spring-cloud&#34;&gt;3、 初识Spring Cloud&lt;/h2&gt;
+&lt;p&gt;微服务是一种架构方式，最终肯定需要技术架构去实施。&lt;br&gt;
+微服务的实现方式很多，但是最火的莫过于Spring Cloud了。为什么？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;后台硬：作为Spring家族的一员，有整个Spring全家桶靠山，背景十分强大。&lt;/li&gt;
+&lt;li&gt;技术强：Spring作为Java领域的前辈，可以说是功力深厚。有强力的技术团队支撑，一般人还真比不了&lt;/li&gt;
+&lt;li&gt;群众基础好：可以说大多数程序员的成长都伴随着Spring框架，试问：现在有几家公司开发不用Spring？&lt;/li&gt;
+&lt;li&gt;Spring Cloud与Spring的各个框架无缝整合，对大家来说一切都是熟悉的配方，熟悉的味道。&lt;/li&gt;
+&lt;li&gt;使用方便：相信大家都体会到了SpringBoot给我们开发带来的便利，而Spring Cloud完全支持Spring Boot的开发，用很少的配置就能完成微服务框架的搭建&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;31-简介&#34;&gt;3.1 简介&lt;/h3&gt;
+&lt;p&gt;Spring Cloud是Spring旗下的项目之一，官网地址：http://projects.spring.io/spring-cloud/Spring最擅长的就是集成，把世界上最好的框架拿过来，集成到自己的项目中。&lt;br&gt;
+Spring Cloud也是一样，它将现在非常流行的一些技术整合到一起，实现了诸如：配置管理，服务发现，智能路由，负载均衡，熔断器，控制总线，集群状态等功能；协调分布式环境中各个系统，为各类服务提供模板性配置。其主要&lt;br&gt;
+涉及的组件包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Eureka：注册中心&lt;/li&gt;
+&lt;li&gt;Zuul、Gateway：服务网关&lt;/li&gt;
+&lt;li&gt;Ribbon：负载均衡&lt;/li&gt;
+&lt;li&gt;Feign：服务调用&lt;/li&gt;
+&lt;li&gt;Hystrix或Resilience4j：熔断器&lt;br&gt;
+以上只是其中一部分，架构图：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731111940.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;32-版本&#34;&gt;3.2 版本&lt;/h3&gt;
+&lt;p&gt;Spring Cloud不是一个组件，而是许多组件的集合；它的版本命名比较特殊，是以A到Z的为首字母的一些单词（其实是伦敦地铁站的名字）组成：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731111959.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;我们在项目中，使用最新稳定的Greenwich版本。&lt;/p&gt;
+&lt;h2 id=&#34;4-微服务场景模拟&#34;&gt;4、 微服务场景模拟&lt;/h2&gt;
+&lt;p&gt;首先，我们需要模拟一个服务调用的场景。方便后面学习微服务架构&lt;/p&gt;
+&lt;h3 id=&#34;41-创建父工程&#34;&gt;4.1 创建父工程&lt;/h3&gt;
+&lt;p&gt;微服务中需要同时创建多个项目，为了方便课堂演示，先创建一个父工程，然后后续的工程都以这个工程为父，实现maven的聚合。这样可以在一个窗口看到所有工程，方便讲解。&lt;strong&gt;在实际开发中，每个微服务可独立一个工程。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;修改pom文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 
+http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+    &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;heima-springcloud&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+
+    &amp;lt;parent&amp;gt;
+        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
+        &amp;lt;version&amp;gt;2.1.5.RELEASE&amp;lt;/version&amp;gt;
+        &amp;lt;relativePath/&amp;gt;
+    &amp;lt;/parent&amp;gt;
+
+    &amp;lt;properties&amp;gt;
+        &amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt;
+        &amp;lt;spring-cloud.version&amp;gt;Greenwich.SR1&amp;lt;/spring-cloud.version&amp;gt;
+        &amp;lt;mapper.starter.version&amp;gt;2.1.5&amp;lt;/mapper.starter.version&amp;gt;
+        &amp;lt;mysql.version&amp;gt;5.1.46&amp;lt;/mysql.version&amp;gt;
+    &amp;lt;/properties&amp;gt;
+
+    &amp;lt;dependencyManagement&amp;gt;
+        &amp;lt;dependencies&amp;gt;
+            &amp;lt;!-- springCloud --&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;spring-cloud-dependencies&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${spring-cloud.version}&amp;lt;/version&amp;gt;
+                &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;
+                &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+            &amp;lt;!-- 通用Mapper启动器 --&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;tk.mybatis&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;mapper-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${mapper.starter.version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+            &amp;lt;!-- mysql驱动 --&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${mysql.version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+        &amp;lt;/dependencies&amp;gt;
+    &amp;lt;/dependencyManagement&amp;gt;
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.projectlombok&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;lombok&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+
+    &amp;lt;build&amp;gt;
+        &amp;lt;plugins&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;/plugin&amp;gt;
+        &amp;lt;/plugins&amp;gt;
+    &amp;lt;/build&amp;gt;
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里已经对大部分要用到的依赖的版本进行了 管理，方便后续使用&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731112314.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;42-服务提供者&#34;&gt;4.2 服务提供者&lt;/h3&gt;
+&lt;p&gt;新建一个项目user-service，对外提供查询用户的服务。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;创建module&lt;/strong&gt;&lt;br&gt;
+选中父工程：springclouddemo创建module&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;添加依赖&lt;/strong&gt;&lt;br&gt;
+pom.xml 文件中的内容如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;artifactId&amp;gt;springcloud-demo&amp;lt;/artifactId&amp;gt;
+        &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;artifactId&amp;gt;user-service&amp;lt;/artifactId&amp;gt;
+
+&amp;lt;dependencies&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+    &amp;lt;!-- 通用Mapper启动器 --&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;tk.mybatis&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;mapper-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+    &amp;lt;!-- mysql驱动 --&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+&amp;lt;/dependencies&amp;gt;
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;编写配置文件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;创建user-service\src\main\resources\application.yml 属性文件,这里我们采用了yaml语法，而不是properties：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 9091
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud
+    username: root
+    password: root
+mybatis:
+  type-aliases-package: com.cy.user.pojo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用mysql图形界面工具创建springcloud 数据库，将tb_user.sql 导入；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;编写代码&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;编写启动类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import tk.mybatis.spring.annotation.MapperScan;
+
+@SpringBootApplication
+@MapperScan(&amp;quot;com.cy.user.mapper&amp;quot;)
+public class UserApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(UserApplication.class, args);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编写实体类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import lombok.Data;
+import tk.mybatis.mapper.annotation.KeySql;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
+
+@Table(name = &amp;quot;tb_user&amp;quot;)
+@Data
+public class User {
+
+    @Id
+    @KeySql(useGeneratedKeys = true)
+    private Long id;
+
+    private String userName; // 用户名
+
+    private String password; // 密码
+
+    private String name;// 姓名
+
+    private Integer age;// 年龄
+
+    private Integer sex;// 性别，1男性，2女性
+
+    private Date birthday;// 出生日期
+
+    private Date created;// 创建时间
+
+    private Date updated;// 更新时间
+
+    private String note;// 备注
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编写UserMapper&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.user.pojo.User;
+import tk.mybatis.mapper.common.Mapper;
+
+public interface UserMapper extends Mapper&amp;lt;User&amp;gt; {
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编写UserService&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.user.mapper.UserMapper;
+import com.cy.user.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    public User queryById(Long id){
+        return userMapper.selectByPrimaryKey(id);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;添加一个对外查询的接口处理器&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.user.pojo.User;
+import com.cy.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(&amp;quot;/user&amp;quot;)
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+     @GetMapping(&amp;quot;/{id}&amp;quot;)
+    public User queryById(@PathVariable Long id){
+        return userService.queryById(id);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建完上述代码后项目结构：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731132923.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;启动并测试&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;启动 user-service 项目，访问接口：http://localhost:9091/user/8&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731133358.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;43-服务调用者&#34;&gt;4.3 服务调用者&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;创建工程&lt;/strong&gt;&lt;br&gt;
+与上面类似，这里不再赘述，需要注意的是，我们调用user-service 的功能，因此不需要mybatis相关依赖了。&lt;/p&gt;
+&lt;p&gt;修改pom文件&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 
+http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;artifactId&amp;gt;springclouddemo&amp;lt;/artifactId&amp;gt;
+        &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;consumer-demo&amp;lt;/artifactId&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;编写代码&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;编写启动类 consumer-demo\src\main\java\com\cy\consumer\ConsumerApplication.java 并在其中注册RestTemplate 具体如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication
+public class ConsumerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumerApplication.class, args);
+    }
+
+    @Bean
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建实体类 consumer-demo\src\main\java\com\cy\consumer\pojo\User.java&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import lombok.Data;
+
+import java.util.Date;
+
+@Data
+public class User {
+
+    private Long id;
+
+    private String userName; // 用户名
+
+    private String password; // 密码
+
+    private String name;// 姓名
+
+    private Integer age;// 年龄
+
+    private Integer sex;// 性别，1男性，2女性
+
+    private Date birthday;// 出生日期
+
+    private Date created;// 创建时间
+
+    private Date updated;// 更新时间
+
+    private String note;// 备注
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编写consumer-demo\src\main\java\com\cy\consumer\controller\ConsumerController.java ，在controller中直接调用RestTemplate，远程访问user-service 的服务接口：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.consumer.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+@RequestMapping(&amp;quot;/consumer&amp;quot;)
+public class ConsumerController {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @GetMapping(&amp;quot;{id}&amp;quot;)
+    public User queryById(@PathVariable Long id){
+        String url = &amp;quot;http://localhost:9091/user/&amp;quot; + id;
+        return restTemplate.getForObject(url, User.class);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;服务调用者项目结构：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731133845.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;启动测试&lt;/strong&gt;&lt;br&gt;
+启动 consumer-demo 引导启动类；因为 consumer-demo 项目没有配置端口，那么默认就是8080，&lt;/p&gt;
+&lt;p&gt;我们访问：http://localhost:8080/consumer/8&lt;/p&gt;
+&lt;p&gt;一个简单的远程服务调用案例就实现了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;44-思考问题&#34;&gt;4.4 思考问题&lt;/h3&gt;
+&lt;p&gt;简单回顾一下，刚才我们写了什么：&lt;br&gt;
+user-service：对外提供了查询用户的接口&lt;br&gt;
+consumer-demo：通过RestTemplate访问http://locahost:9091/user/{id} 接口，查询用户数据&lt;br&gt;
+存在什么问题？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在consumer中，我们把url地址硬编码到了代码中，不方便后期维护&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;consumer需要记忆user-service的地址，如果出现变更，可能得不到通知，地址将失效&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;consumer不清楚user-service的状态，服务宕机也不知道&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;user-service只有1台服务，不具备高可用性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;即便user-service形成集群，consumer还需自己实现负载均衡&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其实上面说的问题，概括一下就是分布式服务必然要面临的问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;服务管理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何自动注册和发现&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何实现状态监管&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何实现动态路由&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;服务如何实现负载均衡&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;服务如何解决容灾问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;服务如何实现统一配置&lt;br&gt;
+以上的问题，都将在SpringCloud中得到答案。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;5-eureka注册中心&#34;&gt;5、Eureka注册中心&lt;/h2&gt;
+&lt;h3 id=&#34;51-认识eureka&#34;&gt;5.1 认识Eureka&lt;/h3&gt;
+&lt;p&gt;首先我们来解决第一问题，服务的管理。&lt;br&gt;
+&lt;strong&gt;问题分析&lt;/strong&gt;&lt;br&gt;
+在刚才的案例中，user-service对外提供服务，需要对外暴露自己的地址。而consumer-demo（调用者）需要记录服务提供者的地址。将来地址出现变更，还需要及时更新。这在服务较少的时候并不觉得有什么，但是在现在日益复杂的互联网环境，一个项目可能会拆分出十几，甚至几十个微服务。此时如果还人为管理地址，不仅开发困难，将来测试、发布上线都会非常麻烦，这与DevOps的思想是背道而驰的。&lt;br&gt;
+DevOps的思想是系统可以通过一组过程、方法或系统；提高应用发布和运维的效率,降低管理成本。&lt;br&gt;
+&lt;strong&gt;网约车&lt;/strong&gt;&lt;br&gt;
+这就好比是 网约车出现以前，人们出门叫车只能叫出租车。一些私家车想做出租却没有资格，被称为黑车。而很多人想要约车，但是无奈出租车太少，不方便。私家车很多却不敢拦，而且满大街的车，谁知道哪个才是愿意载人的。一个想要，一个愿意给，就是缺少引子，缺乏管理啊。&lt;br&gt;
+此时滴滴这样的网约车平台出现了，所有想载客的私家车全部到滴滴注册，记录你的车型（服务类型），身份信息（联系方式）。这样提供服务的私家车，在滴滴那里都能找到，一目了然。&lt;br&gt;
+此时要叫车的人，只需要打开APP，输入你的目的地，选择车型（服务类型），滴滴自动安排一个符合需求的车到你面前，为你服务，完美！&lt;br&gt;
+&lt;strong&gt;Eureka做什么？&lt;/strong&gt;&lt;br&gt;
+Eureka就好比是滴滴，负责管理、记录服务提供者的信息。服务调用者无需自己寻找服务，而是把自己的需求告诉Eureka，然后Eureka会把符合你需求的服务告诉你。&lt;br&gt;
+同时，服务提供方与Eureka之间通过“心跳” 机制进行监控，当某个服务提供方出现问题，Eureka自然会把它从服务列表中剔除。&lt;br&gt;
+这就实现了服务的自动注册、发现、状态监控。&lt;/p&gt;
+&lt;h3 id=&#34;52-原理图&#34;&gt;5.2 原理图&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;基本架构：&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/1560439174201.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;Eureka：就是服务注册中心（可以是一个集群），对外暴露自己的地址&lt;/li&gt;
+&lt;li&gt;提供者：启动后向Eureka注册自己信息（地址，提供什么服务）&lt;/li&gt;
+&lt;li&gt;消费者：向Eureka订阅服务，Eureka会将对应服务的所有提供者地址列表发送给消费者，并且定期更新&lt;/li&gt;
+&lt;li&gt;心跳(续约)：提供者定期通过http方式向Eureka刷新自己的状态&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;53-入门案例&#34;&gt;5.3  入门案例&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;搭建eureka-server工程&lt;/strong&gt;&lt;br&gt;
+接下来创建一个项目eureka-server ，启动一个Eureka Server Application服务注册中心。&lt;/p&gt;
+&lt;p&gt;项目中的pom.xml 文件如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 
+http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;artifactId&amp;gt;heima-springcloud&amp;lt;/artifactId&amp;gt;
+        &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;eureka-server&amp;lt;/artifactId&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-eureka-server&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编写启动类&lt;/p&gt;
+&lt;p&gt;eureka-server\src\main\java\com\cy\EurekaServerApplication.java&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+//声明当前应用为eureka服务
+@EnableEurekaServer
+@SpringBootApplication
+public class EurekaServerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaServerApplication.class);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;编写配置文件&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;eureka-server\src\main\resources\application.yml&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 10086
+spring:
+  application:
+    name: eureka-server # 应用名称，会在Eureka中作为服务的id标识（serviceId）
+eureka:
+  client:
+    service-url: # EurekaServer的地址，现在是自己的地址，如果是集群，需要写其它Server的地址。
+      defaultZone: http://127.0.0.1:10086/eureka
+    register-with-eureka: false # 不注册自己
+    fetch-registry: false #不拉取
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;启动服务&lt;/strong&gt;&lt;br&gt;
+启动 eureka-server 访问：http://127.0.0.1:10086&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731134955.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731135002.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;54-服务注册&#34;&gt;5.4 服务注册&lt;/h3&gt;
+&lt;p&gt;注册服务，就是在服务上添加Eureka的客户端依赖，客户端代码会自动把服务注册到EurekaServer中。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;添加依赖&lt;/strong&gt;&lt;br&gt;
+我们在user-service中添加Eureka客户端依赖：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!-- Eureka客户端 --&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-eureka-client&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;修改启动类&lt;/strong&gt;&lt;br&gt;
+在启动类上开启Eureka客户端功能&lt;br&gt;
+通过添加@EnableDiscoveryClient 来开启Eureka客户端功能&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@SpringBootApplication
+@MapperScan(&amp;quot;com.cy.user.mapper&amp;quot;)
+@EnableDiscoveryClient // 开启Eureka客户端发现功能
+public class UserServiceDemoApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(UserServiceDemoApplication.class, args);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;修改配置文件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;编写user-service\src\main\resources\application.yml配置文件为如下：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 9091
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud
+    username: root
+    password: root
+  application:
+    #应用名
+    name: user-service
+mybatis:
+  type-aliases-package: cn.itcast.user.pojo
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这里我们添加了spring.application.name属性来指定应用名称，将来会作为服务的id使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;测试&lt;/strong&gt;&lt;br&gt;
+重启 user-service 项目，访问Eureka监控页面&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731135225.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;我们发现user-service服务已经注册成功了&lt;/p&gt;
+&lt;h3 id=&#34;55-服务发现&#34;&gt;5.5 服务发现&lt;/h3&gt;
+&lt;p&gt;接下来我们修改consumer-demo ，尝试从EurekaServer获取服务。&lt;br&gt;
+方法与服务提供者类似，只需要在项目中添加EurekaClient依赖，就可以通过服务名称来获取信息了！&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;添加依赖&lt;/strong&gt;&lt;br&gt;
+找到 consumer-demo\pom.xml 添加如下依赖&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!-- Eureka客户端 --&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-eureka-client&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;修改启动类&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;修改 consumer-demo\src\main\java\com\cy\consumer\ConsumerApplication.java 开启Eureka客户端&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication
+@EnableDiscoveryClient
+public class ConsumerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumerApplication.class, args);
+    }
+
+    @Bean
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;strong&gt;新增配置文件&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;新增 consumer-demo\src\main\resources\application.yml 配置文件&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 8080
+spring:
+  application:
+    name: consumer-demo # 应用名称
+eureka:
+  client:
+    service-url: # EurekaServer地址
+      defaultZone: http://127.0.0.1:10086/eureka
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;修改处理器&lt;/strong&gt;&lt;br&gt;
+修改 consumer-demo\src\main\java\com\cy\consumer\controller\ConsumerController.java 代码，用DiscoveryClient类的方法，根据服务名称，获取服务实例。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.consumer.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(&amp;quot;/consumer&amp;quot;)
+public class ConsumerController {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @GetMapping(&amp;quot;{id}&amp;quot;)
+    public User queryById(@PathVariable Long id){
+        String url = &amp;quot;http://localhost:9091/user/&amp;quot; + id;
+
+        //获取eureka中注册的user-service实例列表
+        List&amp;lt;ServiceInstance&amp;gt; serviceInstanceList = 
+discoveryClient.getInstances(&amp;quot;user-service&amp;quot;);
+        ServiceInstance serviceInstance = serviceInstanceList.get(0);
+
+        url = &amp;quot;http://&amp;quot; + serviceInstance.getHost() + &amp;quot;:&amp;quot; + serviceInstance.getPort() 
++ &amp;quot;/user/&amp;quot; + id;
+        return restTemplate.getForObject(url, User.class);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Debug跟踪运行&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;重启 consumer-demo 项目；然后再浏览器中再次访问 http://localhost:8080/consumer/8 ；在代码中debug跟进查看最终拼接要访问的URL：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731135743.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;56-eureka详解&#34;&gt;5.6 Eureka详解&lt;/h3&gt;
+&lt;h4 id=&#34;561-基础架构&#34;&gt;5.6.1 基础架构&lt;/h4&gt;
+&lt;p&gt;Eureka架构中的三个核心角色：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;服务注册中心&lt;br&gt;
+Eureka的服务端应用，提供服务注册和发现功能，就是刚刚我们建立的eureka-server&lt;/li&gt;
+&lt;li&gt;服务提供者&lt;br&gt;
+提供服务的应用，可以是SpringBoot应用，也可以是其它任意技术实现，只要对外提供的是Rest风格服务即可。本例中就是我们实现的user-service&lt;/li&gt;
+&lt;li&gt;服务消费者&lt;br&gt;
+消费应用从注册中心获取服务列表，从而得知每个服务方的信息，知道去哪里调用服务方。本例中就是我们实现的consumer-demo&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;562-高可用的eureka-server&#34;&gt;5.6.2 高可用的Eureka Server&lt;/h4&gt;
+&lt;p&gt;Eureka Server即服务的注册中心，在刚才的案例中，我们只有一个EurekaServer，事实上EurekaServer也可以是一个集群，形成高可用的Eureka中心。&lt;br&gt;
+&lt;strong&gt;服务同步&lt;/strong&gt;&lt;br&gt;
+多个Eureka Server之间也会互相注册为服务，当服务提供者注册到Eureka Server集群中的某个节点时，该节点会把服务的信息同步给集群中的每个节点，从而实现&lt;strong&gt;数据同步&lt;/strong&gt;。因此，无论客户端访问到Eureka Server集群中的任意一个节点，都可以获取到完整的服务列表信息。&lt;br&gt;
+而作为客户端，需要把信息注册到每个Eureka中：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731140001.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;如果有三个Eureka，则每一个EurekaServer都需要注册到其它几个Eureka服务中，例如：有三个分别为10086、10087、10088，则：&lt;br&gt;
+10086要注册到10087和10088上&lt;br&gt;
+10087要注册到10086和10088上&lt;br&gt;
+10088要注册到10086和10087上&lt;br&gt;
+&lt;strong&gt;动手搭建高可用的EurekaServer&lt;/strong&gt;&lt;br&gt;
+我们假设要搭建两台EurekaServer的集群，端口分别为：10086和10087&lt;br&gt;
+1）修改原来的EurekaServer配置；修改 eureka-server\src\main\resources\application.yml 如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: ${port:10086}
+
+spring:
+  application:
+    # 应用名称，会在eureka中作为服务的id(serviceId)
+    name: eureka-server
+eureka:
+  client:
+    service-url:
+      # eureka服务地址；如果是集群则是其它服务器地址，后面要加/eureka
+      defaultZone: ${defaultZone:http://127.0.0.1:10086/eureka}
+    # 是否注册自己，自身不提供服务所以不注册
+    #register-with-eureka: false
+    # 是否拉取服务
+    #fetch-registry: false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所谓的高可用注册中心，其实就是把EurekaServer自己也作为一个服务，注册到其它EurekaServer上，这样多个EurekaServer之间就能互相发现对方，从而形成集群。因此我们做了以下修改：&lt;/p&gt;
+&lt;p&gt;注意:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;把register-with-eureka和fetch-registry修改为true或者注释掉&lt;/li&gt;
+&lt;li&gt;在上述配置文件中的${}表示在jvm启动时候若能找到对应port或者defaultZone参数则使用，若无则使用后面的默认值&lt;/li&gt;
+&lt;li&gt;把service-url的值改成了另外一台EurekaServer的地址，而不是自己&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2）另外一台在启动的时候可以指定端口port和defaultZone配置：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731140210.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;修改原来的启动配置组件；在如下界面中的 VM options 中&lt;br&gt;
+设置 -DdefaultZone=http:127.0.0.1:10087/eureka&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731140228.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;复制一份并修改；在如下界面中的 VM options 中&lt;br&gt;
+设置 -Dport=10087 -DdefaultZone=http:127.0.0.1:10086/eureka&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;21&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731140239.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;3）启动测试；同时启动两台eureka server&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;22&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731140248.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;4）客户端注册服务到集群&lt;br&gt;
+因为EurekaServer不止一个，因此user-service 项目注册服务或者consumer-demo 获取服务的时候，service-url参数需要修改为如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;eureka:
+  client:
+    service-url: # EurekaServer地址,多个地址以&#39;,&#39;隔开
+      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;为了方便后面内容的修改，在测试完上述配置后可以再次改回单个eureka server的方式。&lt;/p&gt;
+&lt;h4 id=&#34;563-eureka客户端&#34;&gt;5.6.3 Eureka客户端&lt;/h4&gt;
+&lt;p&gt;服务提供者要向EurekaServer注册服务，并且完成服务续约等工作。&lt;br&gt;
+&lt;strong&gt;服务注册&lt;/strong&gt;&lt;br&gt;
+服务提供者在启动时，会检测配置属性中的：eureka.client.register-with-erueka=true 参数是否正确，事实上默认就是true。如果值确实为true，则会向EurekaServer发起一个Rest请求，并携带自己的元数据信息，Eureka&lt;br&gt;
+Server会把这些信息保存到一个双层Map结构中。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;第一层Map的Key就是服务id，一般是配置中的spring.application.name 属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第二层Map的key是服务的实例id。一般host+ serviceId + port，例如：localhost:user-service:8081&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;值则是服务的实例对象，也就是说一个服务，可以同时启动多个不同实例，形成集群。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;默认注册时使用的是主机名或者localhost，如果想用ip进行注册，可以在user-service 中添加配置如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;eureka:
+  instance:
+    ip-address: 127.0.0.1 # ip地址
+    prefer-ip-address: true # 更倾向于使用ip，而不是host名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改完后先后重启user-service 和consumer-demo ；在调用服务的时候就已经变成ip地址；需要注意的是：不是在eureka中的控制台服务实例状态显示。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;服务续约&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在注册服务完成以后，服务提供者会维持一个心跳（定时向EurekaServer发起Rest请求），告诉EurekaServer：“我还活着”。这个我们称为服务的续约（renew）；&lt;br&gt;
+有两个重要参数可以修改服务续约的行为；可以在 user-service 中添加如下配置项：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;lease-renewal-interval-in-seconds：服务续约(renew)的间隔，默认为30秒&lt;/li&gt;
+&lt;li&gt;lease-expiration-duration-in-seconds：服务失效时间，默认值90秒&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是说，默认情况下每隔30秒服务会向注册中心发送一次心跳，证明自己还活着。如果超过90秒没有发送心跳，EurekaServer就会认为该服务宕机，会定时（eureka.server.eviction-interval-timer-in-ms设定的时间）从服务列表中移除，这两个值在生产环境不要修改，默认即可。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;获取服务列表&lt;/strong&gt;&lt;br&gt;
+当服务消费者启动时，会检测eureka.client.fetch-registry=true 参数的值，如果为true，则会从EurekaServer服务的列表拉取只读备份，然后缓存在本地。并且每隔30秒会重新拉取并更新数据。可以在consumer-demo项目中通过下面的参数来修改：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;eureka:
+  client:
+    registry-fetch-interval-seconds: 30
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;564-失效剔除和自我保护&#34;&gt;5.6.4 失效剔除和自我保护&lt;/h4&gt;
+&lt;p&gt;如下的配置都是在Eureka Server服务端进行：&lt;br&gt;
+&lt;strong&gt;服务下线&lt;/strong&gt;&lt;br&gt;
+当服务进行正常关闭操作时，它会触发一个服务下线的REST请求给Eureka Server，告诉服务注册中心：“我要下线了”。服务中心接受到请求之后，将该服务置为下线状态。&lt;br&gt;
+&lt;strong&gt;失效剔除&lt;/strong&gt;&lt;br&gt;
+有时我们的服务可能由于内存溢出或网络故障等原因使得服务不能正常的工作，而服务注册中心并未收到“服务下线”的请求。相对于服务提供者的“服务续约”操作，服务注册中心在启动时会创建一个定时任务，默认每隔一段时间（默认为60秒）将当前清单中超时（默认为90秒）没有续约的服务剔除，这个操作被称为失效剔除。&lt;br&gt;
+可以通过eureka.server.eviction-interval-timer-in-ms 参数对其进行修改，单位是毫秒。&lt;br&gt;
+&lt;strong&gt;自我保护&lt;/strong&gt;&lt;br&gt;
+我们关停一个服务，很可能会在Eureka面板看到一条警告：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;23&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731140915.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;这是触发了Eureka的自我保护机制。当服务未按时进行心跳续约时，Eureka会统计服务实例最近15分钟心跳续约的比例是否低于了85%。在生产环境下，因为网络延迟等原因，心跳失败实例的比例很有可能超标，但是此时就把服务剔除列表并不妥当，因为服务可能没有宕机。Eureka在这段时间内不会剔除任何服务实例，直到网络恢复正常。生产环境下这很有效，保证了大多数服务依然可用，不过也有可能获取到失败的服务实例，因此服务调用者必须做好服务的失败容错。&lt;br&gt;
+可以通过下面的配置来关停自我保护：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;eureka:
+  server:
+    enable-self-preservation: false # 关闭自我保护模式（缺省为打开）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6-负载均衡ribbon&#34;&gt;6、负载均衡Ribbon&lt;/h2&gt;
+&lt;p&gt;在刚才的案例中，我们启动了一个user-service ，然后通过DiscoveryClient来获取服务实例信息，然后获取ip和端口来访问。&lt;/p&gt;
+&lt;p&gt;但是实际环境中，往往会开启很多个user-service 的集群。此时获取的服务列表中就会有多个，到底该访问哪一个呢？&lt;br&gt;
+一般这种情况下就需要编写负载均衡算法，在多个实例列表中进行选择。&lt;br&gt;
+不过Eureka中已经集成了负载均衡组件：Ribbon，简单修改代码即可使用。&lt;br&gt;
+什么是Ribbon：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;24&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731141223.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;接下来，我们就来使用Ribbon实现负载均衡。&lt;/p&gt;
+&lt;h3 id=&#34;61-启动两个服务实例&#34;&gt;6.1 启动两个服务实例&lt;/h3&gt;
+&lt;p&gt;首先我们配置启动两个user-service 实例，一个9091，一个9092。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;25&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731141249.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;Eureka监控面板：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;26&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731141259.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;62-开启负载均衡&#34;&gt;6.2 开启负载均衡&lt;/h3&gt;
+&lt;p&gt;因为Eureka中已经集成了Ribbon，所以我们无需引入新的依赖。&lt;br&gt;
+直接修改 consumer-demo\src\main\java\com\cy\consumer\ConsumerApplication.java&lt;br&gt;
+在RestTemplate的配置方法上添加@LoadBalanced 注解：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@SpringBootApplication
+@EnableEurekaClient //开启eureka客户端发现
+public class ConsumerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumerApplication.class,args);
+    }
+
+    @Bean
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改consumer-demo\src\main\java\com\cy\consumer\controller\ConsumerController.java 调用方式，不再手动获取ip和端口，而是直接通过服务名称调用；&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@GetMapping(&amp;quot;{id}&amp;quot;)
+public User queryById(@PathVariable(&amp;quot;id&amp;quot;) Long id){
+    String url = &amp;quot;http://user-service/user/&amp;quot; + id;
+    User user = restTemplate.getForObject(url, User.class);
+    return user;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;访问页面，查看结果；并可以在9091和9092的控制台查看执行情况：&lt;/p&gt;
+&lt;p&gt;了解：Ribbon默认的负载均衡策略是轮询。SpringBoot也帮提供了修改负载均衡规则的配置入口在consumer-demo的配置文件中添加如下，就变成随机的了：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;user-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;格式是：{服务名称}.ribbon.NFLoadBalancerRuleClassName&lt;/p&gt;
+&lt;h3 id=&#34;63-源码跟踪&#34;&gt;6.3 源码跟踪&lt;/h3&gt;
+&lt;p&gt;为什么只输入了service名称就可以访问了呢？之前还要获取ip和端口。&lt;br&gt;
+显然是有组件根据service名称，获取到了服务实例的ip和端口。因为consumer-demo 使用的是RestTemplate，spring的负载均衡自动配置类 LoadBalancerAutoConfiguration.LoadBalancerInterceptorConfig 会自动配置负载均衡拦截器（在spring-cloud-commons-**.jar包中的spring.factories中定义的自动配置类）， 它就是LoadBalancerInterceptor ，这个类会在对RestTemplate的请求进行拦截，然后从Eureka根据服务id获取服务列表，随后利用负载均衡算法得到真实的服务地址信息，替换服务id。&lt;br&gt;
+我们进行源码跟踪：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;27&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731142533.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;继续跟入execute方法：发现获取了9092端口的服务&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;28&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731142740.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;再跟下一次，发现获取的是9091、9092之间切换：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;29&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731143101.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;多次访问consumer-demo 的请求地址；然后跟进代码，发现其果然实现了负载均衡。&lt;/p&gt;
+&lt;h2 id=&#34;7-熔断器hystrix&#34;&gt;7、熔断器Hystrix&lt;/h2&gt;
+&lt;h3 id=&#34;71-简介&#34;&gt;7.1 简介&lt;/h3&gt;
+&lt;p&gt;Hystrix 在英文里面的意思是 豪猪，它的logo 看下面的图是一头豪猪，它在微服务系统中是一款提供保护机制的组件，和eureka一样也是由netﬂix公司开发。&lt;br&gt;
+主页：https://github.com/Netﬂix/Hystrix/&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;30&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731143149.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;那么Hystrix的作用是什么呢？具体要保护什么呢？&lt;br&gt;
+Hystrix是Netﬂix开源的一个延迟和容错库，用于隔离访问远程服务、第三方库，防止出现级联失败。&lt;/p&gt;
+&lt;h3 id=&#34;72-雪崩问题&#34;&gt;7.2 雪崩问题&lt;/h3&gt;
+&lt;p&gt;微服务中，服务间调用关系错综复杂，一个请求，可能需要调用多个微服务接口才能实现，会形成非常复杂的调用链路：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;31&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731143246.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;如图，一次业务请求，需要调用A、P、H、I四个服务，这四个服务又可能调用其它服务。&lt;br&gt;
+如果此时，某个服务出现异常：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;32&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731143314.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;例如：微服务I 发生异常，请求阻塞，用户请求就不会得到响应，则tomcat的这个线程不会释放，于是越来越多的用户请求到来，越来越多的线程会阻塞：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;33&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731143344.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;服务器支持的线程和并发数有限，请求一直阻塞，会导致服务器资源耗尽，从而导致所有其它服务都不可用，形成雪崩效应。&lt;br&gt;
+这就好比，一个汽车生产线，生产不同的汽车，需要使用不同的零件，如果某个零件因为种种原因无法使用，那么就会造成整台车无法装配，陷入等待零件的状态，直到零件到位，才能继续组装。  此时如果有很多个车型都需要这个零件，那么整个工厂都将陷入等待的状态，导致所有生产都陷入瘫痪。一个零件的波及范围不断扩大。&lt;/p&gt;
+&lt;p&gt;Hystrix解决雪崩问题的手段主要是服务降级，包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线程隔离&lt;/li&gt;
+&lt;li&gt;服务熔断&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;73-线程隔离服务降级&#34;&gt;7.3 线程隔离&amp;amp;服务降级&lt;/h3&gt;
+&lt;h4 id=&#34;731-原理&#34;&gt;7.3.1 原理&lt;/h4&gt;
+&lt;p&gt;线程隔离示意图：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;34&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731143445.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;解读：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hystrix为每个依赖服务调用分配一个小的线程池，如果线程池已满调用将被立即拒绝，默认不采用排队，&lt;strong&gt;加速失败判定时间。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;用户的请求将不再直接访问服务，而是通过线程池中的空闲线程来访问服务，如果线程池已满，或者请求超时，则会进行降级处理，什么是服务降级？&lt;br&gt;
+&lt;strong&gt;服务降级：优先保证核心服务，而非核心服务不可用或弱可用。&lt;/strong&gt;&lt;br&gt;
+用户的请求故障时，不会被阻塞，更不会无休止的等待或者看到系统崩溃，至少可以看到一个执行结果（例如返回友好的提示信息） 。&lt;br&gt;
+&lt;strong&gt;服务降级虽然会导致请求失败，但是不会导致阻塞，而且最多会影响这个依赖服务对应的线程池中的资源，对其它服务没有响应。&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;触发Hystrix服务降级的情况：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;线程池已满&lt;/li&gt;
+&lt;li&gt;请求超时&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;732-动手实践&#34;&gt;7.3.2 动手实践&lt;/h4&gt;
+&lt;p&gt;1）引入依赖&lt;br&gt;
+在consumer-demo 消费端系统的pom.xml文件添加如下依赖：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-hystrix&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2）开启熔断&lt;br&gt;
+在启动类ConsumerApplication 上添加注解：@EnableCircuitBreaker&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@SpringBootApplication
+@EnableDiscoveryClient
+@EnableCircuitBreaker
+public class ConsumerApplication {
+    // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到，我们类上的注解越来越多，在微服务中，经常会引入上面的三个注解，于是Spring就提供了一个组合注解：@SpringCloudApplication&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;35&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731145640.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;因此，我们可以使用这个组合注解来代替之前的3个注解。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@SpringCloudApplication
+public class ConsumerApplication {
+    // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3）编写降级逻辑&lt;br&gt;
+当目标服务的调用出现故障，我们希望快速失败，给用户一个友好提示。因此需要提前编写好失败时的降级处理逻辑，要使用HystrixCommand来完成。&lt;br&gt;
+改造consumer-demo\src\main\java\com\cy\consumer\controller\ConsumerController.java 处理器类，如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.consumer.pojo.User;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(&amp;quot;/consumer&amp;quot;)
+@Slf4j
+public class ConsumerController {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @GetMapping(&amp;quot;{id}&amp;quot;)
+    @HystrixCommand(fallbackMethod = &amp;quot;queryByIdFallback&amp;quot;)
+    public String queryById(@PathVariable Long id){
+        String url = &amp;quot;http://localhost:9091/user/&amp;quot; + id;
+
+        //获取eureka中注册的user-service实例列表
+        /*List&amp;lt;ServiceInstance&amp;gt; serviceInstanceList = 
+discoveryClient.getInstances(&amp;quot;user-service&amp;quot;);
+        ServiceInstance serviceInstance = serviceInstanceList.get(0);
+    url = &amp;quot;http://&amp;quot; + serviceInstance.getHost() + &amp;quot;:&amp;quot; + serviceInstance.getPort() 
++ &amp;quot;/user/&amp;quot; + id;*/
+        url = &amp;quot;http://user-service/user/&amp;quot; + id;
+
+        return restTemplate.getForObject(url, String.class);
+    }
+
+    public String queryByIdFallback(Long id){
+        log.error(&amp;quot;查询用户信息失败。id：{}&amp;quot;, id);
+        return &amp;quot;对不起，网络太拥挤了！&amp;quot;;
+    }
+
+}     
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;要注意；因为熔断的降级逻辑方法必须跟正常逻辑方法保证：相同的参数列表和返回值声明。 失败逻辑中返回User对象没有太大意义，一般会返回友好提示。所以把queryById的方法改造为返回String，反正也是Json数据。这样失败逻辑中返回一个错误说明，会比较方便。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;@HystrixCommand(fallbackMethod = &amp;quot;queryByIdFallBack&amp;quot;)：用来声明一个降级逻辑的方法&lt;br&gt;
+测试：&lt;br&gt;
+当user-service 正常提供服务时，访问与以前一致。但是当将user-service 停机时，会发现页面返回了降级处理信息：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;36&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731150137.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;4）默认的Fallback&lt;br&gt;
+刚才把fallback写在了某个业务方法上，如果这样的方法很多，那岂不是要写很多。所以可以把Fallback配置加在类上，实现默认fallback；&lt;br&gt;
+再次改造 consumer-demo\src\main\java\com\cy\consumer\controller\ConsumerController.java&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.consumer.pojo.User;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(&amp;quot;/consumer&amp;quot;)
+@Slf4j
+@DefaultProperties(defaultFallback = &amp;quot;defaultFallback&amp;quot;)
+public class ConsumerController {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @GetMapping(&amp;quot;{id}&amp;quot;)
+    //@HystrixCommand(fallbackMethod = &amp;quot;queryByIdFallback&amp;quot;)
+    @HystrixCommand
+    public String queryById(@PathVariable Long id){
+        String url = &amp;quot;http://localhost:9091/user/&amp;quot; + id;
+
+        //获取eureka中注册的user-service实例列表
+        /*List&amp;lt;ServiceInstance&amp;gt; serviceInstanceList = 
+discoveryClient.getInstances(&amp;quot;user-service&amp;quot;);
+        ServiceInstance serviceInstance = serviceInstanceList.get(0);
+
+        url = &amp;quot;http://&amp;quot; + serviceInstance.getHost() + &amp;quot;:&amp;quot; + serviceInstance.getPort() 
++ &amp;quot;/user/&amp;quot; + id;*/
+        url = &amp;quot;http://user-service/user/&amp;quot; + id;
+
+        return restTemplate.getForObject(url, String.class);
+    }
+
+    public String queryByIdFallback(Long id){
+        log.error(&amp;quot;查询用户信息失败。id：{}&amp;quot;, id);
+        return &amp;quot;对不起，网络太拥挤了！&amp;quot;;
+    }
+
+    public String defaultFallback(){
+        return &amp;quot;默认提示：对不起，网络太拥挤了！&amp;quot;;
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;@DefaultProperties(defaultFallback = &amp;quot;defaultFallBack&amp;quot;)：在类上指明统一的失败降级方法；该类中所有方法返回类型要与处理失败的方法的返回类型一致。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;37&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731150351.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;5）超时设置&lt;br&gt;
+在之前的案例中，请求在超过1秒后都会返回错误信息，这是因为Hystrix的默认超时时长为1，我们可以通过配置修改这个值；修改 consumer-demo\src\main\resources\application.yml 添加如下配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个配置会作用于全局所有方法。为了方便复制到yml配置文件中，可以复制&lt;br&gt;
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=2000 到yml文件中会自动格式化后再进行修改。&lt;/p&gt;
+&lt;p&gt;为了触发超时，可以在user-service\src\main\java\com\cy\user\service\UserService.java 的方法中休眠2秒；&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Service
+public class UserService {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    public User queryById(Long id) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return userMapper.selectByPrimaryKey(id);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;测试：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;38&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200731150557.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;可以发现，请求的时长已经到了2s+，证明配置生效了。如果把修改时间修改到2秒以下，又可以正常访问。&lt;/p&gt;
+&lt;h3 id=&#34;74-服务熔断&#34;&gt;7.4 服务熔断&lt;/h3&gt;
+&lt;h4 id=&#34;741-熔断原理&#34;&gt;7.4.1  熔断原理&lt;/h4&gt;
+&lt;p&gt;在服务熔断中，使用的熔断器，也叫断路器，其英文单词为：Circuit Breaker&lt;br&gt;
+熔断机制与家里使用的电路熔断原理类似；当如果电路发生短路的时候能立刻熔断电路，避免发生灾难。在分布式系统中应用服务熔断后；服务调用方可以自己进行判断哪些服务反应慢或存在大量超时，可以针对这些服务进行主动熔断，防止整个系统被拖垮。&lt;br&gt;
+Hystrix的服务熔断机制，可以实现弹性容错；当服务请求情况好转之后，可以自动重连。通过断路的方式，将后续请求直接拒绝，一段时间（默认5秒）之后允许部分请求通过，如果调用成功则回到断路器关闭状态，否则继续打&lt;br&gt;
+开，拒绝请求的服务。&lt;br&gt;
+Hystrix的熔断状态机模型：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;39&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/1560682028169.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;状态机有3个状态：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Closed：关闭状态（断路器关闭），所有请求都正常访问。&lt;/li&gt;
+&lt;li&gt;Open：打开状态（断路器打开），所有请求都会被降级。Hystrix会对请求情况计数，当一定时间内失败请求百分比达到阈值，则触发熔断，断路器会完全打开。默认失败比例的阈值是50%，请求次数最少不低于20次。&lt;/li&gt;
+&lt;li&gt;Half Open：半开状态，不是永久的，断路器打开后会进入休眠时间（默认是5S）。随后断路器会自动进入半开状态。此时会释放部分请求通过，若这些请求都是健康的，则会关闭断路器，否则继续保持打开，再次进行休眠计时&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;742-动手实践&#34;&gt;7.4.2 动手实践&lt;/h4&gt;
+&lt;p&gt;为了能够精确控制请求的成功或失败，在consumer-demo 的处理器业务方法中加入一段逻辑；&lt;br&gt;
+修改 consumer-demo\src\main\java\com\cy\consumer\controller\ConsumerController.java&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@GetMapping(&amp;quot;{id}&amp;quot;)
+@HystrixCommand
+public String queryById(@PathVariable(&amp;quot;id&amp;quot;) Long id){
+    if(id == 1){
+        throw new RuntimeException(&amp;quot;太忙了&amp;quot;);
+    }
+    String url = &amp;quot;http://user-service/user/&amp;quot; + id;
+    String user = restTemplate.getForObject(url, String.class);
+    return user;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样如果参数是id为1，一定失败，其它情况都成功。（不要忘了清空user-service中的休眠逻辑）&lt;br&gt;
+我们准备两个请求窗口：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个请求：http://localhost:8080/consumer/1，注定失败&lt;/li&gt;
+&lt;li&gt;一个请求：http://localhost:8080/consumer/2，肯定成功&lt;br&gt;
+当我们疯狂访问id为1的请求时（超过20次），就会触发熔断。断路器会打开，一切请求都会被降级处理。&lt;br&gt;
+此时你访问id为2的请求，会发现返回的也是失败，而且失败时间很短，只有20毫秒左右；因进入半开状态之后2是可以的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;40&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803023239.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;不过，默认的熔断触发要求较高，休眠时间窗较短，为了测试方便，我们可以通过配置修改熔断策略：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;# 配置熔断策略：
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        errorThresholdPercentage: 50 # 触发熔断错误比例阈值，默认值50%
+        sleepWindowInMilliseconds: 10000 # 熔断后休眠时长，默认值5秒
+        requestVolumeThreshold: 10 # 熔断触发最小请求次数，默认值是20
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000 # 熔断超时设置，默认为1秒
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;为了方便复制上述配置，可以使用如下格式复制到yml文件中会自动格式化：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;hystrix.command.default.circuitBreaker.requestVolumeThreshold=10
+hystrix.command.default.circuitBreaker.sleepWindowInMilliseconds=10000
+hystrix.command.default.circuitBreaker.errorThresholdPercentage=50
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=2000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上述的配置项可以参考 HystrixCommandProperties 类中。&lt;/p&gt;
+&lt;h2 id=&#34;8-feign&#34;&gt;8、Feign&lt;/h2&gt;
+&lt;p&gt;在前面的学习中，使用了Ribbon的负载均衡功能，大大简化了远程调用时的代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;String url = &amp;quot;http://user-service/user/&amp;quot; + id;
+User user = this.restTemplate.getForObject(url, User.class)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果就学到这里，可能以后需要编写类似的大量重复代码，格式基本相同，无非参数不一样。有没有更优雅的方式，来对这些代码再次优化呢？&lt;br&gt;
+这就是接下来要学的Feign的功能了。&lt;/p&gt;
+&lt;h3 id=&#34;81-简介&#34;&gt;8.1 简介&lt;/h3&gt;
+&lt;p&gt;Feign也叫伪装：&lt;br&gt;
+Feign可以把Rest的请求进行隐藏，伪装成类似SpringMVC的Controller一样。你不用再自己拼接url，拼接参数等等操作，一切都交给Feign去做。&lt;/p&gt;
+&lt;p&gt;项目主页：https://github.com/OpenFeign/feign&lt;/p&gt;
+&lt;h3 id=&#34;82-快速入门&#34;&gt;8.2 快速入门&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;导入依赖&lt;br&gt;
+在consumer-demo 项目的pom.xml 文件中添加如下依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-cloud-starter-openfeign&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Feign的客户端&lt;/p&gt;
+&lt;p&gt;在consumer-demo 中编写如下Feign客户端接口类：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.itheima.consumer.client;
+
+import com.itheima.consumer.pojo.User;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@FeignClient(&amp;quot;user-service&amp;quot;)
+public interface UserClient {
+
+    @GetMapping(&amp;quot;/user/{id}&amp;quot;)
+    User queryById(@PathVariable(&amp;quot;id&amp;quot;) Long id);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;首先这是一个接口，Feign会通过动态代理，帮我们生成实现类。这点跟mybatis的mapper很像&lt;/li&gt;
+&lt;li&gt;@FeignClient ，声明这是一个Feign客户端，同时通过value 属性指定服务名称&lt;/li&gt;
+&lt;li&gt;接口中的定义方法，完全采用SpringMVC的注解，Feign会根据注解帮我们生成URL，并访问获取结果&lt;/li&gt;
+&lt;li&gt;@GetMapping中的/user，请不要忘记；因为Feign需要拼接可访问的地址&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;编写新的控制器类ConsumerFeignController ，使用UserClient访问：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.itheima.consumer.controller;
+
+import com.itheima.consumer.client.UserClient;
+import com.itheima.consumer.pojo.User;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(&amp;quot;/cf&amp;quot;)
+public class ConsumerFeignController {
+
+    @Autowired
+    private UserClient userClient;
+
+    @GetMapping(&amp;quot;/{id}&amp;quot;)
+    public User queryById(@PathVariable Long id){
+        return userClient.queryById(id);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开启Feign功能&lt;br&gt;
+在ConsumerApplication 启动类上，添加注解，开启Feign功能&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.itheima.consumer;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+/*@SpringBootApplication
+@EnableDiscoveryClient
+@EnableCircuitBreaker*/
+@SpringCloudApplication
+@EnableFeignClients//开启Feign功能
+public class ConsumerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumerApplication.class, args);
+    }
+
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Feign中已经自动集成了Ribbon负载均衡，因此不需要自己定义RestTemplate进行负载均衡的配置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动测试&lt;/p&gt;
+&lt;p&gt;访问接口：http://localhost:8080/cf/2&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;41&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803023919.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;正常获取到了结果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;83-负载均衡&#34;&gt;8.3 负载均衡&lt;/h3&gt;
+&lt;p&gt;Feign中本身已经集成了Ribbon依赖和自动配置：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;42&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803024003.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;因此不需要额外引入依赖，也不需要再注册RestTemplate 对象。&lt;/p&gt;
+&lt;p&gt;Fegin内置的ribbon默认设置了请求超时时长，默认是1000，我们可以通过手动配置来修改这个超时时长：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;ribbon:
+  ReadTimeout: 2000 # 读取超时时长
+  ConnectTimeout: 1000 # 建立链接的超时时长
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;因为ribbon内部有重试机制，一旦超时，会自动重新发起请求。如果不希望重试，可以添加配置：&lt;br&gt;
+修改 consumer-demo\src\main\resources\application.yml 添加如下配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;ribbon:
+  ConnectTimeout: 1000 # 连接超时时长
+  ReadTimeout: 2000 # 数据通信超时时长
+  MaxAutoRetries: 0 # 当前服务器的重试次数
+  MaxAutoRetriesNextServer: 0 # 重试多少次服务
+  OkToRetryOnAllOperations: false # 是否对所有的请求方式都重试
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重新给UserService的方法设置上线程沉睡时间2秒可以测试上述配置&lt;/p&gt;
+&lt;h3 id=&#34;84-hystrix支持了解&#34;&gt;8.4 Hystrix支持(了解)&lt;/h3&gt;
+&lt;p&gt;Feign默认也有对Hystrix的集成：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;43&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803024124.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;只不过，默认情况下是关闭的。需要通过下面的参数来开启；&lt;br&gt;
+修改 consumer-demo\src\main\resources\application.yml 添加如下配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;feign:
+  hystrix:
+    enabled: true # 开启Feign的熔断功能
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是，Feign中的Fallback配置不像Ribbon中那样简单了。&lt;br&gt;
+1）首先，要定义一个类，实现刚才编写的UserFeignClient，作为fallback的处理类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.itheima.consumer.client.fallback;
+
+import com.itheima.consumer.client.UserClient;
+import com.itheima.consumer.pojo.User;
+import org.springframework.stereotype.Component;
+
+@Component
+public class UserClientFallback implements UserClient {
+    @Override
+    public User queryById(Long id) {
+        User user = new User();
+        user.setId(id);
+        user.setName(&amp;quot;用户异常&amp;quot;);
+        return user;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2）然后在UserFeignClient中，指定刚才编写的实现类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@FeignClient(value = &amp;quot;user-service&amp;quot;, fallback = UserClientFallback.class)
+public interface UserClient {
+
+    @GetMapping(&amp;quot;/user/{id}&amp;quot;)
+    User queryById(@PathVariable(&amp;quot;id&amp;quot;) Long id);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3）重启测试&lt;br&gt;
+重启启动 consumer-demo 并关闭user-service 服务，然后在页面访问：http://localhost:8080/cf/8&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;44&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803024404.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;85-请求压缩了解&#34;&gt;8.5 请求压缩(了解)&lt;/h3&gt;
+&lt;p&gt;Spring Cloud Feign 支持对请求和响应进行GZIP压缩，以减少通信过程中的性能损耗。通过下面的参数即可开启请求与响应的压缩功能：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;feign:
+  compression:
+    request:
+      enabled: true # 开启请求压缩
+    response:
+      enabled: true # 开启响应压缩
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同时，我们也可以对请求的数据类型，以及触发压缩的大小下限进行设置：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;feign:
+  compression:
+    request:
+      enabled: true # 开启请求压缩
+      mime-types: text/html,application/xml,application/json # 设置压缩的数据类型
+      min-request-size: 2048 # 设置触发压缩的大小下限
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注：上面的数据类型、压缩大小下限均为默认值。&lt;/p&gt;
+&lt;h3 id=&#34;86-日志级别了解&#34;&gt;8.6  日志级别(了解)&lt;/h3&gt;
+&lt;p&gt;前面讲过，通过logging.level.xx=debug 来设置日志级别。然而这个对Fegin客户端而言不会产生效果。因为@FeignClient 注解修改的客户端在被代理时，都会创建一个新的Fegin.Logger实例。我们需要额外指定这个日志的&lt;br&gt;
+级别才可以。&lt;br&gt;
+1）在consumer-demo 的配置文件中设置com.itheima包下的日志级别都为 debug&lt;br&gt;
+修改 consumer-demo\src\main\resources\application.yml 添加如下配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;logging:
+  level:
+    com.itheima: debug
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2）在consumer-demo 编写FeignConﬁg配置类，定义日志级别&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.itheima.consumer.config;
+
+import feign.Logger;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class FeignConfig {
+
+    @Bean
+    Logger.Level feignLoggerLevel(){
+        //记录所有请求和响应的明细，包括头信息、请求体、元数据
+        return Logger.Level.FULL;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里指定的Level级别是FULL，Feign支持4种级别：&lt;br&gt;
+NONE：不记录任何日志信息，这是默认值。&lt;br&gt;
+BASIC：仅记录请求的方法，URL以及响应状态码和执行时间&lt;br&gt;
+HEADERS：在BASIC的基础上，额外记录了请求和响应的头信息&lt;br&gt;
+FULL：记录所有请求和响应的明细，包括头信息、请求体、元数据。&lt;/p&gt;
+&lt;p&gt;3）在consumer-demo 的UserClient 接口类上的@FeignClient注解中指定配置类：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.itheima.consumer.client;
+
+import com.itheima.consumer.client.fallback.UserClientFallback;
+import com.itheima.consumer.config.FeignConfig;
+import com.itheima.consumer.pojo.User;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@FeignClient(value = &amp;quot;user-service&amp;quot;, fallback = UserClientFallback.class,
+configuration = FeignConfig.class)
+public interface UserClient {
+
+    @GetMapping(&amp;quot;/user/{id}&amp;quot;)
+    User queryById(@PathVariable Long id);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;4）重启项目，访问：http://localhost:8080/cf/8 ；即可看到每次访问的日志：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;45&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803024710.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;9-spring-cloud-gateway网关&#34;&gt;9、Spring Cloud Gateway网关&lt;/h2&gt;
+&lt;h3 id=&#34;91-简介&#34;&gt;9.1 简介&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Cloud Gateway是Spring官网基于Spring 5.0、 Spring Boot 2.0、Project Reactor等技术开发的网关服务。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Gateway基于Filter链提供网关基本功能：安全、监控／埋点、限流等。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Gateway为微服务架构提供简单、有效且统一的API路由管理方式。&lt;/li&gt;
+&lt;li&gt;Spring Cloud Gateway是替代Netﬂix Zuul的一套解决方案。&lt;br&gt;
+Spring Cloud Gateway组件的核心是一系列的过滤器，通过这些过滤器可以将客户端发送的请求转发（路由）到对应的微服务。 Spring Cloud Gateway是加在整个微服务最前沿的防火墙和代理器，隐藏微服务结点IP端口信息，从而加强安全保护。Spring Cloud Gateway本身也是一个微服务，需要注册到Eureka服务注册中心。&lt;br&gt;
+网关的核心功能是：&lt;strong&gt;过滤和路由&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;92-gateway加入后的架构&#34;&gt;9.2 Gateway加入后的架构&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;46&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803024952.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;不管是来自于客户端（PC或移动端）的请求，还是服务内部调用。一切对服务的请求都可经过网关，然后再由网关来实现 鉴权、动态路由等等操作。Gateway就是我们服务的统一入口。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;93-核心概念&#34;&gt;9.3 核心概念&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;路由（route）&lt;/strong&gt; 路由信息的组成：由一个ID、一个目的URL、一组断言工厂、一组Filter组成。如果路由断言为真，说明请求URL和配置路由匹配。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;断言（Predicate）&lt;/strong&gt; Spring Cloud Gateway中的断言函数输入类型是Spring 5.0框架中的ServerWebExchange。Spring Cloud Gateway的断言函数允许开发者去定义匹配来自于Http Request中的任何信息比如请求头和参数。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;过滤器（Filter）&lt;/strong&gt; 一个标准的Spring WebFilter。 Spring Cloud Gateway中的Filter分为两种类型的Filter，分别是Gateway Filter和Global Filter。过滤器Filter将会对请求和响应进行修改处理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;94-快速入门&#34;&gt;9.4 快速入门&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;新建工程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;打开 heima-springcloud\heima-gateway\pom.xml 文件修改为如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 
+http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;artifactId&amp;gt;heima-springcloud&amp;lt;/artifactId&amp;gt;
+        &amp;lt;groupId&amp;gt;com.itheima&amp;lt;/groupId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;groupId&amp;gt;com.itheima&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;heima-gateway&amp;lt;/artifactId&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-starter-gateway&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-eureka-client&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;编写启动类&lt;/strong&gt;&lt;br&gt;
+在heima-gateway中创建com.itheima.gateway.GatewayApplication 启动类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.itheima.gateway;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
+@SpringBootApplication
+@EnableDiscoveryClient
+public class GatewayApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(GatewayApplication.class, args);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;创建heima-gateway\src\main\resources\application.yml 文件，内容如下：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 10010
+spring:
+  application:
+    name: api-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;编写路由规则&lt;/strong&gt;&lt;br&gt;
+需要用网关来代理user-service 服务，先看一下控制面板中的服务状态：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;47&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803154326.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;ip为：127.0.0.1&lt;/li&gt;
+&lt;li&gt;端口为：9091&lt;br&gt;
+修改heima-gateway\src\main\resources\application.yml 文件为：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 10010
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        # 路由id，可以随意写
+        - id: user-service-route
+          # 代理的服务地址
+          uri: http://127.0.0.1:9091
+          # 路由断言，可以配置映射路径
+          predicates:
+            - Path=/user/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将符合Path 规则的一切请求，都代理到 uri 参数指定的地址&lt;br&gt;
+本例中，我们将路径中包含有 /user/** 开头的请求，代理到http://127.0.0.1:9091&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;启动测试&lt;/strong&gt;&lt;br&gt;
+访问的路径中需要加上配置规则的映射路径，我们访问：http://localhost:10010/user/8&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;48&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803154523.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;95-面向服务的路由&#34;&gt;9.5 面向服务的路由&lt;/h3&gt;
+&lt;p&gt;在刚才的路由规则中，把路径对应的服务地址写死了！如果同一服务有多个实例的话，这样做显然不合理。应该根据服务的名称，去Eureka注册中心查找服务对应的所有实例列表，然后进行动态路由！&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;修改映射配置，通过服务名称获取&lt;/strong&gt;&lt;br&gt;
+因为已经配置了Eureka客户端，可以从Eureka获取服务的地址信息。&lt;br&gt;
+修改heima-gateway\src\main\resources\application.yml 文件如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 10010
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        # 路由id，可以随意写
+        - id: user-service-route
+          # 代理的服务地址；lb表示从eureka中获取具体服务
+          uri: lb://user-service
+          # 路由断言，可以配置映射路径
+          predicates:
+            - Path=/user/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;路由配置中uri所用的协议为lb时（以uri: lb://user-service为例），gateway将使用 LoadBalancerClient把user-service通过eureka解析为实际的主机和端口，并进行ribbon负载均衡。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;启动测试&lt;/strong&gt;&lt;br&gt;
+再次启动 heima-gateway ，这次gateway进行代理时，会利用Ribbon进行负载均衡访问：&lt;br&gt;
+http://localhost:10010/user/8&lt;br&gt;
+日志中可以看到使用了负载均衡器：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;49&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803155238.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;96-路由前缀&#34;&gt;9.6 路由前缀&lt;/h3&gt;
+&lt;h4 id=&#34;961-添加前缀&#34;&gt;9.6.1 添加前缀&lt;/h4&gt;
+&lt;p&gt;在gateway中可以通过配置路由的过滤器PreﬁxPath，实现映射路径中地址的添加；&lt;br&gt;
+修改heima-gateway\src\main\resources\application.yml 文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 10010
+spring:
+  application:
+    name: api-gateway
+    cloud:
+    gateway:
+      routes:
+        # 路由id，可以随意写
+        - id: user-service-route
+          # 代理的服务地址；lb表示从eureka中获取具体服务
+          uri: lb://user-service
+          # 路由断言，可以配置映射路径
+          predicates:
+            - Path=/**
+          filters:
+            # 添加请求路径的前缀
+            - PrefixPath=/user
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过PrefixPath=/xxx 来指定了路由要添加的前缀。&lt;br&gt;
+也就是：&lt;br&gt;
+PrefixPath=/user http://localhost:10010/8 --》http://localhost:9091/user/8&lt;br&gt;
+PrefixPath=/user/abc http://localhost:10010/8 --》http://localhost:9091/user/abc/8&lt;br&gt;
+以此类推。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;50&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803155358.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;962-去除前缀&#34;&gt;9.6.2 去除前缀&lt;/h4&gt;
+&lt;p&gt;在gateway中可以通过配置路由的过滤器StripPreﬁx，实现映射路径中地址的去除；&lt;/p&gt;
+&lt;p&gt;修改heima-gateway\src\main\resources\application.yml 文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 10010
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        # 路由id，可以随意写
+        - id: user-service-route
+          # 代理的服务地址；lb表示从eureka中获取具体服务
+          uri: lb://user-service
+          # 路由断言，可以配置映射路径
+          predicates:
+            - Path=/api/user/**
+          filters:
+            # 表示过滤1个路径，2表示两个路径，以此类推
+            - StripPrefix=1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过StripPrefix=1 来指定了路由要去掉的前缀个数。如：路径/api/user/1 将会被代理到/user/1 。&lt;br&gt;
+也就是：&lt;br&gt;
+StripPrefix=1 http://localhost:10010/api/user/8 --》http://localhost:9091/user/8&lt;br&gt;
+StripPrefix=2 http://localhost:10010/api/user/8 --》http://localhost:9091/8&lt;br&gt;
+以此类推。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;51&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803155500.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;97-过滤器&#34;&gt;9.7  过滤器&lt;/h3&gt;
+&lt;h4 id=&#34;971-简介&#34;&gt;9.7.1 简介&lt;/h4&gt;
+&lt;p&gt;Gateway作为网关的其中一个重要功能，就是实现请求的鉴权。而这个动作往往是通过网关提供的过滤器来实现的。&lt;br&gt;
+前面的 路由前缀 章节中的功能也是使用过滤器实现的。&lt;/p&gt;
+&lt;p&gt;Gateway自带过滤器有几十个，常见自带过滤器有：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;过滤器名称&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;AddRequestHeader&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;对匹配上的请求加上Header&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;AddRequestParameters&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;对匹配上的请求路由添加参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;AddResponseHeader&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;对从网关返回的响应添加Header&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;StripPreﬁx&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;对匹配上的请求路径去除前缀&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;52&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803155639.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;详细的说明在官网链接&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;配置全局默认过滤器&lt;/strong&gt;&lt;br&gt;
+这些自带的过滤器可以和使用 路由前缀 章节中的用法类似，也可以将这些过滤器配置成不只是针对某个路由；而是可以对所有路由生效，也就是配置默认过滤器：&lt;br&gt;
+了解如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 10010
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      # 默认过滤器，对所有路由生效
+       default-filters:
+        # 响应头过滤器，对输出的响应设置其头部属性名称为X-Response-Default-MyName，值为itcast；
+如果有多个参数多则重写一行设置不同的参数
+        - AddResponseHeader=X-Response-Default-MyName, itcast
+      routes:
+        # 路由id，可以随意写
+        - id: user-service-route
+          # 代理的服务地址；lb表示从eureka中获取具体服务
+          uri: lb://user-service
+          # 路由断言，可以配置映射路径
+          predicates:
+            - Path=/api/user/**
+          filters:
+            # 表示过滤1个路径，2表示两个路径，以此类推
+            - StripPrefix=1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上述配置后，再访问 http://localhost:10010/api/user/8 的话；那么可以从其响应中查看到如下信息：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;53&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803155843.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;过滤器类型&lt;/strong&gt;：Gateway实现方式上，有两种过滤器；&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;局部&lt;/strong&gt;过滤器：通过spring.cloud.gateway.routes.filters 配置在具体路由下，只作用在当前路由上；自带的过滤器都可以配置或者自定义按照自带过滤器的方式。如果配置spring.cloud.gateway.default-filters 上会对所有路由生效也算是全局的过滤器；但是这些过滤器的实现上都是要实现GatewayFilterFactory接口。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;全局&lt;/strong&gt;过滤器：不需要在配置文件中配置，作用在所有的路由上；实现 GlobalFilter 接口即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;972-执行生命周期&#34;&gt;9.7.2 执行生命周期&lt;/h4&gt;
+&lt;p&gt;Spring Cloud Gateway 的 Filter 的生命周期也类似Spring MVC的拦截器有两个：“pre” 和 “post”。“pre”和 “post” 分别会在请求被执行前调用和被执行后调用。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;54&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803155949.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;这里的 pre 和 post 可以通过过滤器的GatewayFilterChain 执行ﬁlter方法前后来实现。&lt;/p&gt;
+&lt;h4 id=&#34;973-使用场景&#34;&gt;9.7.3 使用场景&lt;/h4&gt;
+&lt;p&gt;常见的应用场景如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;请求鉴权：一般GatewayFilterChain 执行ﬁlter方法前，如果发现没有访问权限，直接就返回空。&lt;/li&gt;
+&lt;li&gt;异常处理：一般GatewayFilterChain 执行ﬁlter方法后，记录异常并返回。&lt;/li&gt;
+&lt;li&gt;服务调用时长统计：GatewayFilterChain 执行ﬁlter方法前后根据时间统计。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;98-自定义过滤器&#34;&gt;9.8 自定义过滤器&lt;/h3&gt;
+&lt;h4 id=&#34;981-自定义局部过滤器&#34;&gt;9.8.1 自定义局部过滤器&lt;/h4&gt;
+&lt;p&gt;需求：在application.yml中对某个路由配置过滤器，该过滤器可以在控制台输出配置文件中指定名称的请求参数的值。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1）编写过滤器&lt;/strong&gt;&lt;br&gt;
+在heima-gateway工程编写过滤器工厂类MyParamGatewayFilterFactory&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.itheima.gateway.filter;
+
+import org.springframework.cloud.gateway.filter.GatewayFilter;
+import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+import java.util.List;
+
+@Component
+public class MyParamGatewayFilterFactory extends 
+AbstractGatewayFilterFactory&amp;lt;MyParamGatewayFilterFactory.Config&amp;gt; {
+
+    public static final String PARAM_NAME = &amp;quot;param&amp;quot;;
+
+    public MyParamGatewayFilterFactory() {
+        super(Config.class);
+    }
+
+    @Override
+    public List&amp;lt;String&amp;gt; shortcutFieldOrder() {
+        return Arrays.asList(PARAM_NAME);
+    }
+
+    @Override
+    public GatewayFilter apply(Config config) {
+        return (exchange, chain) -&amp;gt; {
+            ServerHttpRequest request = exchange.getRequest();
+
+            if (request.getQueryParams().containsKey(config.param)) {
+                request.getQueryParams().get(config.param)
+                        .forEach(value -&amp;gt; System.out.printf(&amp;quot;----------局部过滤器-----%s 
+= %s-----&amp;quot;,
+                                config.param, value));
+            }
+
+            return chain.filter(exchange);
+        };
+    }
+
+    public static class Config {
+        private String param;
+
+        public String getParam() {
+            return param;
+        }
+
+        public void setParam(String param) {
+            this.param = param;
+        }
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2）修改配置文件&lt;br&gt;
+在heima-gateway工程修改heima-gateway\src\main\resources\application.yml 配置文件&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 10010
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        # 路由id，可以随意写
+        - id: user-service-route
+          # 代理的服务地址；lb表示从eureka中获取具体服务
+          uri: lb://user-service
+          # 路由断言，可以配置映射路径
+          predicates:
+            - Path=/api/user/**
+          filters:
+            # 表示过滤1个路径，2表示两个路径，以此类推
+            - StripPrefix=1
+            # 自定义过滤器
+            - MyParam=name
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意：自定义过滤器的命名应该为：***GatewayFilterFactory&lt;/p&gt;
+&lt;p&gt;测试访问：http://localhost:10010/api/user/8?name=itcast 检查后台是否输出name和itcast；但是若访问http://localhost:10010/api/user/8?name2=itcast 则是不会输出的。&lt;/p&gt;
+&lt;h4 id=&#34;982-自定义全局过滤器&#34;&gt;9.8.2 自定义全局过滤器&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;需求&lt;/strong&gt;：模拟一个登录的校验。基本逻辑：如果请求中有token参数，则认为请求有效，放行。&lt;/p&gt;
+&lt;p&gt;在heima-gateway工程编写全局过滤器类MyGlobalFilter&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.itheima.gateway.filter;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.core.Ordered;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
+
+@Component
+public class MyGlobalFilter implements GlobalFilter, Ordered {
+    @Override
+    public Mono&amp;lt;Void&amp;gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        System.out.println(&amp;quot;-----------------全局过滤器MyGlobalFilter-------------------
+--&amp;quot;);
+        String token = exchange.getRequest().getQueryParams().getFirst(&amp;quot;token&amp;quot;);
+        if (StringUtils.isBlank(token)) {
+            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+            return exchange.getResponse().setComplete();
+        }
+        return chain.filter(exchange);
+    }
+
+    @Override
+    public int getOrder() {
+        //值越小越先执行
+        return 1;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;访问 http://localhost:10010/api/user/8&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;55&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803170715.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;访问 http://localhost:10010/api/user/8?token=abc&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;56&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803170749.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;99-负载均衡和熔断了解&#34;&gt;9.9 负载均衡和熔断（了解）&lt;/h3&gt;
+&lt;p&gt;Gateway中默认就已经集成了Ribbon负载均衡和Hystrix熔断机制。但是所有的超时策略都是走的默认值，比如熔断超时时间只有1S，很容易就触发了。因此建议手动进行配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+ribbon:
+  ConnectTimeout: 1000
+  ReadTimeout: 2000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;910-gateway跨域配置&#34;&gt;9.10 Gateway跨域配置&lt;/h3&gt;
+&lt;p&gt;一般网关都是所有微服务的统一入口，必然在被调用的时候会出现跨域问题。&lt;br&gt;
+&lt;strong&gt;跨域&lt;/strong&gt;：在js请求访问中，如果访问的地址与当前服务器的域名、ip或者端口号不一致则称为跨域请求。若不解决则不能获取到对应地址的返回结果。&lt;br&gt;
+如：从在http://localhost:9090中的js访问 http://localhost:9000的数据，因为端口不同，所以也是跨域请求。&lt;/p&gt;
+&lt;p&gt;在访问Spring Cloud Gateway网关服务器的时候，出现跨域问题的话；可以在网关服务器中通过配置解决，允许哪些服务是可以跨域请求的；具体配置如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          &#39;[/**]&#39;:
+            #allowedOrigins: * # 这种写法或者下面的都可以，*表示全部
+            allowedOrigins:
+            - &amp;quot;http://docs.spring.io&amp;quot;
+            allowedMethods:
+            - GET
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上述配置表示：可以允许来自 http://docs.spring.io 的get请求方式获取服务数据。&lt;br&gt;
+allowedOrigins 指定允许访问的服务器地址，如：http://localhost:10000 也是可以的。&lt;br&gt;
+&#39;[/**]&#39; 表示对所有访问到网关服务器的请求地址&lt;br&gt;
+官网具体说明：https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.1.1.RELEASE/multi/multi__cors_conﬁguration.html&lt;/p&gt;
+&lt;h3 id=&#34;911-gateway的高可用了解&#34;&gt;9.11 Gateway的高可用（了解）&lt;/h3&gt;
+&lt;p&gt;启动多个Gateway服务，自动注册到Eureka，形成集群。如果是服务内部访问，访问Gateway，自动负载均衡，没问题。&lt;br&gt;
+但是，Gateway更多是外部访问，PC端、移动端等。它们无法通过Eureka进行负载均衡，那么该怎么办？&lt;br&gt;
+此时，可以使用其它的服务网关，来对Gateway进行代理。比如：Nginx&lt;/p&gt;
+&lt;h3 id=&#34;912-gateway与feign的区别&#34;&gt;9.12 Gateway与Feign的区别&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Gateway 作为整个应用的流量入口，接收所有的请求，如PC、移动端等，并且将不同的请求转发至不同的处理微服务模块，其作用可视为nginx；大部分情况下用作权限鉴定、服务端流量控制&lt;/li&gt;
+&lt;li&gt;Feign 则是将当前微服务的部分服务接口暴露出来，并且主要用于各个微服务之间的服务调用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;10-spring-cloud-config分布式配置中心&#34;&gt;10、Spring Cloud Conﬁg分布式配置中心&lt;/h2&gt;
+&lt;h3 id=&#34;101-简介&#34;&gt;10.1 简介&lt;/h3&gt;
+&lt;p&gt;在分布式系统中，由于服务数量非常多，配置文件分散在不同的微服务项目中，管理不方便。为了方便配置文件集中管理，需要分布式配置中心组件。在Spring Cloud中，提供了Spring Cloud Conﬁg，它支持配置文件放在配置服务的本地，也支持放在远程Git仓库（GitHub、码云）。&lt;br&gt;
+使用Spring Cloud Conﬁg配置中心后的架构如下图：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;57&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803171244.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;配置中心本质上也是一个微服务，同样需要注册到Eureka服务注册中心！&lt;/p&gt;
+&lt;h3 id=&#34;102-git配置管理&#34;&gt;10.2 Git配置管理&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;远程Git仓库&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;知名的Git远程仓库有国外的GitHub和国内的码云（gitee）；但是使用GitHub时，国内的用户经常遇到的问题是访问速度太慢，有时候还会出现无法连接的情况。如果希望体验更好一些，可以使用国内的Git托管服务——码云（gitee.com）。&lt;br&gt;
+与GitHub相比，码云也提供免费的Git仓库。此外，还集成了代码质量检测、项目演示等功能。对于团队协作开发，码云还提供了项目管理、代码托管、文档管理的服务。本章中使用的远程Git仓库是码云。&lt;br&gt;
+码云访问地址：https://gitee.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;创建远程仓库&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;首先要使用码云上的私有远程git仓库需要先注册帐号；请先自行访问网站并注册帐号，然后使用帐号登录码云控制台并创建公开仓库。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;创建配置文件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在新建的仓库中创建需要被统一配置管理的配置文件。&lt;br&gt;
+配置文件的命名方式：{application}-{proﬁle}.yml 或 {application}-{proﬁle}.properties&lt;br&gt;
+application为应用名称&lt;br&gt;
+proﬁle用于区分开发环境，测试环境、生产环境等&lt;br&gt;
+如user-dev.yml，表示用户微服务开发环境下使用的配置文件。&lt;br&gt;
+这里将user-service工程的配置文件application.yml文件的内容复制作为user-dev.yml文件的内容，具体配置如下：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;58&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803171438.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;创建 user-dev.yml ；内容来自 user-service\src\main\resources\application.yml （方便后面测试user-service项目的配置），可以如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: ${port:9091}
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud
+    username: root
+    password: root
+  application:
+    #应用名
+    name: user-service
+mybatis:
+  type-aliases-package: com.itheima.user.pojo
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+  	ip-address: 127.0.0.1
+    	prefer-ip-address: true
+    	lease-expiration-duration-in-seconds: 90
+    	lease-renewal-interval-in-seconds: 30
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;59&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803171549.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;创建完user-dev.yml配置文件之后，gitee中的仓库如下：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;60&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803171601.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;103-搭建配置中心微服务&#34;&gt;10.3 搭建配置中心微服务&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;创建工程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;创建配置中心微服务工程 config-server：&lt;/p&gt;
+&lt;p&gt;添加依赖，修改config-server\pom.xml 如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 
+http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;artifactId&amp;gt;heima-springcloud&amp;lt;/artifactId&amp;gt;
+        &amp;lt;groupId&amp;gt;com.itheima&amp;lt;/groupId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;groupId&amp;gt;com.itheima&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;config-server&amp;lt;/artifactId&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-eureka-client&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-config-server&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;启动类&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;创建配置中心工程config-server 的启动类；&lt;br&gt;
+config-server\src\main\java\com\itheima\config\ConfigServerApplication.java 如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.itheima.config;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.config.server.EnableConfigServer;
+
+@SpringBootApplication
+@EnableConfigServer
+public class ConfigServerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ConfigServerApplication.class, args);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;配置文件&lt;/strong&gt;&lt;br&gt;
+创建配置中心工程config-server 的配置文件；&lt;br&gt;
+config-server\src\main\resources\application.yml 如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 12000
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/liaojianbin/heima-config.git
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意上述的 spring.cloud.conﬁg.server.git.uri 则是在码云创建的仓库地址；可修改为自己创建的仓库地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;启动测试&lt;/strong&gt;&lt;br&gt;
+启动eureka注册中心和配置中心；然后访问http://localhost:12000/user-dev.yml ，查看能否输出在码云存储管理的user-dev.yml文件。并且可以在gitee上修改user-dev.yml然后刷新上述测试地址也能及时到最新数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;61&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803171928.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;104-获取配置中心配置&#34;&gt;10.4 获取配置中心配置&lt;/h3&gt;
+&lt;p&gt;前面已经完成了配置中心微服务的搭建，下面我们就需要改造一下用户微服务user-service ，配置文件信息不再由微服务项目提供，而是从配置中心获取。如下对user-service 工程进行改造。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;添加依赖&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在user-service 工程中的pom.xml文件中添加如下依赖：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;		&amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-starter-config&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;2.1.1.RELEASE&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;修改配置&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;删除user-service 工程的user-service\src\main\resources\application.yml 文件（因为该文件从配置中心获取）&lt;/li&gt;
+&lt;li&gt;创建user-service 工程user-service\src\main\resources\bootstrap.yml 配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;spring:
+  cloud:
+    config:
+      # 与远程仓库中的配置文件的application保持一致
+      name: user
+      # 远程仓库中的配置文件的profile保持一致
+      profile: dev
+      # 远程仓库中的版本保持一致
+      label: master
+      discovery:
+        # 使用配置中心
+        enabled: true
+        # 配置中心服务id
+        service-id: config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;bootstrap.yml文件也是Spring Boot的默认配置文件，而且其加载的时间相比于application.yml更早。&lt;br&gt;
+application.yml和bootstrap.yml虽然都是Spring Boot的默认配置文件，但是定位却不相同。bootstrap.yml可以理解成系统级别的一些参数配置，这些参数一般是不会变动的。application.yml 可以用来定义应用级别的参数，如果搭配 spring cloud conﬁg 使用，application.yml 里面定义的文件可以实现动态替换。&lt;/p&gt;
+&lt;p&gt;总结就是，bootstrap.yml文件相当于项目启动时的引导文件，内容相对固定。application.yml文件是微服务的一些常规配置参数，变化比较频繁。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;启动测试&lt;/strong&gt;&lt;br&gt;
+启动注册中心eureka-server 、配置中心config-server 、用户服务user-service ，如果启动没有报错其实已经使用上配置中心内容，可以到注册中心查看，也可以检验user-service 的服务。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;62&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803172413.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;11-spring-cloud-bus服务总线&#34;&gt;11、Spring Cloud Bus服务总线&lt;/h2&gt;
+&lt;h3 id=&#34;111-问题&#34;&gt;11.1 问题&lt;/h3&gt;
+&lt;p&gt;前面已经完成了将微服务中的配置文件集中存储在远程Git仓库，并且通过配置中心微服务从Git仓库拉取配置文件，当用户微服务启动时会连接配置中心获取配置信息从而启动用户微服务。&lt;br&gt;
+如果我们更新Git仓库中的配置文件，那用户微服务是否可以及时接收到新的配置信息并更新呢？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;修改远程Git配置&lt;/strong&gt;&lt;br&gt;
+修改在码云上的user-dev.yml文件，添加一个属性test.name。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;63&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803172557.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;修改UserController&lt;/strong&gt;&lt;br&gt;
+修改user-service 工程中的处理器类；&lt;br&gt;
+user-service\src\main\java\com\itheima\user\controller\UserController.java 如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.itheima.user.controller;
+
+import com.itheima.user.pojo.User;
+import com.itheima.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(&amp;quot;/user&amp;quot;)
+public class UserController {
+        @Autowired
+    private UserService userService;
+
+    @Value(&amp;quot;${test.name}&amp;quot;)
+    private String name;
+
+    @GetMapping(&amp;quot;/{id}&amp;quot;)
+    public User queryById(@PathVariable Long id){
+        System.out.println(&amp;quot;配置文件中的test.name = &amp;quot; + name);
+        return userService.queryById(id);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;测试&lt;/strong&gt;&lt;br&gt;
+依次启动注册中心eureka-server 、配置中心config-server 、用户服务user-service ；然后修改Git仓库中的配置信息，访问用户微服务，查看输出内容。&lt;/p&gt;
+&lt;p&gt;**结论：**通过查看用户微服务控制台的输出结果可以发现，我们对于Git仓库中配置文件的修改并没有及时更新到用户微服务，只有重启用户微服务才能生效。&lt;br&gt;
+如果想在不重启微服务的情况下更新配置该如何实现呢? &lt;strong&gt;可以使用Spring Cloud Bus来实现配置的自动更新。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;需要注意的是Spring Cloud Bus底层是基于RabbitMQ实现的，默认使用本地的消息队列服务，所以需要提前启动本地RabbitMQ服务（安装RabbitMQ以后才有），如下：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;64&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803172726.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;112-spring-cloud-bus简介&#34;&gt;11.2 Spring Cloud Bus简介&lt;/h3&gt;
+&lt;p&gt;Spring Cloud Bus是用轻量的消息代理将分布式的节点连接起来，可以用于广播配置文件的更改或者服务的监控管理。也就是消息总线可以为微服务做监控，也可以实现应用程序之间相互通信。 Spring Cloud Bus可选的消息代理&lt;br&gt;
+有RabbitMQ和Kafka。&lt;/p&gt;
+&lt;p&gt;使用了Bus之后：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;65&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803172800.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;113-改造配置中心&#34;&gt;11.3 改造配置中心&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在config-server 项目的pom.xml文件中加入Spring Cloud Bus相关依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-bus&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-stream-binder-rabbit&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在config-server 项目修改application.yml文件如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;server:
+  port: 12000
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/liaojianbin/heima-config.git
+  # rabbitmq的配置信息；如下配置的rabbit都是默认值，其实可以完全不配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        # 暴露触发消息总线的地址
+        include: bus-refresh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;114-改造用户服务&#34;&gt;11.4  改造用户服务&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在用户微服务user-service 项目的pom.xml中加入Spring Cloud Bus相关依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-bus&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-stream-binder-rabbit&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-starter-actuator&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改user-service 项目的bootstrap.yml如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;spring:
+  cloud:
+    config:
+      # 与远程仓库中的配置文件的application保持一致
+      name: user
+      # 远程仓库中的配置文件的profile保持一致
+      profile: dev
+      # 远程仓库中的版本保持一致
+      label: master
+      discovery:
+        # 使用配置中心
+        enabled: true
+        # 配置中心服务id
+        service-id: config-server
+  # rabbitmq的配置信息；如下配置的rabbit都是默认值，其实可以完全不配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;改造用户微服务user-service 项目的UserController&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;66&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803173237.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;115-测试&#34;&gt;11.5 测试&lt;/h3&gt;
+&lt;p&gt;前面已经完成了配置中心微服务和用户微服务的改造，下面来测试一下，当我们修改了Git仓库中的配置文件，用户微服务是否能够在不重启的情况下自动更新配置信息。&lt;br&gt;
+&lt;strong&gt;测试步骤：&lt;/strong&gt;&lt;br&gt;
+第一步：依次启动注册中心eureka-server 、配置中心config-server 、用户服务user-service&lt;br&gt;
+第二步：访问用户微服务http://localhost:9091/user/8；查看IDEA控制台输出结果&lt;/p&gt;
+&lt;p&gt;第三步：修改Git仓库中配置文件user-dev.yml 的test.name 内容&lt;br&gt;
+第四步：使用Postman或者RESTClient工具发送POST方式请求访问地址http://127.0.0.1:12000/actuator/bus-refresh&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;67&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803173322.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;第五步：访问用户微服务系统控制台查看输出结果&lt;/p&gt;
+&lt;p&gt;说明：&lt;br&gt;
+1、Postman或者RESTClient是一个可以模拟浏览器发送各种请求（POST、GET、PUT、DELETE等）的工具&lt;br&gt;
+2、请求地址http://127.0.0.1:12000/actuator/bus-refresh中 /actuator是固定的，/bus-refresh对应的是配置中心conﬁg-server中的application.yml文件的配置项include的内容&lt;br&gt;
+3、请求http://127.0.0.1:12000/actuator/bus-refresh地址的作用是访问配置中心的消息总线服务，消息总线服务接收到请求后会向消息队列中发送消息，各个微服务会监听消息队列。当微服务接收到队列中的消息后，会重新从配置中心获取最新的配置信息。&lt;/p&gt;
+&lt;h3 id=&#34;116-spring-cloud-体系技术综合应用概览&#34;&gt;11.6 Spring Cloud 体系技术综合应用概览&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;68&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803173833.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;12-思维导图&#34;&gt;12、思维导图&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;69&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200803174547.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+">SpringCloud</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/spring-session/"" data-c="
@@ -24328,7 +26705,7 @@ jQuery具有强大的选择器功能&lt;/li&gt;
                 
                 var inp2=$(&amp;quot;.inp&amp;quot;);
                 //jq先转成js再获取内容
-              alert(inp2[0].value);
+              	alert(inp2[0].value);
                 //  jq获得内容操作
 			    alert(inp2.eq(0).val());
 
