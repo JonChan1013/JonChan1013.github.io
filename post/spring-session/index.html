@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Spring Session | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1596472171649">
+<link rel="shortcut icon" href="/favicon.ico?v=1596522106315">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -218,7 +218,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">30</span>
+        <span class="site-item-stat-count">31</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1671,6 +1671,16 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/zong-he-xing-b2c-dian-zi-shang-wu-ping-tai-xiang-mu/"" data-c="
+          &lt;h2 id=&#34;1-项目介绍&#34;&gt;1、项目介绍&lt;/h2&gt;
+&lt;h3 id=&#34;11-电商行业发展&#34;&gt;1.1 电商行业发展&lt;/h3&gt;
+&lt;p&gt;商务部统计数据显示，2012 年到 2016 年，我国网络购物用户人数从 2.42 亿人增长至4.67 亿人，增长近一倍。电子商务交易额从 8.1 万亿元增长至 26.1 万亿元，年均增长 34%。其中，网络零售交易额从 1.31 万亿元增长至 5.16 万亿元，年均增长 40%，对社会消费品零售总额增加值的贡献率从 17%增长至 30%。电子商务发展直接和间接带动的就业人数从1500 万人增长至 3700 万人。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;经过多年发展，目前规模较大电子商务平台企业纷纷开始构建生态系统，平台为商家和消费者提供交易、支付、物流等各方面全周期支持与服务，各大平台与平台商家之间依存越来越紧密，阿里系、腾讯系、百度系、京东系等主体均取得了显著规模效益。&lt;/p&gt;
+">综合性 B2C 电子商务平台项目</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/springcloud/"" data-c="
@@ -23904,20 +23914,2470 @@ git pull origin master --allow-unrelated-histories    --把远程仓库中的内
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/mybatis/"" data-c="
-          &lt;h2 id=&#34;1-简介&#34;&gt;1、简介&lt;/h2&gt;
+          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616022004.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-简介&#34;&gt;1、简介&lt;/h2&gt;
 &lt;h3 id=&#34;11-什么是mybatis&#34;&gt;1.1、什么是Mybatis&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200616022004.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ul&gt;
-&lt;li&gt;MyBatis 是一款优秀的&lt;strong&gt;持久层框架&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;它支持定制化 SQL、存储过程以及高级映射。&lt;/li&gt;
-&lt;li&gt;MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。&lt;/li&gt;
+&lt;li&gt;MyBatis 是一款优秀的&lt;strong&gt;持久层框架&lt;/strong&gt;，它支持定制化 SQL、存储过程以及高级映射。&lt;/li&gt;
+&lt;li&gt;MyBatis 避免了几乎所有的&lt;strong&gt;JDBC 代码&lt;/strong&gt;和&lt;strong&gt;手动设置参数以及获取结果集&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的 POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;!-- more --&gt;
+&lt;h3 id=&#34;12-持久化&#34;&gt;1.2 持久化&lt;/h3&gt;
+&lt;p&gt;持久化是将程序数据在持久状态和瞬时状态间转换的机制。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;把数据（如内存中的对象）保存到可永久保存的存储设备中（如磁盘）。持久化的的主要应用是将内存中的对象存储在数据库中，或者存储在磁盘文件中，xml数据文件中等等。&lt;/li&gt;
+&lt;li&gt;JDBC就是一种持久化机制，文件IO也是一种持久化机制&lt;/li&gt;
+&lt;li&gt;在生活中：将鲜肉冷藏，吃的时候再解冻的方法就类似与持久化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;1-3-为什么需要持久化服务&#34;&gt;1. 3 为什么需要持久化服务？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;是因为内存本身的缺陷引起的&lt;/li&gt;
+&lt;li&gt;内存断电后数据会丢失，但有一些对象是无论如何都不能丢失的，比如银行账号等，遗憾的是，人们还无法保证内存永不掉电。&lt;/li&gt;
+&lt;li&gt;内存过于昂贵，与硬盘、光盘等外存相比，内存的价格要高2~3个数量级，而且维持成本也高，至少需要一直供电吧。所以即使对象不需要永久保存，也会因为内存的容量限制不能一直呆在内存中，需要持久化来缓存到外存。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;13-持久层&#34;&gt;1.3 持久层&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;什么是持久层？&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;完成持久化工作的代码块—-&amp;gt; dao层 【DAO (Data Access Object) 数据访问对象】&lt;/li&gt;
+&lt;li&gt;大多数情况下特别是企业级应用，数据持久化往往也就意味着将内存中的数据保存到磁盘上加以固化，而持久化的实现过程则大多通过各种&lt;strong&gt;关系数据库&lt;/strong&gt;来完成。&lt;/li&gt;
+&lt;li&gt;不过这里有一个字需要特别强调，也就是所谓的“层”。对于应用系统而言，数据持久功能大多是必不可少的组成部分。也就是说，我们的系统中，已经天然的具备了“持久层”概念？也许是，但也许实际情况并非如此。之所以要独立出一个“持久层”的概念,而不是“持久模块”，“持久单元”，也就意味着，我们的系统架构中，应该有一个相对独立的逻辑层面，专著于数据持久化逻辑的实现.&lt;/li&gt;
+&lt;li&gt;与系统其他部分相对而言，这个层面应该具有一个较为清晰和严格的逻辑边界。 【说白了就是用来操作数据库存在的！】&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;14-为什么需要mybatis&#34;&gt;1.4 为什么需要Mybatis？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;MyBatis就是帮助程序猿将数据存入数据库中，和从数据库中取数据&lt;/li&gt;
+&lt;li&gt;传统的JDBC操作，有很多重复的代码块，比如：数据取出时的封装，数据库的建立连接等等…,通过框架可以减少重复代码，提高开发的效率&lt;/li&gt;
+&lt;li&gt;MyBatis 是一个半自动化的&lt;strong&gt;ORM框架 (Object Relationship Mapping) –&amp;gt;对象关系映射&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;所有的事情，不用Mybatis依旧可以做到，只是用了它，所有实现会更加简单！&lt;strong&gt;技术没有高低之分，只有使用这个技术的人有高低之别&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;15-mybatis的优点&#34;&gt;1.5 MyBatis的优点&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;简单易学：本身就很小且简单。没有任何第三方依赖，最简单安装只要两个jar文件+配置几个sql映射文件就可以了，易于学习，易于使用，通过文档和源代码，可以比较完全的掌握它的设计思路和实现。&lt;/li&gt;
+&lt;li&gt;灵活：mybatis不会对应用程序或者数据库的现有设计强加任何影响。 sql写在xml里，便于统一管理和优化。通过sql语句可以满足操作数据库的所有需求。&lt;/li&gt;
+&lt;li&gt;解除sql与程序代码的耦合：通过提供DAO层，将业务逻辑和数据访问逻辑分离，使系统的设计更清晰，更易维护，更易单元测试。sql和代码的分离，提高了可维护性。&lt;/li&gt;
+&lt;li&gt;提供xml标签，支持编写动态sql。&lt;/li&gt;
+&lt;li&gt;………&lt;/li&gt;
+&lt;/ol&gt;
 &lt;ul&gt;
-&lt;li&gt;MyBatis 本是&lt;a href=&#34;https://baike.baidu.com/item/apache/6265&#34;&gt;apache&lt;/a&gt;的一个开源项目&lt;a href=&#34;https://baike.baidu.com/item/iBatis&#34;&gt;iBatis&lt;/a&gt;, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。&lt;/li&gt;
-&lt;li&gt;2013年11月迁移到Github。&lt;/li&gt;
+&lt;li&gt;最重要的一点，使用的人多！公司需要！&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;2-mybatis的-第一个程序&#34;&gt;2、MyBatis的 第一个程序&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;思路流程：搭建环境–&amp;gt;导入Mybatis—&amp;gt;编写代码—&amp;gt;测试&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;代码演示&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;搭建实验数据库&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;CREATE DATABASE `mybatis`;
+
+USE `mybatis`;
+
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE `user` (
+  `id` int(20) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  `pwd` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert  into `user`(`id`,`name`,`pwd`) values (1,&#39;cy&#39;,&#39;123456&#39;),(2,&#39;张三&#39;,&#39;abcdef&#39;),(3,&#39;李四&#39;,&#39;987654&#39;);
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意事项：如果IDEA连接到数据库失败&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804103844.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;解决方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;useJDBCCompliantTimezoneShift=true&amp;amp;useLegacyDatetimeCode=false&amp;amp;serverTimezone=UTC
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804103946.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;导入Mybatis相关的jar包&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.mybatis&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;mybatis&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;3.5.2&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;5.1.47&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写MyBatis核心配置文件&lt;/p&gt;
+&lt;p&gt;可以查看官方帮助文档&lt;/p&gt;
+&lt;p&gt;https://mybatis.org/mybatis-3/&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE configuration
+        PUBLIC &amp;quot;-//mybatis.org//DTD Config 3.0//EN&amp;quot;
+        &amp;quot;http://mybatis.org/dtd/mybatis-3-config.dtd&amp;quot;&amp;gt;
+&amp;lt;configuration&amp;gt;
+    &amp;lt;environments default=&amp;quot;development&amp;quot;&amp;gt;
+        &amp;lt;environment id=&amp;quot;development&amp;quot;&amp;gt;
+            &amp;lt;transactionManager type=&amp;quot;JDBC&amp;quot;/&amp;gt;
+            &amp;lt;dataSource type=&amp;quot;POOLED&amp;quot;&amp;gt;
+                &amp;lt;property name=&amp;quot;driver&amp;quot; value=&amp;quot;com.mysql.jdbc.Driver&amp;quot;/&amp;gt;
+                &amp;lt;property name=&amp;quot;url&amp;quot; value=&amp;quot;jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;amp;amp;useUnicode=true&amp;amp;amp;characterEncoding=utf8&amp;quot;/&amp;gt;
+                &amp;lt;property name=&amp;quot;username&amp;quot; value=&amp;quot;root&amp;quot;/&amp;gt;
+                &amp;lt;property name=&amp;quot;password&amp;quot; value=&amp;quot;123456&amp;quot;/&amp;gt;
+            &amp;lt;/dataSource&amp;gt;
+        &amp;lt;/environment&amp;gt;
+    &amp;lt;/environments&amp;gt;
+    &amp;lt;mappers&amp;gt;
+        &amp;lt;mapper resource=&amp;quot;com/cy/dao/userMapper.xml&amp;quot;/&amp;gt;
+    &amp;lt;/mappers&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写Mybatis工具类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+
+public class MybatisUtils {
+
+    private static SqlSessionFactory sqlSessionFactory;
+
+    static {
+        try {
+            String resource = &amp;quot;mybatis-config.xml&amp;quot;;
+            InputStream inputStream = Resources.getResourceAsStream(resource);
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //获取SqlSession连接
+    public static SqlSession getSession(){
+        return sqlSessionFactory.openSession();
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建实体类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class User {
+    
+    private int id;  //id
+    private String name;   //姓名
+    private String pwd;   //密码
+    
+    //构造,有参,无参
+    //set/get
+    //toString()
+    
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写Mapper接口类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.kuang.pojo.User;
+import java.util.List;
+
+public interface UserMapper {
+    List&amp;lt;User&amp;gt; selectUser();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写Mapper.xml配置文件&lt;/p&gt;
+&lt;p&gt;namespace 十分重要，不能写错！&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE mapper
+        PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
+        &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.zhuuu.dao.UserMapper&amp;quot;&amp;gt;
+  &amp;lt;select id=&amp;quot;selectUser&amp;quot; resultType=&amp;quot;com.zhuuu.pojo.User&amp;quot;&amp;gt;
+    select * from user
+  &amp;lt;/select&amp;gt;
+&amp;lt;/mapper&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写测试类&lt;/p&gt;
+&lt;p&gt;Junit 包测试&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class MyTest {
+    @Test
+    public void selectUser() {
+        SqlSession session = MybatisUtils.getSession();
+        //方法一:
+        //List&amp;lt;User&amp;gt; users = session.selectList(&amp;quot;com.kuang.mapper.UserMapper.selectUser&amp;quot;);
+        //方法二:
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        List&amp;lt;User&amp;gt; users = mapper.selectUser();
+
+        for (User user: users){
+            System.out.println(user);
+        }
+        session.close();
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行测试&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;问题说明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可能出现问题说明：Maven静态资源过滤问题&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;build&amp;gt;
+    &amp;lt;resources&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/java&amp;lt;/directory&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/*.properties&amp;lt;/include&amp;gt;
+                &amp;lt;include&amp;gt;**/*.xml&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+            &amp;lt;filtering&amp;gt;false&amp;lt;/filtering&amp;gt;
+        &amp;lt;/resource&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/resources&amp;lt;/directory&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/*.properties&amp;lt;/include&amp;gt;
+                &amp;lt;include&amp;gt;**/*.xml&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+            &amp;lt;filtering&amp;gt;false&amp;lt;/filtering&amp;gt;
+        &amp;lt;/resource&amp;gt;
+    &amp;lt;/resources&amp;gt;
+&amp;lt;/build&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-mybatis-crud操作&#34;&gt;3、MyBatis CRUD操作&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;关于namespace&lt;/strong&gt;&lt;br&gt;
+配置文件中namespace中的名称为对应Mapper接口或者Dao接口的完整包名,必须一致&lt;/p&gt;
+&lt;h3 id=&#34;31-查询-select&#34;&gt;3.1 查询 select&lt;/h3&gt;
+&lt;p&gt;id&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;命名空间中唯一的标识符&lt;/li&gt;
+&lt;li&gt;接口中的&lt;strong&gt;方法名&lt;/strong&gt;与映射文件中的SQL语句ID 一一对应&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;resultType&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SQL语句返回值类型。【完整的类名或者别名】&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;parameterType&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;传入SQL语句的参数类型 。【Map】&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;需求：根据id查询用户&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在UserMapper中添加对应方法&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface UserMapper {
+    //查询全部用户
+    List&amp;lt;User&amp;gt; selectUser();
+    //根据id查询用户
+    User selectUserById(int id);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在UserMapper.xml中添加Select语句&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;selectUserById&amp;quot; resultType=&amp;quot;com.zhuuu.pojo.User&amp;quot;&amp;gt;
+  select * from user where id = #{id}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试类中测试&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void tsetSelectUserById() {
+    SqlSession session = MybatisUtils.getSession();  //获取SqlSession连接
+    UserMapper mapper = session.getMapper(UserMapper.class);
+    User user = mapper.selectUserById(1);
+    System.out.println(user);
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;思路二：根据 密码 和 名字 查询用户&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;使用map来查询或者插入&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在接口方法中，参数直接传递Map；&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;User selectUserByNP2(Map&amp;lt;String,Object&amp;gt; map);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写sql语句的时候，需要传递参数类型，参数类型为map&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;&amp;lt;select id=&amp;quot;selectUserByNP2&amp;quot; parameterType=&amp;quot;map&amp;quot; resultType=&amp;quot;com.zhuuu.pojo.User&amp;quot;&amp;gt;
+select * from user where name = #{username} and pwd = #{pwd}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在使用方法的时候，Map的 key 为 sql中取的值即可，没有顺序要求！&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Map&amp;lt;String, Object&amp;gt; map = new HashMap&amp;lt;String, Object&amp;gt;();
+map.put(&amp;quot;username&amp;quot;,&amp;quot;小明&amp;quot;);
+map.put(&amp;quot;pwd&amp;quot;,&amp;quot;123456&amp;quot;);
+User user = mapper.selectUserByNP2(map);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;总结：&lt;/p&gt;
+&lt;p&gt;如果参数过多，我们可以考虑直接使用Map实现，如果参数比较少，直接传递参数即可&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;32-插入-insert&#34;&gt;3.2 插入 insert&lt;/h3&gt;
+&lt;p&gt;一般使用insert标签进行插入操作，它的配置和select标签差不多！&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在UserMapper接口中添加对应的方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//添加一个用户
+int addUser(User user);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;在UserMapper.xml中添加insert语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;insert id=&amp;quot;addUser&amp;quot; parameterType=&amp;quot;com.zhuuu.pojo.User&amp;quot;&amp;gt;
+     insert into user (id,name,pwd) values (#{id},#{name},#{pwd})
+&amp;lt;/insert&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testAddUser() {
+    SqlSession session = MybatisUtils.getSession();
+    UserMapper mapper = session.getMapper(UserMapper.class);
+    User user = new User(5,&amp;quot;王五&amp;quot;,&amp;quot;zxcvbn&amp;quot;);
+    int i = mapper.addUser(user);
+    System.out.println(i);
+    session.commit(); //提交事务,重点!不写的话不会提交到数据库
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意点：增、删、改操作需要提交事务！&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;33-改-update&#34;&gt;3.3 改 update&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;需求：修改用户的信息&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;同理，编写接口方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//修改一个用户
+int updateUser(User user);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写对应的配置文件SQL&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;update id=&amp;quot;updateUser&amp;quot; parameterType=&amp;quot;com.zhuuu.pojo.User&amp;quot;&amp;gt;
+    update user set name=#{name},pwd=#{pwd} where id = #{id}
+&amp;lt;/update&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testUpdateUser() {
+    SqlSession session = MybatisUtils.getSession();
+    UserMapper mapper = session.getMapper(UserMapper.class);
+    User user = mapper.selectUserById(1);
+    user.setPwd(&amp;quot;asdfgh&amp;quot;);
+    int i = mapper.updateUser(user);
+    System.out.println(i);
+    session.commit(); //提交事务,重点!不写的话不会提交到数据库
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;34-删除-delete&#34;&gt;3.4 删除 delete&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;需求：根据id删除一个用户&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;同理，编写接口方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//根据id删除用户
+int deleteUser(int id);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写对应的配置文件SQL&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;delete id=&amp;quot;deleteUser&amp;quot; parameterType=&amp;quot;int&amp;quot;&amp;gt;
+    delete from user where id = #{id}
+&amp;lt;/delete&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testDeleteUser() {
+    SqlSession session = MybatisUtils.getSession();
+    UserMapper mapper = session.getMapper(UserMapper.class);
+    int i = mapper.deleteUser(5);
+    System.out.println(i);
+    session.commit(); //提交事务,重点!不写的话不会提交到数据库
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;小结：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;所有的增删改操作都需要提交事务！&lt;/li&gt;
+&lt;li&gt;接口所有的普通参数，尽量都写上@Param参数，尤其是多个参数时，必须写上！&lt;/li&gt;
+&lt;li&gt;有时候根据业务的需求，可以考虑使用map传递参数！&lt;/li&gt;
+&lt;li&gt;为了规范操作，在SQL的配置文件中，我们尽量将Parameter参数和resultType都写上！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;35-补充模糊查询&#34;&gt;3.5 补充：模糊查询&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;模糊查询like语句该怎么写?&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;添加java代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// 模糊查询
+List&amp;lt;User&amp;gt; getLikeUser(String value);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;在xml中添加查询&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;getLikeUser&amp;quot; resultType=&amp;quot;com.zhuuu.pojo.User&amp;quot;&amp;gt;
+    select * from mybatis.user where name like #{value}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void getLikeUser(){
+    SqlSession session = MybatisUtils.getSession();
+    Mapper mapper = session.getMapper(Mapper.class);
+    System.out.println(mapper.getLikeUser(&amp;quot;%李%&amp;quot;));
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：在sql语句中拼接通配符，会引起sql注入&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-mybatis-resultmap&#34;&gt;4、MyBatis ResultMap&lt;/h2&gt;
+&lt;h3 id=&#34;41-resultmap&#34;&gt;4.1 ResultMap&lt;/h3&gt;
+&lt;p&gt;实际：&lt;strong&gt;要解决的问题：属性名和字段名不一致&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;环境：新建一个项目，将之前的项目拷贝过来&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;查询为null问题&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;查看之前数据库的字段名&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804111303.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;java实体类的设计&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class User {
+
+    private int id;  //id
+    private String name;   //姓名
+    private String password;   //密码和数据库不一样！
+    
+    //构造
+    //set/get
+    //toString()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接口&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//根据id查询用户
+User selectUserById(int id);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;mapper映射文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;selectUserById&amp;quot; resultType=&amp;quot;user&amp;quot;&amp;gt;
+    select * from user where id = #{id}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testSelectUserById() {
+    SqlSession session = MybatisUtils.getSession();  //获取SqlSession连接
+    UserMapper mapper = session.getMapper(UserMapper.class);
+    User user = mapper.selectUserById(1);
+    System.out.println(user);
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;结果:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;User{id=1, name=&#39;zhuuu&#39;, password=&#39;null&#39;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查询出来的&lt;strong&gt;password&lt;/strong&gt;为空，说明出现了问题&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;分析：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;select * from user where id = ${id}   
+可以看作
+select id,name,pwd from user where id = ${id}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;根本原因&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mybatis会根据这些查询的列名(会将列名转化为小写,数据库不区分大小写) , 去对应的实体类中查找相应列名的set方法设值 , 由于找不到setPwd() , 所以password返回null ; 【自动映射】&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;#方案一:从数据库层面解决  为列名设置别名，别名和java实体类的属性名一致
+&amp;lt;select id=&amp;quot;selectUserById&amp;quot; resultType=&amp;quot;User&amp;quot;&amp;gt;
+    select id,name,pwd as password from user where id = ${}
+&amp;lt;/select&amp;gt;
+# 方案二：使用结果集映射-&amp;gt;ResultMap 【推荐】
+&amp;lt;resultMap id=&amp;quot;UserMap&amp;quot; type=&amp;quot;User&amp;quot;&amp;gt;
+    &amp;lt;!-- id为主键 --&amp;gt;
+    &amp;lt;id column=&amp;quot;id&amp;quot; property=&amp;quot;id&amp;quot;/&amp;gt;
+    &amp;lt;!-- column是数据库表的列名 , property是对应实体类的属性名 --&amp;gt;
+    &amp;lt;result column=&amp;quot;name&amp;quot; property=&amp;quot;name&amp;quot;/&amp;gt;
+    &amp;lt;result column=&amp;quot;pwd&amp;quot; property=&amp;quot;password&amp;quot;/&amp;gt;
+&amp;lt;/resultMap&amp;gt;
+
+&amp;lt;select id=&amp;quot;selectUserById&amp;quot; resultMap=&amp;quot;UserMap&amp;quot;&amp;gt;
+    select id , name , pwd from user where id = #{id}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;42-resultmap性质&#34;&gt;4.2 ResultMap性质&lt;/h3&gt;
+&lt;h4 id=&#34;421-自动映射&#34;&gt;4.2.1 自动映射&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;resultMap&lt;/code&gt; 元素是 MyBatis 中最重要最强大的元素。它可以让你从 90% 的 JDBC &lt;code&gt;ResultSets&lt;/code&gt;数据提取代码中解放出来。&lt;/li&gt;
+&lt;li&gt;实际上，在为一些比如连接的复杂语句编写映射代码的时候，一份 &lt;code&gt;resultMap&lt;/code&gt; 能够代替实现同等功能的长达数千行的代码。&lt;/li&gt;
+&lt;li&gt;ResultMap 的设计思想是，对于简单的语句根本不需要配置显式的结果映射，而对于复杂一点的语句只需要描述它们的关系就行了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;你已经见过简单映射语句的示例了，但并没有显式指定 &lt;code&gt;resultMap&lt;/code&gt;。比如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;selectUserById&amp;quot; resultType=&amp;quot;map&amp;quot;&amp;gt;
+    select id , name , pwd 
+    from user 
+    where id = #{id}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;上述语句只是简单地将所有的列映射到 &lt;code&gt;HashMap&lt;/code&gt; 的键上，这由 &lt;code&gt;resultType&lt;/code&gt; 属性指定。虽然在大部分情况下都够用，但是 HashMap 不是一个很好的模型。你的程序更可能会使用 JavaBean 或 POJO（Plain Old Java Objects，普通老式 Java 对象）作为模型。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ResultMap&lt;/code&gt; 最优秀的地方在于，虽然你已经对它相当了解了，但是根本就不需要显式地用到他们。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;422-手动映射&#34;&gt;4.2.2 手动映射&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;返回值类型为resultMap&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;selectUserById&amp;quot; resultMap=&amp;quot;UserMap&amp;quot;&amp;gt;
+select id , name , pwd from user where id = #{id}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写resultMap，实现手动映射！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;resultMap id=&amp;quot;UserMap&amp;quot; type=&amp;quot;User&amp;quot;&amp;gt;
+&amp;lt;!-- id为主键 --&amp;gt;
+&amp;lt;id column=&amp;quot;id&amp;quot; property=&amp;quot;id&amp;quot;/&amp;gt;
+&amp;lt;!-- column是数据库表的列名 , property是对应实体类的属性名 --&amp;gt;
+&amp;lt;result column=&amp;quot;name&amp;quot; property=&amp;quot;name&amp;quot;/&amp;gt;
+&amp;lt;result column=&amp;quot;pwd&amp;quot; property=&amp;quot;password&amp;quot;/&amp;gt;
+&amp;lt;/resultMap&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;如果世界总是这么简单就好了。但是肯定不是的，数据库中，存在一对多，多对一的情况，我们之后会使用到一些高级的结果集映射，association，collection这些&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;5-mybatis-配置解析&#34;&gt;5、MyBatis 配置解析&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;核心配置文件&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mybatis-config.xml 系统核心配置文件&lt;/li&gt;
+&lt;li&gt;MyBatis 的配置文件包含了会深深影响 MyBatis 行为的设置和属性信息&lt;/li&gt;
+&lt;li&gt;能配置的内容如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;configuration（配置）
+    properties（属性）
+    settings（设置）
+    typeAliases（类型别名）
+    typeHandlers（类型处理器）
+    objectFactory（对象工厂）
+    plugins（插件）
+    environments（环境配置）
+        environment（环境变量）
+            transactionManager（事务管理器）
+            dataSource（数据源）
+    databaseIdProvider（数据库厂商标识）
+    mappers（映射器）
+&amp;lt;!-- 注意元素节点的顺序！顺序不对会报错 --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以阅读 mybatis-config.xml 上面的dtd的头文件！&lt;/p&gt;
+&lt;h3 id=&#34;51-environments元素&#34;&gt;5.1 environments元素&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;MyBatis 可以配置成适应多种环境，这种机制有助于将 SQL 映射应用于多种数据库之中&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不过要记住：尽管可以配置多个环境，但每个 SqlSessionFactory 实例只能选择一种环境。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;配置MyBatis的多套运行环境，将SQL映射到多个不同的数据库上，必须指定其中一个为默认运行环境（通过default指定）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;标准定义如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;environments default=&amp;quot;development&amp;quot;&amp;gt;
+  &amp;lt;environment id=&amp;quot;development&amp;quot;&amp;gt;
+    &amp;lt;transactionManager type=&amp;quot;JDBC&amp;quot;&amp;gt;
+      &amp;lt;property name=&amp;quot;...&amp;quot; value=&amp;quot;...&amp;quot;/&amp;gt;
+    &amp;lt;/transactionManager&amp;gt;
+    &amp;lt;dataSource type=&amp;quot;POOLED&amp;quot;&amp;gt;
+      &amp;lt;property name=&amp;quot;driver&amp;quot; value=&amp;quot;${driver}&amp;quot;/&amp;gt;
+      &amp;lt;property name=&amp;quot;url&amp;quot; value=&amp;quot;${url}&amp;quot;/&amp;gt;
+      &amp;lt;property name=&amp;quot;username&amp;quot; value=&amp;quot;${username}&amp;quot;/&amp;gt;
+      &amp;lt;property name=&amp;quot;password&amp;quot; value=&amp;quot;${password}&amp;quot;/&amp;gt;
+    &amp;lt;/dataSource&amp;gt;
+  &amp;lt;/environment&amp;gt;
+&amp;lt;/environments&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;511-子元素节点-事物管理器transactionmanager&#34;&gt;5.1.1 子元素节点 事物管理器（transactionManager）&lt;/h4&gt;
+&lt;p&gt;在 MyBatis 中有两种类型的事务管理器（也就是 type=”[JDBC|MANAGED]”）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;JDBC – 这个配置就是直接使用了 JDBC 的提交和回滚设置，它依赖于从数据源得到的连接来管理事务作用域。&lt;/li&gt;
+&lt;li&gt;MANAGED – 这个配置几乎没做什么。它从来不提交或回滚一个连接，而是让容器来管理事务的整个生命周期（比如 JEE 应用服务器的上下文）。 默认情况下它会关闭连接，然而一些容器并不希望这样，因此需要将 closeConnection 属性设置为 false 来阻止它默认的关闭行为。例如:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;transactionManager type=&amp;quot;MANAGED&amp;quot;&amp;gt;
+  &amp;lt;property name=&amp;quot;closeConnection&amp;quot; value=&amp;quot;false&amp;quot;/&amp;gt;
+&amp;lt;/transactionManager&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;: 如果你正在使用 Spring + MyBatis，则没有必要配置事务管理器， 因为 Spring 模块会使用自带的管理器来覆盖前面的配置。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;详情：&lt;a href=&#34;http://www.mybatis.org/mybatis-3/zh/configuration.html#environments&#34;&gt;点击查看官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;512-子元素节点-数据源datasource&#34;&gt;5.1.2 子元素节点 &lt;strong&gt;数据源（dataSource）&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;作用：连接数据库 –&amp;gt;dataSource 元素使用标准的 JDBC 数据源接口来配置 JDBC 连接对象的资源。&lt;/li&gt;
+&lt;li&gt;有三种内建的数据源类型 &lt;strong&gt;type=”[UNPOOLED|POOLED|JNDI]”）&lt;/strong&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;UNPOOLED&lt;/strong&gt;– 这个数据源的实现只是每次被请求时打开和关闭连接。虽然有点慢，但对于在数据库连接可用性方面没有太高要求的简单应用程序来说，是一个很好的选择。 不同的数据库在性能方面的表现也是不一样的，对于某些数据库来说，使用连接池并不重要，这个配置就很适合这种情形。UNPOOLED 类型的数据源具有以下属性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;POOLED&lt;/strong&gt;– 这种数据源的实现利用“池”的概念将 JDBC 连接对象组织起来，避免了创建新的连接实例时所必需的初始化和认证时间。 这是一种使得并发 Web 应用快速响应请求的流行处理方式。&lt;strong&gt;(默认的)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;JNDI&lt;/strong&gt; – 这个数据源的实现是为了能在如 EJB 或应用服务器这类容器中使用，容器可以集中或在外部配置数据源，然后放置一个 JNDI 上下文的引用。这种数据源配置只需要两个属性：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;数据源也有很多第三方的实现，比如dbcp，c3p0，druid等等….&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;52properties优化&#34;&gt;5.2.Properties优化&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.mybatis.org/mybatis-3/zh/configuration.html#properties&#34;&gt;官方文档链接&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这些属性都是可外部配置且可动态替换的，既可以在典型的 Java 属性文件中配置，亦可通过 properties 元素的子元素来传递&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;properties resource=&amp;quot;org/mybatis/example/config.properties&amp;quot;&amp;gt;
+  &amp;lt;property name=&amp;quot;username&amp;quot; value=&amp;quot;dev_user&amp;quot;/&amp;gt;
+  &amp;lt;property name=&amp;quot;password&amp;quot; value=&amp;quot;F2Fa3!33TYyg&amp;quot;/&amp;gt;
+&amp;lt;/properties&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如何优化：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;第一步 ; 在资源目录下新建一个db.properties&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf8
+username=root
+password=123456
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;第二步 : 将文件properties导入到mybatisconfig.xml 配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;configuration&amp;gt;
+    &amp;lt;!--导入properties文件--&amp;gt;
+    &amp;lt;properties resource=&amp;quot;db.properties&amp;quot;/&amp;gt;
+
+    &amp;lt;environments default=&amp;quot;development&amp;quot;&amp;gt;
+        &amp;lt;environment id=&amp;quot;development&amp;quot;&amp;gt;
+            &amp;lt;transactionManager type=&amp;quot;JDBC&amp;quot;/&amp;gt;
+            &amp;lt;dataSource type=&amp;quot;POOLED&amp;quot;&amp;gt;
+                &amp;lt;property name=&amp;quot;driver&amp;quot; value=&amp;quot;${driver}&amp;quot;/&amp;gt;
+                &amp;lt;property name=&amp;quot;url&amp;quot; value=&amp;quot;${url}&amp;quot;/&amp;gt;
+                &amp;lt;property name=&amp;quot;username&amp;quot; value=&amp;quot;${username}&amp;quot;/&amp;gt;
+                &amp;lt;property name=&amp;quot;password&amp;quot; value=&amp;quot;${password}&amp;quot;/&amp;gt;
+            &amp;lt;/dataSource&amp;gt;
+        &amp;lt;/environment&amp;gt;
+    &amp;lt;/environments&amp;gt;
+    &amp;lt;mappers&amp;gt;
+        &amp;lt;mapper resource=&amp;quot;mapper/UserMapper.xml&amp;quot;/&amp;gt;
+    &amp;lt;/mappers&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;配置文件优先级问题 【properties优先级高】&lt;/li&gt;
+&lt;li&gt;新特性：使用占位符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;53-typealiases优化&#34;&gt;5.3 typeAliases优化&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;作用：类型别名是为 Java 类型设置一个短的名字。它只和 XML 配置有关，存在的意义仅在于用来减少类完全限定名的冗余。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--方式一：--&amp;gt;
+&amp;lt;!--配置别名,注意顺序--&amp;gt;
+&amp;lt;typeAliases&amp;gt;
+  &amp;lt;typeAlias alias=&amp;quot;Author&amp;quot; type=&amp;quot;domain.blog.Author&amp;quot;/&amp;gt;
+  &amp;lt;typeAlias alias=&amp;quot;Blog&amp;quot; type=&amp;quot;domain.blog.Blog&amp;quot;/&amp;gt;
+  &amp;lt;typeAlias alias=&amp;quot;Comment&amp;quot; type=&amp;quot;domain.blog.Comment&amp;quot;/&amp;gt;
+  &amp;lt;typeAlias alias=&amp;quot;Post&amp;quot; type=&amp;quot;domain.blog.Post&amp;quot;/&amp;gt;
+  &amp;lt;typeAlias alias=&amp;quot;Section&amp;quot; type=&amp;quot;domain.blog.Section&amp;quot;/&amp;gt;
+  &amp;lt;typeAlias alias=&amp;quot;Tag&amp;quot; type=&amp;quot;domain.blog.Tag&amp;quot;/&amp;gt;
+&amp;lt;/typeAliases&amp;gt;
+&amp;lt;!--方式二：--&amp;gt;
+&amp;lt;!--配置别名,注意顺序--&amp;gt;
+&amp;lt;typeAliases&amp;gt;
+  &amp;lt;package name=&amp;quot;domain.blog&amp;quot;/&amp;gt;
+&amp;lt;/typeAliases&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;每一个在包 &lt;code&gt;domain.blog&lt;/code&gt; 中的 Java Bean&lt;/li&gt;
+&lt;li&gt;在没有注解的情况下，会使用 Bean 的&lt;strong&gt;首字母小写&lt;/strong&gt;的非限定类名来作为它的别名。&lt;/li&gt;
+&lt;li&gt;比如 &lt;code&gt;domain.blog.Author&lt;/code&gt; 的别名为&lt;code&gt;author&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;若有注解，则别名为其注解值。见下面的例子：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//注解指定别名
+@Alias(&amp;quot;author&amp;quot;)
+public class Author {
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;54-设置settings&#34;&gt;5.4 设置（settings）&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.mybatis.org/mybatis-3/zh/configuration.html#settings&#34;&gt;设置（settings）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这是 MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;懒加载 （lazyLoadingEnabled）&lt;/li&gt;
+&lt;li&gt;日志实现 （logImpl）&lt;/li&gt;
+&lt;li&gt;缓存开启关闭 （cacheEnabled）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;一个配置完整的 settings 元素的示例如下：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;settings&amp;gt;
+  &amp;lt;setting name=&amp;quot;cacheEnabled&amp;quot; value=&amp;quot;true&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;lazyLoadingEnabled&amp;quot; value=&amp;quot;true&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;multipleResultSetsEnabled&amp;quot; value=&amp;quot;true&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;useColumnLabel&amp;quot; value=&amp;quot;true&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;useGeneratedKeys&amp;quot; value=&amp;quot;false&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;autoMappingBehavior&amp;quot; value=&amp;quot;PARTIAL&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;autoMappingUnknownColumnBehavior&amp;quot; value=&amp;quot;WARNING&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;defaultExecutorType&amp;quot; value=&amp;quot;SIMPLE&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;defaultStatementTimeout&amp;quot; value=&amp;quot;25&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;defaultFetchSize&amp;quot; value=&amp;quot;100&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;safeRowBoundsEnabled&amp;quot; value=&amp;quot;false&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;mapUnderscoreToCamelCase&amp;quot; value=&amp;quot;false&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;localCacheScope&amp;quot; value=&amp;quot;SESSION&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;jdbcTypeForNull&amp;quot; value=&amp;quot;OTHER&amp;quot;/&amp;gt;
+  &amp;lt;setting name=&amp;quot;lazyLoadTriggerMethods&amp;quot; value=&amp;quot;equals,clone,hashCode,toString&amp;quot;/&amp;gt;
+&amp;lt;/settings&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;55-映射器mappers&#34;&gt;5.5 映射器（mappers）&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;映射器 : 定义映射SQL语句文件&lt;/li&gt;
+&lt;li&gt;首先我们需要告诉 MyBatis 到哪里去找到这些语句。 Java 在自动查找这方面没有提供一个很好的方法，所以最佳的方式是告诉 MyBatis 到哪里去找映射文件。&lt;/li&gt;
+&lt;li&gt;完全限定资源定位符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!-- 方式一 --&amp;gt;
+&amp;lt;!-- 使用相对于类路径的资源引用 --&amp;gt;
+&amp;lt;mappers&amp;gt;
+  &amp;lt;mapper resource=&amp;quot;org/mybatis/builder/AuthorMapper.xml&amp;quot;/&amp;gt;
+  &amp;lt;mapper resource=&amp;quot;org/mybatis/builder/BlogMapper.xml&amp;quot;/&amp;gt;
+  &amp;lt;mapper resource=&amp;quot;org/mybatis/builder/PostMapper.xml&amp;quot;/&amp;gt;
+&amp;lt;/mappers&amp;gt;
+
+&amp;lt;!-- 方式二 --&amp;gt;
+&amp;lt;!-- 使用映射器接口实现类的完全限定类名
+	需要配置文件名称和接口名称一致，并且位于同一目录下 --&amp;gt;
+&amp;lt;mappers&amp;gt;
+  &amp;lt;mapper class=&amp;quot;org.mybatis.builder.AuthorMapper&amp;quot;/&amp;gt;
+  &amp;lt;mapper class=&amp;quot;org.mybatis.builder.BlogMapper&amp;quot;/&amp;gt;
+  &amp;lt;mapper class=&amp;quot;org.mybatis.builder.PostMapper&amp;quot;/&amp;gt;
+&amp;lt;/mappers&amp;gt;
+
+&amp;lt;!-- 方式三 --&amp;gt;
+&amp;lt;!-- 将包内的映射器接口实现全部注册为映射器
+但是需要配置文件名称和接口名称一致，并且位于同一目录下 --&amp;gt;
+&amp;lt;mappers&amp;gt;
+  &amp;lt;package name=&amp;quot;org.mybatis.builder&amp;quot;/&amp;gt;
+&amp;lt;/mappers&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6-mybatis-生命周期和作用域&#34;&gt;6、MyBatis 生命周期和作用域&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;理解我们目前已经讨论过的不同作用域和生命周期类是至关重要的，因为错误的使用会导致非常严重的并发问题。&lt;/li&gt;
+&lt;li&gt;画一个流程图，分析一下Mybatis的执行过程！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804114031.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;a href=&#34;https://mybatis.org/mybatis-3/zh/getting-started.html&#34;&gt;官方说明&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;61-sqlsessionfactorybuilder&#34;&gt;6.1 SqlSessionFactoryBuilder&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;这个类可以被实例化、使用和丢弃，一旦创建了 SqlSessionFactory，就不再需要它了。&lt;/li&gt;
+&lt;li&gt;局部方法变量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;62-sqlsessionfactory&#34;&gt;6.2 SqlSessionFactory&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;SqlSessionFactory 可以被认为是一个数据库连接池，它的作用是创建 SqlSession 接口对象。&lt;/li&gt;
+&lt;li&gt;因为 MyBatis 的本质就是 Java 对数据库的操作，所以 SqlSessionFactory 的生命周期存在于整个 MyBatis 的应用之中，所以一旦创建了 SqlSessionFactory，就要长期保存它，直至不再使用 MyBatis 应用&lt;/li&gt;
+&lt;li&gt;因此 SqlSessionFactory 的最佳作用域是应用作用域&lt;/li&gt;
+&lt;li&gt;最简单的就是使用单例模式或者静态单例模式。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;63-sqlsession&#34;&gt;6.3 SqlSession&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;连接到连接池的一个请求！&lt;/li&gt;
+&lt;li&gt;它的最佳的作用域是请求或方法作用域。&lt;/li&gt;
+&lt;li&gt;如果你现在正在使用一种 Web 框架，要考虑 SqlSession 放在一个和 HTTP 请求对象相似的作用域中。 换句话说，每次收到的 HTTP 请求，就可以打开一个 SqlSession，返回一个响应，就关闭它。 这个关闭操作是很重要的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804114047.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;7-mybatis-使用注解开发&#34;&gt;7、MyBatis 使用注解开发&lt;/h2&gt;
+&lt;h3 id=&#34;71-面向接口编程&#34;&gt;7.1 面向接口编程&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;真正的开发中，很多时候我们会选择面向接口编程&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;根本原因 : 解耦 , 可拓展 , 提高复用 , 分层开发中 , 上层不用管具体的实现 , 大家都遵守共同的标准 , 使得开发变得容易 , 规范性更好&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;在一个面向对象的系统中，系统的各种功能是由许许多多的不同对象协作完成的。在这种情况下，各个对象内部是如何实现自己的,对系统设计人员来讲就不那么重要了&lt;/li&gt;
+&lt;li&gt;而各个对象之间的协作关系则成为系统设计的关键。小到不同类之间的通信，大到各模块之间的交互，在系统设计之初都是要着重考虑的，这也是系统设计的主要工作内容。面向接口编程就是指按照这种思想来编程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;711-关于接口的理解&#34;&gt;7.1.1 关于接口的理解&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;接口从更深层次的理解，应该是定义（规范，约束）与实现（名实分离的原则）的分离&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接口的本身反映了系统设计人员对系统的抽象理解&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接口应该有两类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一类是对一个个体的抽象，它可对应为一个抽象体（abstract class）;&lt;/li&gt;
+&lt;li&gt;第二类是对一个个体某一方面的抽象，即形成一个抽象面（interface）;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;一个个体有可能有多个抽象面，抽象体和抽象面是有区别的&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;712-三个面向的区别&#34;&gt;7.1.2 三个面向的区别&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;面向对象：考虑问题时，以对象为单位，考虑它的属性及方法&lt;/li&gt;
+&lt;li&gt;面向过程：考虑问题时，以一个具体的流程（事务过程）为单位，考虑它的实现&lt;/li&gt;
+&lt;li&gt;接口设计与非接口设计是针对复用技术而言的，与面向对象（过程）不是一个问题.更多的体现就是对系统整体的架构&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;72-利用注解开发&#34;&gt;7.2 利用注解开发&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;mybatis最初配置信息是基于 XML ,映射语句(SQL)也是定义在 XML 中的。而到MyBatis 3提供了新的基于注解的配置。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不幸的是，Java 注解的的表达力和灵活性十分有限。最强大的 MyBatis 映射并不能用注解来构建&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;sql类型主要分成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;@select()&lt;/li&gt;
+&lt;li&gt;@update()&lt;/li&gt;
+&lt;li&gt;@Insert()&lt;/li&gt;
+&lt;li&gt;@delete()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;【注意】利用注解开发就不需要mapper.xml映射文件了 .&lt;/p&gt;
+&lt;p&gt;步骤1：在我们的接口中添加注解&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface Mapper {
+
+    @Select(&amp;quot;select id,name,pwd as password from user&amp;quot;)
+    List&amp;lt;User&amp;gt; getUserList();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;步骤2：在mybatis的核心配置文件中注入&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--    每一个Mapper,XML都需要在mybatis核心配置文件中注册--&amp;gt;
+    &amp;lt;mappers&amp;gt;
+        &amp;lt;mapper class=&amp;quot;com.zhuuu.dao.Mapper&amp;quot;/&amp;gt;
+    &amp;lt;/mappers&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;步骤3：去进行测试&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testGetAllUser() {
+    SqlSession session = MybatisUtils.getSession();
+    //本质上利用了jvm的动态代理机制
+    UserMapper mapper = session.getMapper(UserMapper.class);
+
+   List&amp;lt;User&amp;gt; users = mapper.getAllUser();
+    for (User user : users){
+        System.out.println(user);
+    }
+
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Debug查看本质&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804114721.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;本质上利用了jvm动态代理机制&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804114731.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;MyBatis详细的执行流程&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804114738.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;73-注解实现增删改&#34;&gt;7.3 注解实现增删改&lt;/h3&gt;
+&lt;h4 id=&#34;731-自动实现提交事务&#34;&gt;7.3.1 自动实现提交事务&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//改造MybatisUtils工具类的getSession( ) 方法，重载实现。
+
+//获取SqlSession连接
+public static SqlSession getSession(){
+    return getSession(true); //事务自动提交
+}
+
+public static SqlSession getSession(boolean flag){
+    return sqlSessionFactory.openSession(flag);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;【注意】确保实体类和数据库字段对应&lt;/p&gt;
+&lt;h4 id=&#34;732-查询&#34;&gt;7.3.2 查询&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;编写接口方法注解&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//根据id查询用户
+@Select(&amp;quot;select * from user where id = #{id}&amp;quot;)
+User selectUserById(@Param(&amp;quot;id&amp;quot;) int id);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testSelectUserById() {
+    SqlSession session = MybatisUtils.getSession();
+    UserMapper mapper = session.getMapper(UserMapper.class);
+
+    User user = mapper.selectUserById(1);
+    System.out.println(user);
+
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;733-新增&#34;&gt;7.3.3 新增&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;编写接口方法注解&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//添加一个用户
+@Insert(&amp;quot;insert into user (id,name,pwd) values (#{id},#{name},#{pwd})&amp;quot;)
+int addUser(User user);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testAddUser() {
+    SqlSession session = MybatisUtils.getSession();
+    UserMapper mapper = session.getMapper(UserMapper.class);
+
+    User user = new User(6, &amp;quot;朱酱酱&amp;quot;, &amp;quot;123456&amp;quot;);
+    mapper.addUser(user);
+
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;734-修改&#34;&gt;7.3.4 修改&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;编写接口方法注解：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//修改一个用户
+@Update(&amp;quot;update user set name=#{name},pwd=#{pwd} where id = #{id}&amp;quot;)
+int updateUser(User user);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testUpdateUser() {
+    SqlSession session = MybatisUtils.getSession();
+    UserMapper mapper = session.getMapper(UserMapper.class);
+
+    User user = new User(6, &amp;quot;朱酱酱帅&amp;quot;, &amp;quot;zxcvbn&amp;quot;);
+    mapper.updateUser(user);
+
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;735-删除&#34;&gt;7.3.5 删除&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;编写接口方法注解&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//根据id删除用
+@Delete(&amp;quot;delete from user where id = #{id}&amp;quot;)
+int deleteUser(@Param(&amp;quot;id&amp;quot;)int id);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testDeleteUser() {
+    SqlSession session = MybatisUtils.getSession();
+    UserMapper mapper = session.getMapper(UserMapper.class);
+
+    mapper.deleteUser(6);
+    
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;【注意点：增删改一定记得对事务的处理】&lt;/p&gt;
+&lt;h3 id=&#34;74-关于param&#34;&gt;7.4 关于@Param&lt;/h3&gt;
+&lt;p&gt;采用#{}的方式把@Param注解括号内的参数进行引用&lt;/p&gt;
+&lt;p&gt;当以下面的方式进行写SQL语句时：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;  @Select(&amp;quot;select column from table where userid = #{userid} &amp;quot;)
+   public int selectColumn(int userid);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当你使用了使用@Param注解来声明参数时，如果使用 #{} 或 ${} 的方式都可以。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;  @Select(&amp;quot;select column from table where userid = ${userid} &amp;quot;)
+   public int selectColumn(@Param(&amp;quot;userid&amp;quot;) int userid);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当你不使用@Param注解来声明参数时，必须使用使用 #{}方式。如果使用 ${} 的方式，会报错。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;  @Select(&amp;quot;select column from table where userid = ${userid} &amp;quot;)
+   public int selectColumn(@Param(&amp;quot;userid&amp;quot;) int userid);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;@Param注解用于给方法参数起一个名字。以下是总结的使用原则：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在方法只接受一个参数的情况下，可以不使用@Param&lt;/li&gt;
+&lt;li&gt;在方法接受多个参数的情况下，建议一定要使用@Param注解给参数命名&lt;/li&gt;
+&lt;li&gt;如果参数是JavaBean，则不能使用@Param&lt;/li&gt;
+&lt;li&gt;不使用@Param注解时，参数只能有一个，并且是Javabean&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;75-关于和的区别&#34;&gt;7.5 关于#和$的区别&lt;/h3&gt;
+&lt;p&gt;1）#{}是预编译处理(推荐使用)，${}是字符串替换。&lt;/p&gt;
+&lt;p&gt;2）MyBatis在处理#{}时，会将SQL中的#{}替换为?号，使用PreparedStatement的set方法来赋值；MyBatis在处理 $ { } 时，就是把 ${ } 替换成变量的值。&lt;/p&gt;
+&lt;p&gt;3）使用 #{} 可以有效的防止SQL注入，提高系统安全性。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;selectPerson&amp;quot; parameterType=&amp;quot;int&amp;quot; resultType=&amp;quot;hashmap&amp;quot;&amp;gt;
+  SELECT * FROM PERSON WHERE ID = #{id}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个语句名为 selectPerson，接受一个 int（或 Integer）类型的参数，并返回一个 HashMap 类型的对象，其中的键是列名，值便是结果行中的对应值。&lt;/p&gt;
+&lt;p&gt;注意参数符号：#{id}&lt;/p&gt;
+&lt;p&gt;这就告诉 MyBatis 创建一个预处理语句（PreparedStatement）参数，在 JDBC 中，这样的一个参数在 SQL 中会由一个“?”来标识，并被传递到一个新的预处理语句中，就像这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// 近似的 JDBC 代码，非 MyBatis 代码...
+String selectPerson = &amp;quot;SELECT * FROM PERSON WHERE ID = ?&amp;quot;;
+PreparedStatement ps = conn.prepareStatement(selectPerson);
+ps.setInt(1,id);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;8-mybatis-日志和分页的实现&#34;&gt;8、MyBatis 日志和分页的实现&lt;/h2&gt;
+&lt;h3 id=&#34;81日志的实现&#34;&gt;8.1日志的实现&lt;/h3&gt;
+&lt;h4 id=&#34;811为什么需要日志&#34;&gt;8.1.1为什么需要日志？&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;以往的开发过程，我们会经常使用到debug模式来调节，跟踪我们的代码执行过程。&lt;/li&gt;
+&lt;li&gt;但是现在使用Mybatis是基于接口，配置文件的源代码执行过程。因此，我们必须选择日志工具来作为我们开发，调节程序的工具。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Mybatis内置的日志工厂提供日志功能，具体的日志实现有以下几种工具：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SLF4J&lt;/li&gt;
+&lt;li&gt;Apache Commons Logging&lt;/li&gt;
+&lt;li&gt;Log4j 2&lt;/li&gt;
+&lt;li&gt;Log4j&lt;/li&gt;
+&lt;li&gt;JDK logging&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;812-标准日志的实现&#34;&gt;8.1.2 标准日志的实现&lt;/h4&gt;
+&lt;p&gt;指定MyBatis应该是用那个日志记录实现。如果此设置不存在，则会自动发现日志记录实现。&lt;/p&gt;
+&lt;p&gt;实现方式：在resource文件夹下的mybatisconfig.xml添加&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;&amp;lt;settings&amp;gt;
+        &amp;lt;setting name=&amp;quot;logImpl&amp;quot; value=&amp;quot;STDOUT_LOGGING&amp;quot;/&amp;gt;
+&amp;lt;/settings&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;日志输出结果：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;E:\jdk1.8\bin\java.exe -ea -Didea.test.cyclic.buffer.size=1048576 &amp;quot;-javaagent:E:\IntelliJ IDEA 2019.1\lib\idea_rt.jar=54966:E:\IntelliJ IDEA 2019.1\bin&amp;quot; -Dfile.encoding=UTF-8 -classpath &amp;quot;E:\IntelliJ IDEA 2019.1\lib\idea_rt.jar;E:\IntelliJ IDEA 2019.1\plugins\junit\lib\junit-rt.jar;E:\IntelliJ IDEA 2019.1\plugins\junit\lib\junit5-rt.jar;E:\jdk1.8\jre\lib\charsets.jar;E:\jdk1.8\jre\lib\deploy.jar;E:\jdk1.8\jre\lib\ext\access-bridge-64.jar;E:\jdk1.8\jre\lib\ext\cldrdata.jar;E:\jdk1.8\jre\lib\ext\dnsns.jar;E:\jdk1.8\jre\lib\ext\jaccess.jar;E:\jdk1.8\jre\lib\ext\jfxrt.jar;E:\jdk1.8\jre\lib\ext\localedata.jar;E:\jdk1.8\jre\lib\ext\nashorn.jar;E:\jdk1.8\jre\lib\ext\sunec.jar;E:\jdk1.8\jre\lib\ext\sunjce_provider.jar;E:\jdk1.8\jre\lib\ext\sunmscapi.jar;E:\jdk1.8\jre\lib\ext\sunpkcs11.jar;E:\jdk1.8\jre\lib\ext\zipfs.jar;E:\jdk1.8\jre\lib\javaws.jar;E:\jdk1.8\jre\lib\jce.jar;E:\jdk1.8\jre\lib\jfr.jar;E:\jdk1.8\jre\lib\jfxswt.jar;E:\jdk1.8\jre\lib\jsse.jar;E:\jdk1.8\jre\lib\management-agent.jar;E:\jdk1.8\jre\lib\plugin.jar;E:\jdk1.8\jre\lib\resources.jar;E:\jdk1.8\jre\lib\rt.jar;E:\MyBatis-study\MyBatis-04\target\test-classes;E:\MyBatis-study\MyBatis-04\target\classes;E:\maven_local_repo\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar;E:\maven_local_repo\org\mybatis\mybatis\3.5.2\mybatis-3.5.2.jar;E:\maven_local_repo\junit\junit\4.13\junit-4.13.jar;E:\maven_local_repo\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar&amp;quot; com.intellij.rt.execution.junit.JUnitStarter -ideVersion5 -junit4 daoTest,getUserByID
+Logging initialized using &#39;class org.apache.ibatis.logging.stdout.StdOutImpl&#39; adapter.
+PooledDataSource forcefully closed/removed all connections.
+PooledDataSource forcefully closed/removed all connections.
+PooledDataSource forcefully closed/removed all connections.
+PooledDataSource forcefully closed/removed all connections.
+Opening JDBC Connection
+Created connection 1375995437.
+Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@5204062d]
+==&amp;gt;  Preparing: select * from mybatis.user where id = ? 
+==&amp;gt; Parameters: 1(Integer)
+&amp;lt;==    Columns: id, name, pwd
+&amp;lt;==        Row: 1, zhuuu, 123456
+&amp;lt;==      Total: 1
+User{id=1, name=&#39;zhuuu&#39;, password=&#39;null&#39;}
+Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@5204062d]
+Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@5204062d]
+Returned connection 1375995437 to pool.
+
+Process finished with exit code 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;813-log4j的实现&#34;&gt;8.1.3 Log4j的实现&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;简介：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Log4j是Apache的一个开源项目&lt;/li&gt;
+&lt;li&gt;通过使用Log4j，我们可以控制日志信息输送的目的地：控制台，文本，GUI组件….&lt;/li&gt;
+&lt;li&gt;我们也可以控制每一条日志的输出格式；&lt;/li&gt;
+&lt;li&gt;这些可以通过一个配置文件来灵活地进行配置，而不需要修改应用的代码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;使用步骤&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;导入log4j的包(pom.xml中)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;log4j&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;log4j&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.2.17&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写配置文件（在resource文件夹下新建log4j.properties）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;#将等级为DEBUG的日志信息输出到console和file这两个目的地，console和file的定义在下面的代码
+log4j.rootLogger=DEBUG,console,file
+
+#控制台输出的相关设置
+log4j.appender.console = org.apache.log4j.ConsoleAppender
+log4j.appender.console.Target = System.out
+log4j.appender.console.Threshold=DEBUG
+log4j.appender.console.layout = org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern=[%c]-%m%n
+
+#文件输出的相关设置
+log4j.appender.file = org.apache.log4j.RollingFileAppender
+log4j.appender.file.File=./log/zhuuu.log
+log4j.appender.file.MaxFileSize=10mb
+log4j.appender.file.Threshold=DEBUG
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=[%p][%d{yy-MM-dd}][%c]%m%n
+
+#日志输出级别
+log4j.logger.org.mybatis=DEBUG
+log4j.logger.java.sql=DEBUG
+log4j.logger.java.sql.Statement=DEBUG
+log4j.logger.java.sql.ResultSet=DEBUG
+log4j.logger.java.sql.PreparedStatement=DEBUG
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Setting设置日志实现&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;settings&amp;gt;
+    &amp;lt;setting name=&amp;quot;logImpl&amp;quot; value=&amp;quot;LOG4J&amp;quot;/&amp;gt;
+&amp;lt;/settings&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;在程序中实现Log4j进行输出&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//注意导包：org.apache.log4j.Logger
+static Logger logger = Logger.getLogger(MyTest.class);
+
+@Test
+public void selectUser() {
+    logger.info(&amp;quot;info：进入selectUser方法&amp;quot;);
+    logger.debug(&amp;quot;debug：进入selectUser方法&amp;quot;);
+    logger.error(&amp;quot;error: 进入selectUser方法&amp;quot;);
+    SqlSession session = MybatisUtils.getSession();
+    UserMapper mapper = session.getMapper(UserMapper.class);
+    List&amp;lt;User&amp;gt; users = mapper.selectUser();
+    for (User user: users){
+        System.out.println(user);
+    }
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输出结果如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;E:\jdk1.8\bin\java.exe -ea -Didea.test.cyclic.buffer.size=1048576 &amp;quot;-javaagent:E:\IntelliJ IDEA 2019.1\lib\idea_rt.jar=55311:E:\IntelliJ IDEA 2019.1\bin&amp;quot; -Dfile.encoding=UTF-8 -classpath &amp;quot;E:\IntelliJ IDEA 2019.1\lib\idea_rt.jar;E:\IntelliJ IDEA 2019.1\plugins\junit\lib\junit-rt.jar;E:\IntelliJ IDEA 2019.1\plugins\junit\lib\junit5-rt.jar;E:\jdk1.8\jre\lib\charsets.jar;E:\jdk1.8\jre\lib\deploy.jar;E:\jdk1.8\jre\lib\ext\access-bridge-64.jar;E:\jdk1.8\jre\lib\ext\cldrdata.jar;E:\jdk1.8\jre\lib\ext\dnsns.jar;E:\jdk1.8\jre\lib\ext\jaccess.jar;E:\jdk1.8\jre\lib\ext\jfxrt.jar;E:\jdk1.8\jre\lib\ext\localedata.jar;E:\jdk1.8\jre\lib\ext\nashorn.jar;E:\jdk1.8\jre\lib\ext\sunec.jar;E:\jdk1.8\jre\lib\ext\sunjce_provider.jar;E:\jdk1.8\jre\lib\ext\sunmscapi.jar;E:\jdk1.8\jre\lib\ext\sunpkcs11.jar;E:\jdk1.8\jre\lib\ext\zipfs.jar;E:\jdk1.8\jre\lib\javaws.jar;E:\jdk1.8\jre\lib\jce.jar;E:\jdk1.8\jre\lib\jfr.jar;E:\jdk1.8\jre\lib\jfxswt.jar;E:\jdk1.8\jre\lib\jsse.jar;E:\jdk1.8\jre\lib\management-agent.jar;E:\jdk1.8\jre\lib\plugin.jar;E:\jdk1.8\jre\lib\resources.jar;E:\jdk1.8\jre\lib\rt.jar;E:\MyBatis-study\MyBatis-04\target\test-classes;E:\MyBatis-study\MyBatis-04\target\classes;E:\maven_local_repo\log4j\log4j\1.2.17\log4j-1.2.17.jar;E:\maven_local_repo\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar;E:\maven_local_repo\org\mybatis\mybatis\3.5.2\mybatis-3.5.2.jar;E:\maven_local_repo\junit\junit\4.13\junit-4.13.jar;E:\maven_local_repo\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar&amp;quot; com.intellij.rt.execution.junit.JUnitStarter -ideVersion5 -junit4 daoTest,getUserByID
+[daoTest]-info:进入了selectUser方法
+[daoTest]-debug:进入了selectUser方法
+[daoTest]-error:进入了selectUser方法
+[org.apache.ibatis.logging.LogFactory]-Logging initialized using &#39;class org.apache.ibatis.logging.log4j.Log4jImpl&#39; adapter.
+[org.apache.ibatis.logging.LogFactory]-Logging initialized using &#39;class org.apache.ibatis.logging.log4j.Log4jImpl&#39; adapter.
+[org.apache.ibatis.datasource.pooled.PooledDataSource]-PooledDataSource forcefully closed/removed all connections.
+[org.apache.ibatis.datasource.pooled.PooledDataSource]-PooledDataSource forcefully closed/removed all connections.
+[org.apache.ibatis.datasource.pooled.PooledDataSource]-PooledDataSource forcefully closed/removed all connections.
+[org.apache.ibatis.datasource.pooled.PooledDataSource]-PooledDataSource forcefully closed/removed all connections.
+[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Opening JDBC Connection
+[org.apache.ibatis.datasource.pooled.PooledDataSource]-Created connection 673186785.
+[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@282003e1]
+[com.zhuuu.dao.Mapper.getUserbyID]-==&amp;gt;  Preparing: select * from mybatis.user where id = ? 
+[com.zhuuu.dao.Mapper.getUserbyID]-==&amp;gt; Parameters: 1(Integer)
+[com.zhuuu.dao.Mapper.getUserbyID]-&amp;lt;==      Total: 1
+User{id=1, name=&#39;zhuuu&#39;, password=&#39;null&#39;}
+[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@282003e1]
+[org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@282003e1]
+[org.apache.ibatis.datasource.pooled.PooledDataSource]-Returned connection 673186785 to pool.
+
+Process finished with exit code 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;82-分页的实现&#34;&gt;8.2 分页的实现&lt;/h3&gt;
+&lt;h4 id=&#34;821-为什么需要分页&#34;&gt;8.2.1 为什么需要分页？&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;在学习mybatis等持久层框架的时候，会经常对数据进行增删改查操作，使用最多的是对数据库进行查询操作&lt;/li&gt;
+&lt;li&gt;如果查询大量数据的时候，我们往往使用分页进行查询，也就是每次处理小部分数据，这样对数据库压力就在可控范围内。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;822-limit实现分页&#34;&gt;8.2.2 limit实现分页&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;#语法
+select * from table Limit startIndex,pageSize
+
+#如:
+SELECT * FROM table LIMIT 5,10; // 检索记录行 6-15 
+
+#如果只给定一个参数，它表示返回最大的记录行数目：    
+SELECT * FROM table LIMIT 5; //检索前 5 个记录行 
+
+#换句话说，LIMIT n 等价于 LIMIT 0,n。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;修改Mapper文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;selectUser&amp;quot; parameterType=&amp;quot;map&amp;quot; resultType=&amp;quot;user&amp;quot;&amp;gt;
+    select * from user limit #{startIndex},#{pageSize}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Mapper接口修改入参为map&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//选择全部用户实现分页
+List&amp;lt;User&amp;gt; selectUser(Map&amp;lt;String,Integer&amp;gt; map);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;在测试类中传入参数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;推断：起始位置 = （当前页面 - 1 ） * 页面大小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.zhuuu.dao.Mapper;
+import com.zhuuu.pojo.User;
+import com.zhuuu.utils.MybatisUtils;
+import org.apache.ibatis.session.SqlSession;
+import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.List;
+
+public class daoTest {
+    @Test
+    public void test(){
+        SqlSession session = MybatisUtils.getSession();
+        Mapper mapper = session.getMapper(Mapper.class);
+
+        int curentPage = 1;//第几页
+        int pageSize = 2;//每页显示几个
+
+        HashMap&amp;lt;String, Integer&amp;gt; map = new HashMap&amp;lt;String, Integer&amp;gt;();
+        map.put(&amp;quot;startIndex&amp;quot;,(curentPage-1)*pageSize);
+        map.put(&amp;quot;pageSize&amp;quot;,pageSize);
+
+        List&amp;lt;User&amp;gt; userList = mapper.getUserList(map);
+        for (User user : userList) {
+            System.out.println(user);
+        }
+        session.close();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;823-rowbounds分页&#34;&gt;8.2.3 RowBounds分页&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;除了使用Limit在SQL层面实现分页，也可以使用RowBounds在Java代码层面实现分页，&lt;/li&gt;
+&lt;li&gt;当然此种方式作为了解即可。我们来看下如何实现的！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;步骤：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;mapper接口&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//选择全部用户RowBounds实现分页
+List&amp;lt;User&amp;gt; getUserByRowBounds();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;mapper.xml文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;getUserByRowBounds&amp;quot; resultType=&amp;quot;user&amp;quot;&amp;gt;
+  select * from user
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在这里使用RowBounds类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testUserByRowBounds() {
+    SqlSession session = MybatisUtils.getSession();
+
+    int currentPage = 2;  //第几页
+    int pageSize = 2;  //每页显示几个
+    RowBounds rowBounds = new RowBounds((currentPage-1)*pageSize,pageSize);
+
+    //通过session.**方法进行传递rowBounds，[此种方式现在已经不推荐使用了]
+    List&amp;lt;User&amp;gt; users = session.selectList(&amp;quot;com.zhuuu.mapper.UserMapper.getUserByRowBounds&amp;quot;, null, rowBounds);
+
+    for (User user: users){
+        System.out.println(user);
+    }
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;83-分页插件&#34;&gt;8.3 分页插件：&lt;/h3&gt;
+&lt;p&gt;官方文档：https://pagehelper.github.io/&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804134229.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;9-mybatis-多对一一对多处理&#34;&gt;9、MyBatis 多对一,一对多处理&lt;/h2&gt;
+&lt;h3 id=&#34;91-多对一的处理&#34;&gt;9.1 多对一的处理&lt;/h3&gt;
+&lt;p&gt;多对一的理解：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多个学生对应一个老师&lt;/li&gt;
+&lt;li&gt;如果对于学生这边，就是一个多对一的理解&lt;/li&gt;
+&lt;li&gt;也就是从学生这边关联了一个老师&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;911-搭建测试环境&#34;&gt;9.1.1 搭建测试环境&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;数据库设计（环境搭建）&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;USE mybatis;
+CREATE TABLE `teacher` (
+  `id` INT(10) NOT NULL,
+  `name` VARCHAR(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8
+
+INSERT INTO teacher(`id`, `name`) VALUES (1, &#39;朱老师&#39;); 
+
+CREATE TABLE `student` (
+  `id` INT(10) NOT NULL,
+  `name` VARCHAR(30) DEFAULT NULL,
+  `tid` INT(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fktid` (`tid`),
+  CONSTRAINT `fktid` FOREIGN KEY (`tid`) REFERENCES `teacher` (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8
+
+
+INSERT INTO `student` (`id`, `name`, `tid`) VALUES (&#39;1&#39;, &#39;小明&#39;, &#39;1&#39;); 
+INSERT INTO `student` (`id`, `name`, `tid`) VALUES (&#39;2&#39;, &#39;小红&#39;, &#39;1&#39;); 
+INSERT INTO `student` (`id`, `name`, `tid`) VALUES (&#39;3&#39;, &#39;小张&#39;, &#39;1&#39;); 
+INSERT INTO `student` (`id`, `name`, `tid`) VALUES (&#39;4&#39;, &#39;小李&#39;, &#39;1&#39;); 
+INSERT INTO `student` (`id`, `name`, `tid`) VALUES (&#39;5&#39;, &#39;小王&#39;, &#39;1&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804134450.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;912-lombok的使用&#34;&gt;9.1.2 Lombok的使用&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;IDEA安装Lombok插件【在Plugins中安装】&lt;/li&gt;
+&lt;li&gt;引入maven依赖&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&amp;gt;
+&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;org.projectlombok&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;lombok&amp;lt;/artifactId&amp;gt;
+  &amp;lt;version&amp;gt;1.16.10&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;在代码中增加注解(@Data)&lt;/p&gt;
+&lt;p&gt;使用@Data前后对比&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804134618.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804134624.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Data //GET,SET,ToString，有参，无参构造
+public class Teacher {
+    private int id;
+    private String name;
+}
+
+
+
+@Data
+public class Student {
+    private int id;
+    private String name;
+    //多个学生可以是同一个老师，即多对一
+    private Teacher teacher;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;编写实体类对应的Mapper接口【两个】&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface StudentMapper {
+}
+
+
+
+public interface TeacherMapper {
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;编写Mapper接口对应的mapper.xml配置文件【两个】&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE mapper
+        PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
+        &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.zhuuu.dao.TeacherMapper&amp;quot;&amp;gt;
+
+
+&amp;lt;/mapper&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE mapper
+        PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
+        &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.zhuuu.dao.StudentMapper&amp;quot;&amp;gt;
+
+
+&amp;lt;/mapper&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;9121-按照查询嵌套处理&#34;&gt;9.1.2.1 按照查询嵌套处理&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;给StudentMapper接口增加方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//获取所有学生及对应老师的信息
+public List&amp;lt;Student&amp;gt; getStudents();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写对应的Mapper文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE mapper
+        PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
+        &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.zhuuu.mapper.StudentMapper&amp;quot;&amp;gt;
+
+    &amp;lt;!--
+    需求：获取所有学生及对应老师的信息
+    思路：
+        1. 获取所有学生的信息
+        2. 根据获取的学生信息的老师ID-&amp;gt;获取该老师的信息
+        3. 思考问题，这样学生的结果集中应该包含老师，该如何处理呢，数据库中我们一般使用关联查询？
+            1. 做一个结果集映射：StudentTeacher
+            2. StudentTeacher结果集的类型为 Student
+            3. 学生中老师的属性为teacher，对应数据库中为tid。
+               多个 [1,...）学生关联一个老师=&amp;gt; 一对一，一对多
+            4. 查看官网找到：association – 一个复杂类型的关联；使用它来处理关联查询
+    --&amp;gt;
+    &amp;lt;select id=&amp;quot;getStudents&amp;quot; resultMap=&amp;quot;StudentTeacher&amp;quot;&amp;gt;
+      select * from student
+    &amp;lt;/select&amp;gt;
+    &amp;lt;resultMap id=&amp;quot;StudentTeacher&amp;quot; type=&amp;quot;Student&amp;quot;&amp;gt;
+        &amp;lt;!--association关联属性  property属性名 javaType属性类型 column在多的一方的表中的列名--&amp;gt;
+        &amp;lt;association property=&amp;quot;teacher&amp;quot;  column=&amp;quot;tid&amp;quot; javaType=&amp;quot;Teacher&amp;quot; select=&amp;quot;getTeacher&amp;quot;/&amp;gt;
+    &amp;lt;/resultMap&amp;gt;
+    &amp;lt;!--
+    这里传递过来的id，只有一个属性的时候，下面可以写任何值
+    association中column多参数配置：
+        column=&amp;quot;{key=value,key=value}&amp;quot;
+        其实就是键值对的形式，key是传给下个sql的取值名称，value是片段一中sql查询的字段名。
+    --&amp;gt;
+    &amp;lt;select id=&amp;quot;getTeacher&amp;quot; resultType=&amp;quot;teacher&amp;quot;&amp;gt;
+        select * from teacher where id = #{id}
+    &amp;lt;/select&amp;gt;
+
+&amp;lt;/mapper&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;在配置文件中 ，注册Mapper&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;注意点说明&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;resultMap id=&amp;quot;StudentTeacher&amp;quot; type=&amp;quot;Student&amp;quot;&amp;gt;
+    &amp;lt;!--association关联属性  property属性名 javaType属性类型 column在多的一方的表中的列名--&amp;gt;
+    &amp;lt;association property=&amp;quot;teacher&amp;quot;  column=&amp;quot;{id=tid,name=tid}&amp;quot; javaType=&amp;quot;Teacher&amp;quot; select=&amp;quot;getTeacher&amp;quot;/&amp;gt;
+&amp;lt;/resultMap&amp;gt;
+&amp;lt;!--
+这里传递过来的id，只有一个属性的时候，下面可以写任何值
+association中column多参数配置：
+    column=&amp;quot;{key=value,key=value}&amp;quot;
+    其实就是键值对的形式，key是传给下个sql的取值名称，value是片段一中sql查询的字段名。
+--&amp;gt;
+&amp;lt;select id=&amp;quot;getTeacher&amp;quot; resultType=&amp;quot;teacher&amp;quot;&amp;gt;
+    select * from teacher where id = #{id} and name = #{name}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testGetStudents(){
+    SqlSession session = MybatisUtils.getSession();
+    StudentMapper mapper = session.getMapper(StudentMapper.class);
+
+    List&amp;lt;Student&amp;gt; students = mapper.getStudents();
+
+    for (Student student : students){
+        System.out.println(
+                &amp;quot;学生名:&amp;quot;+ student.getName()
+                        +&amp;quot;\t老师:&amp;quot;+student.getTeacher().getName());
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;9122-按照结果嵌套处理&#34;&gt;9.1.2.2 按照结果嵌套处理&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;编写接口方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public List&amp;lt;Student&amp;gt; getStudents2();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写对应的Mapper文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--
+按查询结果嵌套处理
+思路：
+    1. 直接查询出结果，进行结果集的映射
+--&amp;gt;
+&amp;lt;select id=&amp;quot;getStudents2&amp;quot; resultMap=&amp;quot;StudentTeacher2&amp;quot; &amp;gt;
+    select s.id sid, s.name sname , t.name tname
+    from student s,teacher t
+    where s.tid = t.id
+&amp;lt;/select&amp;gt;
+
+&amp;lt;resultMap id=&amp;quot;StudentTeacher2&amp;quot; type=&amp;quot;Student&amp;quot;&amp;gt;
+    &amp;lt;id property=&amp;quot;id&amp;quot; column=&amp;quot;sid&amp;quot;/&amp;gt;
+    &amp;lt;result property=&amp;quot;name&amp;quot; column=&amp;quot;sname&amp;quot;/&amp;gt;
+    &amp;lt;!--关联对象property 关联对象在Student实体类中的属性--&amp;gt;
+    &amp;lt;association property=&amp;quot;teacher&amp;quot; javaType=&amp;quot;Teacher&amp;quot;&amp;gt;
+        &amp;lt;result property=&amp;quot;name&amp;quot; column=&amp;quot;tname&amp;quot;/&amp;gt;
+    &amp;lt;/association&amp;gt;
+&amp;lt;/resultMap&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;去mybatis-config文件中注入&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testGetStudents2(){
+    SqlSession session = MybatisUtils.getSession();
+    StudentMapper mapper = session.getMapper(StudentMapper.class);
+
+    List&amp;lt;Student&amp;gt; students = mapper.getStudents2();
+
+    for (Student student : students){
+        System.out.println(
+                &amp;quot;学生名:&amp;quot;+ student.getName()
+                        +&amp;quot;\t老师:&amp;quot;+student.getTeacher().getName());
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;小结:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按照查询进行嵌套就像SQL中的子查询&lt;/li&gt;
+&lt;li&gt;按照结果进行嵌套就想SQL中的联表查询&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;92-一对多处理&#34;&gt;9.2 一对多处理&lt;/h3&gt;
+&lt;p&gt;一对多的理解：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个老师拥有多个学生&lt;/li&gt;
+&lt;li&gt;对于老师这边，就是一个一个一对多的现象，即从一个老师下面拥有一群学生（集合）&lt;/li&gt;
+&lt;li&gt;collection集合&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;921-搭建测试环境&#34;&gt;9.2.1 搭建测试环境&lt;/h4&gt;
+&lt;p&gt;实体类的编写：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Data
+public class Student {
+    private int id;
+    private String name;
+    private int tid;
+}
+@Data 
+public class Teacher {
+    private int id;
+    private String name;
+    //一个老师多个学生
+    private List&amp;lt;Student&amp;gt; students;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;9211-按照结果嵌套处理&#34;&gt;9.2.1.1 按照结果嵌套处理&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;TeacherMapper接口编写方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//获取指定老师，及老师下的所有学生
+public Teacher getTeacher(int id);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写Mapper配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE mapper
+        PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
+        &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.zhuuu.dao.TeacherMapper&amp;quot;&amp;gt;
+
+&amp;lt;!--思路：
+    1.从学生表和老师表中查出学生id,学生姓名，老师姓名
+    2.从查询出来的结果上做结果集映射
+      1.集合的话，使用collection
+      2.javaType和ofType都是用来指定对象类型的
+      3.JavaType是用来指定pojo中属性的类型
+      4.oftype是用来以后能干涉到list集合属性中pojo的类型--&amp;gt;
+
+    &amp;lt;select id=&amp;quot;getTeacher&amp;quot; resultMap=&amp;quot;TeacherStudent&amp;quot;&amp;gt;
+        select s.id sid, s.name sname,t.name tname,t.id tid
+        from student s,teacher t
+        where s.tid = t.id and t.id=#{id}
+    &amp;lt;/select&amp;gt;
+
+
+    &amp;lt;resultMap id=&amp;quot;TeacherStudent&amp;quot; type=&amp;quot;Teacher&amp;quot;&amp;gt;
+        &amp;lt;result property=&amp;quot;name&amp;quot; column=&amp;quot;tname&amp;quot;/&amp;gt;
+        &amp;lt;collection property=&amp;quot;students&amp;quot; ofType=&amp;quot;Student&amp;quot;&amp;gt;
+            &amp;lt;result property=&amp;quot;id&amp;quot; column=&amp;quot;sid&amp;quot;/&amp;gt;
+            &amp;lt;result property=&amp;quot;name&amp;quot; column=&amp;quot;sname&amp;quot;/&amp;gt;
+            &amp;lt;result property=&amp;quot;tid&amp;quot; column=&amp;quot;tid&amp;quot;/&amp;gt;
+        &amp;lt;/collection&amp;gt;
+    &amp;lt;/resultMap&amp;gt;
+&amp;lt;/mapper&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;将Mapper文件注册到MyBatis-config文件中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testGetTeacher(){
+    SqlSession session = MybatisUtils.getSession();
+    TeacherMapper mapper = session.getMapper(TeacherMapper.class);
+    Teacher teacher = mapper.getTeacher(1);
+    System.out.println(teacher.getName());
+    System.out.println(teacher.getStudents());
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;9212-按照嵌套处理&#34;&gt;9.2.1.2 按照嵌套处理&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;TeacherMapper接口编写方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public Teacher getTeacher2(int id);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写接口对应的Mapper配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;getTeacher2&amp;quot; resultMap=&amp;quot;TeacherStudent2&amp;quot;&amp;gt;
+  select * from teacher where id = #{id}
+&amp;lt;/select&amp;gt;
+&amp;lt;resultMap id=&amp;quot;TeacherStudent2&amp;quot; type=&amp;quot;Teacher&amp;quot;&amp;gt;
+    &amp;lt;!--column是一对多的外键 , 写的是一的主键的列名--&amp;gt;
+    &amp;lt;collection property=&amp;quot;students&amp;quot; javaType=&amp;quot;ArrayList&amp;quot; ofType=&amp;quot;Student&amp;quot; column=&amp;quot;id&amp;quot; select=&amp;quot;getStudentByTeacherId&amp;quot;/&amp;gt;
+&amp;lt;/resultMap&amp;gt;
+&amp;lt;select id=&amp;quot;getStudentByTeacherId&amp;quot; resultType=&amp;quot;Student&amp;quot;&amp;gt;
+    select * from student where tid = #{id}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;将Mapper文件注册到MyBatis-config文件中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testGetTeacher2(){
+    SqlSession session = MybatisUtils.getSession();
+    TeacherMapper mapper = session.getMapper(TeacherMapper.class);
+    Teacher teacher = mapper.getTeacher2(1);
+    System.out.println(teacher.getName());
+    System.out.println(teacher.getStudents());
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;93-小结&#34;&gt;9.3 小结&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;关联-associtaion&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;集合-collection&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;association是用于一对一和多对一&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;collection是用于一对多的关系&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;JavaType和ofType都是用来指定对象类型的&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;JavaType是用来指定pojo中的类型 （说白了就是返回的类名）&lt;/li&gt;
+&lt;li&gt;ofType到指定的是映射到list集合属性中pojo的类型 （说白了就是泛型）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;10-mybatis-动态sql&#34;&gt;10、MyBatis 动态SQL&lt;/h2&gt;
+&lt;p&gt;动态SQL 官方文档：&lt;a href=&#34;https://mybatis.org/mybatis-3/zh/dynamic-sql.html&#34;&gt;文档链接&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;101-介绍&#34;&gt;10.1 介绍&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;什么是动态SQL:就是根据不同的查询条件，自动生成不同的Sql语句&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;官网描述：
+    MyBatis 的强大特性之一便是它的动态 SQL。如果你有使用 JDBC 或其它类似框架的经验，你就能体会到根据不同条件拼接 SQL 语句的痛苦。例如拼接时要确保不能忘记添加必要的空格，还要注意去掉列表最后一个列名的逗号。利用动态 SQL 这一特性可以彻底摆脱这种痛苦。
+    虽然在以前使用动态 SQL 并非一件易事，但正是 MyBatis 提供了可以被用在任意 SQL 映射语句中的强大的动态 SQL 语言得以改进这种情形。
+    动态 SQL 元素和 JSTL 或基于类似 XML 的文本处理器相似。在 MyBatis 之前的版本中，有很多元素需要花时间了解。MyBatis 3 大大精简了元素种类，现在只需学习原来一半的元素便可。MyBatis 采用功能强大的基于 OGNL 的表达式来淘汰其它大部分元素。
+    
+    -------------------------------
+    - if
+    - choose (when, otherwise)
+    - trim (where, set)
+    - foreach
+    -------------------------------
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;之前写的 SQL 语句都比较简单，如果有比较复杂的业务，我们需要写复杂的 SQL 语句，往往需要拼接，而拼接 SQL ，稍微不注意，由于引号，空格等缺失可能都会导致错误。&lt;/li&gt;
+&lt;li&gt;那么怎么去解决这个问题呢？这就要使用 mybatis 动态SQL，通过 if, choose, when, otherwise, trim, where, set, foreach等标签，可组合成非常灵活的SQL语句，从而在提高 SQL 语句的准确性的同时，也大大提高了开发人员的效率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;102-搭建环境&#34;&gt;10.2 搭建环境&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;新建一个数据库表&lt;/p&gt;
+&lt;p&gt;字段：id，title，author，create_time，views&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;CREATE TABLE `blog` (
+  `id` varchar(50) NOT NULL COMMENT &#39;博客id&#39;,
+  `title` varchar(100) NOT NULL COMMENT &#39;博客标题&#39;,
+  `author` varchar(30) NOT NULL COMMENT &#39;博客作者&#39;,
+  `create_time` datetime NOT NULL COMMENT &#39;创建时间&#39;,
+  `views` int(30) NOT NULL COMMENT &#39;浏览量&#39;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;创建MyBatis工程&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://zhuuu-bucket.oss-cn-beijing.aliyuncs.com/img/20200217175227.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;编写IDutil工具类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class IDUtil {
+
+    public static String genId(){
+        return UUID.randomUUID().toString().replaceAll(&amp;quot;-&amp;quot;,&amp;quot;&amp;quot;);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;实体类编写&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import java.util.Date;
+
+public class Blog {
+
+    private String id;
+    private String title;
+    private String author;
+    private Date createTime;
+    private int views;
+    //set，get....
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;编写Mapper和Mapper.xml&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;public interface BlogMapper {
+}
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE mapper
+        PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
+        &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.zhuuu.dao.BlogMapper&amp;quot;&amp;gt;
+
+&amp;lt;/mapper&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;在MyBatis核心配置文件中，下划线驼峰自动转换&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE configuration
+        PUBLIC &amp;quot;-//mybatis.org//DTD Config 3.0//EN&amp;quot;
+        &amp;quot;http://mybatis.org/dtd/mybatis-3-config.dtd&amp;quot;&amp;gt;
+&amp;lt;configuration&amp;gt;
+
+    &amp;lt;properties resource=&amp;quot;db.properties&amp;quot;/&amp;gt;
+
+    &amp;lt;settings&amp;gt;
+        &amp;lt;setting name=&amp;quot;mapUnderscoreToCamelCase&amp;quot; value=&amp;quot;true&amp;quot;/&amp;gt;
+        &amp;lt;setting name=&amp;quot;logImpl&amp;quot; value=&amp;quot;STDOUT_LOGGING&amp;quot;/&amp;gt;
+    &amp;lt;/settings&amp;gt;
+
+    &amp;lt;typeAliases&amp;gt;
+        &amp;lt;package name=&amp;quot;com.zhuuu.pojo&amp;quot;/&amp;gt;
+    &amp;lt;/typeAliases&amp;gt;
+
+    &amp;lt;environments default=&amp;quot;development&amp;quot;&amp;gt;
+        &amp;lt;environment id=&amp;quot;development&amp;quot;&amp;gt;
+            &amp;lt;transactionManager type=&amp;quot;JDBC&amp;quot;/&amp;gt;
+            &amp;lt;dataSource type=&amp;quot;POOLED&amp;quot;&amp;gt;
+                &amp;lt;property name=&amp;quot;driver&amp;quot; value=&amp;quot;${driver}&amp;quot;/&amp;gt;
+                &amp;lt;property name=&amp;quot;url&amp;quot; value=&amp;quot;${url}&amp;quot;/&amp;gt;
+                &amp;lt;property name=&amp;quot;username&amp;quot; value=&amp;quot;${username}&amp;quot;/&amp;gt;
+                &amp;lt;property name=&amp;quot;password&amp;quot; value=&amp;quot;${password}&amp;quot;/&amp;gt;
+            &amp;lt;/dataSource&amp;gt;
+        &amp;lt;/environment&amp;gt;
+    &amp;lt;/environments&amp;gt;
+
+&amp;lt;!--    每一个Mapper,XML都需要在mybatis核心配置文件中注册--&amp;gt;
+    &amp;lt;mappers&amp;gt;
+        &amp;lt;package name=&amp;quot;com.zhuuu.dao&amp;quot;/&amp;gt;
+    &amp;lt;/mappers&amp;gt;
+
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;插入初始的数据&lt;/p&gt;
+&lt;p&gt;编写一个接口&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//新增一个博客
+int addBlog(Blog blog);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Mapper配置文件&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;insert id=&amp;quot;addBlog&amp;quot; parameterType=&amp;quot;blog&amp;quot;&amp;gt;
+    insert into blog (id, title, author, create_time, views)
+    values (#{id},#{title},#{author},#{createTime},#{views});
+&amp;lt;/insert&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;初始化博客方法&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void addInitBlog(){
+    SqlSession session = MybatisUtils.getSession();
+    BlogMapper mapper = session.getMapper(BlogMapper.class);
+
+    Blog blog = new Blog();
+    blog.setId(IDUtil.genId());
+    blog.setTitle(&amp;quot;Mybatis如此简单&amp;quot;);
+    blog.setAuthor(&amp;quot;Zhuuu&amp;quot;);
+    blog.setCreateTime(new Date());
+    blog.setViews(9999);
+
+    mapper.addBlog(blog);
+
+    blog.setId(IDUtil.genId());
+    blog.setTitle(&amp;quot;Java如此简单&amp;quot;);
+    mapper.addBlog(blog);
+
+    blog.setId(IDUtil.genId());
+    blog.setTitle(&amp;quot;Spring如此简单&amp;quot;);
+    mapper.addBlog(blog);
+
+    blog.setId(IDUtil.genId());
+    blog.setTitle(&amp;quot;微服务如此简单&amp;quot;);
+    mapper.addBlog(blog);
+
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;103-动态-if语句&#34;&gt;10.3 动态-if语句&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;需求：根据作者名字和博客名字来查询博客！如果作者名字为空，那么只根据博客名字查询，反之，则根据作者名来查询&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;编写接口类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//需求1
+List&amp;lt;Blog&amp;gt; queryBlogIf(Map map);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写sql语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--需求1：
+根据作者名字和博客名字来查询博客！
+如果作者名字为空，那么只根据博客名字查询，反之，则根据作者名来查询
+
+select * from blog where title = #{title} and author = #{author}
+--&amp;gt;
+&amp;lt;select id=&amp;quot;queryBlogIf&amp;quot; parameterType=&amp;quot;map&amp;quot; resultType=&amp;quot;blog&amp;quot;&amp;gt;
+    select * from blog where
+    &amp;lt;if test=&amp;quot;title != null&amp;quot;&amp;gt;
+        title = #{title}
+    &amp;lt;/if&amp;gt;
+    &amp;lt;if test=&amp;quot;author != null&amp;quot;&amp;gt;
+        and author = #{author}
+    &amp;lt;/if&amp;gt;
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testQueryBlogIf(){
+    SqlSession session = MybatisUtils.getSession();
+    BlogMapper mapper = session.getMapper(BlogMapper.class);
+
+    HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;String, String&amp;gt;();
+    map.put(&amp;quot;title&amp;quot;,&amp;quot;Mybatis如此简单&amp;quot;);
+    map.put(&amp;quot;author&amp;quot;,&amp;quot;狂神说&amp;quot;);
+    List&amp;lt;Blog&amp;gt; blogs = mapper.queryBlogIf(map);
+
+    System.out.println(blogs);
+
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;会遇到以下几种情况：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 1.author 为 null的情况  正常查出
+Checking to see if class com.zhuuu.dao.BlogMapper matches criteria [is assignable to Object]
+Opening JDBC Connection
+Created connection 376416077.
+==&amp;gt;  Preparing: select * from blog where title = ? 
+==&amp;gt; Parameters: Mybatis如此简单(String)
+&amp;lt;==    Columns: id, title, author, create_time, views
+&amp;lt;==        Row: 62d300fbe0174864af4ebb089ff6952f, Mybatis如此简单, Zhuuu, 2020-02-17 17:51:03.0, 9999
+&amp;lt;==      Total: 1
+[Blog(id=62d300fbe0174864af4ebb089ff6952f, title=Mybatis如此简单, author=Zhuuu, createTime=Mon Feb 17 17:51:03 CST 2020, views=9999)]
+Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@166fa74d]
+Returned connection 376416077 to pool.
+
+Process finished with exit code 0
+
+
+// 2.title 为 null的情况  and导致报错
+Opening JDBC Connection
+Created connection 376416077.
+==&amp;gt;  Preparing: select * from blog where and author = ? 
+==&amp;gt; Parameters: Zhuuu(String)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;104-动态-where语句&#34;&gt;10.4 动态-where语句&lt;/h3&gt;
+&lt;p&gt;修改上面的情况2：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;queryBlogIf&amp;quot; parameterType=&amp;quot;map&amp;quot; resultType=&amp;quot;blog&amp;quot;&amp;gt;
+    select * from blog 
+    &amp;lt;where&amp;gt;
+        &amp;lt;if test=&amp;quot;title != null&amp;quot;&amp;gt;
+            title = #{title}
+        &amp;lt;/if&amp;gt;
+        &amp;lt;if test=&amp;quot;author != null&amp;quot;&amp;gt;
+            and author = #{author}
+        &amp;lt;/if&amp;gt;
+    &amp;lt;/where&amp;gt;
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个”where”标签会知道如果它包含标签中返回值的话，它就会插入一个“where”。此外，如果标签返回的内容是AND或OR开头的，则它会剔除掉。&lt;/p&gt;
+&lt;h3 id=&#34;105-动态-set&#34;&gt;10.5 动态-Set&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;编写接口方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;int updateBlog(Map map);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;sql配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--注意set是用的逗号隔开--&amp;gt;
+&amp;lt;update id=&amp;quot;updateBlog&amp;quot; parameterType=&amp;quot;map&amp;quot;&amp;gt;
+    update blog
+      &amp;lt;set&amp;gt;
+          &amp;lt;if test=&amp;quot;title != null&amp;quot;&amp;gt;
+              title = #{title},
+          &amp;lt;/if&amp;gt;
+          &amp;lt;if test=&amp;quot;author != null&amp;quot;&amp;gt;
+              author = #{author}
+          &amp;lt;/if&amp;gt;
+      &amp;lt;/set&amp;gt;
+    where id = #{id};
+&amp;lt;/update&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//动态set测试
+@Test
+public void setTest(){
+    SqlSession session = MybatisUtils.getSession();
+    BlogMapper mapper = session.getMapper(BlogMapper.class);
+
+    HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;String, String&amp;gt;();
+    map.put(&amp;quot;title&amp;quot;,&amp;quot;动态SQL&amp;quot;);
+    map.put(&amp;quot;author&amp;quot;,&amp;quot;Zhuuu&amp;quot;);
+    map.put(&amp;quot;id&amp;quot;,&amp;quot;f279c70cf48d4b55a62d663610d9d541&amp;quot;);//这里的uuid要根据自己的数据库id来取
+
+    mapper.updateBlog(map);
+
+
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;106-动态-choose&#34;&gt;10.6 动态-choose&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;有时候，我们不想用到所有的查询条件，只想选择其中的一个，查询条件有一个满足即可，使用 choose 标签可以解决此类问题，类似于 Java 的 switch 语句&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;编写接口方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;List&amp;lt;Blog&amp;gt; queryBlogChoose(Map map);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;sql配置文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;queryBlogChoose&amp;quot; parameterType=&amp;quot;map&amp;quot; resultType=&amp;quot;blog&amp;quot;&amp;gt;
+    select * from blog
+    &amp;lt;where&amp;gt;
+        &amp;lt;choose&amp;gt;
+            &amp;lt;when test=&amp;quot;title != null&amp;quot;&amp;gt;
+                 title = #{title}
+            &amp;lt;/when&amp;gt;
+            &amp;lt;when test=&amp;quot;author != null&amp;quot;&amp;gt;
+                and author = #{author}
+            &amp;lt;/when&amp;gt;
+            &amp;lt;otherwise&amp;gt;
+                and views = #{views}
+            &amp;lt;/otherwise&amp;gt;
+        &amp;lt;/choose&amp;gt;
+    &amp;lt;/where&amp;gt;
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testQueryBlogChoose(){
+    SqlSession session = MybatisUtils.getSession();
+    BlogMapper mapper = session.getMapper(BlogMapper.class);
+
+    HashMap&amp;lt;String, Object&amp;gt; map = new HashMap&amp;lt;String, Object&amp;gt;();
+    map.put(&amp;quot;title&amp;quot;,&amp;quot;Java如此简单&amp;quot;);
+    map.put(&amp;quot;author&amp;quot;,&amp;quot;Zhuuu&amp;quot;);
+    map.put(&amp;quot;views&amp;quot;,9999);
+    List&amp;lt;Blog&amp;gt; blogs = mapper.queryBlogChoose(map);
+
+    System.out.println(blogs);
+
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;//返回的结果:只要满足第一个，后面的就不会在查了
+Opening JDBC Connection
+Created connection 843467284.
+==&amp;gt;  Preparing: select * from blog WHERE title = ? 
+==&amp;gt; Parameters: Java如此简单(String)
+&amp;lt;==    Columns: id, title, author, create_time, views
+&amp;lt;==        Row: 78739c74d1c04075b898648e8dba74e7, Java如此简单, Zhuuu, 2020-02-17 17:51:03.0, 1000
+&amp;lt;==      Total: 1
+[Blog(id=78739c74d1c04075b898648e8dba74e7, title=Java如此简单, author=Zhuuu, createTime=Mon Feb 17 17:51:03 CST 2020, views=1000)]
+Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@32464a14]
+Returned connection 843467284 to pool.
+
+Process finished with exit code 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;107-提取sql片段&#34;&gt;10.7 提取sql片段&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;有时候可能某个 sql 语句我们用的特别多，为了增加代码的重用性，简化代码，我们需要将这些代码抽取出来，然后使用时直接调用。&lt;/li&gt;
+&lt;li&gt;说白了就是代码的复用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;提取sql片段&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;sql id=&amp;quot;if-title-author&amp;quot;&amp;gt;
+    &amp;lt;if test=&amp;quot;title != null&amp;quot;&amp;gt;
+        title = #{title}
+    &amp;lt;/if&amp;gt;
+    &amp;lt;if test=&amp;quot;author != null&amp;quot;&amp;gt;
+        and author = #{author}
+    &amp;lt;/if&amp;gt;
+&amp;lt;/sql&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;引用sql片段&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;queryBlogIf&amp;quot; parameterType=&amp;quot;map&amp;quot; resultType=&amp;quot;blog&amp;quot;&amp;gt;
+    select * from blog
+    &amp;lt;where&amp;gt;
+        &amp;lt;!-- 引用 sql 片段，如果refid 指定的不在本文件中，那么需要在前面加上 namespace --&amp;gt;
+        &amp;lt;include refid=&amp;quot;if-title-author&amp;quot;&amp;gt;&amp;lt;/include&amp;gt;
+        &amp;lt;!-- 在这里还可以引用其他的 sql 片段 --&amp;gt;
+    &amp;lt;/where&amp;gt;
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;①、最好基于 单表来定义 sql 片段，提高片段的可重用性&lt;br&gt;
+②、在 sql 片段中不要包括 where&lt;/p&gt;
+&lt;h3 id=&#34;108-动态-foreach&#34;&gt;10.8 动态-foreach&lt;/h3&gt;
+&lt;p&gt;将数据库中前三个数据的id修改为1,2,3；&lt;/p&gt;
+&lt;p&gt;需求：我们需要查询 blog 表中 id 分别为1,2,3的博客信息&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;编写结口&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;List&amp;lt;Blog&amp;gt; queryBlogForeach(Map map);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写sql语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;queryBlogForeach&amp;quot; parameterType=&amp;quot;map&amp;quot; resultType=&amp;quot;blog&amp;quot;&amp;gt;
+    select * from blog
+    &amp;lt;where&amp;gt;
+        &amp;lt;!--
+        collection:指定输入对象中的集合属性
+        item:每次遍历生成的对象
+        open:开始遍历时的拼接字符串
+        close:结束时拼接的字符串
+        separator:遍历对象之间需要拼接的字符串
+        select * from blog where 1=1 and (id=1 or id=2 or id=3)
+      --&amp;gt;
+        &amp;lt;foreach collection=&amp;quot;ids&amp;quot;  item=&amp;quot;id&amp;quot; open=&amp;quot;and (&amp;quot; close=&amp;quot;)&amp;quot; separator=&amp;quot;or&amp;quot;&amp;gt;
+            id=#{id}
+        &amp;lt;/foreach&amp;gt;
+    &amp;lt;/where&amp;gt;
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testQueryBlogForeach(){
+    SqlSession session = MybatisUtils.getSession();
+    BlogMapper mapper = session.getMapper(BlogMapper.class);
+
+    HashMap map = new HashMap();
+    List&amp;lt;Integer&amp;gt; ids = new ArrayList&amp;lt;Integer&amp;gt;();
+    ids.add(1);
+    ids.add(2);
+    ids.add(3);
+    map.put(&amp;quot;ids&amp;quot;,ids);
+
+    List&amp;lt;Blog&amp;gt; blogs = mapper.queryBlogForeach(map);
+
+    System.out.println(blogs);
+
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果如下：(查出前三条记录)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Opening JDBC Connection
+Created connection 1904324159.
+==&amp;gt;  Preparing: select * from blog WHERE ( id = ? or id = ? or id = ? ) 
+==&amp;gt; Parameters: 1(Integer), 2(Integer), 3(Integer)
+&amp;lt;==    Columns: id, title, author, create_time, views
+&amp;lt;==        Row: 1, Mybatis如此简单, Zhuuu, 2020-02-17 17:51:03.0, 9999
+&amp;lt;==        Row: 2, Java如此简单, Zhuuu, 2020-02-17 17:51:03.0, 1000
+&amp;lt;==        Row: 3, Spring如此简单, Zhuuu, 2020-02-17 17:51:03.0, 9999
+&amp;lt;==      Total: 3
+[Blog(id=1, title=Mybatis如此简单, author=Zhuuu, createTime=Mon Feb 17 17:51:03 CST 2020, views=9999), Blog(id=2, title=Java如此简单, author=Zhuuu, createTime=Mon Feb 17 17:51:03 CST 2020, views=1000), Blog(id=3, title=Spring如此简单, author=Zhuuu, createTime=Mon Feb 17 17:51:03 CST 2020, views=9999)]
+Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@7181ae3f]
+Returned connection 1904324159 to pool.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;109-小结&#34;&gt;10.9 小结&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;动态sql语句的编写往往就是一个拼接的问题&lt;/li&gt;
+&lt;li&gt;为了保证拼接准确，首先我们需要把原生的sql语句写出来，然后再通过mybatis动态sql对照着改&lt;/li&gt;
+&lt;li&gt;要多实践才能掌握技巧&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;11-mybatis-缓存机制&#34;&gt;11、MyBatis 缓存机制&lt;/h2&gt;
+&lt;h3 id=&#34;111-缓存简介&#34;&gt;11.1 缓存简介&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;什么是缓存？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;存在内存中的临时数据。&lt;/li&gt;
+&lt;li&gt;将用户经常查询的数据放在缓存（内存）中，用户去查询数据就不用从磁盘上(关系型数据库数据文件)查询，从缓存中查询，从而提高查询效率，解决了高并发系统的性能问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;为什么使用缓存？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;减少和数据库的交互次数，减少系统开销，提高系统效率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;什么样的数据能使用缓存？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;经常查询并且不经常改变的数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;112-mybatis缓存&#34;&gt;11.2 Mybatis缓存&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;MyBatis包含一个非常强大的查询缓存特性，它可以非常方便地定制和配置缓存。缓存可以极大的提升查询效率。&lt;/li&gt;
+&lt;li&gt;MyBatis系统中默认定义了两级缓存：&lt;strong&gt;一级缓存和二级缓存&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;默认情况下，只有一级缓存开启（Sqlsession级别的缓存，也称为本地缓存）&lt;/li&gt;
+&lt;li&gt;二级缓存需要手动开启和配置，他是基于namespace级别的缓存&lt;/li&gt;
+&lt;li&gt;为了提高扩展性，MyBatis定义了缓存接口Cache，我们可以通过实现Cache借口来自定义二级缓存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1121-一级缓存&#34;&gt;11.2.1 一级缓存&lt;/h4&gt;
+&lt;p&gt;一级缓存也叫本地缓存：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;与数据库同一次会话期间查询到的数据会放在本地缓存中。&lt;/li&gt;
+&lt;li&gt;以后如果需要获取相同的数据，直接从缓存中拿，没必须再去查询数据库；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;在mybatis中加入日志，方便测试结果&lt;/li&gt;
+&lt;li&gt;编写接口方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//根据id查询用户
+User queryUserById(@Param(&amp;quot;id&amp;quot;) int id);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;接口对应的Mapper文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;queryUserById&amp;quot; resultType=&amp;quot;user&amp;quot;&amp;gt;
+    select * from user where id = #{id}
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testQueryUserById(){
+    SqlSession session = MybatisUtils.getSession();
+    UserMapper mapper = session.getMapper(UserMapper.class);
+
+    User user = mapper.queryUserById(1);
+    System.out.println(user);
+    User user2 = mapper.queryUserById(1);
+    System.out.println(user2);
+    System.out.println(user==user2);
+
+    session.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;1122-二级缓存&#34;&gt;11.2.2 二级缓存&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;二级缓存也叫全局缓存，一级缓存作用域太低了，所以诞生了二级缓存&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基于namespace级别的缓存，一个命名空间，对应一个二级缓存&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;工作机制&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个会话查询一个数据，这个数据就会被放在当前会话的一级缓存中&lt;/li&gt;
+&lt;li&gt;如果当前会话关闭了，这个会话对应的一级缓存就没了；但我们想要的使，会话关闭了，一级缓存中的数据被保存到二级缓存中。&lt;/li&gt;
+&lt;li&gt;新的会话查询信息，就可以从二级缓存中获取内容&lt;/li&gt;
+&lt;li&gt;不同的mapper查出的数据会放在自己对应的缓存（本质是一个k-v的map）中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;使用步骤&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;【官方文档:】&lt;a href=&#34;http://www.mybatis.org/mybatis-3/zh/sqlmap-xml.html#cache&#34;&gt;官方文档&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;开启全局缓存【mybatis-config.xml】&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;setting name=&amp;quot;cacheEnabled&amp;quot; value=&amp;quot;true&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;去每个mapper.xml中配置二级缓存【xxxMapper.xml】&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;cache/&amp;gt;
+
+官方示例=====&amp;gt;查看官方文档
+&amp;lt;cache
+  eviction=&amp;quot;FIFO&amp;quot;
+  flushInterval=&amp;quot;60000&amp;quot;
+  size=&amp;quot;512&amp;quot;
+  readOnly=&amp;quot;true&amp;quot;/&amp;gt;
+这个更高级的配置创建了一个 FIFO 缓存，每隔 60 秒刷新，最多可以存储结果对象或列表的 512 个引用，而且返回的对象被认为是只读的，因此对它们进行修改可能会在不同线程中的调用者产生冲突。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;代码测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;所有的实体类首先需要实现序列化接口&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void testQueryUserById(){
+    SqlSession session = MybatisUtils.getSession();
+    SqlSession session2 = MybatisUtils.getSession();
+
+    UserMapper mapper = session.getMapper(UserMapper.class);
+    UserMapper mapper2 = session2.getMapper(UserMapper.class);
+
+    User user = mapper.queryUserById(1);
+    System.out.println(user);
+    session.close();
+
+    User user2 = mapper2.queryUserById(1);
+    System.out.println(user2);
+    System.out.println(user==user2);
+
+    session2.close();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;1123-结论&#34;&gt;11.2.3 结论&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;只要开启了二级缓存，在同一个mapper下查询，可以在二级缓存中拿到数据&lt;/li&gt;
+&lt;li&gt;查出的数据都被先被默认保存在一级缓存中&lt;/li&gt;
+&lt;li&gt;只有会话提交或者关闭后，一级缓存的数据才会转到二级缓存中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;113-缓存的原理&#34;&gt;11.3 缓存的原理&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804140908.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;缓存的顺序： 二级缓存-&amp;gt;一级缓存-&amp;gt;查询数据库&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;114-自定义缓存&#34;&gt;11.4 自定义缓存&lt;/h3&gt;
+&lt;p&gt;第三方缓存实现–EhCache: 查看百度百科&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ehcache是一种广泛使用的java分布式缓存，用于通用缓存；&lt;/li&gt;
+&lt;li&gt;要在应用程序中使用Ehcache，需要引入依赖的jar包&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.mybatis.caches/mybatis-ehcache --&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.mybatis.caches&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;mybatis-ehcache&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.1.0&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;在mapper.xml中使用对应的缓存即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;mapper namespace = “org.acme.FooMapper” &amp;gt; 
+    &amp;lt;cache type = “org.mybatis.caches.ehcache.EhcacheCache” /&amp;gt; 
+&amp;lt;/mapper&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;编写ehcache.xml文件，如果在&lt;code&gt;加载时&lt;/code&gt;未找到&lt;code&gt;/ehcache.xml&lt;/code&gt;资源或出现问题，则将使用默认配置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;ehcache xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:noNamespaceSchemaLocation=&amp;quot;http://ehcache.org/ehcache.xsd&amp;quot;
+         updateCheck=&amp;quot;false&amp;quot;&amp;gt;
+    &amp;lt;!--
+       diskStore：为缓存路径，ehcache分为内存和磁盘两级，此属性定义磁盘的缓存位置。参数解释如下：
+       user.home – 用户主目录
+       user.dir  – 用户当前工作目录
+       java.io.tmpdir – 默认临时文件路径
+     --&amp;gt;
+    &amp;lt;diskStore path=&amp;quot;./tmpdir/Tmp_EhCache&amp;quot;/&amp;gt;
+    
+    &amp;lt;defaultCache
+            eternal=&amp;quot;false&amp;quot;
+            maxElementsInMemory=&amp;quot;10000&amp;quot;
+            overflowToDisk=&amp;quot;false&amp;quot;
+            diskPersistent=&amp;quot;false&amp;quot;
+            timeToIdleSeconds=&amp;quot;1800&amp;quot;
+            timeToLiveSeconds=&amp;quot;259200&amp;quot;
+            memoryStoreEvictionPolicy=&amp;quot;LRU&amp;quot;/&amp;gt;
+ 
+    &amp;lt;cache
+            name=&amp;quot;cloud_user&amp;quot;
+            eternal=&amp;quot;false&amp;quot;
+            maxElementsInMemory=&amp;quot;5000&amp;quot;
+            overflowToDisk=&amp;quot;false&amp;quot;
+            diskPersistent=&amp;quot;false&amp;quot;
+            timeToIdleSeconds=&amp;quot;1800&amp;quot;
+            timeToLiveSeconds=&amp;quot;1800&amp;quot;
+            memoryStoreEvictionPolicy=&amp;quot;LRU&amp;quot;/&amp;gt;
+    &amp;lt;!--
+       defaultCache：默认缓存策略，当ehcache找不到定义的缓存时，则使用这个缓存策略。只能定义一个。
+     --&amp;gt;
+    &amp;lt;!--
+      name:缓存名称。
+      maxElementsInMemory:缓存最大数目
+      maxElementsOnDisk：硬盘最大缓存个数。
+      eternal:对象是否永久有效，一但设置了，timeout将不起作用。
+      overflowToDisk:是否保存到磁盘，当系统当机时
+      timeToIdleSeconds:设置对象在失效前的允许闲置时间（单位：秒）。仅当eternal=false对象不是永久有效时使用，可选属性，默认值是0，也就是可闲置时间无穷大。
+      timeToLiveSeconds:设置对象在失效前允许存活时间（单位：秒）。最大时间介于创建时间和失效时间之间。仅当eternal=false对象不是永久有效时使用，默认是0.，也就是对象存活时间无穷大。
+      diskPersistent：是否缓存虚拟机重启期数据 Whether the disk store persists between restarts of the Virtual Machine. The default value is false.
+      diskSpoolBufferSizeMB：这个参数设置DiskStore（磁盘缓存）的缓存区大小。默认是30MB。每个Cache都应该有自己的一个缓冲区。
+      diskExpiryThreadIntervalSeconds：磁盘失效线程运行时间间隔，默认是120秒。
+      memoryStoreEvictionPolicy：当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）。
+      clearOnFlush：内存数量最大时是否清除。
+      memoryStoreEvictionPolicy:可选策略有：LRU（最近最少使用，默认策略）、FIFO（先进先出）、LFU（最少访问次数）。
+      FIFO，first in first out，这个是大家最熟的，先进先出。
+      LFU， Less Frequently Used，就是上面例子中使用的策略，直白一点就是讲一直以来最少被使用的。如上面所讲，缓存的元素有一个hit属性，hit值最小的将会被清出缓存。
+      LRU，Least Recently Used，最近最少使用的，缓存的元素有一个时间戳，当缓存容量满了，而又需要腾出地方来缓存新的元素的时候，那么现有缓存元素中时间戳离当前时间最远的元素将被清出缓存。
+   --&amp;gt;
+
+&amp;lt;/ehcache&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;12-springboot整合mybatis&#34;&gt;12、SpringBoot整合MyBatis&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;导入 MyBatis 所需要的依赖&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;2.1.1&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;配置数据库连接信息（不变）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-properties&#34;&gt;spring:
+  datasource:
+    username: root
+    password: 123456
+    #?serverTimezone=UTC解决时区的报错
+    url: jdbc:mysql://localhost:3306/springboot?serverTimezone=UTC&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #Spring Boot 默认是不注入这些属性值的，需要自己绑定
+    #druid 数据源专有配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+
+    #配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+    #如果允许时报错  java.lang.ClassNotFoundException: org.apache.log4j.Priority
+    #则导入 log4j 依赖即可，Maven 地址：https://mvnrepository.com/artifact/log4j/log4j
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;测试数据库是否连接成功！&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建实体类并导入lombook!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
+
+    private int id;
+    private String pwd;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;创建Mapper目录以及对应的Mapper接口&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.zhuuu.pojo.User;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+//这个注解表示了这是一个mybatis的mapper类:Dao
+@Mapper
+@Repository
+public interface UserMapper {
+//    public static final int age = 18;
+
+    List&amp;lt;User&amp;gt; queryUserlist();
+
+    User queryUserById(int id);
+
+    int addUser(User user);
+
+    int updateUser(User user);
+
+    int deleteUser(int id);
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;对应的Mapper映射文件（放在resources/mapper/UserMapper.xml）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE mapper
+        PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
+        &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.zhuuu.mapper.UserMapper&amp;quot;&amp;gt;
+
+    &amp;lt;select id=&amp;quot;queryUserlist&amp;quot; resultType=&amp;quot;User&amp;quot;&amp;gt;
+        select * from user
+    &amp;lt;/select&amp;gt;
+
+    &amp;lt;select id=&amp;quot;queryUserById&amp;quot; resultType=&amp;quot;User&amp;quot;&amp;gt;
+        select * from user where id = #{id}
+    &amp;lt;/select&amp;gt;
+
+    &amp;lt;insert id=&amp;quot;addUser&amp;quot; parameterType=&amp;quot;User&amp;quot;&amp;gt;
+        insert into user(id, name, pwd) values (#{id},#{name},#{pwd})
+    &amp;lt;/insert&amp;gt;
+
+    &amp;lt;update id=&amp;quot;updateUser&amp;quot; parameterType=&amp;quot;User&amp;quot;&amp;gt;
+        update user set name=#{name},pwd=#{pwd} where id = #{id}
+    &amp;lt;/update&amp;gt;
+
+    &amp;lt;delete id=&amp;quot;deleteUser&amp;quot; parameterType=&amp;quot;int&amp;quot;&amp;gt;
+        delete from user where id=#{id}
+    &amp;lt;/delete&amp;gt;
+
+&amp;lt;/mapper&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Maven配置资源过滤问题&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;resources&amp;gt;
+    &amp;lt;resource&amp;gt;
+        &amp;lt;directory&amp;gt;src/main/java&amp;lt;/directory&amp;gt;
+        &amp;lt;includes&amp;gt;
+            &amp;lt;include&amp;gt;**/*.xml&amp;lt;/include&amp;gt;
+        &amp;lt;/includes&amp;gt;
+        &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
+    &amp;lt;/resource&amp;gt;
+&amp;lt;/resources&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;编写UserController进行测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RestController
+public class UserController {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @GetMapping(&amp;quot;/queryUserList&amp;quot;)
+    public List&amp;lt;User&amp;gt; queryUserList(){
+        List&amp;lt;User&amp;gt; userList = userMapper.queryUserlist();
+        for (User user : userList) {
+            System.out.println(user);
+        }
+        return userList;
+    }
+    
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;启动项目访问进行测试！&lt;/strong&gt;&lt;/p&gt;
 ">Mybatis</a>
       </div>
       
