@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>MongoDB | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1596522106315">
+<link rel="shortcut icon" href="/favicon.ico?v=1596530324272">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -218,7 +218,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">31</span>
+        <span class="site-item-stat-count">32</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -4125,6 +4125,456 @@ public class SelectDocumentByPage {
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/springmvc/"" data-c="
+          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804155812.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-回顾mvc&#34;&gt;1、回顾MVC&lt;/h2&gt;
+&lt;h3 id=&#34;11-什么是mvc&#34;&gt;1.1 什么是MVC?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;MVC是模型（model）,视图（view）,控制器(controller)的简写，是一种软件设计规范&lt;/li&gt;
+&lt;li&gt;是将业务逻辑代码，数据，显示分离的方法来组织代码&lt;/li&gt;
+&lt;li&gt;MVC主要的作用是&lt;strong&gt;降低了视图与业务逻辑之间的双向耦合&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;MVC不是一种设置模式，MVC是一种架构模式，当然不同的MVC存在差异。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804160234.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;**Model（模型）：**数据模型，提供要展示的数据，因此包含数据和行为，可以认为是领域模型或JavaBean组件（包含数据和行为），不过现在一般都分离开来：Value Object（数据Dao） 和 服务层（行为Service）。也就是模型提供了模型数据查询和模型数据的状态更新等功能，包括数据和业务。&lt;/p&gt;
+&lt;p&gt;**View（视图）：**负责进行模型的展示，一般就是我们见到的用户界面，客户想看到的东西。&lt;/p&gt;
+&lt;p&gt;**Controller（控制器）：**接收用户请求，委托给模型进行处理（状态改变），处理完毕后把返回的模型数据返回给视图，由视图负责展示。 也就是说控制器做了个调度员的工作。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;最经典的MVC就是：JSP+Servlet+javabean的模式&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;12-时代划分&#34;&gt;1.2 时代划分&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Model1时代&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在web早期的开发中，通常采用的都是Model1。&lt;/li&gt;
+&lt;li&gt;Model1中，主要分为两层，视图层和模型层。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804160303.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;Model2时代&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Model2把一个项目分成三部分，包括&lt;strong&gt;视图、控制、模型&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804160310.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;用户发送请求&lt;/li&gt;
+&lt;li&gt;Servlet接受请求数据，并调用对应的业务逻辑方法&lt;/li&gt;
+&lt;li&gt;业务处理完毕，返回更新后的Servlet&lt;/li&gt;
+&lt;li&gt;servlet转向JSP,由JSP来渲染页面&lt;/li&gt;
+&lt;li&gt;响应给前端更新后的页面&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;职业分析&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Controller：控制器&lt;/strong&gt;（Servlet）&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;取得表单数据&lt;/li&gt;
+&lt;li&gt;调用业务逻辑&lt;/li&gt;
+&lt;li&gt;转向指定的页面&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Model：模型&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;业务逻辑&lt;/li&gt;
+&lt;li&gt;保存数据的状态&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;View：视图&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;13-总结&#34;&gt;1.3 总结&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Model2这样不仅提高的代码的复用率与项目的扩展性，且大大降低了项目的维护成本。&lt;/li&gt;
+&lt;li&gt;Model 1模式的实现比较简单，适用于快速开发小规模项目，Model1中JSP页面身兼View和Controller两种角色，将控制逻辑和表现逻辑混杂在一起，从而导致代码的重用性非常低，增加了应用的扩展性和维护的难度。Model2消除了Model1的缺点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-hellospringmvc&#34;&gt;2、HelloSpringMVC&lt;/h2&gt;
+&lt;h3 id=&#34;21-配置版实现&#34;&gt;2.1 配置版实现&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;新建一个Moudle ， 添加web的支持！&lt;/li&gt;
+&lt;li&gt;确定导入了SpringMVC 的依赖！&lt;/li&gt;
+&lt;li&gt;配置web.xml ， 注册DispatcherServlet&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;web-app xmlns=&amp;quot;http://xmlns.jcp.org/xml/ns/javaee&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&amp;quot;
+         version=&amp;quot;4.0&amp;quot;&amp;gt;
+    
+&amp;lt;!--配置DispatchServlet:这个是SpringMVC的核心，请求分发器，前端控制器--&amp;gt;
+    
+    &amp;lt;servlet&amp;gt;
+        &amp;lt;servlet-name&amp;gt;springmvc&amp;lt;/servlet-name&amp;gt;
+        &amp;lt;servlet-class&amp;gt;org.springframework.web.servlet.DispatcherServlet&amp;lt;/servlet-class&amp;gt;
+&amp;lt;!--DispatcherServlet要绑定Spring的配置文件--&amp;gt;
+        &amp;lt;init-param&amp;gt;
+            &amp;lt;param-name&amp;gt;contextConfigLocation&amp;lt;/param-name&amp;gt;
+            &amp;lt;param-value&amp;gt;classpath:springmvc-servlet.xml&amp;lt;/param-value&amp;gt;
+        &amp;lt;/init-param&amp;gt;
+&amp;lt;!--启动级别：初始化启动--&amp;gt;
+        &amp;lt;load-on-startup&amp;gt;1&amp;lt;/load-on-startup&amp;gt;
+    &amp;lt;/servlet&amp;gt;
+
+&amp;lt;!--在Springmvc中 / 和 /*的区别
+/: 只匹配所有的请求，不会匹配JSP页面
+/*:匹配所有的请求，包括jsp页面--&amp;gt;
+    &amp;lt;servlet-mapping&amp;gt;
+        &amp;lt;servlet-name&amp;gt;springmvc&amp;lt;/servlet-name&amp;gt;
+        &amp;lt;url-pattern&amp;gt;/&amp;lt;/url-pattern&amp;gt;
+    &amp;lt;/servlet-mapping&amp;gt;
+    
+&amp;lt;/web-app&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;编写SpringMVC 的 配置文件！&lt;/p&gt;
+&lt;p&gt;名称：springmvc-servlet.xml : [servletname]-servlet.xml说明，这里的名称要求是按照官方来的&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
+      xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+      xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd&amp;quot;&amp;gt;
+
+&amp;lt;/beans&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;添加处理器映射&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--处理器映射器--&amp;gt;
+    &amp;lt;bean class=&amp;quot;org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;添加处理器适配器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--处理器适配器--&amp;gt;
+&amp;lt;bean class=&amp;quot;org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;添加视图解析器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--视图解析器 以后模板引擎会使用：Thymeleaf Freemarker--&amp;gt;
+    &amp;lt;bean class=&amp;quot;org.springframework.web.servlet.view.InternalResourceViewResolver&amp;quot; id=&amp;quot;internalResourceViewResolver&amp;quot;&amp;gt;
+&amp;lt;!-- 前缀和后缀--&amp;gt;
+        &amp;lt;property name=&amp;quot;prefix&amp;quot; value=&amp;quot;/WEB-INF/JSP/&amp;quot;/&amp;gt;
+        &amp;lt;property name=&amp;quot;suffix&amp;quot; value=&amp;quot;.jsp&amp;quot;/&amp;gt;
+    &amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;编写我们要操作业务的Controller，要么实现Controller接口，要么增加注解；（需要返回一个ModelandView，封装数据，转发视图）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.zhuuu.Controller;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class HelloController implements Controller {
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
+        ModelAndView mv = new ModelAndView();
+
+        //业务代码：封装数据
+        String result = &amp;quot;HelloSpringMVC&amp;quot;;
+        mv.addObject(&amp;quot;msg&amp;quot;,result);
+
+        //视图跳转
+        mv.setViewName(&amp;quot;test&amp;quot;);
+
+        //返回model and view
+        return mv;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;将自己的类交给SpringIOC容器，注册bean&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--BeanNameUrlHandlerMapping:bean--&amp;gt;
+    &amp;lt;bean id=&amp;quot;/hello&amp;quot; class=&amp;quot;com.zhuuu.Controller.HelloController&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;编写需要跳转的页面&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;%@ page contentType=&amp;quot;text/html;charset=UTF-8&amp;quot; language=&amp;quot;java&amp;quot; %&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+
+${msg}
+
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;11&#34;&gt;
+&lt;li&gt;配置Tomcat 启动测试！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;404error的问题&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;可能遇到的问题：访问出现404，排查步骤：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;查看控制台输出，看一下是不是缺少了什么jar包。&lt;/li&gt;
+&lt;li&gt;如果jar包存在，显示无法输出，就在IDEA的项目发布中，添加lib依赖！&lt;/li&gt;
+&lt;li&gt;重启Tomcat 即可解决！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804161133.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;22-注解版实现&#34;&gt;2.2 注解版实现&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;第一步:新建一个Moudle , 添加web支持！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第二步:由于Maven可能存在资源过滤的问题，我们将配置完善&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;build&amp;gt;
+    &amp;lt;resources&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/java&amp;lt;/directory&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/*.properties&amp;lt;/include&amp;gt;
+                &amp;lt;include&amp;gt;**/*.xml&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+            &amp;lt;filtering&amp;gt;false&amp;lt;/filtering&amp;gt;
+        &amp;lt;/resource&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/resources&amp;lt;/directory&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/*.properties&amp;lt;/include&amp;gt;
+                &amp;lt;include&amp;gt;**/*.xml&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+            &amp;lt;filtering&amp;gt;false&amp;lt;/filtering&amp;gt;
+        &amp;lt;/resource&amp;gt;
+    &amp;lt;/resources&amp;gt;
+&amp;lt;/build&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;第三步:在pom.xml文件引入相关的依赖&lt;/strong&gt;：&lt;br&gt;
+主要有Spring框架核心库、Spring MVC、servlet , JSTL等。我们在父依赖中已经引入了！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第四步:配置web.xml&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;web-app xmlns=&amp;quot;http://xmlns.jcp.org/xml/ns/javaee&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&amp;quot;
+         version=&amp;quot;4.0&amp;quot;&amp;gt;
+
+    &amp;lt;!--1.注册servlet--&amp;gt;
+    &amp;lt;servlet&amp;gt;
+        &amp;lt;servlet-name&amp;gt;SpringMVC&amp;lt;/servlet-name&amp;gt;
+        &amp;lt;servlet-class&amp;gt;org.springframework.web.servlet.DispatcherServlet&amp;lt;/servlet-class&amp;gt;
+        &amp;lt;!--通过初始化参数指定SpringMVC配置文件的位置，进行关联--&amp;gt;
+        &amp;lt;init-param&amp;gt;
+            &amp;lt;param-name&amp;gt;contextConfigLocation&amp;lt;/param-name&amp;gt;
+            &amp;lt;param-value&amp;gt;classpath:springmvc-servlet.xml&amp;lt;/param-value&amp;gt;
+        &amp;lt;/init-param&amp;gt;
+        &amp;lt;!-- 启动顺序，数字越小，启动越早 --&amp;gt;
+        &amp;lt;load-on-startup&amp;gt;1&amp;lt;/load-on-startup&amp;gt;
+    &amp;lt;/servlet&amp;gt;
+
+    &amp;lt;!--所有请求都会被springmvc拦截 --&amp;gt;
+    &amp;lt;servlet-mapping&amp;gt;
+        &amp;lt;servlet-name&amp;gt;SpringMVC&amp;lt;/servlet-name&amp;gt;
+        &amp;lt;url-pattern&amp;gt;/&amp;lt;/url-pattern&amp;gt;
+    &amp;lt;/servlet-mapping&amp;gt;
+
+&amp;lt;/web-app&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;第五步:添加Spring MVC配置文件&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;让IOC的注解生效&lt;/li&gt;
+&lt;li&gt;静态资源过滤 ：HTML . JS . CSS . 图片 ， 视频 …..&lt;/li&gt;
+&lt;li&gt;MVC的注解驱动&lt;/li&gt;
+&lt;li&gt;配置视图解析器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在resource目录下添加springmvc-servlet.xml配置文件，配置的形式与Spring容器配置基本类似，为了支持基于注解的IOC，设置了自动扫描包的功能，具体配置信息如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
+       xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+       xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot;
+       xmlns:mvc=&amp;quot;http://www.springframework.org/schema/mvc&amp;quot;
+       xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd&amp;quot;&amp;gt;
+
+    &amp;lt;!-- 自动扫描包，让指定包下的注解生效,由IOC容器统一管理 --&amp;gt;
+    &amp;lt;context:component-scan base-package=&amp;quot;com.zhuuu.controller&amp;quot;/&amp;gt;
+    &amp;lt;!-- 让Spring MVC不处理静态资源 .css .js .html .mp3 .mp4--&amp;gt;
+    &amp;lt;mvc:default-servlet-handler /&amp;gt;
+    &amp;lt;!--
+    支持mvc注解驱动
+        在spring中一般采用@RequestMapping注解来完成映射关系
+        要想使@RequestMapping注解生效
+        必须向上下文中注册DefaultAnnotationHandlerMapping
+        和一个AnnotationMethodHandlerAdapter实例
+        这两个实例分别在类级别和方法级别处理。
+        而annotation-driven配置帮助我们自动完成上述两个实例的注入。
+     --&amp;gt;
+    &amp;lt;mvc:annotation-driven /&amp;gt;
+
+    &amp;lt;!-- 视图解析器 --&amp;gt;
+    &amp;lt;bean class=&amp;quot;org.springframework.web.servlet.view.InternalResourceViewResolver&amp;quot;
+          id=&amp;quot;internalResourceViewResolver&amp;quot;&amp;gt;
+        &amp;lt;!-- 前缀 --&amp;gt;
+        &amp;lt;property name=&amp;quot;prefix&amp;quot; value=&amp;quot;/WEB-INF/jsp/&amp;quot; /&amp;gt;
+        &amp;lt;!-- 后缀 --&amp;gt;
+        &amp;lt;property name=&amp;quot;suffix&amp;quot; value=&amp;quot;.jsp&amp;quot; /&amp;gt;
+    &amp;lt;/bean&amp;gt;
+
+&amp;lt;/beans&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;在视图解析器中我们把所有的视图都存放在/WEB-INF/目录下，这样可以保证视图安全，因为这个目录下的文件，客户端不能直接访问。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第六步:创建Controller&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.zhuuu.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class HelloController{
+    @RequestMapping(&amp;quot;/hello&amp;quot;)
+    public String hello(Model model){
+
+        //封装数据
+        model.addAttribute(&amp;quot;msg&amp;quot;,&amp;quot;hello,Spring MVC annatation&amp;quot;);
+
+        return &amp;quot;hello&amp;quot;; // 会被视图解析器处理
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;@Controller是为了让Spring IOC容器初始化时达到自动扫描的目的&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;@RequestMapping是为了映射请求路径&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第七步:创建视图层&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在WEB-INF/ jsp目录中创建hello.jsp ， 视图可以直接取出并展示从Controller带回的信息；&lt;/p&gt;
+&lt;p&gt;可以通过EL表示取出Model中存放的值，或者对象；&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-jsp&#34;&gt;&amp;lt;%@ page contentType=&amp;quot;text/html;charset=UTF-8&amp;quot; language=&amp;quot;java&amp;quot; %&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+
+${msg}
+
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;第八步:配置Tomcat运行&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OK，运行成功！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意事项:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;**/ 和 /\* 的区别：**
+&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt; 不会匹配到.jsp， 只针对我们编写的请求；
+即：.jsp 不会进入spring的 DispatcherServlet类 。
+&amp;lt; url-pattern &amp;gt; /* &amp;lt;/ url-pattern &amp;gt; 会匹配 *.jsp，
+会出现返回 jsp视图 时再次进入spring的DispatcherServlet 类，导致找不到对应的controller所以报404错。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;23-小结&#34;&gt;2.3 小结&lt;/h3&gt;
+&lt;p&gt;实现步骤其实非常简单：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;新建一个web项目&lt;/li&gt;
+&lt;li&gt;导入相关jar包&lt;/li&gt;
+&lt;li&gt;编写web.xml，注册DispatchterServlet&lt;/li&gt;
+&lt;li&gt;编写SpringMVC配置文件&lt;/li&gt;
+&lt;li&gt;接下来就要使去创建对应的控制类，controller&lt;/li&gt;
+&lt;li&gt;最后完善前端试图和controller之间的对应&lt;/li&gt;
+&lt;li&gt;测试运行调试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;使用springMVC必须配置的三大件：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;处理器映射器、处理器适配器、视图解析器&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;通常，我们只需要&lt;strong&gt;手动配置视图解析器&lt;/strong&gt;，而&lt;strong&gt;处理器映射器&lt;/strong&gt;和&lt;strong&gt;处理器适配器&lt;/strong&gt;只需要开启&lt;strong&gt;注解驱动&lt;/strong&gt;即可，而省去了大段的xml配置&lt;/p&gt;
+&lt;h2 id=&#34;3-restful风格&#34;&gt;3、Restful风格&lt;/h2&gt;
+&lt;h3 id=&#34;31-概念&#34;&gt;3.1 概念&lt;/h3&gt;
+&lt;p&gt;Restful就是一个资源定位及资源操作的风格。不是标准也不是协议，只是一种风格。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。&lt;/p&gt;
+&lt;h3 id=&#34;32-功能&#34;&gt;3.2 功能&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;资源：互联网所有的事物都可以被抽象为资源&lt;/li&gt;
+&lt;li&gt;资源操作：使用POST、DELETE、PUT、GET，使用不同方法对资源进行操作。&lt;/li&gt;
+&lt;li&gt;分别对应 添加、 删除、修改、查询。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;321-传统方式操作资源&#34;&gt;3.2.1 传统方式操作资源&lt;/h4&gt;
+&lt;p&gt;通过不同的参数来实现不同的效果！方法单一，post 和 get&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;http://127.0.0.1/item/queryItem.action?id=1 查询,GET&lt;/li&gt;
+&lt;li&gt;http://127.0.0.1/item/saveItem.action 新增,POST&lt;/li&gt;
+&lt;li&gt;http://127.0.0.1/item/updateItem.action 更新,POST&lt;/li&gt;
+&lt;li&gt;http://127.0.0.1/item/deleteItem.action?id=1 删除,GET或POST&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;322-使用restful操作资源&#34;&gt;3.2.2 使用RESTful操作资源&lt;/h4&gt;
+&lt;p&gt;可以通过不同的请求方式来实现不同的效果！如下：请求地址一样，但是功能可以不同！&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;http://127.0.0.1/item/1 查询,GET&lt;/li&gt;
+&lt;li&gt;http://127.0.0.1/item 新增,POST&lt;/li&gt;
+&lt;li&gt;http://127.0.0.1/item 更新,PUT&lt;/li&gt;
+&lt;li&gt;http://127.0.0.1/item/1 删除,DELETE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;学习测试&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在新建一个类 RestFulController&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Controller
+public class RestFulController {
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;在Spring MVC中可以使用 @PathVariable 注解，让方法参数的值对应绑定到一个URI模板变量上。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Controller
+public class RestFulController {
+
+    //映射访问路径
+    @RequestMapping(&amp;quot;/commit/{p1}/{p2}&amp;quot;)
+    public String index(@PathVariable int p1, @PathVariable int p2, Model model){
+        
+        int result = p1+p2;
+        //Spring MVC会自动实例化一个Model对象用于向视图中传值
+        model.addAttribute(&amp;quot;msg&amp;quot;, &amp;quot;结果：&amp;quot;+result);
+        //返回视图位置
+        return &amp;quot;test&amp;quot;;
+    }
+    
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试请求查看下&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804162003.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;思考：使用路径变量的好处？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使得路径变得更加简洁&lt;/li&gt;
+&lt;li&gt;获得参数更加方便，框架会自动进行类型转换&lt;/li&gt;
+&lt;li&gt;通过路径变量可以约束访问参数，如果类型不一样，则访问不到对应的请求方法，如这里访问是的路径是/commit/1/a，则路径与方法不匹配，而不会是参数转换失败。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804162028.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;我们来修改下对应的参数类型，再次测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//映射访问路径
+@RequestMapping(&amp;quot;/commit/{p1}/{p2}&amp;quot;)
+public String index(@PathVariable int p1, @PathVariable String p2, Model model){
+
+    String result = p1+p2;
+    //Spring MVC会自动实例化一个Model对象用于向视图中传值
+    model.addAttribute(&amp;quot;msg&amp;quot;, &amp;quot;结果：&amp;quot;+result);
+    //返回视图位置
+    return &amp;quot;test&amp;quot;;
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804162101.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;使用method属性指定请求类型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;用于约束请求的类型，可以收窄请求范围。指定请求谓词的类型如GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE等&lt;/p&gt;
+&lt;p&gt;Spring MVC 的 @RequestMapping 注解能够处理 HTTP 请求的方法, 比如 GET, PUT, POST, DELETE 以及 PATCH。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;所有的地址栏请求默认都会是 HTTP GET 类型的。&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@GetMapping
+@PostMapping
+@PutMapping
+@DeleteMapping
+@PatchMapping
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;@GetMapping 是一个组合注解&lt;/p&gt;
+&lt;p&gt;它所扮演的是 @RequestMapping(method =RequestMethod.GET) 的一个快捷方式。&lt;/p&gt;
+&lt;p&gt;平时使用的会比较多！&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Controller
+public class RestfulController  {
+    @RequestMapping(value = &amp;quot;/commit/{p1}/{p2}&amp;quot;,method = RequestMethod.GET)
+    public String index(@PathVariable int p1 , @PathVariable int p2, Model model){
+        int result = p1+p2;
+        model.addAttribute(&amp;quot;msg&amp;quot;,&amp;quot;结果&amp;quot;+result);
+        return &amp;quot;test&amp;quot;;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3-结果跳转方式&#34;&gt;3、结果跳转方式&lt;/h2&gt;
+">SpringMVC</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/zong-he-xing-b2c-dian-zi-shang-wu-ping-tai-xiang-mu/"" data-c="
@@ -24366,7 +24816,8 @@ application-prod.properties/yml 生产环境&lt;/p&gt;
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/spring/"" data-c="
-          &lt;h2 id=&#34;1-spring&#34;&gt;1、Spring&lt;/h2&gt;
+          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804155452.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-spring&#34;&gt;1、Spring&lt;/h2&gt;
 &lt;h3 id=&#34;11-简介&#34;&gt;1.1 简介&lt;/h3&gt;
 &lt;p&gt;Spring：春天—-&amp;gt;给软件行业带来了春天！&lt;br&gt;
 2002，首次推出了Spring框架的雏形：interface21框架！&lt;br&gt;
@@ -24410,10 +24861,21 @@ SSM：SpringMVC+Spring+Mybatis!​&lt;br&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;13-组成&#34;&gt;1.3 组成&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617110747.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617110747.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;Spring 框架是一个分层架构，由 7 个定义良好的模块组成。Spring 模块构建在核心容器之上，核心容器定义了创建、配置和管理 bean 的方式 .&lt;/p&gt;
+&lt;p&gt;组成 Spring 框架的每个模块（或组件）都可以单独存在，或者与其他一个或多个模块联合实现。每个模块的功能如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心容器&lt;/strong&gt;：核心容器提供 Spring 框架的基本功能。核心容器的主要组件是BeanFactory，它是工厂模式的实现。BeanFactory 使用&lt;em&gt;控制反转&lt;/em&gt;（IOC） 模式将应用程序的配置和依赖性规范与实际的应用程序代码分开。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spring 上下文&lt;/strong&gt;：Spring 上下文是一个配置文件，向 Spring 框架提供上下文信息。Spring 上下文包括企业服务，例如 JNDI、EJB、电子邮件、国际化、校验和调度功能。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spring AOP&lt;/strong&gt;：通过配置管理特性，Spring AOP 模块直接将面向切面的编程功能 , 集成到了 Spring 框架中。所以，可以很容易地使 Spring 框架管理任何支持 AOP的对象。Spring AOP 模块为基于 Spring 的应用程序中的对象提供了事务管理服务。通过使用 Spring AOP，不用依赖组件，就可以将声明性事务管理集成到应用程序中。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spring DAO&lt;/strong&gt;：JDBC DAO 抽象层提供了有意义的异常层次结构，可用该结构来管理异常处理和不同数据库供应商抛出的错误消息。异常层次结构简化了错误处理，并且极大地降低了需要编写的异常代码数量（例如打开和关闭连接）。Spring DAO 的面向 JDBC 的异常遵从通用的 DAO 异常层次结构。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spring ORM&lt;/strong&gt;：Spring 框架插入了若干个 ORM 框架，从而提供了 ORM 的对象关系工具，其中包括 JDO、Hibernate 和 iBatis SQL Map。所有这些都遵从 Spring 的通用事务和 DAO 异常层次结构。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spring Web 模块&lt;/strong&gt;：Web 上下文模块建立在应用程序上下文模块之上，为基于 Web 的应用程序提供了上下文。所以，Spring 框架支持与 Jakarta Struts 的集成。Web 模块还简化了处理多部分请求以及将请求参数绑定到域对象的工作。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spring MVC 框架&lt;/strong&gt;：MVC 框架是一个全功能的构建 Web 应用程序的 MVC 实现。通过策略接口，MVC 框架变成为高度可配置的，MVC 容纳了大量视图技术，其中包括 JSP、Velocity、Tiles、iText 和 POI。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;14-拓展&#34;&gt;1.4 拓展&lt;/h3&gt;
 &lt;p&gt;在Spring的官网有这个介绍：现代化的java开发！说白了就是基于Spring的开发！&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617111004.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617111004.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ul&gt;
 &lt;li&gt;Spring Boot
 &lt;ul&gt;
@@ -24432,59 +24894,203 @@ SSM：SpringMVC+Spring+Mybatis!​&lt;br&gt;
 &lt;p&gt;&lt;strong&gt;弊端：发展了太久之后，违背了原来的理念！配置十分繁琐，人称：“配置地狱”。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;2-ioc理论推导&#34;&gt;2、IOC理论推导&lt;/h2&gt;
 &lt;p&gt;1.UserDao接口&lt;/p&gt;
-&lt;p&gt;2.UserDaoImpl实现类&lt;/p&gt;
-&lt;p&gt;3.UserService业务接口&lt;/p&gt;
-&lt;p&gt;4.UserServiceImpl业务实现类&lt;/p&gt;
-&lt;p&gt;在我们之前的业务中，用户的需求可能会影响我们原来的代码，我们需要根据用户的需求去修改源代码!如果程序代码量十分大，修改一次的成本代价十分昂贵！&lt;/p&gt;
-&lt;p&gt;我们使用一个Set接口实现，已经发生了革命性的变化！&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private UserDao userDao;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.dao;
 
-//利用set进行动态实现值的注入！
-public void setUserDao(UserDao userDao){
-    this.userDao = userDao;
+public interface UserDao {
+    public void getUser();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2.UserDaoImpl实现类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.dao;
+
+public class UserDaoImpl implements UserDao{
+    public void getUser() {
+        System.out.println(&amp;quot;获取用户数据&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3.UserService业务接口&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.Service;
+
+public interface UserService {
+    public void getUser();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;4.UserServiceImpl业务实现类&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.Service;
+
+import com.cy.dao.UserDao;
+import com.cy.dao.UserDaoImpl;
+import com.cy.dao.UserDaoMysqlImpl;
+
+public class UserServiceImpl implements UserService {
+    private UserDao userDao = new UserDaoImpl();
+
+
+    public void getUser() {
+        userDao.getUser();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;测试一下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void test(){
+   UserService service = new UserServiceImpl();
+   service.getUser();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那么现在问题来了，如果用户想添加新的功能，那么我们只能从Service层Impl去修改代码&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class UserServiceImpl implements UserService {
+   private UserDao userDao = new UserDaoMySqlImpl();
+
+   @Override
+   public void getUser() {
+       userDao.getUser();
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;假设如果我们还要新增一个功能的话，如&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.dao;
+
+public class UserDaoOracleImpl implements UserDao {
+    public void getUser() {
+        System.out.println(&amp;quot;Oracle获取数据&amp;quot;);
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;ul&gt;
-&lt;li&gt;之前，程序是主动创建对象！控制权在程序员手上！&lt;/li&gt;
-&lt;li&gt;使用了set注入后，程序不再具有主动性，而是变成了被动的接收对象！&lt;/li&gt;
+&lt;li&gt;那么我们发现了一个很严重的问题，程序的耦合性太高了，牵一发而动全身。&lt;/li&gt;
+&lt;li&gt;假设我们的这种需求非常大 , 这种方式就根本不适用了&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;这种思想，从本质上解决了问题，我们程序员不用再去管理对象的创建了。系统的耦合性大大降低，可以更加专注在业务的实现上。这是IOC的原型！&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617140229.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617140305.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;那么我们如何解决呢？&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;22-推导结果&#34;&gt;2.2 推导结果&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;我们可以在需要用到它的地方，不去实现它，而是留出一个接口&lt;/li&gt;
+&lt;li&gt;通过set方法区引用注入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;修改过的UserServiceImpl.java&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class UserServiceImpl implements UserService {
+//    private UserDao userDao = new UserDaoImpl();
+
+    private UserDao userDao;
+    
+	// 利用set实现
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    public void getUser() {
+        userDao.getUser();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;现在通过不一样的的方法去测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void test(){
+   UserServiceImpl service = new UserServiceImpl();
+   service.setUserDao( new UserDaoMySqlImpl() );
+   service.getUser();
+   //那我们现在又想用Oracle去实现呢
+   service.setUserDao( new UserDaoOracleImpl() );
+   service.getUser();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：这里已经发生了根本性的变化&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;以前所有的东西都是由程序去进行控制创建&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;而现在是由用户进行控制创建，把主动权交给了调用者，程序不要用管怎么创建对象。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;这种思想 , 从本质上解决了问题 , 我们程序员不再去管理对象的创建了 , 更多的去关注业务的实现 . 耦合性大大降低 . 这也就是IOC的原型 !&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617140229.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617140305.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;21-ioc本质&#34;&gt;2.1 IOC本质&lt;/h3&gt;
 &lt;p&gt;**控制反转IOC（Inversion of Control），是一种设计思想，DI（依赖注入）是实现IOC的一种方法，**也有人认为DI是IoC的另一种说法。没有IoC的程序中，我们使用面向对象编程，对象的创建与对象间的依赖关系完全硬编码在程序中，对象的创建由程序自己控制，控制反转后将对象的创建转移给第三方，个人认为所谓控制反转就是：获得依赖对象的方式反转了。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804143511.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;以上就是IOC带来的改变。&lt;/p&gt;
+&lt;p&gt;同时，在Spring中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;IoC是Spring框架的核心内容&lt;/strong&gt;，使用多种方式完美的实现了IoC，可以使用XML配置，也可以使用注解，新版本的Spring也可以零配置实现IoC。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring容器在初始化的时候先读取配置文件，根据配置文件或元数据创建与组织对象存入容器中，程序使用时再去从IOC容器中读取需要的对象。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804143612.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;采用XML方式配置Bean的时候，Bean的定义信息是和实现分离的，而采用注解的方式可以把两者合为一体，Bean的定义信息直接以注解的形式定义在实现类中，从而达到了零配置的目的。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;控制反转是一种通过描述（XML或注解）并通过第三方去生产或获取特定对象的方式。在Spring中实现控制反转的是IoC容器，其实现方式是依赖注入（Dependency Injection,DI）&lt;/strong&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;3-hello-spring&#34;&gt;3、Hello Spring&lt;/h2&gt;
-&lt;p&gt;beans.xml官网配置文件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;导入Jar包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+   &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+   &amp;lt;artifactId&amp;gt;spring-webmvc&amp;lt;/artifactId&amp;gt;
+   &amp;lt;version&amp;gt;5.1.10.RELEASE&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写一个Hello实体类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.pojo;
+
+public class Hello {
+    private String str;
+
+    public String getStr() {
+        return str;
+    }
+
+    public void setStr(String str) {
+        this.str = str;
+    }
+
+    @Override
+    public String toString() {
+        return &amp;quot;Hello{&amp;quot; +
+                &amp;quot;str=&#39;&amp;quot; + str + &#39;\&#39;&#39; +
+                &#39;}&#39;;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;在resources/applicationContext.xml&lt;/li&gt;
+&lt;/ol&gt;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
 &amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
        xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
        xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd&amp;quot;&amp;gt;
 
+&amp;lt;!--使用Spring来创建对象，在Spring中称为Bean--&amp;gt;
+    &amp;lt;bean id=&amp;quot;hello&amp;quot; class=&amp;quot;com.cy.pojo.Hello&amp;quot;&amp;gt;
+        &amp;lt;property name=&amp;quot;str&amp;quot; value=&amp;quot;Spring&amp;quot;/&amp;gt;
+    &amp;lt;/bean&amp;gt;
+
 &amp;lt;/beans&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;bean对象添加：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;mysqlImpl&amp;quot; class=&amp;quot;com.kuang.dao.UserDaoMysqlImpl&amp;quot;&amp;gt;&amp;lt;/bean&amp;gt;
-&amp;lt;bean id=&amp;quot;oracleImpl&amp;quot; class=&amp;quot;com.kuang.dao.UserDaoOracleImpl&amp;quot;&amp;gt;&amp;lt;/bean&amp;gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.pojo.Hello;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-&amp;lt;bean id=&amp;quot;UserServiceImpl&amp;quot; class=&amp;quot;com.kuang.service.UserServiceImpl&amp;quot;&amp;gt;
-    &amp;lt;!--
-        ref：引用Spring容器中已经创建好的对象
-        value：具体的值，基本数据类型
-        --&amp;gt;
-    &amp;lt;property name=&amp;quot;userDao&amp;quot; ref=&amp;quot;mysqlImpl&amp;quot;&amp;gt;&amp;lt;/property&amp;gt;
-&amp;lt;/bean&amp;gt;
+public class MyTest {
+    public static void main(String[] args) {
+        // 获取Spring上下文对象！,现在所有对象都在Spring管理了
+        ApplicationContext context = new ClassPathXmlApplicationContext(&amp;quot;applicationContext.xml&amp;quot;);
+
+        Hello hello = (Hello) context.getBean(&amp;quot;hello&amp;quot;);
+        System.out.println(hello.toString());
+    }
+}
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Test方法：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//解析beans.xml文件，生成管理相应的Bean对象
-ApplicationContext context = new ClassPathXmlApplicationContext(&amp;quot;beans.xml&amp;quot;);
-//getBean:参数即为spring配置文件中bean的id
-Hello hello = (Hello) context.getBean(&amp;quot;hello&amp;quot;);
-System.out.println(hello.toString());
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;思考问题&#34;&gt;&lt;strong&gt;思考问题&lt;/strong&gt;？&lt;/h3&gt;
+&lt;h3 id=&#34;31-思考问题&#34;&gt;3.1 思考问题？&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Hello对象是谁创建的？&lt;/p&gt;
@@ -24499,39 +25105,130 @@ System.out.println(hello.toString());
 &lt;p&gt;控制：谁来控制对象的创建，传统应用程序的对象是由程序本身控制创建的，使用Spring后，对象是由Spring来创建的。&lt;/p&gt;
 &lt;p&gt;反转：程序本身不创建对象，而变成被动的接收对象。&lt;/p&gt;
 &lt;p&gt;依赖注入：就是利用set方法来进行注入。&lt;/p&gt;
-&lt;p&gt;IoC是一种编程思想，由主动的编程编程被动的接收。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IoC是一种编程思想，由主动的编程编程被动的接收。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;可以通过new ClassPathXmlApplicationContext去浏览一下底层源码。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;OK，到了现在，我们彻底不用在程序中去改动了，要实现不同的操作，只需要在xml配置文件中进行修改，所谓的IoC，一句话搞定：对象由Spring来创建，管理，装配！&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;IDEA快捷创建beans.xml文件，自动导入spring配置信息：&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617141027.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617141027.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;4-ioc创建对象的方式&#34;&gt;4、IOC创建对象的方式&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;
+&lt;h3 id=&#34;41-通过无参构造方法创建&#34;&gt;4.1 通过无参构造方法创建&lt;/h3&gt;
 &lt;p&gt;使用无参构造创建对象，默认方式！&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;假设我们要使用有参构造创建对象。&lt;/p&gt;
-&lt;p&gt;1.下标赋值：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--第一种，下标赋值！--&amp;gt;
-&amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;com.kuang.pojo.User&amp;quot;&amp;gt;
-    &amp;lt;constructor-arg index=&amp;quot;0&amp;quot; value=&amp;quot;憨批&amp;quot; /&amp;gt;
-&amp;lt;/bean&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;2.类型赋值:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--第二种，通过类型创建，不建议使用，重复类型难以分辨--&amp;gt;
-&amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;com.kuang.pojo.User&amp;quot;&amp;gt;
-    &amp;lt;constructor-arg type=&amp;quot;java.lang.String&amp;quot; value=&amp;quot;大憨批&amp;quot; /&amp;gt;
-&amp;lt;/bean&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;3.参数名赋值:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--第三种，直接通过参数名来设置--&amp;gt;
-&amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;com.kuang.pojo.User&amp;quot;&amp;gt;
-    &amp;lt;constructor-arg name=&amp;quot;name&amp;quot; value=&amp;quot;臭憨批&amp;quot; /&amp;gt;
-&amp;lt;/bean&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;总结：在配置文件加载的时候，容器中管理的对象就已经初始化了！&lt;/p&gt;
-&lt;/li&gt;
+&lt;ol&gt;
+&lt;li&gt;User.java&lt;/li&gt;
 &lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.pojo;
+
+public class User {
+    private String name;
+
+    public User(){
+        System.out.println(&amp;quot;进入了User的无参构造&amp;quot;);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void show(){
+        System.out.println(&amp;quot;name&amp;quot;+name);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;applicationContext.xml&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
+       xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+       xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd&amp;quot;&amp;gt;
+
+    &amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;com.cy.pojo.User&amp;quot;&amp;gt;
+        &amp;lt;property name=&amp;quot;name&amp;quot; value=&amp;quot;朱酱酱&amp;quot;/&amp;gt;
+    &amp;lt;/bean&amp;gt;
+&amp;lt;/beans&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.pojo.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MyTest {
+    public static void main(String[] args) {
+       ApplicationContext context = new ClassPathXmlApplicationContext(&amp;quot;applicationContext.xml&amp;quot;);
+
+        User user = (User) context.getBean(&amp;quot;user&amp;quot;);
+        user.show();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果可以发现，在调用show方法之前，&lt;strong&gt;User对象已经通过无参构造初始化了&lt;/strong&gt;！&lt;/p&gt;
+&lt;h3 id=&#34;42-通过有参构造方法创建&#34;&gt;4.2 通过有参构造方法创建&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;UserT.java&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.pojo;
+
+public class UserT {
+
+    private String name;
+
+    // 有参构造
+    public UserT(String name) {
+        this.name = name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void show(){
+        System.out.println(&amp;quot;name=&amp;quot;+ name );
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;有参构造的三种注入方式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!-- 第一种根据index参数下标设置 --&amp;gt;
+&amp;lt;bean id=&amp;quot;userT&amp;quot; class=&amp;quot;com.cy.pojo.UserT&amp;quot;&amp;gt;
+   &amp;lt;!-- index指构造方法 , 下标从0开始 --&amp;gt;
+   &amp;lt;constructor-arg index=&amp;quot;0&amp;quot; value=&amp;quot;朱酱酱2&amp;quot;/&amp;gt;
+&amp;lt;/bean&amp;gt;
+&amp;lt;!-- 第二种根据参数名字设置 --&amp;gt;
+&amp;lt;bean id=&amp;quot;userT&amp;quot; class=&amp;quot;com.cy.pojo.UserT&amp;quot;&amp;gt;
+   &amp;lt;!-- name指参数名 --&amp;gt;
+   &amp;lt;constructor-arg name=&amp;quot;name&amp;quot; value=&amp;quot;朱酱酱2&amp;quot;/&amp;gt;
+&amp;lt;/bean&amp;gt;
+&amp;lt;!-- 第三种根据参数类型设置 --&amp;gt;
+&amp;lt;bean id=&amp;quot;userT&amp;quot; class=&amp;quot;com.cy.pojo.UserT&amp;quot;&amp;gt;
+   &amp;lt;constructor-arg type=&amp;quot;java.lang.String&amp;quot; value=&amp;quot;cy&amp;quot;/&amp;gt;
+&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.pojo.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MyTest {
+    public static void main(String[] args) {
+       ApplicationContext context = new ClassPathXmlApplicationContext(&amp;quot;applicationContext.xml&amp;quot;);
+
+        UserT user = (UserT) context.getBean(&amp;quot;userT&amp;quot;);
+        user.show();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;结论：在配置文件加载的时候。其中管理的对象都已经初始化了！&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;5-spring配置&#34;&gt;5、Spring配置&lt;/h2&gt;
 &lt;h3 id=&#34;51-别名&#34;&gt;5.1 别名&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--别名，如果添加了别名，我们也可以使用别名获取到--&amp;gt;
@@ -24559,7 +25256,7 @@ Class : 该bean的类路径。&lt;br&gt;
 Singleton : 默认为true，即单实例模式，每次getBean(“id”)时获取的都是同一个实例，如果设置为false，即原型模式，则每次获取的是新创建的实例。&lt;/p&gt;
 &lt;h3 id=&#34;54-bean的配置&#34;&gt;5.4 Bean的配置&lt;/h3&gt;
 &lt;p&gt;ID,name 或class&lt;br&gt;
-一般情况下，转配一个Bean时，通过指定一个ID属性作为Bean的名称&lt;br&gt;
+一般情况下，转 配一个Bean时，通过指定一个ID属性作为Bean的名称&lt;br&gt;
 1.&lt;strong&gt;id&lt;/strong&gt;属性在IOC容器中必须是唯一的&lt;br&gt;
 2.如果Bean的名称中含有特殊字符，就需要使用&lt;strong&gt;name&lt;/strong&gt;属性&lt;br&gt;
 3.&lt;strong&gt;class&lt;/strong&gt;用于设置一个类的完全路径名称，主要作用是ioc容器生成类的实例&lt;/p&gt;
@@ -24568,7 +25265,7 @@ Singleton : 默认为true，即单实例模式，每次getBean(“id”)时获�
     class：bean对象所对应的全限定名：包名+类名；
     name：也是别名，可以同时取多个别名，逗号分割
 --&amp;gt;
-&amp;lt;bean id=&amp;quot;userT&amp;quot; class=&amp;quot;com.kuang.pojo.UserT&amp;quot; name=&amp;quot;user2,u2&amp;quot;&amp;gt;
+&amp;lt;bean id=&amp;quot;userT&amp;quot; class=&amp;quot;com.cy.pojo.UserT&amp;quot; name=&amp;quot;user2,u2&amp;quot;&amp;gt;
 &amp;lt;/bean&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;54-import&#34;&gt;5.4 import&lt;/h3&gt;
@@ -24618,14 +25315,101 @@ Singleton : 默认为true，即单实例模式，每次getBean(“id”)时获�
 &lt;li&gt;真实测试对象&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Student {
+
     private String name;
+
     private Address address;
+
     private String[] books;
-    private List&amp;lt;String&amp;gt; hobbies;
+
+    private List&amp;lt;String&amp;gt; hobbys;
+
     private Map&amp;lt;String,String&amp;gt; card;
+
     private Set&amp;lt;String&amp;gt; games;
-    private String wife;
+
     private Properties info;
+
+    private String wife;
+
+
+    @Override
+    public String toString() {
+        return &amp;quot;Student{&amp;quot; +
+                &amp;quot;name=&#39;&amp;quot; + name + &#39;\&#39;&#39; +
+                &amp;quot;, address=&amp;quot; + address.toString() +
+                &amp;quot;, books=&amp;quot; + Arrays.toString(books) +
+                &amp;quot;, hobbys=&amp;quot; + hobbys +
+                &amp;quot;, card=&amp;quot; + card +
+                &amp;quot;, games=&amp;quot; + games +
+                &amp;quot;, info=&amp;quot; + info +
+                &amp;quot;, wife=&#39;&amp;quot; + wife + &#39;\&#39;&#39; +
+                &#39;}&#39;;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public String[] getBooks() {
+        return books;
+    }
+
+    public void setBooks(String[] books) {
+        this.books = books;
+    }
+
+    public List&amp;lt;String&amp;gt; getHobbys() {
+        return hobbys;
+    }
+
+    public void setHobbys(List&amp;lt;String&amp;gt; hobbys) {
+        this.hobbys = hobbys;
+    }
+
+    public Map&amp;lt;String, String&amp;gt; getCard() {
+        return card;
+    }
+
+    public void setCard(Map&amp;lt;String, String&amp;gt; card) {
+        this.card = card;
+    }
+
+    public Set&amp;lt;String&amp;gt; getGames() {
+        return games;
+    }
+
+    public void setGames(Set&amp;lt;String&amp;gt; games) {
+        this.games = games;
+    }
+
+    public Properties getInfo() {
+        return info;
+    }
+
+    public void setInfo(Properties info) {
+        this.info = info;
+    }
+
+    public String getWife() {
+        return wife;
+    }
+
+    public void setWife(String wife) {
+        this.wife = wife;
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;3&#34;&gt;
@@ -24635,7 +25419,7 @@ Singleton : 默认为true，即单实例模式，每次getBean(“id”)时获�
 &amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
        xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
        xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&amp;quot;&amp;gt;
-    &amp;lt;bean id=&amp;quot;student&amp;quot; class=&amp;quot;com.kuang.pojo.Student&amp;quot;&amp;gt;
+    &amp;lt;bean id=&amp;quot;student&amp;quot; class=&amp;quot;com.cy.pojo.Student&amp;quot;&amp;gt;
         &amp;lt;!--第一种，普通值注入--&amp;gt;
         &amp;lt;property name=&amp;quot;name&amp;quot; value=&amp;quot;憨批&amp;quot;/&amp;gt;
     &amp;lt;/bean&amp;gt;
@@ -24658,9 +25442,9 @@ Singleton : 默认为true，即单实例模式，每次getBean(“id”)时获�
        xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
        xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&amp;quot;&amp;gt;
 
-    &amp;lt;bean id=&amp;quot;address&amp;quot; class=&amp;quot;com.kuang.pojo.Address&amp;quot;/&amp;gt;
+    &amp;lt;bean id=&amp;quot;address&amp;quot; class=&amp;quot;com.cy.pojo.Address&amp;quot;/&amp;gt;
 
-    &amp;lt;bean id=&amp;quot;student&amp;quot; class=&amp;quot;com.kuang.pojo.Student&amp;quot;&amp;gt;
+    &amp;lt;bean id=&amp;quot;student&amp;quot; class=&amp;quot;com.cy.pojo.Student&amp;quot;&amp;gt;
         &amp;lt;!--第一种，普通值注入，value--&amp;gt;
         &amp;lt;property name=&amp;quot;name&amp;quot; value=&amp;quot;憨批&amp;quot;/&amp;gt;
         &amp;lt;!--第二种，Bean注入，ref--&amp;gt;
@@ -24715,7 +25499,28 @@ Singleton : 默认为true，即单实例模式，每次getBean(“id”)时获�
 &amp;lt;/beans&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;63-扩展方式注入&#34;&gt;6.3 扩展方式注入&lt;/h3&gt;
-&lt;p&gt;我们可以使用c和p命令空间进行注入：&lt;/p&gt;
+&lt;p&gt;我们可以使用&lt;strong&gt;c和p命令空间&lt;/strong&gt;进行注入：&lt;/p&gt;
+&lt;p&gt;User.java（注意：这里没有有参构造器）&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class User {
+     private String name;
+     private int age;
+ 
+     public void setName(String name) {
+         this.name = name;
+    }
+ 
+     public void setAge(int age) {
+         this.age = age;
+    }
+ 
+     @Override
+     public String toString() {
+         return &amp;quot;User{&amp;quot; +
+                 &amp;quot;name=&#39;&amp;quot; + name + &#39;\&#39;&#39; +
+                 &amp;quot;, age=&amp;quot; + age +
+                 &#39;}&#39;;
+    }
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;使用：&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
 &amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
@@ -24725,10 +25530,10 @@ Singleton : 默认为true，即单实例模式，每次getBean(“id”)时获�
        xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&amp;quot;&amp;gt;
 
     &amp;lt;!--p命名空间注入，可以直接注入属性的值：property--&amp;gt;
-    &amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;com.kuang.pojo.User&amp;quot; p:name=&amp;quot;憨批&amp;quot; p:age=&amp;quot;18&amp;quot;/&amp;gt;
+    &amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;com.cy.pojo.User&amp;quot; p:name=&amp;quot;憨批&amp;quot; p:age=&amp;quot;18&amp;quot;/&amp;gt;
 
     &amp;lt;!--c命名空间注入，通过构造器注入：construct-args--&amp;gt;
-    &amp;lt;bean id=&amp;quot;user2&amp;quot; class=&amp;quot;com.kuang.pojo.User&amp;quot; c:age=&amp;quot;18&amp;quot; c:name=&amp;quot;憨批&amp;quot;/&amp;gt;
+    &amp;lt;bean id=&amp;quot;user2&amp;quot; class=&amp;quot;com.cy.pojo.User&amp;quot; c:age=&amp;quot;18&amp;quot; c:name=&amp;quot;憨批&amp;quot;/&amp;gt;
 
 &amp;lt;/beans&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -24745,17 +25550,17 @@ public void test2(){
 xmlns:c=&amp;quot;http://www.springframework.org/schema/c&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;64-bean的作用域&#34;&gt;6.4 bean的作用域&lt;/h3&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617145745.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617145745.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ol&gt;
 &lt;li&gt;代理模式（Spring默认机制）：get到的都是同一个对象！&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;user2&amp;quot; class=&amp;quot;com.kuang.pojo.User&amp;quot; c:age=&amp;quot;18&amp;quot; c:name=&amp;quot;憨批&amp;quot; scope=&amp;quot;singleton&amp;quot;/&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;user2&amp;quot; class=&amp;quot;com.cy.pojo.User&amp;quot; c:age=&amp;quot;18&amp;quot; c:name=&amp;quot;憨批&amp;quot; scope=&amp;quot;singleton&amp;quot;/&amp;gt;
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;原型模式：每次从容器中get的时候，都会产生一个新的对象！&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;user2&amp;quot; class=&amp;quot;com.kuang.pojo.User&amp;quot; c:age=&amp;quot;18&amp;quot; c:name=&amp;quot;憨批&amp;quot; scope=&amp;quot;prototype&amp;quot;/&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;user2&amp;quot; class=&amp;quot;com.cy.pojo.User&amp;quot; c:age=&amp;quot;18&amp;quot; c:name=&amp;quot;憨批&amp;quot; scope=&amp;quot;prototype&amp;quot;/&amp;gt;
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;3&#34;&gt;
@@ -24775,13 +25580,14 @@ xmlns:c=&amp;quot;http://www.springframework.org/schema/c&amp;quot;
 &lt;li&gt;在java中显式配置；&lt;/li&gt;
 &lt;li&gt;隐式的自动装配bean&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;推荐不使用自动装配xml配置 , 而使用注解 .&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;71-测试&#34;&gt;7.1 测试&lt;/h3&gt;
 &lt;p&gt;环境搭建：一个人有两个宠物！&lt;/p&gt;
 &lt;h3 id=&#34;72-byname自动装配&#34;&gt;7.2 ByName自动装配&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--
     byName:会自动在容器上下文中查找和自己对象set方法后面的值对应的beanid！
 --&amp;gt;
-&amp;lt;bean id=&amp;quot;people&amp;quot; class=&amp;quot;com.kuang.pojo.People&amp;quot; autowire=&amp;quot;byName&amp;quot;&amp;gt;
+&amp;lt;bean id=&amp;quot;people&amp;quot; class=&amp;quot;com.cy.pojo.People&amp;quot; autowire=&amp;quot;byName&amp;quot;&amp;gt;
     &amp;lt;property name=&amp;quot;name&amp;quot; value=&amp;quot;憨批&amp;quot;/&amp;gt;
 &amp;lt;/bean&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -24789,7 +25595,7 @@ xmlns:c=&amp;quot;http://www.springframework.org/schema/c&amp;quot;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--
     byType:会自动在容器上下文中查找，和自己对象属性类型相同的bean！必须保证类型全局唯一。
 --&amp;gt;
-&amp;lt;bean id=&amp;quot;people&amp;quot; class=&amp;quot;com.kuang.pojo.People&amp;quot; autowire=&amp;quot;byType&amp;quot;&amp;gt;
+&amp;lt;bean id=&amp;quot;people&amp;quot; class=&amp;quot;com.cy.pojo.People&amp;quot; autowire=&amp;quot;byType&amp;quot;&amp;gt;
     &amp;lt;property name=&amp;quot;name&amp;quot; value=&amp;quot;憨批&amp;quot;/&amp;gt;
 &amp;lt;/bean&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -24799,66 +25605,154 @@ xmlns:c=&amp;quot;http://www.springframework.org/schema/c&amp;quot;
 &lt;li&gt;byType的时候，需要保证所有bean的class唯一，并且这个bean需要和自动注入的属性的类型一致！&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;74-使用注解实现自动装配&#34;&gt;7.4 使用注解实现自动装配&lt;/h3&gt;
-&lt;p&gt;jdk1.5支持注解，Spring2.5开始支持注解。&lt;/p&gt;
-&lt;p&gt;要使用注解须知：&lt;/p&gt;
+&lt;p&gt;jdk1.5开始支持注解，spring2.5开始全面支持注解。&lt;/p&gt;
+&lt;p&gt;准备工作：利用注解的方式注入属性。&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;导入约束：context约束。&lt;/li&gt;
-&lt;li&gt;配置注解的支持：&lt;a href=&#34;context:annot-config/&#34;&gt;context:annot-config/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;在spring配置文件中引入context文件头&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot;
+
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;开启注解支持&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;context:annotation-config/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;741-autowired&#34;&gt;7.4.1 @AutoWired&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;@Autowired是按类型自动转配的，不支持id匹配。&lt;/li&gt;
+&lt;li&gt;需要导入 spring-aop的包！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;将User类中的set方法去掉，使用@Autowired注解&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class User {
+   @Autowired
+   private Cat cat;
+   @Autowired
+   private Dog dog;
+   private String str;
+
+   public Cat getCat() {
+       return cat;
+  }
+   public Dog getDog() {
+       return dog;
+  }
+   public String getStr() {
+       return str;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;此时配置文件的内容&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
 &amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
-    xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
-    xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot;
-    xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans
+       xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+       xmlns:context=&amp;quot;http://www.springframework.org/schema/context&amp;quot;
+       xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        https://www.springframework.org/schema/context/spring-context.xsd&amp;quot;&amp;gt;
+        http://www.springframework.org/schema/context/spring-context.xsd&amp;quot;&amp;gt;
 
+
+    &amp;lt;!--开启注解的支持--&amp;gt;
     &amp;lt;context:annotation-config/&amp;gt;
+
+    &amp;lt;bean id=&amp;quot;dog&amp;quot; class=&amp;quot;com.cy.pojo.Dog&amp;quot;/&amp;gt;
+    &amp;lt;bean id=&amp;quot;cat&amp;quot; class=&amp;quot;com.cy.pojo.Cat&amp;quot;/&amp;gt;
+    &amp;lt;bean id=&amp;quot;people&amp;quot; class=&amp;quot;com.cy.pojo.People&amp;quot;/&amp;gt;
+
 
 &amp;lt;/beans&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;@Autowired&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;直接在属性上使用即可！也可以在set方式上使用！&lt;/p&gt;
-&lt;p&gt;使用Autowired我们可以不用编写Set方法了，前提是你这个自动装配的属性在IoC（Spring）容器中存在，且符合名字byName！&lt;/p&gt;
-&lt;p&gt;科普：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Nullable	字段标记了这个注解，说明这个字段可以为null
-    public People(@Nullable String name){
-    this.name = name;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试，成功输出结果！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;PS:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Autowired(required=false)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;false 说明对象可以是null&lt;/li&gt;
+&lt;li&gt;true说明不能为null&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;742-qualifiers&#34;&gt;7.4.2 @Qualifiers&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;@Autowired是根据类型自动装配的,加上@Qualifiers就可以根据byName方法自动装配&lt;/li&gt;
+&lt;li&gt;@Qualifier不能单独使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;测试步骤&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;配置文件修改内容，保证类型存在对象。且名字不为类的默认名字！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;dog1&amp;quot; class=&amp;quot;com.cy.pojo.Dog&amp;quot;/&amp;gt;
+&amp;lt;bean id=&amp;quot;dog2&amp;quot; class=&amp;quot;com.cy.pojo.Dog&amp;quot;/&amp;gt;
+&amp;lt;bean id=&amp;quot;cat1&amp;quot; class=&amp;quot;com.cy.pojo.Cat&amp;quot;/&amp;gt;
+&amp;lt;bean id=&amp;quot;cat2&amp;quot; class=&amp;quot;com.cy.pojo.Cat&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;没有加Qualifier测试，直接报错&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在属性上添加Qualifier注解&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Autowired
+@Qualifier(value = &amp;quot;cat2&amp;quot;)
+private Cat cat;
+@Autowired
+@Qualifier(value = &amp;quot;dog2&amp;quot;)
+private Dog dog;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;743-resource&#34;&gt;7.4.3 @Resource&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;@Resource如有指定的name属性，先按该属性进行byName方式查找装配；&lt;/li&gt;
+&lt;li&gt;其次再进行默认的byName方式进行装配；&lt;/li&gt;
+&lt;li&gt;如果以上都不成功，则按byType的方式自动装配。&lt;/li&gt;
+&lt;li&gt;都不成功，则报异常&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;实体类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class User {
+   //如果允许对象为null，设置required = false,默认为true
+   @Resource(name = &amp;quot;cat2&amp;quot;)
+   private Cat cat;
+   @Resource
+   private Dog dog;
+   private String str;
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public @interface Autowired {
-    boolean required() default true;
-}
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;applicaionContext.xml&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;dog&amp;quot; class=&amp;quot;com.cy.pojo.Dog&amp;quot;/&amp;gt;
+&amp;lt;bean id=&amp;quot;cat1&amp;quot; class=&amp;quot;com.cy.pojo.Cat&amp;quot;/&amp;gt;
+&amp;lt;bean id=&amp;quot;cat2&amp;quot; class=&amp;quot;com.cy.pojo.Cat&amp;quot;/&amp;gt;
+
+&amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;com.cy.pojo.User&amp;quot;/&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;测试代码:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class People {
-    //如果显式定义了Autowired的required属性为false，说明这个对象可以为null，否则不允许为空
-    @Autowired(required = false)
-    private Dog dog;
-    @Autowired
-    private Cat cat;
-    private String name;
-}
+&lt;p&gt;测试：结果OK&lt;/p&gt;
+&lt;p&gt;配置文件2：beans.xml ， 删掉cat2&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;dog&amp;quot; class=&amp;quot;com.cy.pojo.Dog&amp;quot;/&amp;gt;
+&amp;lt;bean id=&amp;quot;cat1&amp;quot; class=&amp;quot;com.cy.pojo.Cat&amp;quot;/&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果@Autowired自动装配的环境比较复杂，自动装配无法通过一个注解@Autowired完成的时候，我们可以使用@Qualifier(value=”xxx”)去配置@Autowired的使用，指定一个唯一的bean对象注入！&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class People {
-    @Autowired
-    @Qualifier(value=&amp;quot;dog11&amp;quot;)
-    private Dog dog;
-    @Autowired
-	@Qualifier(value=&amp;quot;cat11&amp;quot;)
-    private Cat cat;
-    private String name;
-}
+&lt;p&gt;实体类上只保留注解&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Resource
+private Cat cat;
+@Resource
+private Dog dog;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;@Resource注解&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class People {
-    @Resource(name = &amp;quot;cat2&amp;quot;)
-    private Cat cat;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;小结：&lt;/p&gt;
+&lt;p&gt;结果：OK&lt;/p&gt;
+&lt;p&gt;结论：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;先进行byName查找&lt;/li&gt;
+&lt;li&gt;失败了在进行byType查找&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;@Resource和@Autowired的区别：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;都是用来自动装配的，都可以放在属性字段上；&lt;/li&gt;
@@ -24868,31 +25762,82 @@ xmlns:c=&amp;quot;http://www.springframework.org/schema/c&amp;quot;
 &lt;/ul&gt;
 &lt;h2 id=&#34;8-使用注解开发&#34;&gt;8、使用注解开发&lt;/h2&gt;
 &lt;p&gt;在spring4之后，要使用注解开发，必须要保证aop的包导入了。&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617153338.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617153338.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;使用注解需要导入context约束，增加注解的支持！&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--指定要扫描的包，这个包下的注解会生效--&amp;gt;
-&amp;lt;context:component-scan base-package=&amp;quot;com.kuang.pojo&amp;quot;/&amp;gt;
+&amp;lt;context:component-scan base-package=&amp;quot;com.cy.pojo&amp;quot;/&amp;gt;
 
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;81-bean的实现&#34;&gt;8.1 Bean的实现&lt;/h3&gt;
+&lt;p&gt;我们之前都是使用 bean 的标签进行bean注入，但是实际开发中，我们一般都会使用注解！&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;bean&lt;/li&gt;
-&lt;li&gt;属性如何注入&lt;/li&gt;
+&lt;li&gt;配置扫描哪些包下的注解&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//等价于&amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;com.kuang.pojo.User&amp;quot;/&amp;gt;
-//@Component 组件
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--扫描包--&amp;gt;
+&amp;lt;context:component-scan base-package=&amp;quot;com.cy&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;在指定包下编写类，增加注解&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.pojo;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+// 等价于在applicationContext.xml写了一个bean
 @Component
+
 public class User {
-    //相当于&amp;lt;property name=&amp;quot;name&amp;quot; value=&amp;quot;小憨批&amp;quot;/&amp;gt;
-    public String name;
-    @Value(&amp;quot;小憨批&amp;quot;)
-    public void setName(String name){
-        this.name = name;
-    }
+
+	public String name = &amp;quot;cy&amp;quot;;
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;衍生的注解&lt;/li&gt;
+&lt;li&gt;测试&lt;/li&gt;
 &lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.pojo.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Mytest {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext(&amp;quot;applicationContext.xml&amp;quot;);
+
+        User user = (User) context.getBean(&amp;quot;user&amp;quot;);
+
+        System.out.println(user.name);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;82-属性注入&#34;&gt;8.2 属性注入&lt;/h3&gt;
+&lt;p&gt;使用注解注入属性&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以不使用Set方法，直接在属性上增加@Value(“值”)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Component(&amp;quot;user&amp;quot;)
+// 相当于配置文件中 &amp;lt;bean id=&amp;quot;user&amp;quot; class=&amp;quot;当前注解的类&amp;quot;/&amp;gt;
+public class User {
+   @Value(&amp;quot;cy&amp;quot;)
+   // 相当于配置文件中 &amp;lt;property name=&amp;quot;name&amp;quot; value=&amp;quot;cy&amp;quot;/&amp;gt;
+   public String name;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;如果提供了set方法，在set方法上添加@value(“值”);&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Component(&amp;quot;user&amp;quot;)
+public class User {
+
+   public String name;
+
+    @Value(&amp;quot;cy&amp;quot;)
+   public void setName(String name) {
+       this.name = name;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;83-衍生的注解&#34;&gt;8.3 衍生的注解&lt;/h3&gt;
 &lt;p&gt;@Component有几个衍生注解，我们在web开发中，会按照mvc三层架构分层！&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;dao【@Repository】&lt;/li&gt;
@@ -24900,33 +25845,25 @@ public class User {
 &lt;li&gt;controller【@Controller】&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;这四个注解功能都是一样的，都是代表将某个类注册到Spring中，装配Bean！&lt;/p&gt;
-&lt;ol start=&#34;4&#34;&gt;
-&lt;li&gt;自动装配&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&#34;84-自动装配&#34;&gt;8.4 自动装配&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;-@Autowired:自动装配通过类型，名字
 	如果Autowired不能唯一自动装配上属性，则需要通过@Qualifier(value=&amp;quot;xxx&amp;quot;)
 -@Nullable:字段标记了这个注解，说明这个字段可以为null
 -@Resource:自动装配通过名字，类型
 &lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;5&#34;&gt;
-&lt;li&gt;作用域&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&#34;85-作用域&#34;&gt;8.5 作用域&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;@Scope(&amp;quot;singleton&amp;quot;)
 public class User {
-    //相当于&amp;lt;property name=&amp;quot;name&amp;quot; value=&amp;quot;小憨批&amp;quot;/&amp;gt;
+    //相当于&amp;lt;property name=&amp;quot;name&amp;quot; value=&amp;quot;cy&amp;quot;/&amp;gt;
     public String name;
-    @Value(&amp;quot;小憨批&amp;quot;)
+    @Value(&amp;quot;cy&amp;quot;)
     public void setName(String name){
         this.name = name;
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;ol start=&#34;6&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;小结&lt;/p&gt;
+&lt;h3 id=&#34;86小结&#34;&gt;8.6小结&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;xml与注解：&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;xml更加万能，适用于任何场合！维护简单方便。&lt;/p&gt;
@@ -24946,9 +25883,16 @@ public class User {
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt; &amp;lt;!--指定要扫描的包，这个包下的注解会生效--&amp;gt;
-&amp;lt;context:component-scan base-package=&amp;quot;com.kuang&amp;quot;/&amp;gt;
+&amp;lt;context:component-scan base-package=&amp;quot;com.cy&amp;quot;/&amp;gt;
 &amp;lt;context:annotation-config/&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;作用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进行注解驱动注册，从而使注解生效&lt;/li&gt;
+&lt;li&gt;用于激活那些已经在spring容器里注册过的bean上面的注解，也就是显示的向Spring注册&lt;/li&gt;
+&lt;li&gt;如果不扫描包，就需要手动配置bean&lt;/li&gt;
+&lt;li&gt;如果不加注解驱动，则注入的值为null&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;9-使用java的方式配置spring&#34;&gt;9. 使用java的方式配置Spring&lt;/h2&gt;
 &lt;p&gt;我们现在要完全不适用Spring的xml配置了，全权交给java来做！&lt;/p&gt;
 &lt;p&gt;javaConfig是Spring的一个子项目，在Spring4之后，它成为了一个核心功能。&lt;/p&gt;
@@ -24974,7 +25918,7 @@ public class User {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.kuang.pojo.User;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.pojo.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24983,9 +25927,9 @@ import org.springframework.context.annotation.Import;
 //这个也会被Spring容器托管，注册到容器中，因为本来就是一个@Component
 //@Configuration代表这是一个配置类，就和我们之前看的beans.xml
 @Configuration
-@ComponentScan(&amp;quot;com.kuang.pojo&amp;quot;)
-@Import(KuangConfig2.class )
-public class KuangConfig {
+@ComponentScan(&amp;quot;com.cy.pojo&amp;quot;)
+@Import(cyConfig2.class )
+public class cyConfig {
     //注册一个bean，就相当于我们之前写的一个bean标签
     //这个方法的名字，就相当于bean标签中的id属性
     //这个方法的返回值，就相当于bean标签中的class属性
@@ -24999,13 +25943,38 @@ public class KuangConfig {
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class MyTest {
     public static void main(String[] args) {
         //如果完全使用了配置类方式去做，我们就只能通过AnnotationConfig上下文来获取容器，通过配置类的class对象加载！
-        ApplicationContext context = new AnnotationConfigApplicationContext(KuangConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(cyConfig.class);
         User getUser = (User) context.getBean(&amp;quot;getUser&amp;quot;);
         System.out.println(getUser.getName());
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这种纯java的配置方式，在SpringBoot中随处可见！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;导入其他配置如何做呢？&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;我们再编写一个配置类！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Configuration  //代表这是一个配置类
+public class MyConfig2 {
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;在之前的配置类中我们来选择导入这个配置类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Configuration
+//导入合并其他配置类，类似于配置文件中的 inculde 标签
+@Import(MyConfig2.class)
+public class MyConfig {
+
+    // 注册一个bean（就相当于之前xml中写的一个bean）
+    // 方法名：对应id
+    // 返回值：相当于bean标签中的class属性
+    @Bean
+    public User getUser(){
+        return new User();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;关于这种Java类的配置方式，我们在之后的SpringBoot 和 SpringCloud中还会大量看到，我们需要知道这些注解的作用即可！&lt;/p&gt;
 &lt;h2 id=&#34;10-代理模式&#34;&gt;10、代理模式&lt;/h2&gt;
 &lt;p&gt;为什么要学习代理模式？因为这就是SpringAOP的底层！【SpringAOP 和 SpringMVC 面试必问】&lt;/p&gt;
 &lt;p&gt;代理模式的分类：&lt;/p&gt;
@@ -25013,7 +25982,7 @@ public class KuangConfig {
 &lt;li&gt;静态代理&lt;/li&gt;
 &lt;li&gt;动态代理&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617154558.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617154558.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;101-静态代理&#34;&gt;10.1 静态代理&lt;/h3&gt;
 &lt;p&gt;角色分析：&lt;/p&gt;
 &lt;ul&gt;
@@ -25087,7 +26056,7 @@ public class Host implements Rent {
 &lt;/ol&gt;
 &lt;h3 id=&#34;102-加深理解&#34;&gt;10.2 加深理解&lt;/h3&gt;
 &lt;p&gt;聊聊AOP&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617154837.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617154837.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;103-动态代理&#34;&gt;10.3 动态代理&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;动态代理和静态代理角色一样&lt;/li&gt;
@@ -25112,7 +26081,7 @@ public class Host implements Rent {
 &lt;h2 id=&#34;11-aop&#34;&gt;11、AOP&lt;/h2&gt;
 &lt;h3 id=&#34;111-什么是aop&#34;&gt;11.1 什么是AOP&lt;/h3&gt;
 &lt;p&gt;AOP（Aspect Oriented Programming）意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生泛型，利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的频率。&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617155008.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804153530.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h3 id=&#34;112-aop在spring中的作用&#34;&gt;11.2 AOP在Spring中的作用&lt;/h3&gt;
 &lt;p&gt;&lt;mark&gt;提供声明式事务；允许用户自定义切面&lt;/mark&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -25123,10 +26092,16 @@ public class Host implements Rent {
 &lt;li&gt;代理（Proxy）：向目标对象应用通知之后创建的对象。&lt;/li&gt;
 &lt;li&gt;切入点（PointCut）：切面通知执行的“地点”的定义。&lt;/li&gt;
 &lt;li&gt;连接点（jointPoint）：与切入点匹配的执行点。&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804153605.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617155041.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617155041.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;SpringAOP中，通过Advice定义横切逻辑，Spring中支持5种类型的Advice：&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617155102.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200617155102.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;(1)Before:在目标方法被调用之前做增强处理,@Before只需要指定切入点表达式即可&lt;/p&gt;
+&lt;p&gt;(2)AfterReturning:在目标方法正常完成后做增强,@AfterReturning除了指定切入点表达式后，还可以指定一个返回值形参名returning,代表目标方法的返回值&lt;/p&gt;
+&lt;p&gt;(3)AfterThrowing:主要用来处理程序中未处理的异常,@AfterThrowing除了指定切入点表达式后，还可以指定一个throwing的返回值形参名,可以通过该形参名来访问目标方法中所抛出的异常对象&lt;/p&gt;
+&lt;p&gt;(4)After:在目标方法完成之后做增强，无论目标方法时候成功完成。@After可以指定一个切入点表达式&lt;/p&gt;
+&lt;p&gt;(5)Around:环绕通知,在目标方法完成前后做增强处理,环绕通知是最重要的通知类型,像事务,日志等都是环绕通知,注意编程中核心是一个ProceedingJoinPoint&lt;/p&gt;
 &lt;p&gt;即AOP在不改变原有代码的情况下，去增加新的功能。&lt;/p&gt;
 &lt;h3 id=&#34;113-使用spring实现aop&#34;&gt;11.3 使用Spring实现AOP&lt;/h3&gt;
 &lt;p&gt;【重点】使用AOP织入，需要导入一个依赖包。&lt;/p&gt;
@@ -25137,182 +26112,832 @@ public class Host implements Rent {
     &amp;lt;version&amp;gt;1.9.5&amp;lt;/version&amp;gt;
 &amp;lt;/dependency&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;方式一：使用Spring的API接口【主要SpringAPI接口实现】&lt;/p&gt;
-&lt;p&gt;方式二：自定义来实现AOP【主要是切面定义】&lt;/p&gt;
-&lt;p&gt;方式三：使用注解实现&lt;/p&gt;
-&lt;h2 id=&#34;12-整合mybatis&#34;&gt;12、整合Mybatis&lt;/h2&gt;
-&lt;p&gt;环境搭建：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;/*
- Navicat Premium Data Transfer
+&lt;h4 id=&#34;1131-通过spring-api实现&#34;&gt;11.3.1 通过Spring API实现&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;首先编写我们的业务接口和实现类&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface UserService {
 
- Source Server         : 本地
- Source Server Type    : MySQL
- Source Server Version : 80018
- Source Host           : localhost:3306
- Source Schema         : mybatis
+   public void add();
 
- Target Server Type    : MySQL
- Target Server Version : 80018
- File Encoding         : 65001
+   public void delete();
 
- Date: 05/12/2019 17:56:22
-*/
+   public void update();
 
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
+   public void search();
 
--- ----------------------------
--- Table structure for bolg
--- ----------------------------
-DROP TABLE IF EXISTS `bolg`;
-CREATE TABLE `bolg` (
-  `id` varchar(50) NOT NULL COMMENT &#39;博客id&#39;,
-  `title` varchar(100) NOT NULL COMMENT &#39;博客标题&#39;,
-  `author` varchar(30) NOT NULL COMMENT &#39;博客作者&#39;,
-  `creat_time` datetime NOT NULL COMMENT &#39;创建时间&#39;,
-  `views` int(30) NOT NULL COMMENT &#39;浏览量&#39;
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+}
+public class UserServiceImpl implements UserService{
 
--- ----------------------------
--- Records of bolg
--- ----------------------------
-BEGIN;
-INSERT INTO `bolg` VALUES (&#39;1&#39;, &#39;Mybatis如此简单&#39;, &#39;尹锐&#39;, &#39;2019-12-04 20:32:07&#39;, 9999);
-INSERT INTO `bolg` VALUES (&#39;2&#39;, &#39;Java如此简单2&#39;, &#39;尹锐2&#39;, &#39;2019-12-04 20:32:07&#39;, 1000);
-INSERT INTO `bolg` VALUES (&#39;3&#39;, &#39;Spring如此简单&#39;, &#39;尹锐&#39;, &#39;2019-12-04 20:32:07&#39;, 9999);
-INSERT INTO `bolg` VALUES (&#39;4&#39;, &#39;微服务如此简单&#39;, &#39;尹锐&#39;, &#39;2019-12-04 20:32:07&#39;, 9999);
-COMMIT;
+   @Override
+   public void add() {
+       System.out.println(&amp;quot;增加用户&amp;quot;);
+  }
 
--- ----------------------------
--- Table structure for student
--- ----------------------------
-DROP TABLE IF EXISTS `student`;
-CREATE TABLE `student` (
-  `id` int(10) NOT NULL,
-  `name` varchar(30) DEFAULT NULL,
-  `tid` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fktid` (`tid`),
-  CONSTRAINT `fktid` FOREIGN KEY (`tid`) REFERENCES `teacher` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+   @Override
+   public void delete() {
+       System.out.println(&amp;quot;删除用户&amp;quot;);
+  }
 
--- ----------------------------
--- Records of student
--- ----------------------------
-BEGIN;
-INSERT INTO `student` VALUES (1, &#39;小明&#39;, 1);
-INSERT INTO `student` VALUES (2, &#39;小红&#39;, 1);
-INSERT INTO `student` VALUES (3, &#39;小张&#39;, 1);
-INSERT INTO `student` VALUES (4, &#39;小李&#39;, 1);
-INSERT INTO `student` VALUES (5, &#39;小王&#39;, 1);
-COMMIT;
+   @Override
+   public void update() {
+       System.out.println(&amp;quot;更新用户&amp;quot;);
+  }
 
--- ----------------------------
--- Table structure for teacher
--- ----------------------------
-DROP TABLE IF EXISTS `teacher`;
-CREATE TABLE `teacher` (
-  `id` int(10) NOT NULL,
-  `name` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of teacher
--- ----------------------------
-BEGIN;
-INSERT INTO `teacher` VALUES (1, &#39;秦老师&#39;);
-COMMIT;
-
--- ----------------------------
--- Table structure for user
--- ----------------------------
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
-  `id` int(20) NOT NULL,
-  `name` varchar(30) DEFAULT NULL,
-  `pwd` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of user
--- ----------------------------
-BEGIN;
-INSERT INTO `user` VALUES (1, &#39;狂神&#39;, &#39;123456&#39;);
-INSERT INTO `user` VALUES (2, &#39;张三&#39;, &#39;123456&#39;);
-INSERT INTO `user` VALUES (3, &#39;李四&#39;, &#39;123890&#39;);
-INSERT INTO `user` VALUES (4, &#39;王五&#39;, &#39;23333&#39;);
-COMMIT;
-
-SET FOREIGN_KEY_CHECKS = 1;
+   @Override
+   public void search() {
+       System.out.println(&amp;quot;查询用户&amp;quot;);
+  }
+}
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;步骤：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;导入相关jar包
+&lt;ul&gt;
+&lt;li&gt;然后去写我们的增强类 , 我们编写两个 , 一个前置增强 一个后置增强&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Log implements MethodBeforeAdvice {
+
+   //method : 要执行的目标对象的方法
+   //objects : 被调用的方法的参数
+   //Object : 目标对象
+   @Override
+   public void before(Method method, Object[] objects, Object o) throws Throwable {
+       System.out.println( o.getClass().getName() + &amp;quot;的&amp;quot; + method.getName() + &amp;quot;方法被执行了&amp;quot;);
+  }
+}
+public class AfterLog implements AfterReturningAdvice {
+   //returnValue 返回值
+   //method被调用的方法
+   //args 被调用的方法的对象的参数
+   //target 被调用的目标对象
+   @Override
+   public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
+       System.out.println(&amp;quot;执行了&amp;quot; + target.getClass().getName()
+       +&amp;quot;的&amp;quot;+method.getName()+&amp;quot;方法,&amp;quot;
+       +&amp;quot;返回值：&amp;quot;+returnValue);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;最后去Spring中注册，并实现aop切入实现，注意导入约束&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
+      xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+      xmlns:aop=&amp;quot;http://www.springframework.org/schema/aop&amp;quot;
+      xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd&amp;quot;&amp;gt;
+    
+    &amp;lt;!--注册bean--&amp;gt;
+    &amp;lt;bean id=&amp;quot;userService&amp;quot; class=&amp;quot;com.cy.service.UserServiceImpl&amp;quot;/&amp;gt;
+    &amp;lt;bean id=&amp;quot;log&amp;quot; class=&amp;quot;com.cy.log.log&amp;quot;/&amp;gt;
+    &amp;lt;bean id=&amp;quot;afterLog&amp;quot; class=&amp;quot;com.cy.log.AfterLog&amp;quot;/&amp;gt;
+    
+    
+    &amp;lt;!--配置aop--&amp;gt;
+    &amp;lt;aop:config&amp;gt;
+        &amp;lt;!-- 切入点   expression（要执行的位置） 表达式 --&amp;gt;
+        &amp;lt;aop:pointcut id=&amp;quot;pointcut&amp;quot; expression=&amp;quot;execution(* com.cy.service.UserServiceImpl.*(..))&amp;quot;/&amp;gt;
+        &amp;lt;!--使用环绕增加--&amp;gt;
+        &amp;lt;aop:advisor advice-ref=&amp;quot;log&amp;quot; pointcut-ref=&amp;quot;pointcut&amp;quot;/&amp;gt;
+        &amp;lt;aop:advisor advice-ref=&amp;quot;afterLog&amp;quot; pointcut-ref=&amp;quot;pointcut&amp;quot;/&amp;gt;
+    &amp;lt;/aop:config&amp;gt;
+
+&amp;lt;/beans&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Aop的重要性 : 很重要 . 一定要理解其中的思路 , 主要是思想的理解这一块 .&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Spring的AOP就是将公共的业务（日志，安全等）和领域业务结合起来&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;当执行领域业务会把公共业务加进来，实现公共业务的重复利用&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;领域业务更加纯粹，AOP其本质还是动态代理&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1132-自定义类来实现aop&#34;&gt;11.3.2  自定义类来实现AOP&lt;/h4&gt;
+&lt;p&gt;目标业务类不变依旧是userServiceImpl&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一步 : 写我们自己的一个切入类&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.config;
+
+public class DiyPointCut {
+
+    public void before(){
+        System.out.println(&amp;quot;===执行前===&amp;quot;);
+    }
+
+    public void after(){
+        System.out.println(&amp;quot;===执行后===&amp;quot;);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;去spring中配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--第二种方式自定义实现--&amp;gt;
+&amp;lt;!--注册bean--&amp;gt;
+&amp;lt;bean id=&amp;quot;diy&amp;quot; class=&amp;quot;com.cy.config.DiyPointcut&amp;quot;/&amp;gt;
+
+&amp;lt;!--aop的配置--&amp;gt;
+&amp;lt;aop:config&amp;gt;
+   &amp;lt;!--第二种方式：使用AOP的标签实现--&amp;gt;
+   &amp;lt;aop:aspect ref=&amp;quot;diy&amp;quot;&amp;gt;
+       &amp;lt;aop:pointcut id=&amp;quot;diyPonitcut&amp;quot; expression=&amp;quot;execution(* com.cy.service.UserServiceImpl.*(..))&amp;quot;/&amp;gt;
+       &amp;lt;aop:before pointcut-ref=&amp;quot;diyPonitcut&amp;quot; method=&amp;quot;before&amp;quot;/&amp;gt;
+       &amp;lt;aop:after pointcut-ref=&amp;quot;diyPonitcut&amp;quot; method=&amp;quot;after&amp;quot;/&amp;gt;
+   &amp;lt;/aop:aspect&amp;gt;
+&amp;lt;/aop:config&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;测试：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class MyTest {
+   @Test
+   public void test(){
+       ApplicationContext context = new ClassPathXmlApplicationContext(&amp;quot;beans.xml&amp;quot;);
+       UserService userService = (UserService) context.getBean(&amp;quot;userService&amp;quot;);
+       userService.add();
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;1133-注解实现&#34;&gt;11.3.3 注解实现&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;编写注解实现的增强类&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.anno;
+
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+
+// 使用注解方式实现aop
+@Aspect // 注解这个类是一个切面，本质就是一个插入的类
+public class AnnoPointCut {
+
+    @Before(&amp;quot;execution(* com.cy.service.UserServiceImpl.*(..))&amp;quot;)
+    public void before(){
+        System.out.println(&amp;quot;===执行前===&amp;quot;);
+    }
+
+    @After(&amp;quot;execution(* com.cy.service.UserServiceImpl.*(..))&amp;quot;)
+    public void after(){
+        System.out.println(&amp;quot;===执行后===&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;在Spring配置文件中，注册bean，并增加支持注解的配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--第三种方式:注解实现--&amp;gt;
+&amp;lt;bean id=&amp;quot;annotationPointcut&amp;quot; class=&amp;quot;com.cy.anno.AnnoPointCut;&amp;quot;/&amp;gt;
+
+
+&amp;lt;!--开启aop注解支持--&amp;gt;
+&amp;lt;aop:aspectj-autoproxy/&amp;gt;
+
+&amp;lt;!--
+&amp;lt;aop:aspectj-autoproxy /&amp;gt;有一个proxy-target-class属性，默认为false，
+表示使用jdk动态代理织入增强，
+当配为&amp;lt;aop:aspectj-autoproxy  poxy-target-class=&amp;quot;true&amp;quot;/&amp;gt;时，表示使用CGLib动态代理技术织入增强。
+不过即使proxy-target-class设置为false，如果目标类没有声明接口，则spring将自动使用CGLib动态代理。
+--&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;12-整合mybatis&#34;&gt;12、整合Mybatis&lt;/h2&gt;
+&lt;p&gt;官网mybatis-spring : http://mybatis.org/spring/zh/index.html&lt;/p&gt;
+&lt;p&gt;环境准备：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;junit&lt;/li&gt;
-&lt;li&gt;Mybatis&lt;/li&gt;
-&lt;li&gt;mysql数据库&lt;/li&gt;
-&lt;li&gt;spring相关的&lt;/li&gt;
-&lt;li&gt;aop织入&lt;/li&gt;
-&lt;li&gt;mybatis-spring【new知识点】&lt;/li&gt;
 &lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+   &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;
+   &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;
+   &amp;lt;version&amp;gt;4.12&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;mybatis&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+   &amp;lt;groupId&amp;gt;org.mybatis&amp;lt;/groupId&amp;gt;
+   &amp;lt;artifactId&amp;gt;mybatis&amp;lt;/artifactId&amp;gt;
+   &amp;lt;version&amp;gt;3.5.2&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
-&lt;li&gt;编写配置文件&lt;/li&gt;
-&lt;li&gt;测试&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;121-回忆mybatis&#34;&gt;12.1 回忆mybatis&lt;/h3&gt;
+&lt;li&gt;
+&lt;p&gt;mysql-connector-java&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+   &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+   &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+   &amp;lt;version&amp;gt;5.1.47&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;spring相关&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+   &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+   &amp;lt;artifactId&amp;gt;spring-webmvc&amp;lt;/artifactId&amp;gt;
+   &amp;lt;version&amp;gt;5.1.10.RELEASE&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+&amp;lt;dependency&amp;gt;
+   &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+   &amp;lt;artifactId&amp;gt;spring-jdbc&amp;lt;/artifactId&amp;gt;
+   &amp;lt;version&amp;gt;5.1.10.RELEASE&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;aspectJ AOP 织入器&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver --&amp;gt;
+&amp;lt;dependency&amp;gt;
+   &amp;lt;groupId&amp;gt;org.aspectj&amp;lt;/groupId&amp;gt;
+   &amp;lt;artifactId&amp;gt;aspectjweaver&amp;lt;/artifactId&amp;gt;
+   &amp;lt;version&amp;gt;1.9.4&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;配置Maven静态资源过滤问题！&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;build&amp;gt;
+   &amp;lt;resources&amp;gt;
+       &amp;lt;resource&amp;gt;
+           &amp;lt;directory&amp;gt;src/main/java&amp;lt;/directory&amp;gt;
+           &amp;lt;includes&amp;gt;
+               &amp;lt;include&amp;gt;**/*.properties&amp;lt;/include&amp;gt;
+               &amp;lt;include&amp;gt;**/*.xml&amp;lt;/include&amp;gt;
+           &amp;lt;/includes&amp;gt;
+           &amp;lt;filtering&amp;gt;true&amp;lt;/filtering&amp;gt;
+       &amp;lt;/resource&amp;gt;
+   &amp;lt;/resources&amp;gt;
+&amp;lt;/build&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;121-回忆mybatis&#34;&gt;12.1 回忆MyBatis&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;编写实体类&lt;/li&gt;
-&lt;li&gt;编写核心配置文件&lt;/li&gt;
-&lt;li&gt;编写接口&lt;/li&gt;
-&lt;li&gt;编写Mapper.xml&lt;/li&gt;
+&lt;li&gt;编写实体类 pojo/User&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.pojo;
+
+
+public class User {
+    private int id;
+    private String name;
+    private String pwd;
+
+    @Override
+    public String toString() {
+        return &amp;quot;User{&amp;quot; +
+                &amp;quot;id=&amp;quot; + id +
+                &amp;quot;, name=&#39;&amp;quot; + name + &#39;\&#39;&#39; +
+                &amp;quot;, pwd=&#39;&amp;quot; + pwd + &#39;\&#39;&#39; +
+                &#39;}&#39;;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public User() {
+    }
+
+    public User(int id, String name, String pwd) {
+        this.id = id;
+        this.name = name;
+        this.pwd = pwd;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;编写mybatis-config.xml&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE configuration
+        PUBLIC &amp;quot;-//mybatis.org//DTD Config 3.0//EN&amp;quot;
+        &amp;quot;http://mybatis.org/dtd/mybatis-3-config.dtd&amp;quot;&amp;gt;
+&amp;lt;configuration&amp;gt;
+
+    &amp;lt;typeAliases&amp;gt;
+        &amp;lt;package name=&amp;quot;com.cy.pojo&amp;quot;/&amp;gt;
+    &amp;lt;/typeAliases&amp;gt;
+
+
+    &amp;lt;environments default=&amp;quot;development&amp;quot;&amp;gt;
+        &amp;lt;environment id=&amp;quot;development&amp;quot;&amp;gt;
+            &amp;lt;transactionManager type=&amp;quot;JDBC&amp;quot;/&amp;gt;
+            &amp;lt;dataSource type=&amp;quot;POOLED&amp;quot;&amp;gt;
+                &amp;lt;property name=&amp;quot;driver&amp;quot; value=&amp;quot;com.mysql.jdbc.Driver&amp;quot;/&amp;gt;
+                &amp;lt;property name=&amp;quot;url&amp;quot; value=&amp;quot;jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;amp;amp;useUnicode=true&amp;amp;amp;characterEncoding=utf8&amp;amp;amp;serverTimezone=GMT%2B8&amp;quot;/&amp;gt;
+                &amp;lt;property name=&amp;quot;username&amp;quot; value=&amp;quot;root&amp;quot;/&amp;gt;
+                &amp;lt;property name=&amp;quot;password&amp;quot; value=&amp;quot;123456&amp;quot;/&amp;gt;
+            &amp;lt;/dataSource&amp;gt;
+        &amp;lt;/environment&amp;gt;
+    &amp;lt;/environments&amp;gt;
+
+    
+    &amp;lt;mappers&amp;gt;
+        &amp;lt;package name=&amp;quot;com.cy.dao&amp;quot;/&amp;gt;
+    &amp;lt;/mappers&amp;gt;
+    
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;编写mapper (dao/UserMapper)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.dao;
+
+import com.cy.pojo.User;
+import java.util.List;
+
+public interface UserMapper {
+    public List&amp;lt;User&amp;gt; selectUser();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;编写mapper对应的xml (dao/UserMapper.xml)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE mapper
+        PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
+        &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
+
+&amp;lt;mapper namespace=&amp;quot;com.cy.dao.UserMapper&amp;quot;&amp;gt;
+    &amp;lt;select id=&amp;quot;selectUser&amp;quot; resultType=&amp;quot;User&amp;quot;&amp;gt;
+        select * from user
+    &amp;lt;/select&amp;gt;
+&amp;lt;/mapper&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
 &lt;li&gt;测试&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;122-mybatis-spring&#34;&gt;12.2 Mybatis-Spring&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class MyTest {
+    public static void main(String[] args) throws IOException {
+        String resource = &amp;quot;mybaits-config.xml&amp;quot;;
+
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        List&amp;lt;User&amp;gt; userList = mapper.selectUser();
+
+        for (User user : userList) {
+            System.out.println(user);
+        }
+
+        sqlSession.close();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果显示如下：（当然这是我自己创建的数据库）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;User{id=1, name=&#39;cy&#39;, pwd=&#39;123456&#39;}
+User{id=2, name=&#39;张三&#39;, pwd=&#39;abcdeft&#39;}
+User{id=3, name=&#39;李四&#39;, pwd=&#39;435354353&#39;}
+User{id=5, name=&#39;李五&#39;, pwd=&#39;123213123&#39;}
+User{id=7, name=&#39;小明&#39;, pwd=&#39;123456&#39;}
+User{id=8, name=&#39;root&#39;, pwd=&#39;123456&#39;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;122-学习mybatis-spring&#34;&gt;12.2 学习MyBatis-Spring&lt;/h3&gt;
+&lt;p&gt;官网mybatis-spring : http://mybatis.org/spring/zh/index.html&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;http://cy-bucket.oss-cn-beijing.aliyuncs.com/img/20200527/092328496.png&#34; alt=&#34;mark&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;MyBatis-Spring 需要以下版本：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;MyBatis-Spring&lt;/th&gt;
+&lt;th&gt;MyBatis&lt;/th&gt;
+&lt;th&gt;Spring 框架&lt;/th&gt;
+&lt;th&gt;Spring Batch&lt;/th&gt;
+&lt;th&gt;Java&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2.0&lt;/td&gt;
+&lt;td&gt;3.5+&lt;/td&gt;
+&lt;td&gt;5.0+&lt;/td&gt;
+&lt;td&gt;4.0+&lt;/td&gt;
+&lt;td&gt;Java 8+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1.3&lt;/td&gt;
+&lt;td&gt;3.4+&lt;/td&gt;
+&lt;td&gt;3.2.2+&lt;/td&gt;
+&lt;td&gt;2.1+&lt;/td&gt;
+&lt;td&gt;Java 6+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果使用 Maven 作为构建工具，仅需要在 pom.xml 中加入以下代码即可：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+   &amp;lt;groupId&amp;gt;org.mybatis&amp;lt;/groupId&amp;gt;
+   &amp;lt;artifactId&amp;gt;mybatis-spring&amp;lt;/artifactId&amp;gt;
+   &amp;lt;version&amp;gt;2.0.2&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;要和Spring一起使用MyBatis，需要在Spring应用上下文中至少定义两样东西&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;sqlSessionFactory&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据映射器类&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;ol&gt;
-&lt;li&gt;编写数据源配置&lt;/li&gt;
-&lt;li&gt;sqlSessionFactory&lt;/li&gt;
-&lt;li&gt;sqlSessionTemplate&lt;/li&gt;
-&lt;li&gt;需要给接口加实现类&lt;/li&gt;
-&lt;li&gt;将自己写的实现类，注入到Spring中&lt;/li&gt;
+&lt;li&gt;在 MyBatis-Spring 中，可使用 &lt;code&gt;SqlSessionFactoryBean&lt;/code&gt;来创建 &lt;code&gt;SqlSessionFactory&lt;/code&gt;。 要配置这个工厂 bean，只需要把下面代码放在 Spring 的 XML 配置文件中：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;sqlSessionFactory&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionFactoryBean&amp;quot;&amp;gt;
+  &amp;lt;property name=&amp;quot;dataSource&amp;quot; ref=&amp;quot;dataSource&amp;quot; /&amp;gt;
+&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意：SqlSessionFactory需要一个 DataSource（数据源）。这可以是任意的 DataSource，只需要和配置其它 Spring 数据库连接一样配置它就可以了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;在基础的 MyBatis 用法中，是通过 SqlSessionFactoryBuilder 来创建 SqlSessionFactory 的，而在 MyBatis-Spring 中，则使用 SqlSessionFactoryBean 来创建。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在 MyBatis 中，你可以使用 SqlSessionFactory 来创建 SqlSession。一旦你获得一个 session 之后，你可以使用它来执行映射了的语句，提交或回滚连接，最后，当不再需要它的时候，你可以关闭 session。&lt;/p&gt;
+&lt;p&gt;一个常用的属性是 configLocation，它用来指定 MyBatis 的 XML 配置文件路径。它在需要修改 MyBatis 的基础配置非常有用。通常，基础配置指的是 &amp;lt; settings&amp;gt; 或 &amp;lt; typeAliases&amp;gt;元素。&lt;/p&gt;
+&lt;p&gt;需要注意的是，这个配置文件并不需要是一个完整的 MyBatis 配置。确切地说，任何环境配置（&lt;code&gt;），数据源（&lt;/code&gt;）和 MyBatis 的事务管理器（``）都会被忽略。SqlSessionFactoryBean 会创建它自有的 MyBatis 环境配置（Environment），并按要求设置自定义环境的值。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;同时，&lt;code&gt;SqlSessionTemplate&lt;/code&gt;是&lt;code&gt;MyBatis-Spring&lt;/code&gt;的核心，作为&lt;code&gt;SqlSession&lt;/code&gt;的一个实现，这就意味着可以使用它无缝替换你代码中已经使用的&lt;code&gt;sqlSession&lt;/code&gt;。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;模板可以参与到 Spring 的事务管理中，并且由于其是线程安全的，可以供多个映射器类使用，你应该总是用 SqlSessionTemplate 来替换 MyBatis 默认的 DefaultSqlSession 实现。在同一应用程序中的不同类之间混杂使用可能会引起数据一致性的问题。&lt;/p&gt;
+&lt;p&gt;可以使用 SqlSessionFactory 作为构造方法的参数来创建 SqlSessionTemplate 对象.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;sqlSession&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionTemplate&amp;quot;&amp;gt;
+ &amp;lt;constructor-arg index=&amp;quot;0&amp;quot; ref=&amp;quot;sqlSessionFactory&amp;quot; /&amp;gt;
+&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;现在，这个 bean 就可以直接注入到你的 DAO bean 中了。你需要在你的 bean 中添加一个 SqlSession 属性，就像下面这样：(&lt;strong&gt;也就是需要写一个接口的实现类&lt;/strong&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class UserDaoImpl implements UserDao {
+
+ private SqlSession sqlSession;
+
+ public void setSqlSession(SqlSession sqlSession) {
+   this.sqlSession = sqlSession;
+}
+
+ public User getUser(String userId) {
+   return sqlSession.getMapper...;
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;按下面这样，注入 SqlSessionTemplate：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;userDao&amp;quot; class=&amp;quot;org.mybatis.spring.sample.dao.UserDaoImpl&amp;quot;&amp;gt;
+ &amp;lt;property name=&amp;quot;sqlSession&amp;quot; ref=&amp;quot;sqlSession&amp;quot; /&amp;gt;
+&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;123-mybaits-spring-整合实现方式一&#34;&gt;12.3 MyBaits-Spring 整合实现方式一&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;这些配置大部分都是固定的！！&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;引入Spring配置文件beans.xml&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;
+      xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+      xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd&amp;quot;&amp;gt;
+    
+&amp;lt;/beans&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;配置数据源替换mybaits的数据源&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;dataSource&amp;quot; class=&amp;quot;org.springframework.jdbc.datasource.DriverManagerDataSource&amp;quot;&amp;gt;
+    &amp;lt;property name=&amp;quot;driverClassName&amp;quot; value=&amp;quot;com.mysql.jdbc.Driver&amp;quot;/&amp;gt;
+    &amp;lt;property name=&amp;quot;url&amp;quot; value=&amp;quot;jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;amp;amp;useUnicode=true&amp;amp;amp;characterEncoding=utf8&amp;amp;amp;serverTimezone=GMT%2B8&amp;quot;/&amp;gt;
+    &amp;lt;property name=&amp;quot;username&amp;quot; value=&amp;quot;root&amp;quot;/&amp;gt;
+    &amp;lt;property name=&amp;quot;password&amp;quot; value=&amp;quot;123456&amp;quot;/&amp;gt;
+&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;配置SqlSessionFactory，关联MyBatis&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--配置sqlSessionFactory--&amp;gt;
+&amp;lt;bean id=&amp;quot;sqlSessionFactory&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionFactoryBean&amp;quot;&amp;gt;
+    &amp;lt;property name=&amp;quot;dataSource&amp;quot; ref=&amp;quot;dataSource&amp;quot;/&amp;gt;
+    &amp;lt;!--关联mybatis--&amp;gt;
+    &amp;lt;property name=&amp;quot;configLocation&amp;quot; value=&amp;quot;classpath:mybaits-config.xml&amp;quot;/&amp;gt;
+    &amp;lt;property name=&amp;quot;mapperLocations&amp;quot; value=&amp;quot;classpath:com/cy/dao/*.xml&amp;quot;/&amp;gt;
+&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;注册sqlSessionTemplate，关联sqlSessionFactory；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--注册sqlSessionTemplate并且关联sqlSessionFactory--&amp;gt;
+&amp;lt;bean id=&amp;quot;sqlSession&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionTemplate&amp;quot;&amp;gt;
+    &amp;lt;!--利用构造器注入：因为sqlSessionTemplate 没有set方法--&amp;gt;
+    &amp;lt;constructor-arg index=&amp;quot;0&amp;quot; ref=&amp;quot;sqlSessionFactory&amp;quot;/&amp;gt;
+&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804154448.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;增加Dao接口的实现类；私有化sqlSessionTemplate&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.cy.dao;
+
+import com.cy.pojo.User;
+import org.mybatis.spring.SqlSessionTemplate;
+
+import java.util.List;
+
+public class UserMapperImpl implements UserMapper{
+    // sqlSession不用我们自己创建，Spring来自己管理
+    private SqlSessionTemplate sqlSession;
+
+    public void setSqlSession(SqlSessionTemplate sqlSession) {
+        this.sqlSession = sqlSession;
+    }
+
+
+    public List&amp;lt;User&amp;gt; selectUser() {
+        return sqlSession.getMapper(UserMapper.class).selectUser();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;把实现类注入到beans.xml中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--注册bean实现--&amp;gt;
+&amp;lt;bean id=&amp;quot;userDao&amp;quot; class=&amp;quot;com.cy.dao.UserMapperImpl&amp;quot;&amp;gt;
+    &amp;lt;property name=&amp;quot;sqlSession&amp;quot; ref=&amp;quot;sqlSession&amp;quot;/&amp;gt;
+&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34;&gt;
 &lt;li&gt;测试&lt;/li&gt;
 &lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class MyTestII {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext(&amp;quot;beans.xml&amp;quot;);
+
+        UserMapper mapper = context.getBean(&amp;quot;userDao&amp;quot;, UserMapper.class);
+
+        List&amp;lt;User&amp;gt; users = mapper.selectUser();
+
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果成功输出！现在我们的Mybatis配置文件的状态！发现都可以被Spring整合！&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt;
+&amp;lt;!DOCTYPE configuration
+        PUBLIC &amp;quot;-//mybatis.org//DTD Config 3.0//EN&amp;quot;
+        &amp;quot;http://mybatis.org/dtd/mybatis-3-config.dtd&amp;quot;&amp;gt;
+&amp;lt;configuration&amp;gt;
+
+    &amp;lt;typeAliases&amp;gt;
+        &amp;lt;package name=&amp;quot;com.cy.pojo&amp;quot;/&amp;gt;
+    &amp;lt;/typeAliases&amp;gt;
+
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;124-mybaits-spring-整合实现方式二&#34;&gt;12.4 MyBaits-Spring 整合实现方式二&lt;/h3&gt;
+&lt;p&gt;mybatis-spring1.2.3版以上的才有这个 .&lt;/p&gt;
+&lt;p&gt;官方文档截图 :&lt;/p&gt;
+&lt;p&gt;dao继承Support类 , 直接利用 getSqlSession() 获得 , 然后直接注入SqlSessionFactory . 比起方式1 , 不需要管理SqlSessionTemplate , 而且对事务的支持更加友好 . 可跟踪源码查看&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;19&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804154550.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;将我们上面写的UserDaoImpl修改一下&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class UserDaoImpl extends SqlSessionDaoSupport implements UserMapper {
+   public List&amp;lt;User&amp;gt; selectUser() {
+       UserMapper mapper = getSqlSession().getMapper(UserMapper.class);
+       return mapper.selectUser();
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;修改bean的配置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;bean id=&amp;quot;userDao&amp;quot; class=&amp;quot;com.cy.dao.UserDaoImpl&amp;quot;&amp;gt;
+   &amp;lt;property name=&amp;quot;sqlSessionFactory&amp;quot; ref=&amp;quot;sqlSessionFactory&amp;quot; /&amp;gt;
+&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void test2(){
+   ApplicationContext context = new ClassPathXmlApplicationContext(&amp;quot;beans.xml&amp;quot;);
+   UserMapper mapper = (UserMapper) context.getBean(&amp;quot;userDao&amp;quot;);
+   List&amp;lt;User&amp;gt; user = mapper.selectUser();
+   System.out.println(user);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;总结 : 整合到spring以后可以完全不要mybatis的配置文件，除了这些方式可以实现整合之外，我们还可以使用注解来实现，这个等我们后面学习SpringBoot的时候还会测试整合！&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;13-声明式事务&#34;&gt;13、 声明式事务&lt;/h2&gt;
 &lt;h3 id=&#34;131-回顾事务&#34;&gt;13.1 回顾事务&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;把一组业务当成一个业务来做：要么都成功，要么都失败。&lt;/li&gt;
-&lt;li&gt;事务在项目开发中，十分的重要，涉及到数据的一致性问题，不能马虎。&lt;/li&gt;
-&lt;li&gt;确保完整性和一致性。&lt;/li&gt;
+&lt;li&gt;事务在项目开发过程非常重要，涉及到数据的一致性的问题，不容马虎！&lt;/li&gt;
+&lt;li&gt;事务管理是企业级应用程序开发中必备技术，用来确保数据的完整性和一致性。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;事务ADID原则：&lt;/p&gt;
+&lt;p&gt;事务就是把一系列的动作当成一个独立的工作单元，这些动作要么全部完成，要么全部不起作用。&lt;/p&gt;
+&lt;p&gt;事务的ACID原则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;原子性（atomicity）&lt;/p&gt;
+&lt;p&gt;事务是原子性操作，由一系列动作组成，事务的原子性确保动作要么全部完成，要么完全不起作用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一致性（consistency）&lt;/p&gt;
+&lt;p&gt;一旦所有事务动作完成，事务就要被提交。数据和资源处于一种满足业务规则的一致性状态中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;隔离性（isolation）&lt;/p&gt;
+&lt;p&gt;可能多个事务会同时处理相同的数据，因此每个事务都应该与其他事务隔离开来，防止数据损坏&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;持久性（durability）&lt;/p&gt;
+&lt;p&gt;事务一旦完成，无论系统发生什么错误，结果都不会受到影响。通常情况下，事务的结果被写到持久化存储器中&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;132-普通事务测试&#34;&gt;13.2 普通事务测试&lt;/h3&gt;
+&lt;p&gt;将上一篇的代码拷贝到一个新的项目中&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在之前的案例中，我们给userDao接口新增两个方法，删除和增加用户；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//添加一个用户
+int addUser(User user);
+
+//根据id删除用户
+int deleteUser(int id);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;mapper文件，我们故意把 deletes 写错，测试！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;insert id=&amp;quot;addUser&amp;quot; parameterType=&amp;quot;com.cy.pojo.User&amp;quot;&amp;gt;
+insert into user (id,name,pwd) values (#{id},#{name},#{pwd})
+&amp;lt;/insert&amp;gt;
+
+&amp;lt;delete id=&amp;quot;deleteUser&amp;quot; parameterType=&amp;quot;int&amp;quot;&amp;gt;
+deletes from user where id = #{id}
+&amp;lt;/delete&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;编写接口的实现类，在实现类中，我们去操作一波&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class UserDaoImpl extends SqlSessionDaoSupport implements UserMapper {
+
+   //增加一些操作
+   public List&amp;lt;User&amp;gt; selectUser() {
+       User user = new User(4,&amp;quot;小明&amp;quot;,&amp;quot;123456&amp;quot;);
+       UserMapper mapper = getSqlSession().getMapper(UserMapper.class);
+       mapper.addUser(user);
+       mapper.deleteUser(4);
+       return mapper.selectUser();
+  }
+
+   //新增
+   public int addUser(User user) {
+       UserMapper mapper = getSqlSession().getMapper(UserMapper.class);
+       return mapper.addUser(user);
+  }
+   //删除
+   public int deleteUser(int id) {
+       UserMapper mapper = getSqlSession().getMapper(UserMapper.class);
+       return mapper.deleteUser(id);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;测试：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void test2(){
+   ApplicationContext context = new ClassPathXmlApplicationContext(&amp;quot;beans.xml&amp;quot;);
+   UserMapper mapper = (UserMapper) context.getBean(&amp;quot;userDao&amp;quot;);
+   List&amp;lt;User&amp;gt; user = mapper.selectUser();
+   System.out.println(user);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这时候发现报错：sql异常，delete写错了&lt;/p&gt;
+&lt;p&gt;结果：插入成功，并没有回滚&lt;/p&gt;
+&lt;p&gt;没有进行事务的管理；我们想让他们都成功才成功，有一个失败，就都失败，我们就应该需要&lt;strong&gt;事务！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;以前我们都需要自己手动管理事务，十分麻烦！&lt;/p&gt;
+&lt;p&gt;但是Spring给我们提供了事务管理，我们只需要配置即可；&lt;/p&gt;
+&lt;h3 id=&#34;133-spring中的事务管理&#34;&gt;13.3  Spring中的事务管理&lt;/h3&gt;
+&lt;p&gt;Spring在不同的事务管理API之上定义了一个抽象层，使得开发人员不必了解底层的事务管理API就可以使用Spring的事务管理机制。Spring支持编程式事务管理和声明式的事务管理。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;原子性&lt;/li&gt;
-&lt;li&gt;一致性&lt;/li&gt;
-&lt;li&gt;隔离性
+&lt;li&gt;&lt;strong&gt;编程式事务管理&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;20&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804154906.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;将事务管理代码嵌到业务方法中来控制事务的提交和回滚&lt;/p&gt;
+&lt;p&gt;缺点：必须在每个事务操作业务逻辑中包含额外的事务管理代码&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;多个业务可能操作同一个资源，防止数据损坏&lt;/li&gt;
+&lt;li&gt;声明式事务管理（只用这个,基本配置也是固定的）
+&lt;ul&gt;
+&lt;li&gt;一般情况下比编程式事务好用。&lt;/li&gt;
+&lt;li&gt;将事务管理代码从业务方法中分离出来，以声明的方式来实现事务管理。&lt;/li&gt;
+&lt;li&gt;将事务管理作为横切关注点，&lt;strong&gt;通过aop方法模块化&lt;/strong&gt;。Spring中通过Spring AOP框架支持声明式事务管理。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;持久性
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;使用Spring管理事务，注意头文件的约束导入：&lt;strong&gt;tx&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;xmlns:tx=&amp;quot;http://www.springframework.org/schema/tx&amp;quot;
+
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;事务管理器&lt;/li&gt;
+&lt;/ol&gt;
 &lt;ul&gt;
-&lt;li&gt;事务一旦提交，无论系统发生什么问题，结果都不会再被影响，被持久化的写到存储器中。&lt;/li&gt;
+&lt;li&gt;无论使用Spring的哪种事务管理策略（编程式或者声明式）事务管理器都是必须的。&lt;/li&gt;
+&lt;li&gt;就是 Spring的核心事务管理抽象，管理封装了一组独立于技术的方法。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;13.2 Spring中的事务管理&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--配置事务管理器--&amp;gt;
+&amp;lt;bean id=&amp;quot;transactionManager&amp;quot; class=&amp;quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&amp;quot;&amp;gt;
+    &amp;lt;property name=&amp;quot;dataSource&amp;quot; ref=&amp;quot;dataSource&amp;quot;/&amp;gt;
+&amp;lt;/bean&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;配置好事务管理器后我们需要去配置事务的通知&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--配置事务通知--&amp;gt;
+&amp;lt;tx:advice id=&amp;quot;txAdvice&amp;quot; transaction-manager=&amp;quot;transactionManager&amp;quot;&amp;gt;
+    &amp;lt;tx:attributes&amp;gt;
+        &amp;lt;tx:method name=&amp;quot;add&amp;quot; propagation=&amp;quot;REQUIRED&amp;quot;/&amp;gt;
+        &amp;lt;tx:method name=&amp;quot;delete&amp;quot; propagation=&amp;quot;REQUIRED&amp;quot;/&amp;gt;
+        &amp;lt;tx:method name=&amp;quot;update&amp;quot; propagation=&amp;quot;REQUIRED&amp;quot;/&amp;gt;
+        &amp;lt;tx:method name=&amp;quot;search*&amp;quot; propagation=&amp;quot;REQUIRED&amp;quot;/&amp;gt;
+        &amp;lt;tx:method name=&amp;quot;get&amp;quot; read-only=&amp;quot;true&amp;quot;/&amp;gt;
+        &amp;lt;tx:method name=&amp;quot;*&amp;quot; propagation=&amp;quot;REQUIRED&amp;quot;/&amp;gt;
+    &amp;lt;/tx:attributes&amp;gt;
+&amp;lt;/tx:advice&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;spring事务传播特性：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;事务传播行为就是多个事务方法相互调用时，事务如何在这些方法间传播。spring支持7种事务传播行为：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;声明式事务：AOP&lt;/li&gt;
-&lt;li&gt;编程式事务：需要在代码中，进行事务的管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;propagation_requierd：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中，这是最常见的选择。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;propagation_supports：支持当前事务，如果没有当前事务，就以非事务方法执行。&lt;/li&gt;
+&lt;li&gt;propagation_mandatory：使用当前事务，如果没有当前事务，就抛出异常。&lt;/li&gt;
+&lt;li&gt;propagation_required_new：新建事务，如果当前存在事务，把当前事务挂起。&lt;/li&gt;
+&lt;li&gt;propagation_not_supported：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。&lt;/li&gt;
+&lt;li&gt;propagation_never：以非事务方式执行操作，如果当前事务存在则抛出异常。&lt;/li&gt;
+&lt;li&gt;propagation_nested：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与propagation_required类似的操作&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;思考：&lt;/p&gt;
-&lt;p&gt;为什么需要事务？&lt;/p&gt;
+&lt;p&gt;Spring 默认的事务传播行为是 PROPAGATION_REQUIRED，它适合于绝大多数的情况。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;假设 ServiveX#methodX() 都工作在事务环境下（即都被 Spring 事务增强了），
+假设程序中存在如下的调用链：
+Service1#method1()-&amp;gt;Service2#method2()-&amp;gt;Service3#method3()，
+那么这 3 个服务类的 3 个方法通过 Spring 的事务传播机制都工作在同一个事务中。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;就好比，我们刚才的几个方法存在调用，所以会被放在一组事务当中！&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;配置AOP&lt;/li&gt;
+&lt;/ol&gt;
 &lt;ul&gt;
-&lt;li&gt;如果不配置事务，可能存在数据提交不一致的情况&lt;/li&gt;
-&lt;li&gt;如果我们不在Spring中去配置声明式事务，我们就需要在代码中手动配置事务&lt;/li&gt;
-&lt;li&gt;事务在项目的开发中十分重要，涉及到数据的一致性和完整性问题，不容马虎&lt;/li&gt;
+&lt;li&gt;导入aop的头文件&lt;/li&gt;
+&lt;li&gt;aop 织入&lt;/li&gt;
 &lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!--配置aop织入事务--&amp;gt;
+&amp;lt;aop:config&amp;gt;
+    &amp;lt;aop:pointcut id=&amp;quot;txPointcut&amp;quot; expression=&amp;quot;execution(* com.cy.dao.*.*(..))&amp;quot;/&amp;gt;
+    &amp;lt;aop:advisor advice-ref=&amp;quot;txAdvice&amp;quot; pointcut-ref=&amp;quot;txPointcut&amp;quot;/&amp;gt;
+&amp;lt;/aop:config&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;测试&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;删掉刚才插入的数据，再次测试！&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Test
+public void test2(){
+   ApplicationContext context = new ClassPathXmlApplicationContext(&amp;quot;beans.xml&amp;quot;);
+   UserMapper mapper = (UserMapper) context.getBean(&amp;quot;userDao&amp;quot;);
+   List&amp;lt;User&amp;gt; user = mapper.selectUser();
+   System.out.println(user);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;结果发现：因为插入失败，所以事务进行了回滚！！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;参考文档：http://mybatis.org/spring/zh/transactions.html&lt;/p&gt;
 ">Spring</a>
       </div>
       
@@ -26533,7 +28158,7 @@ public class MybatisUtils {
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;编写Mapper接口类&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.kuang.pojo.User;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.pojo.User;
 import java.util.List;
 
 public interface UserMapper {
@@ -26548,8 +28173,8 @@ public interface UserMapper {
 &amp;lt;!DOCTYPE mapper
         PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
         &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
-&amp;lt;mapper namespace=&amp;quot;com.zhuuu.dao.UserMapper&amp;quot;&amp;gt;
-  &amp;lt;select id=&amp;quot;selectUser&amp;quot; resultType=&amp;quot;com.zhuuu.pojo.User&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.cy.dao.UserMapper&amp;quot;&amp;gt;
+  &amp;lt;select id=&amp;quot;selectUser&amp;quot; resultType=&amp;quot;com.cy.pojo.User&amp;quot;&amp;gt;
     select * from user
   &amp;lt;/select&amp;gt;
 &amp;lt;/mapper&amp;gt;
@@ -26563,7 +28188,7 @@ public interface UserMapper {
     public void selectUser() {
         SqlSession session = MybatisUtils.getSession();
         //方法一:
-        //List&amp;lt;User&amp;gt; users = session.selectList(&amp;quot;com.kuang.mapper.UserMapper.selectUser&amp;quot;);
+        //List&amp;lt;User&amp;gt; users = session.selectList(&amp;quot;com.cy.mapper.UserMapper.selectUser&amp;quot;);
         //方法二:
         UserMapper mapper = session.getMapper(UserMapper.class);
         List&amp;lt;User&amp;gt; users = mapper.selectUser();
@@ -26633,7 +28258,7 @@ public interface UserMapper {
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;在UserMapper.xml中添加Select语句&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;selectUserById&amp;quot; resultType=&amp;quot;com.zhuuu.pojo.User&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;selectUserById&amp;quot; resultType=&amp;quot;com.cy.pojo.User&amp;quot;&amp;gt;
   select * from user where id = #{id}
 &amp;lt;/select&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -26661,7 +28286,7 @@ public void tsetSelectUserById() {
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;编写sql语句的时候，需要传递参数类型，参数类型为map&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;&amp;lt;select id=&amp;quot;selectUserByNP2&amp;quot; parameterType=&amp;quot;map&amp;quot; resultType=&amp;quot;com.zhuuu.pojo.User&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;&amp;lt;select id=&amp;quot;selectUserByNP2&amp;quot; parameterType=&amp;quot;map&amp;quot; resultType=&amp;quot;com.cy.pojo.User&amp;quot;&amp;gt;
 select * from user where name = #{username} and pwd = #{pwd}
 &amp;lt;/select&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -26688,7 +28313,7 @@ int addUser(User user);
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;在UserMapper.xml中添加insert语句&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;insert id=&amp;quot;addUser&amp;quot; parameterType=&amp;quot;com.zhuuu.pojo.User&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;insert id=&amp;quot;addUser&amp;quot; parameterType=&amp;quot;com.cy.pojo.User&amp;quot;&amp;gt;
      insert into user (id,name,pwd) values (#{id},#{name},#{pwd})
 &amp;lt;/insert&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -26718,7 +28343,7 @@ int updateUser(User user);
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;编写对应的配置文件SQL&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;update id=&amp;quot;updateUser&amp;quot; parameterType=&amp;quot;com.zhuuu.pojo.User&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;update id=&amp;quot;updateUser&amp;quot; parameterType=&amp;quot;com.cy.pojo.User&amp;quot;&amp;gt;
     update user set name=#{name},pwd=#{pwd} where id = #{id}
 &amp;lt;/update&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -26783,7 +28408,7 @@ List&amp;lt;User&amp;gt; getLikeUser(String value);
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;在xml中添加查询&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;getLikeUser&amp;quot; resultType=&amp;quot;com.zhuuu.pojo.User&amp;quot;&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;select id=&amp;quot;getLikeUser&amp;quot; resultType=&amp;quot;com.cy.pojo.User&amp;quot;&amp;gt;
     select * from mybatis.user where name like #{value}
 &amp;lt;/select&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -26850,7 +28475,7 @@ public void testSelectUserById() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;结果:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;User{id=1, name=&#39;zhuuu&#39;, password=&#39;null&#39;}
+&lt;pre&gt;&lt;code&gt;User{id=1, name=&#39;cy&#39;, password=&#39;null&#39;}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查询出来的&lt;strong&gt;password&lt;/strong&gt;为空，说明出现了问题&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;分析：&lt;/strong&gt;&lt;/p&gt;
@@ -27204,7 +28829,7 @@ public class Author {
 &lt;p&gt;步骤2：在mybatis的核心配置文件中注入&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;!--    每一个Mapper,XML都需要在mybatis核心配置文件中注册--&amp;gt;
     &amp;lt;mappers&amp;gt;
-        &amp;lt;mapper class=&amp;quot;com.zhuuu.dao.Mapper&amp;quot;/&amp;gt;
+        &amp;lt;mapper class=&amp;quot;com.cy.dao.Mapper&amp;quot;/&amp;gt;
     &amp;lt;/mappers&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;步骤3：去进行测试&lt;/p&gt;
@@ -27403,9 +29028,9 @@ Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@5
 ==&amp;gt;  Preparing: select * from mybatis.user where id = ? 
 ==&amp;gt; Parameters: 1(Integer)
 &amp;lt;==    Columns: id, name, pwd
-&amp;lt;==        Row: 1, zhuuu, 123456
+&amp;lt;==        Row: 1, cy, 123456
 &amp;lt;==      Total: 1
-User{id=1, name=&#39;zhuuu&#39;, password=&#39;null&#39;}
+User{id=1, name=&#39;cy&#39;, password=&#39;null&#39;}
 Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@5204062d]
 Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@5204062d]
 Returned connection 1375995437 to pool.
@@ -27445,7 +29070,7 @@ log4j.appender.console.layout.ConversionPattern=[%c]-%m%n
 
 #文件输出的相关设置
 log4j.appender.file = org.apache.log4j.RollingFileAppender
-log4j.appender.file.File=./log/zhuuu.log
+log4j.appender.file.File=./log/cy.log
 log4j.appender.file.MaxFileSize=10mb
 log4j.appender.file.Threshold=DEBUG
 log4j.appender.file.layout=org.apache.log4j.PatternLayout
@@ -27499,10 +29124,10 @@ public void selectUser() {
 [org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Opening JDBC Connection
 [org.apache.ibatis.datasource.pooled.PooledDataSource]-Created connection 673186785.
 [org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@282003e1]
-[com.zhuuu.dao.Mapper.getUserbyID]-==&amp;gt;  Preparing: select * from mybatis.user where id = ? 
-[com.zhuuu.dao.Mapper.getUserbyID]-==&amp;gt; Parameters: 1(Integer)
-[com.zhuuu.dao.Mapper.getUserbyID]-&amp;lt;==      Total: 1
-User{id=1, name=&#39;zhuuu&#39;, password=&#39;null&#39;}
+[com.cy.dao.Mapper.getUserbyID]-==&amp;gt;  Preparing: select * from mybatis.user where id = ? 
+[com.cy.dao.Mapper.getUserbyID]-==&amp;gt; Parameters: 1(Integer)
+[com.cy.dao.Mapper.getUserbyID]-&amp;lt;==      Total: 1
+User{id=1, name=&#39;cy&#39;, password=&#39;null&#39;}
 [org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@282003e1]
 [org.apache.ibatis.transaction.jdbc.JdbcTransaction]-Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@282003e1]
 [org.apache.ibatis.datasource.pooled.PooledDataSource]-Returned connection 673186785 to pool.
@@ -27547,9 +29172,9 @@ List&amp;lt;User&amp;gt; selectUser(Map&amp;lt;String,Integer&amp;gt; map);
 &lt;ul&gt;
 &lt;li&gt;推断：起始位置 = （当前页面 - 1 ） * 页面大小&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.zhuuu.dao.Mapper;
-import com.zhuuu.pojo.User;
-import com.zhuuu.utils.MybatisUtils;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.dao.Mapper;
+import com.cy.pojo.User;
+import com.cy.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
@@ -27609,7 +29234,7 @@ public void testUserByRowBounds() {
     RowBounds rowBounds = new RowBounds((currentPage-1)*pageSize,pageSize);
 
     //通过session.**方法进行传递rowBounds，[此种方式现在已经不推荐使用了]
-    List&amp;lt;User&amp;gt; users = session.selectList(&amp;quot;com.zhuuu.mapper.UserMapper.getUserByRowBounds&amp;quot;, null, rowBounds);
+    List&amp;lt;User&amp;gt; users = session.selectList(&amp;quot;com.cy.mapper.UserMapper.getUserByRowBounds&amp;quot;, null, rowBounds);
 
     for (User user: users){
         System.out.println(user);
@@ -27710,7 +29335,7 @@ public interface TeacherMapper {
 &amp;lt;!DOCTYPE mapper
         PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
         &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
-&amp;lt;mapper namespace=&amp;quot;com.zhuuu.dao.TeacherMapper&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.cy.dao.TeacherMapper&amp;quot;&amp;gt;
 
 
 &amp;lt;/mapper&amp;gt;
@@ -27720,7 +29345,7 @@ public interface TeacherMapper {
 &amp;lt;!DOCTYPE mapper
         PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
         &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
-&amp;lt;mapper namespace=&amp;quot;com.zhuuu.dao.StudentMapper&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.cy.dao.StudentMapper&amp;quot;&amp;gt;
 
 
 &amp;lt;/mapper&amp;gt;
@@ -27739,7 +29364,7 @@ public List&amp;lt;Student&amp;gt; getStudents();
 &amp;lt;!DOCTYPE mapper
         PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
         &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
-&amp;lt;mapper namespace=&amp;quot;com.zhuuu.mapper.StudentMapper&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.cy.mapper.StudentMapper&amp;quot;&amp;gt;
 
     &amp;lt;!--
     需求：获取所有学生及对应老师的信息
@@ -27904,7 +29529,7 @@ public Teacher getTeacher(int id);
 &amp;lt;!DOCTYPE mapper
         PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
         &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
-&amp;lt;mapper namespace=&amp;quot;com.zhuuu.dao.TeacherMapper&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.cy.dao.TeacherMapper&amp;quot;&amp;gt;
 
 &amp;lt;!--思路：
     1.从学生表和老师表中查出学生id,学生姓名，老师姓名
@@ -28045,7 +29670,7 @@ public void testGetTeacher2(){
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;创建MyBatis工程&lt;/li&gt;
 &lt;/ol&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://zhuuu-bucket.oss-cn-beijing.aliyuncs.com/img/20200217175227.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://cy-bucket.oss-cn-beijing.aliyuncs.com/img/20200217175227.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;编写IDutil工具类&lt;/li&gt;
 &lt;/ol&gt;
@@ -28081,7 +29706,7 @@ public class Blog {
 &amp;lt;!DOCTYPE mapper
         PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
         &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
-&amp;lt;mapper namespace=&amp;quot;com.zhuuu.dao.BlogMapper&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.cy.dao.BlogMapper&amp;quot;&amp;gt;
 
 &amp;lt;/mapper&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -28102,7 +29727,7 @@ public class Blog {
     &amp;lt;/settings&amp;gt;
 
     &amp;lt;typeAliases&amp;gt;
-        &amp;lt;package name=&amp;quot;com.zhuuu.pojo&amp;quot;/&amp;gt;
+        &amp;lt;package name=&amp;quot;com.cy.pojo&amp;quot;/&amp;gt;
     &amp;lt;/typeAliases&amp;gt;
 
     &amp;lt;environments default=&amp;quot;development&amp;quot;&amp;gt;
@@ -28119,7 +29744,7 @@ public class Blog {
 
 &amp;lt;!--    每一个Mapper,XML都需要在mybatis核心配置文件中注册--&amp;gt;
     &amp;lt;mappers&amp;gt;
-        &amp;lt;package name=&amp;quot;com.zhuuu.dao&amp;quot;/&amp;gt;
+        &amp;lt;package name=&amp;quot;com.cy.dao&amp;quot;/&amp;gt;
     &amp;lt;/mappers&amp;gt;
 
 &amp;lt;/configuration&amp;gt;
@@ -28148,7 +29773,7 @@ public void addInitBlog(){
     Blog blog = new Blog();
     blog.setId(IDUtil.genId());
     blog.setTitle(&amp;quot;Mybatis如此简单&amp;quot;);
-    blog.setAuthor(&amp;quot;Zhuuu&amp;quot;);
+    blog.setAuthor(&amp;quot;cy&amp;quot;);
     blog.setCreateTime(new Date());
     blog.setViews(9999);
 
@@ -28216,15 +29841,15 @@ public void testQueryBlogIf(){
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;会遇到以下几种情况：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 1.author 为 null的情况  正常查出
-Checking to see if class com.zhuuu.dao.BlogMapper matches criteria [is assignable to Object]
+Checking to see if class com.cy.dao.BlogMapper matches criteria [is assignable to Object]
 Opening JDBC Connection
 Created connection 376416077.
 ==&amp;gt;  Preparing: select * from blog where title = ? 
 ==&amp;gt; Parameters: Mybatis如此简单(String)
 &amp;lt;==    Columns: id, title, author, create_time, views
-&amp;lt;==        Row: 62d300fbe0174864af4ebb089ff6952f, Mybatis如此简单, Zhuuu, 2020-02-17 17:51:03.0, 9999
+&amp;lt;==        Row: 62d300fbe0174864af4ebb089ff6952f, Mybatis如此简单, cy, 2020-02-17 17:51:03.0, 9999
 &amp;lt;==      Total: 1
-[Blog(id=62d300fbe0174864af4ebb089ff6952f, title=Mybatis如此简单, author=Zhuuu, createTime=Mon Feb 17 17:51:03 CST 2020, views=9999)]
+[Blog(id=62d300fbe0174864af4ebb089ff6952f, title=Mybatis如此简单, author=cy, createTime=Mon Feb 17 17:51:03 CST 2020, views=9999)]
 Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@166fa74d]
 Returned connection 376416077 to pool.
 
@@ -28235,7 +29860,7 @@ Process finished with exit code 0
 Opening JDBC Connection
 Created connection 376416077.
 ==&amp;gt;  Preparing: select * from blog where and author = ? 
-==&amp;gt; Parameters: Zhuuu(String)
+==&amp;gt; Parameters: cy(String)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;104-动态-where语句&#34;&gt;10.4 动态-where语句&lt;/h3&gt;
 &lt;p&gt;修改上面的情况2：&lt;/p&gt;
@@ -28286,7 +29911,7 @@ public void setTest(){
 
     HashMap&amp;lt;String, String&amp;gt; map = new HashMap&amp;lt;String, String&amp;gt;();
     map.put(&amp;quot;title&amp;quot;,&amp;quot;动态SQL&amp;quot;);
-    map.put(&amp;quot;author&amp;quot;,&amp;quot;Zhuuu&amp;quot;);
+    map.put(&amp;quot;author&amp;quot;,&amp;quot;cy&amp;quot;);
     map.put(&amp;quot;id&amp;quot;,&amp;quot;f279c70cf48d4b55a62d663610d9d541&amp;quot;);//这里的uuid要根据自己的数据库id来取
 
     mapper.updateBlog(map);
@@ -28334,7 +29959,7 @@ public void testQueryBlogChoose(){
 
     HashMap&amp;lt;String, Object&amp;gt; map = new HashMap&amp;lt;String, Object&amp;gt;();
     map.put(&amp;quot;title&amp;quot;,&amp;quot;Java如此简单&amp;quot;);
-    map.put(&amp;quot;author&amp;quot;,&amp;quot;Zhuuu&amp;quot;);
+    map.put(&amp;quot;author&amp;quot;,&amp;quot;cy&amp;quot;);
     map.put(&amp;quot;views&amp;quot;,9999);
     List&amp;lt;Blog&amp;gt; blogs = mapper.queryBlogChoose(map);
 
@@ -28349,9 +29974,9 @@ Created connection 843467284.
 ==&amp;gt;  Preparing: select * from blog WHERE title = ? 
 ==&amp;gt; Parameters: Java如此简单(String)
 &amp;lt;==    Columns: id, title, author, create_time, views
-&amp;lt;==        Row: 78739c74d1c04075b898648e8dba74e7, Java如此简单, Zhuuu, 2020-02-17 17:51:03.0, 1000
+&amp;lt;==        Row: 78739c74d1c04075b898648e8dba74e7, Java如此简单, cy, 2020-02-17 17:51:03.0, 1000
 &amp;lt;==      Total: 1
-[Blog(id=78739c74d1c04075b898648e8dba74e7, title=Java如此简单, author=Zhuuu, createTime=Mon Feb 17 17:51:03 CST 2020, views=1000)]
+[Blog(id=78739c74d1c04075b898648e8dba74e7, title=Java如此简单, author=cy, createTime=Mon Feb 17 17:51:03 CST 2020, views=1000)]
 Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@32464a14]
 Returned connection 843467284 to pool.
 
@@ -28445,11 +30070,11 @@ Created connection 1904324159.
 ==&amp;gt;  Preparing: select * from blog WHERE ( id = ? or id = ? or id = ? ) 
 ==&amp;gt; Parameters: 1(Integer), 2(Integer), 3(Integer)
 &amp;lt;==    Columns: id, title, author, create_time, views
-&amp;lt;==        Row: 1, Mybatis如此简单, Zhuuu, 2020-02-17 17:51:03.0, 9999
-&amp;lt;==        Row: 2, Java如此简单, Zhuuu, 2020-02-17 17:51:03.0, 1000
-&amp;lt;==        Row: 3, Spring如此简单, Zhuuu, 2020-02-17 17:51:03.0, 9999
+&amp;lt;==        Row: 1, Mybatis如此简单, cy, 2020-02-17 17:51:03.0, 9999
+&amp;lt;==        Row: 2, Java如此简单, cy, 2020-02-17 17:51:03.0, 1000
+&amp;lt;==        Row: 3, Spring如此简单, cy, 2020-02-17 17:51:03.0, 9999
 &amp;lt;==      Total: 3
-[Blog(id=1, title=Mybatis如此简单, author=Zhuuu, createTime=Mon Feb 17 17:51:03 CST 2020, views=9999), Blog(id=2, title=Java如此简单, author=Zhuuu, createTime=Mon Feb 17 17:51:03 CST 2020, views=1000), Blog(id=3, title=Spring如此简单, author=Zhuuu, createTime=Mon Feb 17 17:51:03 CST 2020, views=9999)]
+[Blog(id=1, title=Mybatis如此简单, author=cy, createTime=Mon Feb 17 17:51:03 CST 2020, views=9999), Blog(id=2, title=Java如此简单, author=cy, createTime=Mon Feb 17 17:51:03 CST 2020, views=1000), Blog(id=3, title=Spring如此简单, author=cy, createTime=Mon Feb 17 17:51:03 CST 2020, views=9999)]
 Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@7181ae3f]
 Returned connection 1904324159 to pool.
 &lt;/code&gt;&lt;/pre&gt;
@@ -28743,7 +30368,7 @@ public class User {
 &lt;ol start=&#34;5&#34;&gt;
 &lt;li&gt;创建Mapper目录以及对应的Mapper接口&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.zhuuu.pojo.User;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import com.cy.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -28774,7 +30399,7 @@ public interface UserMapper {
 &amp;lt;!DOCTYPE mapper
         PUBLIC &amp;quot;-//mybatis.org//DTD Mapper 3.0//EN&amp;quot;
         &amp;quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&amp;quot;&amp;gt;
-&amp;lt;mapper namespace=&amp;quot;com.zhuuu.mapper.UserMapper&amp;quot;&amp;gt;
+&amp;lt;mapper namespace=&amp;quot;com.cy.mapper.UserMapper&amp;quot;&amp;gt;
 
     &amp;lt;select id=&amp;quot;queryUserlist&amp;quot; resultType=&amp;quot;User&amp;quot;&amp;gt;
         select * from user
