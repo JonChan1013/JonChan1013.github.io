@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Swagger | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1596530324272">
+<link rel="shortcut icon" href="/favicon.ico?v=1597137715476">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -2438,6 +2438,614 @@ public class RestfulController  {
 &lt;p&gt;商务部统计数据显示，2012 年到 2016 年，我国网络购物用户人数从 2.42 亿人增长至4.67 亿人，增长近一倍。电子商务交易额从 8.1 万亿元增长至 26.1 万亿元，年均增长 34%。其中，网络零售交易额从 1.31 万亿元增长至 5.16 万亿元，年均增长 40%，对社会消费品零售总额增加值的贡献率从 17%增长至 30%。电子商务发展直接和间接带动的就业人数从1500 万人增长至 3700 万人。&lt;/p&gt;
 &lt;!-- more --&gt;
 &lt;p&gt;经过多年发展，目前规模较大电子商务平台企业纷纷开始构建生态系统，平台为商家和消费者提供交易、支付、物流等各方面全周期支持与服务，各大平台与平台商家之间依存越来越紧密，阿里系、腾讯系、百度系、京东系等主体均取得了显著规模效益。&lt;/p&gt;
+&lt;h3 id=&#34;12-电商行业模式&#34;&gt;1.2 电商行业模式&lt;/h3&gt;
+&lt;p&gt;B2B：企业到企业，商家到商家。代表：阿里巴巴。&lt;/p&gt;
+&lt;p&gt;B2C：商家到客户。代表：京东、淘宝商城（B2B2C）、天猫网。&lt;/p&gt;
+&lt;p&gt;C2C：客户到客户。淘宝集市、闲鱼、转转。&lt;/p&gt;
+&lt;p&gt;O2O：线上到线下。&lt;/p&gt;
+&lt;h3 id=&#34;13-百战商城介绍&#34;&gt;1.3 百战商城介绍&lt;/h3&gt;
+&lt;p&gt;百战商城项目是一个综合性的 B2C 电子商务平台，功能类似于淘宝、京东。用户可以在系统中通过搜索商品、查看商品详情、加入购物车、购买商品并生成订单完成购物操作。&lt;/p&gt;
+&lt;p&gt;百战商城共分为两部分：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;商城后台管理系统&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;主要实现对商品、商品分类、规格参数、CMS 等业务的处理。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;商城前台系统&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;主要提供用户通过访问首页，完成购物流程的处理。&lt;/p&gt;
+&lt;h2 id=&#34;2-项目架构介绍&#34;&gt;2、项目架构介绍&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805102652.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805102703.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;3-项目技术介绍&#34;&gt;3、 项目技术介绍&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Data&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Data Redis2.1.9.RELEASE&lt;/li&gt;
+&lt;li&gt;Spring Data Solr4.0.9.RELEASE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Boot 2.1.6.RELEASE&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Boot Data Redis 2.1.6.RELEASE&lt;/li&gt;
+&lt;li&gt;Spring Boot Data Solr 2.1.6.RELEASE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Cloud Greenwich.SR2&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Cloud Netflix Eureka&lt;/li&gt;
+&lt;li&gt;Spring Cloud Netflix Zuul&lt;/li&gt;
+&lt;li&gt;Spring Cloud Netflix Hystrix&lt;/li&gt;
+&lt;li&gt;Spring Cloud OpenFeign&lt;/li&gt;
+&lt;li&gt;Spring Cloud Config&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;TX-LCN 5.0.2.RELEASE&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-搭建项目环境&#34;&gt;4、搭建项目环境&lt;/h2&gt;
+&lt;h3 id=&#34;41-创建数据库并导入-sql-文件&#34;&gt;4.1 创建数据库并导入 sql 文件&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805104424.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;42-创建项目&#34;&gt;4.2  创建项目&lt;/h3&gt;
+&lt;h4 id=&#34;421-创建父工程&#34;&gt;4.2.1 创建父工程&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805104518.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 POM 文件&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;bz_parent&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;modules&amp;gt;
+        &amp;lt;module&amp;gt;common_mapper&amp;lt;/module&amp;gt;
+        &amp;lt;module&amp;gt;common_pojo&amp;lt;/module&amp;gt;
+    &amp;lt;/modules&amp;gt;
+    &amp;lt;packaging&amp;gt;pom&amp;lt;/packaging&amp;gt;
+
+    &amp;lt;!--Spring Boot父工程--&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
+        &amp;lt;version&amp;gt;2.1.6.RELEASE&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+
+    &amp;lt;!-- 自定义属性标签 --&amp;gt;
+    &amp;lt;properties&amp;gt;
+        &amp;lt;mybatis-version&amp;gt;3.5.1&amp;lt;/mybatis-version&amp;gt;
+        &amp;lt;mysql-connector-java-version&amp;gt;5.1.38&amp;lt;/mysql-connector-java-version&amp;gt;
+        &amp;lt;druid-version&amp;gt;1.0.9&amp;lt;/druid-version&amp;gt;
+        &amp;lt;pagehelper-version&amp;gt;1.2.10&amp;lt;/pagehelper-version&amp;gt;
+        &amp;lt;logback-version&amp;gt;5.0&amp;lt;/logback-version&amp;gt;
+        &amp;lt;spring-mybats-version&amp;gt;2.0.1&amp;lt;/spring-mybats-version&amp;gt;
+    &amp;lt;/properties&amp;gt;
+
+    &amp;lt;dependencyManagement&amp;gt;
+        &amp;lt;dependencies&amp;gt;
+            &amp;lt;!--Spring Cloud Platform--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;spring-cloud-dependencies&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;Greenwich.SR2&amp;lt;/version&amp;gt;
+                &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;
+                &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+
+            &amp;lt;!-- MyBatis --&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;org.mybatis&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;mybatis&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${mybatis-version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+
+            &amp;lt;!-- MySql Driver  --&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${mysql-connector-java-version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+
+            &amp;lt;!--Alibaba DataBase Connection Pool--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${druid-version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+
+            &amp;lt;!--PageHelper--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;com.github.pagehelper&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;pagehelper-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${pagehelper-version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+
+            &amp;lt;!--MyBatis And Spring Integration Starter--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${spring-mybats-version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+
+            &amp;lt;!--Logback--&amp;gt;
+            &amp;lt;dependency&amp;gt;
+                &amp;lt;groupId&amp;gt;net.logstash.logback&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;logstash-logback-encoder&amp;lt;/artifactId&amp;gt;
+                &amp;lt;version&amp;gt;${logback-version}&amp;lt;/version&amp;gt;
+            &amp;lt;/dependency&amp;gt;
+
+        &amp;lt;/dependencies&amp;gt;
+    &amp;lt;/dependencyManagement&amp;gt;
+
+    &amp;lt;build&amp;gt;
+        &amp;lt;pluginManagement&amp;gt;
+            &amp;lt;!--Spring Boot Maven Plugin--&amp;gt;
+            &amp;lt;plugins&amp;gt;
+                &amp;lt;plugin&amp;gt;
+                    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+                    &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+                &amp;lt;/plugin&amp;gt;
+            &amp;lt;/plugins&amp;gt;
+        &amp;lt;/pluginManagement&amp;gt;
+    &amp;lt;/build&amp;gt;
+
+
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;422-创建-mapper-与-pojo&#34;&gt;4.2.2 创建 Mapper 与 Pojo&lt;/h4&gt;
+&lt;p&gt;​	&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805104706.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;423-使用工具生成-mapper-与-pojo&#34;&gt;4.2.3 使用工具生成 Mapper 与 Pojo&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;generatorSqlmapCustom 工具的使用&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805104805.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 Mapper 的 POM 文件添加依赖坐标&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;!DOCTYPE generatorConfiguration
+  PUBLIC &amp;quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&amp;quot;
+  &amp;quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&amp;quot;&amp;gt;
+
+&amp;lt;generatorConfiguration&amp;gt;
+	&amp;lt;context id=&amp;quot;testTables&amp;quot; targetRuntime=&amp;quot;MyBatis3&amp;quot;&amp;gt;
+		&amp;lt;commentGenerator&amp;gt;
+			&amp;lt;!-- 是否去除自动生成的注释 true：是 ： false:否 --&amp;gt;
+			&amp;lt;property name=&amp;quot;suppressAllComments&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;
+		&amp;lt;/commentGenerator&amp;gt;
+		&amp;lt;!--数据库连接的信息：驱动类、连接地址、用户名、密码 --&amp;gt;
+		&amp;lt;jdbcConnection driverClass=&amp;quot;com.mysql.jdbc.Driver&amp;quot;
+			connectionURL=&amp;quot;jdbc:mysql://localhost:3306/bz_shop&amp;quot; userId=&amp;quot;root&amp;quot;
+			password=&amp;quot;root&amp;quot;&amp;gt;
+		&amp;lt;/jdbcConnection&amp;gt;
+		&amp;lt;!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal --&amp;gt;
+		&amp;lt;javaTypeResolver&amp;gt;
+			&amp;lt;property name=&amp;quot;forceBigDecimals&amp;quot; value=&amp;quot;false&amp;quot; /&amp;gt;
+		&amp;lt;/javaTypeResolver&amp;gt;
+
+		&amp;lt;!-- targetProject:生成PO类的位置 --&amp;gt;
+		&amp;lt;javaModelGenerator targetPackage=&amp;quot;com.cy.pojo&amp;quot;
+			targetProject=&amp;quot;.\src&amp;quot;&amp;gt;
+			&amp;lt;!-- enableSubPackages:是否让schema作为包的后缀 --&amp;gt;
+			&amp;lt;property name=&amp;quot;enableSubPackages&amp;quot; value=&amp;quot;false&amp;quot; /&amp;gt;
+			&amp;lt;!-- 从数据库返回的值被清理前后的空格 --&amp;gt;
+			&amp;lt;property name=&amp;quot;trimStrings&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;
+		&amp;lt;/javaModelGenerator&amp;gt;
+        &amp;lt;!-- targetProject:mapper映射文件生成的位置 --&amp;gt;
+		&amp;lt;sqlMapGenerator targetPackage=&amp;quot;com.cy.mapper&amp;quot;
+			targetProject=&amp;quot;.\src&amp;quot;&amp;gt;
+			&amp;lt;!-- enableSubPackages:是否让schema作为包的后缀 --&amp;gt;
+			&amp;lt;property name=&amp;quot;enableSubPackages&amp;quot; value=&amp;quot;false&amp;quot; /&amp;gt;
+		&amp;lt;/sqlMapGenerator&amp;gt;
+		&amp;lt;!-- targetPackage：mapper接口生成的位置 --&amp;gt;
+		&amp;lt;javaClientGenerator type=&amp;quot;XMLMAPPER&amp;quot;
+			targetPackage=&amp;quot;com.cy.mapper&amp;quot;
+			targetProject=&amp;quot;.\src&amp;quot;&amp;gt;
+			&amp;lt;!-- enableSubPackages:是否让schema作为包的后缀 --&amp;gt;
+			&amp;lt;property name=&amp;quot;enableSubPackages&amp;quot; value=&amp;quot;false&amp;quot; /&amp;gt;
+		&amp;lt;/javaClientGenerator&amp;gt;
+		&amp;lt;!-- 指定数据库表 --&amp;gt;
+		&amp;lt;table schema=&amp;quot;&amp;quot; tableName=&amp;quot;tb_content&amp;quot;&amp;gt;&amp;lt;/table&amp;gt;
+		&amp;lt;table schema=&amp;quot;&amp;quot; tableName=&amp;quot;tb_content_category&amp;quot;&amp;gt;&amp;lt;/table&amp;gt;
+		&amp;lt;table schema=&amp;quot;&amp;quot; tableName=&amp;quot;tb_item&amp;quot;&amp;gt;&amp;lt;/table&amp;gt;
+		&amp;lt;table schema=&amp;quot;&amp;quot; tableName=&amp;quot;tb_item_cat&amp;quot;&amp;gt;&amp;lt;/table&amp;gt;
+		&amp;lt;table schema=&amp;quot;&amp;quot; tableName=&amp;quot;tb_item_desc&amp;quot;&amp;gt;&amp;lt;/table&amp;gt;
+		&amp;lt;table schema=&amp;quot;&amp;quot; tableName=&amp;quot;tb_item_param&amp;quot;&amp;gt;&amp;lt;/table&amp;gt;
+		&amp;lt;table schema=&amp;quot;&amp;quot; tableName=&amp;quot;tb_item_param_item&amp;quot;&amp;gt;&amp;lt;/table&amp;gt;
+		&amp;lt;table schema=&amp;quot;&amp;quot; tableName=&amp;quot;tb_order&amp;quot;&amp;gt;&amp;lt;/table&amp;gt;
+		&amp;lt;table schema=&amp;quot;&amp;quot; tableName=&amp;quot;tb_order_item&amp;quot;&amp;gt;&amp;lt;/table&amp;gt;
+		&amp;lt;table schema=&amp;quot;&amp;quot; tableName=&amp;quot;tb_order_shipping&amp;quot;&amp;gt;&amp;lt;/table&amp;gt;
+		&amp;lt;table schema=&amp;quot;&amp;quot; tableName=&amp;quot;tb_user&amp;quot;&amp;gt;&amp;lt;/table&amp;gt;
+	&amp;lt;/context&amp;gt;
+&amp;lt;/generatorConfiguration&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行GeneratorSqlmap类，并将生成的mapper和pojo拷贝到该项目的mapper和pojo子项目中&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;43-搭建-eureka-注册中心&#34;&gt;4.3 搭建 Eureka 注册中心&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;搭建 Eureka 注册中心&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805114120.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 POM 文件添加依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;artifactId&amp;gt;bz_parent&amp;lt;/artifactId&amp;gt;
+        &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;artifactId&amp;gt;common_eureka&amp;lt;/artifactId&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+    &amp;lt;!--Spring Boot Web Starter--&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+
+    &amp;lt;!--Spring Cloud Eureka Server Starter--&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-eureka-server&amp;lt;/artifactId&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+
+        &amp;lt;build&amp;gt;
+        &amp;lt;!--Spring Boot Maven Plugin 必须有这个，否则打包的时候不会将springboot依赖的包打包进来--&amp;gt;
+        &amp;lt;plugins&amp;gt;
+            &amp;lt;plugin&amp;gt;
+                &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+                &amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;/plugin&amp;gt;
+        &amp;lt;/plugins&amp;gt;
+    &amp;lt;/build&amp;gt;
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建配置文件，添加配置&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;spring:
+  application:
+    name: eureka-server
+
+server:
+  port: 8761
+
+# 关闭注册
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建启动类，添加相关注解&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+/**
+ * eureka 注册中心
+ */
+@SpringBootApplication
+@EnableEurekaServer
+public class EurekaServerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaServerApplication.class, args);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将 Eureka 注册中心部署到 Linux 环境中&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装 lrzsz 上传下载工具&lt;br&gt;
+安装命令：yum install lrzsz -y&lt;/p&gt;
+&lt;p&gt;上传命令：rz&lt;/p&gt;
+&lt;p&gt;下载命令：sz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上传注册中心 jar&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805153124.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上传启动脚本文件(server.sh)&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805153142.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 common_utils 项目(工具集)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805153224.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加常用工具类&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805153252.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 POM 文件添加依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;artifactId&amp;gt;bz_parent&amp;lt;/artifactId&amp;gt;
+        &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;artifactId&amp;gt;common_utils&amp;lt;/artifactId&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;!--Spring Boot Web Starter--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.httpcomponents&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;httpclient&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;4.5.2&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;commons-net&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;commons-net&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;3.6&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-开发百战商城后台系统&#34;&gt;5、开发百战商城后台系统&lt;/h2&gt;
+&lt;h3 id=&#34;51-百战商城服务设计&#34;&gt;5.1 百战商城服务设计&lt;/h3&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805162958.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;52-创建-common_item-服务&#34;&gt;5.2  创建 common_item 服务&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;12&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805163028.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 POM 文件添加依赖坐标&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;artifactId&amp;gt;bz_parent&amp;lt;/artifactId&amp;gt;
+        &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;artifactId&amp;gt;common_item&amp;lt;/artifactId&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;!--mapper--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;common_mapper&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--utils--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;common_utils&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+
+        &amp;lt;!--Spring Boot Web Starter--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--Spring Cloud Eureka Client Starter--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-eureka-client&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建配置文件，添加相关配置&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;spring:
+  application:
+    name: common-item
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_shop?characterEncoding=UTF-8
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+
+server:
+  port: 9010
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 common_mapper 项目的 POM 文件，添加资源拷贝&lt;br&gt;
+插件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;    &amp;lt;build&amp;gt;
+    &amp;lt;resources&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/java&amp;lt;/directory&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/*.xml&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt;
+        &amp;lt;resource&amp;gt;
+            &amp;lt;directory&amp;gt;src/main/resources&amp;lt;/directory&amp;gt;
+            &amp;lt;includes&amp;gt;
+                &amp;lt;include&amp;gt;**/*.xml&amp;lt;/include&amp;gt;
+            &amp;lt;/includes&amp;gt;
+        &amp;lt;/resource&amp;gt;
+    &amp;lt;/resources&amp;gt;
+&amp;lt;/build&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;创建启动类，添加相关注解&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 通用common_item
+ */
+@SpringBootApplication
+@EnableDiscoveryClient
+@MapperScan(&amp;quot;com.cy.mapper&amp;quot;)
+public class CommonItemApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(CommonItemApplication.class, args);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 Host 文件添加注册中心域名与 IP 的映射&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;13&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805173808.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动测试&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;14&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805173854.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;53-创建-backend_item-服务&#34;&gt;5.3 创建 backend_item 服务&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建项目&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;15&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805172041.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 POM 文件添加依赖坐标&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;
+         xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;
+         xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;
+    &amp;lt;parent&amp;gt;
+        &amp;lt;artifactId&amp;gt;bz_parent&amp;lt;/artifactId&amp;gt;
+        &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/parent&amp;gt;
+    &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
+
+    &amp;lt;artifactId&amp;gt;backend_item&amp;lt;/artifactId&amp;gt;
+
+    &amp;lt;dependencies&amp;gt;
+        &amp;lt;!--pojo--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;common_pojo&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+
+        &amp;lt;!--utils--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;com.cy&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;common_utils&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+
+        &amp;lt;!--Spring Boot Web Starter--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--Spring Cloud Eureka Client Starter--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-eureka-client&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+        &amp;lt;!--Spring Cloud OpenFeign Starter--&amp;gt;
+        &amp;lt;dependency&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-cloud-starter-openfeign&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/dependency&amp;gt;
+    &amp;lt;/dependencies&amp;gt;
+
+&amp;lt;/project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建配置文件，添加相关配置&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;spring:
+  application:
+    name: backend-item
+
+server:
+  port: 9011
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建启动类，添加相关注解&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * BackendItem 服务
+ */
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableFeignClients
+public class BackendItemApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(BackendItemApplication.class, args);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动测试&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805174108.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 ">综合性 B2C 电子商务平台项目</a>
       </div>
       

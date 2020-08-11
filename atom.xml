@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-08-04T08:38:58.701Z</updated>
+    <updated>2020-08-11T09:35:54.054Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -478,6 +478,614 @@ public class RestfulController  {
 <p>商务部统计数据显示，2012 年到 2016 年，我国网络购物用户人数从 2.42 亿人增长至4.67 亿人，增长近一倍。电子商务交易额从 8.1 万亿元增长至 26.1 万亿元，年均增长 34%。其中，网络零售交易额从 1.31 万亿元增长至 5.16 万亿元，年均增长 40%，对社会消费品零售总额增加值的贡献率从 17%增长至 30%。电子商务发展直接和间接带动的就业人数从1500 万人增长至 3700 万人。</p>
 <!-- more -->
 <p>经过多年发展，目前规模较大电子商务平台企业纷纷开始构建生态系统，平台为商家和消费者提供交易、支付、物流等各方面全周期支持与服务，各大平台与平台商家之间依存越来越紧密，阿里系、腾讯系、百度系、京东系等主体均取得了显著规模效益。</p>
+<h3 id="12-电商行业模式">1.2 电商行业模式</h3>
+<p>B2B：企业到企业，商家到商家。代表：阿里巴巴。</p>
+<p>B2C：商家到客户。代表：京东、淘宝商城（B2B2C）、天猫网。</p>
+<p>C2C：客户到客户。淘宝集市、闲鱼、转转。</p>
+<p>O2O：线上到线下。</p>
+<h3 id="13-百战商城介绍">1.3 百战商城介绍</h3>
+<p>百战商城项目是一个综合性的 B2C 电子商务平台，功能类似于淘宝、京东。用户可以在系统中通过搜索商品、查看商品详情、加入购物车、购买商品并生成订单完成购物操作。</p>
+<p>百战商城共分为两部分：</p>
+<ol>
+<li><strong>商城后台管理系统</strong>：</li>
+</ol>
+<p>主要实现对商品、商品分类、规格参数、CMS 等业务的处理。</p>
+<ol start="2">
+<li><strong>商城前台系统</strong>：</li>
+</ol>
+<p>主要提供用户通过访问首页，完成购物流程的处理。</p>
+<h2 id="2-项目架构介绍">2、项目架构介绍</h2>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805102652.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805102703.png" alt="" loading="lazy"></figure>
+<h2 id="3-项目技术介绍">3、 项目技术介绍</h2>
+<ul>
+<li>
+<p>Spring Data</p>
+<ul>
+<li>Spring Data Redis2.1.9.RELEASE</li>
+<li>Spring Data Solr4.0.9.RELEASE</li>
+</ul>
+</li>
+<li>
+<p>Spring Boot 2.1.6.RELEASE</p>
+<ul>
+<li>Spring Boot Data Redis 2.1.6.RELEASE</li>
+<li>Spring Boot Data Solr 2.1.6.RELEASE</li>
+</ul>
+</li>
+<li>
+<p>Spring Cloud Greenwich.SR2</p>
+<ul>
+<li>Spring Cloud Netflix Eureka</li>
+<li>Spring Cloud Netflix Zuul</li>
+<li>Spring Cloud Netflix Hystrix</li>
+<li>Spring Cloud OpenFeign</li>
+<li>Spring Cloud Config</li>
+</ul>
+</li>
+<li>
+<p>TX-LCN 5.0.2.RELEASE</p>
+</li>
+</ul>
+<h2 id="4-搭建项目环境">4、搭建项目环境</h2>
+<h3 id="41-创建数据库并导入-sql-文件">4.1 创建数据库并导入 sql 文件</h3>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805104424.png" alt="" loading="lazy"></figure>
+<h3 id="42-创建项目">4.2  创建项目</h3>
+<h4 id="421-创建父工程">4.2.1 创建父工程</h4>
+<ol>
+<li>
+<p>创建项目</p>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805104518.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 POM 文件</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.cy&lt;/groupId&gt;
+    &lt;artifactId&gt;bz_parent&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;modules&gt;
+        &lt;module&gt;common_mapper&lt;/module&gt;
+        &lt;module&gt;common_pojo&lt;/module&gt;
+    &lt;/modules&gt;
+    &lt;packaging&gt;pom&lt;/packaging&gt;
+
+    &lt;!--Spring Boot父工程--&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.1.6.RELEASE&lt;/version&gt;
+    &lt;/parent&gt;
+
+    &lt;!-- 自定义属性标签 --&gt;
+    &lt;properties&gt;
+        &lt;mybatis-version&gt;3.5.1&lt;/mybatis-version&gt;
+        &lt;mysql-connector-java-version&gt;5.1.38&lt;/mysql-connector-java-version&gt;
+        &lt;druid-version&gt;1.0.9&lt;/druid-version&gt;
+        &lt;pagehelper-version&gt;1.2.10&lt;/pagehelper-version&gt;
+        &lt;logback-version&gt;5.0&lt;/logback-version&gt;
+        &lt;spring-mybats-version&gt;2.0.1&lt;/spring-mybats-version&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencyManagement&gt;
+        &lt;dependencies&gt;
+            &lt;!--Spring Cloud Platform--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;
+                &lt;version&gt;Greenwich.SR2&lt;/version&gt;
+                &lt;type&gt;pom&lt;/type&gt;
+                &lt;scope&gt;import&lt;/scope&gt;
+            &lt;/dependency&gt;
+
+            &lt;!-- MyBatis --&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+                &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+                &lt;version&gt;${mybatis-version}&lt;/version&gt;
+            &lt;/dependency&gt;
+
+            &lt;!-- MySql Driver  --&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;mysql&lt;/groupId&gt;
+                &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+                &lt;version&gt;${mysql-connector-java-version}&lt;/version&gt;
+            &lt;/dependency&gt;
+
+            &lt;!--Alibaba DataBase Connection Pool--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+                &lt;artifactId&gt;druid&lt;/artifactId&gt;
+                &lt;version&gt;${druid-version}&lt;/version&gt;
+            &lt;/dependency&gt;
+
+            &lt;!--PageHelper--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;
+                &lt;artifactId&gt;pagehelper-spring-boot-starter&lt;/artifactId&gt;
+                &lt;version&gt;${pagehelper-version}&lt;/version&gt;
+            &lt;/dependency&gt;
+
+            &lt;!--MyBatis And Spring Integration Starter--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+                &lt;version&gt;${spring-mybats-version}&lt;/version&gt;
+            &lt;/dependency&gt;
+
+            &lt;!--Logback--&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;net.logstash.logback&lt;/groupId&gt;
+                &lt;artifactId&gt;logstash-logback-encoder&lt;/artifactId&gt;
+                &lt;version&gt;${logback-version}&lt;/version&gt;
+            &lt;/dependency&gt;
+
+        &lt;/dependencies&gt;
+    &lt;/dependencyManagement&gt;
+
+    &lt;build&gt;
+        &lt;pluginManagement&gt;
+            &lt;!--Spring Boot Maven Plugin--&gt;
+            &lt;plugins&gt;
+                &lt;plugin&gt;
+                    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                    &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+                &lt;/plugin&gt;
+            &lt;/plugins&gt;
+        &lt;/pluginManagement&gt;
+    &lt;/build&gt;
+
+
+&lt;/project&gt;
+</code></pre>
+</li>
+</ol>
+<h4 id="422-创建-mapper-与-pojo">4.2.2 创建 Mapper 与 Pojo</h4>
+<p>​	<img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805104706.png" alt="" loading="lazy"></p>
+<h4 id="423-使用工具生成-mapper-与-pojo">4.2.3 使用工具生成 Mapper 与 Pojo</h4>
+<ol>
+<li>
+<p>generatorSqlmapCustom 工具的使用</p>
+<figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805104805.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 Mapper 的 POM 文件添加依赖坐标</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE generatorConfiguration
+  PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;
+  &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;
+
+&lt;generatorConfiguration&gt;
+	&lt;context id=&quot;testTables&quot; targetRuntime=&quot;MyBatis3&quot;&gt;
+		&lt;commentGenerator&gt;
+			&lt;!-- 是否去除自动生成的注释 true：是 ： false:否 --&gt;
+			&lt;property name=&quot;suppressAllComments&quot; value=&quot;true&quot; /&gt;
+		&lt;/commentGenerator&gt;
+		&lt;!--数据库连接的信息：驱动类、连接地址、用户名、密码 --&gt;
+		&lt;jdbcConnection driverClass=&quot;com.mysql.jdbc.Driver&quot;
+			connectionURL=&quot;jdbc:mysql://localhost:3306/bz_shop&quot; userId=&quot;root&quot;
+			password=&quot;root&quot;&gt;
+		&lt;/jdbcConnection&gt;
+		&lt;!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal --&gt;
+		&lt;javaTypeResolver&gt;
+			&lt;property name=&quot;forceBigDecimals&quot; value=&quot;false&quot; /&gt;
+		&lt;/javaTypeResolver&gt;
+
+		&lt;!-- targetProject:生成PO类的位置 --&gt;
+		&lt;javaModelGenerator targetPackage=&quot;com.cy.pojo&quot;
+			targetProject=&quot;.\src&quot;&gt;
+			&lt;!-- enableSubPackages:是否让schema作为包的后缀 --&gt;
+			&lt;property name=&quot;enableSubPackages&quot; value=&quot;false&quot; /&gt;
+			&lt;!-- 从数据库返回的值被清理前后的空格 --&gt;
+			&lt;property name=&quot;trimStrings&quot; value=&quot;true&quot; /&gt;
+		&lt;/javaModelGenerator&gt;
+        &lt;!-- targetProject:mapper映射文件生成的位置 --&gt;
+		&lt;sqlMapGenerator targetPackage=&quot;com.cy.mapper&quot;
+			targetProject=&quot;.\src&quot;&gt;
+			&lt;!-- enableSubPackages:是否让schema作为包的后缀 --&gt;
+			&lt;property name=&quot;enableSubPackages&quot; value=&quot;false&quot; /&gt;
+		&lt;/sqlMapGenerator&gt;
+		&lt;!-- targetPackage：mapper接口生成的位置 --&gt;
+		&lt;javaClientGenerator type=&quot;XMLMAPPER&quot;
+			targetPackage=&quot;com.cy.mapper&quot;
+			targetProject=&quot;.\src&quot;&gt;
+			&lt;!-- enableSubPackages:是否让schema作为包的后缀 --&gt;
+			&lt;property name=&quot;enableSubPackages&quot; value=&quot;false&quot; /&gt;
+		&lt;/javaClientGenerator&gt;
+		&lt;!-- 指定数据库表 --&gt;
+		&lt;table schema=&quot;&quot; tableName=&quot;tb_content&quot;&gt;&lt;/table&gt;
+		&lt;table schema=&quot;&quot; tableName=&quot;tb_content_category&quot;&gt;&lt;/table&gt;
+		&lt;table schema=&quot;&quot; tableName=&quot;tb_item&quot;&gt;&lt;/table&gt;
+		&lt;table schema=&quot;&quot; tableName=&quot;tb_item_cat&quot;&gt;&lt;/table&gt;
+		&lt;table schema=&quot;&quot; tableName=&quot;tb_item_desc&quot;&gt;&lt;/table&gt;
+		&lt;table schema=&quot;&quot; tableName=&quot;tb_item_param&quot;&gt;&lt;/table&gt;
+		&lt;table schema=&quot;&quot; tableName=&quot;tb_item_param_item&quot;&gt;&lt;/table&gt;
+		&lt;table schema=&quot;&quot; tableName=&quot;tb_order&quot;&gt;&lt;/table&gt;
+		&lt;table schema=&quot;&quot; tableName=&quot;tb_order_item&quot;&gt;&lt;/table&gt;
+		&lt;table schema=&quot;&quot; tableName=&quot;tb_order_shipping&quot;&gt;&lt;/table&gt;
+		&lt;table schema=&quot;&quot; tableName=&quot;tb_user&quot;&gt;&lt;/table&gt;
+	&lt;/context&gt;
+&lt;/generatorConfiguration&gt;
+
+</code></pre>
+</li>
+<li>
+<p>运行GeneratorSqlmap类，并将生成的mapper和pojo拷贝到该项目的mapper和pojo子项目中</p>
+</li>
+</ol>
+<h3 id="43-搭建-eureka-注册中心">4.3 搭建 Eureka 注册中心</h3>
+<ol>
+<li>
+<p>搭建 Eureka 注册中心</p>
+<figure data-type="image" tabindex="6"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805114120.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 POM 文件添加依赖</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;parent&gt;
+        &lt;artifactId&gt;bz_parent&lt;/artifactId&gt;
+        &lt;groupId&gt;com.cy&lt;/groupId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;artifactId&gt;common_eureka&lt;/artifactId&gt;
+
+    &lt;dependencies&gt;
+    &lt;!--Spring Boot Web Starter--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;!--Spring Cloud Eureka Server Starter--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+        &lt;build&gt;
+        &lt;!--Spring Boot Maven Plugin 必须有这个，否则打包的时候不会将springboot依赖的包打包进来--&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;
+</code></pre>
+</li>
+<li>
+<p>创建配置文件，添加配置</p>
+<pre><code class="language-yaml">spring:
+  application:
+    name: eureka-server
+
+server:
+  port: 8761
+
+# 关闭注册
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+</code></pre>
+</li>
+<li>
+<p>创建启动类，添加相关注解</p>
+<pre><code class="language-java">import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+/**
+ * eureka 注册中心
+ */
+@SpringBootApplication
+@EnableEurekaServer
+public class EurekaServerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaServerApplication.class, args);
+    }
+}
+
+</code></pre>
+</li>
+<li>
+<p>将 Eureka 注册中心部署到 Linux 环境中</p>
+<ol>
+<li>
+<p>安装 lrzsz 上传下载工具<br>
+安装命令：yum install lrzsz -y</p>
+<p>上传命令：rz</p>
+<p>下载命令：sz</p>
+</li>
+<li>
+<p>上传注册中心 jar</p>
+<figure data-type="image" tabindex="7"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805153124.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>上传启动脚本文件(server.sh)</p>
+<figure data-type="image" tabindex="8"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805153142.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+</li>
+<li>
+<p>创建 common_utils 项目(工具集)</p>
+<ol>
+<li>
+<p>创建项目</p>
+<figure data-type="image" tabindex="9"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805153224.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>添加常用工具类</p>
+<figure data-type="image" tabindex="10"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805153252.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 POM 文件添加依赖</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;parent&gt;
+        &lt;artifactId&gt;bz_parent&lt;/artifactId&gt;
+        &lt;groupId&gt;com.cy&lt;/groupId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;artifactId&gt;common_utils&lt;/artifactId&gt;
+
+    &lt;dependencies&gt;
+        &lt;!--Spring Boot Web Starter--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;
+            &lt;artifactId&gt;httpclient&lt;/artifactId&gt;
+            &lt;version&gt;4.5.2&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;commons-net&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-net&lt;/artifactId&gt;
+            &lt;version&gt;3.6&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="5-开发百战商城后台系统">5、开发百战商城后台系统</h2>
+<h3 id="51-百战商城服务设计">5.1 百战商城服务设计</h3>
+<figure data-type="image" tabindex="11"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805162958.png" alt="" loading="lazy"></figure>
+<h3 id="52-创建-common_item-服务">5.2  创建 common_item 服务</h3>
+<ol>
+<li>
+<p>创建项目</p>
+<figure data-type="image" tabindex="12"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805163028.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 POM 文件添加依赖坐标</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;parent&gt;
+        &lt;artifactId&gt;bz_parent&lt;/artifactId&gt;
+        &lt;groupId&gt;com.cy&lt;/groupId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;artifactId&gt;common_item&lt;/artifactId&gt;
+
+    &lt;dependencies&gt;
+        &lt;!--mapper--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.cy&lt;/groupId&gt;
+            &lt;artifactId&gt;common_mapper&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!--utils--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.cy&lt;/groupId&gt;
+            &lt;artifactId&gt;common_utils&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!--Spring Boot Web Starter--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;!--Spring Cloud Eureka Client Starter--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;
+</code></pre>
+</li>
+<li>
+<p>创建配置文件，添加相关配置</p>
+<pre><code class="language-yaml">spring:
+  application:
+    name: common-item
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_shop?characterEncoding=UTF-8
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+
+server:
+  port: 9010
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+</code></pre>
+</li>
+<li>
+<p>修改 common_mapper 项目的 POM 文件，添加资源拷贝<br>
+插件</p>
+</li>
+</ol>
+<pre><code class="language-xml">    &lt;build&gt;
+    &lt;resources&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/java&lt;/directory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/*.xml&lt;/include&gt;
+            &lt;/includes&gt;
+        &lt;/resource&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/resources&lt;/directory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/*.xml&lt;/include&gt;
+            &lt;/includes&gt;
+        &lt;/resource&gt;
+    &lt;/resources&gt;
+&lt;/build&gt;
+</code></pre>
+<ol start="5">
+<li>
+<p>创建启动类，添加相关注解</p>
+<pre><code class="language-java">/**
+ * 通用common_item
+ */
+@SpringBootApplication
+@EnableDiscoveryClient
+@MapperScan(&quot;com.cy.mapper&quot;)
+public class CommonItemApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(CommonItemApplication.class, args);
+    }
+}
+
+</code></pre>
+</li>
+<li>
+<p>修改 Host 文件添加注册中心域名与 IP 的映射</p>
+<figure data-type="image" tabindex="13"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805173808.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>启动测试</p>
+<figure data-type="image" tabindex="14"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805173854.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<h3 id="53-创建-backend_item-服务">5.3 创建 backend_item 服务</h3>
+<ol>
+<li>
+<p>创建项目</p>
+<figure data-type="image" tabindex="15"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805172041.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 POM 文件添加依赖坐标</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;parent&gt;
+        &lt;artifactId&gt;bz_parent&lt;/artifactId&gt;
+        &lt;groupId&gt;com.cy&lt;/groupId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;artifactId&gt;backend_item&lt;/artifactId&gt;
+
+    &lt;dependencies&gt;
+        &lt;!--pojo--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.cy&lt;/groupId&gt;
+            &lt;artifactId&gt;common_pojo&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!--utils--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.cy&lt;/groupId&gt;
+            &lt;artifactId&gt;common_utils&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!--Spring Boot Web Starter--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;!--Spring Cloud Eureka Client Starter--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;!--Spring Cloud OpenFeign Starter--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;
+</code></pre>
+</li>
+<li>
+<p>创建配置文件，添加相关配置</p>
+<pre><code class="language-yaml">spring:
+  application:
+    name: backend-item
+
+server:
+  port: 9011
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+</code></pre>
+</li>
+<li>
+<p>创建启动类，添加相关注解</p>
+<pre><code class="language-java">/**
+ * BackendItem 服务
+ */
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableFeignClients
+public class BackendItemApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(BackendItemApplication.class, args);
+    }
+}
+
+</code></pre>
+</li>
+<li>
+<p>启动测试</p>
+<figure data-type="image" tabindex="16"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200805174108.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
 ]]></content>
     </entry>
     <entry>
