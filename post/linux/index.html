@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Linux | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1597137715476">
+<link rel="shortcut icon" href="/favicon.ico?v=1597860886207">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -218,7 +218,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">32</span>
+        <span class="site-item-stat-count">33</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -2649,6 +2649,1632 @@ show variables like '%quer%';
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/docker/"" data-c="
+          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200815145424.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-容器介绍&#34;&gt;1、容器介绍&lt;/h2&gt;
+&lt;p&gt;容器其实是⼀种沙盒技术。顾名思义，沙盒就是能够像⼀个集装箱⼀样，把你的应⽤&amp;quot;装&amp;quot;起来的技术。这样，应⽤与应⽤之间，就因为有了边界⽽不⾄于相互⼲扰；⽽被装进集装箱的应⽤，也可以被⽅便地搬来搬去，这其实是 PaaS 最理想的状态。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;&lt;strong&gt;问题：容器的本质到底是什么？&lt;/strong&gt;&lt;br&gt;
+容器的本质是进程。容器就是未来云计算系统中的进程；容器镜像就是这个系统⾥的&amp;quot;.exe&amp;quot;安装包。Kubernetes 就是操作系统！&lt;/p&gt;
+&lt;h3 id=&#34;11-docker介绍&#34;&gt;1.1 Docker介绍&lt;/h3&gt;
+&lt;h4 id=&#34;111-docker公司认知&#34;&gt;1.1.1 Docker公司认知&lt;/h4&gt;
+&lt;p&gt;官⽹地址：docker.io docker.com&lt;/p&gt;
+&lt;p&gt;公司名称：原名dotCloud  14年改名为docker&lt;/p&gt;
+&lt;p&gt;容器产品：docker 16年已经被更名为Moby&lt;/p&gt;
+&lt;h4 id=&#34;112-容器简史&#34;&gt;1.1.2 容器简史&lt;/h4&gt;
+&lt;p&gt;和虚拟机⼀样，容器技术也是⼀种资源隔离的虚拟化技术。我们追溯它的历史，会发现它的技术雏形早已有之。&lt;/p&gt;
+&lt;p&gt;容器概念始于 1979 年提出的 UNIX chroot，它是⼀个 UNIX 操作系统的系统调⽤，将⼀个进程及其⼦进程的根⽬录改变到⽂件系统中的⼀个新位置，让这些进程只能访问到这个新的位置，从⽽达到了进程隔离的⽬的。&lt;/p&gt;
+&lt;p&gt;2000 年的时候 FreeBSD 开发了⼀个类似于 chroot 的容器技术 Jails，这是最早期，也是功能最多的容器技术。Jails 英译过来是监狱的意思，这个“监狱”（⽤沙盒更为准确）包含了⽂件系统、⽤户、⽹络、进程等的隔离。&lt;/p&gt;
+&lt;p&gt;2001 Linux 也发布⾃⼰的容器技术 Linux VServer，2004 Solaris 也发布了 Solaris Containers，两者都将资源进⾏划分，形成⼀个个 zones，⼜叫做虚拟服务器。&lt;/p&gt;
+&lt;p&gt;2005 年推出 OpenVZ，它通过对 Linux 内核进⾏补丁来提供虚拟化的⽀持，每个 OpenVZ 容器完整⽀持了⽂件系统、⽤户及⽤户、进程、⽹络、设备和 IPC 对象的隔离。&lt;/p&gt;
+&lt;p&gt;2007 年 Google 实现了 Control Groups( cgroups )，并加⼊到 Linux 内核中，这是划时代的，为后期容器的资源配额提供了技术保障。&lt;/p&gt;
+&lt;p&gt;2008 年基于 cgroups 和 linux namespace 推出了第⼀个最为完善的 Linux 容器 LXC。&lt;/p&gt;
+&lt;p&gt;2013 年推出到现在为⽌最为流⾏和使⽤最⼴泛的容器 Docker，相⽐其他早期的容器技术，Docker 引⼊了⼀整套容器管理的⽣态系统，包括分层的镜像模型，容器注册库，友好的 Rest API。&lt;/p&gt;
+&lt;p&gt;2014 年 CoreOS 也推出了⼀个类似于 Docker 的容器 Rocket，CoreOS ⼀个更加轻量级的 Linux 操作系统，在安全性上⽐ Docker 更严格。&lt;/p&gt;
+&lt;p&gt;2016 年微软也在 Windows 上提供了容器的⽀持，Docker 可以以原⽣⽅式运⾏在 Windows 上，⽽不是需要使⽤ Linux 虚拟机。&lt;/p&gt;
+&lt;p&gt;基本上到这个时间节点，容器技术就已经很成熟了，再往后就是容器云的发展，由此也衍⽣出多种容器云的平台管理技术，其中以 kubernetes 最为出众，有了这样⼀些细粒度的容器集群管理技术，也为微服务的发展奠定了基⽯。因此，对于未来来说，应⽤的微服务化是⼀个较⼤的趋势。&lt;/p&gt;
+&lt;h4 id=&#34;113-容器需求成因&#34;&gt;1.1.3 容器需求成因&lt;/h4&gt;
+&lt;p&gt;其⼀，这是技术演进的⼀种创新结果，其⼆，这是⼈们追求⾼效⽣产活动的⼀种⼯具。&lt;/p&gt;
+&lt;p&gt;随着软件开发的发展，相⽐于早期的集中式应⽤部署⽅式，现在的应⽤基本都是采⽤分布式的部署⽅式，⼀个应⽤可能包含多种服务或多个模块，因此多种服务可能部署在多种环境中，如虚拟服务器、公有云、私有云等，由于多种服务之间存在⼀些依赖关系，所以可能存在应⽤在运⾏过程中的动态迁移问题，那这时如何保证不同服务在不同环境中都能平滑的适配，不需要根据环境的不同⽽去进⾏相应的定制，就显得尤为重要。&lt;/p&gt;
+&lt;p&gt;就像货物的运输问题⼀样，如何将不同的货物放在不同的运输机器上，减少因货物的不同⽽频繁进⾏货物的装载和卸载，浪费⼤量的⼈⼒物⼒。&lt;/p&gt;
+&lt;p&gt;为此⼈们发明了集装箱，将货物根据尺⼨形状等的不同，⽤不同规格的集装箱装载，然后再放到运输机上运输，由于集装箱密封，只有货物到达⽬的地才需拆封，在运输过程能够再不同运输机上平滑过渡，所以避免了资源的浪费。&lt;/p&gt;
+&lt;p&gt;因此集装箱被誉为是运输业与世界贸易最重要的发明。&lt;/p&gt;
+&lt;p&gt;Docker 容器的思想就是采⽤集装箱思想，为应⽤提供了⼀个基于容器的标准化运输系统。Docker 可以将任何应⽤及其依赖打包成⼀个轻量级、可移植、⾃包含的容器。容器可以运⾏在⼏乎所有的操作系统上。这样容器就可以跑在任何环境中，因此才有了那句话：Build Once, Run Anywhere&lt;/p&gt;
+&lt;p&gt;这种集装箱的思想我们也能从 Docker 的 Logo 中看出来，这不就是⼀堆集装箱吗？&lt;/p&gt;
+&lt;h4 id=&#34;114-docker-vs-传统&#34;&gt;1.1.4、Docker VS 传统&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;部署模式区别&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;传统的部署模式：  安装(包管理⼯具或者源码包编译)-&amp;gt;配置-&amp;gt;运⾏&lt;/p&gt;
+&lt;p&gt;Docker部署模式：复制-&amp;gt;运⾏&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;容器和虚拟机区别&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;容器提供了基于进程的隔离，⽽虚拟机提供了资源的完全隔离。&lt;/li&gt;
+&lt;li&gt;虚拟机可能需要⼀分钟来启动，⽽容器只需要⼀秒钟或更短。&lt;/li&gt;
+&lt;li&gt;容器使⽤宿主操作系统的内核，⽽虚拟机使⽤独⽴的内核&lt;/li&gt;
+&lt;li&gt;容器只是⼀个进程，⽽虚拟机不是&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Docker对服务器端开发/部署带来的变化：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;实现更轻量级的虚拟化，⽅便快速部署&lt;/p&gt;
+&lt;p&gt;对于部署来说可以极⼤的减少部署的时间成本和⼈⼒成本&lt;/p&gt;
+&lt;p&gt;Docker⽀持将应⽤打包进⼀个可以移植的容器中，重新定义了应⽤开发，测试，部署上线的过程，核⼼&lt;br&gt;
+理念就&lt;/p&gt;
+&lt;p&gt;是 Build once, Run anywhere&lt;/p&gt;
+&lt;p&gt;1）标准化应⽤发布，docker容器包含了运⾏环境和可执⾏程序，可以跨平台和主机使⽤；&lt;/p&gt;
+&lt;p&gt;2）节约时间，快速部署和启动，VM启动⼀般是分钟级，docker容器启动是秒级；&lt;/p&gt;
+&lt;p&gt;3）⽅便构建基于SOA架构或微服务架构的系统，通过服务编排，更好的松耦合；&lt;/p&gt;
+&lt;p&gt;4）节约成本，以前⼀个虚拟机⾄少需要⼏个G的磁盘空间，docker容器可以减少到MB级；&lt;/p&gt;
+&lt;p&gt;5）⽅便持续集成，通过与代码进⾏关联使持续集成⾮常⽅便；&lt;/p&gt;
+&lt;p&gt;6）可以作为集群系统的轻量主机或节点，在IaaS平台上，已经出现了CaaS，通过容器替代原来的主机。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Docker 优势&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1、交付物标准化&lt;/p&gt;
+&lt;p&gt;Docker是软件⼯程领域的&amp;quot;标准化&amp;quot;交付组件，最恰到好处的类⽐是&amp;quot;集装箱&amp;quot;。&lt;/p&gt;
+&lt;p&gt;集装箱将零散、不易搬运的⼤量物品封装成⼀个整体，集装箱更重要的意义在于它提供了⼀种通⽤的封装货物的&lt;/p&gt;
+&lt;p&gt;标准，卡⻋、⽕⻋、货轮、桥吊等运输或搬运⼯具采⽤此标准，隧道、桥梁等也采⽤此标准。以集装箱为中⼼的&lt;/p&gt;
+&lt;p&gt;标准化设计⼤⼤提⾼了物流体系的运⾏效率。&lt;/p&gt;
+&lt;p&gt;传统的软件交付物包括：应⽤程序、依赖软件安装包、配置说明⽂档、安装⽂档、上线⽂档等⾮标准化组件。&lt;/p&gt;
+&lt;p&gt;Docker的标准化交付物称为&amp;quot;镜像&amp;quot;，它包含了应⽤程序及其所依赖的运⾏环境，⼤⼤简化了应⽤交付的模式。&lt;/p&gt;
+&lt;p&gt;2、⼀次构建，多次交付&lt;/p&gt;
+&lt;p&gt;类似于集装箱的&amp;quot;⼀次装箱，多次运输&amp;quot;，Docker镜像可以做到&amp;quot;⼀次构建，多次交付&amp;quot;。当涉及到应⽤程序多副本&lt;/p&gt;
+&lt;p&gt;部署或者应⽤程序迁移时，更能体现Docker的价值。&lt;/p&gt;
+&lt;p&gt;3、应⽤隔离&lt;/p&gt;
+&lt;p&gt;集装箱可以有效做到货物之间的隔离，使化学物品和⻝品可以堆砌在⼀起运输。Docker可以隔离不同应&lt;br&gt;
+⽤程序之间的相互影响，但是⽐虚拟机开销更⼩。&lt;/p&gt;
+&lt;p&gt;总之，容器技术部署速度快，开发、测试更敏捷；提⾼系统利⽤率，降低资源成本。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Docker的度量&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Docker是利⽤容器来实现的⼀种轻量级的虚拟技术，从⽽在保证隔离性的同时达到节省资源的⽬的。&lt;br&gt;
+Docker的可移植性可以让它⼀次建⽴，到处运⾏。Docker的度量可以从以下四个⽅⾯进⾏：&lt;/p&gt;
+&lt;p&gt;1）隔离性&lt;/p&gt;
+&lt;p&gt;Docker采⽤libcontainer作为默认容器，代替了以前的LXC。libcontainer的隔离性主要是通过内核的命名空 间来实现 的，有pid、net、ipc、mnt、uts命令空间，将容器的进程、⽹络、消息、⽂件系统和主机名进⾏隔 离。&lt;/p&gt;
+&lt;p&gt;2）可度量性&lt;/p&gt;
+&lt;p&gt;Docker主要通过cgroups控制组来控制资源的度量和分配。&lt;/p&gt;
+&lt;p&gt;3）移植性&lt;/p&gt;
+&lt;p&gt;Docker利⽤AUFS来实现对容器的快速更新。&lt;/p&gt;
+&lt;p&gt;AUFS是⼀种⽀持将不同⽬录挂载到同⼀个虚拟⽂件系统下的⽂件系统，⽀持对每个⽬录的读写权限管理。AUFS具有层 的概念，每⼀次修改都是在已有的只写层进⾏增量修改，修改的内容将形成新的⽂件层，不影响原有的层。&lt;/p&gt;
+&lt;p&gt;4）安全性&lt;/p&gt;
+&lt;p&gt;安全性可以分为容器内部之间的安全性；容器与托管主机之间的安全性。&lt;/p&gt;
+&lt;p&gt;容器内部之间的安全性主要是通过命名空间和cgroups来保证的。&lt;/p&gt;
+&lt;p&gt;容器与托管主机之间的安全性主要是通过内核能⼒机制的控制，可以防⽌Docker⾮法⼊侵托管主机。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Docker容器使⽤AUFS作为⽂件系统，有如下优势&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1）节省存储空间&lt;/p&gt;
+&lt;p&gt;多个容器可以共享同⼀个基础镜像存储。&lt;/p&gt;
+&lt;p&gt;2）快速部署&lt;/p&gt;
+&lt;p&gt;如果部署多个来⾃同⼀个基础镜像的容器时，可以避免多次复制操作。&lt;/p&gt;
+&lt;p&gt;3）升级⽅便&lt;/p&gt;
+&lt;p&gt;升级⼀个基础镜像即可影响到所有基于它的容器。&lt;/p&gt;
+&lt;p&gt;4）增量修改&lt;/p&gt;
+&lt;p&gt;可以在不改变基础镜像的同时修改其⽬录的⽂件，所有的更⾼都发⽣在最上层的写操作层，增加了基础镜像的可共享内容。&lt;/p&gt;
+&lt;h4 id=&#34;115-容器的应用场景&#34;&gt;1.1.5、 容器的应⽤场景&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;简化配置&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这是Docker公司宣传的Docker的主要使⽤场景。虚拟机的最⼤好处是能在你的硬件设施上运⾏各种配置不⼀样的平台（软件、系统），Docker在降低额外开销的情况下提供了同样的功能。它能让你将运⾏环境和配置放在代码中然后部署，同⼀个Docker的配置可以在不同的环境中使⽤，这样就降低了硬件要求和应⽤环境之间耦合度。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;代码流⽔线管理&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;前⼀个场景对于管理代码的流⽔线起到了很⼤的帮助。代码从开发者的机器到最终在⽣产环境上的部署，需要经过很多的中间环境。⽽每⼀个中间环境都有⾃⼰微⼩的差别，Docker给应⽤提供了⼀个从开发到上线均⼀致的环境，让代码的流⽔线变得简单不少。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;strong&gt;提⾼开发效率&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这就带来了⼀些额外的好处：Docker能提升开发者的开发效率。如果你想看⼀个详细⼀点的例⼦，可以参考Aater在DevOpsDays Austin 2014 ⼤会或者是DockerCon上的演讲。&lt;/p&gt;
+&lt;p&gt;不同的开发环境中，我们都想把两件事做好。⼀是我们想让开发环境尽量贴近⽣产环境，⼆是我们想快速搭建开发环境。&lt;/p&gt;
+&lt;p&gt;理想状态中，要达到第⼀个⽬标，我们需要将每⼀个服务都跑在独⽴的虚拟机中以便监控⽣产环境中服务的运⾏状态。然⽽，我们却不想每次都需要⽹络连接，每次重新编译的时候远程连接上去特别麻烦。这就是Docker做的特别好的地⽅，开发环境的机器通常内存⽐较⼩，之前使⽤虚拟的时候，我们经常需要为开发环境的机器加内存，⽽现在Docker可以轻易的让⼏⼗个服务在Docker中跑起来。&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;隔离应⽤&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;有很多种原因会让你选择在⼀个机器上运⾏不同的应⽤，⽐如之前提到的提⾼开发效率的场景等。&lt;/p&gt;
+&lt;p&gt;我们经常需要考虑两点，⼀是因为要降低成本⽽进⾏服务器整合，⼆是将⼀个整体式的应⽤拆分成松耦合的单个服务（译者注：微服务架构）。如果你想了解为什么松耦合的应⽤这么重要，请参考Steve Yege的这篇论⽂，⽂中将Google和亚⻢逊做了⽐较。&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;&lt;strong&gt;整合服务器&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;正如通过虚拟机来整合多个应⽤，Docker隔离应⽤的能⼒使得Docker可以整合多个服务器以降低成本。由于没有多个操作系统的内存占⽤，以及能在多个实例之间共享没有使⽤的内存，Docker可以⽐虚拟机提供更好的服务器整合解决⽅案。&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;&lt;strong&gt;调试能⼒&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Docker提供了很多的⼯具，这些⼯具不⼀定只是针对容器，但是却适⽤于容器。它们提供了很多的功能，包括可以为容器设置检查点、设置版本和查看两个容器之间的差别，这些特性可以帮助调试Bug。你可以在《Docker拯救世界》的⽂章中找到这⼀点的例证。&lt;/p&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;&lt;strong&gt;多租户环境&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;另外⼀个Docker有意思的使⽤场景是在多租户的应⽤中，它可以避免关键应⽤的重写。我们⼀个特别的关于这个场景的例⼦是为物联⽹的应⽤开发⼀个快速、易⽤的多租户环境。这种多租户的基本代码⾮常复杂，很难处理，重新规划这样⼀个应⽤不但消耗时间，也浪费⾦钱。&lt;/p&gt;
+&lt;p&gt;使⽤Docker，可以为每⼀个租户的应⽤层的多个实例创建隔离的环境，这不仅简单⽽且成本低廉，当然这⼀切得益于Docker环境的启动速度和其⾼效的命令。&lt;/p&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;&lt;strong&gt;快速部署&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在虚拟机之前，引⼊新的硬件资源需要消耗⼏天的时间。虚拟化技术将这个时间缩短到了分钟级别。⽽Docker通过为进程仅仅创建⼀个容器⽽⽆需启动⼀个操作系统，再次将这个过程缩短到了秒级。这正是Google和Facebook都看重的特性。&lt;/p&gt;
+&lt;h3 id=&#34;12-docker容器历史解读扩展阅读&#34;&gt;1.2 Docker容器历史解读【扩展阅读】&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;PaaS&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;从过去以物理机和虚拟机为主体的开发运维环境，向以容器为核⼼的基础设施的转变过程，并不是⼀次温和的改⾰，⽽是涵盖了对⽹络、存储、调度、操作系统、分布式原理等各个⽅⾯的容器化理解和改造。&lt;/p&gt;
+&lt;p&gt;2013 年的后端技术领域，已经太久没有出现过令⼈兴奋的东⻄了。曾经被⼈们寄予厚望的云计算技术，也已经从当初虚⽆缥缈的概念蜕变成了实实在在的虚拟机和账单。⽽相⽐于如⽇中天 AWS 和盛极⼀时的 OpenStack，以 Cloud Foundry 为代表的开源 PaaS 项⽬，却成为了当时云计算技术中的⼀股清流。&lt;/p&gt;
+&lt;p&gt;当时，Cloud Foundry 项⽬已经基本度过了最艰难的概念普及和⽤户教育阶段，吸引了包括百度、京东、华为、IBM 等⼀⼤批国内外技术⼚商，开启了以开源 PaaS 为核⼼构建平台层服务能⼒的变⾰。如果你有机会问问当时的云计算从业者们，他们⼗有⼋九都会告诉你：PaaS 的时代就要来了！&lt;/p&gt;
+&lt;p&gt;这个说法其实⼀点⼉没错，如果不是后来⼀个叫 Docker 的开源项⽬突然冒出来的话。&lt;/p&gt;
+&lt;p&gt;事实上，当时还名叫 dotCloud 的 Docker 公司，也是这股 PaaS 热潮中的⼀份⼦。只不过相⽐于 Heroku、Pivotal、Red Hat 等 PaaS 弄潮⼉们，dotCloud 公司实在是太微不⾜道了，⽽它的主打产品由于跟主流的 Cloud Foundry 社区脱节，⻓期以来也⽆⼈问津。眼看就要被如⽕如荼的 PaaS ⻛潮抛弃，dotCloud 公司却做出了这样⼀个决定：开源⾃⼰的容器项⽬ Docker。&lt;/p&gt;
+&lt;p&gt;显然，这个决定在当时根本没⼈在乎。&lt;/p&gt;
+&lt;p&gt;&amp;quot;容器&amp;quot;这个概念从来就不是什么新鲜的东⻄，也不是 Docker 公司发明的。即使在当时最热⻔的 PaaS 项⽬ Cloud Foundry 中，容器也只是其最底层、最没⼈关注的那⼀部分。说到这⾥，正好以当时的事实标准 Cloud Foundry 为例，来解说⼀下 PaaS 技术。&lt;/p&gt;
+&lt;p&gt;PaaS 项⽬被⼤家接纳的⼀个主要原因，就是它提供了⼀种名叫&amp;quot;应⽤托管&amp;quot;的能⼒。 在当时，虚拟机和云计算已经是⽐较普遍的技术和服务了，那时主流⽤户的普遍⽤法，就是租⼀批 AWS 或者 OpenStack 的虚拟机，然后像以前管理物理服务器那样，⽤脚本或者⼿⼯的⽅式在这些机器上部署应⽤。&lt;/p&gt;
+&lt;p&gt;当然，这个部署过程难免会碰到云端虚拟机和本地环境不⼀致的问题，所以当时的云计算服务，⽐的就是谁能更好地模拟本地服务器环境，能带来更好的&amp;quot;上云&amp;quot;体验。⽽ PaaS 开源项⽬的出现，就是当时解决这个问题的⼀个最佳⽅案。&lt;/p&gt;
+&lt;p&gt;举个例⼦，虚拟机创建好之后，运维⼈员只需要在这些机器上部署⼀个 Cloud Foundry 项⽬，然后开发者只要执⾏⼀条命令就能把本地的应⽤部署到云上，这条命令就是：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ cf push &amp;quot; 我的应⽤ &amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;是不是很神奇？&lt;/p&gt;
+&lt;p&gt;事实上，像 Cloud Foundry 这样的 PaaS 项⽬，最核⼼的组件就是⼀套应⽤的打包和分发机制。 Cloud Foundry 为每种主流编程语⾔都定义了⼀种打包格式，⽽&amp;quot;cf push&amp;quot;的作⽤，基本上等同于⽤户把应⽤的可执⾏⽂件和启动脚本打进⼀个压缩包内，上传到云上 Cloud Foundry 的存储中。接着，Cloud&lt;br&gt;
+Foundry 会通过调度器选择⼀个可以运⾏这个应⽤的虚拟机，然后通知这个机器上的 Agent 把应⽤压缩包下载下来启动。&lt;/p&gt;
+&lt;p&gt;这时候关键来了，由于需要在⼀个虚拟机上启动很多个来⾃不同⽤户的应⽤，Cloud Foundry 会调⽤操作系统的 Cgroups 和 Namespace 机制为每⼀个应⽤单独创建⼀个称作&amp;quot;沙盒&amp;quot;的隔离环境，然后在&amp;quot;沙盒&amp;quot;中启动这些应⽤进程。这样，就实现了把多个⽤户的应⽤互不⼲涉地在虚拟机⾥批量地、⾃动地运⾏起来的⽬的。&lt;/p&gt;
+&lt;p&gt;这，正是 PaaS 项⽬最核⼼的能⼒。 ⽽这些 Cloud Foundry ⽤来运⾏应⽤的隔离环境，或者说&amp;quot;沙盒&amp;quot;，就是所谓的&amp;quot;容器&amp;quot;。&lt;/p&gt;
+&lt;p&gt;⽽ Docker 项⽬，实际上跟 Cloud Foundry 的容器并没有太⼤不同，所以在它发布后不久，Cloud Foundry 的⾸席产品经理 James Bayer 就在社区⾥做了⼀次详细对⽐，告诉⽤户 Docker 实际上只是⼀个同样使⽤ Cgroups 和 Namespace 实现的&amp;quot;沙盒&amp;quot;⽽已，没有什么特别的⿊科技，也不需要特别关注。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ cf push &amp;quot; 我的应⽤ &amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然⽽，短短⼏个⽉，Docker 项⽬就迅速崛起了。它的崛起速度如此之快，以⾄于 Cloud Foundry 以及所有的 PaaS 社区还没来得及成为它的竞争对⼿，就直接被宣告出局了。那时候，⼀位多年的 PaaS 从业者曾经如此感慨道：这简直就是⼀场&amp;quot;降维打击&amp;quot;啊。&lt;/p&gt;
+&lt;p&gt;事实上，Docker 项⽬确实与 Cloud Foundry 的容器在⼤部分功能和实现原理上都是⼀样的，可偏偏就是这剩下的⼀⼩部分不⼀样的功能，成了 Docker 项⽬接下来&amp;quot;呼⻛唤⾬&amp;quot;的不⼆法宝。&lt;/p&gt;
+&lt;p&gt;这个功能，就是 Docker 镜像。&lt;/p&gt;
+&lt;p&gt;恐怕连 Docker 项⽬的作者 Solomon Hykes ⾃⼰当时都没想到，这个⼩⼩的创新，在短短⼏年内就如此迅速地改变了整个云计算领域的发展历程。&lt;/p&gt;
+&lt;p&gt;前⾯已经介绍过，PaaS 之所以能够帮助⽤户⼤规模部署应⽤到集群⾥，是因为它提供了⼀套应⽤打包的功能。可就是这个打包功能，却成了 PaaS ⽇后不断遭到⽤户诟病的⼀个&amp;quot;软肋&amp;quot;。&lt;/p&gt;
+&lt;p&gt;出现这个问题的根本原因是，⼀旦⽤上了 PaaS，⽤户就必须为每种语⾔、每种框架，甚⾄每个版本的应⽤维护⼀个打好的包。这个打包过程，没有任何章法可循，更麻烦的是，明明在本地运⾏得好好的应⽤，却需要做很多修改和配置⼯作才能在 PaaS ⾥运⾏起来。⽽这些修改和配置，并没有什么经验可以借鉴，基本上得靠不断试错，直到你摸清楚了本地应⽤和远端 PaaS 匹配的&amp;quot;脾⽓&amp;quot;才能够搞定。&lt;/p&gt;
+&lt;p&gt;最后结局就是，&amp;quot;cf push&amp;quot;确实是能⼀键部署了，但是为了实现这个⼀键部署，⽤户为每个应⽤打包的⼯作可谓⼀波三折，费尽⼼机。&lt;/p&gt;
+&lt;p&gt;⽽Docker 镜像解决的，恰恰就是打包这个根本性的问题。 所谓 Docker 镜像，其实就是⼀个压缩包。但是这个压缩包⾥的内容，⽐ PaaS 的应⽤可执⾏⽂件 + 启停脚本的组合就要丰富多了。实际上，⼤多数 Docker 镜像是直接由⼀个完整操作系统的所有⽂件和⽬录构成的，所以这个压缩包⾥的内容跟你本地开发和测试环境⽤的操作系统是完全⼀样的。&lt;/p&gt;
+&lt;p&gt;这就有意思了：假设你的应⽤在本地运⾏时，能看⻅的环境是 CentOS 7.2 操作系统的所有⽂件和⽬录，那么只要⽤ CentOS 7.2 的 ISO 做⼀个压缩包，再把你的应⽤可执⾏⽂件也压缩进去，那么⽆论在哪⾥解压这个压缩包，都可以得到与你本地测试时⼀样的环境。当然，你的应⽤也在⾥⾯！&lt;/p&gt;
+&lt;p&gt;这就是 Docker 镜像最厉害的地⽅：只要有这个压缩包在⼿，你就可以使⽤某种技术创建⼀个&amp;quot;沙盒&amp;quot;，在&amp;quot;沙盒&amp;quot;中解压这个压缩包，然后就可以运⾏你的程序了。&lt;/p&gt;
+&lt;p&gt;更重要的是，这个压缩包包含了完整的操作系统⽂件和⽬录，也就是包含了这个应⽤运⾏所需要的所有依赖，所以你可以先⽤这个压缩包在本地进⾏开发和测试，完成之后，再把这个压缩包上传到云端运⾏。&lt;/p&gt;
+&lt;p&gt;在这个过程中，你完全不需要进⾏任何配置或者修改，因为这个压缩包赋予了你⼀种极其宝贵的能⼒：本地环境和云端环境的⾼度⼀致！&lt;/p&gt;
+&lt;p&gt;这，正是 Docker 镜像的精髓。&lt;/p&gt;
+&lt;p&gt;那么，有了 Docker 镜像这个利器，PaaS ⾥最核⼼的打包系统⼀下⼦就没了⽤武之地，最让⽤户抓狂的打包过程也随之消失了。相⽐之下，在当今的互联⽹⾥，Docker 镜像需要的操作系统⽂件和⽬录，可谓唾⼿可得。&lt;/p&gt;
+&lt;p&gt;所以，你只需要提供⼀个下载好的操作系统⽂件与⽬录，然后使⽤它制作⼀个压缩包即可，这个命令就：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ docker build 我的镜像
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;⼀旦镜像制作完成，⽤户就可以让 Docker 创建⼀个&amp;quot;沙盒&amp;quot;来解压这个镜像，然后在&amp;quot;沙盒&amp;quot;中运⾏⾃⼰的应⽤，这个命令就是：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ docker run &amp;quot; 我的镜像 &amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当然，docker run 创建的&amp;quot;沙盒&amp;quot;，也是使⽤ Cgroups 和 Namespace 机制创建出来的隔离环境。&lt;/p&gt;
+&lt;p&gt;所以，Docker 项⽬给 PaaS 世界带来的&amp;quot;降维打击&amp;quot;，其实是提供了⼀种⾮常便利的打包机制。这种机制直接打包了应⽤运⾏所需要的整个操作系统，从⽽保证了本地环境和云端环境的⾼度⼀致，避免了⽤户通过&amp;quot;试错&amp;quot;来匹配两种不同运⾏环境之间差异的痛苦过程。&lt;/p&gt;
+&lt;p&gt;⽽对于开发者们来说，在终于体验到了⽣产⼒解放所带来的痛快之后，他们⾃然选择了⽤脚投票，直接宣告了 PaaS 时代的结束。&lt;/p&gt;
+&lt;p&gt;不过，Docker 项⽬固然解决了应⽤打包的难题，但正如前⾯所介绍的那样，它并不能代替 PaaS 完成⼤规模部署应⽤的职责。&lt;/p&gt;
+&lt;p&gt;遗憾的是，考虑到 Docker 公司是⼀个与⾃⼰有潜在竞争关系的商业实体，再加上对 Docker 项⽬普及程度的错误判断，Cloud Foundry 项⽬并没有第⼀时间使⽤ Docker 作为⾃⼰的核⼼依赖，去替换⾃⼰那套饱受诟病的打包流程。&lt;/p&gt;
+&lt;p&gt;反倒是⼀些机敏的创业公司，纷纷在第⼀时间推出了 Docker 容器集群管理的开源项⽬（⽐如 Deis 和 Flynn），它们⼀般称⾃⼰为 CaaS，即 ontainer-as-a-Service，⽤来跟&amp;quot;过时&amp;quot;的 PaaS 们划清界限。&lt;/p&gt;
+&lt;p&gt;⽽在 2014 年底的 DockerCon 上，Docker 公司雄⼼勃勃地对外发布了⾃家研发的&amp;quot;Docker 原⽣&amp;quot;容器集群管理项⽬ Swarm，不仅将这波&amp;quot;CaaS&amp;quot;热推向了⼀个前所未有的⾼潮，更是寄托了整个 Docker 公司重新定义 PaaS 的宏伟愿望。&lt;/p&gt;
+&lt;p&gt;在 2014 年的这段巅峰岁⽉⾥，Docker 公司离⾃⼰的理想真的只有⼀步之遥。&lt;/p&gt;
+&lt;p&gt;2013~2014 年，以 Cloud Foundry 为代表的 PaaS 项⽬，逐渐完成了教育⽤户和开拓市场的艰巨任务，也正是在这个将概念逐渐落地的过程中，应⽤&amp;quot;打包&amp;quot;困难这个问题，成了整个后端技术圈⼦的⼀块⼼病。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ docker build 我的镜像
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ docker run &amp;quot; 我的镜像 &amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Docker 项⽬的出现，则为这个根本性的问题提供了⼀个近乎完美的解决⽅案。这正是 Docker 项⽬刚刚开源不久，就能够带领⼀家原本默默⽆闻的 PaaS 创业公司脱颖⽽出，然后迅速占领了所有云计算领域头条的技术原因。&lt;/p&gt;
+&lt;p&gt;⽽在成为了基础设施领域近⼗年难得⼀⻅的技术明星之后，dotCloud 公司则在 2013 年底⼤胆改名为 Docker 公司。不过，这个在当时就颇具争议的改名举动，也成为了⽇后容器技术圈⻛云变幻的⼀个关键伏笔。&lt;/p&gt;
+&lt;p&gt;之前说到，伴随着 PaaS 概念的逐步普及，以 Cloud Foundry 为代表的经典 PaaS 项⽬，开始进⼊基础设施领域的视野，平台化和 PaaS 化成了这个⽣态中的⼀个最为重要的进化趋势。&lt;/p&gt;
+&lt;p&gt;就在对开源 PaaS 项⽬落地的不断尝试中，这个领域的从业者们发现了 PaaS 中最为棘⼿也最亟待解决的⼀个问题：究竟如何给应⽤打包？&lt;/p&gt;
+&lt;p&gt;遗憾的是，⽆论是 Cloud Foundry、OpenShift，还是 Clodify，⾯对这个问题都没能给出⼀个完美的答案，反⽽在竞争中⾛向了碎⽚化的歧途。&lt;/p&gt;
+&lt;p&gt;⽽就在这时，⼀个并不引⼈瞩⽬的 PaaS 创业公司 dotCloud，却选择了开源⾃家的⼀个容器项⽬ Docker。更出⼈意料的是，就是这样⼀个普通到不能再普通的技术，却开启了⼀个名为&amp;quot;Docker&amp;quot;的全新时代。&lt;/p&gt;
+&lt;p&gt;Docker 项⽬的崛起，是不是偶然呢？这个以&amp;quot;鲸⻥&amp;quot;为注册商标的技术创业公司，最重要的战略之⼀就是：坚持把&amp;quot;开发者&amp;quot;群体放在⾄⾼⽆上的位置。&lt;/p&gt;
+&lt;p&gt;相⽐于其他正在企业级市场⾥厮杀得头破⾎流的经典 PaaS 项⽬们，Docker 项⽬的推⼴策略从⼀开始就呈现出⼀副&amp;quot;憨态可掬&amp;quot;的亲⼈姿态，把每⼀位后端技术⼈员（⽽不是他们的⽼板）作为主要的传播对象。&lt;/p&gt;
+&lt;p&gt;简洁的 UI，有趣的 demo，&amp;quot;1 分钟部署⼀个 WordPress ⽹站&amp;quot;&amp;quot;3 分钟部署⼀个 Nginx 集群&amp;quot;，这种同开发者之间与⽣俱来的亲近关系，使 Docker 项⽬迅速成为了全世界 Meetup 上最受欢迎的⼀颗新星。&lt;/p&gt;
+&lt;p&gt;在过去的很⻓⼀段时间⾥，相较于前端和互联⽹技术社区，服务器端技术社区⼀直是⼀个相对沉闷⽽⼩众的圈⼦。在这⾥，从事 Linux 内核开发的极客们⾃带&amp;quot;不合群&amp;quot;的&amp;quot;光环&amp;quot;，后端开发者们啃着多年不变的 TCP/IP 发着牢骚，运维更是天⽣注定的幕后英雄。&lt;/p&gt;
+&lt;p&gt;⽽ Docker 项⽬，却给后端开发者提供了⾛向聚光灯的机会。就⽐如 Cgroups 和 Namespace 这种已经存在多年却很少被⼈们关⼼的特性，在 2014 年和 2015 年竟然频繁⼊选各⼤技术会议的分享议题，就因为听众们想要知道 Docker 这个东⻄到底是怎么⼀回事⼉。&lt;/p&gt;
+&lt;p&gt;⽽ Docker 项⽬之所以能取得如此⾼的关注，⼀⽅⾯正如前⾯所说的那样，它解决了应⽤打包和发布这⼀困扰运维⼈员多年的技术难题；⽽另⼀⽅⾯，就是因为它第⼀次把⼀个纯后端的技术概念，通过⾮常友好的设计和封装，交到了最⼴⼤的开发者群体⼿⾥。&lt;/p&gt;
+&lt;p&gt;在这种独特的氛围烘托下，你不需要精通 TCP/IP，也⽆需深谙 Linux 内核原理，哪怕只是⼀个前端或者⽹站的 PHP ⼯程师，都会对如何把⾃⼰的代码打包成⼀个随处可以运⾏的 Docker 镜像充满好奇和兴趣。&lt;/p&gt;
+&lt;p&gt;这种受众群体的变⾰，正是 Docker 这样⼀个后端开源项⽬取得巨⼤成功的关键。这也是经典 PaaS 项⽬想做却没有做好的⼀件事情：PaaS 的最终⽤户和受益者，⼀定是为这个 PaaS 编写应⽤的开发者们，⽽在 Docker 项⽬开源之前，PaaS 与开发者之间的关系却从未如此紧密过。&lt;/p&gt;
+&lt;p&gt;解决了应⽤打包这个根本性的问题，同开发者与⽣俱来的的亲密关系，再加上 PaaS 概念已经深⼊⼈⼼的完美契机，成为 Docker 这个技术上看似平淡⽆奇的项⽬⼀举⾛红的重要原因。&lt;/p&gt;
+&lt;p&gt;⼀时之间，&amp;quot;容器化&amp;quot;取代&amp;quot;PaaS 化&amp;quot;成为了基础设施领域最炙⼿可热的关键词，⼀个以&amp;quot;容器&amp;quot;为中⼼的、全新的云计算市场，正呼之欲出。⽽作为这个⽣态的⼀⼿缔造者，此时的 dotCloud 公司突然宣布将公司名称改为&amp;quot;Docker&amp;quot;。&lt;/p&gt;
+&lt;p&gt;这个举动，在当时颇受质疑。在⼤家印象中，Docker 只是⼀个开源项⽬的名字。可是现在，这个单词却成了 Docker 公司的注册商标，任何⼈在商业活动中使⽤这个单词，以及鲸⻥的 Logo，都会⽴刻受到法律警告。&lt;/p&gt;
+&lt;p&gt;Docker 项⽬在短时间内迅速崛起的三个重要原因：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Docker 镜像通过技术⼿段解决了 PaaS 的根本性问题；&lt;/li&gt;
+&lt;li&gt;Docker 容器同开发者之间有着与⽣俱来的密切关系；&lt;/li&gt;
+&lt;li&gt;PaaS 概念已经深⼊⼈⼼的完美契机。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;121-何为paas&#34;&gt;1.2.1 何为Paas&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;PaaS 项⽬成功的主要原因&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;是它提供了⼀种名叫&amp;quot;应⽤托管&amp;quot;的能⼒。&lt;/p&gt;
+&lt;p&gt;paas之前主流⽤户的普遍⽤法是租⼀批 AWS 或者 OpenStack 的虚拟机，然后像以前管理物理服务器那样，⽤脚本或者⼿⼯的⽅式在这些机器上部署应⽤。&lt;/p&gt;
+&lt;p&gt;这个部署过程会碰到云端虚拟机和本地环境不⼀致的问题，所以当时的云计算服务，⽐的就是谁能更好地模拟本地服务器环境，能带来更好的&amp;quot;上云&amp;quot;体验。⽽ PaaS 开源项⽬的出现，就是当时解决这个问题的⼀个最佳⽅案。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PaaS 如何部署应⽤&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;虚拟机创建好之后，运维⼈员只需要在这些机器上部署⼀个 Cloud Foundry 项⽬，然后开发者只要执⾏⼀条命令就能把本地的应⽤部署到云上，这条命令就是：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt; [root@Linux ~]# cf push &amp;quot; 应⽤ &amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;PaaS 项⽬的核⼼组件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;像 Cloud Foundry 这样的 PaaS 项⽬，最核⼼的组件就是⼀套应⽤的打包和分发机制。 Cloud Foundry 为每种主流编程语⾔都定义了⼀种打包格式，⽽&amp;quot;cf push&amp;quot;的作⽤，基本上等同于⽤户把应⽤的可执⾏⽂件和启动脚本打进⼀个压缩包内，上传到云上 Cloud Foundry 的存储中。接着，Cloud Foundry 会通过调度器选择⼀个可以运⾏这个应⽤的虚拟机，然后通知这个机器上的 Agent 把应⽤压缩包下载下来启动。&lt;/p&gt;
+&lt;p&gt;由于需要在⼀个虚拟机上启动很多个来⾃不同⽤户的应⽤，Cloud Foundry 会调⽤操作系统的 Cgroups 和 Namespace 机制为每⼀个应⽤单独创建⼀个称作&amp;quot;沙盒&amp;quot;的隔离环境，然后在&amp;quot;沙盒&amp;quot;中启动这些应⽤进程。这就实现了把多个⽤户的应⽤互不⼲涉地在虚拟机⾥批量⾃动地运⾏起来的⽬的。&lt;/p&gt;
+&lt;p&gt;这正是 PaaS 项⽬最核⼼的能⼒。 ⽽这些 Cloud Foundry ⽤来运⾏应⽤的隔离环境，或者说&amp;quot;沙盒&amp;quot;，就是所谓的&amp;quot;容器&amp;quot;。&lt;/p&gt;
+&lt;p&gt;注：Cloud Foundry是当时⾮常主流⾮常⽕的⼀个PaaS项⽬&lt;/p&gt;
+&lt;h4 id=&#34;122-docker对paas的降维打击&#34;&gt;1.2.2 Docker对Paas的降维打击&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Docker 镜像&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Docker 项⽬确实与 Cloud Foundry 的容器在⼤部分功能和实现原理上都是⼀样的，可偏偏就是这剩下的⼀⼩部分不⼀样的功能，成了 Docker 项⽬接下来&amp;quot;呼⻛唤⾬&amp;quot;的不⼆法宝。这个功能，就是 Docker 镜像。&lt;/p&gt;
+&lt;p&gt;恐怕连 Docker 项⽬的作者 Solomon Hykes ⾃⼰当时都没想到，这个⼩⼩的创新，在短短⼏年内就如此迅速地改变了整个云计算领域的发展历程。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PaaS的问题：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;PaaS 之所以能够帮助⽤户⼤规模部署应⽤到集群⾥，是因为它提供了⼀套应⽤打包的功能。可就是这个打包功能，却成了 PaaS ⽇后不断遭到⽤户诟病的⼀个&amp;quot;软肋&amp;quot;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;根本原因：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;⼀旦⽤上了 PaaS，⽤户就必须为每种语⾔、每种框架，甚⾄每个版本的应⽤维护⼀个打好的包。这个打包过程，没有任何章法可循，更麻烦的是，明明在本地运⾏得好好的应⽤，却需要做很多修改和配置⼯作才能在 PaaS ⾥运⾏起来。⽽这些修改和配置，并没有什么经验可以借鉴，基本上得靠不断试错，直到你摸清楚了本地应⽤和远端 PaaS 匹配的&amp;quot;脾⽓&amp;quot;才能够搞定。&lt;/p&gt;
+&lt;p&gt;最后结局是，&amp;quot;cf push&amp;quot;确实是能⼀键部署了，但是为了实现这个⼀键部署，⽤户为每个应⽤打包的⼯作可谓⼀波三折，费尽⼼机。&lt;/p&gt;
+&lt;p&gt;⽽Docker 镜像解决的，恰恰就是打包这个根本性的问题。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Docker 镜像的精髓&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所谓 Docker 镜像，其实就是⼀个压缩包。但是这个压缩包⾥的内容，⽐ PaaS 的应⽤可执⾏⽂件 + 启停脚本的组合就要丰富多了。实际上，⼤多数 Docker 镜像是直接由⼀个完整操作系统的所有⽂件和⽬录构成的，所以这个压缩包⾥的内容跟你本地开发和测试环境⽤的操作系统是完全⼀样的。&lt;/p&gt;
+&lt;p&gt;这就有意思了：假设你的应⽤在本地运⾏时，能看⻅的环境是 CentOS 7.2 操作系统的所有⽂件和⽬录，那么只要⽤ CentOS 7.2 的 ISO 做⼀个压缩包，再把你的应⽤可执⾏⽂件也压缩进去，那么⽆论在哪⾥解压这个压缩包，都可以得到与你本地测试时⼀样的环境。当然，你的应⽤也在⾥⾯！&lt;/p&gt;
+&lt;p&gt;这就是 Docker 镜像最厉害的地⽅：只要有这个压缩包在⼿，你就可以使⽤某种技术创建⼀个&amp;quot;沙盒&amp;quot;，在&amp;quot;沙盒&amp;quot;中解压这个压缩包，然后就可以运⾏你的程序了。&lt;/p&gt;
+&lt;p&gt;更重要的是，这个压缩包包含了完整的操作系统⽂件和⽬录，也就是包含了这个应⽤运⾏所需要的所有依赖，所以你可以先⽤这个压缩包在本地进⾏开发和测试，完成之后，再把这个压缩包上传到云端运⾏。&lt;/p&gt;
+&lt;p&gt;在这个过程中，你完全不需要进⾏任何配置或者修改，因为这个压缩包赋予了你⼀种极其宝贵的能⼒：本地环境和云端环境的⾼度⼀致！&lt;/p&gt;
+&lt;p&gt;这，正是 Docker 镜像的精髓。&lt;/p&gt;
+&lt;p&gt;那么，有了 Docker 镜像这个利器，PaaS ⾥最核⼼的打包系统⼀下⼦就没了⽤武之地，最让⽤户抓狂的打包过程也随之消失了。相⽐之下，在当今的互联⽹⾥，Docker 镜像需要的操作系统⽂件和⽬录，可谓唾⼿可得。&lt;/p&gt;
+&lt;p&gt;所以，你只需要提供⼀个下载好的操作系统⽂件与⽬录，然后使⽤它制作⼀个压缩包即可，这个命令就是：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker build &amp;quot; 镜像 &amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;镜像制作完成，⽤户就可以让 Docker 创建⼀个&amp;quot;沙盒&amp;quot;来解压这个镜像，然后在&amp;quot;沙盒&amp;quot;中运⾏⾃⼰的应⽤，这个命令就是：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run &amp;quot; 镜像 &amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Docker 项⽬给 PaaS 世界带来的&amp;quot;降维打击&amp;quot;&lt;/p&gt;
+&lt;p&gt;其实是提供了⼀种⾮常便利的打包机制。这种机制直接打包了应⽤运⾏所需要的整个操作系统，从⽽保证了本地环境和云端环境的⾼度⼀致，避免了⽤户通过&amp;quot;试错&amp;quot;来匹配两种不同运⾏环境之间差异的痛苦过程。&lt;/p&gt;
+&lt;h2 id=&#34;2-docker安装&#34;&gt;2、Docker安装&lt;/h2&gt;
+&lt;h3 id=&#34;21-docker版本解读&#34;&gt;2.1 Docker版本解读&lt;/h3&gt;
+&lt;p&gt;moby、docker-ce与docker-ee&lt;/p&gt;
+&lt;p&gt;最早时docker是⼀个开源项⽬，主要由docker公司维护。&lt;/p&gt;
+&lt;p&gt;2017年3⽉1⽇起，docker公司将原先的docker项⽬改名为moby，并创建了docker-ce和docker-ee。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三者关系&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;moby是继承了原先的docker的项⽬，是社区维护的的开源项⽬，谁都可以在moby的基础打造⾃⼰的容器产品&lt;/p&gt;
+&lt;p&gt;docker-ce是docker公司维护的开源项⽬，是⼀个基于moby项⽬的免费的容器产品&lt;/p&gt;
+&lt;p&gt;docker-ee是docker公司维护的闭源产品，是docker公司的商业产品。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版本维护&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;moby project由社区维护，docker-ce project是docker公司维护，docker-ee是闭源的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Docker-ce发布计划&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;v1.13.1之后，发布计划更改为:&lt;/p&gt;
+&lt;p&gt;Edge:  ⽉版本，每⽉发布⼀次，命名格式为YY.MM，维护到下个⽉的版本发布&lt;/p&gt;
+&lt;p&gt;Stable: 季度版本，每季度发布⼀次，命名格式为YY.MM，维护4个⽉&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版本获取&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;要使⽤免费的docker，从https://github.com/docker/docker-ce上获取。&lt;/p&gt;
+&lt;p&gt;要使⽤收费的docker，从https://www.docker.com/products/docker-enterprise上获取。&lt;/p&gt;
+&lt;h3 id=&#34;22-官方安装方案&#34;&gt;2.2 官⽅安装⽅案&lt;/h3&gt;
+&lt;p&gt;docker-ce的release计划跟随moby的release计划，可以使⽤下⾯的命令直接安装最新的docker-ce&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# curl -fsSL https://get.docker.com/ | sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果是centos，上⾯的安装命令会在系统上添加yum源:/etc/yum.repos.d/docker-ce.repo&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt; [root@Linux ~]# wget https://download.docker.com/linux/centos/docker-ce.repo
+  [root@Linux ~]# mv docker-ce.repo /etc/yum.repos.d
+  [root@Linux ~]# yum install -y docker-ce
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;或者直接下载rpm安装&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-17.09.0.ce-1.el7.centos.x86_64.rpm
+  [root@Linux ~]# yum localinstall docker-ce-17.09.0.ce-1.el7.centos.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;23-docker加速器&#34;&gt;2.3 Docker加速器&lt;/h3&gt;
+&lt;p&gt;使⽤Aliyun Docker Yum源安装Docker&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;删除已安装的Docker&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# yum remove docker \
+        docker-client \
+        docker-client-latest \
+        docker-common \
+        docker-latest \
+        docker-latest-logrotate \
+        docker-logrotate \
+        docker-selinux \
+        docker-engine-selinux \
+        docker-engine
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;配置阿⾥云Docker Yum源&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# yum install -y yum-utils device-mapper-persistent-data lvm2 git
+  [root@Linux ~]# yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;如何安装指定版本&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;查看Docker版本：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# yum list docker-ce --showduplicates
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装较旧版本（⽐如Docker 17.03.2) ：&lt;/p&gt;
+&lt;p&gt;需要指定完整的rpm包的包名，并且加上--setopt=obsoletes=0 参数：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt; [root@Linux ~]# yum install -y --setopt=obsoletes=0 \
+   docker-ce-17.03.2.ce-1.el7.centos.x86_64 \
+   docker-ce-selinux-17.03.2.ce-1.el7.centos.noarch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装Docker最新版&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;  [root@Linux ~]# yum install docker-ce -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Centos8安装Docker报错解决⽅案&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;官⽅docker rpm包地址&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;https://download.docker.com/linux/centos/7/x86_64/stable/Packages/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;有关runc&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200819171538.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有关containerd.io&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200819171555.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;启动Docker服务&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]#systemctl enable docker
+ [root@Linux ~]#systemctl start docker 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看Docker版本及启动状态&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker -v
+  Docker version 1.13.1, build 8633870/1.13.1  
+
+  [root@Linux ~]# docker version
+  Client:
+   Version:        18.09.0
+   API version:    1.39
+   Go version:     go1.10.4
+   Git commit:     4d60db4
+   Built:          Wed Nov  7 00:48:22 2018
+   OS/Arch:        linux/amd64
+   Experimental:   false
+
+  Server: Docker Engine - Community
+   Engine:
+   Version:        18.09.0
+   API version:    1.39 (minimum version 1.12)
+   Go version:     go1.10.4
+   Git commit:     4d60db4
+   Built:          Wed Nov  7 00:19:08 2018
+   OS/Arch:        linux/amd64
+   Experimental:   false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看Docker运⾏状态&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker info
+  Containers: 0
+   Running: 0
+   Paused: 0
+   Stopped: 0
+  Images: 0
+  Server Version: 18.09.0
+  Storage Driver: overlay2
+   Backing Filesystem: xfs
+   Supports d_type: true
+   Native Overlay Diff: true
+  Logging Driver: json-file
+  Cgroup Driver: cgroupfs
+  Plugins:
+   Volume: local
+   Network: bridge host macvlan null overlay
+   Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+  Swarm: inactive
+  Runtimes: runc
+  Default Runtime: runc
+  Init Binary: docker-init
+  containerd version: c4446665cb9c30056f4998ed953e6d4ff22c7c39
+  runc version: 4fc53a81fb7c994640722ac585fa9ca548971871
+  init version: fec3683
+  Security Options:
+   seccomp
+   Profile: default
+  Kernel Version: 3.10.0-957.el7.x86_64
+  Operating System: CentOS Linux 7 (Core)
+  OSType: linux
+  Architecture: x86_64
+  CPUs: 4
+  Total Memory: 1.934GiB
+  Name: docker
+  ID: MF5S:ZX25:SWJ3:XEIG:FFHP:5VXF:F5AL:KQFF:KKXP:XZGY:YGTE:EBQF
+  Docker Root Dir: /var/lib/docker
+  Debug Mode (client): false
+  Debug Mode (server): false
+  Registry: https://index.docker.io/v1/
+  Labels:
+  Experimental: false
+  Insecure Registries:
+   127.0.0.0/8
+  Live Restore Enabled: false
+  Product License: Community Engine
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;问题1&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;docker info的时候报如下错误&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;bridge-nf-call-iptables is disabled
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;解决&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;追加如下配置,然后重启系统&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# vim /etc/sysctl.conf  
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.bridge.bridge-nf-call-arptables = 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;问题2&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;虚拟机ping百度也能ping通，但是需要等好⼏秒才出结果，关键是下载镜像⼀直报错如下&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker pull daocloud.io/library/nginx
+Using default tag: latest
+Error response from daemon: Get https://daocloud.io/v2/: dial tcp: lookup daocloud.io on 192.168.1.2:53: read udp  192.168.1.189:41335-&amp;gt;192.168.1.2:53: i/o timeout
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;解决&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我的虚拟机⽤的⽹关和dns都是虚拟机⾃⼰的.1或者.2，把DNS改成8.8.8.8问题就解决了，ping百度也秒出结果&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt; [root@Linux ~]# vim /etc/resolv.conf
+  nameserver 8.8.8.8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;24-国内源镜像源&#34;&gt;2.4 国内源镜像源&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Daocloud&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Aliyun&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;⽹易蜂巢&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-docker核心概念&#34;&gt;3、Docker核⼼概念&lt;/h2&gt;
+&lt;h3 id=&#34;31-docker系统&#34;&gt;3.1 Docker系统&lt;/h3&gt;
+&lt;p&gt;Docker系统有两个程序：Docker服务端和Docker客户端&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;Docker服务端：
+	是⼀个服务进程，管理着所有的容器。
+    docker engine  
+Docker客户端：
+    扮演着docker服务端的远程控制器，可以⽤来控制docker的服务端进程。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;32-docker核心组件&#34;&gt;3.2 Docker核⼼组件&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Docker 镜像 - Docker  images&lt;/p&gt;
+&lt;p&gt;Docker 仓库 - Docker  registeries&lt;/p&gt;
+&lt;p&gt;Docker 容器 - Docker  containers&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;容器组成要素&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;名称空间 namespace&lt;/p&gt;
+&lt;p&gt;资源限制 cgroups&lt;/p&gt;
+&lt;p&gt;⽂件系统 overlay2(UnionFS)&lt;/p&gt;
+&lt;h4 id=&#34;321-docker-仓库&#34;&gt;3.2.1 Docker 仓库&lt;/h4&gt;
+&lt;p&gt;⽤来保存镜像，可以理解为代码控制中的代码仓库。同样的，Docker 仓库也有公有和私有的概念。&lt;/p&gt;
+&lt;p&gt;公有的 Docker  仓库名字是 Docker Hub。Docker Hub  提供了庞⼤的镜像集合供使⽤。这些镜像可以是⾃⼰创建，或者在别⼈的镜像基础上创建。Docker 仓库是 Docker 的分发部分。&lt;/p&gt;
+&lt;h4 id=&#34;322-docker-镜像&#34;&gt;3.2.2 Docker 镜像&lt;/h4&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200819172539.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;Docker 镜像是 Docker 容器运⾏时的只读模板，每⼀个镜像由⼀系列的层 (layers) 组成。Docker 使⽤  UnionFS 来将这些层联合到单独的镜像中。UnionFS  允许独⽴⽂件系统中的⽂件和⽂件夹(称之为分⽀)被透明覆盖，形成⼀个单独连贯的⽂件系统。正因为有了这些层的存在，Docker  是如此的轻量。当你改变了⼀个 Docker  镜像，⽐如升级到某个程序到新的版本，⼀个新的层会被创建。因此，不⽤替换整个原先的镜像或者重新建⽴(在使⽤虚拟机的时候你可能会这么做)，只是⼀个新的层被添加或升级了。现在你不⽤重新发布整个镜像，只需要升级，层使得分发 Docker 镜像变得简单和快。&lt;/p&gt;
+&lt;p&gt;在 Docker 的术语⾥，⼀个只读层被称为镜像，⼀个镜像是永久不会变的。&lt;/p&gt;
+&lt;p&gt;由于 Docker 使⽤⼀个统⼀⽂件系统，Docker 进程认为整个⽂件系统是以读写⽅式挂载的。 但是所有的变更都发⽣顶层的可写层，⽽下层的原始的只读镜像⽂件并未变化。由于镜像不可写，所以镜像是⽆状态的。&lt;/p&gt;
+&lt;p&gt;每⼀个镜像都可能依赖于由⼀个或多个下层的组成的另⼀个镜像。下层那个镜像是上层镜像的⽗镜像。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;镜像名称组成&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;registry/repo:tag&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;基础镜像&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;⼀个没有任何⽗镜像的镜像，谓之基础镜像&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;镜像ID&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所有镜像都是通过⼀个 64 位⼗六进制字符串 （内部是⼀个 256 bit 的值）来标识的。 为简化使⽤，前 12 个字符可以组成⼀个短ID，可以在命令⾏中使⽤。短ID还是有⼀定的碰撞机率，所以服务器总是返回⻓ID。&lt;/p&gt;
+&lt;h4 id=&#34;323-docker-容器&#34;&gt;3.2.3 Docker 容器&lt;/h4&gt;
+&lt;p&gt;Docker 容器和⽂件夹很类似，⼀个Docker容器包含了所有的某个应⽤运⾏所需要的环境。每⼀个 Docker 容器都是从 Docker  镜像创建的。Docker 容器可以运⾏、开始、停⽌、移动和删除。每⼀个 Docker 容器都是独⽴和安全的应⽤平台，Docker 容器是  Docker 的运⾏部分。&lt;/p&gt;
+&lt;h4 id=&#34;324-docker镜像和容器区别&#34;&gt;3.2.4 Docker镜像和容器区别&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Docker镜像&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;要理解Docker镜像和docker容器之间的区别，确实不容易。&lt;/p&gt;
+&lt;p&gt;假设Linux内核是第0层，那么⽆论怎么运⾏Docker，它都是运⾏于内核层之上的。这个Docker镜像，是⼀个只读的镜像，位于第1层，它不能被修改或不能保存状态。&lt;/p&gt;
+&lt;p&gt;⼀个Docker镜像可以构建于另⼀个Docker镜像之上，这种层叠关系可以是多层的。第1层的镜像层我们称之为基础镜像（Base  Image），其他层的镜像（除了最顶层）我们称之为⽗层镜像（Parent  Image）。这些镜像继承了他们的⽗层镜像的所有属性和设置，并在Dockerﬁle中添加了⾃⼰的配置。&lt;/p&gt;
+&lt;p&gt;Docker镜像通过镜像ID进⾏识别。镜像ID是⼀个64字符的⼗六进制的字符串。但是当我们运⾏镜像时，通常我们不会使⽤镜像ID来引⽤镜像，⽽是使⽤镜像名来引⽤。&lt;/p&gt;
+&lt;p&gt;要列出本地所有有效的镜像，可以使⽤命令&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker images
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;镜像可以发布为不同的版本，这种机制我们称之为标签（Tag）。&lt;/p&gt;
+&lt;p&gt;如上图所示，neo4j镜像有两个版本：lastest版本和2.1.5版本。&lt;/p&gt;
+&lt;p&gt;可以使⽤pull命令加上指定的标签：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker pull ubuntu:14.04
+[root@Linux ~]# docker pull ubuntu:12.04
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Docker容器&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Docker容器可以使⽤命令创建&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run imagename
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;它会在所有的镜像层之上增加⼀个可写层。这个可写层有运⾏在CPU上的进程，⽽且有两个不同的状态：运⾏态（Running）和退出态 （Exited）。这就是Docker容器。当我们使⽤docker  run启动容器，Docker容器就进⼊运⾏态，当我们停⽌Docker容器时，它就进⼊退出态。&lt;/p&gt;
+&lt;p&gt;当我们有⼀个正在运⾏的Docker容器时，从运⾏态到停⽌态，我们对它所做的⼀切变更都会永久地写到容器的⽂件系统中。要切记，对容器的变更是写⼊到容器的⽂件系统的，⽽不是写⼊到Docker镜像中的。&lt;/p&gt;
+&lt;p&gt;我们可以⽤同⼀个镜像启动多个Docker容器，这些容器启动后都是活动的，彼此还是相互隔离的。我们对其中⼀个容器所做的变更只会局限于那个容器本身。&lt;/p&gt;
+&lt;p&gt;如果对容器的底层镜像进⾏修改，那么当前正在运⾏的容器是不受影响的，不会发⽣⾃动更新现象。&lt;/p&gt;
+&lt;p&gt;如果想更新容器到其镜像的新版本，那么必须当⼼，确保我们是以正确的⽅式构建了数据结构，否则我们可能会导致损失容器中所有数据的后果。&lt;/p&gt;
+&lt;p&gt;64字符的⼗六进制的字符串来定义容器ID，它是容器的唯⼀标识符。容器之间的交互是依靠容器ID识别的，由于容器ID的字符太⻓，我们通常只需键⼊容器ID的前4个字符即可。当然，我们还可以使⽤容器名，但显然⽤4字符的容器ID更为简便。&lt;/p&gt;
+&lt;h3 id=&#34;33-名字空间&#34;&gt;3.3 名字空间&lt;/h3&gt;
+&lt;p&gt;名字空间是 Linux 内核⼀个强⼤的特性。每个容器都有⾃⼰单独的名字空间，运⾏在其中的应⽤都像是在独⽴的操作系统中运⾏⼀样。名字空间保证了容器之间彼此互不影响。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;pid 名字空间&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;不同⽤户的进程就是通过 pid 名字空间隔离开的，且不同名字空间中可以有相同 pid。所有的 LXC 进程在 Docker中的⽗进程为Docker进程，每个 LXC 进程具有不同的名字空间。同时由于允许嵌套，因此可以很⽅便的实现嵌套的 Docker 容器。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;net 名字空间&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;有 了 pid 名字空间, 每个名字空间中的 pid 能够相互隔离，但是⽹络端⼝还是共享 host 的端⼝。⽹络隔离是通过 net 名字空间实现的，每个 net 名字空间有独⽴的 ⽹络设备, IP 地址, 路由表, /proc/net ⽬录。这样每个容器的⽹络就能隔离开来。Docker  默认采⽤ veth 的⽅式，将容器中的虚拟⽹卡同 host 上的⼀ 个Docker ⽹桥 docker0 连接在⼀起。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;ipc 名字空间&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;容器中进程交互还是采⽤了 Linux 常⻅的进程间交互⽅法(interprocess communication - IPC),  包括信号量、消息队列和共享内存、socket、管道等。然⽽同 VM 不同的是，容器的进程间交互实际上还是 host 上具有相同 pid  名字空间中的进程间交互，因此需要在 IPC 资源申请时加⼊名字空间信息，每个 IPC 资源有⼀个唯⼀的 32 位 id。&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;mnt名字空间&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;类似 change root，将⼀个进程放到⼀个特定的⽬录执⾏。mnt 名字空间允许不同名字空间的进程看到的⽂件结构不同，这样每个名字空间  中的进程所看到的⽂件⽬录就被隔离开了。同 chroot 不同，每个名字空间中的容器在 /proc/mounts 的信息只包含所在名字空间的  mount point。&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;uts 名字空间&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;UTS(&amp;quot;UNIX Time-sharing System&amp;quot;) 名字空间允许每个容器拥有独⽴的 hostname 和 domain name, 使其在⽹络上可以被视作⼀个独⽴的节点⽽⾮主机上的⼀个进程。&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;user 名字空间&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;每个容器可以有不同的⽤户和组 id, 也就是说可以在容器内⽤容器内部的⽤户执⾏程序⽽⾮主机上的⽤户。&lt;/p&gt;
+&lt;h2 id=&#34;4-镜像管理&#34;&gt;4、镜像管理&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;搜索镜像：  这种⽅法只能⽤于官⽅镜像库
+例如搜索基于 Centos 操作系统的镜像
+[root@Linux ~]# docker search centos
+
+按星级搜索镜像
+查找 star 数⾄少为 100 的镜像，默认不加 s 选项找出所有相关 ubuntu 镜像
+[root@Linux ~]# docker search ubuntu -f stars=100  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;拉取镜像
+[root@Linux ~]# docker pull centos
+
+查看本地镜像
+[root@Linux ~]# docker image list
+
+查看镜像详情
+[root@Linux ~]# docker image inspect 镜像id
+
+删除镜像
+删除⼀个或多个，多个之间⽤空格隔开，可以使⽤镜像名称或id
+[root@Linux ~]# docker rmi daocloud.io/library/mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;5-docker容器管理&#34;&gt;5、Docker容器管理&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;创建新容器但不启动
+[root@Linux ~]# docker create -it 
+daocloud.io/library/centos:5 /bin/bash
+
+创建并运⾏⼀个新Docker 容器
+同⼀个镜像可以启动多个容器,每次执⾏run⼦命令都会运⾏⼀个全新的容器
+[root@Linux ~]# docker run -it --restart=always 
+centos /bin/bash
+   如果执⾏成功，说明CentOS 容器已经被启动，并且应该已经得到了 bash 提示符。
+  -i  
+   捕获标准输⼊输出
+  -t  
+   分配⼀个终端或控制台
+  --restart=always  
+   容器随docker engine⾃启动，因为在重启docker的时候默认容器都会被关闭  
+   也适⽤于create选项    
+  --rm
+   默认情况下，每个容器在退出时，它的⽂件系统也会保存下来，这样⼀⽅⾯调试会⽅便些，因为你可以通过查看⽇志等⽅式来确定最终状态。另⼀⽅⾯，也可以保存容器所产⽣的数据。
+    但是当你仅仅需要短暂的运⾏⼀个容器，并且这些数据不需要保存，你可能就希望Docker能在容器结束时⾃动清理其所产⽣的数据。这个时候就需要--rm参数了。注意：--rm 和 -d不能共⽤
+
+  容器名称
+  --name= Assign a name to the container   
+          --为容器分配⼀个名字，如果没有指定，docker会⾃动分配⼀个随机名称
+          是docker run⼦命令的参数
+
+  可以通过三种⽅式调⽤容器命名：
+  1）使⽤UUID⻓命名
+（&amp;quot;f78375b1c487e03c9438c729345e54db9d20cfa2ac1fc3494b6eb60872e74778&amp;quot;）
+  2）使⽤UUID短Id（&amp;quot;f78375b1c487&amp;quot;）
+  3）使⽤Name(&amp;quot;evil_ptolemy&amp;quot;) 
+
+  这个UUID标识是由Docker deamon⽣成的。
+  如果你在执⾏docker run时没有指定--name，那么deamon会⾃动⽣成⼀个随机字符串UUID。
+  但是对于⼀个容器来说有个name会⾮常⽅便，当你需要连接其它容器时或者类似需要区分其它容器时，使⽤容器名称可以简化操作。⽆论容器运⾏在前台或者后台，这个名字都是有效的。
+
+保存容器PID equivalent：
+如果在使⽤Docker时有⾃动化的需求，你可以将containerID输出到指定的⽂件中（PIDfile），类似于某些应⽤程序将⾃身ID输出到⽂件中，⽅便后续脚本操作。
+--cidfile=&amp;quot;&amp;quot;: Write the container ID to the file
+
+断开与容器的连接，并且关闭容器：
+root@d33c4e8c51f8 /#exit
+
+如果只想断开和容器的连接⽽不关闭容器：
+快捷键：ctrl+p+q
+
+查看容器：
+  只查看运⾏状态的容器：
+    [root@Linux ~]#docker ps
+    [root@Linux ~]#docker ps -a
+    -a  查看所有容器
+    
+  只查看所有容器id:
+        [root@Linux ~]# docker ps -a -q
+
+  列出最近⼀次启动的容器(了解)
+        [root@Linux ~]# docker ps -l  
+
+    查看容器详细信息
+    inspect  Return low-level information on a container or image
+    ⽤于查看容器的配置信息，包含容器名、环境变量、运⾏命令、主机配置、⽹络配置和数据卷配置等。
+    ⽬标：
+    查找某⼀个运⾏中容器的id，然后使⽤docker inspect命令查看容器的信息。
+
+    提示：可以使⽤镜像id的前⾯部分，不需要完整的id。
+    [root@Linux ~]# docker inspect d95   //d95是我机器上运⾏的⼀个容器ID的前3个字符
+    [
+    {
+       &amp;quot;Id&amp;quot;: 
+&amp;quot;d95a220a498e352cbfbc098c949fc528dbf5a5c911710b108ea3a9b4aa3a4761&amp;quot;,
+        &amp;quot;Created&amp;quot;: &amp;quot;2017-07-08T03:59:16.18225183Z&amp;quot;,
+        &amp;quot;Path&amp;quot;: &amp;quot;bash&amp;quot;,
+        &amp;quot;Args&amp;quot;: [],
+        &amp;quot;State&amp;quot;: {
+         &amp;quot;Status&amp;quot;: &amp;quot;exited&amp;quot;,
+          &amp;quot;Running&amp;quot;: false,
+          &amp;quot;Paused&amp;quot;: false,
+          &amp;quot;Restarting&amp;quot;: false,
+          &amp;quot;OOMKilled&amp;quot;: false,
+          &amp;quot;Dead&amp;quot;: false,
+          &amp;quot;Pid&amp;quot;: 0,
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;容器信息很多，这⾥只粘贴了⼀部分&lt;br&gt;
+⽐如：容器⾥在安装ip或ifconﬁg命令之前，查看⽹卡IP显示容器IP地址和端⼝号，如果输出是空的说明没有配置IP地址（不同的Docker容器可以通过此IP地址互相访问）&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker inspect --format=&#39;{{.NetworkSettings.IPAddress}}&#39;  容器id
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;列出所有绑定的端⼝&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker inspect --format=&#39;{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} {{(index $conf ).HostPort}} {{end}}&#39; $INSTANCE_ID
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker inspect --format=&#39;{{range 
+$p, $conf := .NetworkSettings.Ports}} {{$p}} -&amp;gt; {{(index $conf 0).HostPort}} {{end}}&#39; b220fabf815a 22/tcp -&amp;gt; 20020
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;找出特殊的端⼝映射&lt;br&gt;
+⽐如找出容器⾥22端⼝所映射的docker本机的端⼝&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker inspect --format=&#39;{{(index (index .NetworkSettings.Ports &amp;quot;22/tcp&amp;quot;) 0).HostPort}}&#39; $INSTANCE_ID
+[root@Linux ~]# docker inspect --format=&#39;{{(index (index .NetworkSettings.Ports &amp;quot;22/tcp&amp;quot;) 0).HostPort}}&#39; b220fabf815a 20020
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;stop和kill的区别&lt;/strong&gt;&lt;br&gt;
+docker stop命令给容器中的进程发送SIGTERM信号，默认⾏为是会导致容器退出，当然，容器内程序可以捕获该信号并⾃⾏处理，例如可以选择忽略。⽽docker kill则是给容器的进程发送SIGKILL信号，该信号将会使容器必然退出。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;删除容器
+[root@Linux ~]# docker rm 容器id或名称
+要删除⼀个运⾏中的容器，添加 -f 参数
+
+根据格式删除所有容器：
+[root@Linux ~]# docker rm $(docker ps -qf status=exited)
+
+重启容器：
+[root@Linux ~]#docker restart name
+
+暂停容器：
+pause  --暂停容器内的所有进程，
+  通过docker stats可以观察到此时的资源使⽤情况是固定不变的，通过docker logs -f也观察不到⽇志的进⼀步输出。
+
+恢复容器：
+unpause  --恢复容器内暂停的进程，与pause参数相对应
+[root@Linux ~]# docker start infallible_ramanujan  
+这⾥的名字是状态⾥⾯NAMES列列出的名字，这种⽅式同样会让容器运⾏在后台
+
+让容器运⾏在后台：
+如果在docker run后⾯追加-d=true或者-d，那么容器将会运⾏在后台模式。此时所有I/O数据只能通过⽹络资源或者共享卷组来进⾏交互。因为容器不再监听你执⾏docker run的这个终端命令⾏窗⼝。但你可以通过执⾏
+docker attach来重新附着到该容器的回话中。
+注：
+容器运⾏在后台模式下，是不能使⽤--rm选项的(⽼版本是这样，新版本已经可以同时⽣效) 
+[root@Linux ~]#docker run -d IMAGE[:TAG] 命令
+[root@Linux ~]#docker logs container_id  
+[root@Linux ~]#打印该容器的输出
+[root@Linux ~]# docker run -it -d --name mytest docker.io/centos /bin/sh -c &amp;quot;while true; do echo hello world; sleep 2; done&amp;quot;
+37738fe3d6f9ef26152cb25018df9528a89e7a07355493020e72f147a291cd17
+
+[root@Linux ~]# docker logs mytest
+hello world
+hello world
+
+docker attach container_id #附加该容器的标准输出到当前
+命令⾏
+[root@Linux ~]# docker attach mytest
+hello world
+hello world
+.......
+此时，ctrl+d等同于exit命令，按ctrl+p+q可以退出到宿主机，⽽保持container仍然在运⾏
+
+rename 
+  Rename a container
+
+stats   
+  Display a live stream of container(s) resource usage statistics   
+  --动态显示容器的资源消耗情况，包括：CPU、内存、⽹络I/O   
+ 
+
+port   
+  List port mappings or a specific mapping for the CONTAINER
+   --输出容器端⼝与宿主机端⼝的映射情况
+[root@Linux ~]# docker port blog
+   80/tcp -&amp;gt; 0.0.0.0:80
+   容器blog的内部端⼝80映射到宿主机的80端⼝，这样可通过宿主机的80端⼝查看容器blog提供的服务
+
+连接容器：   
+⽅法1.attach
+[root@Linux ~]# docker attach 容器id  //前提是容器创建时必须指定了交互shell
+
+⽅法2.exec    
+  通过exec命令可以创建两种任务：后台型任务和交互型任务
+  交互型任务：
+   [root@Linux ~]# docker exec -it  容器id  /bin/bash
+   root@68656158eb8e:/[root@Linux ~]# ls    
+
+  后台型任务：
+     [root@Linux ~]# docker exec 容器id touch /testfile
+
+监控容器的运⾏：
+可以使⽤logs、top、events、wait这些⼦命令
+  logs:
+    使⽤logs命令查看守护式容器
+    可以通过使⽤docker logs命令来查看容器的运⾏⽇志，其中--tail选项可以指定查看最后⼏条⽇志，⽽-t选项则可以对⽇志条⽬附加时间戳。使⽤-f选项可以跟踪⽇志的输出，直到⼿动停⽌。
+    [root@Linux ~]# docker logs  App_Container  //不同终端操作
+    [root@Linux ~]# docker logs -f App_Container
+
+  top:
+  显示⼀个运⾏的容器⾥⾯的进程信息
+        [root@Linux ~]# docker top birdben/ubuntu:v1
+
+  events   
+    Get real time events from the server
+    实时输出Docker服务器端的事件，包括容器的创建，启动，关
+闭等。
+    [root@Linux ~]# docker start loving_meninsky         
+    loving_meninsky
+    [root@Linux ~]# docker events  //不同终端操作
+      2017-07-08T16:39:23.177664994+08:00 network connect df15746d60ffaad2d15db0854a696d6e49fdfcedc7cfd8504a8aac51a43de6d4 
+     
+ (container=50a0449d7729f94046baf0fe5a1ce2119742261bb3ce8c3c98f35c80458e3e7a, 
+      name=bridge, type=bridge)
+      2017-07-08T16:39:23.356162529+08:00 
+container start 
+      
+50a0449d7729f94046baf0fe5a1ce2119742261bb3ce8c3c98f35c80458e3e7a (image=ubuntu,  name=loving_meninsky)
+
+  wait（X）   
+   Block until a container stops, then print its 
+exit code  
+    --捕捉容器停⽌时的退出码
+   执⾏此命令后，该命令会&amp;quot;hang&amp;quot;在当前终端，直到容器停⽌，此时，会打印出容器的退出码
+        [root@Linux ~]# docker wait 01d8aa  //不同终端操作
+        137
+
+  diff
+    查看容器内发⽣改变的⽂件，以elated_lovelace容器为例
+            root@68656158eb8e:/# touch c.txt
+
+    ⽤diff查看：
+    包括⽂件的创建、删除和⽂件内容的改变都能看到
+    [root@Linux ~]# docker diff  容器名称 
+        A /c.txt
+
+    C对应的⽂件内容的改变，A对应的均是⽂件或者⽬录的创建删
+除
+    [root@Linux ~]# docker diff 7287
+        A /a.txt
+        C /etc
+        C /etc/passwd
+        A /run
+        A /run/secrets   
+
+宿主机和容器之间相互Copy⽂件
+cp的⽤法如下：
+  docker cp [OPTIONS] CONTAINER:PATH LOCALPATH
+  docker cp [OPTIONS] LOCALPATH CONTAINER:PATH
+如：容器mysql中/usr/local/bin/存在docker-
+entrypoint.sh⽂件，可如下⽅式copy到宿主机
+    [root@Linux ~]# docker cp mysql:/usr/local/bin/docker-entrypoint.sh  /root
+
+修改完毕后，将该⽂件重新copy回容器
+    [root@Linux ~]# docker cp /root/docker-entrypoint.sh mysql:/usr/local/bin/ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6-docker容器镜像制作&#34;&gt;6、Docker容器镜像制作&lt;/h2&gt;
+&lt;h3 id=&#34;61-容器文件系统打包&#34;&gt;6.1 容器⽂件系统打包&lt;/h3&gt;
+&lt;p&gt;将容器的⽂件系统打包成tar⽂件,也就是把正在运⾏的容器直接导出为tar包的镜像⽂件&lt;br&gt;
+export Export a container&#39;s ﬁlesystem as a tar archive&lt;/p&gt;
+&lt;p&gt;有两种⽅式（elated_lovelace为容器名）&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;第⼀种：
+  [root@master ~][root@Linux ~]# docker export -o elated_lovelace.tar elated_lovelace
+第⼆种：
+  [root@master ~][root@Linux ~]# docker export 容器名称 &amp;gt; 镜像.tar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;导⼊镜像归档⽂件到其他宿主机&lt;br&gt;
+import Import the contents from a tarball to create a ﬁlesystem image&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt; [root@qfedu.com ~]# docker import elated_lovelace.tar  elated_lovelace:v1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果导⼊镜像时没有起名字，随后可以单独起名字(没有名字和tag)，可以⼿动加tag&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker tag 镜像ID mycentos:7
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;62-通过容器创建本地镜像&#34;&gt;6.2 通过容器创建本地镜像&lt;/h3&gt;
+&lt;p&gt;背景：&lt;br&gt;
+容器运⾏起来后，⼜在⾥⾯做了⼀些操作，并且要把操作结果保存到镜像⾥&lt;br&gt;
+⽅案：&lt;br&gt;
+使⽤ docker commit 指令，把⼀个正在运⾏的容器，直接提交为⼀个镜像。commit 是提交的意思,类似告诉svn服务器我要⽣成⼀个新的版本。&lt;/p&gt;
+&lt;p&gt;例：在容器内部新建了⼀个⽂件&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker exec -it 4ddf4638572d 
+/bin/sh  
+root@4ddf4638572d# touch test.txt
+root@4ddf4638572d# exit
+将这个新建的⽂件提交到镜像中保存
+[root@qfedu.com ~]# docker commit 4ddf4638572d wing/helloworld:v2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker commit -m &amp;quot;my images 
+version1&amp;quot; -a &amp;quot;wing&amp;quot; 108a85b1ed99 
+daocloud.io/ubuntu:v2
+  
+sha256:ffa8a185ee526a9b0d8772740231448a25855031f25c61c1b63077220469b057
+  -m                   添加注释
+  -a                   作者
+  108a85b1ed99         容器环境id
+  daocloud.io/ubuntu:v2    镜像名称：hub的名称/镜像名称：
+tag 
+  -p，–pause=true        提交时暂停容器运⾏
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Init 层的存在，是为了避免执⾏ docker commit 时，把 Docker⾃⼰对 /etc/hosts 等⽂件做的修改，也⼀起提交掉。&lt;/p&gt;
+&lt;h3 id=&#34;63-镜像迁移&#34;&gt;6.3 镜像迁移&lt;/h3&gt;
+&lt;p&gt;保存⼀台宿主机上的镜像为tar⽂件，然后可以导⼊到其他的宿主机上：&lt;br&gt;
+save Save an image(s) to a tar archive&lt;/p&gt;
+&lt;p&gt;将镜像打包，与下⾯的load命令相对应&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker save -o nginx.tar nginx
+[root@qfedu.com ~]# docker save &amp;gt; nginx.tar nginx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;load Load an image from a tar archive or STDIN&lt;br&gt;
+与上⾯的save命令相对应，将上⾯sava命令打包的镜像通过load命令导⼊&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker load &amp;lt; nginx.tar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注：&lt;br&gt;
+1.tar⽂件的名称和保存的镜像名称没有关系&lt;br&gt;
+2.导⼊的镜像如果没有名称，⾃⼰打tag起名字&lt;/p&gt;
+&lt;h3 id=&#34;64-通过dockerfile创建镜像&#34;&gt;6.4 通过Dockerﬁle创建镜像&lt;/h3&gt;
+&lt;p&gt;虽然可以⾃⼰制作 rootfs(⻅&#39;容器⽂件系统那些事⼉&#39;)，但Docker提供了⼀种更便捷的⽅式，叫作 Dockerﬁle&lt;br&gt;
+docker build命令⽤于根据给定的Dockerﬁle和上下⽂以构建Docker镜像。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;docker build语法&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker build [OPTIONS] &amp;lt;PATH | URL | -&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;选项说明&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;--build-arg，设置构建时的变量&lt;br&gt;
+--no-cache，默认false。设置该选项，将不使⽤Build Cache构建镜像&lt;/p&gt;
+&lt;p&gt;--pull，默认false。设置该选项，总是尝试pull镜像的最新版本&lt;/p&gt;
+&lt;p&gt;--compress，默认false。设置该选项，将使⽤gzip压缩构建的上下⽂&lt;br&gt;
+--disable-content-trust，默认true。设置该选项，将对镜像进⾏验证&lt;br&gt;
+--ﬁle, -f，Dockerﬁle的完整路径，默认值为‘PATH/Dockerﬁle’&lt;br&gt;
+--isolation，默认--isolation=&amp;quot;default&amp;quot;，即Linux命名空间；其他还有process或hyperv&lt;br&gt;
+--label，为⽣成的镜像设置metadata&lt;br&gt;
+--squash，默认false。设置该选项，将新构建出的多个层压缩为⼀个新层，但是将⽆法在多个镜像之间共享新层；设置该选项，实际上是创建了新image，同时保留原有image。&lt;br&gt;
+--tag, -t，镜像的名字及tag，通常name:tag或者name格式；可以在⼀次构建中为⼀个镜像设置多个tag&lt;br&gt;
+--network，默认default。设置该选项，Set the networking mode for the RUN instructions during build&lt;br&gt;
+--quiet, -q ，默认false。设置该选项，Suppress the build output and print image ID on success&lt;br&gt;
+--force-rm，默认false。设置该选项，总是删除掉中间环节的容器&lt;br&gt;
+--rm，默认--rm=true，即整个构建过程成功后删除中间环节的容器&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;PATH | URL | -说明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;给出命令执⾏的上下⽂。&lt;br&gt;
+上下⽂可以是构建执⾏所在的本地路径，也可以是远程URL，如Git库、tarball或⽂本⽂件等。&lt;br&gt;
+如果是Git库，如https://github.com/docker/rootfs.git#container:docker，则隐含先执⾏git clone --depth 1 --recursive，到本地临时⽬录；然后再将该临时⽬录发送给构建进程。&lt;br&gt;
+构建镜像的进程中，可以通过ADD命令将上下⽂中的任何⽂件（注意⽂件必须在上下⽂中）加⼊到镜像中。&lt;br&gt;
+-表示通过STDIN给出Dockerﬁle或上下⽂。&lt;br&gt;
+示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;docker build - &amp;lt; Dockerfile 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;说明：该构建过程只有Dockerﬁle，没有上下⽂&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;docker build - &amp;lt; context.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;说明：其中Dockerﬁle位于context.tar.gz的根路径&lt;br&gt;
+可以同时设置多个tag&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt; [root@qfedu.com ~]# docker build -t champagne/bbauto:latest -t champagne/bbauto:v2.1 . 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建镜像所在的⽂件夹和Dockerﬁle⽂件&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;mkdir dockerfile-test 
+cd dockerfile-test 
+touch Dockerfile 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在Dockerﬁle⽂件中写⼊指令，每⼀条指令都会更新镜像的信息例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim Dockerfile 
+[root@qfedu.com ~]# This is a comment 
+FROM  daocloud.io/library/centos:7 
+MAINTAINER wing wing@qfedu.com
+RUN  命令1;命令2；命令3
+RUN  命令
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;格式说明&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;每⾏命令都是以 INSTRUCTION statement 形式，就是命令+清单的模式。命令要⼤写，&amp;quot;#&amp;quot;是注解。&lt;br&gt;
+FROM 命令是告诉docker 我们的镜像什么。&lt;br&gt;
+MAINTAINER 是描述 镜像的创建⼈。&lt;br&gt;
+RUN 命令是在镜像内部执⾏。就是说他后⾯的命令应该是针对镜像可以运⾏的命令。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;创建镜像&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker build  -t  centos:v2 . 
+     docker build  是docker创建镜像的命令 
+     -t  镜像名称  
+     &amp;quot;.&amp;quot; 是⽤来指明我们使⽤的Dockerfile⽂件所在的当前⽬录
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2.4、创建完成后，⽤这个镜像运⾏容器&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -it centos:v2 /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;65-dockerfile实例01容器化python的flask应用&#34;&gt;6.5 Dockerﬁle实例01：容器化Python的Flask应⽤&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;⽬标&lt;/strong&gt;&lt;br&gt;
+⽤ Docker 部署⼀个⽤ Python 编写的 Web 应⽤。&lt;br&gt;
+&lt;strong&gt;应⽤代码部分&lt;/strong&gt;&lt;br&gt;
+代码功能：如果当前环境中有&amp;quot;NAME&amp;quot;这个环境变量，就把它打印&amp;quot;Hello&amp;quot;后，否则就打印&amp;quot;Hello world&amp;quot;，最后再打印出当前环境的hostname。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# mkdir python_app
+[root@qfedu.com ~]# cd python_app
+[root@qfedu.com ~]# vim app.py
+from flask import Flask
+import socket
+import os
+app = Flask(__name__)
+@app.route(&#39;/&#39;)
+def hello():
+  html = &amp;quot;&amp;lt;h3&amp;gt;Hello {name}!&amp;lt;/h3&amp;gt;&amp;quot; \
+      &amp;quot;&amp;lt;b&amp;gt;Hostname:&amp;lt;/b&amp;gt; {hostname}&amp;lt;br/&amp;gt;&amp;quot;      
+  return html.format(name=os.getenv(&amp;quot;NAME&amp;quot;, &amp;quot;world&amp;quot;), hostname=socket.gethostname())
+if __name__ == &amp;quot;__main__&amp;quot;:
+  app.run(host=&#39;0.0.0.0&#39;, port=80)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;应⽤依赖&lt;br&gt;
+定义在同⽬录下的 requirements.txt ⽂件⾥，内容如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim requirements.txt
+Flask
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编写Dockerﬁle&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim Dockerfile
+FROM python:2.7-slim
+WORKDIR /app
+ADD  .  /app
+RUN pip install --trusted-host pypi.python.org -r 
+requirements.txt
+EXPOSE 80
+ENV NAME World
+CMD [&amp;quot;python&amp;quot;, &amp;quot;app.py&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Dockerﬁle⽂件说明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;FROM python:2.7-slim&lt;br&gt;
+使⽤官⽅提供的 Python 开发镜像作为基础镜像&lt;br&gt;
+指定&amp;quot;python:2.7-slim&amp;quot;这个官⽅维护的基础镜像，从⽽免去安装Python 等语⾔环境的操作。否则，这⼀段就得这么写了：&lt;br&gt;
+FROM ubuntu:latest&lt;br&gt;
+RUN apt-get update -y&lt;br&gt;
+RUN apt-get install -y python-pip python-dev build-essential&lt;br&gt;
+WORKDIR /app&lt;br&gt;
+将⼯作⽬录切换为 /app，意思是在这⼀句之后，Dockerﬁle 后⾯的操作都以这⼀句指定的 /app ⽬录作为当前⽬录。&lt;br&gt;
+ADD . /app&lt;br&gt;
+将当前⽬录下的所有内容复制到 /app 下，Dockerﬁle ⾥的原语并不都是指对容器内部的操作。⽐如 ADD，指的是把当前⽬录（即Dockerﬁle 所在的⽬录）⾥的⽂件，复制到指定容器内的⽬录当中。&lt;/p&gt;
+&lt;p&gt;RUN pip install --trusted-host pypi.python.org -r requirements.txt&lt;br&gt;
+使⽤ pip 命令安装这个应⽤所需要的依赖&lt;br&gt;
+EXPOSE 80 //允许外界访问容器的 80 端⼝&lt;br&gt;
+ENV NAME World //设置环境变量&lt;br&gt;
+CMD [&amp;quot;python&amp;quot;, &amp;quot;app.py&amp;quot;]&lt;br&gt;
+设置容器进程为：python app.py，即：这个 Python 应⽤的启动&lt;br&gt;
+命令&lt;br&gt;
+这⾥app.py 的实际路径是 /app/app.py。CMD [&amp;quot;python&amp;quot;,&amp;quot;app.py&amp;quot;] 等价于 &amp;quot;docker run python app.py&amp;quot;。&lt;br&gt;
+在使⽤ Dockerﬁle 时，可能还会看到⼀个叫作 ENTRYPOINT 的原语。它和 CMD 都是 Docker 容器进程启动所必需的参数，完整执⾏格式是：&amp;quot;ENTRYPOINT CMD&amp;quot;。&lt;br&gt;
+但是，默认，Docker 会提供⼀个隐含的 ENTRYPOINT，即：/bin/sh -c。所以，在不指定 ENTRYPOINT 时，⽐如在这个例⼦⾥，实际上运⾏在容器⾥的完整进程是：/bin/sh -c &amp;quot;python app.py&amp;quot;，即 CMD 的内容就是 ENTRYPOINT 的参数。&lt;br&gt;
+基于以上原因，后⾯会统⼀称 Docker 容器的启动进程为ENTRYPOINT，⽽不是 CMD。&lt;br&gt;
+现在⽬录结构：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# ls
+Dockerfile  app.py  requirements.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;构建镜像&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker build -t helloworld .
+-t  给这个镜像加⼀个 Tag
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Dockerﬁle 中的每个原语执⾏后，都会⽣成⼀个对应的镜像层。即使原语本身并没有明显地修改⽂件的操作（⽐如，ENV 原语），它对应的层也会存在。只不过在外界看来，这个层是空的。&lt;/p&gt;
+&lt;p&gt;查看结果&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker image ls
+REPOSITORY       TAG             IMAGE ID
+helloworld       latest        653287cdf998
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动容器&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -p 4000:80 helloworld
+镜像名 helloworld 后⾯，什么都不⽤写，因为在 Dockerfile 中已经指定了 CMD。
+否则，就得把进程的启动命令加在后⾯：
+[root@qfedu.com ~]# docker run -p 4000:80 helloworld python app.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看容器&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker ps
+CONTAINER ID     IMAGE         COMMAND          
+CREATED
+4ddf4638572d     helloworld    &amp;quot;python app.py&amp;quot;   10 
+seconds ago
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;进⼊容器&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker exec -it b69 /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;访问容器内应⽤&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# curl http://localhost:4000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Hello World!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hostname: 4ddf4638572d&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;⾄此，已经使⽤容器完成了⼀个应⽤的开发与测试，如果现在想要把这个容器的镜像上传到 DockerHub 上分享给更多的⼈，⾸先要注册⼀个 Docker Hub 账号，然后使⽤ docker login 命令登录。&lt;/p&gt;
+&lt;p&gt;给容器镜像打tag起⼀个完整的名字：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker tag helloworld chenyoong/helloworld:v1
+chenyong为我在docker hub的⽤户名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;推送镜像到Docker Hub&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker push chenyong/helloworld:v1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;66-dockerfile实例02制作kubectl的镜像&#34;&gt;6.6 Dockerﬁle实例02：制作Kubectl的镜像&lt;/h3&gt;
+&lt;p&gt;注：本实例学完k8s之后才能做&lt;br&gt;
+制作镜像：wing/kubectl&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]#cat Dockerfile/kubectl/Dockerfile
+FROM alpine
+MAINTAINER wing &amp;lt;276267003@qq.com&amp;gt;
+LABEL org.label-schema.vcs-ref=$VCS_REF \
+   org.label-schema.vcs-
+url=&amp;quot;https://github.com/vfarcic/kubectl&amp;quot; \
+   org.label-schema.docker.dockerfile=&amp;quot;/Dockerfile&amp;quot;
+ENV KUBE_LATEST_VERSION=&amp;quot;v1.13.0&amp;quot;
+RUN apk add --update ca-certificates &amp;amp;&amp;amp; \
+  apk add --update -t deps curl &amp;amp;&amp;amp; \
+  curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_LATEST_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl &amp;amp;&amp;amp; \
+  chmod +x /usr/local/bin/kubectl &amp;amp;&amp;amp; \
+  apk del --purge deps &amp;amp;&amp;amp; \
+  rm /var/cache/apk/* 
+CMD [&amp;quot;kubectl&amp;quot;, &amp;quot;help&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;67-dockerfile优化&#34;&gt;6.7 Dockerﬁle优化&lt;/h3&gt;
+&lt;p&gt;编译⼀个简单的nginx成功以后发现好⼏百M。&lt;br&gt;
+1、RUN 命令要尽量写在⼀条⾥，每次 RUN 命令都是在之前的镜像上封装，只会增⼤不会减⼩&lt;br&gt;
+2、每次进⾏依赖安装后使⽤yum clean all清除缓存中的rpm头⽂件和包⽂件&lt;br&gt;
+3、选择⽐较⼩的基础镜像，⽐如：alpine&lt;/p&gt;
+&lt;h2 id=&#34;7-docker私有仓库&#34;&gt;7、Docker私有仓库&lt;/h2&gt;
+&lt;h3 id=&#34;71-仓库镜像&#34;&gt;7.1 仓库镜像&lt;/h3&gt;
+&lt;p&gt;Docker hub官⽅已提供容器镜像registry,⽤于搭建私有仓库&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;拉取镜像&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker pull daocloud.io/library/registry:latest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;72-运行容器&#34;&gt;7.2 运⾏容器&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --name &amp;quot;pri_registry&amp;quot; --restart=always -d -p 5000:5000 daocloud.io/library/registry 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注：如果创建容器不成功，报错防⽕墙，解决⽅案如下&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]#systemctl stop firewalld
+[root@qfedu.com ~]#yum install iptables*
+[root@qfedu.com ~]#systemctl start iptables
+[root@qfedu.com ~]#iptables -F
+[root@qfedu.com ~]#systemctl restart docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;73-查看容器&#34;&gt;7.3 查看容器&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker ps
+CONTAINER ID  IMAGE  COMMAND  CREATED  STATUS   PORTS 
+  NAMES
+1f444285bed8     daocloud.io/library/registry 
+ &amp;quot;/entrypoint.sh /etc/&amp;quot;  23 seconds ago    Up 21 
+seconds    0.0.0.0:5000-&amp;gt;5000/tcp  elegant_rosalind
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;74-连接容器查看端口状态&#34;&gt;7.4 连接容器查看端⼝状态&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker exec -it  1f444285bed8  /bin/sh    //这⾥是sh 不是bash
+  /# netstat -lnp                        //查看5000端
+⼝是否开启
+  Active Internet connections (only servers)
+  Proto Recv-Q Send-Q Local Address      Foreign 
+Address     State    PID/Program name   
+  tcp     0    0 :::5000         :::*           
+LISTEN    1/registry
+  Active UNIX domain sockets (only servers)
+  Proto RefCnt Flags    Type    State     I-Node 
+PID/Program name   Path
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在本机查看能否访问该私有仓库,看看状态码是不是200&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# curl  -I  127.0.0.1:5000   //参数是⼤写的i
+HTTP/1.1 200 OK    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;75-仓库功能测试&#34;&gt;7.5 仓库功能测试&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;为了⽅便，下载1个⽐较⼩的镜像,buysbox
+ [root@qfedu.com ~]# docker pull busybox
+
+上传前必须给镜像打tag  注明ip和端⼝：
+ [root@qfedu.com ~]# docker tag  busybox  私有仓库IP:端⼝/busybox
+
+这是直接从官⽅拉的镜像，很慢：
+  [root@qfedu.com ~]# docker tag busybox 192.168.245.136:5000/busybox
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下⾯这个Mysql是我测试的第⼆个镜像，从daocloud拉取的：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker tag daocloud.io/library/mysql 192.168.245.136:5000/daocloud.io/library/mysql
+  注：tag后⾯可以使⽤镜像名称也可以使⽤id,我这⾥使⽤的镜像名称，如果使⽤官⽅的镜像，不需要加前缀，但是daocloud.io的得加前缀
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改请求⽅式为http&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;默认为https，不改会报以下错误:
+    Get https://master.up.com:5000/v1/_ping: http: 
+server gave HTTP response to HTTPS client
+  [root@qfedu.com ~]# vim /etc/docker/daemon.json
+  { &amp;quot;insecure-registries&amp;quot;:[&amp;quot;192.168.245.136:5000&amp;quot;] }
+  
+重启docker:
+  [root@qfedu.com ~]# systemctl restart docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上传镜像到私有仓库&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt; [root@qfedu.com ~] # docker push 192.168.245.136:5000/busybox 
+ [root@qfedu.com ~] # docker push 192.168.245.136:5000/daocloud.io/library/mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看私有仓库⾥的所有镜像&lt;br&gt;
+注：我这⾥是⽤的是ubuntu的例⼦&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~] # curl 192.168.245.130:5000/v2/_catalog
+ { &amp;quot;repositories&amp;quot; :[ &amp;quot;daocloud.io/ubuntu&amp;quot; ]}
+或者
+[root@qfedu.com ~] # curl http://192.168.245.130:5000/v2/daocloud.io/ubuntu/tags/list
+ { &amp;quot;name&amp;quot; : &amp;quot;daocloud.io/ubuntu&amp;quot; , &amp;quot;tags&amp;quot; :[ &amp;quot;v2&amp;quot; ]}
+[root@qfedu.com ~] # curl http://192.168.245.130:5000/v2/repo 名字/tags/list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;拉取镜像测试&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~] # docker pull 192.168.245.136:5000/busybox
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;8-部署docker-webui&#34;&gt;8、部署Docker-WebUI&lt;/h2&gt;
+&lt;h3 id=&#34;81-下载并运行容器&#34;&gt;8.1 下载并运⾏容器&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]#docker pull uifd/ui-for-docker 
+[root@qfedu.com ~]#docker run -it -d --name docker-web -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock docker.io/uifd/ui-for-docker 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;82-浏览器访问测试&#34;&gt;8.2 浏览器访问测试&lt;/h3&gt;
+&lt;p&gt;http://ip:9000&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;5&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200820012943.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;9-docker资源限制&#34;&gt;9、Docker资源限制&lt;/h2&gt;
+&lt;p&gt;在使⽤ Docker 运⾏容器时，⼀台主机上可能会运⾏⼏百个容器，这些容器虽然互相隔离，但是底层却使⽤着相同的 CPU、内存和磁盘资源。如果不对容器使⽤的资源进⾏限制，那么容器之间会互相影响，⼩的来说会导致容器资源使⽤不公平；⼤的来说，可能会导致主机和集群资源耗尽，服务完全不可⽤。&lt;br&gt;
+CPU 和内存的资源限制已经是⽐较成熟和易⽤，能够满⾜⼤部分⽤户的需求。磁盘限制也是不错的，虽然现在⽆法动态地限制容量，但是限制磁盘读写速度也能应对很多场景。&lt;/p&gt;
+&lt;p&gt;⾄于⽹络，Docker 现在并没有给出⽹络限制的⽅案，也不会在可⻅的未来做这件事情，因为⽬前⽹络是通过插件来实现的，和容器本身的功能相对独⽴，不是很容易实现，扩展性也很差。&lt;br&gt;
+资源限制⼀⽅⾯可以让我们为容器（应⽤）设置合理的 CPU、内存等资源，⽅便管理；另外⼀⽅⾯也能有效地预防恶意的攻击和异常，&lt;br&gt;
+对容器来说是⾮常重要的功能。如果你需要在⽣产环境使⽤容器，请务&lt;br&gt;
+必要花时间去做这件事情。&lt;/p&gt;
+&lt;h3 id=&#34;91-系统压力测试&#34;&gt;9.1 系统压⼒测试&lt;/h3&gt;
+&lt;p&gt;Stress是⼀个linux下的压⼒测试⼯具，专⻔为那些想要测试⾃⼰的系统，完全⾼负荷和监督这些设备运⾏的⽤户。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;安装
+[root@qfedu.com ~]# yum install stress -y
+ 
+测试场景举例 
+测试CPU负荷 
+[root@qfedu.com ~]# stress -c 4  //增加4个cpu进程，处理sqrt()函数函数，以提⾼系统CPU负荷
+ 
+内存测试
+[root@qfedu.com ~]# stress –i 4 –vm 10 –vm-bytes 1G –vm-hang 100 –timeout 100s
+新增4个io进程，10个内存分配进程，每次分配⼤⼩1G，分配后不释放，测试100S
+
+磁盘I/O测试
+[root@qfedu.com ~]# stress –d 1 --hdd-bytes 3G  //新增1个写进程，每次写3G⽂件块
+
+硬盘测试（不删除）
+[root@qfedu.com ~]# stress –i 1 –d 10 --hdd-bytes 3G –hdd-noclean
+新增1个IO进程，10个写进程，每次写⼊3G⽂件块，且不清除，会逐步将硬盘耗尽。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Stress各主⽤参数说明&lt;/strong&gt;&lt;br&gt;
+-表示后接⼀个中划线，--表示后接2个中划线，均可⽤于stress后接参数，不同表达⽅式&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-？&lt;br&gt;
+--help 显示帮助信息&lt;br&gt;
+--version 显示软件版本信息&lt;br&gt;
+-t secs:&lt;br&gt;
+--timeout secs指定运⾏多少秒&lt;br&gt;
+--backoﬀ usecs 等待usecs微秒后才开始运⾏&lt;br&gt;
+-c forks:&lt;br&gt;
+--cpu forks 产⽣多个处理sqrt()函数的CPU进程&lt;br&gt;
+-m forks&lt;br&gt;
+--vm forks:产⽣多个处理malloc()内存分配函数的进程，后接进程数量&lt;br&gt;
+-i forks&lt;br&gt;
+--io forks:产⽣多个处理sync()函数的磁盘I/O进程&lt;br&gt;
+--vm-bytes bytes：指定内存的byte数，默认值是1&lt;br&gt;
+--vm-hang:表示malloc分配的内存多少时间后在free()释放掉&lt;br&gt;
+-d :&lt;/p&gt;
+&lt;p&gt;--hdd:写进程，写⼊固定⼤⼩，通过mkstemp()函数写⼊当前⽬录&lt;/p&gt;
+&lt;p&gt;--hdd-bytes bytes:指定写的byte数，默认1G&lt;br&gt;
+--hdd-noclean:不要将写⼊随机ascii数据的⽂件unlink，则写⼊的⽂件不删除，会保留在硬盘空间。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;92-cpu资源限制&#34;&gt;9.2 Cpu资源限制&lt;/h3&gt;
+&lt;p&gt;Cpu 资源&lt;br&gt;
+主机上的进程会通过时间分⽚机制使⽤ CPU，CPU 的量化单位是频率，也就是每秒钟能执⾏的运算次数。为容器限制 CPU 资源并不能改变 CPU 的运⾏频率，⽽是改变每个容器能使⽤的 CPU 时间⽚。理想状态下，CPU 应该⼀直处于运算状态（并且进程需要的计算量不会超过 CPU 的处理能⼒）。&lt;/p&gt;
+&lt;h4 id=&#34;921-限制cpu-share&#34;&gt;9.2.1 限制Cpu Share&lt;/h4&gt;
+&lt;p&gt;什么是cpu share？&lt;br&gt;
+docker 允许⽤户为每个容器设置⼀个数字，代表容器的 CPUshare，默认情况下每个容器的 share 是 1024。这个 share 是相对的，本身并不能代表任何确定的意义。当主机上有多个容器运⾏时，每个容器占⽤的 CPU 时间⽐例为它的 share 在总额中的⽐例。docker 会根据主机上运⾏的容器和进程动态调整每个容器使⽤ CPU 的时间⽐例。&lt;br&gt;
+例：&lt;br&gt;
+如果主机上有两个⼀直使⽤ CPU 的容器（为了简化理解，不考虑主机上其他进程），其 CPU share 都是 1024，那么两个容器 CPU 使⽤率都是 50%；如果把其中⼀个容器的 share 设置为 512，那么两者CPU 的使⽤率分别为 67% 和 33%；如果删除 share 为 1024 的容器，剩下来容器的 CPU 使⽤率将会是 100%。&lt;br&gt;
+好处：&lt;br&gt;
+能保证 CPU 尽可能处于运⾏状态，充分利⽤ CPU 资源，⽽且保证所有容器的相对公平；&lt;br&gt;
+缺点：&lt;br&gt;
+⽆法指定容器使⽤ CPU 的确定值。&lt;br&gt;
+设置 CPU share 的参数：&lt;br&gt;
+-c --cpu-shares，它的值是⼀个整数。&lt;br&gt;
+我的机器是 4 核 CPU，因此运⾏⼀个stress容器,使⽤ stress 启动4 个进程来产⽣计算压⼒：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker pull progrium/stress
+[root@qfedu.com ~]# yum install htop -y
+[root@qfedu.com ~]# docker run --rm -it 
+progrium/stress --cpu 4 
+stress: info: [1] dispatching hogs: 4 cpu, 0 io, 0 vm, 0 hdd
+stress: dbug: [1] using backoff sleep of 12000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 4 [7] forked
+stress: dbug: [1] using backoff sleep of 9000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 3 [8] forked
+stress: dbug: [1] using backoff sleep of 6000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 2 [9] forked
+stress: dbug: [1] using backoff sleep of 3000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 1 [10] forked
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在另外⼀个 Terminal 使⽤ htop 查看资源的使⽤情况：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200820013659.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;上图中看到，CPU 四个核资源都达到了 100%。四个 stress 进程CPU 使⽤率没有达到 100% 是因为系统中还有其他机器在运⾏。为了⽐较，另外启动⼀个 share 为 512 的容器：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --rm -it -c 512 
+progrium/stress --cpu 4 
+stress: info: [1] dispatching hogs: 4 cpu, 0 io, 0 vm, 0 hdd
+stress: dbug: [1] using backoff sleep of 12000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 4 [6] forked
+stress: dbug: [1] using backoff sleep of 9000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 3 [7] forked
+stress: dbug: [1] using backoff sleep of 6000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 2 [8] forked
+stress: dbug: [1] using backoff sleep of 3000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 1 [9] forked
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;因为默认情况下，容器的 CPU share 为 1024，所以这两个容器的CPU 使⽤率应该⼤致为 2：1，下⾯是启动第⼆个容器之后的监控截图：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;7&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200820013735.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;两个容器分别启动了四个 stress 进程，第⼀个容器 stress 进程CPU 使⽤率都在 54% 左右，第⼆个容器 stress 进程 CPU 使⽤率在25% 左右，⽐例关系⼤致为 2：1，符合之前的预期。&lt;/p&gt;
+&lt;h4 id=&#34;922-限制cpu-核数&#34;&gt;9.2.2 限制Cpu 核数&lt;/h4&gt;
+&lt;p&gt;限制容器能使⽤的 CPU 核数&lt;br&gt;
+-c --cpu-shares 参数只能限制容器使⽤ CPU 的⽐例，或者说优先级，⽆法确定地限制容器使⽤ CPU 的具体核数；从 1.13 版本之后，docker 提供了 --cpus 参数可以限定容器能使⽤的 CPU 核数。这个功能可以让我们更精确地设置容器 CPU 使⽤量，是⼀种更容易理解也因此更常⽤的⼿段。&lt;br&gt;
+--cpus 后⾯跟着⼀个浮点数，代表容器最多使⽤的核数，可以精确到⼩数点⼆位，也就是说容器最⼩可以使⽤ 0.01 核 CPU。&lt;br&gt;
+限制容器只能使⽤ 1.5 核数 CPU&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --rm -it --cpus 1.5 
+progrium/stress --cpu 3 
+stress: info: [1] dispatching hogs: 3 cpu, 0 io, 0 vm, 0 hdd
+stress: dbug: [1] using backoff sleep of 9000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 3 [7] forked
+stress: dbug: [1] using backoff sleep of 6000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 2 [8] forked
+stress: dbug: [1] using backoff sleep of 3000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 1 [9] forked
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在容器⾥启动三个 stress 来跑 CPU 压⼒，如果不加限制，这个容器会导致 CPU 的使⽤率为 300% 左右（也就是说会占⽤三个核的计算能⼒）。实际的监控如下图：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200820013841.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;可以看到，每个 stress 进程 CPU 使⽤率⼤约在 50%，总共的使⽤率为 150%，符合 1.5 核的设置。&lt;br&gt;
+如果设置的 --cpus 值⼤于主机的 CPU 核数，docker 会直接报错：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --rm -it --cpus 8 
+progrium/stress --cpu 3 
+docker: Error response from daemon: Range of CPUs is from 0.01 to 4.00, as there are only 4 CPUs available.
+See &#39;docker run --help&#39;.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果多个容器都设置了 --cpus ，并且它们之和超过主机的 CPU 核数，并不会导致容器失败或者退出，这些容器之间会竞争使⽤ CPU，具体分配的 CPU 数量取决于主机运⾏情况和容器的 CPU share 值。也就是说 --cpus 只能保证在 CPU 资源充⾜的情况下容器最多能使⽤的CPU 数，docker 并不能保证在任何情况下容器都能使⽤这么多的CPU（因为这根本是不可能的）。&lt;/p&gt;
+&lt;h4 id=&#34;923-cpu-绑定&#34;&gt;9.2.3 CPU 绑定&lt;/h4&gt;
+&lt;p&gt;限制容器运⾏在某些 CPU 核&lt;br&gt;
+注：&lt;br&gt;
+⼀般并&lt;strong&gt;不推荐&lt;/strong&gt;在⽣产中这样使⽤&lt;br&gt;
+docker 允许调度的时候限定容器运⾏在哪个 CPU 上。&lt;/p&gt;
+&lt;p&gt;限制容器运⾏在哪些核上并不是⼀个很好的做法，因为它需要实现知道主机上有多少 CPU 核，⽽且⾮常不灵活。除⾮有特别的需求，⼀般并不推荐在⽣产中这样使⽤。&lt;br&gt;
+假如主机上有 4 个核，可以通过 --cpuset 参数让容器只运⾏在前两个核上：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --rm -it --cpuset-
+cpus=0,1 progrium/stress --cpu 2 
+stress: info: [1] dispatching hogs: 2 cpu, 0 io, 0 vm, 0 hdd
+stress: dbug: [1] using backoff sleep of 6000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 2 [7] forked
+stress: dbug: [1] using backoff sleep of 3000us
+stress: dbug: [1] --&amp;gt; hogcpu worker 1 [8] forked
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样，监控中可以看到只有前⾯两个核 CPU 达到了 100% 使⽤率。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;9&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200820014059.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;--cpuset-cpus 参数可以和 -c --cpu-shares ⼀起使⽤，限制容器只能运⾏在某些 CPU 核上，并且配置了使⽤率。&lt;/p&gt;
+&lt;h3 id=&#34;93-mem资源限制&#34;&gt;9.3 Mem资源限制&lt;/h3&gt;
+&lt;p&gt;Docker 默认没有对容器内存进⾏限制，容器可以使⽤主机提供的所有内存。&lt;br&gt;
+不限制内存带来的问题：&lt;/p&gt;
+&lt;p&gt;这是⾮常危险的事情，如果某个容器运⾏了恶意的内存消耗软件，或者代码有内存泄露，很可能会导致主机内存耗尽，因此导致服务不可⽤。可以为每个容器设置内存使⽤的上限，⼀旦超过这个上限，容器会被杀死，⽽不是耗尽主机的内存。&lt;br&gt;
+限制内存带来的问题：&lt;br&gt;
+限制内存上限虽然能保护主机，但是也可能会伤害到容器⾥的服务。如果为服务设置的内存上限太⼩，会导致服务还在正常⼯作的时候就被 OOM 杀死；如果设置的过⼤，会因为调度器算法浪费内存。&lt;br&gt;
+合理做法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;为应⽤做内存压⼒测试，理解正常业务需求下使⽤的内存情况，然后才能进⼊⽣产环境使⽤&lt;/li&gt;
+&lt;li&gt;⼀定要限制容器的内存使⽤上限，尽量保证主机的资源充⾜，⼀旦通过监控发现资源不⾜，就进⾏扩容或者对容器进⾏迁移如果可以（内存资源充⾜的情况）&lt;/li&gt;
+&lt;li&gt;尽量不要使⽤ swap，swap 的使⽤会导致内存计算复杂，对调度器⾮常不友好&lt;br&gt;
+Docker 限制容器内存使⽤量:&lt;br&gt;
+docker 启动参数中，和内存限制有关的包括（参数的值⼀般是内存⼤⼩，也就是⼀个正数，后⾯跟着内存单位 b、k、m、g，分别对应bytes、KB、MB、和 GB）：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-m --memory：&lt;br&gt;
+容器能使⽤的最⼤内存⼤⼩，最⼩值为 4m&lt;br&gt;
+--memory-swap：&lt;br&gt;
+容器能够使⽤的 swap ⼤⼩&lt;br&gt;
+--memory-swap 必须在 --memory 也配置的情况下才能有⽤。&lt;br&gt;
+如果 --memory-swap 的值⼤于 --memory，那么容器能使⽤的总内存（内存 + swap）为 --memory-swap 的值，能使⽤的swap 值为 --memory-swap 减去 --memory 的值&lt;br&gt;
+如果 --memory-swap 为 0，或者和 --memory 的值相同，那么容器能使⽤两倍于内存的 swap ⼤⼩，如果 --memory 对应的值是 200M，那么容器可以使⽤ 400M swap&lt;br&gt;
+如果 --memory-swap 的值为 -1，那么不限制 swap 的使⽤，也就是说主机有多少 swap，容器都可以使⽤&lt;br&gt;
+--memory-swappiness：&lt;br&gt;
+默认情况下，主机可以把容器使⽤的匿名⻚（anonymous page）swap 出来，你可以设置⼀个 0-100 之间的值，代表允许swap 出来的⽐例&lt;br&gt;
+--memory-reservation：&lt;br&gt;
+设置⼀个内存使⽤的 soft limit，如果 docker 发现主机内存不⾜，会执⾏ OOM 操作。这个值必须⼩于 --memory 设置的值&lt;br&gt;
+--kernel-memory：&lt;br&gt;
+容器能够使⽤的 kernel memory ⼤⼩，最⼩值为 4m。&lt;br&gt;
+--oom-kill-disable：&lt;br&gt;
+是否运⾏ OOM 的时候杀死容器。只有设置了 -m，才可以把这个选项设置为 false，否则容器会耗尽主机内存，⽽且导致主机应⽤被杀死&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果限制容器的内存使⽤为 64M，在申请 64M 资源的情况下，容器运⾏正常（如果主机上内存⾮常紧张，并不⼀定能保证这⼀点）：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --rm -it -m 64m progrium/stress --vm 1 --vm-bytes 64M --vm-hang 0
+WARNING: Your kernel does not support swap limit 
+capabilities or the cgroup is not mounted. Memory 
+limited without swap.
+stress: info: [1] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
+stress: dbug: [1] using backoff sleep of 3000us
+stress: dbug: [1] --&amp;gt; hogvm worker 1 [7] forked
+stress: dbug: [7] allocating 67108864 bytes ...
+stress: dbug: [7] touching bytes in strides of 4096 bytes ...
+stress: dbug: [7] sleeping forever with allocated memory .....
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;⽽如果申请 100M 内存，会发现容器⾥的进程被 kill 掉了（worker 7 got signal 9，signal 9 就是 kill 信号）&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --rm -it -m 64m progrium/stress --vm 1 --vm-bytes 100M --vm-hang 0 
+WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
+stress: info: [1] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
+stress: dbug: [1] using backoff sleep of 3000us
+stress: dbug: [1] --&amp;gt; hogvm worker 1 [7] forked
+stress: dbug: [7] allocating 104857600 bytes ...
+stress: dbug: [7] touching bytes in strides of 4096 bytes ...
+stress: FAIL: [1] (415) &amp;lt;-- worker 7 got signal 9
+stress: WARN: [1] (417) now reaping child worker processes
+stress: FAIL: [1] (421) kill error: No such process
+stress: FAIL: [1] (451) failed run completed in 0s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;94-io-资源限制扩展&#34;&gt;9.4 IO 资源限制【扩展】&lt;/h3&gt;
+&lt;p&gt;对于磁盘来说，考量的参数是容量和读写速度，因此对容器的磁盘限制也应该从这两个维度出发。⽬前 docker ⽀持对磁盘的读写速度进⾏限制，但是并没有⽅法能限制容器能使⽤的磁盘容量（⼀旦磁盘mount 到容器⾥，容器就能够使⽤磁盘的所有容量）。&lt;br&gt;
+限制磁盘的读写速率&lt;br&gt;
+docker 允许你直接限制磁盘的读写速率，对应的参数有：&lt;br&gt;
+--device-read-bps：磁盘每秒最多可以读多少⽐特（bytes）&lt;br&gt;
+--device-write-bps：磁盘每秒最多可以写多少⽐特（bytes）&lt;br&gt;
+上⾯两个参数的值都是磁盘以及对应的速率，限制 limit 为正整数，单位可以是 kb、mb 和 gb。&lt;/p&gt;
+&lt;p&gt;⽐如可以把设备的读速率限制在 1mb：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -it --device /dev/sda:/dev/sda --device-read-bps /dev/sda:1mb ubuntu:16.04 bash 
+root@6c048edef769# cat /sys/fs/cgroup/blkio/blkio.throttle.read_bps_device 
+8:0 1048576
+root@6c048edef769# dd iflag=direct,nonblock if=/dev/sda of=/dev/null bs=5M count=10
+10+0 records in
+10+0 records out
+52428800 bytes (52 MB) copied, 50.0154 s, 1.0 MB/s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从磁盘中读取 50m 花费了 50s 左右，说明磁盘速率限制起了作⽤。&lt;/p&gt;
+&lt;p&gt;另外两个参数可以限制磁盘读写频率（每秒能执⾏多少次读写操作）：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;--device-read-iops：磁盘每秒最多可以执⾏多少 IO 读操作&lt;br&gt;
+--device-write-iops：磁盘每秒最多可以执⾏多少 IO 写操作&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上⾯两个参数的值都是磁盘以及对应的 IO 上限。&lt;br&gt;
+⽐如，可以让磁盘每秒最多读 100 次：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -it --device /dev/sda:/dev/sda --device-read-iops /dev/sda:100 ubuntu:16.04 bash root@2e3026e9ccd2:/[root@qfedu.com 
+~]# dd iflag=direct,nonblock if=/dev/sda of=/dev/null bs=1k count=1000
+1000+0 records in
+1000+0 records out
+1024000 bytes (1.0 MB) copied, 9.9159 s, 103 kB/s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从测试中可以看出，容器设置了读操作的 iops 为 100，在容器内部从 block 中读取 1m 数据（每次 1k，⼀共要读 1000 次），共计耗时约 10s，换算起来就是 100 iops/s，符合预期结果。&lt;/p&gt;
+&lt;h2 id=&#34;10-端口转发&#34;&gt;10、端⼝转发&lt;/h2&gt;
+&lt;p&gt;使⽤端⼝转发解决容器端⼝访问问题&lt;/p&gt;
+&lt;h3 id=&#34;101-mysql应用端口转发&#34;&gt;10.1 MySQL应⽤端⼝转发&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;-p&lt;/strong&gt;&lt;br&gt;
+创建应⽤容器的时候，⼀般会做端⼝映射，这样是为了让外部能够访问这些容器⾥的应⽤。可以⽤多个-p&lt;strong&gt;指定&lt;/strong&gt;多个端⼝映射关系。&lt;br&gt;
+本例使⽤-p把本地3307转发到容器的3306，其他参数需要查看发布容器的⻚⾯提示&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;查看本地地址：
+[root@qfedu.com ~]#ip a 
+  ens33: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+  link/ether 00:0c:29:0a:5b:8b brd ff:ff:ff:ff:ff:ff
+  inet 192.168.245.134/24 brd 192.168.245.255 scope global dynamic ens33
+    valid_lft 1444sec preferred_lft 1444sec
+
+运⾏容器：
+[root@qfedu.com ~]# docker run --name mysql1 -p 3307:3306  -e MYSQL_ROOT_PASSWORD=123 daocloud.io/library/mysql
+
+查看Ip地址：
+[root@qfedu.com ~]# docker inspect  mysql1 | grep 
+IPAddress
+      &amp;quot;SecondaryIPAddresses&amp;quot;: null,
+      &amp;quot;IPAddress&amp;quot;: &amp;quot;172.17.0.2&amp;quot;,
+          &amp;quot;IPAddress&amp;quot;: &amp;quot;172.17.0.2&amp;quot;,
+          
+通过本地IP：192.168.245.134的3307端⼝访问容器mysql1内的数
+据库，出现如下提示恭喜你
+[root@qfedu.com ~]# mysql -u root -p123 -h 192.168.245.134 -P3307
+Welcome to the MariaDB monitor.  Commands end with ; 
+or \g.
+Your MySQL connection id is 3
+Server version: 5.7.18 MySQL Community Server (GPL)
+Copyright (c) 2000, 2016, Oracle, MariaDB 
+Corporation Ab and others.
+Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+MySQL [(none)]&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;102-redis应用端口转发&#34;&gt;10.2 Redis应⽤端⼝转发&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;-P&lt;/strong&gt;&lt;br&gt;
+Docker 会&lt;strong&gt;随机映射&lt;/strong&gt;⼀个 49000~49900 的端⼝到内部容器开放的⽹络端⼝。如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker images
+REPOSITORY      TAG         IMAGE ID       CREATED       SIZE
+docker.io/redis   latest        e4a35914679d     2weeks ago     182.9 MB
+ 
+[root@qfedu.com ~]# docker run --name myredis -P -d docker.io/redis
+805d0e21e531885aad61d3e82395210b50621f1991ec4b7f9a0e
+25c815cc0272
+
+[root@qfedu.com ~]# docker ps
+CONTAINER ID     IMAGE        COMMAND          
+CREATED       STATUS        PORTS           NAMES
+805d0e21e531     docker.io/redis   &amp;quot;docker-
+entrypoint.sh&amp;quot;  4 seconds ago    Up 3 seconds     
+0.0.0.0:32768-&amp;gt;6379/tcp  myredis
+从上⾯的结果中可以看出，本地主机的32768端⼝被映射到了redis容器的6379端⼝上，也就是说访问本机的32768端⼝即可访问容器内redis端⼝。
+
+测试看下，登陆redis容器，随意写个数据
+[root@qfedu.com ~]# docker run --rm -it --name myredis2 --link myredis:redisdb docker.io/redis /bin/
+bash
+root@be44d955d6f4:/data[root@qfedu.com ~]# redis-cli -h redisdb -p 6379
+redisdb:6379&amp;gt; set wing 123
+OK
+redisdb:6379&amp;gt;
+
+在别的机器上通过上⾯映射的端⼝32768连接这个容器的redis
+[root@qfedu.com ~]# redis-cli -h 192.168.245.134 -p 32768
+192.168.1.23:32768&amp;gt; get wing
+&amp;quot;123&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;11-容器卷&#34;&gt;11、容器卷&lt;/h2&gt;
+&lt;h3 id=&#34;111-容器卷操作&#34;&gt;11.1 容器卷操作&lt;/h3&gt;
+&lt;p&gt;容器卷是容器和宿主机之间的⽂件共享⽅式之⼀&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;新卷只能在容器创建过程当中挂载
+[root@qfedu.com ~]# docker run -it --name=&amp;quot;voltest&amp;quot; -v /tmp:/test  daocloud.io/library/centos:5 /bin/bash
+
+共享其他容器的卷：
+[root@qfedu.com ~]# docker run -it --volumes-from bc4181  daocloud.io/library/centos:5  /bin/bash
+
+实际应⽤中可以利⽤多个-v选项把宿主机上的多个⽬录同时共享给新建
+容器：
+
+⽐如： 
+[root@qfedu.com ~]# docker run -it -v /abc:/abc -v /def:/def 1ae9
+[root@qfedu.com ~]# docker run  -v /vol/index.html:/usr/share/nginx/html/index.html -it nginx /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意：&lt;br&gt;
+如果是⽂件共享，数据不能同步更新&lt;/p&gt;
+&lt;h3 id=&#34;112-volume扩展阅读&#34;&gt;11.2 Volume【扩展阅读】&lt;/h3&gt;
+&lt;p&gt;容器技术使⽤了 rootfs 机制和 Mount Namespace，构建出了⼀个同宿主机完全隔离开的⽂件系统环境。这时候，就需要考虑这样两个问题：&lt;br&gt;
+容器⾥进程新建的⽂件，怎么才能让宿主机获取到？&lt;br&gt;
+宿主机上的⽂件和⽬录，怎么才能让容器⾥的进程访问到？&lt;/p&gt;
+&lt;p&gt;这正是 Docker Volume 要解决的问题：Volume 机制，允许你将宿主机上指定的⽬录或者⽂件，挂载到容器⾥⾯进⾏读取和修改操作。&lt;br&gt;
+在 Docker 项⽬⾥，它⽀持两种 Volume 声明⽅式，可以把宿主机⽬录挂载进容器的 /test ⽬录当中：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -v /test ...
+[root@qfedu.com ~]# docker run -v /home:/test ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这两种声明⽅式的本质是相同的：都是把⼀个宿主机的⽬录挂载进了容器的 /test ⽬录。&lt;br&gt;
+第⼀种情况没有显示声明宿主机⽬录，Docker 就会默认在宿主机上创建⼀个临时⽬录 /var/lib/docker/volumes/[VOLUME_ID]/_data，然后把它挂载到容器的 /test ⽬录上。&lt;br&gt;
+第⼆种情况，Docker 就直接把宿主机的 /home ⽬录挂载到容器的 /test ⽬录上。&lt;br&gt;
+那么，Docker ⼜是如何做到把⼀个宿主机上的⽬录或者⽂件，挂载到容器⾥⾯去呢？难道⼜是 Mount Namespace 的⿊科技吗？实际上，并不需要这么麻烦。&lt;br&gt;
+已经介绍过，当容器进程被创建之后，尽管开启了 MountNamespace，但是在它执⾏ chroot（或者 pivot_root）之前，容器进程⼀直可以看到宿主机上的整个⽂件系统。&lt;br&gt;
+⽽宿主机上的⽂件系统，也⾃然包括了要使⽤的容器镜像。这个镜像的各个层，保存在 /var/lib/docker/aufs/diﬀ ⽬录下，在容器进程启动后，它们会被联合挂载在 /var/lib/docker/aufs/mnt/ ⽬录中，这样容器所需的 rootfs 就准备好了。&lt;/p&gt;
+&lt;p&gt;所以，只需要在 rootfs 准备好之后，在执⾏ chroot 之前，把Volume 指定的宿主机⽬录（⽐如 /home ⽬录），挂载到指定的容器⽬录（⽐如 /test ⽬录）在宿主机上对应的⽬录（即/var/lib/docker/aufs/mnt/[可读写层 ID]/test）上，这个 Volume 的挂载⼯作就完成了。&lt;br&gt;
+由于执⾏这个挂载操作时，&amp;quot;容器进程&amp;quot;已经创建了，也就意味着此时 Mount Namespace 已经开启了。所以，这个挂载事件只在这个容器⾥可⻅。你在宿主机上，是看不⻅容器内部的这个挂载点的。这就保证了容器的隔离性不会被 Volume 打破。&lt;br&gt;
+注意：这⾥提到的 &amp;quot; 容器进程 &amp;quot;，是 Docker 创建的⼀个容器初始化进程 (dockerinit)，⽽不是应⽤进程 (ENTRYPOINT + CMD)。dockerinit 会负责完成根⽬录的准备、挂载设备和⽬录、配置hostname 等⼀系列需要在容器内进⾏的初始化操作。最后，它通过execv() 系统调⽤，让应⽤进程取代⾃⼰，成为容器⾥的 PID=1 的进程。&lt;br&gt;
+⽽这⾥要使⽤到的挂载技术，就是 Linux 的绑定挂载（bind mount）机制。它的主要作⽤就是，允许你将⼀个⽬录或者⽂件，⽽不是整个设备，挂载到⼀个指定的⽬录上。并且，这时你在该挂载点上进⾏的任何操作，只是发⽣在被挂载的⽬录或者⽂件上，⽽原挂载点的内容则会被隐藏起来且不受影响。&lt;br&gt;
+其实，如果你了解 Linux 内核的话，就会明⽩，绑定挂载实际上是⼀个 inode 替换的过程。在 Linux 操作系统中，inode 可以理解为存放⽂件内容的&amp;quot;对象&amp;quot;，⽽ dentry，也叫⽬录项，就是访问这个 inode所使⽤的&amp;quot;指针&amp;quot;&lt;br&gt;
+mount --bind /home /test，会将 /home 挂载到 /test 上。其实相当于将 /test 的 dentry，重定向到了 /home 的 inode。这样当修改/test ⽬录时，实际修改的是 /home ⽬录的 inode。这也就是为何，⼀旦执⾏ umount 命令，/test ⽬录原先的内容就会恢复：因为修改真正发⽣在的，是 /home ⽬录⾥。进程在容器⾥对这个 /test ⽬录进⾏的所有操作，都实际发⽣在宿主机的对应⽬录（⽐如，/home，或者/var/lib/docker/volumes/[VOLUME_ID]/_data）⾥，⽽不会影响容器镜像的内容。&lt;br&gt;
+这个 /test ⽬录⾥的内容，既然挂载在容器 rootfs 的可读写层，它会不会被 docker commit 提交掉呢？也不会。&lt;br&gt;
+原因前⾯提到过。容器的镜像操作，⽐如 docker commit，都是发⽣在宿主机空间的。⽽由于 Mount Namespace 的隔离作⽤，宿主机并不知道这个绑定挂载的存在。所以，在宿主机看来，容器中可读写层的 /test ⽬录（/var/lib/docker/aufs/mnt/[可读写层 ID]/test），始终是空的。&lt;br&gt;
+不过，由于 Docker ⼀开始还是要创建 /test 这个⽬录作为挂载点，所以执⾏了 docker commit 之后，新产⽣的镜像⾥，会多出来⼀个空的 /test ⽬录。毕竟，新建⽬录操作，⼜不是挂载操作，MountNamespace 对它可起不到&amp;quot;障眼法&amp;quot;的作⽤。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;1.启动⼀个 helloworld 容器，给它声明⼀个 Volume，挂载在容器⾥的 /test ⽬录上：
+[root@qfedu.com ~]# docker run -d -v /test helloworld
+cf53b766fa6f
+
+2.容器启动之后，查看⼀下这个 Volume 的 ID：
+[root@qfedu.com ~]# docker volume ls
+DRIVER        VOLUME NAME
+local        
+cb1c2f7221fa9b0971cc35f68aa1034824755ac44a034c0c0a1d
+d318838d3a6d
+
+3.使⽤这个 ID，可以找到它在 Docker ⼯作⽬录下的 volumes 路径：
+[root@qfedu.com ~]# ls /var/lib/docker/volumes/cb1c2f7221fa/_data/
+这个 _data ⽂件夹，就是这个容器的 Volume 在宿主机上对应的临时⽬录了。
+
+4.在容器的 Volume ⾥，添加⼀个⽂件 text.txt：
+[root@qfedu.com ~]# docker exec -it cf53b766fa6f /bin/sh
+cd test/
+touch text.txt
+
+5.再回到宿主机，就会发现 text.txt 已经出现在了宿主机上对应的临时⽬录⾥：
+[root@qfedu.com ~]# ls /var/lib/docker/volumes/cb1c2f7221fa/_data/
+text.txt
+可是，如果你在宿主机上查看该容器的可读写层，虽然可以看到这个 /test ⽬录，但其内容是空的：
+[root@qfedu.com ~]# ls /var/lib/docker/aufs/mnt/6780d0778b8a/test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以确认，容器 Volume ⾥的信息，并不会被 docker commit 提交掉；但这个挂载点⽬录 /test 本身，则会出现在新的镜像当中。以上内容，就是 Docker Volume 的核⼼原理了。&lt;br&gt;
+&lt;strong&gt;Docker 容器&amp;quot;全景图&amp;quot;：&lt;/strong&gt;&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;10&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200820020548.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;⼀个&amp;quot;容器&amp;quot;，实际上是⼀个由 Linux Namespace、Linux Cgroups和 rootfs 三种技术构建出来的进程的隔离环境。&lt;/p&gt;
+&lt;h2 id=&#34;12-优化centos7镜像&#34;&gt;12、优化Centos7镜像&lt;/h2&gt;
+&lt;p&gt;镜像下载：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker pull daocloud.io/library/centos:latest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;包管理:&lt;br&gt;
+默认情况下，为了减⼩镜像的尺⼨，在构建 CentOS 镜像时⽤了yum的nodocs选项。 如果您安装⼀个包后发现⽂件缺失，请在/etc/yum.conf中注释掉tsﬂogs=nodocs并重新安装您的包。&lt;br&gt;
+systemd 整合:&lt;/p&gt;
+&lt;p&gt;因为 systemd 要求 CAPSYSADMIN 权限，从⽽得到了读取到宿主机 cgroup 的能⼒，CentOS7 中已经⽤ fakesystemd 代替了 systemd来解决依赖问题。 如果仍然希望使⽤ systemd，可⽤参考下⾯的Dockerﬁle：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim Dockerfile
+FROM daocloud.io/library/centos:7
+MAINTAINER &amp;quot;wing&amp;quot;  wing@qq.com
+ENV container docker
+RUN yum -y swap -- remove fakesystemd -- install  
+systemd systemd-libs
+RUN yum -y update; yum clean all; \
+(cd /lib/systemd/system/sysinit.target.wants/; for i 
+in *; do [ $i == systemd-tmpfiles-setup.service ] || 
+rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f 
+/lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f 
+/lib/systemd/system/sockets.target.wants/*initctl*; 
+\
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/anaconda.target.wants/*;
+VOLUME [ &amp;quot;/sys/fs/cgroup&amp;quot; ]
+CMD [&amp;quot;/usr/sbin/init&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个Dockerﬁle删除fakesystemd 并安装了 systemd。然后再构建基础镜像:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker build --rm -t local/c7- systemd .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;⼀个包含 systemd 的应⽤容器示例&lt;br&gt;
+为了使⽤像上⾯那样包含 systemd 的容器，需要创建⼀个类似下⾯的Dockerﬁle：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim Dockerfile
+FROM local/c7-systemd
+RUN yum -y install httpd; yum clean all; systemctl 
+enable httpd.service
+EXPOSE 80
+CMD [&amp;quot;/usr/sbin/init&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;构建镜像:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker build --rm -t local/c7-systemd-httpd .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运⾏包含 systemd 的应⽤容器:&lt;br&gt;
+为了运⾏⼀个包含 systemd 的容器，需要使⽤--privileged选项，并且挂载主机的 cgroups ⽂件夹。 下⾯是运⾏包含 systemd 的 httpd容器的示例命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --privileged -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/c7-systemd-httpd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意：上条命令不能添加/bin/bash，添加了会导致服务不可⽤，⽽且有些服务可能会发现之前提到的权限不够的问题，但是如果不加会运⾏在前台(没有⽤-d)，可以⽤ctrl+p+q放到后台去测试可⽤：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# elinks --dump http://docker    //下⾯为apache默认⻚⾯
+                      Testing 123..
+  This page is used to test the proper operation of the [1]Apache HTTP
+  server after it has been installed. If you can read this page it means
+  that this site is working properly. This server is powered by [2]CentOS.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再来个安装openssh-server的例⼦：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim Dockerfile
+FROM local/c7-systemd
+RUN yum -y install openssh-server; yum clean all; 
+systemctl enable sshd.service
+RUN echo 1 | passwd --stdin root
+EXPOSE 22
+CMD [&amp;quot;/usr/sbin/init&amp;quot;]
+
+[root@qfedu.com ~]# docker build --rm -t local/c7-systemd-sshd .  
+[root@qfedu.com ~]# docker run --privileged -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 2222:22 local/c7-systemd-sshd  
+[root@qfedu.com ~]# ssh docker -p 2222  //docker为我宿主机的主机名称
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;13-docker网络&#34;&gt;13、Docker⽹络&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;容器⽹络&lt;/strong&gt;&lt;br&gt;
+注：⾯试⽤，⽤了编排之后就没有⽤了&lt;/p&gt;
+&lt;p&gt;Docker安装后，默认会创建三种⽹络类型，bridge、host和none&lt;br&gt;
+查看当前⽹络：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker network list
+NETWORK  ID      NAME        DRIVER        SCOPE
+90b22f633d2f     bridge      bridge        local
+e0b365da7fd2     host       host        local
+da7b7a090837     none       null         local
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;1、bridge:⽹络桥接&lt;br&gt;
+默认情况下启动、创建容器都是⽤该模式，所以每次docker容器重启时会按照顺序获取对应ip地址，这就导致容器每次重启，ip都发⽣变化&lt;br&gt;
+2、none：⽆指定⽹络&lt;br&gt;
+启动容器时，可以通过--network=none,docker容器不会分配局域⽹ip&lt;br&gt;
+3、host：主机⽹络&lt;br&gt;
+docker容器的⽹络会附属在主机上，两者是互通的。&lt;/p&gt;
+&lt;p&gt;使⽤host⽹络创建容器：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -it --name testnginx1 --net host 27a18801 /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;4、固定ip（个⼈认为是bridge）:&lt;br&gt;
+&lt;strong&gt;创建固定Ip的容器&lt;/strong&gt;&lt;br&gt;
+4.1、创建⾃定义⽹络类型，并且指定⽹段&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]#docker network create --subnet=192.168.0.0/16 staticnet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过docker network ls可以查看到⽹络类型中多了⼀个staticnet&lt;br&gt;
+4.2、使⽤新的⽹络类型创建并启动容器&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]#docker run -it --name userserver --net staticnet --ip 192.168.0.2 centos:6 /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过docker inspect可以查看容器ip为192.168.0.2，关闭容器并重启，发现容器ip并未发⽣改变&lt;br&gt;
+不能使⽤默认桥接⽹络，不然会报错&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -it --rm --name &amp;quot;test&amp;quot; -v /test/b.txt:/tmp/b.txt -v /tmp:/abc --net bridge --ip 172.17.0.9 1f8fe54 /bin/sh
+docker: Error response from daemon: user specified IP address is supported on user defined networks only.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;扩展：异主容器互联&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;路由⽅式&lt;br&gt;
+⼩规模docker环境⼤部分运⾏在单台主机上，如果公司⼤规模采⽤docker，那么多个宿主机上的docker如何互联&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200820021231.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;Docker默认的内部ip为172.17.42.0⽹段，所以必须要修改其中⼀台的默认⽹段以免ip冲突。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim /etc/sysconfig/docker-network
+DOCKER_NETWORK_OPTIONS= --bip=172.18.42.1/16
+[root@qfedu.com ~]# reboot 
+
+
+docker 130上：
+[root@qfedu.com ~]# route add -net 172.18.0.0/16 gw 192.168.18.128
+docker 128上：
+[root@qfedu.com ~]# route add -net 172.17.0.0/16 gw 192.168.18.130
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;现在两台宿主机⾥的容器就可以通信了。&lt;/p&gt;
+&lt;h2 id=&#34;14-docker数据存储位置&#34;&gt;14、Docker数据存储位置&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;查看默认存储位置&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker info | grep Root
+Docker Root Dir:  /var/lib/docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;修改默认存储位置&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在dockerd的启动命令后⾯追加--data-root参数指定新的位置&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim /usr/lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd -H fd:// --
+containerd=/run/containerd/containerd.sock --data-
+root=/data
+[root@qfedu.com ~]# systemctl daemon-reload
+[root@qfedu.com ~]# systemctl restart docker
+查看是否⽣效：
+[root@qfedu.com ~]# docker info | grep Root
+Docker Root Dir: /data
+&lt;/code&gt;&lt;/pre&gt;
+">Docker</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/springmvc/"" data-c="
           &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200804155812.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;1-回顾mvc&#34;&gt;1、回顾MVC&lt;/h2&gt;
@@ -3713,6 +5339,867 @@ public class BackendItemApplication {
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;16&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200805174108.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+&lt;h3 id=&#34;54-开发商品管理接口&#34;&gt;5.4 开发商品管理接口&lt;/h3&gt;
+&lt;h4 id=&#34;541-实现查询商品接口&#34;&gt;5.4.1 实现查询商品接口&lt;/h4&gt;
+&lt;h5 id=&#34;5411-在-common_item-服务中实现查询商品&#34;&gt;5.4.1.1 在 common_item 服务中实现查询商品&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在 common_utils 项目中添加 PageResult 模型&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 分页模型
+ */
+public class PageResult implements Serializable {
+    private Integer pageIndex; //当前页
+    private Integer totalIndex; //总页数
+    private List result; //结果集
+
+    public Integer getPageIndex() {
+        return pageIndex;
+    }
+
+    public void setPageIndex(Integer pageIndex) {
+        this.pageIndex = pageIndex;
+    }
+
+    public Integer getTotalIndex() {
+        return totalIndex;
+    }
+
+    public void setTotalIndex(Integer totalIndex) {
+        this.totalIndex = totalIndex;
+    }
+
+    public List getResult() {
+        return result;
+    }
+
+    public void setResult(List result) {
+        this.result = result;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 controller&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RestController
+@RequestMapping(&amp;quot;/service/item&amp;quot;)
+public class ItemController {
+
+    @Autowired
+    private ItemService itemService;
+
+    /**
+     * 查询商品数据
+     */
+    @RequestMapping(value = &amp;quot;/selectTbItemAllByPage&amp;quot;,method = RequestMethod.GET)
+    public PageResult selectTbItemAllByPage(@RequestParam Integer page, @RequestParam Integer rows) {
+        return this.itemService.selectTbItemAllByPage(page,rows);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 service&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface ItemService {
+    PageResult selectTbItemAllByPage(Integer page,Integer rows);
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 serviceImpl&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Service
+public class ItemServiceImpl implements ItemService {
+
+    @Autowired
+    private TbItemMapper tbItemMapper;
+
+    /**
+     * 查询所有商品并分页
+     * @param page
+     * @param rows
+     * @return
+     */
+    @Override
+    public PageResult selectTbItemAllByPage(Integer page, Integer rows) {
+        PageHelper.startPage(page, rows);
+        //查询条件
+        TbItemExample tbItemExample = new TbItemExample();
+        TbItemExample.Criteria criteria = tbItemExample.createCriteria();
+        criteria.andStatusEqualTo((byte) 1);
+        List&amp;lt;TbItem&amp;gt; list = this.tbItemMapper.selectByExample(tbItemExample);
+        //分页处理
+        PageInfo&amp;lt;TbItem&amp;gt; pageInfo = new PageInfo&amp;lt;&amp;gt;(list);
+        PageResult pageResult = new PageResult();
+        pageResult.setPageIndex(page);
+        pageResult.setTotalIndex((int) pageInfo.getTotal());
+        pageResult.setResult(list);
+        return pageResult;
+    }
+
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;5412-在-backend_item-服务中实现商品查询&#34;&gt;5.4.1.2 在 backend_item 服务中实现商品查询&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建 controller&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RestController
+@RequestMapping(&amp;quot;/backend/item&amp;quot;)
+public class ItemController {
+
+    @Autowired
+    private ItemService itemService;
+
+    /**
+     * 查询商品并分页处理
+     * @param page
+     * @param rows
+     * @return
+     */
+    @RequestMapping(&amp;quot;/selectTbItemAllByPage&amp;quot;)
+    public Result selectTbItemAllByPage(@RequestParam(defaultValue = &amp;quot;1&amp;quot;)Integer page,@RequestParam(defaultValue = &amp;quot;2&amp;quot;)Integer rows){
+
+        try {
+            return this.itemService.selectTbItemAllByPage(page,rows);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &amp;quot;查无结果&amp;quot;);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 service&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface ItemService {
+    Result selectTbItemAllByPage(Integer page,Integer rows);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 serviceImpl&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 商品管理
+ */
+@Service
+public class ItemServiceImpl implements ItemService {
+
+    @Autowired
+    private CommonItemFeignClient commonItemFeignClient;
+
+    @Override
+    public Result selectTbItemAllByPage(Integer page, Integer rows) {
+        PageResult pageResult = this.commonItemFeignClient.selectTbItemAllByPage(page, rows);
+        if (pageResult != null &amp;amp;&amp;amp; pageResult.getResult() != null &amp;amp;&amp;amp; pageResult.getResult().size() &amp;gt;0){
+            return Result.ok(pageResult);
+        }
+            return Result.error(&amp;quot;查无结果&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 feignClient&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@FeignClient(value = &amp;quot;common-item&amp;quot;)
+public interface CommonItemFeignClient {
+    //------------/service/item
+    @GetMapping(&amp;quot;/service/item/selectTbItemAllByPage&amp;quot;)
+    PageResult selectTbItemAllByPage(@RequestParam(&amp;quot;page&amp;quot;) Integer page, @RequestParam(&amp;quot;rows&amp;quot;) Integer rows);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200814205736.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;542-实现添加商品接口&#34;&gt;5.4.2 实现添加商品接口&lt;/h4&gt;
+&lt;h5 id=&#34;5421-在-common_item-服务中实现商品分类查询&#34;&gt;5.4.2.1  在 common_item 服务中实现商品分类查询&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建 controller&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 商品类目
+ */
+@RestController
+@RequestMapping(&amp;quot;/service/itemCategory&amp;quot;)
+public class ItemCategoryController {
+
+    @Autowired
+    private ItemCategoryService itemCategoryService;
+    /**
+     * 根据分类ID查询子节点
+     * @param id
+     * @return
+     */
+    @RequestMapping(&amp;quot;/selectItemCategoryByParentId&amp;quot;)
+    public List&amp;lt;TbItemCat&amp;gt; selectItemCategoryByParentId(@RequestParam Long id){
+        return this.itemCategoryService.selectItemCategoryByParentId(id);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 service&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface ItemCategoryService {
+    List&amp;lt;TbItemCat&amp;gt; selectItemCategoryByParentId(Long id);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 serviceImpl&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 商品分类查询
+ */
+@Service
+public class ItemCategoryServiceImpl implements ItemCategoryService {
+
+    @Autowired
+    private TbItemCatMapper tbItemCatMapper;
+
+    /**
+     * 根据分类ID查询子节点
+     * @param id
+     * @return
+     */
+    @Override
+    public List&amp;lt;TbItemCat&amp;gt; selectItemCategoryByParentId(Long id) {
+        TbItemCatExample tbItemCatExample = new TbItemCatExample();
+        TbItemCatExample.Criteria criteria = tbItemCatExample.createCriteria();
+        criteria.andParentIdEqualTo(id);
+        criteria.andStatusEqualTo(1);
+        List&amp;lt;TbItemCat&amp;gt; list = this.tbItemCatMapper.selectByExample(tbItemCatExample);
+        return list;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;5422-在-backend_item-服务中实现商品分类查询&#34;&gt;5.4.2.2 在 backend_item 服务中实现商品分类查询&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建 controller&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 商品类目Controller
+ */
+@RestController
+@RequestMapping(&amp;quot;/backend/itemCategory&amp;quot;)
+public class ItemCategoryController {
+
+    @Autowired
+    private ItemCategorySerivce itemCategorySerivce;
+    /**
+     * 根据类目ID查询当前类目子节点
+     * @param id
+     * @return
+     */
+    @RequestMapping(&amp;quot;selectItemCategoryByParentId&amp;quot;)
+    public Result selectItemCategoryByParentId(@RequestParam(value = &amp;quot;id&amp;quot;,defaultValue = &amp;quot;0&amp;quot;)Long id){
+        try {
+            return this.itemCategorySerivce.selectItemCategoryByParentId(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &amp;quot;查无结果&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建Service&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface ItemCategorySerivce {
+    Result selectItemCategoryByParentId(Long id);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 serviceImpl&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 商品类目Service
+ */
+@Service
+public class ItemCategoryServiceImpl implements ItemCategorySerivce {
+
+    @Autowired
+    private CommonItemFeignClient commonItemFeignClient;
+
+    /**
+     * 根据类目ID查询当前类目子节点
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Result selectItemCategoryByParentId(Long id) {
+        List&amp;lt;TbItemCat&amp;gt; list = this.commonItemFeignClient.selectItemCategoryByParentId(id);
+        if (list != null &amp;amp;&amp;amp; list.size() &amp;gt; 0) {
+            return Result.ok(list);
+        }
+        return Result.error(&amp;quot;查无结果&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 feignClient&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//-----------/service/itemCategory
+@PostMapping(&amp;quot;/service/itemCategory/selectItemCategoryByParentId&amp;quot;)
+List&amp;lt;TbItemCat&amp;gt; selectItemCategoryByParentId(@RequestParam(&amp;quot;id&amp;quot;) Long id);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;测试&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;17&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200814211102.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;5423-在-common_item-服务中实现规格参数模板查询&#34;&gt;5.4.2.3 在 common_item 服务中实现规格参数模板查询&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建 controller&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * ItemParam
+ */
+@RestController
+@RequestMapping(&amp;quot;/service/itemParam&amp;quot;)
+public class ItemParamController {
+
+    @Autowired
+    private ItemParamService itemParamService;
+
+    /**
+     * 根据商品分类ID查询规格参数模板
+     */
+    @RequestMapping(&amp;quot;/selectItemParamByItemCatId&amp;quot;)
+    public TbItemParam selectItemParamByItemCatId(@RequestParam Long itemCatId){
+        return itemParamService.selectItemParamByItemCatId(itemCatId);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 service&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface ItemParamService {
+    TbItemParam selectItemParamByItemCatId(Long itemCatId);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 serviceImpl&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * ItemParamService
+ */
+@Service
+public class ItemParamServiceImpl implements ItemParamService {
+
+    @Autowired
+    private TbItemParamMapper tbItemParamMapper;
+
+    @Override
+    public TbItemParam selectItemParamByItemCatId(Long itemCatId) {
+        TbItemParamExample tbItemParamExample = new TbItemParamExample();
+        TbItemParamExample.Criteria criteria = tbItemParamExample.createCriteria();
+        criteria.andItemCatIdEqualTo(itemCatId);
+        //如需检索的字段中包含大字段类型时，必须用selectByExampleWithBLOBs，不检索大字段时，用selectByExample就足够了
+        List&amp;lt;TbItemParam&amp;gt; list = tbItemParamMapper.selectByExampleWithBLOBs(tbItemParamExample);
+        if (list != null &amp;amp;&amp;amp; list.size() &amp;gt; 0) {
+            return list.get(0);
+        }
+        return null;
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;5424-在-backend_item-服务中实现规格参数模板查询&#34;&gt;5.4.2.4  在 backend_item 服务中实现规格参数模板查询&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * ItemParam
+ */
+@RestController
+@RequestMapping(&amp;quot;/backend/itemParam&amp;quot;)
+public class ItemParamController {
+
+    @Autowired
+    private ItemParamService itemParamService;
+    /**
+     * 根据商品类目ID查询规格参数模板
+     */
+    @RequestMapping(&amp;quot;/selectItemParamByItemCatId/{itemCatId}&amp;quot;)
+    public Result selectItemParamByItemCatId(@PathVariable(&amp;quot;itemCatId&amp;quot;) Long itemCatId){
+        try {
+            return this.itemParamService.selectItemParamByItemCatId(itemCatId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &amp;quot;查无结果&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 service&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface ItemParamService {
+    Result selectItemParamByItemCatId(Long itemCatId);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 serviceImpl&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * ItemParamService
+ */
+@Service
+public class ItemParamServiceImpl implements ItemParamService {
+
+    @Autowired
+    private CommonItemFeignClient commonItemFeignClient;
+
+    /**
+     * 根据商品类目Id查询规格参数模板
+     */
+    @Override
+    public Result selectItemParamByItemCatId(Long itemCatId) {
+        TbItemParam tbItemParam = this.commonItemFeignClient.selectItemParamByItemCatId(itemCatId);
+        if (tbItemParam != null) {
+            return Result.ok(tbItemParam);
+        }
+        return Result.error(&amp;quot;查无结果&amp;quot;);
+    }
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 feignClient&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * @author cy
+ * @date 2020-08-10 14:22
+ */
+@FeignClient(value = &amp;quot;common-item&amp;quot;)
+public interface CommonItemFeignClient {
+    //------------/service/item
+    @GetMapping(&amp;quot;/service/item/selectTbItemAllByPage&amp;quot;)
+    PageResult selectTbItemAllByPage(@RequestParam(&amp;quot;page&amp;quot;) Integer page, @RequestParam(&amp;quot;rows&amp;quot;) Integer rows);
+    
+    //-----------/service/itemCategory
+    @PostMapping(&amp;quot;/service/itemCategory/selectItemCategoryByParentId&amp;quot;)
+    List&amp;lt;TbItemCat&amp;gt; selectItemCategoryByParentId(@RequestParam(&amp;quot;id&amp;quot;) Long id);
+
+    //-----------/service/itemParam
+    @PostMapping(&amp;quot;/service/itemParam/selectItemParamByItemCatId&amp;quot;)
+    TbItemParam selectItemParamByItemCatId(@RequestParam(&amp;quot;itemCatId&amp;quot;) Long itemCatId);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;5425-在-backend_item-服务中处理图片上传&#34;&gt;5.4.2.5 在 backend_item 服务中处理图片上传&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;添加 FtpUtil 工具类&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200814211638.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 controller&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 图片上传Controller
+ */
+@RestController
+@RequestMapping(&amp;quot;/file&amp;quot;)
+public class FileUploadController {
+
+    @Autowired
+    private FileUploadService fileUploadService;
+
+    /**
+     * 图片上传
+     *
+     * @param file
+     * @return
+     */
+    @RequestMapping(&amp;quot;/upload&amp;quot;)
+    public Result fileUpload(MultipartFile file) {
+        try {
+            return this.fileUploadService.fileUpload(file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &amp;quot;error&amp;quot;);
+
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 service&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface FileUploadService {
+    Result fileUpload(MultipartFile file);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 serviceImpl&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 图片上传Service
+ */
+@Service
+public class FileUploadServiceImpl implements FileUploadService {
+
+    /*FTP_HOST: 192.168.92.129
+    FTP_PORT: 21
+    FTP_USERNAME: ftpuser
+    FTP_PASSWORD: ftpuser
+    FTP_BASEPATH: /usr/local/ftp/ftpuser*/
+    @Value(&amp;quot;${FTP_HOST}&amp;quot;)
+    private String FTP_HOST;
+
+    @Value(&amp;quot;${FTP_PORT}&amp;quot;)
+    private int FTP_PORT;
+
+    @Value(&amp;quot;${FTP_USERNAME}&amp;quot;)
+    private String FTP_USERNAME;
+
+    @Value(&amp;quot;${FTP_PASSWORD}&amp;quot;)
+    private String FTP_PASSWORD;
+
+    @Value(&amp;quot;${FTP_BASEPATH}&amp;quot;)
+    private String FTP_BASEPATH;
+
+    @Override
+    public Result fileUpload(MultipartFile file) {
+        try {
+            //定义上传图片的目录结构
+            SimpleDateFormat sd = new SimpleDateFormat(&amp;quot;/yyyy/MM/dd/&amp;quot;);
+            String path = sd.format(new Date());
+
+            //设置新的文件名
+            String newFileName = IDUtils.genImageName() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(&amp;quot;.&amp;quot;));
+            FtpUtil.uploadFile(this.FTP_HOST, this.FTP_PORT, this.FTP_USERNAME, this.FTP_PASSWORD, this.FTP_BASEPATH, path, newFileName, file.getInputStream());
+            String imageURL = &amp;quot;http://&amp;quot; + this.FTP_HOST + path + newFileName;
+            return Result.ok(imageURL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在配置文件中添相关配置&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;FTP_HOST: 192.168.92.129
+FTP_PORT: 21
+FTP_USERNAME: ftpuser
+FTP_PASSWORD: ftpuser
+FTP_BASEPATH: /usr/local/ftp/ftpuser
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;5426-在-common_item-服务中实现商品添加&#34;&gt;5.4.2.6 在 common_item 服务中实现商品添加&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;修改 controller&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RestController
+@RequestMapping(&amp;quot;/service/item&amp;quot;)
+public class ItemController {
+
+    @Autowired
+    private ItemService itemService;
+
+    /**
+     * 查询商品数据
+     */
+    @RequestMapping(value = &amp;quot;/selectTbItemAllByPage&amp;quot;,method = RequestMethod.GET)
+    public PageResult selectTbItemAllByPage(@RequestParam Integer page, @RequestParam Integer rows) {
+        return this.itemService.selectTbItemAllByPage(page,rows);
+    }
+
+    /**
+     * 商品的增加
+     */
+    @RequestMapping(&amp;quot;/insertTbItem&amp;quot;)
+    public Integer insertTbItem(@RequestBody TbItem tbItem){
+        return this.itemService.insertTbItem(tbItem);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 service&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface ItemService {
+    PageResult selectTbItemAllByPage(Integer page,Integer rows);
+    Integer insertTbItem(TbItem tbItem);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 serviceImpl&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Service
+public class ItemServiceImpl implements ItemService {
+
+    @Autowired
+    private TbItemMapper tbItemMapper;
+
+    /**
+     * 查询所有商品并分页
+     * @param page
+     * @param rows
+     * @return
+     */
+    @Override
+    public PageResult selectTbItemAllByPage(Integer page, Integer rows) {
+        PageHelper.startPage(page, rows);
+        //查询条件
+        TbItemExample tbItemExample = new TbItemExample();
+        TbItemExample.Criteria criteria = tbItemExample.createCriteria();
+        criteria.andStatusEqualTo((byte) 1);
+        List&amp;lt;TbItem&amp;gt; list = this.tbItemMapper.selectByExample(tbItemExample);
+        //分页处理
+        PageInfo&amp;lt;TbItem&amp;gt; pageInfo = new PageInfo&amp;lt;&amp;gt;(list);
+        PageResult pageResult = new PageResult();
+        pageResult.setPageIndex(page);
+        pageResult.setTotalIndex((int) pageInfo.getTotal());
+        pageResult.setResult(list);
+        return pageResult;
+    }
+
+    /**
+     * 商品的增加
+     */
+    @Override
+    public Integer insertTbItem(TbItem tbItem) {
+        return this.tbItemMapper.insert(tbItem);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;5427-在-common_item-服务中实现添加商品描述&#34;&gt;5.4.2.7  在 common_item 服务中实现添加商品描述&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建 controller&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * itemDescController
+ */
+@RestController
+@RequestMapping(&amp;quot;/service/itemDesc&amp;quot;)
+public class ItemDescController {
+
+    @Autowired
+    private ItemDescService itemDescService;
+
+    /**
+     * 添加商品描述
+     */
+    @RequestMapping(&amp;quot;/insertItemDesc&amp;quot;)
+    public Integer insertItemDesc(@RequestBody TbItemDesc tbItemDesc){
+        return itemDescService.insertItemDesc(tbItemDesc);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 service&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface ItemDescService {
+    Integer insertItemDesc(TbItemDesc tbItemDesc);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建serviceImpl&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Service
+public class ItemDescServiceImpl implements ItemDescService {
+    @Autowired
+    private TbItemDescMapper tbItemDescMapper;
+
+    /**
+     * 添加商品描述
+     * @param tbItemDesc
+     * @return
+     */
+    @Override
+    public Integer insertItemDesc(TbItemDesc tbItemDesc) {
+        return this.tbItemDescMapper.insert(tbItemDesc);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;5428-在-common_item-服务中实现商品规格参数的添加&#34;&gt;5.4.2.8 在 common_item 服务中实现商品规格参数的添加&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建 controller&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RestController
+@RequestMapping(&amp;quot;/service/itemParamItem&amp;quot;)
+public class ItemParamItemController {
+
+    @Autowired
+    private ItemParamItemService itemParamItemService;
+    /**
+     * 添加商品规格参数
+     */
+    @RequestMapping(&amp;quot;/insertTbItemParamItem&amp;quot;)
+    public Integer insertTbItemParamItem(@RequestBody TbItemParamItem tbItemParamItem) {
+        return this.itemParamItemService.insertItemParamItem(tbItemParamItem);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 service&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface ItemParamItemService {
+    Integer insertItemParamItem(TbItemParamItem tbItemParamItem);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建 serviceImpl&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Service
+public class ItemParamItemServiceImpl implements ItemParamItemService {
+
+    @Autowired
+    private TbItemParamItemMapper tbItemParamItemMapper;
+    /**
+     * 添加商品规格参数
+     * @param tbItemParamItem
+     * @return
+     */
+    @Override
+    public Integer insertItemParamItem(TbItemParamItem tbItemParamItem) {
+        return this.tbItemParamItemMapper.insert(tbItemParamItem);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;5429-在-backend_item-服务中实现商品添加&#34;&gt;5.4.2.9  在 backend_item 服务中实现商品添加&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;修改前台代码注释掉商品规格参数&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;18&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200815010329.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 controller&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RestController
+@RequestMapping(&amp;quot;/backend/item&amp;quot;)
+public class ItemController {
+
+    @Autowired
+    private ItemService itemService;
+
+    /**
+     * 查询商品并分页处理
+     * @param page
+     * @param rows
+     * @return
+     */
+    @RequestMapping(&amp;quot;/selectTbItemAllByPage&amp;quot;)
+    public Result selectTbItemAllByPage(@RequestParam(defaultValue = &amp;quot;1&amp;quot;)Integer page,@RequestParam(defaultValue = &amp;quot;2&amp;quot;)Integer rows){
+
+        try {
+            return this.itemService.selectTbItemAllByPage(page,rows);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &amp;quot;查无结果&amp;quot;);
+    }
+
+    /**
+     * 商品添加
+     * @param tbItem
+     * @param desc
+     * @param itemParams
+     * @return
+     */
+    @RequestMapping(&amp;quot;/insertTbItem&amp;quot;)
+    public Result insertTbItem(TbItem tbItem,String desc,String itemParams){
+        try {
+            return this.itemService.insertTbItem(tbItem, desc, itemParams);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &amp;quot;查无结果&amp;quot;);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 service&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface ItemService {
+    Result selectTbItemAllByPage(Integer page,Integer rows);
+    Result insertTbItem(TbItem tbItem, String desc, String itemParams);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改 serviceImpl&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * 商品管理
+ */
+@Service
+public class ItemServiceImpl implements ItemService {
+
+    @Autowired
+    private CommonItemFeignClient commonItemFeignClient;
+
+    @Override
+    public Result selectTbItemAllByPage(Integer page, Integer rows) {
+        PageResult pageResult = this.commonItemFeignClient.selectTbItemAllByPage(page, rows);
+        if (pageResult != null &amp;amp;&amp;amp; pageResult.getResult() != null &amp;amp;&amp;amp; pageResult.getResult().size() &amp;gt;0){
+            return Result.ok(pageResult);
+        }
+            return Result.error(&amp;quot;查无结果&amp;quot;);
+    }
+
+    /**
+     * 添加TbItem，添加TbitemDesc，添加TbItemParamItem
+     * @param tbItem
+     * @param desc
+     * @param itemParams
+     * @return
+     */
+    @Override
+    public Result insertTbItem(TbItem tbItem, String desc, String itemParams) {
+        //补齐 Tbitem 数据
+        Date date = new Date();
+        long itemId = IDUtils.genItemId();
+        tbItem.setId(itemId);
+        tbItem.setStatus((byte) 1);
+        tbItem.setCreated(date);
+        tbItem.setUpdated(date);
+        Integer tbItemNum = this.commonItemFeignClient.insertTbItem(tbItem);
+
+        //补齐商品描述对象
+        TbItemDesc tbItemDesc = new TbItemDesc();
+        tbItemDesc.setItemId(itemId);
+        tbItemDesc.setItemDesc(desc);
+        tbItemDesc.setCreated(date);
+        tbItemDesc.setUpdated(date);
+        Integer itemDescNum = this.commonItemFeignClient.insertItemDesc(tbItemDesc);
+
+        //补齐商品规格参数
+        TbItemParamItem tbItemParamItem = new TbItemParamItem();
+        tbItemParamItem.setItemId(itemId);
+        tbItemParamItem.setParamData(itemParams);
+        tbItemParamItem.setCreated(date);
+        tbItemParamItem.setUpdated(date);
+        Integer itemParamItemNum = this.commonItemFeignClient.insertTbItemParamItem(tbItemParamItem);
+
+        return Result.ok();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;54210-添加分布式事务-tx-lcn&#34;&gt;5.4.2.10  添加分布式事务 TX-LCN&lt;/h5&gt;
 ">综合性 B2C 电子商务平台项目</a>
       </div>
       
