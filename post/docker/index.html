@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Docker | CY的学习博客</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1597860886207">
+<link rel="shortcut icon" href="/favicon.ico?v=1597992140694">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -218,7 +218,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">33</span>
+        <span class="site-item-stat-count">34</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -668,7 +668,7 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>25319<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>25200<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
@@ -1469,13 +1469,13 @@ export Export a container's ﬁlesystem as a tar archive</p>
 </code></pre>
 <p>导⼊镜像归档⽂件到其他宿主机<br>
 import Import the contents from a tarball to create a ﬁlesystem image</p>
-<pre><code class="language-shell"> [root@qfedu.com ~]# docker import elated_lovelace.tar  elated_lovelace:v1
+<pre><code class="language-shell"> [root@Linux ~]# docker import elated_lovelace.tar  elated_lovelace:v1
 </code></pre>
 <p>注意：</p>
 <blockquote>
 <p>如果导⼊镜像时没有起名字，随后可以单独起名字(没有名字和tag)，可以⼿动加tag</p>
 </blockquote>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker tag 镜像ID mycentos:7
+<pre><code class="language-shell">[root@Linux ~]# docker tag 镜像ID mycentos:7
 </code></pre>
 <h3 id="62-通过容器创建本地镜像">6.2 通过容器创建本地镜像</h3>
 <p>背景：<br>
@@ -1483,15 +1483,15 @@ import Import the contents from a tarball to create a ﬁlesystem image</p>
 ⽅案：<br>
 使⽤ docker commit 指令，把⼀个正在运⾏的容器，直接提交为⼀个镜像。commit 是提交的意思,类似告诉svn服务器我要⽣成⼀个新的版本。</p>
 <p>例：在容器内部新建了⼀个⽂件</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker exec -it 4ddf4638572d 
+<pre><code class="language-shell">[root@Linux ~]# docker exec -it 4ddf4638572d 
 /bin/sh  
 root@4ddf4638572d# touch test.txt
 root@4ddf4638572d# exit
 将这个新建的⽂件提交到镜像中保存
-[root@qfedu.com ~]# docker commit 4ddf4638572d wing/helloworld:v2
+[root@Linux ~]# docker commit 4ddf4638572d wing/helloworld:v2
 </code></pre>
 <p>例：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker commit -m &quot;my images 
+<pre><code class="language-shell">[root@Linux ~]# docker commit -m &quot;my images 
 version1&quot; -a &quot;wing&quot; 108a85b1ed99 
 daocloud.io/ubuntu:v2
   
@@ -1508,12 +1508,12 @@ tag
 <p>保存⼀台宿主机上的镜像为tar⽂件，然后可以导⼊到其他的宿主机上：<br>
 save Save an image(s) to a tar archive</p>
 <p>将镜像打包，与下⾯的load命令相对应</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker save -o nginx.tar nginx
-[root@qfedu.com ~]# docker save &gt; nginx.tar nginx
+<pre><code class="language-shell">[root@Linux ~]# docker save -o nginx.tar nginx
+[root@Linux ~]# docker save &gt; nginx.tar nginx
 </code></pre>
 <p>load Load an image from a tar archive or STDIN<br>
 与上⾯的save命令相对应，将上⾯sava命令打包的镜像通过load命令导⼊</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker load &lt; nginx.tar
+<pre><code class="language-shell">[root@Linux ~]# docker load &lt; nginx.tar
 </code></pre>
 <p>注：<br>
 1.tar⽂件的名称和保存的镜像名称没有关系<br>
@@ -1522,7 +1522,7 @@ save Save an image(s) to a tar archive</p>
 <p>虽然可以⾃⼰制作 rootfs(⻅'容器⽂件系统那些事⼉')，但Docker提供了⼀种更便捷的⽅式，叫作 Dockerﬁle<br>
 docker build命令⽤于根据给定的Dockerﬁle和上下⽂以构建Docker镜像。</p>
 <p><strong>docker build语法</strong></p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker build [OPTIONS] &lt;PATH | URL | -&gt;
+<pre><code class="language-shell">[root@Linux ~]# docker build [OPTIONS] &lt;PATH | URL | -&gt;
 </code></pre>
 <p><strong>选项说明</strong></p>
 <blockquote>
@@ -1555,7 +1555,7 @@ docker build命令⽤于根据给定的Dockerﬁle和上下⽂以构建Docker镜
 </code></pre>
 <p>说明：其中Dockerﬁle位于context.tar.gz的根路径<br>
 可以同时设置多个tag</p>
-<pre><code class="language-shell"> [root@qfedu.com ~]# docker build -t champagne/bbauto:latest -t champagne/bbauto:v2.1 . 
+<pre><code class="language-shell"> [root@Linux ~]# docker build -t champagne/bbauto:latest -t champagne/bbauto:v2.1 . 
 </code></pre>
 <p>创建镜像所在的⽂件夹和Dockerﬁle⽂件</p>
 <pre><code class="language-shell">mkdir dockerfile-test 
@@ -1563,10 +1563,10 @@ cd dockerfile-test
 touch Dockerfile 
 </code></pre>
 <p>在Dockerﬁle⽂件中写⼊指令，每⼀条指令都会更新镜像的信息例如：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# vim Dockerfile 
-[root@qfedu.com ~]# This is a comment 
+<pre><code class="language-shell">[root@Linux ~]# vim Dockerfile 
+[root@Linux ~]# This is a comment 
 FROM  daocloud.io/library/centos:7 
-MAINTAINER wing wing@qfedu.com
+MAINTAINER wing wing@Linux
 RUN  命令1;命令2；命令3
 RUN  命令
 </code></pre>
@@ -1578,22 +1578,22 @@ MAINTAINER 是描述 镜像的创建⼈。<br>
 RUN 命令是在镜像内部执⾏。就是说他后⾯的命令应该是针对镜像可以运⾏的命令。</p>
 </blockquote>
 <p><strong>创建镜像</strong></p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker build  -t  centos:v2 . 
+<pre><code class="language-shell">[root@Linux ~]# docker build  -t  centos:v2 . 
      docker build  是docker创建镜像的命令 
      -t  镜像名称  
      &quot;.&quot; 是⽤来指明我们使⽤的Dockerfile⽂件所在的当前⽬录
 </code></pre>
 <p>2.4、创建完成后，⽤这个镜像运⾏容器</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run -it centos:v2 /bin/bash
+<pre><code class="language-shell">[root@Linux ~]# docker run -it centos:v2 /bin/bash
 </code></pre>
 <h3 id="65-dockerfile实例01容器化python的flask应用">6.5 Dockerﬁle实例01：容器化Python的Flask应⽤</h3>
 <p><strong>⽬标</strong><br>
 ⽤ Docker 部署⼀个⽤ Python 编写的 Web 应⽤。<br>
 <strong>应⽤代码部分</strong><br>
 代码功能：如果当前环境中有&quot;NAME&quot;这个环境变量，就把它打印&quot;Hello&quot;后，否则就打印&quot;Hello world&quot;，最后再打印出当前环境的hostname。</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# mkdir python_app
-[root@qfedu.com ~]# cd python_app
-[root@qfedu.com ~]# vim app.py
+<pre><code class="language-shell">[root@Linux ~]# mkdir python_app
+[root@Linux ~]# cd python_app
+[root@Linux ~]# vim app.py
 from flask import Flask
 import socket
 import os
@@ -1608,11 +1608,11 @@ if __name__ == &quot;__main__&quot;:
 </code></pre>
 <p>应⽤依赖<br>
 定义在同⽬录下的 requirements.txt ⽂件⾥，内容如下：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# vim requirements.txt
+<pre><code class="language-shell">[root@Linux ~]# vim requirements.txt
 Flask
 </code></pre>
 <p>编写Dockerﬁle</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# vim Dockerfile
+<pre><code class="language-shell">[root@Linux ~]# vim Dockerfile
 FROM python:2.7-slim
 WORKDIR /app
 ADD  .  /app
@@ -1645,52 +1645,52 @@ CMD [&quot;python&quot;, &quot;app.py&quot;]<br>
 但是，默认，Docker 会提供⼀个隐含的 ENTRYPOINT，即：/bin/sh -c。所以，在不指定 ENTRYPOINT 时，⽐如在这个例⼦⾥，实际上运⾏在容器⾥的完整进程是：/bin/sh -c &quot;python app.py&quot;，即 CMD 的内容就是 ENTRYPOINT 的参数。<br>
 基于以上原因，后⾯会统⼀称 Docker 容器的启动进程为ENTRYPOINT，⽽不是 CMD。<br>
 现在⽬录结构：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# ls
+<pre><code class="language-shell">[root@Linux ~]# ls
 Dockerfile  app.py  requirements.txt
 </code></pre>
 <p><strong>构建镜像</strong></p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker build -t helloworld .
+<pre><code class="language-shell">[root@Linux ~]# docker build -t helloworld .
 -t  给这个镜像加⼀个 Tag
 </code></pre>
 <p>Dockerﬁle 中的每个原语执⾏后，都会⽣成⼀个对应的镜像层。即使原语本身并没有明显地修改⽂件的操作（⽐如，ENV 原语），它对应的层也会存在。只不过在外界看来，这个层是空的。</p>
 <p>查看结果</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker image ls
+<pre><code class="language-shell">[root@Linux ~]# docker image ls
 REPOSITORY       TAG             IMAGE ID
 helloworld       latest        653287cdf998
 </code></pre>
 <p>启动容器</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run -p 4000:80 helloworld
+<pre><code class="language-shell">[root@Linux ~]# docker run -p 4000:80 helloworld
 镜像名 helloworld 后⾯，什么都不⽤写，因为在 Dockerfile 中已经指定了 CMD。
 否则，就得把进程的启动命令加在后⾯：
-[root@qfedu.com ~]# docker run -p 4000:80 helloworld python app.py
+[root@Linux ~]# docker run -p 4000:80 helloworld python app.py
 </code></pre>
 <p>查看容器</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker ps
+<pre><code class="language-shell">[root@Linux ~]# docker ps
 CONTAINER ID     IMAGE         COMMAND          
 CREATED
 4ddf4638572d     helloworld    &quot;python app.py&quot;   10 
 seconds ago
 </code></pre>
 <p>进⼊容器</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker exec -it b69 /bin/bash
+<pre><code class="language-shell">[root@Linux ~]# docker exec -it b69 /bin/bash
 </code></pre>
 <p>访问容器内应⽤</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# curl http://localhost:4000
+<pre><code class="language-shell">[root@Linux ~]# curl http://localhost:4000
 </code></pre>
 <p><strong>Hello World!</strong></p>
 <p><strong>Hostname: 4ddf4638572d</strong></p>
 <p>⾄此，已经使⽤容器完成了⼀个应⽤的开发与测试，如果现在想要把这个容器的镜像上传到 DockerHub 上分享给更多的⼈，⾸先要注册⼀个 Docker Hub 账号，然后使⽤ docker login 命令登录。</p>
 <p>给容器镜像打tag起⼀个完整的名字：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker tag helloworld chenyoong/helloworld:v1
+<pre><code class="language-shell">[root@Linux ~]# docker tag helloworld chenyoong/helloworld:v1
 chenyong为我在docker hub的⽤户名
 </code></pre>
 <p>推送镜像到Docker Hub</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker push chenyong/helloworld:v1
+<pre><code class="language-shell">[root@Linux ~]# docker push chenyong/helloworld:v1
 </code></pre>
 <h3 id="66-dockerfile实例02制作kubectl的镜像">6.6 Dockerﬁle实例02：制作Kubectl的镜像</h3>
 <p>注：本实例学完k8s之后才能做<br>
 制作镜像：wing/kubectl</p>
-<pre><code class="language-shell">[root@qfedu.com ~]#cat Dockerfile/kubectl/Dockerfile
+<pre><code class="language-shell">[root@Linux ~]#cat Dockerfile/kubectl/Dockerfile
 FROM alpine
 MAINTAINER wing &lt;276267003@qq.com&gt;
 LABEL org.label-schema.vcs-ref=$VCS_REF \
@@ -1715,20 +1715,20 @@ CMD [&quot;kubectl&quot;, &quot;help&quot;]
 <h3 id="71-仓库镜像">7.1 仓库镜像</h3>
 <p>Docker hub官⽅已提供容器镜像registry,⽤于搭建私有仓库</p>
 <p><strong>拉取镜像</strong></p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker pull daocloud.io/library/registry:latest
+<pre><code class="language-shell">[root@Linux ~]# docker pull daocloud.io/library/registry:latest
 </code></pre>
 <h3 id="72-运行容器">7.2 运⾏容器</h3>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run --name &quot;pri_registry&quot; --restart=always -d -p 5000:5000 daocloud.io/library/registry 
+<pre><code class="language-shell">[root@Linux ~]# docker run --name &quot;pri_registry&quot; --restart=always -d -p 5000:5000 daocloud.io/library/registry 
 </code></pre>
 <p>注：如果创建容器不成功，报错防⽕墙，解决⽅案如下</p>
-<pre><code class="language-shell">[root@qfedu.com ~]#systemctl stop firewalld
-[root@qfedu.com ~]#yum install iptables*
-[root@qfedu.com ~]#systemctl start iptables
-[root@qfedu.com ~]#iptables -F
-[root@qfedu.com ~]#systemctl restart docker
+<pre><code class="language-shell">[root@Linux ~]#systemctl stop firewalld
+[root@Linux ~]#yum install iptables*
+[root@Linux ~]#systemctl start iptables
+[root@Linux ~]#iptables -F
+[root@Linux ~]#systemctl restart docker
 </code></pre>
 <h3 id="73-查看容器">7.3 查看容器</h3>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker ps
+<pre><code class="language-shell">[root@Linux ~]# docker ps
 CONTAINER ID  IMAGE  COMMAND  CREATED  STATUS   PORTS 
   NAMES
 1f444285bed8     daocloud.io/library/registry 
@@ -1736,7 +1736,7 @@ CONTAINER ID  IMAGE  COMMAND  CREATED  STATUS   PORTS
 seconds    0.0.0.0:5000-&gt;5000/tcp  elegant_rosalind
 </code></pre>
 <h3 id="74-连接容器查看端口状态">7.4 连接容器查看端⼝状态</h3>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker exec -it  1f444285bed8  /bin/sh    //这⾥是sh 不是bash
+<pre><code class="language-shell">[root@Linux ~]# docker exec -it  1f444285bed8  /bin/sh    //这⾥是sh 不是bash
   /# netstat -lnp                        //查看5000端
 ⼝是否开启
   Active Internet connections (only servers)
@@ -1749,53 +1749,53 @@ LISTEN    1/registry
 PID/Program name   Path
 </code></pre>
 <p>在本机查看能否访问该私有仓库,看看状态码是不是200</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# curl  -I  127.0.0.1:5000   //参数是⼤写的i
+<pre><code class="language-shell">[root@Linux ~]# curl  -I  127.0.0.1:5000   //参数是⼤写的i
 HTTP/1.1 200 OK    
 </code></pre>
 <h3 id="75-仓库功能测试">7.5 仓库功能测试</h3>
 <pre><code class="language-shell">为了⽅便，下载1个⽐较⼩的镜像,buysbox
- [root@qfedu.com ~]# docker pull busybox
+ [root@Linux ~]# docker pull busybox
 
 上传前必须给镜像打tag  注明ip和端⼝：
- [root@qfedu.com ~]# docker tag  busybox  私有仓库IP:端⼝/busybox
+ [root@Linux ~]# docker tag  busybox  私有仓库IP:端⼝/busybox
 
 这是直接从官⽅拉的镜像，很慢：
-  [root@qfedu.com ~]# docker tag busybox 192.168.245.136:5000/busybox
+  [root@Linux ~]# docker tag busybox 192.168.245.136:5000/busybox
 </code></pre>
 <p>下⾯这个Mysql是我测试的第⼆个镜像，从daocloud拉取的：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker tag daocloud.io/library/mysql 192.168.245.136:5000/daocloud.io/library/mysql
+<pre><code class="language-shell">[root@Linux ~]# docker tag daocloud.io/library/mysql 192.168.245.136:5000/daocloud.io/library/mysql
   注：tag后⾯可以使⽤镜像名称也可以使⽤id,我这⾥使⽤的镜像名称，如果使⽤官⽅的镜像，不需要加前缀，但是daocloud.io的得加前缀
 </code></pre>
 <p>修改请求⽅式为http</p>
 <pre><code class="language-shell">默认为https，不改会报以下错误:
     Get https://master.up.com:5000/v1/_ping: http: 
 server gave HTTP response to HTTPS client
-  [root@qfedu.com ~]# vim /etc/docker/daemon.json
+  [root@Linux ~]# vim /etc/docker/daemon.json
   { &quot;insecure-registries&quot;:[&quot;192.168.245.136:5000&quot;] }
   
 重启docker:
-  [root@qfedu.com ~]# systemctl restart docker
+  [root@Linux ~]# systemctl restart docker
 </code></pre>
 <p>上传镜像到私有仓库</p>
-<pre><code class="language-shell"> [root@qfedu.com ~] # docker push 192.168.245.136:5000/busybox 
- [root@qfedu.com ~] # docker push 192.168.245.136:5000/daocloud.io/library/mysql
+<pre><code class="language-shell"> [root@Linux ~] # docker push 192.168.245.136:5000/busybox 
+ [root@Linux ~] # docker push 192.168.245.136:5000/daocloud.io/library/mysql
 </code></pre>
 <p>查看私有仓库⾥的所有镜像<br>
 注：我这⾥是⽤的是ubuntu的例⼦</p>
-<pre><code class="language-shell">[root@qfedu.com ~] # curl 192.168.245.130:5000/v2/_catalog
+<pre><code class="language-shell">[root@Linux ~] # curl 192.168.245.130:5000/v2/_catalog
  { &quot;repositories&quot; :[ &quot;daocloud.io/ubuntu&quot; ]}
 或者
-[root@qfedu.com ~] # curl http://192.168.245.130:5000/v2/daocloud.io/ubuntu/tags/list
+[root@Linux ~] # curl http://192.168.245.130:5000/v2/daocloud.io/ubuntu/tags/list
  { &quot;name&quot; : &quot;daocloud.io/ubuntu&quot; , &quot;tags&quot; :[ &quot;v2&quot; ]}
-[root@qfedu.com ~] # curl http://192.168.245.130:5000/v2/repo 名字/tags/list
+[root@Linux ~] # curl http://192.168.245.130:5000/v2/repo 名字/tags/list
 </code></pre>
 <p>拉取镜像测试</p>
-<pre><code class="language-shell">[root@qfedu.com ~] # docker pull 192.168.245.136:5000/busybox
+<pre><code class="language-shell">[root@Linux ~] # docker pull 192.168.245.136:5000/busybox
 </code></pre>
 <h2 id="8-部署docker-webui">8、部署Docker-WebUI</h2>
 <h3 id="81-下载并运行容器">8.1 下载并运⾏容器</h3>
-<pre><code class="language-shell">[root@qfedu.com ~]#docker pull uifd/ui-for-docker 
-[root@qfedu.com ~]#docker run -it -d --name docker-web -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock docker.io/uifd/ui-for-docker 
+<pre><code class="language-shell">[root@Linux ~]#docker pull uifd/ui-for-docker 
+[root@Linux ~]#docker run -it -d --name docker-web -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock docker.io/uifd/ui-for-docker 
 </code></pre>
 <h3 id="82-浏览器访问测试">8.2 浏览器访问测试</h3>
 <p>http://ip:9000</p>
@@ -1810,21 +1810,21 @@ CPU 和内存的资源限制已经是⽐较成熟和易⽤，能够满⾜⼤部�
 <h3 id="91-系统压力测试">9.1 系统压⼒测试</h3>
 <p>Stress是⼀个linux下的压⼒测试⼯具，专⻔为那些想要测试⾃⼰的系统，完全⾼负荷和监督这些设备运⾏的⽤户。</p>
 <pre><code class="language-shell">安装
-[root@qfedu.com ~]# yum install stress -y
+[root@Linux ~]# yum install stress -y
  
 测试场景举例 
 测试CPU负荷 
-[root@qfedu.com ~]# stress -c 4  //增加4个cpu进程，处理sqrt()函数函数，以提⾼系统CPU负荷
+[root@Linux ~]# stress -c 4  //增加4个cpu进程，处理sqrt()函数函数，以提⾼系统CPU负荷
  
 内存测试
-[root@qfedu.com ~]# stress –i 4 –vm 10 –vm-bytes 1G –vm-hang 100 –timeout 100s
+[root@Linux ~]# stress –i 4 –vm 10 –vm-bytes 1G –vm-hang 100 –timeout 100s
 新增4个io进程，10个内存分配进程，每次分配⼤⼩1G，分配后不释放，测试100S
 
 磁盘I/O测试
-[root@qfedu.com ~]# stress –d 1 --hdd-bytes 3G  //新增1个写进程，每次写3G⽂件块
+[root@Linux ~]# stress –d 1 --hdd-bytes 3G  //新增1个写进程，每次写3G⽂件块
 
 硬盘测试（不删除）
-[root@qfedu.com ~]# stress –i 1 –d 10 --hdd-bytes 3G –hdd-noclean
+[root@Linux ~]# stress –i 1 –d 10 --hdd-bytes 3G –hdd-noclean
 新增1个IO进程，10个写进程，每次写⼊3G⽂件块，且不清除，会逐步将硬盘耗尽。
 </code></pre>
 <p><strong>Stress各主⽤参数说明</strong><br>
@@ -1864,9 +1864,9 @@ docker 允许⽤户为每个容器设置⼀个数字，代表容器的 CPUshare�
 设置 CPU share 的参数：<br>
 -c --cpu-shares，它的值是⼀个整数。<br>
 我的机器是 4 核 CPU，因此运⾏⼀个stress容器,使⽤ stress 启动4 个进程来产⽣计算压⼒：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker pull progrium/stress
-[root@qfedu.com ~]# yum install htop -y
-[root@qfedu.com ~]# docker run --rm -it 
+<pre><code class="language-shell">[root@Linux ~]# docker pull progrium/stress
+[root@Linux ~]# yum install htop -y
+[root@Linux ~]# docker run --rm -it 
 progrium/stress --cpu 4 
 stress: info: [1] dispatching hogs: 4 cpu, 0 io, 0 vm, 0 hdd
 stress: dbug: [1] using backoff sleep of 12000us
@@ -1881,7 +1881,7 @@ stress: dbug: [1] --&gt; hogcpu worker 1 [10] forked
 <p>在另外⼀个 Terminal 使⽤ htop 查看资源的使⽤情况：</p>
 <figure data-type="image" tabindex="6"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200820013659.png" alt="" loading="lazy"></figure>
 <p>上图中看到，CPU 四个核资源都达到了 100%。四个 stress 进程CPU 使⽤率没有达到 100% 是因为系统中还有其他机器在运⾏。为了⽐较，另外启动⼀个 share 为 512 的容器：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run --rm -it -c 512 
+<pre><code class="language-shell">[root@Linux ~]# docker run --rm -it -c 512 
 progrium/stress --cpu 4 
 stress: info: [1] dispatching hogs: 4 cpu, 0 io, 0 vm, 0 hdd
 stress: dbug: [1] using backoff sleep of 12000us
@@ -1901,7 +1901,7 @@ stress: dbug: [1] --&gt; hogcpu worker 1 [9] forked
 -c --cpu-shares 参数只能限制容器使⽤ CPU 的⽐例，或者说优先级，⽆法确定地限制容器使⽤ CPU 的具体核数；从 1.13 版本之后，docker 提供了 --cpus 参数可以限定容器能使⽤的 CPU 核数。这个功能可以让我们更精确地设置容器 CPU 使⽤量，是⼀种更容易理解也因此更常⽤的⼿段。<br>
 --cpus 后⾯跟着⼀个浮点数，代表容器最多使⽤的核数，可以精确到⼩数点⼆位，也就是说容器最⼩可以使⽤ 0.01 核 CPU。<br>
 限制容器只能使⽤ 1.5 核数 CPU</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run --rm -it --cpus 1.5 
+<pre><code class="language-shell">[root@Linux ~]# docker run --rm -it --cpus 1.5 
 progrium/stress --cpu 3 
 stress: info: [1] dispatching hogs: 3 cpu, 0 io, 0 vm, 0 hdd
 stress: dbug: [1] using backoff sleep of 9000us
@@ -1915,7 +1915,7 @@ stress: dbug: [1] --&gt; hogcpu worker 1 [9] forked
 <figure data-type="image" tabindex="8"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200820013841.png" alt="" loading="lazy"></figure>
 <p>可以看到，每个 stress 进程 CPU 使⽤率⼤约在 50%，总共的使⽤率为 150%，符合 1.5 核的设置。<br>
 如果设置的 --cpus 值⼤于主机的 CPU 核数，docker 会直接报错：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run --rm -it --cpus 8 
+<pre><code class="language-shell">[root@Linux ~]# docker run --rm -it --cpus 8 
 progrium/stress --cpu 3 
 docker: Error response from daemon: Range of CPUs is from 0.01 to 4.00, as there are only 4 CPUs available.
 See 'docker run --help'.
@@ -1928,7 +1928,7 @@ See 'docker run --help'.
 docker 允许调度的时候限定容器运⾏在哪个 CPU 上。</p>
 <p>限制容器运⾏在哪些核上并不是⼀个很好的做法，因为它需要实现知道主机上有多少 CPU 核，⽽且⾮常不灵活。除⾮有特别的需求，⼀般并不推荐在⽣产中这样使⽤。<br>
 假如主机上有 4 个核，可以通过 --cpuset 参数让容器只运⾏在前两个核上：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run --rm -it --cpuset-
+<pre><code class="language-shell">[root@Linux ~]# docker run --rm -it --cpuset-
 cpus=0,1 progrium/stress --cpu 2 
 stress: info: [1] dispatching hogs: 2 cpu, 0 io, 0 vm, 0 hdd
 stress: dbug: [1] using backoff sleep of 6000us
@@ -1972,7 +1972,7 @@ docker 启动参数中，和内存限制有关的包括（参数的值⼀般是�
 是否运⾏ OOM 的时候杀死容器。只有设置了 -m，才可以把这个选项设置为 false，否则容器会耗尽主机内存，⽽且导致主机应⽤被杀死</p>
 </blockquote>
 <p>如果限制容器的内存使⽤为 64M，在申请 64M 资源的情况下，容器运⾏正常（如果主机上内存⾮常紧张，并不⼀定能保证这⼀点）：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run --rm -it -m 64m progrium/stress --vm 1 --vm-bytes 64M --vm-hang 0
+<pre><code class="language-shell">[root@Linux ~]# docker run --rm -it -m 64m progrium/stress --vm 1 --vm-bytes 64M --vm-hang 0
 WARNING: Your kernel does not support swap limit 
 capabilities or the cgroup is not mounted. Memory 
 limited without swap.
@@ -1984,7 +1984,7 @@ stress: dbug: [7] touching bytes in strides of 4096 bytes ...
 stress: dbug: [7] sleeping forever with allocated memory .....
 </code></pre>
 <p>⽽如果申请 100M 内存，会发现容器⾥的进程被 kill 掉了（worker 7 got signal 9，signal 9 就是 kill 信号）</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run --rm -it -m 64m progrium/stress --vm 1 --vm-bytes 100M --vm-hang 0 
+<pre><code class="language-shell">[root@Linux ~]# docker run --rm -it -m 64m progrium/stress --vm 1 --vm-bytes 100M --vm-hang 0 
 WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
 stress: info: [1] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
 stress: dbug: [1] using backoff sleep of 3000us
@@ -2004,7 +2004,7 @@ docker 允许你直接限制磁盘的读写速率，对应的参数有：<br>
 --device-write-bps：磁盘每秒最多可以写多少⽐特（bytes）<br>
 上⾯两个参数的值都是磁盘以及对应的速率，限制 limit 为正整数，单位可以是 kb、mb 和 gb。</p>
 <p>⽐如可以把设备的读速率限制在 1mb：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run -it --device /dev/sda:/dev/sda --device-read-bps /dev/sda:1mb ubuntu:16.04 bash 
+<pre><code class="language-shell">[root@Linux ~]# docker run -it --device /dev/sda:/dev/sda --device-read-bps /dev/sda:1mb ubuntu:16.04 bash 
 root@6c048edef769# cat /sys/fs/cgroup/blkio/blkio.throttle.read_bps_device 
 8:0 1048576
 root@6c048edef769# dd iflag=direct,nonblock if=/dev/sda of=/dev/null bs=5M count=10
@@ -2020,7 +2020,7 @@ root@6c048edef769# dd iflag=direct,nonblock if=/dev/sda of=/dev/null bs=5M count
 </blockquote>
 <p>上⾯两个参数的值都是磁盘以及对应的 IO 上限。<br>
 ⽐如，可以让磁盘每秒最多读 100 次：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run -it --device /dev/sda:/dev/sda --device-read-iops /dev/sda:100 ubuntu:16.04 bash root@2e3026e9ccd2:/[root@qfedu.com 
+<pre><code class="language-shell">[root@Linux ~]# docker run -it --device /dev/sda:/dev/sda --device-read-iops /dev/sda:100 ubuntu:16.04 bash root@2e3026e9ccd2:/[root@Linux 
 ~]# dd iflag=direct,nonblock if=/dev/sda of=/dev/null bs=1k count=1000
 1000+0 records in
 1000+0 records out
@@ -2034,17 +2034,17 @@ root@6c048edef769# dd iflag=direct,nonblock if=/dev/sda of=/dev/null bs=5M count
 创建应⽤容器的时候，⼀般会做端⼝映射，这样是为了让外部能够访问这些容器⾥的应⽤。可以⽤多个-p<strong>指定</strong>多个端⼝映射关系。<br>
 本例使⽤-p把本地3307转发到容器的3306，其他参数需要查看发布容器的⻚⾯提示</p>
 <pre><code class="language-shell">查看本地地址：
-[root@qfedu.com ~]#ip a 
+[root@Linux ~]#ip a 
   ens33: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
   link/ether 00:0c:29:0a:5b:8b brd ff:ff:ff:ff:ff:ff
   inet 192.168.245.134/24 brd 192.168.245.255 scope global dynamic ens33
     valid_lft 1444sec preferred_lft 1444sec
 
 运⾏容器：
-[root@qfedu.com ~]# docker run --name mysql1 -p 3307:3306  -e MYSQL_ROOT_PASSWORD=123 daocloud.io/library/mysql
+[root@Linux ~]# docker run --name mysql1 -p 3307:3306  -e MYSQL_ROOT_PASSWORD=123 daocloud.io/library/mysql
 
 查看Ip地址：
-[root@qfedu.com ~]# docker inspect  mysql1 | grep 
+[root@Linux ~]# docker inspect  mysql1 | grep 
 IPAddress
       &quot;SecondaryIPAddresses&quot;: null,
       &quot;IPAddress&quot;: &quot;172.17.0.2&quot;,
@@ -2052,7 +2052,7 @@ IPAddress
           
 通过本地IP：192.168.245.134的3307端⼝访问容器mysql1内的数
 据库，出现如下提示恭喜你
-[root@qfedu.com ~]# mysql -u root -p123 -h 192.168.245.134 -P3307
+[root@Linux ~]# mysql -u root -p123 -h 192.168.245.134 -P3307
 Welcome to the MariaDB monitor.  Commands end with ; 
 or \g.
 Your MySQL connection id is 3
@@ -2065,15 +2065,15 @@ MySQL [(none)]&gt;
 <h3 id="102-redis应用端口转发">10.2 Redis应⽤端⼝转发</h3>
 <p><strong>-P</strong><br>
 Docker 会<strong>随机映射</strong>⼀个 49000~49900 的端⼝到内部容器开放的⽹络端⼝。如下：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker images
+<pre><code class="language-shell">[root@Linux ~]# docker images
 REPOSITORY      TAG         IMAGE ID       CREATED       SIZE
 docker.io/redis   latest        e4a35914679d     2weeks ago     182.9 MB
  
-[root@qfedu.com ~]# docker run --name myredis -P -d docker.io/redis
+[root@Linux ~]# docker run --name myredis -P -d docker.io/redis
 805d0e21e531885aad61d3e82395210b50621f1991ec4b7f9a0e
 25c815cc0272
 
-[root@qfedu.com ~]# docker ps
+[root@Linux ~]# docker ps
 CONTAINER ID     IMAGE        COMMAND          
 CREATED       STATUS        PORTS           NAMES
 805d0e21e531     docker.io/redis   &quot;docker-
@@ -2082,15 +2082,15 @@ entrypoint.sh&quot;  4 seconds ago    Up 3 seconds
 从上⾯的结果中可以看出，本地主机的32768端⼝被映射到了redis容器的6379端⼝上，也就是说访问本机的32768端⼝即可访问容器内redis端⼝。
 
 测试看下，登陆redis容器，随意写个数据
-[root@qfedu.com ~]# docker run --rm -it --name myredis2 --link myredis:redisdb docker.io/redis /bin/
+[root@Linux ~]# docker run --rm -it --name myredis2 --link myredis:redisdb docker.io/redis /bin/
 bash
-root@be44d955d6f4:/data[root@qfedu.com ~]# redis-cli -h redisdb -p 6379
+root@be44d955d6f4:/data[root@Linux ~]# redis-cli -h redisdb -p 6379
 redisdb:6379&gt; set wing 123
 OK
 redisdb:6379&gt;
 
 在别的机器上通过上⾯映射的端⼝32768连接这个容器的redis
-[root@qfedu.com ~]# redis-cli -h 192.168.245.134 -p 32768
+[root@Linux ~]# redis-cli -h 192.168.245.134 -p 32768
 192.168.1.23:32768&gt; get wing
 &quot;123&quot;
 </code></pre>
@@ -2098,17 +2098,17 @@ redisdb:6379&gt;
 <h3 id="111-容器卷操作">11.1 容器卷操作</h3>
 <p>容器卷是容器和宿主机之间的⽂件共享⽅式之⼀</p>
 <pre><code class="language-shell">新卷只能在容器创建过程当中挂载
-[root@qfedu.com ~]# docker run -it --name=&quot;voltest&quot; -v /tmp:/test  daocloud.io/library/centos:5 /bin/bash
+[root@Linux ~]# docker run -it --name=&quot;voltest&quot; -v /tmp:/test  daocloud.io/library/centos:5 /bin/bash
 
 共享其他容器的卷：
-[root@qfedu.com ~]# docker run -it --volumes-from bc4181  daocloud.io/library/centos:5  /bin/bash
+[root@Linux ~]# docker run -it --volumes-from bc4181  daocloud.io/library/centos:5  /bin/bash
 
 实际应⽤中可以利⽤多个-v选项把宿主机上的多个⽬录同时共享给新建
 容器：
 
 ⽐如： 
-[root@qfedu.com ~]# docker run -it -v /abc:/abc -v /def:/def 1ae9
-[root@qfedu.com ~]# docker run  -v /vol/index.html:/usr/share/nginx/html/index.html -it nginx /bin/bash
+[root@Linux ~]# docker run -it -v /abc:/abc -v /def:/def 1ae9
+[root@Linux ~]# docker run  -v /vol/index.html:/usr/share/nginx/html/index.html -it nginx /bin/bash
 </code></pre>
 <p>注意：<br>
 如果是⽂件共享，数据不能同步更新</p>
@@ -2118,8 +2118,8 @@ redisdb:6379&gt;
 宿主机上的⽂件和⽬录，怎么才能让容器⾥的进程访问到？</p>
 <p>这正是 Docker Volume 要解决的问题：Volume 机制，允许你将宿主机上指定的⽬录或者⽂件，挂载到容器⾥⾯进⾏读取和修改操作。<br>
 在 Docker 项⽬⾥，它⽀持两种 Volume 声明⽅式，可以把宿主机⽬录挂载进容器的 /test ⽬录当中：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run -v /test ...
-[root@qfedu.com ~]# docker run -v /home:/test ...
+<pre><code class="language-shell">[root@Linux ~]# docker run -v /test ...
+[root@Linux ~]# docker run -v /home:/test ...
 </code></pre>
 <p>这两种声明⽅式的本质是相同的：都是把⼀个宿主机的⽬录挂载进了容器的 /test ⽬录。<br>
 第⼀种情况没有显示声明宿主机⽬录，Docker 就会默认在宿主机上创建⼀个临时⽬录 /var/lib/docker/volumes/[VOLUME_ID]/_data，然后把它挂载到容器的 /test ⽬录上。<br>
@@ -2137,30 +2137,30 @@ mount --bind /home /test，会将 /home 挂载到 /test 上。其实相当于将
 原因前⾯提到过。容器的镜像操作，⽐如 docker commit，都是发⽣在宿主机空间的。⽽由于 Mount Namespace 的隔离作⽤，宿主机并不知道这个绑定挂载的存在。所以，在宿主机看来，容器中可读写层的 /test ⽬录（/var/lib/docker/aufs/mnt/[可读写层 ID]/test），始终是空的。<br>
 不过，由于 Docker ⼀开始还是要创建 /test 这个⽬录作为挂载点，所以执⾏了 docker commit 之后，新产⽣的镜像⾥，会多出来⼀个空的 /test ⽬录。毕竟，新建⽬录操作，⼜不是挂载操作，MountNamespace 对它可起不到&quot;障眼法&quot;的作⽤。</p>
 <pre><code class="language-shell">1.启动⼀个 helloworld 容器，给它声明⼀个 Volume，挂载在容器⾥的 /test ⽬录上：
-[root@qfedu.com ~]# docker run -d -v /test helloworld
+[root@Linux ~]# docker run -d -v /test helloworld
 cf53b766fa6f
 
 2.容器启动之后，查看⼀下这个 Volume 的 ID：
-[root@qfedu.com ~]# docker volume ls
+[root@Linux ~]# docker volume ls
 DRIVER        VOLUME NAME
 local        
 cb1c2f7221fa9b0971cc35f68aa1034824755ac44a034c0c0a1d
 d318838d3a6d
 
 3.使⽤这个 ID，可以找到它在 Docker ⼯作⽬录下的 volumes 路径：
-[root@qfedu.com ~]# ls /var/lib/docker/volumes/cb1c2f7221fa/_data/
+[root@Linux ~]# ls /var/lib/docker/volumes/cb1c2f7221fa/_data/
 这个 _data ⽂件夹，就是这个容器的 Volume 在宿主机上对应的临时⽬录了。
 
 4.在容器的 Volume ⾥，添加⼀个⽂件 text.txt：
-[root@qfedu.com ~]# docker exec -it cf53b766fa6f /bin/sh
+[root@Linux ~]# docker exec -it cf53b766fa6f /bin/sh
 cd test/
 touch text.txt
 
 5.再回到宿主机，就会发现 text.txt 已经出现在了宿主机上对应的临时⽬录⾥：
-[root@qfedu.com ~]# ls /var/lib/docker/volumes/cb1c2f7221fa/_data/
+[root@Linux ~]# ls /var/lib/docker/volumes/cb1c2f7221fa/_data/
 text.txt
 可是，如果你在宿主机上查看该容器的可读写层，虽然可以看到这个 /test ⽬录，但其内容是空的：
-[root@qfedu.com ~]# ls /var/lib/docker/aufs/mnt/6780d0778b8a/test
+[root@Linux ~]# ls /var/lib/docker/aufs/mnt/6780d0778b8a/test
 </code></pre>
 <p>可以确认，容器 Volume ⾥的信息，并不会被 docker commit 提交掉；但这个挂载点⽬录 /test 本身，则会出现在新的镜像当中。以上内容，就是 Docker Volume 的核⼼原理了。<br>
 <strong>Docker 容器&quot;全景图&quot;：</strong></p>
@@ -2168,13 +2168,13 @@ text.txt
 <p>⼀个&quot;容器&quot;，实际上是⼀个由 Linux Namespace、Linux Cgroups和 rootfs 三种技术构建出来的进程的隔离环境。</p>
 <h2 id="12-优化centos7镜像">12、优化Centos7镜像</h2>
 <p>镜像下载：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker pull daocloud.io/library/centos:latest
+<pre><code class="language-shell">[root@Linux ~]# docker pull daocloud.io/library/centos:latest
 </code></pre>
 <p>包管理:<br>
 默认情况下，为了减⼩镜像的尺⼨，在构建 CentOS 镜像时⽤了yum的nodocs选项。 如果您安装⼀个包后发现⽂件缺失，请在/etc/yum.conf中注释掉tsﬂogs=nodocs并重新安装您的包。<br>
 systemd 整合:</p>
 <p>因为 systemd 要求 CAPSYSADMIN 权限，从⽽得到了读取到宿主机 cgroup 的能⼒，CentOS7 中已经⽤ fakesystemd 代替了 systemd来解决依赖问题。 如果仍然希望使⽤ systemd，可⽤参考下⾯的Dockerﬁle：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# vim Dockerfile
+<pre><code class="language-shell">[root@Linux ~]# vim Dockerfile
 FROM daocloud.io/library/centos:7
 MAINTAINER &quot;wing&quot;  wing@qq.com
 ENV container docker
@@ -2198,11 +2198,11 @@ VOLUME [ &quot;/sys/fs/cgroup&quot; ]
 CMD [&quot;/usr/sbin/init&quot;]
 </code></pre>
 <p>这个Dockerﬁle删除fakesystemd 并安装了 systemd。然后再构建基础镜像:</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker build --rm -t local/c7- systemd .
+<pre><code class="language-shell">[root@Linux ~]# docker build --rm -t local/c7- systemd .
 </code></pre>
 <p>⼀个包含 systemd 的应⽤容器示例<br>
 为了使⽤像上⾯那样包含 systemd 的容器，需要创建⼀个类似下⾯的Dockerﬁle：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# vim Dockerfile
+<pre><code class="language-shell">[root@Linux ~]# vim Dockerfile
 FROM local/c7-systemd
 RUN yum -y install httpd; yum clean all; systemctl 
 enable httpd.service
@@ -2210,21 +2210,21 @@ EXPOSE 80
 CMD [&quot;/usr/sbin/init&quot;]
 </code></pre>
 <p>构建镜像:</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker build --rm -t local/c7-systemd-httpd .
+<pre><code class="language-shell">[root@Linux ~]# docker build --rm -t local/c7-systemd-httpd .
 </code></pre>
 <p>运⾏包含 systemd 的应⽤容器:<br>
 为了运⾏⼀个包含 systemd 的容器，需要使⽤--privileged选项，并且挂载主机的 cgroups ⽂件夹。 下⾯是运⾏包含 systemd 的 httpd容器的示例命令：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run --privileged -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/c7-systemd-httpd
+<pre><code class="language-shell">[root@Linux ~]# docker run --privileged -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/c7-systemd-httpd
 </code></pre>
 <p>注意：上条命令不能添加/bin/bash，添加了会导致服务不可⽤，⽽且有些服务可能会发现之前提到的权限不够的问题，但是如果不加会运⾏在前台(没有⽤-d)，可以⽤ctrl+p+q放到后台去测试可⽤：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# elinks --dump http://docker    //下⾯为apache默认⻚⾯
+<pre><code class="language-shell">[root@Linux ~]# elinks --dump http://docker    //下⾯为apache默认⻚⾯
                       Testing 123..
   This page is used to test the proper operation of the [1]Apache HTTP
   server after it has been installed. If you can read this page it means
   that this site is working properly. This server is powered by [2]CentOS.
 </code></pre>
 <p>再来个安装openssh-server的例⼦：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# vim Dockerfile
+<pre><code class="language-shell">[root@Linux ~]# vim Dockerfile
 FROM local/c7-systemd
 RUN yum -y install openssh-server; yum clean all; 
 systemctl enable sshd.service
@@ -2232,16 +2232,16 @@ RUN echo 1 | passwd --stdin root
 EXPOSE 22
 CMD [&quot;/usr/sbin/init&quot;]
 
-[root@qfedu.com ~]# docker build --rm -t local/c7-systemd-sshd .  
-[root@qfedu.com ~]# docker run --privileged -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 2222:22 local/c7-systemd-sshd  
-[root@qfedu.com ~]# ssh docker -p 2222  //docker为我宿主机的主机名称
+[root@Linux ~]# docker build --rm -t local/c7-systemd-sshd .  
+[root@Linux ~]# docker run --privileged -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 2222:22 local/c7-systemd-sshd  
+[root@Linux ~]# ssh docker -p 2222  //docker为我宿主机的主机名称
 </code></pre>
 <h2 id="13-docker网络">13、Docker⽹络</h2>
 <p><strong>容器⽹络</strong><br>
 注：⾯试⽤，⽤了编排之后就没有⽤了</p>
 <p>Docker安装后，默认会创建三种⽹络类型，bridge、host和none<br>
 查看当前⽹络：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker network list
+<pre><code class="language-shell">[root@Linux ~]# docker network list
 NETWORK  ID      NAME        DRIVER        SCOPE
 90b22f633d2f     bridge      bridge        local
 e0b365da7fd2     host       host        local
@@ -2254,20 +2254,20 @@ da7b7a090837     none       null         local
 3、host：主机⽹络<br>
 docker容器的⽹络会附属在主机上，两者是互通的。</p>
 <p>使⽤host⽹络创建容器：</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run -it --name testnginx1 --net host 27a18801 /bin/bash
+<pre><code class="language-shell">[root@Linux ~]# docker run -it --name testnginx1 --net host 27a18801 /bin/bash
 </code></pre>
 <p>4、固定ip（个⼈认为是bridge）:<br>
 <strong>创建固定Ip的容器</strong><br>
 4.1、创建⾃定义⽹络类型，并且指定⽹段</p>
-<pre><code class="language-shell">[root@qfedu.com ~]#docker network create --subnet=192.168.0.0/16 staticnet
+<pre><code class="language-shell">[root@Linux ~]#docker network create --subnet=192.168.0.0/16 staticnet
 </code></pre>
 <p>通过docker network ls可以查看到⽹络类型中多了⼀个staticnet<br>
 4.2、使⽤新的⽹络类型创建并启动容器</p>
-<pre><code class="language-shell">[root@qfedu.com ~]#docker run -it --name userserver --net staticnet --ip 192.168.0.2 centos:6 /bin/bash
+<pre><code class="language-shell">[root@Linux ~]#docker run -it --name userserver --net staticnet --ip 192.168.0.2 centos:6 /bin/bash
 </code></pre>
 <p>通过docker inspect可以查看容器ip为192.168.0.2，关闭容器并重启，发现容器ip并未发⽣改变<br>
 不能使⽤默认桥接⽹络，不然会报错</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker run -it --rm --name &quot;test&quot; -v /test/b.txt:/tmp/b.txt -v /tmp:/abc --net bridge --ip 172.17.0.9 1f8fe54 /bin/sh
+<pre><code class="language-shell">[root@Linux ~]# docker run -it --rm --name &quot;test&quot; -v /test/b.txt:/tmp/b.txt -v /tmp:/abc --net bridge --ip 172.17.0.9 1f8fe54 /bin/sh
 docker: Error response from daemon: user specified IP address is supported on user defined networks only.
 </code></pre>
 <p><strong>扩展：异主容器互联</strong></p>
@@ -2275,32 +2275,32 @@ docker: Error response from daemon: user specified IP address is supported on us
 ⼩规模docker环境⼤部分运⾏在单台主机上，如果公司⼤规模采⽤docker，那么多个宿主机上的docker如何互联</p>
 <figure data-type="image" tabindex="11"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200820021231.png" alt="" loading="lazy"></figure>
 <p>Docker默认的内部ip为172.17.42.0⽹段，所以必须要修改其中⼀台的默认⽹段以免ip冲突。</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# vim /etc/sysconfig/docker-network
+<pre><code class="language-shell">[root@Linux ~]# vim /etc/sysconfig/docker-network
 DOCKER_NETWORK_OPTIONS= --bip=172.18.42.1/16
-[root@qfedu.com ~]# reboot 
+[root@Linux ~]# reboot 
 
 
 docker 130上：
-[root@qfedu.com ~]# route add -net 172.18.0.0/16 gw 192.168.18.128
+[root@Linux ~]# route add -net 172.18.0.0/16 gw 192.168.18.128
 docker 128上：
-[root@qfedu.com ~]# route add -net 172.17.0.0/16 gw 192.168.18.130
+[root@Linux ~]# route add -net 172.17.0.0/16 gw 192.168.18.130
 </code></pre>
 <p>现在两台宿主机⾥的容器就可以通信了。</p>
 <h2 id="14-docker数据存储位置">14、Docker数据存储位置</h2>
 <p><strong>查看默认存储位置</strong></p>
-<pre><code class="language-shell">[root@qfedu.com ~]# docker info | grep Root
+<pre><code class="language-shell">[root@Linux ~]# docker info | grep Root
 Docker Root Dir:  /var/lib/docker
 </code></pre>
 <p><strong>修改默认存储位置</strong></p>
 <p>在dockerd的启动命令后⾯追加--data-root参数指定新的位置</p>
-<pre><code class="language-shell">[root@qfedu.com ~]# vim /usr/lib/systemd/system/docker.service
+<pre><code class="language-shell">[root@Linux ~]# vim /usr/lib/systemd/system/docker.service
 ExecStart=/usr/bin/dockerd -H fd:// --
 containerd=/run/containerd/containerd.sock --data-
 root=/data
-[root@qfedu.com ~]# systemctl daemon-reload
-[root@qfedu.com ~]# systemctl restart docker
+[root@Linux ~]# systemctl daemon-reload
+[root@Linux ~]# systemctl restart docker
 查看是否⽣效：
-[root@qfedu.com ~]# docker info | grep Root
+[root@Linux ~]# docker info | grep Root
 Docker Root Dir: /data
 </code></pre>
 
@@ -2331,6 +2331,10 @@ Docker Root Dir: /data
   </div>
   <div class="nav">
     <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="Shell编程" href="https://jonchan1013.github.io/post/shell/">Shell编程</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="Shell编程" href="https://jonchan1013.github.io/post/shell/">上一篇</a>
       
     </div>
     <div class="nav-next">
@@ -3378,6 +3382,1206 @@ Docker Root Dir: /data
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/shell/"" data-c="
+          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200820093425.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;1-shell概述&#34;&gt;1、Shell概述&lt;/h2&gt;
+&lt;h3 id=&#34;11-shell是什么&#34;&gt;1.1 Shell是什么&lt;/h3&gt;
+&lt;p&gt;Linux系统的核心是内核。内核控制着计算机系统上的所有硬件和软件，在必要时为应用程序分配硬件， 并根据需要执行程序中的代码。&lt;br&gt;
+内核主要负责以下四种功能：&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;系统内存管理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;软件程序管理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;硬件设备管理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文件系统管理&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200820094033.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;简单来说Shell是一种特殊的交互式工具，核心是命令提示符，允许输入文本命令，解释命令，并在内核中执行命令。&lt;/p&gt;
+&lt;p&gt;当应用程序在执行时，需要调用计算机硬件的cpu,内存等资源！程序将指令发送给内核执行！为了防止程序发送一些恶意指令导致损坏内核，在内核和应用程序接口之间，设置一个中间层，称为shell.&lt;br&gt;
+本质上来说：&lt;br&gt;
+shell:   一个可以解释shell规定的语法命令的解释器。&lt;br&gt;
+解释器负责将应用程序发送的指令，进行检查，合法后交给内核解释执行，返回结果。&lt;/p&gt;
+&lt;p&gt;shell命令：  shell解释器要求的指定语法编写的命令！&lt;/p&gt;
+&lt;p&gt;shell脚本：  多条shell命令，可以编写在一个文件中，文件中的指令，可以按照顺序执行。将这个文件称为shell脚本。&lt;/p&gt;
+&lt;h3 id=&#34;12-shell中的解释器&#34;&gt;1.2 shell中的解释器&lt;/h3&gt;
+&lt;p&gt;（1）Linux提供的Shell解析器有：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 ~]$ cat /etc/shells 
+/bin/sh
+/bin/bash
+/sbin/nologin
+/bin/dash
+/bin/tcsh
+/bin/csh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不同的shell解析器，功能不同，比如csh，符合c语言风格的shell解析器。Centos默认使用的是/bin/sh 和 /bin/bash作为shell解析器&lt;/p&gt;
+&lt;p&gt;（2）bash和sh的关系&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 bin]$ ll | grep bash
+-rwxr-xr-x. 1 root root 941880 5月  11 2019 bash
+lrwxrwxrwx. 1 root root      4 5月  27 2019 sh -&amp;gt; bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;（3）Centos默认的解析器是bash&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 bin]$ echo $SHELL
+/bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用 $SHELL变量查看当前系统默认的解释器类型！&lt;/p&gt;
+&lt;p&gt;shell支持多种不同风格的解释器，通过/etc/shells文件查看！&lt;/p&gt;
+&lt;p&gt;默认使用 /bin/bash作为shell命令解释器！&lt;/p&gt;
+&lt;p&gt;在终端中输入： cat /etc/shells&lt;br&gt;
+等价于/bin/bash -c &#39;cat /etc/shells&#39;.&lt;br&gt;
+默认/bin/bash必须接一个脚本，作为输入！如果是一条命令，需要加-c （command）&lt;/p&gt;
+&lt;h3 id=&#34;13-linux中的常用目录&#34;&gt;1.3 linux中的常用目录&lt;/h3&gt;
+&lt;p&gt;/bin:     linux用户常用的命令&lt;br&gt;
+cd&lt;br&gt;
+echo&lt;br&gt;
+pwd&lt;br&gt;
+/sbin（super user bin）: root用户(管理员)使用的常用命令！&lt;br&gt;
+对整个机器的管理命令！&lt;br&gt;
+开启网络服务：  service network start&lt;/p&gt;
+&lt;h3 id=&#34;14-命令的执行&#34;&gt;1.4 命令的执行&lt;/h3&gt;
+&lt;p&gt;-bash: faefaw: command not found ： 当前命令不在当前用户的环境变量！&lt;/p&gt;
+&lt;p&gt;查看： echo $PATH&lt;/p&gt;
+&lt;h3 id=&#34;15-shell脚本入门&#34;&gt;1.5 Shell脚本入门&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;脚本的编写要求:&lt;/strong&gt;&lt;br&gt;
+①声明：  #!/bin/bash&lt;br&gt;
+②正文：  必须是shell解释器能否解释的命令&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;脚本的执行:&lt;/strong&gt;&lt;br&gt;
+① bash 或 sh + 脚本&lt;br&gt;
+特点： 新开一个bash执行脚本，一旦脚本执行完毕，bash自动关闭！&lt;br&gt;
+② ./脚本，前提是当前用户对脚本有执行权限，使用当前默认的解释器执行脚本&lt;br&gt;
+特点： 新开一个bash执行脚本，一旦脚本执行完毕，bash自动关闭！&lt;br&gt;
+③ source 或 .  +脚本  使用当前默认的解释器执行脚本，并不要求当前用户对脚本有执行权限(.就是source的简写)&lt;br&gt;
+特点： 在当前bash执行脚本&lt;/p&gt;
+&lt;h2 id=&#34;2-shell中的变量&#34;&gt;2、Shell中的变量&lt;/h2&gt;
+&lt;h3 id=&#34;21-系统变量&#34;&gt;2.1 系统变量&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;常用系统变量&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mi&gt;M&lt;/mi&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;、&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;HOME、&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.08125em;&#34;&gt;H&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.02778em;&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.10903em;&#34;&gt;M&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05764em;&#34;&gt;E&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;、&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;PWD、&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mi&gt;L&lt;/mi&gt;&lt;mi&gt;L&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;、&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;SHELL、&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.68333em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05764em;&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.08125em;&#34;&gt;H&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05764em;&#34;&gt;E&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;、&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;USER等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;（1）查看系统变量的值&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ echo $HOME
+/home/atguigu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;（2）显示当前Shell中所有变量：set&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ set
+BASH=/bin/bash
+BASH_ALIASES=()
+BASH_ARGC=()
+BASH_ARGV=()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;22-自定义变量&#34;&gt;2.2 自定义变量&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;（1）定义变量：变量=值&lt;/p&gt;
+&lt;p&gt;（2）撤销变量：unset 变量&lt;/p&gt;
+&lt;p&gt;（3）声明静态变量：readonly变量，注意：不能unset&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;变量定义规则&lt;/p&gt;
+&lt;p&gt;（1）变量名称可以由字母、数字和下划线组成，但是不能以数字开头，&lt;strong&gt;环境变量名建议大写。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;（2）&lt;strong&gt;等号两侧不能有空格&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;（3）在bash中，变量默认类型都是字符串类型，无法直接进行数值运算。&lt;/p&gt;
+&lt;p&gt;（4）变量的值如果有空格，需要使用双引号或单引号括起来。&lt;/p&gt;
+&lt;p&gt;（5）使用双引号，可以识别空格之外的其他变量，使用单引号则会只会忽略空格！&lt;/p&gt;
+&lt;p&gt;（6）使用反引号，可以将语句运行的结果作为值赋值给变量！&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;特殊关键字：&lt;br&gt;
+readonly : 用来修饰一个只读(不能修改，删除)变量！&lt;br&gt;
+export:    导出！将一个变量提升为全局变量！&lt;br&gt;
+局部变量： 默认变量只在定义变量的bash中有效！&lt;br&gt;
+如果希望在bash-a访问bash-b中定义的变量！&lt;br&gt;
+要求： ①bash-b不能关闭&lt;br&gt;
+②让bash-b将变量提升为全局变量，才能访问到！&lt;/p&gt;
+&lt;p&gt;注意： ①变量赋值时，值全部以字符串存在，无法进行运算！&lt;br&gt;
+②赋值的值中有空格，需要使用引号引起来&lt;br&gt;
+单引号： 不能识别&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;等&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;特&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;殊&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;字&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;符&lt;/mi&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;不&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;能&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;脱&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;义&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;双&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;引&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;号&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;：&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;可&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;以&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;脱&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;义&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;等特殊字符,不能脱义
+			双引号：  可以脱义&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.3em;vertical-align:-0.19444em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;等&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;特&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;殊&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;字&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;符&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;不&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;能&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;脱&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;义&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;双&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;引&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;号&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;可&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;以&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;脱&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;义&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;
+③```,作用是将引号中的命令执行的结果赋值给变量&lt;br&gt;
+&lt;code&gt;命令&lt;/code&gt; 等价于 $(命令)&lt;/p&gt;
+&lt;p&gt;变量的生命周期：&lt;br&gt;
+在第一次新增时产生&lt;br&gt;
+变量在执行unset时，撤销，失效！&lt;br&gt;
+关闭当前bash，所有定义的变量也不会存在！&lt;/p&gt;
+&lt;h3 id=&#34;23-特殊变量n&#34;&gt;2.3 特殊变量：$n&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;$n  （功能描述：n为数字，$0代表该脚本名称，$1-&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mn&gt;9&lt;/mn&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;代&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;表&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;第&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;一&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;到&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;第&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;九&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;个&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;参&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;数&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;十&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;以&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;上&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;参&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;数&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;十&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;以&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;上&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;参&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;数&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;需&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;要&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;用&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;大&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;括&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;号&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;包&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;含&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;如&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;9代表第一到第九个参数，十以上的参数，十以上的参数需要用大括号包含，如&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;代&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;表&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;第&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;一&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;到&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;第&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;九&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;个&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;参&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;数&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;十&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;以&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;上&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;参&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;数&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;十&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;以&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;上&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;参&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;数&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;需&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;要&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;用&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;大&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;括&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;号&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;包&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;含&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;如&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;{10}）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;输出该脚本文件名称、输入参数1和输入参数2 的值&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ touch parameter.sh 
+[atguigu@hadoop101 datas]$ vim parameter.sh
+
+#!/bin/bash
+echo &amp;quot;$0  $1   $2&amp;quot;
+
+[atguigu@hadoop101 datas]$ chmod 777 parameter.sh
+
+[atguigu@hadoop101 datas]$ ./parameter.sh cls  xz
+./parameter.sh  cls   xz
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;24-特殊变量&#34;&gt;2.4 特殊变量：$#&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;$#  （功能描述：获取所有输入参数个数，常用于循环）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;获取输入参数的个数&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ vim parameter.sh
+
+#!/bin/bash
+echo &amp;quot;$0  $1   $2&amp;quot;
+echo $#
+
+[atguigu@hadoop101 datas]$ chmod 777 parameter.sh
+[atguigu@hadoop101 datas]$ ./parameter.sh cls  xz
+parameter.sh cls xz 
+2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;25-特殊变量&#34;&gt;2.5 特殊变量：&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo&gt;∗&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;、&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;*、&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.46528em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;∗&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;、&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;@&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo&gt;∗&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;（&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;功&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;能&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;描&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;述&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;：&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;这&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;个&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;变&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;量&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;代&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;表&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;命&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;令&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;行&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;中&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;所&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;有&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;参&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;数&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;*  （功能描述：这个变量代表命令行中所有的参数，&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.46528em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;∗&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;功&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;能&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;描&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;述&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;这&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;个&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;变&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;量&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;代&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;表&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;命&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;令&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;行&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;中&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;所&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;有&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;参&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;数&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;*把所有的参数看成一个整体）&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;@&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;（&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;功&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;能&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;描&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;述&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;：&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;这&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;个&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;变&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;量&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;也&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;代&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;表&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;命&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;令&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;行&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;中&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;所&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;有&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;的&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;参&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;数&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;，&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;不&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;过&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;@  （功能描述：这个变量也代表命令行中所有的参数，不过&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;功&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;能&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;描&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;述&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;：&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;这&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;个&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;变&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;量&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;也&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;代&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;表&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;命&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;令&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;行&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;中&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;所&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;有&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;的&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;参&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;数&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;，&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;不&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;过&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;@把每个参数区分对待）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;打印输入的所有参数&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ vim parameter.sh
+
+#!/bin/bash
+echo &amp;quot;$0  $1   $2&amp;quot;
+echo $#
+echo $*
+echo $@
+
+[atguigu@hadoop101 datas]$ bash parameter.sh 1 2 3
+parameter.sh  1   2
+3
+1 2 3
+1 2 3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;26-特殊变量&#34;&gt;2.6 特殊变量：$？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;$？ （功能描述：最后一次执行的命令的返回状态。如果这个变量的值为0，证明上一个命令正确执行；如果这个变量的值为非0（具体是哪个数，由命令自己来决定），则证明上一个命令执行不正确了。）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;判断helloworld.sh脚本是否正确执行&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ ./helloworld.sh 
+hello world
+[atguigu@hadoop101 datas]$ echo $?
+0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-运算符&#34;&gt;3、运算符&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;（1）“&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;运&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;算&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;式&lt;/mi&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;”&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;或&lt;/mi&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;“&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;((运算式))”或“&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;运&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;算&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;式&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;”&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;或&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;“&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;[运算式]”&lt;/p&gt;
+&lt;p&gt;（2）expr + , - , *, /, %  加，减，乘，除，取余&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;注意：expr运算符间要有空格;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;*号需要转义为\*，否则会被视为通配符；&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;运算指的都是整数的运算，浮点运算需要借助其他的命令！&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操：&lt;/p&gt;
+&lt;p&gt;（1）计算3+2的值&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ expr 2 + 3
+5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;（2）计算3-2的值&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ expr 3 - 2 
+1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;（3）计算（2+3）X4的值&lt;/p&gt;
+&lt;p&gt;​     （a）expr一步完成计算&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ expr `expr 2 + 3` \* 4
+20
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;（b）采用$[运算式]方式&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]# S=$[(2+3)*4]
+[atguigu@hadoop101 datas]# echo $S
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;4-条件判断&#34;&gt;4、条件判断&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;[ condition ]（&lt;strong&gt;注意condition前后要有空格&lt;/strong&gt;）&lt;/p&gt;
+&lt;p&gt;注意：条件非空即为true，[ atguigu ]返回true，[] 返回false。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;常用判断条件&lt;/p&gt;
+&lt;p&gt;（1）两个整数之间比较&lt;/p&gt;
+&lt;p&gt;= 字符串比较&lt;/p&gt;
+&lt;p&gt;-lt 小于（less than）           -le 小于等于（less equal）&lt;/p&gt;
+&lt;p&gt;-eq 等于（equal）                 -gt 大于（greater than）&lt;/p&gt;
+&lt;p&gt;-ge 大于等于（greater equal）  -ne 不等于（Not equal）&lt;/p&gt;
+&lt;p&gt;（2）按照文件权限进行判断&lt;/p&gt;
+&lt;p&gt;-r 有读的权限（read）         -w 有写的权限（write）&lt;/p&gt;
+&lt;p&gt;-x 有执行的权限（execute）&lt;/p&gt;
+&lt;p&gt;（3）按照文件类型进行判断&lt;/p&gt;
+&lt;p&gt;-f 文件存在并且是一个常规的文件（file）&lt;/p&gt;
+&lt;p&gt;-e 文件存在（existence）      -d 文件存在并是一个目录（directory）&lt;/p&gt;
+&lt;p&gt;-s 文件存在且不为空      -L 文件存在且是一个链接(link)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;23是否大于等于22&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ [ 23 -ge 22 ]
+[atguigu@hadoop101 datas]$ echo $?
+0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;helloworld.sh是否具有写权限&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ [ -w helloworld.sh ]
+[atguigu@hadoop101 datas]$ echo $?
+0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/home/atguigu/cls.txt目录中的文件是否存在&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ [ -e /home/atguigu/cls.txt ]
+[atguigu@hadoop101 datas]$ echo $?
+1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;多条件判断（&amp;amp;&amp;amp; 表示前一条命令执行成功时，才执行后一条命令，|| 表示上一条命令执行失败后，才执行下一条命令）&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 ~]$ [ condition ] &amp;amp;&amp;amp; echo OK || echo notok
+OK
+[atguigu@hadoop101 datas]$ [ condition ] &amp;amp;&amp;amp; [ ] || echo notok
+notok
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-流程控制&#34;&gt;5、流程控制&lt;/h2&gt;
+&lt;h3 id=&#34;51-if-判断&#34;&gt;5.1  if 判断&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;if [ 条件判断式 ]&lt;/p&gt;
+&lt;p&gt;then&lt;/p&gt;
+&lt;p&gt;程序&lt;/p&gt;
+&lt;p&gt;elif 条件判断式&lt;/p&gt;
+&lt;p&gt;​     then 程序..&lt;/p&gt;
+&lt;p&gt;else 程序..&lt;/p&gt;
+&lt;p&gt;fi&lt;/p&gt;
+&lt;p&gt;或&lt;/p&gt;
+&lt;p&gt;if [ 条件判断式 ] ; then&lt;/p&gt;
+&lt;p&gt;​		程序..&lt;/p&gt;
+&lt;p&gt;elif [条件判断式] ; then&lt;/p&gt;
+&lt;p&gt;程序..&lt;/p&gt;
+&lt;p&gt;else 程序&lt;/p&gt;
+&lt;p&gt;fi&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;​	注意事项：&lt;/p&gt;
+&lt;p&gt;（1）[ 条件判断式 ]，中括号和条件判断式之间必须有空格&lt;/p&gt;
+&lt;p&gt;（2）&lt;strong&gt;if后要有空格&lt;/strong&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;如果输入的数字是1，2，3则输出你输入的数字是xx，否则输出，你输入的数字不是1，2，3&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@0725pc shells]# cat test3.sh 
+#! /bin/bash
+if [ $1 -eq 1 ]
+then
+    echo &amp;quot;你输入的是1啊！&amp;quot;
+elif [ $1 -eq 2 ]
+then
+	 echo &amp;quot;你输入的是2啊！&amp;quot;
+elif [ $1 -eq 3 ]
+then
+         echo &amp;quot;你输入的是3啊！&amp;quot;
+else  echo &amp;quot;你输入的不是1,2,3啊！&amp;quot;
+fi
+
+[root@0725pc shells]# bash test3.sh 3
+你输入的是3啊！
+[root@0725pc shells]# bash test3.sh 2
+你输入的是2啊！
+[root@0725pc shells]# bash test3.sh 1
+你输入的是1啊！
+[root@0725pc shells]# bash test3.sh 4
+你输入的不是1,2,3啊！
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;52-case-语句&#34;&gt;5.2 case 语句&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;case $变量名 in&lt;/p&gt;
+&lt;p&gt;&amp;quot;值1&amp;quot;）&lt;/p&gt;
+&lt;p&gt;如果变量的值等于值1，则执行程序1&lt;/p&gt;
+&lt;p&gt;;;&lt;/p&gt;
+&lt;p&gt;&amp;quot;值2&amp;quot;）&lt;/p&gt;
+&lt;p&gt;如果变量的值等于值2，则执行程序2&lt;/p&gt;
+&lt;p&gt;;;&lt;/p&gt;
+&lt;p&gt;…省略其他分支…&lt;/p&gt;
+&lt;p&gt;*）&lt;/p&gt;
+&lt;p&gt;如果变量的值都不是以上的值，则执行此程序&lt;/p&gt;
+&lt;p&gt;;;&lt;/p&gt;
+&lt;p&gt;esac&lt;/p&gt;
+&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;case行尾必须为单词“in”，每一个模式匹配必须以右括号“）”结束。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;双分号“&lt;strong&gt;;;&lt;/strong&gt;”表示命令序列结束，相当于java中的break。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;最后的“*）”表示默认模式，相当于java中的default。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;输入一个数字，如果是1，则输出banzhang，如果是2，则输出cls，如果是其它，输出renyao。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ touch case.sh
+[atguigu@hadoop101 datas]$ vim case.sh
+
+!/bin/bash
+case $1 in
+&amp;quot;1&amp;quot;)
+        echo &amp;quot;banzhang&amp;quot;
+;;
+
+&amp;quot;2&amp;quot;)
+        echo &amp;quot;cls&amp;quot;
+;;
+*)
+        echo &amp;quot;renyao&amp;quot;
+;;
+esac
+
+[atguigu@hadoop101 datas]$ chmod 777 case.sh
+[atguigu@hadoop101 datas]$ ./case.sh 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;53-for-循环&#34;&gt;5.3  for 循环&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;for (( 初始值;循环控制条件;变量变化 ))&lt;/p&gt;
+&lt;p&gt;do&lt;/p&gt;
+&lt;p&gt;程序&lt;/p&gt;
+&lt;p&gt;done&lt;/p&gt;
+&lt;p&gt;或&lt;/p&gt;
+&lt;p&gt;for (( 初始值;循环控制条件;变量变化 )); do 程序; done&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;从1加到100&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ touch for1.sh
+[atguigu@hadoop101 datas]$ vim for1.sh
+
+#!/bin/bash
+
+s=0
+for((i=0;i&amp;lt;=100;i++))
+do
+        s=$[$s+$i]
+done
+echo $s
+
+[atguigu@hadoop101 datas]$ chmod 777 for1.sh 
+[atguigu@hadoop101 datas]$ ./for1.sh 
+“5050”
+
+[root@0725pc shells]# tail -n 4 test1.sh 
+SUM2=0
+for((i=0;i&amp;lt;=10;i++));do SUM2=$(($SUM2+$i)); done
+echo &amp;quot;从1加到100的值是：$SUM2&amp;quot;
+[root@0725pc shells]# ./test1.sh 
+从1加到100的值是：55
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法2(foreach)&lt;/p&gt;
+&lt;p&gt;for 变量 in 值1 值2 值3…&lt;/p&gt;
+&lt;p&gt;do&lt;/p&gt;
+&lt;p&gt;程序&lt;/p&gt;
+&lt;p&gt;done&lt;/p&gt;
+&lt;p&gt;或&lt;/p&gt;
+&lt;p&gt;for 变量 in 1 2 3; do 程序; done&lt;/p&gt;
+&lt;p&gt;或&lt;/p&gt;
+&lt;p&gt;for 变量 in {1..3}; do 程序; done&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;打印所有输入参数&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ touch for2.sh
+[atguigu@hadoop101 datas]$ vim for2.sh
+
+#!/bin/bash
+#打印数字
+
+for i in $*
+    do
+      echo &amp;quot;ban zhang love $i &amp;quot;
+    done
+
+[atguigu@hadoop101 datas]$ chmod 777 for2.sh 
+[atguigu@hadoop101 datas]$ bash for2.sh cls xz bd
+ban zhang love cls
+ban zhang love xz
+ban zhang love bd
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;多种写法&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@0725pc shells]# cat test2.sh 
+#! /bin/bash
+for i in 1 2 3
+do 
+	echo $i
+done
+echo &amp;quot;--------------------&amp;quot;
+for i in 1 2 3 ;do echo $i;done
+echo &amp;quot;--------------------&amp;quot;
+for i in {1..3};do echo $i;done
+[root@0725pc shells]# ./test2.sh 
+1
+2
+3
+--------------------
+1
+2
+3
+--------------------
+1
+2
+3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;比较&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo&gt;∗&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;和&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;*和&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.46528em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;∗&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;和&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;@区别&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo&gt;∗&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;和&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;*和&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.46528em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;∗&lt;/span&gt;&lt;span class=&#34;mord cjk_fallback&#34;&gt;和&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;@都表示传递给函数或脚本的所有参数，不被双引号“”包含时，都以$1 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo&gt;…&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;2 …&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;minner&#34;&gt;…&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;n的形式输出所有参数。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ touch for.sh
+[atguigu@hadoop101 datas]$ vim for.sh
+
+#!/bin/bash 
+
+for i in $*
+do
+      echo &amp;quot;ban zhang love $i &amp;quot;
+done
+
+for j in $@
+do      
+        echo &amp;quot;ban zhang love $j&amp;quot;
+done
+
+[atguigu@hadoop101 datas]$ bash for.sh cls xz bd
+ban zhang love cls 
+ban zhang love xz 
+ban zhang love bd 
+ban zhang love cls
+ban zhang love xz
+ban zhang love bd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当它们被双引号“”包含时，“$*”会将所有的参数作为一个整体，以“$1 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo&gt;…&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;2 …&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;minner&#34;&gt;…&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;n”的形式输出所有参数；“$@”会将各个参数分开，以“$1” “&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;”&lt;/mi&gt;&lt;mo&gt;…&lt;/mo&gt;&lt;mi mathvariant=&#34;normal&#34;&gt;”&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;2”…”&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;”&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;minner&#34;&gt;…&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;”&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;n”的形式输出所有参数。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ vim for.sh
+
+#!/bin/bash 
+
+for i in &amp;quot;$*&amp;quot; 
+#$*中的所有参数看成是一个整体，所以这个for循环只会循环一次 
+        do 
+                echo &amp;quot;ban zhang love $i&amp;quot;
+        done 
+
+for j in &amp;quot;$@&amp;quot; 
+#$@中的每个参数都看成是独立的，所以“$@”中有几个参数，就会循环几次 
+        do 
+                echo &amp;quot;ban zhang love $j&amp;quot; 
+done
+
+[atguigu@hadoop101 datas]$ chmod 777 for.sh
+[atguigu@hadoop101 datas]$ bash for.sh cls xz bd
+ban zhang love cls xz bd
+ban zhang love cls
+ban zhang love xz
+ban zhang love bd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;54-while-循环&#34;&gt;5.4 while 循环&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;while [ 条件判断式 ]&lt;/p&gt;
+&lt;p&gt;do&lt;/p&gt;
+&lt;p&gt;程序&lt;/p&gt;
+&lt;p&gt;done&lt;/p&gt;
+&lt;p&gt;或&lt;/p&gt;
+&lt;p&gt;while((表达式))&lt;/p&gt;
+&lt;p&gt;do&lt;/p&gt;
+&lt;p&gt;​     程序&lt;/p&gt;
+&lt;p&gt;done&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;从1加到100&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ touch while.sh
+[atguigu@hadoop101 datas]$ vim while.sh
+
+#!/bin/bash
+s=0
+i=1
+while [ $i -le 100 ]
+do
+        s=$[$s+$i]
+        i=$[$i+1]
+done
+
+echo $s
+
+[atguigu@hadoop101 datas]$ chmod 777 while.sh 
+[atguigu@hadoop101 datas]$ ./while.sh 
+5050
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从0开始，累加加11次&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@0725pc shells]# bash test3.sh 
+11
+[root@0725pc shells]# cat test3.sh 
+#! /bin/bash
+
+NUM=0
+while((NUM&amp;lt;=10));do let NUM++; done
+echo $NUM
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;6-read读取控制台输入&#34;&gt;6、read读取控制台输入&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;read(选项)(参数)&lt;/p&gt;
+&lt;p&gt;​     选项：&lt;/p&gt;
+&lt;p&gt;-p：指定读取值时的提示符；&lt;/p&gt;
+&lt;p&gt;-t：指定读取值时等待的时间（秒）。&lt;/p&gt;
+&lt;p&gt;参数&lt;/p&gt;
+&lt;p&gt;​     变量：指定读取值的变量名&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;提示7秒内，读取控制台输入的名称&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ touch read.sh
+[atguigu@hadoop101 datas]$ vim read.sh
+
+#!/bin/bash
+
+read -t 7 -p &amp;quot;Enter your name in 7 seconds &amp;quot; NAME
+echo $NAME
+
+[atguigu@hadoop101 datas]$ ./read.sh 
+Enter your name in 7 seconds xiaoze
+xiaoze
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;7-函数&#34;&gt;7、函数&lt;/h2&gt;
+&lt;h3 id=&#34;71-系统函数&#34;&gt;7.1 系统函数&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;basename基本语法&lt;/p&gt;
+&lt;p&gt;basename [string / pathname] [suffix]     （功能描述：basename命令会删掉所有的前缀包括最后一个（‘/’）字符，然后将字符串显示出来。&lt;/p&gt;
+&lt;p&gt;选项：&lt;/p&gt;
+&lt;p&gt;suffix为后缀，如果suffix被指定了，basename会将pathname或string中的suffix去掉。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;截取该/home/atguigu/banzhang.txt路径的文件名称&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ basename /home/atguigu/banzhang.txt 
+banzhang.txt
+[atguigu@hadoop101 datas]$ basename /home/atguigu/banzhang.txt .txt
+banzhang
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dirname基本语法&lt;/p&gt;
+&lt;p&gt;dirname 文件绝对路径     （功能描述：从给定的包含绝对路径的文件名中去除文件名（非目录的部分），然后返回剩下的路径（目录的部分））&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;获取banzhang.txt文件的路径&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 ~]$ dirname /home/atguigu/banzhang.txt 
+/home/atguigu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;72-自定义函数&#34;&gt;7.2 自定义函数&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;function  funname[()]&lt;/p&gt;
+&lt;p&gt;{&lt;/p&gt;
+&lt;p&gt;​     Action;&lt;/p&gt;
+&lt;p&gt;​     [return int;]&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;funname&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;经验技巧&lt;/p&gt;
+&lt;p&gt;​     （1）必须在调用函数地方之前，先声明函数，shell脚本是逐行运行。不会像其它语言一样先编译。&lt;/p&gt;
+&lt;p&gt;​     （2）函数返回值，只能通过$?系统变量获得，可以显示加：return返回，如果不加，将以最后一条命令运行结果，作为返回值。return后跟数值n(0-255)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;计算两个输入参数的和&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ touch fun.sh
+[atguigu@hadoop101 datas]$ vim fun.sh
+
+#!/bin/bash
+function sum()
+{
+    s=0
+    s=$[ $1 + $2 ]
+    echo &amp;quot;$s&amp;quot;
+}
+
+read -p &amp;quot;Please input the number1: &amp;quot; n1;
+read -p &amp;quot;Please input the number2: &amp;quot; n2;
+sum $n1 $n2;
+[atguigu@hadoop101 datas]$ chmod 777 fun.sh
+[atguigu@hadoop101 datas]$ ./fun.sh 
+Please input the number1: 2
+Please input the number2: 5
+7
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;8-shell工具重点&#34;&gt;8、Shell工具（重点）&lt;/h2&gt;
+&lt;h3 id=&#34;81-wc&#34;&gt;8.1 wc&lt;/h3&gt;
+&lt;p&gt;​     wc命令用来计算数字。利用wc指令我们可以计算文件的Byte数、字数或是列数，若不指定文件名称，或是所给予的文件名为“-”，则wc指令会从标准输入设备读取数据。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本用法&lt;/p&gt;
+&lt;p&gt;​         wc [选项参数] filename&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;参数说明&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;选项参数&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-l&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;统计文件行数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-w&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;统计文件的单词数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-m&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;统计文件的字符数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-c&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;统计文件的字节数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;p&gt;统计redis_6379.conf文件的行数、单词数、字节数！&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@0725pc myredis]# ll | grep redis_6379.conf
+-rw-r--r--. 1 root root      188 10月  9 15:33 redis_6379.conf
+[root@0725pc myredis]# cat -n redis_6379.conf 
+     1	include /root/myredis/redis.conf
+     2	pidfile &amp;quot;/var/run/redis_6379.pid&amp;quot;
+     3	port 6379
+     4	dbfilename &amp;quot;dump_6379.rdb&amp;quot;
+     5	cluster-enabled yes
+     6	cluster-config-file nodes-6379.conf
+     7	cluster-node-timeout 15000
+     8	
+[root@0725pc myredis]# wc -w redis_6379.conf 
+14 redis_6379.conf
+[root@0725pc myredis]# wc -l redis_6379.conf 
+8 redis_6379.conf
+[root@0725pc myredis]# wc -m redis_6379.conf 
+188 redis_6379.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;82-cut&#34;&gt;8.2 cut&lt;/h3&gt;
+&lt;p&gt;​		cut的工作就是“剪”，具体的说就是在文件中负责剪切数据用的。cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段输出。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本用法&lt;/p&gt;
+&lt;p&gt;cut [选项参数]  filename&lt;/p&gt;
+&lt;p&gt;说明：默认分隔符是制表符&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选项参数说明&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;选项参数&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-f&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;f为fileds，列号，提取第几列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-d&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;d为Descriptor分隔符，按照指定分隔符分割列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;以：为间隔，切割PATH环境变量的第一列&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@0725pc ~]# echo $PATH
+/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/jdk1.8.0_121/bin:/root/bin
+[root@0725pc ~]# echo $PATH | cut -d &#39;:&#39; -f 1
+/usr/lib64/qt-3.3/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;以：为间隔，切割PATH环境变量的第二、三列&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@0725pc ~]# echo $PATH
+/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/jdk1.8.0_121/bin:/root/bin
+[root@0725pc ~]# echo $PATH | cut -d &#39;:&#39; -f 2,3
+/usr/local/sbin:/usr/local/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选取系统PATH变量值，第2个“：”开始后的所有路径：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop101 datas]$ echo $PATH
+/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/atguigu/bin
+
+[atguigu@hadoop102 datas]$ echo $PATH | cut -d: -f 3-
+/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/atguigu/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;以：为间隔，切割PATH环境变量的第一到三列，和第五列&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@0725pc ~]# echo $PATH
+/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/jdk1.8.0_121/bin:/root/bin
+[root@0725pc ~]# echo $PATH | cut -d &#39;:&#39; -f 1-3,5
+/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;切割ifconfig 后打印的IP地址&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;atguigu@hadoop101 datas]$ ifconfig eth0 | grep &amp;quot;inet addr&amp;quot; | cut -d: -f 2 | cut -d&amp;quot; &amp;quot; -f1
+192.168.1.102
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;83-sed&#34;&gt;8.3 sed&lt;/h3&gt;
+&lt;p&gt;sed是一种流编辑器，它一次处理一行内容。处理时，把当前处理的行存储在临时缓冲区中，称为“模式空间”，接着用sed命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。接着处理下一行，这样不断重复，直到文件末尾。文件内容并没有改变，除非你使用重定向存储输出。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本用法&lt;/p&gt;
+&lt;p&gt;sed [选项参数] ‘command’ filename&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选项参数说明&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;选项参数&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-e&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;直接在指令列模式上进行sed的动作编辑。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;命令功能描述&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;命令&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;a&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;新增，a的后面可以接字串，在下一行出现&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;d&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;删除&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;s&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;查找并替换&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;数据准备&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ touch sed.txt
+[atguigu@hadoop102 datas]$ vim sed.txt
+dong shen
+guan zhen
+wo  wo
+lai  lai
+
+le  le
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将“mei nv”这个单词插入到sed.txt第二行下，打印。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ sed &#39;2a mei nv&#39; sed.txt 
+dong shen
+guan zhen
+mei nv
+wo  wo
+lai  lai
+
+le  le
+[atguigu@hadoop102 datas]$ cat sed.txt 
+dong shen
+guan zhen
+wo  wo
+lai  lai
+
+le  le
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：文件并没有改变&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除sed.txt文件所有包含wo的行&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ sed &#39;/wo/d&#39; sed.txt
+dong shen
+guan zhen
+lai  lai
+
+le  le
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除sed.txt文件第二行&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@0725pc ~]# cat sed.txt
+dong shen
+guan zhen
+wo  wo
+lai  lai
+
+le  le
+
+[root@0725pc ~]# sed &#39;2d&#39; sed.txt 
+dong shen
+wo  wo
+lai  lai
+
+le  le
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除sed.txt文件最后一行&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@0725pc ~]# sed &#39;2,$d&#39; sed.txt 
+dong shen
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除sed.txt文件第二行至最后一行&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@0725pc ~]# sed &#39;2,$d&#39; sed.txt 
+dong shen
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将sed.txt文件中wo替换为ni&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ sed &#39;s/wo/ni/g&#39; sed.txt 
+dong shen
+guan zhen
+ni  ni
+lai  lai
+
+le  le
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：‘g’表示global，全部替换，不加g只会替换第一个匹配到的字符。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将sed.txt文件中的第二行删除并将wo替换为ni&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ sed -e &#39;2d&#39; -e &#39;s/wo/ni/g&#39; sed.txt 
+dong shen
+ni  ni
+lai  lai
+
+le  le
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;84-awk&#34;&gt;8.4 awk&lt;/h3&gt;
+&lt;p&gt;一个强大的文本分析工具，把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行分析处理。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本用法&lt;/p&gt;
+&lt;p&gt;awk [选项参数] ‘pattern1{action1} pattern2{action2}...’ filename&lt;/p&gt;
+&lt;p&gt;pattern：表示AWK在数据中查找的内容，就是匹配模式&lt;/p&gt;
+&lt;p&gt;action：在找到匹配内容时所执行的一系列命令&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选项参数说明&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;选项参数&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-F&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;指定输入文件折分隔符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-v&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;赋值一个用户定义变量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;数据准备&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ sudo cp /etc/passwd ./
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;搜索passwd文件以root关键字开头的所有行，并输出该行的第7列。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ awk -F: &#39;/^root/{print $7}&#39; passwd 
+/bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;搜索passwd文件以root关键字开头的所有行，并输出该行的第1列和第7列，中间以“，”号分割。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ awk -F: &#39;/^root/{print $1&amp;quot;,&amp;quot;$7}&#39; passwd 
+root,/bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：只有匹配了patter的行才会执行action&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;只显示/etc/passwd的第一列和第七列，以逗号分割，且在所有行前面添加列名user，shell在最后一行添加&amp;quot;dahaige，/bin/zuishuai&amp;quot;。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ awk -F : &#39;BEGIN{print &amp;quot;user, shell&amp;quot;} {print $1&amp;quot;,&amp;quot;$7} END{print &amp;quot;dahaige,/bin/zuishuai&amp;quot;}&#39; passwd
+user, shell
+root,/bin/bash
+bin,/sbin/nologin
+。。。
+atguigu,/bin/bash
+dahaige,/bin/zuishuai
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：BEGIN 在所有数据读取行之前执行；END 在所有数据执行之后执行。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将passwd文件中的用户id增加数值1并输出&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ awk -v i=1 -F: &#39;{print $3+i}&#39; passwd
+1
+2
+3
+4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;awk的内置变量&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;变量&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;FILENAME&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;文件名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;NR&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;已读的记录数（行号）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;NF&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;浏览记录的域的个数（切割后列的个数）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;统计passwd文件名，每行的行号，每行的列数&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ awk -F: &#39;{print &amp;quot;filename:&amp;quot;  FILENAME &amp;quot;, linenumber:&amp;quot; NR  &amp;quot;,columns:&amp;quot; NF}&#39; passwd 
+filename:passwd, linenumber:1,columns:7
+filename:passwd, linenumber:2,columns:7
+filename:passwd, linenumber:3,columns:7
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;切割IP&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ ifconfig eth0 | grep &amp;quot;inet addr&amp;quot; | awk -F: &#39;{print $2}&#39; | awk -F &amp;quot; &amp;quot; &#39;{print $1}&#39; 
+192.168.1.102
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查询sed.txt中空行所在的行号&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ awk &#39;/^$/{print NR}&#39; sed.txt 
+5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;85-sort&#34;&gt;8.5 sort&lt;/h3&gt;
+&lt;p&gt;sort命令是在Linux里非常有用，它将文件进行排序，并将排序结果标准输出。默认情况以第一个字符串的字典顺序来排序！&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;p&gt;sort(选项)(参数)&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;选项&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-n&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;依照数值的大小排序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-r&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;以相反的顺序来排序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-t&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;设置排序时所用的分隔字符，默认使用TAB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-k&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;指定需要排序的列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-u&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;u为unique的缩写，即如果出现相同的数据，只出现一行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;参数：指定待排序的文件列表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;案例实操&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;数据准备&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ touch sort.sh
+[atguigu@hadoop102 datas]$ vim sort.sh 
+bb:40:5.4
+bd:20:4.2
+xz:50:2.3
+cls:10:3.5
+ss:30:1.6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;按照“：”分割后的第三列倒序排序。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[atguigu@hadoop102 datas]$ sort -t : -nrk 3  sort.sh 
+bb:40:5.4
+bd:20:4.2
+cls:10:3.5
+xz:50:2.3
+ss:30:1.6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+">Shell编程</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://jonchan1013.github.io/post/docker/"" data-c="
           &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200815145424.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;1-容器介绍&#34;&gt;1、容器介绍&lt;/h2&gt;
@@ -4166,13 +5370,13 @@ export Export a container&#39;s ﬁlesystem as a tar archive&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;导⼊镜像归档⽂件到其他宿主机&lt;br&gt;
 import Import the contents from a tarball to create a ﬁlesystem image&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt; [root@qfedu.com ~]# docker import elated_lovelace.tar  elated_lovelace:v1
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt; [root@Linux ~]# docker import elated_lovelace.tar  elated_lovelace:v1
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;注意：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;如果导⼊镜像时没有起名字，随后可以单独起名字(没有名字和tag)，可以⼿动加tag&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker tag 镜像ID mycentos:7
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker tag 镜像ID mycentos:7
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;62-通过容器创建本地镜像&#34;&gt;6.2 通过容器创建本地镜像&lt;/h3&gt;
 &lt;p&gt;背景：&lt;br&gt;
@@ -4180,15 +5384,15 @@ import Import the contents from a tarball to create a ﬁlesystem image&lt;/p&gt
 ⽅案：&lt;br&gt;
 使⽤ docker commit 指令，把⼀个正在运⾏的容器，直接提交为⼀个镜像。commit 是提交的意思,类似告诉svn服务器我要⽣成⼀个新的版本。&lt;/p&gt;
 &lt;p&gt;例：在容器内部新建了⼀个⽂件&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker exec -it 4ddf4638572d 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker exec -it 4ddf4638572d 
 /bin/sh  
 root@4ddf4638572d# touch test.txt
 root@4ddf4638572d# exit
 将这个新建的⽂件提交到镜像中保存
-[root@qfedu.com ~]# docker commit 4ddf4638572d wing/helloworld:v2
+[root@Linux ~]# docker commit 4ddf4638572d wing/helloworld:v2
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;例：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker commit -m &amp;quot;my images 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker commit -m &amp;quot;my images 
 version1&amp;quot; -a &amp;quot;wing&amp;quot; 108a85b1ed99 
 daocloud.io/ubuntu:v2
   
@@ -4205,12 +5409,12 @@ tag
 &lt;p&gt;保存⼀台宿主机上的镜像为tar⽂件，然后可以导⼊到其他的宿主机上：&lt;br&gt;
 save Save an image(s) to a tar archive&lt;/p&gt;
 &lt;p&gt;将镜像打包，与下⾯的load命令相对应&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker save -o nginx.tar nginx
-[root@qfedu.com ~]# docker save &amp;gt; nginx.tar nginx
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker save -o nginx.tar nginx
+[root@Linux ~]# docker save &amp;gt; nginx.tar nginx
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;load Load an image from a tar archive or STDIN&lt;br&gt;
 与上⾯的save命令相对应，将上⾯sava命令打包的镜像通过load命令导⼊&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker load &amp;lt; nginx.tar
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker load &amp;lt; nginx.tar
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;注：&lt;br&gt;
 1.tar⽂件的名称和保存的镜像名称没有关系&lt;br&gt;
@@ -4219,7 +5423,7 @@ save Save an image(s) to a tar archive&lt;/p&gt;
 &lt;p&gt;虽然可以⾃⼰制作 rootfs(⻅&#39;容器⽂件系统那些事⼉&#39;)，但Docker提供了⼀种更便捷的⽅式，叫作 Dockerﬁle&lt;br&gt;
 docker build命令⽤于根据给定的Dockerﬁle和上下⽂以构建Docker镜像。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;docker build语法&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker build [OPTIONS] &amp;lt;PATH | URL | -&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker build [OPTIONS] &amp;lt;PATH | URL | -&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;选项说明&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -4252,7 +5456,7 @@ docker build命令⽤于根据给定的Dockerﬁle和上下⽂以构建Docker镜
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;说明：其中Dockerﬁle位于context.tar.gz的根路径&lt;br&gt;
 可以同时设置多个tag&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt; [root@qfedu.com ~]# docker build -t champagne/bbauto:latest -t champagne/bbauto:v2.1 . 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt; [root@Linux ~]# docker build -t champagne/bbauto:latest -t champagne/bbauto:v2.1 . 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;创建镜像所在的⽂件夹和Dockerﬁle⽂件&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;mkdir dockerfile-test 
@@ -4260,10 +5464,10 @@ cd dockerfile-test
 touch Dockerfile 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;在Dockerﬁle⽂件中写⼊指令，每⼀条指令都会更新镜像的信息例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim Dockerfile 
-[root@qfedu.com ~]# This is a comment 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# vim Dockerfile 
+[root@Linux ~]# This is a comment 
 FROM  daocloud.io/library/centos:7 
-MAINTAINER wing wing@qfedu.com
+MAINTAINER wing wing@Linux
 RUN  命令1;命令2；命令3
 RUN  命令
 &lt;/code&gt;&lt;/pre&gt;
@@ -4275,22 +5479,22 @@ MAINTAINER 是描述 镜像的创建⼈。&lt;br&gt;
 RUN 命令是在镜像内部执⾏。就是说他后⾯的命令应该是针对镜像可以运⾏的命令。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;创建镜像&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker build  -t  centos:v2 . 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker build  -t  centos:v2 . 
      docker build  是docker创建镜像的命令 
      -t  镜像名称  
      &amp;quot;.&amp;quot; 是⽤来指明我们使⽤的Dockerfile⽂件所在的当前⽬录
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;2.4、创建完成后，⽤这个镜像运⾏容器&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -it centos:v2 /bin/bash
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run -it centos:v2 /bin/bash
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;65-dockerfile实例01容器化python的flask应用&#34;&gt;6.5 Dockerﬁle实例01：容器化Python的Flask应⽤&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;⽬标&lt;/strong&gt;&lt;br&gt;
 ⽤ Docker 部署⼀个⽤ Python 编写的 Web 应⽤。&lt;br&gt;
 &lt;strong&gt;应⽤代码部分&lt;/strong&gt;&lt;br&gt;
 代码功能：如果当前环境中有&amp;quot;NAME&amp;quot;这个环境变量，就把它打印&amp;quot;Hello&amp;quot;后，否则就打印&amp;quot;Hello world&amp;quot;，最后再打印出当前环境的hostname。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# mkdir python_app
-[root@qfedu.com ~]# cd python_app
-[root@qfedu.com ~]# vim app.py
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# mkdir python_app
+[root@Linux ~]# cd python_app
+[root@Linux ~]# vim app.py
 from flask import Flask
 import socket
 import os
@@ -4305,11 +5509,11 @@ if __name__ == &amp;quot;__main__&amp;quot;:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;应⽤依赖&lt;br&gt;
 定义在同⽬录下的 requirements.txt ⽂件⾥，内容如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim requirements.txt
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# vim requirements.txt
 Flask
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;编写Dockerﬁle&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim Dockerfile
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# vim Dockerfile
 FROM python:2.7-slim
 WORKDIR /app
 ADD  .  /app
@@ -4342,52 +5546,52 @@ CMD [&amp;quot;python&amp;quot;, &amp;quot;app.py&amp;quot;]&lt;br&gt;
 但是，默认，Docker 会提供⼀个隐含的 ENTRYPOINT，即：/bin/sh -c。所以，在不指定 ENTRYPOINT 时，⽐如在这个例⼦⾥，实际上运⾏在容器⾥的完整进程是：/bin/sh -c &amp;quot;python app.py&amp;quot;，即 CMD 的内容就是 ENTRYPOINT 的参数。&lt;br&gt;
 基于以上原因，后⾯会统⼀称 Docker 容器的启动进程为ENTRYPOINT，⽽不是 CMD。&lt;br&gt;
 现在⽬录结构：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# ls
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# ls
 Dockerfile  app.py  requirements.txt
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;构建镜像&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker build -t helloworld .
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker build -t helloworld .
 -t  给这个镜像加⼀个 Tag
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Dockerﬁle 中的每个原语执⾏后，都会⽣成⼀个对应的镜像层。即使原语本身并没有明显地修改⽂件的操作（⽐如，ENV 原语），它对应的层也会存在。只不过在外界看来，这个层是空的。&lt;/p&gt;
 &lt;p&gt;查看结果&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker image ls
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker image ls
 REPOSITORY       TAG             IMAGE ID
 helloworld       latest        653287cdf998
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;启动容器&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -p 4000:80 helloworld
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run -p 4000:80 helloworld
 镜像名 helloworld 后⾯，什么都不⽤写，因为在 Dockerfile 中已经指定了 CMD。
 否则，就得把进程的启动命令加在后⾯：
-[root@qfedu.com ~]# docker run -p 4000:80 helloworld python app.py
+[root@Linux ~]# docker run -p 4000:80 helloworld python app.py
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看容器&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker ps
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker ps
 CONTAINER ID     IMAGE         COMMAND          
 CREATED
 4ddf4638572d     helloworld    &amp;quot;python app.py&amp;quot;   10 
 seconds ago
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;进⼊容器&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker exec -it b69 /bin/bash
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker exec -it b69 /bin/bash
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;访问容器内应⽤&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# curl http://localhost:4000
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# curl http://localhost:4000
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;Hello World!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Hostname: 4ddf4638572d&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;⾄此，已经使⽤容器完成了⼀个应⽤的开发与测试，如果现在想要把这个容器的镜像上传到 DockerHub 上分享给更多的⼈，⾸先要注册⼀个 Docker Hub 账号，然后使⽤ docker login 命令登录。&lt;/p&gt;
 &lt;p&gt;给容器镜像打tag起⼀个完整的名字：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker tag helloworld chenyoong/helloworld:v1
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker tag helloworld chenyoong/helloworld:v1
 chenyong为我在docker hub的⽤户名
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;推送镜像到Docker Hub&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker push chenyong/helloworld:v1
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker push chenyong/helloworld:v1
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;66-dockerfile实例02制作kubectl的镜像&#34;&gt;6.6 Dockerﬁle实例02：制作Kubectl的镜像&lt;/h3&gt;
 &lt;p&gt;注：本实例学完k8s之后才能做&lt;br&gt;
 制作镜像：wing/kubectl&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]#cat Dockerfile/kubectl/Dockerfile
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]#cat Dockerfile/kubectl/Dockerfile
 FROM alpine
 MAINTAINER wing &amp;lt;276267003@qq.com&amp;gt;
 LABEL org.label-schema.vcs-ref=$VCS_REF \
@@ -4412,20 +5616,20 @@ CMD [&amp;quot;kubectl&amp;quot;, &amp;quot;help&amp;quot;]
 &lt;h3 id=&#34;71-仓库镜像&#34;&gt;7.1 仓库镜像&lt;/h3&gt;
 &lt;p&gt;Docker hub官⽅已提供容器镜像registry,⽤于搭建私有仓库&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;拉取镜像&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker pull daocloud.io/library/registry:latest
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker pull daocloud.io/library/registry:latest
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;72-运行容器&#34;&gt;7.2 运⾏容器&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --name &amp;quot;pri_registry&amp;quot; --restart=always -d -p 5000:5000 daocloud.io/library/registry 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run --name &amp;quot;pri_registry&amp;quot; --restart=always -d -p 5000:5000 daocloud.io/library/registry 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;注：如果创建容器不成功，报错防⽕墙，解决⽅案如下&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]#systemctl stop firewalld
-[root@qfedu.com ~]#yum install iptables*
-[root@qfedu.com ~]#systemctl start iptables
-[root@qfedu.com ~]#iptables -F
-[root@qfedu.com ~]#systemctl restart docker
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]#systemctl stop firewalld
+[root@Linux ~]#yum install iptables*
+[root@Linux ~]#systemctl start iptables
+[root@Linux ~]#iptables -F
+[root@Linux ~]#systemctl restart docker
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;73-查看容器&#34;&gt;7.3 查看容器&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker ps
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker ps
 CONTAINER ID  IMAGE  COMMAND  CREATED  STATUS   PORTS 
   NAMES
 1f444285bed8     daocloud.io/library/registry 
@@ -4433,7 +5637,7 @@ CONTAINER ID  IMAGE  COMMAND  CREATED  STATUS   PORTS
 seconds    0.0.0.0:5000-&amp;gt;5000/tcp  elegant_rosalind
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;74-连接容器查看端口状态&#34;&gt;7.4 连接容器查看端⼝状态&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker exec -it  1f444285bed8  /bin/sh    //这⾥是sh 不是bash
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker exec -it  1f444285bed8  /bin/sh    //这⾥是sh 不是bash
   /# netstat -lnp                        //查看5000端
 ⼝是否开启
   Active Internet connections (only servers)
@@ -4446,53 +5650,53 @@ LISTEN    1/registry
 PID/Program name   Path
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;在本机查看能否访问该私有仓库,看看状态码是不是200&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# curl  -I  127.0.0.1:5000   //参数是⼤写的i
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# curl  -I  127.0.0.1:5000   //参数是⼤写的i
 HTTP/1.1 200 OK    
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;75-仓库功能测试&#34;&gt;7.5 仓库功能测试&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;为了⽅便，下载1个⽐较⼩的镜像,buysbox
- [root@qfedu.com ~]# docker pull busybox
+ [root@Linux ~]# docker pull busybox
 
 上传前必须给镜像打tag  注明ip和端⼝：
- [root@qfedu.com ~]# docker tag  busybox  私有仓库IP:端⼝/busybox
+ [root@Linux ~]# docker tag  busybox  私有仓库IP:端⼝/busybox
 
 这是直接从官⽅拉的镜像，很慢：
-  [root@qfedu.com ~]# docker tag busybox 192.168.245.136:5000/busybox
+  [root@Linux ~]# docker tag busybox 192.168.245.136:5000/busybox
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;下⾯这个Mysql是我测试的第⼆个镜像，从daocloud拉取的：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker tag daocloud.io/library/mysql 192.168.245.136:5000/daocloud.io/library/mysql
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker tag daocloud.io/library/mysql 192.168.245.136:5000/daocloud.io/library/mysql
   注：tag后⾯可以使⽤镜像名称也可以使⽤id,我这⾥使⽤的镜像名称，如果使⽤官⽅的镜像，不需要加前缀，但是daocloud.io的得加前缀
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;修改请求⽅式为http&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;默认为https，不改会报以下错误:
     Get https://master.up.com:5000/v1/_ping: http: 
 server gave HTTP response to HTTPS client
-  [root@qfedu.com ~]# vim /etc/docker/daemon.json
+  [root@Linux ~]# vim /etc/docker/daemon.json
   { &amp;quot;insecure-registries&amp;quot;:[&amp;quot;192.168.245.136:5000&amp;quot;] }
   
 重启docker:
-  [root@qfedu.com ~]# systemctl restart docker
+  [root@Linux ~]# systemctl restart docker
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;上传镜像到私有仓库&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt; [root@qfedu.com ~] # docker push 192.168.245.136:5000/busybox 
- [root@qfedu.com ~] # docker push 192.168.245.136:5000/daocloud.io/library/mysql
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt; [root@Linux ~] # docker push 192.168.245.136:5000/busybox 
+ [root@Linux ~] # docker push 192.168.245.136:5000/daocloud.io/library/mysql
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看私有仓库⾥的所有镜像&lt;br&gt;
 注：我这⾥是⽤的是ubuntu的例⼦&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~] # curl 192.168.245.130:5000/v2/_catalog
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~] # curl 192.168.245.130:5000/v2/_catalog
  { &amp;quot;repositories&amp;quot; :[ &amp;quot;daocloud.io/ubuntu&amp;quot; ]}
 或者
-[root@qfedu.com ~] # curl http://192.168.245.130:5000/v2/daocloud.io/ubuntu/tags/list
+[root@Linux ~] # curl http://192.168.245.130:5000/v2/daocloud.io/ubuntu/tags/list
  { &amp;quot;name&amp;quot; : &amp;quot;daocloud.io/ubuntu&amp;quot; , &amp;quot;tags&amp;quot; :[ &amp;quot;v2&amp;quot; ]}
-[root@qfedu.com ~] # curl http://192.168.245.130:5000/v2/repo 名字/tags/list
+[root@Linux ~] # curl http://192.168.245.130:5000/v2/repo 名字/tags/list
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;拉取镜像测试&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~] # docker pull 192.168.245.136:5000/busybox
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~] # docker pull 192.168.245.136:5000/busybox
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;8-部署docker-webui&#34;&gt;8、部署Docker-WebUI&lt;/h2&gt;
 &lt;h3 id=&#34;81-下载并运行容器&#34;&gt;8.1 下载并运⾏容器&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]#docker pull uifd/ui-for-docker 
-[root@qfedu.com ~]#docker run -it -d --name docker-web -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock docker.io/uifd/ui-for-docker 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]#docker pull uifd/ui-for-docker 
+[root@Linux ~]#docker run -it -d --name docker-web -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock docker.io/uifd/ui-for-docker 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;82-浏览器访问测试&#34;&gt;8.2 浏览器访问测试&lt;/h3&gt;
 &lt;p&gt;http://ip:9000&lt;/p&gt;
@@ -4507,21 +5711,21 @@ CPU 和内存的资源限制已经是⽐较成熟和易⽤，能够满⾜⼤部�
 &lt;h3 id=&#34;91-系统压力测试&#34;&gt;9.1 系统压⼒测试&lt;/h3&gt;
 &lt;p&gt;Stress是⼀个linux下的压⼒测试⼯具，专⻔为那些想要测试⾃⼰的系统，完全⾼负荷和监督这些设备运⾏的⽤户。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;安装
-[root@qfedu.com ~]# yum install stress -y
+[root@Linux ~]# yum install stress -y
  
 测试场景举例 
 测试CPU负荷 
-[root@qfedu.com ~]# stress -c 4  //增加4个cpu进程，处理sqrt()函数函数，以提⾼系统CPU负荷
+[root@Linux ~]# stress -c 4  //增加4个cpu进程，处理sqrt()函数函数，以提⾼系统CPU负荷
  
 内存测试
-[root@qfedu.com ~]# stress –i 4 –vm 10 –vm-bytes 1G –vm-hang 100 –timeout 100s
+[root@Linux ~]# stress –i 4 –vm 10 –vm-bytes 1G –vm-hang 100 –timeout 100s
 新增4个io进程，10个内存分配进程，每次分配⼤⼩1G，分配后不释放，测试100S
 
 磁盘I/O测试
-[root@qfedu.com ~]# stress –d 1 --hdd-bytes 3G  //新增1个写进程，每次写3G⽂件块
+[root@Linux ~]# stress –d 1 --hdd-bytes 3G  //新增1个写进程，每次写3G⽂件块
 
 硬盘测试（不删除）
-[root@qfedu.com ~]# stress –i 1 –d 10 --hdd-bytes 3G –hdd-noclean
+[root@Linux ~]# stress –i 1 –d 10 --hdd-bytes 3G –hdd-noclean
 新增1个IO进程，10个写进程，每次写⼊3G⽂件块，且不清除，会逐步将硬盘耗尽。
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;Stress各主⽤参数说明&lt;/strong&gt;&lt;br&gt;
@@ -4561,9 +5765,9 @@ docker 允许⽤户为每个容器设置⼀个数字，代表容器的 CPUshare�
 设置 CPU share 的参数：&lt;br&gt;
 -c --cpu-shares，它的值是⼀个整数。&lt;br&gt;
 我的机器是 4 核 CPU，因此运⾏⼀个stress容器,使⽤ stress 启动4 个进程来产⽣计算压⼒：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker pull progrium/stress
-[root@qfedu.com ~]# yum install htop -y
-[root@qfedu.com ~]# docker run --rm -it 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker pull progrium/stress
+[root@Linux ~]# yum install htop -y
+[root@Linux ~]# docker run --rm -it 
 progrium/stress --cpu 4 
 stress: info: [1] dispatching hogs: 4 cpu, 0 io, 0 vm, 0 hdd
 stress: dbug: [1] using backoff sleep of 12000us
@@ -4578,7 +5782,7 @@ stress: dbug: [1] --&amp;gt; hogcpu worker 1 [10] forked
 &lt;p&gt;在另外⼀个 Terminal 使⽤ htop 查看资源的使⽤情况：&lt;/p&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;6&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200820013659.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;上图中看到，CPU 四个核资源都达到了 100%。四个 stress 进程CPU 使⽤率没有达到 100% 是因为系统中还有其他机器在运⾏。为了⽐较，另外启动⼀个 share 为 512 的容器：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --rm -it -c 512 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run --rm -it -c 512 
 progrium/stress --cpu 4 
 stress: info: [1] dispatching hogs: 4 cpu, 0 io, 0 vm, 0 hdd
 stress: dbug: [1] using backoff sleep of 12000us
@@ -4598,7 +5802,7 @@ stress: dbug: [1] --&amp;gt; hogcpu worker 1 [9] forked
 -c --cpu-shares 参数只能限制容器使⽤ CPU 的⽐例，或者说优先级，⽆法确定地限制容器使⽤ CPU 的具体核数；从 1.13 版本之后，docker 提供了 --cpus 参数可以限定容器能使⽤的 CPU 核数。这个功能可以让我们更精确地设置容器 CPU 使⽤量，是⼀种更容易理解也因此更常⽤的⼿段。&lt;br&gt;
 --cpus 后⾯跟着⼀个浮点数，代表容器最多使⽤的核数，可以精确到⼩数点⼆位，也就是说容器最⼩可以使⽤ 0.01 核 CPU。&lt;br&gt;
 限制容器只能使⽤ 1.5 核数 CPU&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --rm -it --cpus 1.5 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run --rm -it --cpus 1.5 
 progrium/stress --cpu 3 
 stress: info: [1] dispatching hogs: 3 cpu, 0 io, 0 vm, 0 hdd
 stress: dbug: [1] using backoff sleep of 9000us
@@ -4612,7 +5816,7 @@ stress: dbug: [1] --&amp;gt; hogcpu worker 1 [9] forked
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;8&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200820013841.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;可以看到，每个 stress 进程 CPU 使⽤率⼤约在 50%，总共的使⽤率为 150%，符合 1.5 核的设置。&lt;br&gt;
 如果设置的 --cpus 值⼤于主机的 CPU 核数，docker 会直接报错：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --rm -it --cpus 8 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run --rm -it --cpus 8 
 progrium/stress --cpu 3 
 docker: Error response from daemon: Range of CPUs is from 0.01 to 4.00, as there are only 4 CPUs available.
 See &#39;docker run --help&#39;.
@@ -4625,7 +5829,7 @@ See &#39;docker run --help&#39;.
 docker 允许调度的时候限定容器运⾏在哪个 CPU 上。&lt;/p&gt;
 &lt;p&gt;限制容器运⾏在哪些核上并不是⼀个很好的做法，因为它需要实现知道主机上有多少 CPU 核，⽽且⾮常不灵活。除⾮有特别的需求，⼀般并不推荐在⽣产中这样使⽤。&lt;br&gt;
 假如主机上有 4 个核，可以通过 --cpuset 参数让容器只运⾏在前两个核上：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --rm -it --cpuset-
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run --rm -it --cpuset-
 cpus=0,1 progrium/stress --cpu 2 
 stress: info: [1] dispatching hogs: 2 cpu, 0 io, 0 vm, 0 hdd
 stress: dbug: [1] using backoff sleep of 6000us
@@ -4669,7 +5873,7 @@ docker 启动参数中，和内存限制有关的包括（参数的值⼀般是�
 是否运⾏ OOM 的时候杀死容器。只有设置了 -m，才可以把这个选项设置为 false，否则容器会耗尽主机内存，⽽且导致主机应⽤被杀死&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;如果限制容器的内存使⽤为 64M，在申请 64M 资源的情况下，容器运⾏正常（如果主机上内存⾮常紧张，并不⼀定能保证这⼀点）：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --rm -it -m 64m progrium/stress --vm 1 --vm-bytes 64M --vm-hang 0
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run --rm -it -m 64m progrium/stress --vm 1 --vm-bytes 64M --vm-hang 0
 WARNING: Your kernel does not support swap limit 
 capabilities or the cgroup is not mounted. Memory 
 limited without swap.
@@ -4681,7 +5885,7 @@ stress: dbug: [7] touching bytes in strides of 4096 bytes ...
 stress: dbug: [7] sleeping forever with allocated memory .....
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;⽽如果申请 100M 内存，会发现容器⾥的进程被 kill 掉了（worker 7 got signal 9，signal 9 就是 kill 信号）&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --rm -it -m 64m progrium/stress --vm 1 --vm-bytes 100M --vm-hang 0 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run --rm -it -m 64m progrium/stress --vm 1 --vm-bytes 100M --vm-hang 0 
 WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
 stress: info: [1] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
 stress: dbug: [1] using backoff sleep of 3000us
@@ -4701,7 +5905,7 @@ docker 允许你直接限制磁盘的读写速率，对应的参数有：&lt;br&
 --device-write-bps：磁盘每秒最多可以写多少⽐特（bytes）&lt;br&gt;
 上⾯两个参数的值都是磁盘以及对应的速率，限制 limit 为正整数，单位可以是 kb、mb 和 gb。&lt;/p&gt;
 &lt;p&gt;⽐如可以把设备的读速率限制在 1mb：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -it --device /dev/sda:/dev/sda --device-read-bps /dev/sda:1mb ubuntu:16.04 bash 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run -it --device /dev/sda:/dev/sda --device-read-bps /dev/sda:1mb ubuntu:16.04 bash 
 root@6c048edef769# cat /sys/fs/cgroup/blkio/blkio.throttle.read_bps_device 
 8:0 1048576
 root@6c048edef769# dd iflag=direct,nonblock if=/dev/sda of=/dev/null bs=5M count=10
@@ -4717,7 +5921,7 @@ root@6c048edef769# dd iflag=direct,nonblock if=/dev/sda of=/dev/null bs=5M count
 &lt;/blockquote&gt;
 &lt;p&gt;上⾯两个参数的值都是磁盘以及对应的 IO 上限。&lt;br&gt;
 ⽐如，可以让磁盘每秒最多读 100 次：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -it --device /dev/sda:/dev/sda --device-read-iops /dev/sda:100 ubuntu:16.04 bash root@2e3026e9ccd2:/[root@qfedu.com 
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run -it --device /dev/sda:/dev/sda --device-read-iops /dev/sda:100 ubuntu:16.04 bash root@2e3026e9ccd2:/[root@Linux 
 ~]# dd iflag=direct,nonblock if=/dev/sda of=/dev/null bs=1k count=1000
 1000+0 records in
 1000+0 records out
@@ -4731,17 +5935,17 @@ root@6c048edef769# dd iflag=direct,nonblock if=/dev/sda of=/dev/null bs=5M count
 创建应⽤容器的时候，⼀般会做端⼝映射，这样是为了让外部能够访问这些容器⾥的应⽤。可以⽤多个-p&lt;strong&gt;指定&lt;/strong&gt;多个端⼝映射关系。&lt;br&gt;
 本例使⽤-p把本地3307转发到容器的3306，其他参数需要查看发布容器的⻚⾯提示&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;查看本地地址：
-[root@qfedu.com ~]#ip a 
+[root@Linux ~]#ip a 
   ens33: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
   link/ether 00:0c:29:0a:5b:8b brd ff:ff:ff:ff:ff:ff
   inet 192.168.245.134/24 brd 192.168.245.255 scope global dynamic ens33
     valid_lft 1444sec preferred_lft 1444sec
 
 运⾏容器：
-[root@qfedu.com ~]# docker run --name mysql1 -p 3307:3306  -e MYSQL_ROOT_PASSWORD=123 daocloud.io/library/mysql
+[root@Linux ~]# docker run --name mysql1 -p 3307:3306  -e MYSQL_ROOT_PASSWORD=123 daocloud.io/library/mysql
 
 查看Ip地址：
-[root@qfedu.com ~]# docker inspect  mysql1 | grep 
+[root@Linux ~]# docker inspect  mysql1 | grep 
 IPAddress
       &amp;quot;SecondaryIPAddresses&amp;quot;: null,
       &amp;quot;IPAddress&amp;quot;: &amp;quot;172.17.0.2&amp;quot;,
@@ -4749,7 +5953,7 @@ IPAddress
           
 通过本地IP：192.168.245.134的3307端⼝访问容器mysql1内的数
 据库，出现如下提示恭喜你
-[root@qfedu.com ~]# mysql -u root -p123 -h 192.168.245.134 -P3307
+[root@Linux ~]# mysql -u root -p123 -h 192.168.245.134 -P3307
 Welcome to the MariaDB monitor.  Commands end with ; 
 or \g.
 Your MySQL connection id is 3
@@ -4762,15 +5966,15 @@ MySQL [(none)]&amp;gt;
 &lt;h3 id=&#34;102-redis应用端口转发&#34;&gt;10.2 Redis应⽤端⼝转发&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;-P&lt;/strong&gt;&lt;br&gt;
 Docker 会&lt;strong&gt;随机映射&lt;/strong&gt;⼀个 49000~49900 的端⼝到内部容器开放的⽹络端⼝。如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker images
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker images
 REPOSITORY      TAG         IMAGE ID       CREATED       SIZE
 docker.io/redis   latest        e4a35914679d     2weeks ago     182.9 MB
  
-[root@qfedu.com ~]# docker run --name myredis -P -d docker.io/redis
+[root@Linux ~]# docker run --name myredis -P -d docker.io/redis
 805d0e21e531885aad61d3e82395210b50621f1991ec4b7f9a0e
 25c815cc0272
 
-[root@qfedu.com ~]# docker ps
+[root@Linux ~]# docker ps
 CONTAINER ID     IMAGE        COMMAND          
 CREATED       STATUS        PORTS           NAMES
 805d0e21e531     docker.io/redis   &amp;quot;docker-
@@ -4779,15 +5983,15 @@ entrypoint.sh&amp;quot;  4 seconds ago    Up 3 seconds
 从上⾯的结果中可以看出，本地主机的32768端⼝被映射到了redis容器的6379端⼝上，也就是说访问本机的32768端⼝即可访问容器内redis端⼝。
 
 测试看下，登陆redis容器，随意写个数据
-[root@qfedu.com ~]# docker run --rm -it --name myredis2 --link myredis:redisdb docker.io/redis /bin/
+[root@Linux ~]# docker run --rm -it --name myredis2 --link myredis:redisdb docker.io/redis /bin/
 bash
-root@be44d955d6f4:/data[root@qfedu.com ~]# redis-cli -h redisdb -p 6379
+root@be44d955d6f4:/data[root@Linux ~]# redis-cli -h redisdb -p 6379
 redisdb:6379&amp;gt; set wing 123
 OK
 redisdb:6379&amp;gt;
 
 在别的机器上通过上⾯映射的端⼝32768连接这个容器的redis
-[root@qfedu.com ~]# redis-cli -h 192.168.245.134 -p 32768
+[root@Linux ~]# redis-cli -h 192.168.245.134 -p 32768
 192.168.1.23:32768&amp;gt; get wing
 &amp;quot;123&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
@@ -4795,17 +5999,17 @@ redisdb:6379&amp;gt;
 &lt;h3 id=&#34;111-容器卷操作&#34;&gt;11.1 容器卷操作&lt;/h3&gt;
 &lt;p&gt;容器卷是容器和宿主机之间的⽂件共享⽅式之⼀&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;新卷只能在容器创建过程当中挂载
-[root@qfedu.com ~]# docker run -it --name=&amp;quot;voltest&amp;quot; -v /tmp:/test  daocloud.io/library/centos:5 /bin/bash
+[root@Linux ~]# docker run -it --name=&amp;quot;voltest&amp;quot; -v /tmp:/test  daocloud.io/library/centos:5 /bin/bash
 
 共享其他容器的卷：
-[root@qfedu.com ~]# docker run -it --volumes-from bc4181  daocloud.io/library/centos:5  /bin/bash
+[root@Linux ~]# docker run -it --volumes-from bc4181  daocloud.io/library/centos:5  /bin/bash
 
 实际应⽤中可以利⽤多个-v选项把宿主机上的多个⽬录同时共享给新建
 容器：
 
 ⽐如： 
-[root@qfedu.com ~]# docker run -it -v /abc:/abc -v /def:/def 1ae9
-[root@qfedu.com ~]# docker run  -v /vol/index.html:/usr/share/nginx/html/index.html -it nginx /bin/bash
+[root@Linux ~]# docker run -it -v /abc:/abc -v /def:/def 1ae9
+[root@Linux ~]# docker run  -v /vol/index.html:/usr/share/nginx/html/index.html -it nginx /bin/bash
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;注意：&lt;br&gt;
 如果是⽂件共享，数据不能同步更新&lt;/p&gt;
@@ -4815,8 +6019,8 @@ redisdb:6379&amp;gt;
 宿主机上的⽂件和⽬录，怎么才能让容器⾥的进程访问到？&lt;/p&gt;
 &lt;p&gt;这正是 Docker Volume 要解决的问题：Volume 机制，允许你将宿主机上指定的⽬录或者⽂件，挂载到容器⾥⾯进⾏读取和修改操作。&lt;br&gt;
 在 Docker 项⽬⾥，它⽀持两种 Volume 声明⽅式，可以把宿主机⽬录挂载进容器的 /test ⽬录当中：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -v /test ...
-[root@qfedu.com ~]# docker run -v /home:/test ...
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run -v /test ...
+[root@Linux ~]# docker run -v /home:/test ...
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这两种声明⽅式的本质是相同的：都是把⼀个宿主机的⽬录挂载进了容器的 /test ⽬录。&lt;br&gt;
 第⼀种情况没有显示声明宿主机⽬录，Docker 就会默认在宿主机上创建⼀个临时⽬录 /var/lib/docker/volumes/[VOLUME_ID]/_data，然后把它挂载到容器的 /test ⽬录上。&lt;br&gt;
@@ -4834,30 +6038,30 @@ mount --bind /home /test，会将 /home 挂载到 /test 上。其实相当于将
 原因前⾯提到过。容器的镜像操作，⽐如 docker commit，都是发⽣在宿主机空间的。⽽由于 Mount Namespace 的隔离作⽤，宿主机并不知道这个绑定挂载的存在。所以，在宿主机看来，容器中可读写层的 /test ⽬录（/var/lib/docker/aufs/mnt/[可读写层 ID]/test），始终是空的。&lt;br&gt;
 不过，由于 Docker ⼀开始还是要创建 /test 这个⽬录作为挂载点，所以执⾏了 docker commit 之后，新产⽣的镜像⾥，会多出来⼀个空的 /test ⽬录。毕竟，新建⽬录操作，⼜不是挂载操作，MountNamespace 对它可起不到&amp;quot;障眼法&amp;quot;的作⽤。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;1.启动⼀个 helloworld 容器，给它声明⼀个 Volume，挂载在容器⾥的 /test ⽬录上：
-[root@qfedu.com ~]# docker run -d -v /test helloworld
+[root@Linux ~]# docker run -d -v /test helloworld
 cf53b766fa6f
 
 2.容器启动之后，查看⼀下这个 Volume 的 ID：
-[root@qfedu.com ~]# docker volume ls
+[root@Linux ~]# docker volume ls
 DRIVER        VOLUME NAME
 local        
 cb1c2f7221fa9b0971cc35f68aa1034824755ac44a034c0c0a1d
 d318838d3a6d
 
 3.使⽤这个 ID，可以找到它在 Docker ⼯作⽬录下的 volumes 路径：
-[root@qfedu.com ~]# ls /var/lib/docker/volumes/cb1c2f7221fa/_data/
+[root@Linux ~]# ls /var/lib/docker/volumes/cb1c2f7221fa/_data/
 这个 _data ⽂件夹，就是这个容器的 Volume 在宿主机上对应的临时⽬录了。
 
 4.在容器的 Volume ⾥，添加⼀个⽂件 text.txt：
-[root@qfedu.com ~]# docker exec -it cf53b766fa6f /bin/sh
+[root@Linux ~]# docker exec -it cf53b766fa6f /bin/sh
 cd test/
 touch text.txt
 
 5.再回到宿主机，就会发现 text.txt 已经出现在了宿主机上对应的临时⽬录⾥：
-[root@qfedu.com ~]# ls /var/lib/docker/volumes/cb1c2f7221fa/_data/
+[root@Linux ~]# ls /var/lib/docker/volumes/cb1c2f7221fa/_data/
 text.txt
 可是，如果你在宿主机上查看该容器的可读写层，虽然可以看到这个 /test ⽬录，但其内容是空的：
-[root@qfedu.com ~]# ls /var/lib/docker/aufs/mnt/6780d0778b8a/test
+[root@Linux ~]# ls /var/lib/docker/aufs/mnt/6780d0778b8a/test
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;可以确认，容器 Volume ⾥的信息，并不会被 docker commit 提交掉；但这个挂载点⽬录 /test 本身，则会出现在新的镜像当中。以上内容，就是 Docker Volume 的核⼼原理了。&lt;br&gt;
 &lt;strong&gt;Docker 容器&amp;quot;全景图&amp;quot;：&lt;/strong&gt;&lt;/p&gt;
@@ -4865,13 +6069,13 @@ text.txt
 &lt;p&gt;⼀个&amp;quot;容器&amp;quot;，实际上是⼀个由 Linux Namespace、Linux Cgroups和 rootfs 三种技术构建出来的进程的隔离环境。&lt;/p&gt;
 &lt;h2 id=&#34;12-优化centos7镜像&#34;&gt;12、优化Centos7镜像&lt;/h2&gt;
 &lt;p&gt;镜像下载：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker pull daocloud.io/library/centos:latest
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker pull daocloud.io/library/centos:latest
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;包管理:&lt;br&gt;
 默认情况下，为了减⼩镜像的尺⼨，在构建 CentOS 镜像时⽤了yum的nodocs选项。 如果您安装⼀个包后发现⽂件缺失，请在/etc/yum.conf中注释掉tsﬂogs=nodocs并重新安装您的包。&lt;br&gt;
 systemd 整合:&lt;/p&gt;
 &lt;p&gt;因为 systemd 要求 CAPSYSADMIN 权限，从⽽得到了读取到宿主机 cgroup 的能⼒，CentOS7 中已经⽤ fakesystemd 代替了 systemd来解决依赖问题。 如果仍然希望使⽤ systemd，可⽤参考下⾯的Dockerﬁle：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim Dockerfile
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# vim Dockerfile
 FROM daocloud.io/library/centos:7
 MAINTAINER &amp;quot;wing&amp;quot;  wing@qq.com
 ENV container docker
@@ -4895,11 +6099,11 @@ VOLUME [ &amp;quot;/sys/fs/cgroup&amp;quot; ]
 CMD [&amp;quot;/usr/sbin/init&amp;quot;]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这个Dockerﬁle删除fakesystemd 并安装了 systemd。然后再构建基础镜像:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker build --rm -t local/c7- systemd .
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker build --rm -t local/c7- systemd .
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;⼀个包含 systemd 的应⽤容器示例&lt;br&gt;
 为了使⽤像上⾯那样包含 systemd 的容器，需要创建⼀个类似下⾯的Dockerﬁle：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim Dockerfile
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# vim Dockerfile
 FROM local/c7-systemd
 RUN yum -y install httpd; yum clean all; systemctl 
 enable httpd.service
@@ -4907,21 +6111,21 @@ EXPOSE 80
 CMD [&amp;quot;/usr/sbin/init&amp;quot;]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;构建镜像:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker build --rm -t local/c7-systemd-httpd .
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker build --rm -t local/c7-systemd-httpd .
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;运⾏包含 systemd 的应⽤容器:&lt;br&gt;
 为了运⾏⼀个包含 systemd 的容器，需要使⽤--privileged选项，并且挂载主机的 cgroups ⽂件夹。 下⾯是运⾏包含 systemd 的 httpd容器的示例命令：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run --privileged -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/c7-systemd-httpd
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run --privileged -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 local/c7-systemd-httpd
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;注意：上条命令不能添加/bin/bash，添加了会导致服务不可⽤，⽽且有些服务可能会发现之前提到的权限不够的问题，但是如果不加会运⾏在前台(没有⽤-d)，可以⽤ctrl+p+q放到后台去测试可⽤：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# elinks --dump http://docker    //下⾯为apache默认⻚⾯
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# elinks --dump http://docker    //下⾯为apache默认⻚⾯
                       Testing 123..
   This page is used to test the proper operation of the [1]Apache HTTP
   server after it has been installed. If you can read this page it means
   that this site is working properly. This server is powered by [2]CentOS.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;再来个安装openssh-server的例⼦：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim Dockerfile
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# vim Dockerfile
 FROM local/c7-systemd
 RUN yum -y install openssh-server; yum clean all; 
 systemctl enable sshd.service
@@ -4929,16 +6133,16 @@ RUN echo 1 | passwd --stdin root
 EXPOSE 22
 CMD [&amp;quot;/usr/sbin/init&amp;quot;]
 
-[root@qfedu.com ~]# docker build --rm -t local/c7-systemd-sshd .  
-[root@qfedu.com ~]# docker run --privileged -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 2222:22 local/c7-systemd-sshd  
-[root@qfedu.com ~]# ssh docker -p 2222  //docker为我宿主机的主机名称
+[root@Linux ~]# docker build --rm -t local/c7-systemd-sshd .  
+[root@Linux ~]# docker run --privileged -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 2222:22 local/c7-systemd-sshd  
+[root@Linux ~]# ssh docker -p 2222  //docker为我宿主机的主机名称
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;13-docker网络&#34;&gt;13、Docker⽹络&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;容器⽹络&lt;/strong&gt;&lt;br&gt;
 注：⾯试⽤，⽤了编排之后就没有⽤了&lt;/p&gt;
 &lt;p&gt;Docker安装后，默认会创建三种⽹络类型，bridge、host和none&lt;br&gt;
 查看当前⽹络：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker network list
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker network list
 NETWORK  ID      NAME        DRIVER        SCOPE
 90b22f633d2f     bridge      bridge        local
 e0b365da7fd2     host       host        local
@@ -4951,20 +6155,20 @@ da7b7a090837     none       null         local
 3、host：主机⽹络&lt;br&gt;
 docker容器的⽹络会附属在主机上，两者是互通的。&lt;/p&gt;
 &lt;p&gt;使⽤host⽹络创建容器：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -it --name testnginx1 --net host 27a18801 /bin/bash
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run -it --name testnginx1 --net host 27a18801 /bin/bash
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;4、固定ip（个⼈认为是bridge）:&lt;br&gt;
 &lt;strong&gt;创建固定Ip的容器&lt;/strong&gt;&lt;br&gt;
 4.1、创建⾃定义⽹络类型，并且指定⽹段&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]#docker network create --subnet=192.168.0.0/16 staticnet
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]#docker network create --subnet=192.168.0.0/16 staticnet
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;通过docker network ls可以查看到⽹络类型中多了⼀个staticnet&lt;br&gt;
 4.2、使⽤新的⽹络类型创建并启动容器&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]#docker run -it --name userserver --net staticnet --ip 192.168.0.2 centos:6 /bin/bash
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]#docker run -it --name userserver --net staticnet --ip 192.168.0.2 centos:6 /bin/bash
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;通过docker inspect可以查看容器ip为192.168.0.2，关闭容器并重启，发现容器ip并未发⽣改变&lt;br&gt;
 不能使⽤默认桥接⽹络，不然会报错&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker run -it --rm --name &amp;quot;test&amp;quot; -v /test/b.txt:/tmp/b.txt -v /tmp:/abc --net bridge --ip 172.17.0.9 1f8fe54 /bin/sh
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker run -it --rm --name &amp;quot;test&amp;quot; -v /test/b.txt:/tmp/b.txt -v /tmp:/abc --net bridge --ip 172.17.0.9 1f8fe54 /bin/sh
 docker: Error response from daemon: user specified IP address is supported on user defined networks only.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;扩展：异主容器互联&lt;/strong&gt;&lt;/p&gt;
@@ -4972,32 +6176,32 @@ docker: Error response from daemon: user specified IP address is supported on us
 ⼩规模docker环境⼤部分运⾏在单台主机上，如果公司⼤规模采⽤docker，那么多个宿主机上的docker如何互联&lt;/p&gt;
 &lt;figure data-type=&#34;image&#34; tabindex=&#34;11&#34;&gt;&lt;img src=&#34;https://gitee.com/chenyong1013/picCloud/raw/master/20200820021231.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
 &lt;p&gt;Docker默认的内部ip为172.17.42.0⽹段，所以必须要修改其中⼀台的默认⽹段以免ip冲突。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim /etc/sysconfig/docker-network
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# vim /etc/sysconfig/docker-network
 DOCKER_NETWORK_OPTIONS= --bip=172.18.42.1/16
-[root@qfedu.com ~]# reboot 
+[root@Linux ~]# reboot 
 
 
 docker 130上：
-[root@qfedu.com ~]# route add -net 172.18.0.0/16 gw 192.168.18.128
+[root@Linux ~]# route add -net 172.18.0.0/16 gw 192.168.18.128
 docker 128上：
-[root@qfedu.com ~]# route add -net 172.17.0.0/16 gw 192.168.18.130
+[root@Linux ~]# route add -net 172.17.0.0/16 gw 192.168.18.130
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;现在两台宿主机⾥的容器就可以通信了。&lt;/p&gt;
 &lt;h2 id=&#34;14-docker数据存储位置&#34;&gt;14、Docker数据存储位置&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;查看默认存储位置&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# docker info | grep Root
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# docker info | grep Root
 Docker Root Dir:  /var/lib/docker
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;strong&gt;修改默认存储位置&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在dockerd的启动命令后⾯追加--data-root参数指定新的位置&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@qfedu.com ~]# vim /usr/lib/systemd/system/docker.service
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;[root@Linux ~]# vim /usr/lib/systemd/system/docker.service
 ExecStart=/usr/bin/dockerd -H fd:// --
 containerd=/run/containerd/containerd.sock --data-
 root=/data
-[root@qfedu.com ~]# systemctl daemon-reload
-[root@qfedu.com ~]# systemctl restart docker
+[root@Linux ~]# systemctl daemon-reload
+[root@Linux ~]# systemctl restart docker
 查看是否⽣效：
-[root@qfedu.com ~]# docker info | grep Root
+[root@Linux ~]# docker info | grep Root
 Docker Root Dir: /data
 &lt;/code&gt;&lt;/pre&gt;
 ">Docker</a>
