@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-08-21T07:08:18.569Z</updated>
+    <updated>2020-08-21T07:21:33.366Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -72,7 +72,7 @@ shell:   一个可以解释shell规定的语法命令的解释器。<br>
 <p>shell脚本：  多条shell命令，可以编写在一个文件中，文件中的指令，可以按照顺序执行。将这个文件称为shell脚本。</p>
 <h3 id="12-shell中的解释器">1.2 shell中的解释器</h3>
 <p>（1）Linux提供的Shell解析器有：</p>
-<pre><code class="language-shell">[atguigu@hadoop101 ~]$ cat /etc/shells 
+<pre><code class="language-shell">[root@hadoop101 ~]$ cat /etc/shells 
 /bin/sh
 /bin/bash
 /sbin/nologin
@@ -82,12 +82,12 @@ shell:   一个可以解释shell规定的语法命令的解释器。<br>
 </code></pre>
 <p>不同的shell解析器，功能不同，比如csh，符合c语言风格的shell解析器。Centos默认使用的是/bin/sh 和 /bin/bash作为shell解析器</p>
 <p>（2）bash和sh的关系</p>
-<pre><code class="language-shell">[atguigu@hadoop101 bin]$ ll | grep bash
+<pre><code class="language-shell">[root@hadoop101 bin]$ ll | grep bash
 -rwxr-xr-x. 1 root root 941880 5月  11 2019 bash
 lrwxrwxrwx. 1 root root      4 5月  27 2019 sh -&gt; bash
 </code></pre>
 <p>（3）Centos默认的解析器是bash</p>
-<pre><code class="language-shell">[atguigu@hadoop102 bin]$ echo $SHELL
+<pre><code class="language-shell">[root@hadoop102 bin]$ echo $SHELL
 /bin/bash
 </code></pre>
 <p>使用 $SHELL变量查看当前系统默认的解释器类型！</p>
@@ -128,11 +128,11 @@ pwd<br>
 <li>
 <p>案例实操</p>
 <p>（1）查看系统变量的值</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ echo $HOME
-/home/atguigu
+<pre><code class="language-shell">[root@hadoop101 datas]$ echo $HOME
+/home/root
 </code></pre>
 <p>（2）显示当前Shell中所有变量：set</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ set
+<pre><code class="language-shell">[root@hadoop101 datas]$ set
 BASH=/bin/bash
 BASH_ALIASES=()
 BASH_ARGC=()
@@ -184,15 +184,15 @@ export:    导出！将一个变量提升为全局变量！<br>
 <li>
 <p>案例实操</p>
 <p>输出该脚本文件名称、输入参数1和输入参数2 的值</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ touch parameter.sh 
-[atguigu@hadoop101 datas]$ vim parameter.sh
+<pre><code class="language-shell">[root@hadoop101 datas]$ touch parameter.sh 
+[root@hadoop101 datas]$ vim parameter.sh
 
 #!/bin/bash
 echo &quot;$0  $1   $2&quot;
 
-[atguigu@hadoop101 datas]$ chmod 777 parameter.sh
+[root@hadoop101 datas]$ chmod 777 parameter.sh
 
-[atguigu@hadoop101 datas]$ ./parameter.sh cls  xz
+[root@hadoop101 datas]$ ./parameter.sh cls  xz
 ./parameter.sh  cls   xz
 
 </code></pre>
@@ -207,14 +207,14 @@ echo &quot;$0  $1   $2&quot;
 <li>
 <p>案例实操</p>
 <p>获取输入参数的个数</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ vim parameter.sh
+<pre><code class="language-shell">[root@hadoop101 datas]$ vim parameter.sh
 
 #!/bin/bash
 echo &quot;$0  $1   $2&quot;
 echo $#
 
-[atguigu@hadoop101 datas]$ chmod 777 parameter.sh
-[atguigu@hadoop101 datas]$ ./parameter.sh cls  xz
+[root@hadoop101 datas]$ chmod 777 parameter.sh
+[root@hadoop101 datas]$ ./parameter.sh cls  xz
 parameter.sh cls xz 
 2
 </code></pre>
@@ -230,7 +230,7 @@ parameter.sh cls xz
 <li>
 <p>案例实操</p>
 <p>打印输入的所有参数</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ vim parameter.sh
+<pre><code class="language-shell">[root@hadoop101 datas]$ vim parameter.sh
 
 #!/bin/bash
 echo &quot;$0  $1   $2&quot;
@@ -238,7 +238,7 @@ echo $#
 echo $*
 echo $@
 
-[atguigu@hadoop101 datas]$ bash parameter.sh 1 2 3
+[root@hadoop101 datas]$ bash parameter.sh 1 2 3
 parameter.sh  1   2
 3
 1 2 3
@@ -255,9 +255,9 @@ parameter.sh  1   2
 <li>
 <p>案例实操</p>
 <p>判断helloworld.sh脚本是否正确执行</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ ./helloworld.sh 
+<pre><code class="language-shell">[root@hadoop101 datas]$ ./helloworld.sh 
 hello world
-[atguigu@hadoop101 datas]$ echo $?
+[root@hadoop101 datas]$ echo $?
 0
 </code></pre>
 </li>
@@ -275,21 +275,21 @@ hello world
 <li>
 <p>案例实操：</p>
 <p>（1）计算3+2的值</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ expr 2 + 3
+<pre><code class="language-shell">[root@hadoop101 datas]$ expr 2 + 3
 5
 </code></pre>
 <p>（2）计算3-2的值</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ expr 3 - 2 
+<pre><code class="language-shell">[root@hadoop101 datas]$ expr 3 - 2 
 1
 </code></pre>
 <p>（3）计算（2+3）X4的值</p>
 <p>​     （a）expr一步完成计算</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ expr `expr 2 + 3` \* 4
+<pre><code class="language-shell">[root@hadoop101 datas]$ expr `expr 2 + 3` \* 4
 20
 </code></pre>
 <p>（b）采用$[运算式]方式</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]# S=$[(2+3)*4]
-[atguigu@hadoop101 datas]# echo $S
+<pre><code class="language-shell">[root@hadoop101 datas]# S=$[(2+3)*4]
+[root@hadoop101 datas]# echo $S
 </code></pre>
 </li>
 </ol>
@@ -298,7 +298,7 @@ hello world
 <li>
 <p>基本语法</p>
 <p>[ condition ]（<strong>注意condition前后要有空格</strong>）</p>
-<p>注意：条件非空即为true，[ atguigu ]返回true，[] 返回false。</p>
+<p>注意：条件非空即为true，[ root ]返回true，[] 返回false。</p>
 </li>
 <li>
 <p>常用判断条件</p>
@@ -320,30 +320,30 @@ hello world
 <ol>
 <li>
 <p>23是否大于等于22</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ [ 23 -ge 22 ]
-[atguigu@hadoop101 datas]$ echo $?
+<pre><code class="language-shell">[root@hadoop101 datas]$ [ 23 -ge 22 ]
+[root@hadoop101 datas]$ echo $?
 0
 </code></pre>
 </li>
 <li>
 <p>helloworld.sh是否具有写权限</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ [ -w helloworld.sh ]
-[atguigu@hadoop101 datas]$ echo $?
+<pre><code class="language-shell">[root@hadoop101 datas]$ [ -w helloworld.sh ]
+[root@hadoop101 datas]$ echo $?
 0
 </code></pre>
 </li>
 <li>
-<p>/home/atguigu/cls.txt目录中的文件是否存在</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ [ -e /home/atguigu/cls.txt ]
-[atguigu@hadoop101 datas]$ echo $?
+<p>/home/root/cls.txt目录中的文件是否存在</p>
+<pre><code class="language-shell">[root@hadoop101 datas]$ [ -e /home/root/cls.txt ]
+[root@hadoop101 datas]$ echo $?
 1
 </code></pre>
 </li>
 <li>
 <p>多条件判断（&amp;&amp; 表示前一条命令执行成功时，才执行后一条命令，|| 表示上一条命令执行失败后，才执行下一条命令）</p>
-<pre><code class="language-shell">[atguigu@hadoop101 ~]$ [ condition ] &amp;&amp; echo OK || echo notok
+<pre><code class="language-shell">[root@hadoop101 ~]$ [ condition ] &amp;&amp; echo OK || echo notok
 OK
-[atguigu@hadoop101 datas]$ [ condition ] &amp;&amp; [ ] || echo notok
+[root@hadoop101 datas]$ [ condition ] &amp;&amp; [ ] || echo notok
 notok
 </code></pre>
 </li>
@@ -433,8 +433,8 @@ fi
 <li>
 <p>案例实操</p>
 <p>输入一个数字，如果是1，则输出banzhang，如果是2，则输出cls，如果是其它，输出renyao。</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ touch case.sh
-[atguigu@hadoop101 datas]$ vim case.sh
+<pre><code class="language-shell">[root@hadoop101 datas]$ touch case.sh
+[root@hadoop101 datas]$ vim case.sh
 
 !/bin/bash
 case $1 in
@@ -450,8 +450,8 @@ case $1 in
 ;;
 esac
 
-[atguigu@hadoop101 datas]$ chmod 777 case.sh
-[atguigu@hadoop101 datas]$ ./case.sh 1
+[root@hadoop101 datas]$ chmod 777 case.sh
+[root@hadoop101 datas]$ ./case.sh 1
 </code></pre>
 </li>
 </ol>
@@ -469,8 +469,8 @@ esac
 <li>
 <p>案例实操</p>
 <p>从1加到100</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ touch for1.sh
-[atguigu@hadoop101 datas]$ vim for1.sh
+<pre><code class="language-shell">[root@hadoop101 datas]$ touch for1.sh
+[root@hadoop101 datas]$ vim for1.sh
 
 #!/bin/bash
 
@@ -481,8 +481,8 @@ do
 done
 echo $s
 
-[atguigu@hadoop101 datas]$ chmod 777 for1.sh 
-[atguigu@hadoop101 datas]$ ./for1.sh 
+[root@hadoop101 datas]$ chmod 777 for1.sh 
+[root@hadoop101 datas]$ ./for1.sh 
 “5050”
 
 [root@0725pc shells]# tail -n 4 test1.sh 
@@ -509,8 +509,8 @@ echo &quot;从1加到100的值是：$SUM2&quot;
 <ol>
 <li>
 <p>打印所有输入参数</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ touch for2.sh
-[atguigu@hadoop101 datas]$ vim for2.sh
+<pre><code class="language-shell">[root@hadoop101 datas]$ touch for2.sh
+[root@hadoop101 datas]$ vim for2.sh
 
 #!/bin/bash
 #打印数字
@@ -520,8 +520,8 @@ for i in $*
       echo &quot;ban zhang love $i &quot;
     done
 
-[atguigu@hadoop101 datas]$ chmod 777 for2.sh 
-[atguigu@hadoop101 datas]$ bash for2.sh cls xz bd
+[root@hadoop101 datas]$ chmod 777 for2.sh 
+[root@hadoop101 datas]$ bash for2.sh cls xz bd
 ban zhang love cls
 ban zhang love xz
 ban zhang love bd
@@ -557,8 +557,8 @@ for i in {1..3};do echo $i;done
 <li>
 <p>比较<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo><mi mathvariant="normal">和</mi></mrow><annotation encoding="application/x-tex">*和</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span><span class="mord cjk_fallback">和</span></span></span></span>@区别</p>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo><mi mathvariant="normal">和</mi></mrow><annotation encoding="application/x-tex">*和</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span><span class="mord cjk_fallback">和</span></span></span></span>@都表示传递给函数或脚本的所有参数，不被双引号“”包含时，都以$1 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>…</mo></mrow><annotation encoding="application/x-tex">2 …</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span></span></span></span>n的形式输出所有参数。</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ touch for.sh
-[atguigu@hadoop101 datas]$ vim for.sh
+<pre><code class="language-shell">[root@hadoop101 datas]$ touch for.sh
+[root@hadoop101 datas]$ vim for.sh
 
 #!/bin/bash 
 
@@ -572,7 +572,7 @@ do
         echo &quot;ban zhang love $j&quot;
 done
 
-[atguigu@hadoop101 datas]$ bash for.sh cls xz bd
+[root@hadoop101 datas]$ bash for.sh cls xz bd
 ban zhang love cls 
 ban zhang love xz 
 ban zhang love bd 
@@ -581,7 +581,7 @@ ban zhang love xz
 ban zhang love bd
 </code></pre>
 <p>当它们被双引号“”包含时，“$*”会将所有的参数作为一个整体，以“$1 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>…</mo></mrow><annotation encoding="application/x-tex">2 …</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span></span></span></span>n”的形式输出所有参数；“$@”会将各个参数分开，以“$1” “<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi mathvariant="normal">”</mi><mo>…</mo><mi mathvariant="normal">”</mi></mrow><annotation encoding="application/x-tex">2”…”</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">”</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">”</span></span></span></span>n”的形式输出所有参数。</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ vim for.sh
+<pre><code class="language-shell">[root@hadoop101 datas]$ vim for.sh
 
 #!/bin/bash 
 
@@ -597,8 +597,8 @@ for j in &quot;$@&quot;
                 echo &quot;ban zhang love $j&quot; 
 done
 
-[atguigu@hadoop101 datas]$ chmod 777 for.sh
-[atguigu@hadoop101 datas]$ bash for.sh cls xz bd
+[root@hadoop101 datas]$ chmod 777 for.sh
+[root@hadoop101 datas]$ bash for.sh cls xz bd
 ban zhang love cls xz bd
 ban zhang love cls
 ban zhang love xz
@@ -627,8 +627,8 @@ ban zhang love bd
 <ol>
 <li>
 <p>从1加到100</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ touch while.sh
-[atguigu@hadoop101 datas]$ vim while.sh
+<pre><code class="language-shell">[root@hadoop101 datas]$ touch while.sh
+[root@hadoop101 datas]$ vim while.sh
 
 #!/bin/bash
 s=0
@@ -641,8 +641,8 @@ done
 
 echo $s
 
-[atguigu@hadoop101 datas]$ chmod 777 while.sh 
-[atguigu@hadoop101 datas]$ ./while.sh 
+[root@hadoop101 datas]$ chmod 777 while.sh 
+[root@hadoop101 datas]$ ./while.sh 
 5050
 </code></pre>
 </li>
@@ -675,15 +675,15 @@ echo $NUM
 <li>
 <p>案例实操</p>
 <p>提示7秒内，读取控制台输入的名称</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ touch read.sh
-[atguigu@hadoop101 datas]$ vim read.sh
+<pre><code class="language-shell">[root@hadoop101 datas]$ touch read.sh
+[root@hadoop101 datas]$ vim read.sh
 
 #!/bin/bash
 
 read -t 7 -p &quot;Enter your name in 7 seconds &quot; NAME
 echo $NAME
 
-[atguigu@hadoop101 datas]$ ./read.sh 
+[root@hadoop101 datas]$ ./read.sh 
 Enter your name in 7 seconds xiaoze
 xiaoze
 </code></pre>
@@ -700,10 +700,10 @@ xiaoze
 </li>
 <li>
 <p>案例实操</p>
-<p>截取该/home/atguigu/banzhang.txt路径的文件名称</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ basename /home/atguigu/banzhang.txt 
+<p>截取该/home/root/banzhang.txt路径的文件名称</p>
+<pre><code class="language-shell">[root@hadoop101 datas]$ basename /home/root/banzhang.txt 
 banzhang.txt
-[atguigu@hadoop101 datas]$ basename /home/atguigu/banzhang.txt .txt
+[root@hadoop101 datas]$ basename /home/root/banzhang.txt .txt
 banzhang
 </code></pre>
 </li>
@@ -714,8 +714,8 @@ banzhang
 <li>
 <p>案例实操</p>
 <p>获取banzhang.txt文件的路径</p>
-<pre><code class="language-shell">[atguigu@hadoop101 ~]$ dirname /home/atguigu/banzhang.txt 
-/home/atguigu
+<pre><code class="language-shell">[root@hadoop101 ~]$ dirname /home/root/banzhang.txt 
+/home/root
 </code></pre>
 </li>
 </ol>
@@ -738,8 +738,8 @@ banzhang
 <li>
 <p>案例实操</p>
 <p>计算两个输入参数的和</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ touch fun.sh
-[atguigu@hadoop101 datas]$ vim fun.sh
+<pre><code class="language-shell">[root@hadoop101 datas]$ touch fun.sh
+[root@hadoop101 datas]$ vim fun.sh
 
 #!/bin/bash
 function sum()
@@ -752,8 +752,8 @@ function sum()
 read -p &quot;Please input the number1: &quot; n1;
 read -p &quot;Please input the number2: &quot; n2;
 sum $n1 $n2;
-[atguigu@hadoop101 datas]$ chmod 777 fun.sh
-[atguigu@hadoop101 datas]$ ./fun.sh 
+[root@hadoop101 datas]$ chmod 777 fun.sh
+[root@hadoop101 datas]$ ./fun.sh 
 Please input the number1: 2
 Please input the number2: 5
 7
@@ -870,11 +870,11 @@ Please input the number2: 5
 </li>
 <li>
 <p>选取系统PATH变量值，第2个“：”开始后的所有路径：</p>
-<pre><code class="language-shell">[atguigu@hadoop101 datas]$ echo $PATH
-/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/atguigu/bin
+<pre><code class="language-shell">[root@hadoop101 datas]$ echo $PATH
+/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/root/bin
 
-[atguigu@hadoop102 datas]$ echo $PATH | cut -d: -f 3-
-/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/atguigu/bin
+[root@hadoop102 datas]$ echo $PATH | cut -d: -f 3-
+/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/root/bin
 </code></pre>
 </li>
 <li>
@@ -887,7 +887,7 @@ Please input the number2: 5
 </li>
 <li>
 <p>切割ifconfig 后打印的IP地址</p>
-<pre><code class="language-shell">atguigu@hadoop101 datas]$ ifconfig eth0 | grep &quot;inet addr&quot; | cut -d: -f 2 | cut -d&quot; &quot; -f1
+<pre><code class="language-shell">root@hadoop101 datas]$ ifconfig eth0 | grep &quot;inet addr&quot; | cut -d: -f 2 | cut -d&quot; &quot; -f1
 192.168.1.102
 </code></pre>
 </li>
@@ -950,8 +950,8 @@ Please input the number2: 5
 <ol>
 <li>
 <p>数据准备</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ touch sed.txt
-[atguigu@hadoop102 datas]$ vim sed.txt
+<pre><code class="language-shell">[root@hadoop102 datas]$ touch sed.txt
+[root@hadoop102 datas]$ vim sed.txt
 dong shen
 guan zhen
 wo  wo
@@ -962,7 +962,7 @@ le  le
 </li>
 <li>
 <p>将“mei nv”这个单词插入到sed.txt第二行下，打印。</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ sed '2a mei nv' sed.txt 
+<pre><code class="language-shell">[root@hadoop102 datas]$ sed '2a mei nv' sed.txt 
 dong shen
 guan zhen
 mei nv
@@ -970,7 +970,7 @@ wo  wo
 lai  lai
 
 le  le
-[atguigu@hadoop102 datas]$ cat sed.txt 
+[root@hadoop102 datas]$ cat sed.txt 
 dong shen
 guan zhen
 wo  wo
@@ -982,7 +982,7 @@ le  le
 </li>
 <li>
 <p>删除sed.txt文件所有包含wo的行</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ sed '/wo/d' sed.txt
+<pre><code class="language-shell">[root@hadoop102 datas]$ sed '/wo/d' sed.txt
 dong shen
 guan zhen
 lai  lai
@@ -1022,7 +1022,7 @@ dong shen
 </li>
 <li>
 <p>将sed.txt文件中wo替换为ni</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ sed 's/wo/ni/g' sed.txt 
+<pre><code class="language-shell">[root@hadoop102 datas]$ sed 's/wo/ni/g' sed.txt 
 dong shen
 guan zhen
 ni  ni
@@ -1034,7 +1034,7 @@ le  le
 </li>
 <li>
 <p>将sed.txt文件中的第二行删除并将wo替换为ni</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ sed -e '2d' -e 's/wo/ni/g' sed.txt 
+<pre><code class="language-shell">[root@hadoop102 datas]$ sed -e '2d' -e 's/wo/ni/g' sed.txt 
 dong shen
 ni  ni
 lai  lai
@@ -1082,37 +1082,37 @@ le  le
 <ol>
 <li>
 <p>数据准备</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ sudo cp /etc/passwd ./
+<pre><code class="language-shell">[root@hadoop102 datas]$ sudo cp /etc/passwd ./
 </code></pre>
 </li>
 <li>
 <p>搜索passwd文件以root关键字开头的所有行，并输出该行的第7列。</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ awk -F: '/^root/{print $7}' passwd 
+<pre><code class="language-shell">[root@hadoop102 datas]$ awk -F: '/^root/{print $7}' passwd 
 /bin/bash
 </code></pre>
 </li>
 <li>
 <p>搜索passwd文件以root关键字开头的所有行，并输出该行的第1列和第7列，中间以“，”号分割。</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ awk -F: '/^root/{print $1&quot;,&quot;$7}' passwd 
+<pre><code class="language-shell">[root@hadoop102 datas]$ awk -F: '/^root/{print $1&quot;,&quot;$7}' passwd 
 root,/bin/bash
 </code></pre>
 <p><strong>注意：只有匹配了patter的行才会执行action</strong></p>
 </li>
 <li>
 <p>只显示/etc/passwd的第一列和第七列，以逗号分割，且在所有行前面添加列名user，shell在最后一行添加&quot;dahaige，/bin/zuishuai&quot;。</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ awk -F : 'BEGIN{print &quot;user, shell&quot;} {print $1&quot;,&quot;$7} END{print &quot;dahaige,/bin/zuishuai&quot;}' passwd
+<pre><code class="language-shell">[root@hadoop102 datas]$ awk -F : 'BEGIN{print &quot;user, shell&quot;} {print $1&quot;,&quot;$7} END{print &quot;dahaige,/bin/zuishuai&quot;}' passwd
 user, shell
 root,/bin/bash
 bin,/sbin/nologin
 。。。
-atguigu,/bin/bash
+root,/bin/bash
 dahaige,/bin/zuishuai
 </code></pre>
 <p><strong>注意：BEGIN 在所有数据读取行之前执行；END 在所有数据执行之后执行。</strong></p>
 </li>
 <li>
 <p>将passwd文件中的用户id增加数值1并输出</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ awk -v i=1 -F: '{print $3+i}' passwd
+<pre><code class="language-shell">[root@hadoop102 datas]$ awk -v i=1 -F: '{print $3+i}' passwd
 1
 2
 3
@@ -1151,7 +1151,7 @@ dahaige,/bin/zuishuai
 <ol>
 <li>
 <p>统计passwd文件名，每行的行号，每行的列数</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ awk -F: '{print &quot;filename:&quot;  FILENAME &quot;, linenumber:&quot; NR  &quot;,columns:&quot; NF}' passwd 
+<pre><code class="language-shell">[root@hadoop102 datas]$ awk -F: '{print &quot;filename:&quot;  FILENAME &quot;, linenumber:&quot; NR  &quot;,columns:&quot; NF}' passwd 
 filename:passwd, linenumber:1,columns:7
 filename:passwd, linenumber:2,columns:7
 filename:passwd, linenumber:3,columns:7
@@ -1159,13 +1159,13 @@ filename:passwd, linenumber:3,columns:7
 </li>
 <li>
 <p>切割IP</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ ifconfig eth0 | grep &quot;inet addr&quot; | awk -F: '{print $2}' | awk -F &quot; &quot; '{print $1}' 
+<pre><code class="language-shell">[root@hadoop102 datas]$ ifconfig eth0 | grep &quot;inet addr&quot; | awk -F: '{print $2}' | awk -F &quot; &quot; '{print $1}' 
 192.168.1.102
 </code></pre>
 </li>
 <li>
 <p>查询sed.txt中空行所在的行号</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ awk '/^$/{print NR}' sed.txt 
+<pre><code class="language-shell">[root@hadoop102 datas]$ awk '/^$/{print NR}' sed.txt 
 5
 </code></pre>
 </li>
@@ -1215,8 +1215,8 @@ filename:passwd, linenumber:3,columns:7
 <ol>
 <li>
 <p>数据准备</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ touch sort.sh
-[atguigu@hadoop102 datas]$ vim sort.sh 
+<pre><code class="language-shell">[root@hadoop102 datas]$ touch sort.sh
+[root@hadoop102 datas]$ vim sort.sh 
 bb:40:5.4
 bd:20:4.2
 xz:50:2.3
@@ -1226,7 +1226,7 @@ ss:30:1.6
 </li>
 <li>
 <p>按照“：”分割后的第三列倒序排序。</p>
-<pre><code class="language-shell">[atguigu@hadoop102 datas]$ sort -t : -nrk 3  sort.sh 
+<pre><code class="language-shell">[root@hadoop102 datas]$ sort -t : -nrk 3  sort.sh 
 bb:40:5.4
 bd:20:4.2
 cls:10:3.5
