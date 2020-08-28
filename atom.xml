@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jonchan1013.github.io</id>
     <title>CY的学习博客</title>
-    <updated>2020-08-21T07:21:33.366Z</updated>
+    <updated>2020-08-28T08:14:22.644Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jonchan1013.github.io"/>
     <link rel="self" href="https://jonchan1013.github.io/atom.xml"/>
@@ -10,6 +10,19 @@
     <logo>https://jonchan1013.github.io/images/avatar.png</logo>
     <icon>https://jonchan1013.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, CY的学习博客</rights>
+    <entry>
+        <title type="html"><![CDATA[笔记]]></title>
+        <id>https://jonchan1013.github.io/post/bi-ji/</id>
+        <link href="https://jonchan1013.github.io/post/bi-ji/">
+        </link>
+        <updated>2020-08-28T08:05:06.000Z</updated>
+        <summary type="html"><![CDATA[<p>自己平时遇到的问题以及疑问</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>自己平时遇到的问题以及疑问</p>
+<!-- more -->
+<h2 id="1-requestparam详解以及加与不加的区别">1、@RequestParam详解以及加与不加的区别</h2>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hadoop入门]]></title>
         <id>https://jonchan1013.github.io/post/hadoop-ru-men/</id>
@@ -28,6 +41,272 @@
 <p>大数据（Big Data）：指无法在一定时间范围内用常规软件工具进行捕捉、管理和处理的数据集合，是需要新处理模式才能具有更强的决策力、洞察发现力和流程优化能力的海量、高增长率和多样化的信息资产。<br>
 主要解决，海量数据的存储和海量数据的分析计算问题。</p>
 <!-- more -->
+<h3 id="12-大数据特点">1.2 大数据特点</h3>
+<ol>
+<li>
+<p>Volume（大量）</p>
+<p>截至目前，人类生产的所有印刷材料的数据量是200PB，而历史上全人类总共说过的话的数据量大约是5EB。当前，典型个人计算机硬盘的容量为TB量级，而一些大企业的数据量已经接近EB量级。</p>
+</li>
+<li>
+<p>Velocity（高速）</p>
+<p>这是大数据区分于传统数据挖掘的最显著特征。根据IDC的“数字宇宙”的报告，预计到2020年，全球数据使用量将达到35.2ZB。在如此海量的数据面前，处理数据的效率就是企业的生命。</p>
+</li>
+<li>
+<p>Variety（多样）<br>
+这种类型的多样性也让数据被分为结构化数据和非结构化数据。相对于以往便于存储的以数据库/文本为主的结构化数据，非结构化数据越来越多，包括网络日志、音频、视频、图片、地理位置信息等，这些多类型的数据对数据的处理能力提出了更高要求。</p>
+</li>
+<li>
+<p>Value（低价值密度）</p>
+<p>价值密度的高低与数据总量的大小成反比。如何快速对有价值数据“提纯”成为目前大数据背景下待解决的难题。</p>
+</li>
+</ol>
+<h3 id="13-大数据应用场景">1.3 大数据应用场景</h3>
+<p>1、物流仓储：大数据分析系统助力商家精细化运营、提升销量、节约成本。</p>
+<p>2、零售：分析用户消费习惯，为用户购买商品提供方便，从而提升商品销量。</p>
+<p>3、旅游：深度结合大数据能力与旅游行业需求，共建旅游产业智慧管理、智慧服务和智慧营销的未来。</p>
+<p>4、商品广告推荐：给用户推荐可能喜欢的商品</p>
+<p>5、保险：海量数据挖掘及风险预测，助力保险行业精准营销，提升精细化定价能力。</p>
+<p>6、推荐优质客户，防范欺诈风险。</p>
+<p>7、房产：大数据全面助力房地产行业，打造精准投策与营销，选出更合适的地，建造更合适的楼，卖给更合适的人。</p>
+<p>8、人工智能</p>
+<h3 id="14-大数据部门业务流程分析">1.4 大数据部门业务流程分析</h3>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200821174208.png" alt="" loading="lazy"></figure>
+<h3 id="15-大数据部门组织结构">1.5  大数据部门组织结构</h3>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200821174241.png" alt="" loading="lazy"></figure>
+<h2 id="2-从-hadoop-框架讨论大数据生态">2、从 Hadoop 框架讨论大数据生态</h2>
+<h3 id="21-hadoop-是什么">2.1 Hadoop 是什么</h3>
+<p>1）Hadoop是一个由Apache基金会所开发的分布式系统基础架构。<br>
+2）主要解决，海量数据的存储和海量数据的分析计算问题。<br>
+3）广义上来说，Hadoop通常是指一个更广泛的概念——Hadoop生态圈。</p>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200823170613.png" alt="" loading="lazy"></figure>
+<h3 id="22-hadoop-发展历史">2.2 Hadoop 发展历史</h3>
+<p>1）Lucene框架是Doug Cutting开创的开源软件，用Java书写代码，实现与Google类似的全文搜索功能，它提供了全文检索引擎的架构，包括完整的查询引擎和索引引擎。</p>
+<p>2）2001年年底Lucene成为Apache基金会的一个子项目。<br>
+3）对于海量数据的场景，Lucene面对与Google同样的困难，<strong>存储数据困难，检索速度慢。</strong><br>
+4）学习和模仿Google解决这些问题的办法 ：微型版Nutch。<br>
+5）可以说Google是Hadoop的思想之源(Google在大数据方面的三篇论文)<br>
+GFS ---&gt;HDFS<br>
+Map-Reduce ---&gt;MR<br>
+BigTable ---&gt;HBase</p>
+<p>6）2003-2004年，Google公开了部分GFS和Mapreduce思想的细节，以此为基础Doug Cutting等人用<br>
+了2年业余时间实现了DFS和Mapreduce机制，使Nutch性能飙升。<br>
+7）2005 年Hadoop 作为 Lucene的子项目 Nutch的一部分正式引入Apache基金会。<br>
+8）2006 年 3 月份，Map-Reduce和Nutch Distributed File System (NDFS) 分别被纳入称为 Hadoop 的项<br>
+目中。<br>
+9）名字来源于Doug Cutting儿子的玩具大象</p>
+<figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200823170826.png" alt="" loading="lazy"></figure>
+<p>10）Hadoop就此诞生并迅速发展，标志着大数据时代来临。</p>
+<h3 id="23-hadoop-三大发行版本">2.3 Hadoop 三大发行版本</h3>
+<p>Hadoop 三大发行版本：Apache、Cloudera、Hortonworks。<br>
+Apache 版本最原始（最基础）的版本，对于入门学习最好。<br>
+Cloudera 在大型互联网企业中用的较多。<br>
+Hortonworks 文档较好。</p>
+<ol>
+<li>Apache Hadoop<br>
+官网地址：http://hadoop.apache.org/releases.html</li>
+</ol>
+<p>下载地址：https://archive.apache.org/dist/hadoop/common/</p>
+<ol start="2">
+<li>
+<p>Cloudera Hadoop<br>
+官网地址：https://www.cloudera.com/downloads/cdh/5-10-0.html<br>
+下载地址：http://archive-primary.cloudera.com/cdh5/cdh/5/<br>
+（1）2008 年成立的 Cloudera 是最早将 Hadoop 商用的公司，为合作伙伴提供 Hadoop 的商用解决方案，主要是包括支持、咨询服务、培训。<br>
+（2）2009 年 Hadoop 的创始人 Doug Cutting 也加盟 Cloudera 公司。Cloudera 产品主要为 CDH，Cloudera Manager，Cloudera Support<br>
+（3）CDH 是 Cloudera 的 Hadoop 发行版，完全开源，比 Apache Hadoop 在兼容性，安全性，稳定性上有所增强。<br>
+（4）Cloudera Manager 是集群的软件分发及管理监控平台，可以在几个小时内部署好一个 Hadoop 集群，并对集群的节点及服务进行实时监控。Cloudera Support 即是对 Hadoop 的技术支持。<br>
+（5）Cloudera 的标价为每年每个节点 4000 美元。Cloudera 开发并贡献了可实时处理大数据的 Impala 项目。</p>
+<ol start="3">
+<li>Hortonworks Hadoop<br>
+官网地址：https://hortonworks.com/products/data-center/hdp/<br>
+下载地址：https://hortonworks.com/downloads/#data-platform<br>
+（1）2011 年成立的 Hortonworks 是雅虎与硅谷风投公司 Benchmark Capital 合资组建。<br>
+（2）公司成立之初就吸纳了大约 25 名至 30 名专门研究 Hadoop 的雅虎工程师，上述工程师均在 2005 年开始协助雅虎开发 Hadoop，贡献了 Hadoop80%的代码。<br>
+（3）雅虎工程副总裁、雅虎 Hadoop 开发团队负责人 Eric Baldeschwieler 出任 Hortonworks的首席执行官。<br>
+（4）Hortonworks 的主打产品是 Hortonworks Data Platform（HDP），也同样是 100%开源的产品，HDP 除常见的项目外还包括了 Ambari，一款开源的安装和管理系统。<br>
+（5）HCatalog，一个元数据管理系统，HCatalog 现已集成到 Facebook 开源的 Hive 中。<br>
+Hortonworks 的 Stinger 开创性的极大的优化了 Hive 项目。Hortonworks 为入门提供了一个非常好的，易于使用的沙盒。<br>
+（6）Hortonworks 开发了很多增强特性并提交至核心主干，这使得 Apache Hadoop 能够在包括 Window Server 和 Windows Azure 在内的 Microsoft Windows 平台上本地运行。定价以集群为基础，每 10 个节点每年为 12500 美元。</li>
+</ol>
+</li>
+</ol>
+<h3 id="24-hadoop-的优势4-高">2.4 Hadoop 的优势（4 高）</h3>
+<p>1）高可靠性：Hadoop底层维护多个数据副本，所以即使Hadoop某个计算元素或存储出现故障，也不会导致数据的丢失。<br>
+2）高扩展性：在集群间分配任务数据，可方便的扩展数以千计的节点。</p>
+<p>3）高效性：在MapReduce的思想下，Hadoop是并行工作的，以加快任务处理速度。</p>
+<p>4）高容错性：能够自动将失败的任务重新分配。</p>
+<h3 id="25-hadoop-组成面试重点">2.5  Hadoop 组成（面试重点）</h3>
+<figure data-type="image" tabindex="6"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200823171307.png" alt="" loading="lazy"></figure>
+<h4 id="251-hdfs-架构概述">2.5.1 HDFS 架构概述</h4>
+<p>1）NameNode（nn）：存储文件的元数据，如文件名，文件目录结构，文件属性（生成时间、副本数、文件权限），以及每个文件的块列表和块所在的DataNode等。</p>
+<p>2）DataNode(dn)：在本地文件系统存储文件块数据，以及块数据的校验和。</p>
+<p>3）Secondary NameNode(2nn)：用来监控HDFS状态的辅助后台程序，每隔一段时间获取HDFS元数据的快照。</p>
+<h4 id="252-yarn-架构概述">2.5.2 YARN 架构概述</h4>
+<figure data-type="image" tabindex="7"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200823171505.png" alt="" loading="lazy"></figure>
+<h4 id="253-mapreduce-架构概述">2.5.3 MapReduce 架构概述</h4>
+<p>MapReduce 将计算过程分为两个阶段：Map 和 Reduce<br>
+1）Map 阶段并行处理输入数据<br>
+2）Reduce 阶段对 Map 结果进行汇总</p>
+<figure data-type="image" tabindex="8"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200823171738.png" alt="" loading="lazy"></figure>
+<h3 id="26-大数据技术生态体系">2.6 大数据技术生态体系</h3>
+<figure data-type="image" tabindex="9"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200823171840.png" alt="" loading="lazy"></figure>
+<p>图中涉及的技术名词解释如下：<br>
+1）Sqoop：Sqoop 是一款开源的工具，主要用于在 Hadoop、Hive 与传统的数据库(MySql)间进行数据的传递，可以将一个关系型数据库（例如 ：MySQL，Oracle 等）中的数据导进到Hadoop 的 HDFS 中，也可以将 HDFS 的数据导进到关系型数据库中。</p>
+<p>2）Flume：Flume 是 Cloudera 提供的一个高可用的，高可靠的，分布式的海量日志采集、聚合和传输的系统，Flume 支持在日志系统中定制各类数据发送方，用于收集数据；同时，Flume提供对数据进行简单处理，并写到各种数据接受方（可定制）的能力。<br>
+3）Kafka：Kafka 是一种高吞吐量的分布式发布订阅消息系统，有如下特性：<br>
+（1）通过 O(1)的磁盘数据结构提供消息的持久化，这种结构对于即使数以 TB 的消息存储也能够保持长时间的稳定性能。<br>
+（2）高吞吐量：即使是非常普通的硬件 Kafka 也可以支持每秒数百万的消息。<br>
+（3）支持通过 Kafka 服务器和消费机集群来分区消息。<br>
+（4）支持 Hadoop 并行数据加载。<br>
+4）Storm：Storm 用于“连续计算”，对数据流做连续查询，在计算时就将结果以流的形式输出给用户。<br>
+5）Spark：Spark 是当前最流行的开源大数据内存计算框架。可以基于 Hadoop 上存储的大数据进行计算。<br>
+6）Oozie：Oozie 是一个管理 Hdoop 作业（job）的工作流程调度管理系统。<br>
+7）Hbase：HBase 是一个分布式的、面向列的开源数据库。HBase 不同于一般的关系数据库，它是一个适合于非结构化数据存储的数据库。<br>
+8）Hive：Hive 是基于 Hadoop 的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，并提供简单的 SQL 查询功能，可以将 SQL 语句转换为 MapReduce 任务进行运行。 其优点是学习成本低，可以通过类 SQL 语句快速实现简单的 MapReduce 统计，不必开发专门的 MapReduce 应用，十分适合数据仓库的统计分析。<br>
+10）R 语言：R 是用于统计分析、绘图的语言和操作环境。R 是属于 GNU 系统的一个自由、免费、源代码开放的软件，它是一个用于统计计算和统计制图的优秀工具。<br>
+11）Mahout：Apache Mahout 是个可扩展的机器学习和数据挖掘库。<br>
+12）ZooKeeper：Zookeeper 是 Google 的 Chubby 一个开源的实现。它是一个针对大型分布式系统的可靠协调系统，提供的功能包括：配置维护、名字服务、 分布式同步、组服务等。ZooKeeper 的目标就是封装好复杂易出错的关键服务，将简单易用的接口和性能高效、功能稳定的系统提供给用户。</p>
+<h3 id="27-推荐系统框架图">2.7   推荐系统框架图</h3>
+<figure data-type="image" tabindex="10"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200823172042.png" alt="" loading="lazy"></figure>
+<h2 id="3-hadoop-运行环境搭建开发重点">3、Hadoop 运行环境搭建（开发重点）</h2>
+<h3 id="31-虚拟机环境准备">3.1 虚拟机环境准备</h3>
+<ol>
+<li>
+<p>克隆虚拟机</p>
+</li>
+<li>
+<p>修改克隆虚拟机的静态 IP</p>
+</li>
+<li>
+<p>修改主机名</p>
+</li>
+<li>
+<p>关闭防火墙</p>
+</li>
+<li>
+<p>创建 Hadoop 用户</p>
+</li>
+<li>
+<p>配置 Hadoop 用户具有 root 权限<br>
+7．在/opt 目录下创建文件夹<br>
+（1）在/opt 目录下创建 module、software 文件夹</p>
+</li>
+</ol>
+<pre><code class="language-shell">[atguigu@hadoop101 opt]$ sudo mkdir module 
+[atguigu@hadoop101 opt]$ sudo mkdir software 
+</code></pre>
+<p>（2）修改 module、software 文件夹的所有者 cd</p>
+<pre><code class="language-shell">[atguigu@hadoop101 opt]$ sudo chown atguigu:atguigu module/ 
+software/ 
+[atguigu@hadoop101 opt]$ ll 
+总用量 8 
+drwxr-xr-x. 2 atguigu atguigu 4096 1 月 17 14:37 module 
+drwxr-xr-x. 2 atguigu atguigu 4096 1 月 17 14:38 software 
+</code></pre>
+<h3 id="32-安装-jdk">3.2 安装 JDK</h3>
+<h3 id="33-安装hadoop">3.3 安装Hadoop</h3>
+<ol>
+<li>
+<p>Hadoop 下载地址：<br>
+https://archive.apache.org/dist/hadoop/common/hadoop-2.7.2/</p>
+<p>上传到/opt/software目录下</p>
+</li>
+<li>
+<p>进入到 Hadoop 安装包路径下</p>
+<pre><code class="language-shell">[atguigu@hadoop101 ~]$ cd /opt/software/ 
+</code></pre>
+</li>
+<li>
+<p>解压安装文件到/opt/module 下面</p>
+<pre><code class="language-shell">[atguigu@hadoop101 software]$ tar -zxvf hadoop-2.7.2.tar.gz -C /opt/module/ 
+</code></pre>
+</li>
+<li>
+<p>查看是否解压成功</p>
+<pre><code class="language-shell">[atguigu@hadoop101 software]$ ls /opt/module/
+hadoop-2.7.2 
+</code></pre>
+</li>
+<li>
+<p>将 Hadoop 添加到环境变量</p>
+<p>（1）获取 Hadoop 安装路径</p>
+</li>
+</ol>
+<pre><code class="language-shell">[atguigu@hadoop101 hadoop-2.7.2]$ pwd 
+/opt/module/hadoop-2.7.2 
+</code></pre>
+<pre><code>（2）打开/etc/profile 文件 
+</code></pre>
+<pre><code class="language-shell">[atguigu@hadoop101 hadoop-2.7.2]$ sudo vi /etc/profile 
+</code></pre>
+<p>在 profile 文件末尾添加 JDK 路径：（shitf+g）</p>
+<pre><code class="language-shell">export PATH USER LOGNAME MAIL HOSTNAME HISTSIZE HISTCONTROL
+export JAVA_HOME=/usr/local/jdk
+export HADOOP_HOME=/opt/module/hadoop-2.7.2 
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+</code></pre>
+<p>（3）保存后退出</p>
+<p>​		:wq</p>
+<p>（4）让修改后的文件生效</p>
+<pre><code class="language-shell">[atguigu@ hadoop101 hadoop-2.7.2]$ source /etc/profile 
+</code></pre>
+<ol start="6">
+<li>
+<p>测试是否安装成功</p>
+<pre><code class="language-shell">[atguigu@hadoop101 hadoop-2.7.2]$ hadoop version 
+Hadoop 2.7.2 
+</code></pre>
+</li>
+<li>
+<p>重启(如果 Hadoop 命令不能用再重启)</p>
+<pre><code class="language-shell">[atguigu@ hadoop101 hadoop-2.7.2]$ sync 
+[atguigu@ hadoop101 hadoop-2.7.2]$ sudo reboot 
+</code></pre>
+</li>
+</ol>
+<h3 id="34-hadoop-目录结构">3.4  Hadoop 目录结构</h3>
+<ol>
+<li>
+<p>查看 Hadoop 目录结构</p>
+<pre><code class="language-shell">[atguigu@hadoop101 hadoop-2.7.2]$ ll 
+总用量 52 
+drwxr-xr-x. 2 atguigu atguigu  4096 5月  22 2017 bin 
+drwxr-xr-x. 3 atguigu atguigu  4096 5月  22 2017 etc 
+drwxr-xr-x. 2 atguigu atguigu  4096 5月  22 2017 include 
+drwxr-xr-x. 3 atguigu atguigu  4096 5月  22 2017 lib 
+drwxr-xr-x. 2 atguigu atguigu  4096 5月  22 2017 libexec 
+-rw-r--r--. 1 atguigu atguigu 15429 5月  22 2017 LICENSE.txt 
+-rw-r--r--. 1 atguigu atguigu   101 5月  22 2017 NOTICE.txt 
+-rw-r--r--. 1 atguigu atguigu  1366 5月  22 2017 README.txt 
+drwxr-xr-x. 2 atguigu atguigu  4096 5月  22 2017 sbin 
+drwxr-xr-x. 4 atguigu atguigu  4096 5月  22 2017 share
+</code></pre>
+</li>
+<li>
+<p>重要目录</p>
+<p>（1）bin 目录：存放对 Hadoop 相关服务（HDFS,YARN）进行操作的脚本<br>
+（2）etc 目录：Hadoop 的配置文件目录，存放 Hadoop 的配置文件<br>
+（3）lib 目录：存放 Hadoop 的本地库（对数据进行压缩解压缩功能）<br>
+（4）sbin 目录：存放启动或停止 Hadoop 相关服务的脚本<br>
+（5）share 目录：存放 Hadoop 的依赖 jar 包、文档、和官方案例</p>
+</li>
+</ol>
+<h2 id="4-hadoop-运行模式">4、Hadoop 运行模式</h2>
+<p>Hadoop 运行模式包括：本地模式、伪分布式模式以及完全分布式模式。<br>
+Hadoop 官方网站：http://hadoop.apache.org/</p>
+<h3 id="41-本地运行模式">4.1 本地运行模式</h3>
+<h4 id="411-官方-grep-案例">4.1.1 官方 Grep 案例</h4>
+<ol>
+<li>创建在 hadoop-2.7.2 文件下面创建一个 input 文件夹</li>
+</ol>
+<pre><code class="language-shell">[atguigu@hadoop101 hadoop-2.7.2]$ mkdir input 
+</code></pre>
+<ol start="2">
+<li>将 Hadoop 的 xml 配置文件复制到 input</li>
+</ol>
+<pre><code class="language-shell">[atguigu@hadoop101 hadoop-2.7.2]$ cp etc/hadoop/*.xml input
+</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -3811,8 +4090,6 @@ eureka:
 <li>
 <p>修改 common_mapper 项目的 POM 文件，添加资源拷贝<br>
 插件</p>
-</li>
-</ol>
 <pre><code class="language-xml">    &lt;build&gt;
     &lt;resources&gt;
         &lt;resource&gt;
@@ -3830,7 +4107,7 @@ eureka:
     &lt;/resources&gt;
 &lt;/build&gt;
 </code></pre>
-<ol start="5">
+</li>
 <li>
 <p>创建启动类，添加相关注解</p>
 <pre><code class="language-java">/**
@@ -4809,6 +5086,1513 @@ public class ItemServiceImpl implements ItemService {
 </li>
 </ol>
 <h5 id="54210-添加分布式事务-tx-lcn">5.4.2.10  添加分布式事务 TX-LCN</h5>
+<ol>
+<li>
+<p>搭建 TX-LCN 服务端</p>
+<p>注意：在 Spring Boot2.x 版本中要求 TX-LCN 必须是 5.0 以上</p>
+</li>
+<li>
+<p>向数据库中导入 SQL 文件</p>
+<figure data-type="image" tabindex="19"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200825134700.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="20"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200825134719.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 application.properties 文件</p>
+<figure data-type="image" tabindex="21"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200825134806.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>配置 TX-managerID.Tx 的服务端在哪个环境上运行就配置那个环境的 IP</p>
+<figure data-type="image" tabindex="22"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200825134904.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>配置 Redis 地址</p>
+<figure data-type="image" tabindex="23"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200825140328.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>将 TX 服务端上传到 Linux 中</p>
+<figure data-type="image" tabindex="24"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200825140404.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>通过 server.sh 启动脚本启动服务端</p>
+<figure data-type="image" tabindex="25"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200825140404.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>访问管理页面</p>
+<figure data-type="image" tabindex="26"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200825140451.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<h5 id="54211创建-tx-lcn-客户端">5.4.2.11创建 TX-LCN 客户端</h5>
+<ol>
+<li>
+<p>创建 TX-LCN 客户端项目</p>
+<figure data-type="image" tabindex="27"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200825143407.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>修改 POM 文件添加依赖</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;parent&gt;
+        &lt;artifactId&gt;bz_parent&lt;/artifactId&gt;
+        &lt;groupId&gt;com.cy&lt;/groupId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;artifactId&gt;common_tx_manager_client&lt;/artifactId&gt;
+
+    &lt;dependencies&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.codingapi.txlcn&lt;/groupId&gt;
+            &lt;artifactId&gt;txlcn-tc&lt;/artifactId&gt;
+            &lt;version&gt;5.0.2.RELEASE&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.codingapi.txlcn&lt;/groupId&gt;
+            &lt;artifactId&gt;txlcn-txmsg-netty&lt;/artifactId&gt;
+            &lt;version&gt;5.0.2.RELEASE&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;
+</code></pre>
+</li>
+</ol>
+<h5 id="54212-在服务中使用-tx-lcn-做分布式事务处理">5.4.2.12 在服务中使用 TX-LCN 做分布式事务处理</h5>
+<ol>
+<li>
+<p>在 common_item 服务中添加 TX-LCN</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.cy&lt;/groupId&gt;
+    &lt;artifactId&gt;common_tx_manager_client&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>修改配置文件，添加 TX-LCN 服务端地址</p>
+<pre><code class="language-yaml">tx-lcn:
+	client:
+		manager-address: 124.70.181.124:8070
+</code></pre>
+<p>修改启动类，开启 TX-LCN</p>
+</li>
+</ol>
+<pre><code class="language-java">@EnableDistributedTransaction
+</code></pre>
+<p>​	在方法上添加分布式事务处理注解</p>
+<pre><code class="language-java">@LcnTransaction
+</code></pre>
+<ol start="2">
+<li>
+<p>在 backend_item 服务中添加 TX-LCN</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+&lt;groupId&gt;com.cy&lt;/groupId&gt;&lt;artifactId&gt;common_tx_manager_client&lt;/artifactId&gt;
+&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!--mapper--&gt;
+&lt;dependency&gt;
+&lt;groupId&gt;com.cy&lt;/groupId&gt;
+&lt;artifactId&gt;common_mapper&lt;/artifactId&gt;
+&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>修改配置文件，添加 TX-LCN 服务端地址</p>
+<pre><code class="language-yaml">tx-lcn:
+	client:
+		manager-address: 124.70.181.124:8070
+</code></pre>
+<p>修改启动类，开启 TX-LCN</p>
+<pre><code class="language-java">@EnableDistributedTransaction
+</code></pre>
+<p>在方法上添加分布式事务处理注解</p>
+<pre><code class="language-java">@LcnTransaction
+</code></pre>
+</li>
+</ol>
+<h4 id="543-实现删除商品接口">5.4.3 实现删除商品接口</h4>
+<h5 id="5431-在-common_item-服务中实现删除商品">5.4.3.1  在 common_item 服务中实现删除商品</h5>
+<ol>
+<li>
+<p>修改 controller</p>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/service/item&quot;)
+public class ItemController {
+
+    @Autowired
+    private ItemService itemService;
+
+    /**
+     * 查询商品数据
+     */
+    @RequestMapping(value = &quot;/selectTbItemAllByPage&quot;,method = RequestMethod.GET)
+    public PageResult selectTbItemAllByPage(@RequestParam Integer page, @RequestParam Integer rows) {
+        return this.itemService.selectTbItemAllByPage(page,rows);
+    }
+
+    /**
+     * 商品的增加
+     */
+    @RequestMapping(&quot;/insertTbItem&quot;)
+    public Integer insertTbItem(@RequestBody TbItem tbItem){
+        return this.itemService.insertTbItem(tbItem);
+    }
+
+    /**
+     * 商品的删除
+     */
+    @RequestMapping(&quot;/deleteItemById&quot;)
+    public Integer deleteItemById(@RequestBody TbItem tbItem){
+        return null;
+    }
+}
+
+</code></pre>
+</li>
+<li>
+<p>修改 service</p>
+<pre><code class="language-java">public interface ItemService {
+    PageResult selectTbItemAllByPage(Integer page,Integer rows);
+    Integer insertTbItem(TbItem tbItem);
+    Integer updateItemById(TbItem tbItem);
+}
+</code></pre>
+</li>
+<li>
+<p>修改 serviceImpl</p>
+<pre><code class="language-java">@Service
+public class ItemServiceImpl implements ItemService {
+
+    @Autowired
+    private TbItemMapper tbItemMapper;
+
+    /**
+     * 查询所有商品并分页
+     * @param page
+     * @param rows
+     * @return
+     */
+    @Override
+    public PageResult selectTbItemAllByPage(Integer page, Integer rows) {
+        PageHelper.startPage(page, rows);
+        //查询条件
+        TbItemExample tbItemExample = new TbItemExample();
+        TbItemExample.Criteria criteria = tbItemExample.createCriteria();
+        criteria.andStatusEqualTo((byte) 1);
+        List&lt;TbItem&gt; list = this.tbItemMapper.selectByExample(tbItemExample);
+        //分页处理
+        PageInfo&lt;TbItem&gt; pageInfo = new PageInfo&lt;&gt;(list);
+        PageResult pageResult = new PageResult();
+        pageResult.setPageIndex(page);
+        pageResult.setTotalIndex((int) pageInfo.getTotal());
+        pageResult.setResult(list);
+        return pageResult;
+    }
+
+    /**
+     * 商品的增加
+     */
+    @Override
+    @LcnTransaction
+    public Integer insertTbItem(TbItem tbItem) {
+        return this.tbItemMapper.insert(tbItem);
+    }
+
+    /**
+     * 商品的删除
+     * 删除是更新 status 字段的值，修改为 3
+     * @param tbItem
+     * @return
+     */
+    @Override
+    @LcnTransaction
+    public Integer updateItemById(TbItem tbItem) {
+        tbItem.setUpdated(new Date());
+        // updateByPrimaryKeySelective会对字段进行判断再更新(如果为Null就忽略更新)，如果你只想更新某一字段，可以用这个方法。updateByPrimaryKey对你注入的字段全部更新
+        return this.tbItemMapper.updateByPrimaryKeySelective(tbItem);
+    }
+
+}
+</code></pre>
+</li>
+</ol>
+<h5 id="5432-在-backend_item-服务中实现删除商品">5.4.3.2  在 backend_item 服务中实现删除商品</h5>
+<ol>
+<li>
+<p>修改 controller</p>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/backend/item&quot;)
+public class ItemController {
+
+    @Autowired
+    private ItemService itemService;
+
+    /**
+     * 查询商品并分页处理
+     * @param page
+     * @param rows
+     * @return
+     */
+    @RequestMapping(&quot;/selectTbItemAllByPage&quot;)
+    public Result selectTbItemAllByPage(@RequestParam(defaultValue = &quot;1&quot;)Integer page,@RequestParam(defaultValue = &quot;2&quot;)Integer rows){
+
+        try {
+            return this.itemService.selectTbItemAllByPage(page,rows);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;查无结果&quot;);
+    }
+
+    /**
+     * 商品添加
+     * @param tbItem
+     * @param desc
+     * @param itemParams
+     * @return
+     */
+    @RequestMapping(&quot;/insertTbItem&quot;)
+    public Result insertTbItem(TbItem tbItem,String desc,String itemParams){
+        try {
+            return this.itemService.insertTbItem(tbItem, desc, itemParams);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;error&quot;);
+    }
+
+    /**
+     * 商品的删除
+     */
+    @RequestMapping(&quot;/deleteItemById&quot;)
+    public Result deleteItemById(Long itemId){
+        try {
+            return this.itemService.deleteItemById(itemId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;error&quot;);
+    }
+
+}
+
+</code></pre>
+</li>
+<li>
+<p>修改 service</p>
+<pre><code class="language-java">public interface ItemService {
+    Result selectTbItemAllByPage(Integer page,Integer rows);
+    Result insertTbItem(TbItem tbItem, String desc, String itemParams);
+    Result deleteItemById(Long itemId);
+}
+</code></pre>
+</li>
+<li>
+<p>修改 serviceImpl</p>
+<pre><code class="language-java">/**
+ * 商品管理
+ */
+@Service
+public class ItemServiceImpl implements ItemService {
+
+    @Autowired
+    private CommonItemFeignClient commonItemFeignClient;
+
+    @Override
+    public Result selectTbItemAllByPage(Integer page, Integer rows) {
+        PageResult pageResult = this.commonItemFeignClient.selectTbItemAllByPage(page, rows);
+        if (pageResult != null &amp;&amp; pageResult.getResult() != null &amp;&amp; pageResult.getResult().size() &gt; 0) {
+            return Result.ok(pageResult);
+        }
+        return Result.error(&quot;查无结果&quot;);
+    }
+
+    /**
+     * 添加TbItem，添加TbitemDesc，添加TbItemParamItem
+     *
+     * @param tbItem
+     * @param desc
+     * @param itemParams
+     * @return
+     */
+    @Override
+    @LcnTransaction
+    public Result insertTbItem(TbItem tbItem, String desc, String itemParams) {
+        //补齐 Tbitem 数据
+        Date date = new Date();
+        long itemId = IDUtils.genItemId();
+        tbItem.setId(itemId);
+        tbItem.setStatus((byte) 1);
+        tbItem.setCreated(date);
+        tbItem.setUpdated(date);
+        Integer tbItemNum = this.commonItemFeignClient.insertTbItem(tbItem);
+
+        //补齐商品描述对象
+        TbItemDesc tbItemDesc = new TbItemDesc();
+        tbItemDesc.setItemId(itemId);
+        tbItemDesc.setItemDesc(desc);
+        tbItemDesc.setCreated(date);
+        tbItemDesc.setUpdated(date);
+        Integer itemDescNum = this.commonItemFeignClient.insertItemDesc(tbItemDesc);
+
+        //补齐商品规格参数
+        TbItemParamItem tbItemParamItem = new TbItemParamItem();
+        tbItemParamItem.setItemId(itemId);
+        tbItemParamItem.setParamData(itemParams);
+        tbItemParamItem.setCreated(date);
+        tbItemParamItem.setUpdated(date);
+        Integer itemParamItemNum = this.commonItemFeignClient.insertTbItemParamItem(tbItemParamItem);
+
+        return Result.ok();
+    }
+
+    /**
+     * 删除商品
+     *
+     * @param itemId
+     * @return
+     */
+    @Override
+    @LcnTransaction
+    public Result deleteItemById(Long itemId) {
+        TbItem tbItem = new TbItem();
+        tbItem.setId(itemId);
+        tbItem.setStatus((byte) 3);
+        Integer itemNum = this.commonItemFeignClient.deleteItemById(tbItem);
+        if (itemNum != null) {
+            return Result.ok();
+        }
+        return Result.error(&quot;删除失败&quot;);
+    }
+}
+
+</code></pre>
+</li>
+<li>
+<p>修改 feignClient</p>
+<pre><code class="language-java">@FeignClient(value = &quot;common-item&quot;)
+public interface CommonItemFeignClient {
+    //------------/service/item
+    @GetMapping(&quot;/service/item/selectTbItemAllByPage&quot;)
+    PageResult selectTbItemAllByPage(@RequestParam(&quot;page&quot;) Integer page, @RequestParam(&quot;rows&quot;) Integer rows);
+    @PostMapping(&quot;/service/item/insertTbItem&quot;)
+    Integer insertTbItem(@RequestBody TbItem tbItem);
+    @PostMapping(&quot;/service/item/deleteItemById&quot;)
+    Integer deleteItemById(@RequestBody TbItem tbItem);
+
+    //-----------/service/itemCategory
+    @PostMapping(&quot;/service/itemCategory/selectItemCategoryByParentId&quot;)
+    List&lt;TbItemCat&gt; selectItemCategoryByParentId(@RequestParam(&quot;id&quot;) Long id);
+
+    //-----------/service/itemParam
+    @PostMapping(&quot;/service/itemParam/selectItemParamByItemCatId&quot;)
+    TbItemParam selectItemParamByItemCatId(@RequestParam(&quot;itemCatId&quot;) Long itemCatId);
+
+    //----------/service/itemDesc
+    @PostMapping(&quot;/service/itemDesc/insertItemDesc&quot;)
+    Integer insertItemDesc(@RequestBody TbItemDesc tbItemDesc);
+
+    //----------/service/itemParamItem
+    @PostMapping(&quot;/service/itemParamItem/insertTbItemParamItem&quot;)
+    Integer insertTbItemParamItem(@RequestBody TbItemParamItem tbItemParamItem);
+}
+</code></pre>
+</li>
+<li>
+<p>测试</p>
+<figure data-type="image" tabindex="28"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200827144259.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="29"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200827144326.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="30"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200827144406.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<h4 id="544-实现预更新商品接口">5.4.4 实现预更新商品接口</h4>
+<h5 id="5441-在-common_item-服务中实现根据-id-查询商品">5.4.4.1 在 common_item 服务中实现根据 ID 查询商品</h5>
+<ol>
+<li>
+<p>修改 controller</p>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/service/item&quot;)
+public class ItemController {
+
+    @Autowired
+    private ItemService itemService;
+
+    /**
+     * 查询商品数据
+     */
+    @RequestMapping(value = &quot;/selectTbItemAllByPage&quot;,method = RequestMethod.GET)
+    public PageResult selectTbItemAllByPage(@RequestParam Integer page, @RequestParam Integer rows) {
+        return this.itemService.selectTbItemAllByPage(page,rows);
+    }
+
+    /**
+     * 商品的增加
+     */
+    @RequestMapping(&quot;/insertTbItem&quot;)
+    public Integer insertTbItem(@RequestBody TbItem tbItem){
+        return this.itemService.insertTbItem(tbItem);
+    }
+
+    /**
+     * 商品的删除
+     */
+    @RequestMapping(&quot;/deleteItemById&quot;)
+    public Integer deleteItemById(@RequestBody TbItem tbItem){
+        return this.itemService.updateItemById(tbItem);
+    }
+
+    /**
+     * 根据商品 ID 查询商品，商品分类，商品描述，商品规格参数
+     */
+    @RequestMapping(&quot;/preUpdateItem&quot;)
+    public Map&lt;String,Object&gt; preUpdateItem(Long itemId){
+        return this.itemService.preUpdateItem(itemId);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>修改 service</p>
+<pre><code class="language-java">public interface ItemService {
+    PageResult selectTbItemAllByPage(Integer page,Integer rows);
+    Integer insertTbItem(TbItem tbItem);
+    Integer updateItemById(TbItem tbItem);
+    Map&lt;String ,Object&gt; preUpdateItem(Long itemId);
+}
+</code></pre>
+</li>
+<li>
+<p>修改 serviceImpl</p>
+<pre><code class="language-java">@Service
+public class ItemServiceImpl implements ItemService {
+
+    @Autowired
+    private TbItemMapper tbItemMapper;
+
+    @Autowired
+    private TbItemDescMapper tbItemDescMapper;
+
+    @Autowired
+    private TbItemCatMapper tbItemCatMapper;
+
+    @Autowired
+    private TbItemParamItemMapper tbItemParamItemMapper;
+
+    /**
+     * 查询所有商品并分页
+     *
+     * @param page
+     * @param rows
+     * @return
+     */
+    @Override
+    public PageResult selectTbItemAllByPage(Integer page, Integer rows) {
+        PageHelper.startPage(page, rows);
+        //查询条件
+        TbItemExample tbItemExample = new TbItemExample();
+        TbItemExample.Criteria criteria = tbItemExample.createCriteria();
+        criteria.andStatusEqualTo((byte) 1);
+        List&lt;TbItem&gt; list = this.tbItemMapper.selectByExample(tbItemExample);
+        //分页处理
+        PageInfo&lt;TbItem&gt; pageInfo = new PageInfo&lt;&gt;(list);
+        PageResult pageResult = new PageResult();
+        pageResult.setPageIndex(page);
+        pageResult.setTotalIndex((int) pageInfo.getTotal());
+        pageResult.setResult(list);
+        return pageResult;
+    }
+
+    /**
+     * 商品的增加
+     */
+    @Override
+    public Integer insertTbItem(TbItem tbItem) {
+        return this.tbItemMapper.insert(tbItem);
+    }
+
+    /**
+     * 商品的删除
+     * 删除是更新 status 字段的值，修改为 3
+     *
+     * @param tbItem
+     * @return
+     */
+    @Override
+    public Integer updateItemById(TbItem tbItem) {
+        tbItem.setUpdated(new Date());
+        // updateByPrimaryKeySelective会对字段进行判断再更新(如果为Null就忽略更新)，如果你只想更新某一字段，可以用这个方法。updateByPrimaryKey对你注入的字段全部更新
+        return this.tbItemMapper.updateByPrimaryKeySelective(tbItem);
+    }
+
+    /**
+     * 根据商品 ID 查询商品所有信息。
+     *
+     * @param itemId
+     * @return
+     */
+    @Override
+    public Map&lt;String, Object&gt; preUpdateItem(Long itemId) {
+        Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+        //根据商品 ID 查询商品
+        TbItem item = this.tbItemMapper.selectByPrimaryKey(itemId);
+        map.put(&quot;item&quot;, item);
+        //根据商品 ID 查询商品描述
+        TbItemDesc tbItemDesc = this.tbItemDescMapper.selectByPrimaryKey(itemId);
+        map.put(&quot;itemDesc&quot;, tbItemDesc);
+        //根据商品 ID 查询商品类目
+        TbItemCat tbItemCat = this.tbItemCatMapper.selectByPrimaryKey(item.getCid());
+        map.put(&quot;itemCat&quot;, tbItemCat);
+        //根据商品 ID 查询商品规格参数
+        TbItemParamItemExample tbItemParamExample = new TbItemParamItemExample();
+        TbItemParamItemExample.Criteria criteria = tbItemParamExample.createCriteria();
+        criteria.andItemIdEqualTo(itemId);
+        List&lt;TbItemParamItem&gt; list = this.tbItemParamItemMapper.selectByExampleWithBLOBs(tbItemParamExample);
+        if (list != null || list.size() &gt; 0){
+            map.put(&quot;itemParamItem&quot;,list);
+        }
+            return map;
+    }
+
+}
+</code></pre>
+</li>
+<li>
+<p>测试</p>
+<figure data-type="image" tabindex="31"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200827145548.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<h5 id="5442-在-backend_item-服务中实现商品预更新查询">5.4.4.2 在 backend_item 服务中实现商品预更新查询</h5>
+<ol>
+<li>
+<p>修改 controller</p>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/backend/item&quot;)
+public class ItemController {
+
+    @Autowired
+    private ItemService itemService;
+
+    /**
+     * 查询商品并分页处理
+     * @param page
+     * @param rows
+     * @return
+     */
+    @RequestMapping(&quot;/selectTbItemAllByPage&quot;)
+    public Result selectTbItemAllByPage(@RequestParam(defaultValue = &quot;1&quot;)Integer page,@RequestParam(defaultValue = &quot;2&quot;)Integer rows){
+
+        try {
+            return this.itemService.selectTbItemAllByPage(page,rows);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;查无结果&quot;);
+    }
+
+    /**
+     * 商品添加
+     * @param tbItem
+     * @param desc
+     * @param itemParams
+     * @return
+     */
+    @RequestMapping(&quot;/insertTbItem&quot;)
+    public Result insertTbItem(TbItem tbItem,String desc,String itemParams){
+        try {
+            return this.itemService.insertTbItem(tbItem, desc, itemParams);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;error&quot;);
+    }
+
+    /**
+     * 商品的删除
+     */
+    @RequestMapping(&quot;/deleteItemById&quot;)
+    public Result deleteItemById(Long itemId){
+        try {
+            return this.itemService.deleteItemById(itemId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;error&quot;);
+    }
+
+    /**
+     * 预更新商品查询
+     */
+    @RequestMapping(&quot;/preUpdateItem&quot;)
+    public Result preUpdateItem(Long itemId){
+        try {
+            return this.itemService.preUpdateItem(itemId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;error&quot;);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>修改 service</p>
+<pre><code class="language-java">public interface ItemService {
+    Result selectTbItemAllByPage(Integer page, Integer rows);
+
+    Result insertTbItem(TbItem tbItem, String desc, String itemParams);
+
+    Result deleteItemById(Long itemId);
+
+    Result preUpdateItem(Long itemId);
+}
+</code></pre>
+</li>
+<li>
+<p>修改 serviceImpl</p>
+<pre><code class="language-java">/**
+ * 商品管理
+ */
+@Service
+public class ItemServiceImpl implements ItemService {
+
+    @Autowired
+    private CommonItemFeignClient commonItemFeignClient;
+
+    @Override
+    public Result selectTbItemAllByPage(Integer page, Integer rows) {
+        PageResult pageResult = this.commonItemFeignClient.selectTbItemAllByPage(page, rows);
+        if (pageResult != null &amp;&amp; pageResult.getResult() != null &amp;&amp; pageResult.getResult().size() &gt; 0) {
+            return Result.ok(pageResult);
+        }
+        return Result.error(&quot;查无结果&quot;);
+    }
+
+    /**
+     * 添加TbItem，添加TbitemDesc，添加TbItemParamItem
+     *
+     * @param tbItem
+     * @param desc
+     * @param itemParams
+     * @return
+     */
+    @Override
+    public Result insertTbItem(TbItem tbItem, String desc, String itemParams) {
+        //补齐 Tbitem 数据
+        Date date = new Date();
+        long itemId = IDUtils.genItemId();
+        tbItem.setId(itemId);
+        tbItem.setStatus((byte) 1);
+        tbItem.setCreated(date);
+        tbItem.setUpdated(date);
+        Integer tbItemNum = this.commonItemFeignClient.insertTbItem(tbItem);
+
+        //补齐商品描述对象
+        TbItemDesc tbItemDesc = new TbItemDesc();
+        tbItemDesc.setItemId(itemId);
+        tbItemDesc.setItemDesc(desc);
+        tbItemDesc.setCreated(date);
+        tbItemDesc.setUpdated(date);
+        Integer itemDescNum = this.commonItemFeignClient.insertItemDesc(tbItemDesc);
+
+        //补齐商品规格参数
+        TbItemParamItem tbItemParamItem = new TbItemParamItem();
+        tbItemParamItem.setItemId(itemId);
+        tbItemParamItem.setParamData(itemParams);
+        tbItemParamItem.setCreated(date);
+        tbItemParamItem.setUpdated(date);
+        Integer itemParamItemNum = this.commonItemFeignClient.insertTbItemParamItem(tbItemParamItem);
+
+        return Result.ok();
+    }
+
+    /**
+     * 删除商品
+     *
+     * @param itemId
+     * @return
+     */
+    @Override
+    public Result deleteItemById(Long itemId) {
+        TbItem tbItem = new TbItem();
+        tbItem.setId(itemId);
+        tbItem.setStatus((byte) 3);
+        Integer itemNum = this.commonItemFeignClient.deleteItemById(tbItem);
+        if (itemNum != null) {
+            return Result.ok();
+        }
+        return Result.error(&quot;删除失败&quot;);
+    }
+
+    /**
+     * 预更新查询
+     * @param itemId
+     * @return
+     */
+    @Override
+    public Result preUpdateItem(Long itemId) {
+        Map&lt;String, Object&gt; map = this.commonItemFeignClient.preUpdateItem(itemId);
+        if (map!=null){
+            return Result.ok(map);
+        }
+        return Result.error(&quot;查无数据&quot;);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>修改 feignClient</p>
+<pre><code class="language-java">@FeignClient(value = &quot;common-item&quot;)
+public interface CommonItemFeignClient {
+    /**
+     * @RequestParam 注解是请求时带过来的参数，
+     * @RequestBody 该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式后，写入到Response对象的body数据区。使用时机：返回的数据不是html标签的页面，而是其他某种格式的数据时（如json、xml等）使用；
+     */
+    //------------/service/item
+    @GetMapping(&quot;/service/item/selectTbItemAllByPage&quot;)
+    PageResult selectTbItemAllByPage(@RequestParam(&quot;page&quot;) Integer page, @RequestParam(&quot;rows&quot;) Integer rows);
+
+    @PostMapping(&quot;/service/item/insertTbItem&quot;)
+    Integer insertTbItem(@RequestBody TbItem tbItem);
+
+    @PostMapping(&quot;/service/item/deleteItemById&quot;)
+    Integer deleteItemById(@RequestBody TbItem tbItem);
+
+    @PostMapping(&quot;/service/item/preUpdateItem&quot;)
+    Map&lt;String,Object&gt; preUpdateItem(@RequestParam(&quot;itemId&quot;) Long itemId);
+
+    //-----------/service/itemCategory
+    @PostMapping(&quot;/service/itemCategory/selectItemCategoryByParentId&quot;)
+    List&lt;TbItemCat&gt; selectItemCategoryByParentId(@RequestParam(&quot;id&quot;) Long id);
+
+    //-----------/service/itemParam
+    @PostMapping(&quot;/service/itemParam/selectItemParamByItemCatId&quot;)
+    TbItemParam selectItemParamByItemCatId(@RequestParam(&quot;itemCatId&quot;) Long itemCatId);
+
+    //----------/service/itemDesc
+    @PostMapping(&quot;/service/itemDesc/insertItemDesc&quot;)
+    Integer insertItemDesc(@RequestBody TbItemDesc tbItemDesc);
+
+    //----------/service/itemParamItem
+    @PostMapping(&quot;/service/itemParamItem/insertTbItemParamItem&quot;)
+    Integer insertTbItemParamItem(@RequestBody TbItemParamItem tbItemParamItem);
+}
+</code></pre>
+</li>
+</ol>
+<h4 id="545-实现商品更新接口">5.4.5 实现商品更新接口</h4>
+<h5 id="5451-在-common_item-服务中实现商品更新">5.4.5.1  在 common_item 服务中实现商品更新</h5>
+<ol>
+<li>
+<p>修改 ItemController</p>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/service/item&quot;)
+public class ItemController {
+
+    @Autowired
+    private ItemService itemService;
+
+    /**
+     * 查询商品数据
+     */
+    @RequestMapping(value = &quot;/selectTbItemAllByPage&quot;,method = RequestMethod.GET)
+    public PageResult selectTbItemAllByPage(@RequestParam Integer page, @RequestParam Integer rows) {
+        return this.itemService.selectTbItemAllByPage(page,rows);
+    }
+
+    /**
+     * 商品的增加
+     */
+    @RequestMapping(&quot;/insertTbItem&quot;)
+    public Integer insertTbItem(@RequestBody TbItem tbItem){
+        return this.itemService.insertTbItem(tbItem);
+    }
+
+    /**
+     * 商品的删除
+     */
+    @RequestMapping(&quot;/deleteItemById&quot;)
+    public Integer deleteItemById(@RequestBody TbItem tbItem){
+        return this.itemService.updateItemById(tbItem);
+    }
+
+    /**
+     * 根据商品 ID 查询商品，商品分类，商品描述，商品规格参数
+     */
+    @RequestMapping(&quot;/preUpdateItem&quot;)
+    public Map&lt;String,Object&gt; preUpdateItem(Long itemId){
+        return this.itemService.preUpdateItem(itemId);
+    }
+
+    /**
+     * 对商品表的更新操作
+     */
+    @RequestMapping(&quot;/updateTbItem&quot;)
+    public Integer updateTbItem(@RequestBody TbItem tbItem){
+        return this.itemService.updateItemById(tbItem);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>修改 ItemDescController</p>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/service/itemDesc&quot;)
+public class ItemDescController {
+
+    @Autowired
+    private ItemDescService itemDescService;
+
+    /**
+     * 添加商品描述
+     */
+    @RequestMapping(&quot;/insertItemDesc&quot;)
+    public Integer insertItemDesc(@RequestBody TbItemDesc tbItemDesc){
+        return itemDescService.insertItemDesc(tbItemDesc);
+    }
+
+    /**
+     * 更新商品描述
+     */
+    @RequestMapping(&quot;/updateItemDesc&quot;)
+    public Integer updateItemDesc(@RequestBody TbItemDesc tbItemDesc){
+        return this.itemDescService.updateItemDesc(tbItemDesc);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>修改 ItemParamItemController</p>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/service/itemParamItem&quot;)
+public class ItemParamItemController {
+
+    @Autowired
+    private ItemParamItemService itemParamItemService;
+    /**
+     * 添加商品规格参数
+     */
+    @RequestMapping(&quot;/insertTbItemParamItem&quot;)
+    public Integer insertTbItemParamItem(@RequestBody TbItemParamItem tbItemParamItem) {
+        return this.itemParamItemService.insertItemParamItem(tbItemParamItem);
+    }
+
+    /**
+     * 更新商品规格参数
+     */
+    @RequestMapping(&quot;/updateTbItemParamItem&quot;)
+    public Integer updateTbItemParamItem(@RequestBody TbItemParamItem tbItemParamItem){
+        return this.itemParamItemService.updateTbItemParamItem(tbItemParamItem);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>修改 ItemDescService</p>
+<pre><code class="language-java">public interface ItemDescService {
+    Integer insertItemDesc(TbItemDesc tbItemDesc);
+
+    Integer updateItemDesc(TbItemDesc tbItemDesc);
+}
+</code></pre>
+</li>
+<li>
+<p>修改 ItemParamItemService</p>
+<pre><code class="language-java">public interface ItemParamItemService {
+    Integer insertItemParamItem(TbItemParamItem tbItemParamItem);
+    Integer updateTbItemParamItem(TbItemParamItem tbItemParamItem);
+}
+</code></pre>
+</li>
+<li>
+<p>修改 ItemDescServiceImpl</p>
+<pre><code class="language-java">@Service
+public class ItemDescServiceImpl implements ItemDescService {
+    @Autowired
+    private TbItemDescMapper tbItemDescMapper;
+
+    /**
+     * 添加商品描述
+     * @param tbItemDesc
+     * @return
+     */
+    @Override
+    @LcnTransaction
+    public Integer insertItemDesc(TbItemDesc tbItemDesc) {
+        return this.tbItemDescMapper.insert(tbItemDesc);
+    }
+
+    /**
+     * 更新商品描述
+     * @param tbItemDesc
+     * @return
+     */
+    @Override
+    @LcnTransaction
+    public Integer updateItemDesc(TbItemDesc tbItemDesc) {
+        tbItemDesc.setUpdated(new Date());
+        return this.tbItemDescMapper.updateByPrimaryKeySelective(tbItemDesc);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>修改 ItemParamItemServiceImpl</p>
+<pre><code class="language-java">@Service
+public class ItemParamItemServiceImpl implements ItemParamItemService {
+
+    @Autowired
+    private TbItemParamItemMapper tbItemParamItemMapper;
+
+    /**
+     * 添加商品规格参数
+     * @param tbItemParamItem
+     * @return
+     */
+    @Override
+    @LcnTransaction
+    public Integer insertItemParamItem(TbItemParamItem tbItemParamItem) {
+        return this.tbItemParamItemMapper.insert(tbItemParamItem);
+    }
+
+    /**
+     * 更新商品规格参数
+     * @param tbItemParamItem
+     * @return
+     */
+    @Override
+    @LcnTransaction
+    public Integer updateTbItemParamItem(TbItemParamItem tbItemParamItem) {
+        tbItemParamItem.setUpdated(new Date());
+        TbItemParamItemExample tbItemParamItemExample = new TbItemParamItemExample();
+        TbItemParamItemExample.Criteria criteria = tbItemParamItemExample.createCriteria();
+        criteria.andItemIdEqualTo(tbItemParamItem.getItemId());
+        return this.tbItemParamItemMapper.updateByExampleSelective(tbItemParamItem, tbItemParamItemExample);
+    }
+}
+</code></pre>
+</li>
+</ol>
+<h5 id="5452-在-backend_item-服务中实现商品更新">5.4.5.2  在 backend_item 服务中实现商品更新</h5>
+<ol>
+<li>
+<p>修改 controller</p>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/backend/item&quot;)
+public class ItemController {
+
+    @Autowired
+    private ItemService itemService;
+
+    /**
+     * 查询商品并分页处理
+     * @param page
+     * @param rows
+     * @return
+     */
+    @RequestMapping(&quot;/selectTbItemAllByPage&quot;)
+    public Result selectTbItemAllByPage(@RequestParam(defaultValue = &quot;1&quot;)Integer page,@RequestParam(defaultValue = &quot;2&quot;)Integer rows){
+
+        try {
+            return this.itemService.selectTbItemAllByPage(page,rows);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;查无结果&quot;);
+    }
+
+    /**
+     * 商品添加
+     * @param tbItem
+     * @param desc
+     * @param itemParams
+     * @return
+     */
+    @RequestMapping(&quot;/insertTbItem&quot;)
+    public Result insertTbItem(TbItem tbItem,String desc,String itemParams){
+        try {
+            return this.itemService.insertTbItem(tbItem, desc, itemParams);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;error&quot;);
+    }
+
+    /**
+     * 商品的删除
+     */
+    @RequestMapping(&quot;/deleteItemById&quot;)
+    public Result deleteItemById(Long itemId){
+        try {
+            return this.itemService.deleteItemById(itemId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;error&quot;);
+    }
+
+    /**
+     * 预更新商品查询
+     */
+    @RequestMapping(&quot;/preUpdateItem&quot;)
+    public Result preUpdateItem(Long itemId){
+        try {
+            return this.itemService.preUpdateItem(itemId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;error&quot;);
+    }
+
+    /**
+     * 商品更新
+     */
+    @RequestMapping(&quot;/updateTbItem&quot;)
+    public Result updateTbItem(TbItem tbitem,String desc,String itemParams){
+        try {
+            return this.itemService.updateTbItem(tbitem,desc,itemParams);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;error&quot;);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>修改 service</p>
+<pre><code class="language-java">public interface ItemService {
+    Result selectTbItemAllByPage(Integer page, Integer rows);
+
+    Result insertTbItem(TbItem tbItem, String desc, String itemParams);
+
+    Result deleteItemById(Long itemId);
+
+    Result preUpdateItem(Long itemId);
+
+    Result updateTbItem(TbItem tbitem,String desc,String itemParams);
+}
+</code></pre>
+</li>
+<li>
+<p>修改 serviceImpl</p>
+<pre><code class="language-java">/**
+ * 商品管理
+ */
+@Service
+public class ItemServiceImpl implements ItemService {
+
+    @Autowired
+    private CommonItemFeignClient commonItemFeignClient;
+
+    @Override
+    public Result selectTbItemAllByPage(Integer page, Integer rows) {
+        PageResult pageResult = this.commonItemFeignClient.selectTbItemAllByPage(page, rows);
+        if (pageResult != null &amp;&amp; pageResult.getResult() != null &amp;&amp; pageResult.getResult().size() &gt; 0) {
+            return Result.ok(pageResult);
+        }
+        return Result.error(&quot;查无结果&quot;);
+    }
+
+    /**
+     * 添加TbItem，添加TbitemDesc，添加TbItemParamItem
+     *
+     * @param tbItem
+     * @param desc
+     * @param itemParams
+     * @return
+     */
+    @Override
+    public Result insertTbItem(TbItem tbItem, String desc, String itemParams) {
+        //补齐 Tbitem 数据
+        Date date = new Date();
+        long itemId = IDUtils.genItemId();
+        tbItem.setId(itemId);
+        tbItem.setStatus((byte) 1);
+        tbItem.setCreated(date);
+        tbItem.setUpdated(date);
+        Integer tbItemNum = this.commonItemFeignClient.insertTbItem(tbItem);
+
+        //补齐商品描述对象
+        TbItemDesc tbItemDesc = new TbItemDesc();
+        tbItemDesc.setItemId(itemId);
+        tbItemDesc.setItemDesc(desc);
+        tbItemDesc.setCreated(date);
+        tbItemDesc.setUpdated(date);
+        Integer itemDescNum = this.commonItemFeignClient.insertItemDesc(tbItemDesc);
+
+        //补齐商品规格参数
+        TbItemParamItem tbItemParamItem = new TbItemParamItem();
+        tbItemParamItem.setItemId(itemId);
+        tbItemParamItem.setParamData(itemParams);
+        tbItemParamItem.setCreated(date);
+        tbItemParamItem.setUpdated(date);
+        Integer itemParamItemNum = this.commonItemFeignClient.insertTbItemParamItem(tbItemParamItem);
+
+        return Result.ok();
+    }
+
+    /**
+     * 删除商品
+     *
+     * @param itemId
+     * @return
+     */
+    @Override
+    public Result deleteItemById(Long itemId) {
+        TbItem tbItem = new TbItem();
+        tbItem.setId(itemId);
+        tbItem.setStatus((byte) 3);
+        Integer itemNum = this.commonItemFeignClient.deleteItemById(tbItem);
+        if (itemNum != null) {
+            return Result.ok();
+        }
+        return Result.error(&quot;删除失败&quot;);
+    }
+
+    /**
+     * 预更新查询
+     * @param itemId
+     * @return
+     */
+    @Override
+    public Result preUpdateItem(Long itemId) {
+        Map&lt;String, Object&gt; map = this.commonItemFeignClient.preUpdateItem(itemId);
+        if (map!=null){
+            return Result.ok(map);
+        }
+        return Result.error(&quot;查无数据&quot;);
+    }
+
+
+    /**
+     * 商品更新：更新 TbItem 表，更新 TbitemDesc 表，更新 TbItempParamItem 表
+     * @param tbitem
+     * @param desc
+     * @param itemParams
+     * @return
+     */
+    @Override
+    public Result updateTbItem(TbItem tbitem, String desc, String itemParams) {
+        //更新商品
+        Integer itemNum = this.commonItemFeignClient.updateTbItem(tbitem);
+
+        //更新商品描述,补齐参数
+        TbItemDesc tbItemDesc = new TbItemDesc();
+        tbItemDesc.setItemId(tbitem.getId());
+        tbItemDesc.setItemDesc(desc);
+        Integer itemDescNum = this.commonItemFeignClient.updateItemDesc(tbItemDesc);
+
+        //更新商品规格参数，补齐参数
+        TbItemParamItem tbItemParamItem = new TbItemParamItem();
+        tbItemParamItem.setItemId(tbitem.getId());
+        tbItemParamItem.setParamData(itemParams);
+        Integer itemParamItemNum = this.commonItemFeignClient.updateTbItemParamItem(tbItemParamItem);
+        return Result.ok();
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>修改 feignClient</p>
+<pre><code class="language-java">@FeignClient(value = &quot;common-item&quot;)
+public interface CommonItemFeignClient {
+    /**
+     * @RequestParam 注解是请求时带过来的参数，
+     * @RequestBody 该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式后，写入到Response对象的body数据区。使用时机：返回的数据不是html标签的页面，而是其他某种格式的数据时（如json、xml等）使用；
+     */
+    //------------/service/item
+    @GetMapping(&quot;/service/item/selectTbItemAllByPage&quot;)
+    PageResult selectTbItemAllByPage(@RequestParam(&quot;page&quot;) Integer page, @RequestParam(&quot;rows&quot;) Integer rows);
+
+    @PostMapping(&quot;/service/item/insertTbItem&quot;)
+    Integer insertTbItem(@RequestBody TbItem tbItem);
+
+    @PostMapping(&quot;/service/item/deleteItemById&quot;)
+    Integer deleteItemById(@RequestBody TbItem tbItem);
+
+    @PostMapping(&quot;/service/item/preUpdateItem&quot;)
+    Map&lt;String,Object&gt; preUpdateItem(@RequestParam(&quot;itemId&quot;) Long itemId);
+
+    @PostMapping(&quot;/service/item/updateTbItem&quot;)
+    Integer updateTbItem(@RequestBody TbItem tbItem);
+
+    //-----------/service/itemCategory
+    @PostMapping(&quot;/service/itemCategory/selectItemCategoryByParentId&quot;)
+    List&lt;TbItemCat&gt; selectItemCategoryByParentId(@RequestParam(&quot;id&quot;) Long id);
+
+    //-----------/service/itemParam
+    @PostMapping(&quot;/service/itemParam/selectItemParamByItemCatId&quot;)
+    TbItemParam selectItemParamByItemCatId(@RequestParam(&quot;itemCatId&quot;) Long itemCatId);
+
+    //----------/service/itemDesc
+    @PostMapping(&quot;/service/itemDesc/insertItemDesc&quot;)
+    Integer insertItemDesc(@RequestBody TbItemDesc tbItemDesc);
+
+    @PostMapping(&quot;/service/itemDesc/updateItemDesc&quot;)
+    Integer updateItemDesc(@RequestBody TbItemDesc tbItemDesc);
+
+    //----------/service/itemParamItem
+    @PostMapping(&quot;/service/itemParamItem/insertTbItemParamItem&quot;)
+    Integer insertTbItemParamItem(@RequestBody TbItemParamItem tbItemParamItem);
+
+    @PostMapping(&quot;/service/itemParamItem/updateTbItemParamItem&quot;)
+    Integer updateTbItemParamItem(@RequestBody TbItemParamItem tbItemParamItem);
+}
+</code></pre>
+</li>
+</ol>
+<h3 id="55-开发规格参数管理接口">5.5 开发规格参数管理接口</h3>
+<h4 id="551-实现查询所有规格参数模板接口">5.5.1 实现查询所有规格参数模板接口</h4>
+<h5 id="5511-在-common_item-服务中实现查询规格参数">5.5.1.1 在 common_item 服务中实现查询规格参数</h5>
+<ol>
+<li>
+<p>修改 controller</p>
+<pre><code class="language-java">/**
+ * ItemParam
+ */
+@RestController
+@RequestMapping(&quot;/service/itemParam&quot;)
+public class ItemParamController {
+
+    @Autowired
+    private ItemParamService itemParamService;
+
+    /**
+     * 根据商品分类ID查询规格参数模板
+     */
+    @RequestMapping(&quot;/selectItemParamByItemCatId&quot;)
+    public TbItemParam selectItemParamByItemCatId(@RequestParam Long itemCatId) {
+        return itemParamService.selectItemParamByItemCatId(itemCatId);
+    }
+
+    /**
+     * 查询所有商品规格参数模板
+     *
+     * @return
+     */
+    @RequestMapping(&quot;/selectItemParamAll&quot;)
+    public PageResult selectItemParamAll(@RequestParam Integer page, @RequestParam Integer rows) {
+        return this.itemParamService.selectItemParamAll(page, rows);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>修改 service</p>
+<pre><code class="language-java">public interface ItemParamService {
+    TbItemParam selectItemParamByItemCatId(Long itemCatId);
+
+    PageResult selectItemParamAll(Integer page, Integer rows);
+}
+</code></pre>
+</li>
+<li>
+<p>修改 serviceImpl</p>
+<pre><code class="language-java">/**
+ * ItemParamService
+ */
+@Service
+public class ItemParamServiceImpl implements ItemParamService {
+
+    @Autowired
+    private TbItemParamMapper tbItemParamMapper;
+
+    @Override
+    public TbItemParam selectItemParamByItemCatId(Long itemCatId) {
+        TbItemParamExample tbItemParamExample = new TbItemParamExample();
+        TbItemParamExample.Criteria criteria = tbItemParamExample.createCriteria();
+        criteria.andItemCatIdEqualTo(itemCatId);
+        //如需检索的字段中包含大字段类型时，必须用selectByExampleWithBLOBs，不检索大字段时，用selectByExample就足够了
+        List&lt;TbItemParam&gt; list = tbItemParamMapper.selectByExampleWithBLOBs(tbItemParamExample);
+        if (list != null &amp;&amp; list.size() &gt; 0) {
+            return list.get(0);
+        }
+        return null;
+    }
+
+    /**
+     * 查询所有规格参数模板
+     * @param page
+     * @param rows
+     * @return
+     */
+    @Override
+    public PageResult selectItemParamAll(Integer page, Integer rows) {
+        //设置分页规则
+        PageHelper.startPage(page,rows);
+        TbItemParamExample tbItemParamExample = new TbItemParamExample();
+        List&lt;TbItemParam&gt; list = this.tbItemParamMapper.selectByExampleWithBLOBs(tbItemParamExample);
+
+        //返回所有分页信息参数为查询所有记录的信息
+        PageInfo&lt;TbItemParam&gt; pageInfo = new PageInfo&lt;&gt;(list);
+        PageResult pageResult = new PageResult();
+        pageResult.setPageIndex(page);
+        pageResult.setResult(pageInfo.getList());
+        pageResult.setTotalIndex((int) pageInfo.getTotal());
+        return pageResult;
+    }
+}
+
+</code></pre>
+</li>
+<li>
+<p>测试</p>
+<figure data-type="image" tabindex="32"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200828144418.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<h5 id="5512-在-backend_item-服务中实现查询规格参数">5.5.1.2 在 backend_item 服务中实现查询规格参数</h5>
+<ol>
+<li>
+<p>修改 controller</p>
+<pre><code class="language-java">/**
+ * ItemParam
+ */
+@RestController
+@RequestMapping(&quot;/backend/itemParam&quot;)
+public class ItemParamController {
+
+    @Autowired
+    private ItemParamService itemParamService;
+
+    /**
+     * 根据商品类目ID查询规格参数模板
+     */
+    @RequestMapping(&quot;/selectItemParamByItemCatId/{itemCatId}&quot;)
+    public Result selectItemParamByItemCatId(@PathVariable(&quot;itemCatId&quot;) Long itemCatId){
+        try {
+            return this.itemParamService.selectItemParamByItemCatId(itemCatId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;查无结果&quot;);
+    }
+
+    /**
+     * 查询商品全部规格参数
+     * @param page
+     * @param rows
+     * @return
+     */
+    @RequestMapping(&quot;/selectItemParamAll&quot;)
+    public Result selectItemParamAll(@RequestParam(defaultValue = &quot;1&quot;) Integer page,@RequestParam(defaultValue = &quot;30&quot;) Integer rows){
+        try {
+            return this.itemParamService.selectItemParamAll(page, rows);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.build(500, &quot;查无结果&quot;);
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>修改 service</p>
+<pre><code class="language-java">public interface ItemParamService {
+    Result selectItemParamByItemCatId(Long itemCatId);
+
+    Result selectItemParamAll(Integer page,Integer rows);
+}
+</code></pre>
+</li>
+<li>
+<p>修改 serviceImpl</p>
+<pre><code class="language-java">/**
+ * ItemParamService
+ */
+@Service
+public class ItemParamServiceImpl implements ItemParamService {
+
+    @Autowired
+    private CommonItemFeignClient commonItemFeignClient;
+
+    /**
+     * 根据商品类目Id查询规格参数模板
+     */
+    @Override
+    public Result selectItemParamByItemCatId(Long itemCatId) {
+        TbItemParam tbItemParam = this.commonItemFeignClient.selectItemParamByItemCatId(itemCatId);
+        if (tbItemParam != null) {
+            return Result.ok(tbItemParam);
+        }
+        return Result.error(&quot;查无结果&quot;);
+    }
+
+    /**
+     *  查询所有规格参数模板
+     * @param page
+     * @param rows
+     * @return
+     */
+    @Override
+    public Result selectItemParamAll(Integer page, Integer rows) {
+        PageResult pageResult = this.commonItemFeignClient.selectItemParamAll(page, rows);
+        if (pageResult!=null||pageResult.getResult().size()&gt;0){
+            return Result.ok(pageResult);
+        }
+        return Result.error(&quot;查无结果&quot;);
+    }
+
+}
+</code></pre>
+</li>
+<li>
+<p>修改 feignClient</p>
+<pre><code class="language-java">@FeignClient(value = &quot;common-item&quot;)
+public interface CommonItemFeignClient {
+    /**
+     * @RequestParam 注解是请求时带过来的参数，
+     * @RequestBody 该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式后，写入到Response对象的body数据区。使用时机：返回的数据不是html标签的页面，而是其他某种格式的数据时（如json、xml等）使用；
+     */
+    //------------/service/item
+    @GetMapping(&quot;/service/item/selectTbItemAllByPage&quot;)
+    PageResult selectTbItemAllByPage(@RequestParam(&quot;page&quot;) Integer page, @RequestParam(&quot;rows&quot;) Integer rows);
+
+    @PostMapping(&quot;/service/item/insertTbItem&quot;)
+    Integer insertTbItem(@RequestBody TbItem tbItem);
+
+    @PostMapping(&quot;/service/item/deleteItemById&quot;)
+    Integer deleteItemById(@RequestBody TbItem tbItem);
+
+    @PostMapping(&quot;/service/item/preUpdateItem&quot;)
+    Map&lt;String,Object&gt; preUpdateItem(@RequestParam(&quot;itemId&quot;) Long itemId);
+
+    @PostMapping(&quot;/service/item/updateTbItem&quot;)
+    Integer updateTbItem(@RequestBody TbItem tbItem);
+
+    //-----------/service/itemCategory
+    @PostMapping(&quot;/service/itemCategory/selectItemCategoryByParentId&quot;)
+    List&lt;TbItemCat&gt; selectItemCategoryByParentId(@RequestParam(&quot;id&quot;) Long id);
+
+    //-----------/service/itemParam
+    @PostMapping(&quot;/service/itemParam/selectItemParamByItemCatId&quot;)
+    TbItemParam selectItemParamByItemCatId(@RequestParam(&quot;itemCatId&quot;) Long itemCatId);
+
+    @PostMapping(&quot;/service/itemParam/selectItemParamAll&quot;)
+    PageResult selectItemParamAll(@RequestParam(&quot;page&quot;) Integer page, @RequestParam(&quot;rows&quot;) Integer rows);
+
+    //----------/service/itemDesc
+    @PostMapping(&quot;/service/itemDesc/insertItemDesc&quot;)
+    Integer insertItemDesc(@RequestBody TbItemDesc tbItemDesc);
+
+    @PostMapping(&quot;/service/itemDesc/updateItemDesc&quot;)
+    Integer updateItemDesc(@RequestBody TbItemDesc tbItemDesc);
+
+    //----------/service/itemParamItem
+    @PostMapping(&quot;/service/itemParamItem/insertTbItemParamItem&quot;)
+    Integer insertTbItemParamItem(@RequestBody TbItemParamItem tbItemParamItem);
+
+    @PostMapping(&quot;/service/itemParamItem/updateTbItemParamItem&quot;)
+    Integer updateTbItemParamItem(@RequestBody TbItemParamItem tbItemParamItem);
+}
+</code></pre>
+</li>
+<li>
+<p>测试</p>
+<figure data-type="image" tabindex="33"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200828150906.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
 ]]></content>
     </entry>
     <entry>
@@ -9173,735 +10957,6 @@ private String id;
     }
 
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Solr]]></title>
-        <id>https://jonchan1013.github.io/post/solr/</id>
-        <link href="https://jonchan1013.github.io/post/solr/">
-        </link>
-        <updated>2020-07-16T09:16:14.000Z</updated>
-        <summary type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200716171735.png" alt="" loading="lazy"></figure>
-<h2 id="1-solr-简介">1、Solr 简介</h2>
-<h3 id="11-为什么使用-solr">1.1 为什么使用 Solr</h3>
-<p>在海量数据下，对 MySQL 或 Oracle 进行模糊查询或条件查询的效率是很低的。而搜索功能在绝大多数项目中都是必须的，如何提升搜索效率是很多互联网项目必须要考虑的问题。<br>
-既然使用关系型数据库进行搜索效率比较低，最直接的解决方案就是使用专用搜索工具进行搜索，从而提升搜索效率。</p>
-]]></summary>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200716171735.png" alt="" loading="lazy"></figure>
-<h2 id="1-solr-简介">1、Solr 简介</h2>
-<h3 id="11-为什么使用-solr">1.1 为什么使用 Solr</h3>
-<p>在海量数据下，对 MySQL 或 Oracle 进行模糊查询或条件查询的效率是很低的。而搜索功能在绝大多数项目中都是必须的，如何提升搜索效率是很多互联网项目必须要考虑的问题。<br>
-既然使用关系型数据库进行搜索效率比较低，最直接的解决方案就是使用专用搜索工具进行搜索，从而提升搜索效率。</p>
-<!-- more -->
-<h3 id="12-常见搜索解决方案">1.2 常见搜索解决方案</h3>
-<p>基于 Apache Lucene（全文检索工具库）实现搜索。但是 Lucene 的使用对于绝大多数的程序员都是“噩梦级”的。</p>
-<p>基于谷歌 API 实现搜索。</p>
-<p>基于百度 API 实现搜索。</p>
-<h3 id="13-solr-简介">1.3 Solr 简介</h3>
-<p>Solr 是基于 Apache Lucene 构建的用于搜索和分析的开源解决方案。可提供可扩展索引、搜索功能、高亮显示和文字解析功能。</p>
-<p>Solr 本质就是一个 Java web 项目，且内嵌了 Jetty 服务器，所以安装起来非常方便。客户端操作 Solr 的过程和平时我们所写项目一样，就是请求 Solr 中控制器，处理完数据后把结果响应给客户端。</p>
-<h3 id="14-正向索引和反向索引">1.4 正向索引和反向索引</h3>
-<p>只要讨论搜索就不得不提的两个概念：正向索引（forward index）和反向索引(invertedindex)。</p>
-<p>正向索引：从文档内容到词组的过程。每次搜索的时候需要搜索所有文档，每个文档比较搜索条件和词组。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">文档</th>
-<th style="text-align:center">词组</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">I am a chinese</td>
-<td style="text-align:center">I,am,a,chinses</td>
-</tr>
-</tbody>
-</table>
-<p>反向索引：是正向索引的逆向。建立词组和文档的映射关系。通过找到词组就能找到文档内容。（和新华字典找字很像）</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">词组</th>
-<th style="text-align:center">文档</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">I,am,a,chinses</td>
-<td style="text-align:center">I am a chinese</td>
-</tr>
-</tbody>
-</table>
-<h2 id="2-solr-搜索原理">2、Solr 搜索原理</h2>
-<h3 id="21-搜索原理">2.1 搜索原理</h3>
-<p>Solr 能够提升检索效率的主要原因就是<strong>分词和索引（反向索引）</strong>。</p>
-<p>分词：会对搜索条件/存储内容进行分词，分成日常所使用的词语。</p>
-<p>索引：存储在 Solr 中内容会按照程序员的要求来是否建立索引。如果要求建立索引会把存储内容中关键字（分词）建立索引。</p>
-<figure data-type="image" tabindex="2"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718221615.png" alt="" loading="lazy"></figure>
-<h3 id="22-solr-中数据存储说明">2.2 Solr 中数据存储说明</h3>
-<p>Solr 为了给内容建立索引，所以 Solr 就必须具备数据存储能力。所有需要被搜索的内容都需要存储在 Solr 中，在开发中需要把数据库中数据添加到 Solr 中进行初始化，每次修改数据库中数据还需要同步 Solr 中的数据。</p>
-<p>Solr 中数据存储是存储在 Document 对象中，对象中可以包含的属性和属性类型都定义在 schema.xml 中。如果需要自定义属性或自定义属性类型都需要修改 schema.xml 配置文件。从 Solr5 开始 schema.xml 更改名称为 managed-schema(没有扩展名)</p>
-<h2 id="3-solr-单机版安装">3、 Solr 单机版安装</h2>
-<p>Solr 是使用 Java 编写，所以必选先安装 JDK。</p>
-<ol>
-<li>
-<p>上传并解压<br>
-上传压缩包 solr-8.2.0.tgz 到/usr/local/tmp 中。</p>
-<p>解压</p>
-<p>cd /usr/local/tmp</p>
-<p>tar zxf solr-8.2.0.tgz</p>
-</li>
-<li>
-<p>复制到/usr/local 中</p>
-<p>cp -r solr-8.2.0 ../solr</p>
-</li>
-<li>
-<p>修改启动参数<br>
-修改启动参数，否则启动时报警告。提示设置 SOLR_ULIMIT_CHECKS=false</p>
-</li>
-</ol>
-<p>cd /usr/local/solr/bin</p>
-<p>vim solr.in.sh</p>
-<figure data-type="image" tabindex="3"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718221843.png" alt="" loading="lazy"></figure>
-<ol start="4">
-<li>启动 Solr<br>
-Solr 内嵌 Jetty，直接启动即可。默认监听 <strong>8983 端口。</strong></li>
-</ol>
-<p>Solr 默认不推荐 root 账户启动，如果是 root 账户启动需要添加-force 参数。</p>
-<p>./solr start -force</p>
-<h2 id="4-可视化管理界面">4、可视化管理界面</h2>
-<p>在关闭防火墙的前提下，可以在 windows 的浏览器中访问 Solr。</p>
-<p>输入: http://124.70.181.124:8983 就可以访问 Solr 的可视化管理界面。</p>
-<p>左侧有 5 个菜单。分别是：</p>
-<p>（1）Dashboard：面板显示 Solr 的总体信息。</p>
-<p>（2）Logging：日志</p>
-<p>（3）Core Admin：Solr 的核心。类似于数据的 Database</p>
-<p>（4）Java Perperties：所有 Java 相关属性。</p>
-<p>（5）Thread Dump：线程相关信息。</p>
-<p>（6）如果有 Core，将显示在此处。</p>
-<figure data-type="image" tabindex="4"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718222009.png" alt="" loading="lazy"></figure>
-<h2 id="5-新建核心">5、新建核心</h2>
-<p>Solr 安装完成后默认是没有核心的。需要手动配置。</p>
-<p>需要在 solr/server/solr 下新建文件夹，并给定配置文件，否则无法建立。</p>
-<figure data-type="image" tabindex="5"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718222032.png" alt="" loading="lazy"></figure>
-<ol>
-<li>
-<p>新建目录<br>
-在/usr/local/solr/server/solr 中新建自定义名称目录。此处示例名称为 testcore。</p>
-<p>cd /usr/local/solr/server/solr</p>
-<p>mkdir testcore</p>
-</li>
-<li>
-<p>复制配置文件<br>
-在 configsets 里面包含了_default 和 sample_techproducts_configs。里面都是配置文件示例。_default 属于默认配置，较纯净。sample_techproducts_configs 是带有了一些配置示例。</p>
-</li>
-</ol>
-<p>cp -r configsets/_default/conf/ testcore/</p>
-<ol start="3">
-<li>
-<p>填写 Core 信息<br>
-在可视化管理界面中 Core Admin 中编写信息后点击 Add Core 后，短暂延迟后testcore 就会创建成功。schema 处不用更改。</p>
-<figure data-type="image" tabindex="6"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718222147.png" alt="" loading="lazy"></figure>
-</li>
-<li>
-<p>出现 testcore<br>
-在客户端管理界面中，选择新建的 Core 后，就可以按照自己项目的需求进行操作了。</p>
-<figure data-type="image" tabindex="7"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718222200.png" alt="" loading="lazy"></figure>
-</li>
-</ol>
-<h2 id="6-分词-analysis">6、 分词 Analysis</h2>
-<p>在 Solr 可 视 化 管 理 界 面 中 ， Core 的 管 理 菜 单 项 中 都 会 有 Analysis 。 表 示 根 据Scheme.xml(managed-schema)中配置要求进行解析。</p>
-<p>对英文解析就比较简单了，只要按照空格把英文语句拆分成英文单词即可。</p>
-<figure data-type="image" tabindex="8"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718222225.png" alt="" loading="lazy"></figure>
-<p>但是如果条件是中文时，把一句话按照字进行拆分就不是很合理了。正确的方式是按照合理的词组进行拆分。</p>
-<figure data-type="image" tabindex="9"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718222236.png" alt="" loading="lazy"></figure>
-<h3 id="61-中文分词器安装及配置步骤">6.1 中文分词器安装及配置步骤</h3>
-<p>上传 ik-analyzer.jar 到 webapps 中。</p>
-<p>去 https://search.maven.org/search?q=com.github.magese 下 载 对 应 版 本 的ik-analyzer。可以在&quot;软件/Analyzer&quot;中直接获取。</p>
-<ol>
-<li>
-<p>上传 jar 到指定目录<br>
-上传 ik-analyzer-8.2.0.jar 到</p>
-<p>/usr/local/solr/server/solr-webapp/webapp/WEB-INF/lib 目录中</p>
-</li>
-<li>
-<p>修改配置文件<br>
-修改/usr/local/solr/server/solr/testcore/conf/managed-schema</p>
-<p>vim /usr/local/solr/server/solr/testcore/conf/managed-schema</p>
-<p>添加下面内容。</p>
-<p>排版：Esc 退出编辑状态下：gg=G</p>
-<pre><code class="language-xml">    &lt;field name=&quot;myfield&quot; type=&quot;text_ik&quot; indexed=&quot;true&quot; stored=&quot;true&quot; /&gt;
-
-    &lt;fieldType name=&quot;text_ik&quot; class=&quot;solr.TextField&quot;&gt;
-      &lt;analyzer type=&quot;index&quot;&gt;
-        &lt;tokenizer class=&quot;org.wltea.analyzer.lucene.IKTokenizerFactory&quot; 
-          useSmart=&quot;false&quot; conf=&quot;ik.conf&quot;/&gt;
-        &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;
-      &lt;/analyzer&gt;
-      &lt;analyzer type=&quot;query&quot;&gt;
-        &lt;tokenizer class=&quot;org.wltea.analyzer.lucene.IKTokenizerFactory&quot; 
-          useSmart=&quot;true&quot; conf=&quot;ik.conf&quot;/&gt;
-        &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;
-      &lt;/analyzer&gt;
-    &lt;/fieldType&gt;
-
-</code></pre>
-</li>
-<li>
-<p>重启</p>
-<p>cd /usr/local/solr/bin</p>
-<p>./solr stop -all</p>
-<p>./solr start -force</p>
-</li>
-<li>
-<p>验证<br>
-可以在可视化管理界面中找到 myfield 属性进行验证。</p>
-<figure data-type="image" tabindex="10"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718222452.png" alt="" loading="lazy"></figure>
-</li>
-</ol>
-<h3 id="62-managed-schema-配置说明">6.2 managed-schema 配置说明</h3>
-<ol>
-<li>
-<fieldType/>
-表 示 定 义 一 个 属 性 类 型 。 在 Solr 中 属 性 类 型 都 是 自 定 义 的 。 在 上 面 配 置 中name="text_ik"为自定义类型。当某个属性取值为 text_ik 时 IK Analyzer 才能生效。
-</li>
-<li>
-<field/>
-表示向 Document 中添加一个属性。
-<p>常用属性：</p>
-<p>name: 属性名</p>
-<p>type:属性类型。所有类型都是 solr 使用<fieldType>配置的</p>
-<p>indexed: 是否建立索引</p>
-<p>stored: solr 是否把该属性值响应给搜索用户。</p>
-<p>required：该属性是否是必须的。默认 id 是必须的。</p>
-<p>multiValued：如果为 true，表示该属性为复合属性，此属性中包含了多个其他的属性。常用在多个列作为搜索条件时，把这些列定义定义成一个新的复合属性，通过搜索一个复合属性就可以实现搜索多个列。当设置为 true 时与<copyField source="" dest=""/>结合使用</p>
-</li>
-<li>
-<uniqueKey>
-唯一主键，Solr 中默认定义 id 属性为唯一主键。ID 的值是不允许重复的。
-</li>
-<li>
-<dynamicField>
-名称中允许*进行通配。代表满足特定名称要求的一组属性。
-</li>
-</ol>
-<h2 id="7-dataimport">7、 Dataimport</h2>
-<p>可以使用 Solr 自带的 Dataimport 功能把数据库中数据快速导入到 solr 中.</p>
-<p>必须保证 managed-schema 和数据库中表的列对应。</p>
-<ol>
-<li>
-<p>修改配置文件<br>
-修改 solrconfig.xml，添加下面内容</p>
-<pre><code class="language-xml">&lt;!-- 配置数据导入的处理器 --&gt;
-
- &lt;requestHandler name=&quot;/dataimport&quot; class=&quot;org.apache.solr.handler.dataimport.DataImportHandler&quot;&gt;
-
-	&lt;lst name=&quot;defaults&quot;&gt;
-
-		&lt;!-- 加载 data-config.xml --&gt;
-
-		&lt;str name=&quot;config&quot;&gt;data-config.xml&lt;/str&gt;
-
-	&lt;/lst&gt;
-
- &lt;/requestHandler&gt;
-</code></pre>
-</li>
-<li>
-<p>新建 data-config.xml</p>
-<p>和 solrconfig.xml 同一目录下新建 data-config.xml</p>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;dataConfig&gt;
-	&lt;dataSource 
-		type=&quot;JdbcDataSource&quot;  
-		driver=&quot;com.mysql.jdbc.Driver&quot;
-		url=&quot;jdbc:mysql://124.70.181.124:3306/ego2&quot;
-		user=&quot;root&quot;
-		password=&quot;Chenyong.123&quot;/&gt;&lt;/dataSource&gt;
-
-&lt;document&gt;
-
-	&lt;entity name=&quot;product&quot; query=&quot;SELECT id,title from tb_item&quot;&gt;
-
-	&lt;!--实现数据库的列和索引库的字段的映射
-		column 指定数据库的列表
-		name 指定索引库的字段名字，必须和 schema.xml 中定义的一样
-	--&gt;
-	&lt;field column=&quot;id&quot; name=&quot;id&quot;/&gt;
-	&lt;field column=&quot;title&quot; name=&quot;myfield&quot;/&gt;
-&lt;/entity&gt;
-&lt;/document&gt;
-
-&lt;/dataConfig&gt;
-</code></pre>
-</li>
-<li>
-<p>添加 jar<br>
-向 solr-webapp 中添加三个 jar。在 dist 中两个还有一个数据库驱动。</p>
-</li>
-</ol>
-<figure data-type="image" tabindex="11"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718222810.png" alt="" loading="lazy"></figure>
-<ol start="4">
-<li>
-<p>操作<br>
-重启 solr 后，在可视化管理页面中进行数据导入。</p>
-<p>注意：</p>
-<p>点击导入按钮后，要记得点击刷新按钮。</p>
-</li>
-</ol>
-<h2 id="8-菜单项目-documents-使用办法">8、菜单项目 Documents 使用办法</h2>
-<p>以 XML 格式举例</p>
-<h3 id="81-新增修改">8.1 新增/修改</h3>
-<p>当 id 不存在时新增，当 id 存在修改。</p>
-<pre><code class="language-xml">&lt;doc&gt;
-
-&lt;field name=&quot;id&quot;&gt;8&lt;/field&gt;
-
-&lt;field name=&quot;name&quot;&gt;明天更大卖&lt;/field&gt;
-
-&lt;field name=&quot;price&quot;&gt;98&lt;/field&gt;
-
-&lt;/doc&gt;
-</code></pre>
-<h3 id="82-删除">8.2  删除</h3>
-<ol>
-<li>
-<p>根据主键删除</p>
-<pre><code class="language-xml">&lt;delete&gt;
-
-&lt;id&gt;8&lt;/id&gt;
-
-&lt;/delete&gt;
-</code></pre>
-</li>
-<li>
-<p>根据条件删除</p>
-<pre><code class="language-xml">&lt;delete&gt;
-
-&lt;query&gt;*:*&lt;/query&gt;
-
-&lt;/delete&gt;
-</code></pre>
-</li>
-</ol>
-<h2 id="9-菜单项目-query-查询使用办法">9、菜单项目 query 查询使用办法</h2>
-<h3 id="91-查询全部">9.1  查询全部</h3>
-<p>只要在 q 参数中写入*:*既是搜索全部数据。</p>
-<figure data-type="image" tabindex="12"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718223217.png" alt="" loading="lazy"></figure>
-<h3 id="92-条件查询">9.2 条件查询</h3>
-<p>在 q 参数部分写入 字段名:搜索条件值， 既是条件搜索</p>
-<figure data-type="image" tabindex="13"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718223236.png" alt="" loading="lazy"></figure>
-<h3 id="93-分页查询">9.3 分页查询</h3>
-<p>在条件 start,rows 中输入从第几条数据开始查询，查询多少条数据。下标从 0 开始。类似 MySQL 数据库中的 limit。</p>
-<figure data-type="image" tabindex="14"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718223256.png" alt="" loading="lazy"></figure>
-<h3 id="94-查询排序">9.4 查询排序</h3>
-<p>在 sort 条件中输入 字段名 排序规则。 排序规则包括 asc 和 desc。</p>
-<figure data-type="image" tabindex="15"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718223320.png" alt="" loading="lazy"></figure>
-<h3 id="95-高亮查询">9.5 高亮查询</h3>
-<p>选中 hl 高亮复选框，在 hl.fl 中输入高亮显示的字段名称，在 hl.simple.pre 中输入高亮前缀，在 hl.simple.post 中输入高亮后缀。</p>
-<figure data-type="image" tabindex="16"><img src="https://gitee.com/chenyong1013/picCloud/raw/master/20200718223339.png" alt="" loading="lazy"></figure>
-<h2 id="10-使用-solrj-操作-solr">10、使用 SolrJ 操作 Solr</h2>
-<p>SolrJ 是 Solr 提供的 Java 客户端 API。通过 SolrJ 可以实现 Java 程序对 Solr 中数据的操作。</p>
-<p>大前提：添加 SolrJ 依赖。依赖版本和 Solr 版本严格对应</p>
-<pre><code class="language-xml"> &lt;dependencies&gt;
-     &lt;dependency&gt;
-         &lt;groupId&gt;org.apache.solr&lt;/groupId&gt;
-         &lt;artifactId&gt;solr-solrj&lt;/artifactId&gt;
-         &lt;version&gt;8.2.0&lt;/version&gt;
-     &lt;/dependency&gt;
- &lt;/dependencies&gt;
-</code></pre>
-<pre><code class="language-java">/**
- * 使用SolrJ访问Solr服务。
- */
-public class FirstAccess {
-    public static void main(String[] args) {
-        search();
-    }
-
-    // 搜索数据
-    public static void search(){
-        HttpSolrClient client = null;
-        try{
-            String url = &quot;http://124.70.181.124:8983/solr/testcore&quot;;
-            client = new HttpSolrClient.Builder(url).build();
-
-            // 创建搜索条件对象。
-            SolrQuery params = new SolrQuery();
-            // 提供搜索关键字， q  *:*
-            params.setQuery(&quot;title_zh_cn:管理&quot;);
-
-            // 排序
-            params.setSort(&quot;id&quot;, SolrQuery.ORDER.asc);
-
-            // 分页
-            params.setStart(0); // 第几行开始查询
-            params.setRows(3); // 查询多少行
-
-            // 高亮
-            // 开启高亮
-            params.setHighlight(true);
-            // 设置高亮字段，如果有多个高亮字段，多次调用当前方法。
-            params.addHighlightField(&quot;title_zh_cn&quot;);
-            // 设置高亮前缀
-            params.setHighlightSimplePre(&quot;&lt;span style='color:red'&gt;&quot;);
-            // 设置高亮后缀
-            params.setHighlightSimplePost(&quot;&lt;/span&gt;&quot;);
-
-            // 搜索数据
-            QueryResponse response = client.query(params);
-
-            // 从响应中获取高亮结果数据集合 {主键:{字段名:[&quot;高亮数据&quot;, &quot;高亮数据&quot;]}}
-            Map&lt;String, Map&lt;String, List&lt;String&gt;&gt;&gt; highlightMap = response.getHighlighting();
-
-            // 获取搜索返回结果集合  SolrDocumentList 是List接口的实现。 固定泛型是 SolrDocument
-            SolrDocumentList docList = response.getResults();
-            System.out.println(&quot;本次查询返回数据行数&quot; + docList.size());
-            System.out.println(&quot;本次搜索总计数据行数&quot; + docList.getNumFound());
-            for(SolrDocument doc : docList){
-                System.out.print(doc + &quot;【 id = &quot; + doc.getFieldValue(&quot;id&quot;)
-                        + &quot;， title_zh_cn = &quot; + doc.getFieldValue(&quot;title_zh_cn&quot;) + &quot;】&quot;);
-
-                // 输出高亮
-                // 根据当前文档主键查询高亮数据
-                Map&lt;String, List&lt;String&gt;&gt; entry = highlightMap.get(doc.getFieldValue(&quot;id&quot;));
-                if(null != entry &amp;&amp; entry.size() &gt; 0){
-                    // 有高亮数据
-                    List&lt;String&gt; hlStrList = entry.get(&quot;title_zh_cn&quot;);
-                    System.out.println(&quot; 高亮数据内容是：【&quot; + hlStrList + &quot;】&quot;);
-                }
-
-                System.out.println();
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally {
-            try {
-                client.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    // 删除数据
-    public static void delete(){
-        HttpSolrClient client = null;
-        try{
-            String url = &quot;http://124.70.181.124:8983/solr/testcore&quot;;
-            client = new HttpSolrClient.Builder(url).build();
-
-            // 删除数据
-            client.deleteById(&quot;2000&quot;);  // 删除单数据
-
-            client.deleteById(Arrays.asList(&quot;100&quot;, &quot;101&quot;, &quot;102&quot;, &quot;103&quot;)); // 批量删除
-
-            client.deleteByQuery(&quot;title_zh_cn:角色&quot;); // 条件删除， 条件格式 -  字段名:条件数据
-
-            client.commit();
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally {
-            try {
-                client.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    // 保存数据到Solr，如果主键字段id值唯一就是新增，不唯一就是覆盖（更新）
-    public static void save(){
-        HttpSolrClient client = null;
-        try {
-            // 创建客户端
-            String url = &quot;http://124.70.181.124:8983/solr/testcore&quot;;
-            client = new HttpSolrClient.Builder(url).build();
-
-            // 创建要保存的数据对象
-            SolrInputDocument doc = new SolrInputDocument();
-            doc.addField(&quot;id&quot;, &quot;2000&quot;);
-            doc.addField(&quot;title_zh_cn&quot;, &quot;SolrJ保存数据-二次执行&quot;);
-
-            // 执行数据保存
-            client.add(doc);
-
-            // 事务管理
-            client.commit(); // 提交当前url指向的core collection
-            // client.commit(&quot;testcore&quot;);  // 提供core collection名称，指定提交事务
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            // 回收资源
-            try {
-                client.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-}
-
-</code></pre>
-<h2 id="11-spring-data-for-apache-solr">11、 Spring Data for Apache Solr</h2>
-<h3 id="111-spring-data-简介">11.1 Spring Data 简介</h3>
-<p>Spring Data 是 Spring 的顶级项目。里面包含了 N 多个二级子项目，每个子项目对应一种技术或工具。其目的为了让数据访问更加简单，更加方便的和 Spring 进行整合。</p>
-<p>Spring Data 项目如果单独使用是还需要配置 XML 配置文件的，当和 Spring Boot整合后使用起来非常方便。spring-boot-starter-data-xx 就是对应的启动器。</p>
-<h3 id="112-实现步骤">11.2 实现步骤</h3>
-<ol>
-<li>添加依赖</li>
-</ol>
-<pre><code class="language-xml">    &lt;dependencyManagement&gt;
-        &lt;dependencies&gt;
-            &lt;dependency&gt;
-                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-                &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;
-                &lt;version&gt;2.2.5.RELEASE&lt;/version&gt;
-                &lt;type&gt;pom&lt;/type&gt;
-                &lt;scope&gt;import&lt;/scope&gt;
-            &lt;/dependency&gt;
-        &lt;/dependencies&gt;
-    &lt;/dependencyManagement&gt;
-
-    &lt;dependencies&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-            &lt;scope&gt;test&lt;/scope&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-boot-starter-data-solr&lt;/artifactId&gt;
-        &lt;/dependency&gt;
-    &lt;/dependencies&gt;
-</code></pre>
-<ol start="2">
-<li>
-<p>编写配置文件</p>
-<pre><code class="language-yaml">spring:
-  data:
-    solr:
-      host: http://124.70.181.124:8983/solr # 配置solr服务器所在地址
-</code></pre>
-</li>
-<li>
-<p>编写实体类</p>
-<pre><code class="language-java">@SolrDocument(collection = &quot;testcore&quot;)
-public class Menu implements Serializable {
-    // @Id - 代表当前字段是唯一主键字段。 在高亮查询的时候，需要检查。
-    @Field(value = &quot;id&quot;)
-    @Id
-    private Long id;
-    @Field(value = &quot;myfield&quot;)
-    private String title;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Menu(Long id, String title) {
-        this.id = id;
-        this.title = title;
-    }
-
-    public Menu() {
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Menu menu = (Menu) o;
-        return Objects.equals(id, menu.id) &amp;&amp;
-                Objects.equals(title, menu.title);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title);
-    }
-
-    @Override
-    public String toString() {
-        return &quot;Menu{&quot; +
-                &quot;id=&quot; + id +
-                &quot;, title=&quot; + title +
-                '}';
-    }
-}
-
-</code></pre>
-</li>
-<li>
-<p>编写测试类</p>
-<pre><code class="language-java">/**
- * SpringBootTest测试类型
- */
-@SpringBootTest(classes = {FirstSolrApp.class})
-@RunWith(SpringRunner.class)
-public class TestSolr {
-    /**
-     * SpringData的所有子工程，几乎都会提供一个XxxTemplate类型，
-     * 这个Template是用来实现客户端服务器数据交互的对象。
-     */
-    @Autowired
-    private SolrTemplate template;
-
-    /**
-     * 保存数据
-     * 使用SpringData开发数据访问的时候，不要回收资源，因为SpringData会自动维护数据源连接池
-     */
-    @Test
-    public void testSave() {
-        //创建要保存的对象
-        SolrInputDocument doc = new SolrInputDocument();
-        doc.addField(&quot;id&quot;, &quot;2000&quot;);
-        doc.addField(&quot;myfield&quot;, &quot;使用SpringDataForApacheSolr实现数据保存&quot;);
-        //数据保存。主键唯一是新增，不是则为覆盖
-        UpdateResponse response = template.saveBean(&quot;testcore&quot;, doc);
-
-        System.out.println(response.getStatus() == 0 ? &quot;保存成功&quot; : &quot;保存失败&quot;);
-
-        //提交事务
-        template.commit(&quot;testcore&quot;);
-    }
-
-    /**
-     * 输出数据
-     */
-    @Test
-    public void testDelete() {
-        //主键删除唯一数据
-        UpdateResponse response = template.deleteByIds(&quot;testcore&quot;, &quot;2000&quot;);
-        System.out.println(response.getStatus() == 0 ? &quot;删除成功&quot; : &quot;删除失败&quot;);
-
-        //根据主键批量删除数据
-        response = template.deleteByIds(&quot;testcore&quot;, Arrays.asList(&quot;20001&quot;, &quot;2002&quot;));
-        System.out.println(response.getStatus() == 0 ? &quot;批量删除成功&quot; : &quot;批量删除失败&quot;);
-
-        //根据查询条件删除
-        SimpleQuery query = new SimpleQuery();
-        // Criteria.where(&quot;title_zh_cn&quot;) - 提供一个搜索条件，对应的字段名是什么
-        // criteria.is(&quot;参数&quot;) - 为这个搜索条件绑定具体的参数值
-        query.addCriteria(Criteria.where(&quot;myfield&quot;).is(&quot;Spring&quot;));
-        response = template.delete(&quot;testcore&quot;, query);
-        System.out.println(response.getStatus() == 0 ? &quot;条件删除成功&quot; : &quot;条件删除失败&quot;);
-
-        //提交事务
-        template.commit(&quot;testcore&quot;);
-
-    }
-
-    /**
-     * 搜索数据
-     */
-    @Test
-    public void testSearch(){
-        //创建搜索条件
-        SimpleQuery query = new SimpleQuery();
-        query.addCriteria(Criteria.where(&quot;myfield&quot;).is(&quot;数据&quot;));
-
-        //分页
-        query.setOffset(0L); //第几行开始查询
-        query.setRows(3); //查询多少数据
-        //排序
-        query.addSort(Sort.by(Sort.Direction.DESC,&quot;id&quot;));
-
-        //执行搜索
-        // 参数 ：collection - 索引库名称， query - 搜索条件， Class - 实体类对象
-        ScoredPage&lt;Menu&gt; scoredPage = template.queryForPage(&quot;testcore&quot;, query, Menu.class);
-
-        //处理结果
-        System.out.println(&quot;总计数据行数:&quot;+scoredPage.getTotalElements());
-        System.out.println(&quot;总计页码数:&quot;+scoredPage.getTotalPages());
-        //搜索的结果集合
-        List&lt;Menu&gt; list = scoredPage.getContent();
-        System.out.println(list);
-    }
-
-    /**
-     * 高亮搜索
-     */
-    @Test
-    public void testHighlightSearch(){
-        SimpleHighlightQuery query = new SimpleHighlightQuery();
-        query.addCriteria(Criteria.where(&quot;myfield&quot;).is(&quot;数据&quot;));
-        // 设置高亮
-        // 创建高亮设置对象
-        HighlightOptions options = new HighlightOptions();
-        // 设置高亮字段名
-        options.addField(&quot;myfield&quot;);
-        // 设置高亮前后缀
-        options.setSimplePrefix(&quot;&lt;span&gt;&quot;);
-        options.setSimplePostfix(&quot;&lt;/span&gt;&quot;);
-        query.setHighlightOptions(options);
-
-        // 搜索
-        HighlightPage&lt;Menu&gt; page = template.queryForHighlightPage(&quot;testcore&quot;, query, Menu.class);
-        List&lt;Menu&gt; result = new ArrayList&lt;&gt;();
-        // 获取搜索结果中高亮处理过的结果。
-        List&lt;HighlightEntry&lt;Menu&gt;&gt; list = page.getHighlighted();
-        for(HighlightEntry&lt;Menu&gt; entry: list){
-            // 获取entry中的高亮数据集合
-            List&lt;HighlightEntry.Highlight&gt; highlights = entry.getHighlights();
-            // 获取没有经过高亮处理的结果对象
-            Menu menu = entry.getEntity();
-            for (HighlightEntry.Highlight highlight : highlights){
-                // 判断高亮数据的字段是否是自己需要的。
-                if(highlight.getField().getName().equals(&quot;myfield&quot;)) {
-                    // 获取高亮处理的字符串
-                    String highlightString = highlight.getSnipplets().get(0);
-                    // 把高亮处理的字符串赋值给对象。
-                    menu.setTitle(highlightString);
-                }
-            }
-            result.add(menu);
-        }
-        System.out.println(result);
-    }
-}
-
-</code></pre>
-</li>
-</ol>
-<h2 id="12-solrcloud">12、SolrCloud</h2>
-<p>Solr 可以搭建具备容错能力和高可用的 Solr 集群。集群中集群配置、自动负载均衡和查询故障转移、Zookeeper 集群实现集群协调管理，这些全部功能统称为 SolrCloud。</p>
-<p>SolrCloud 是基于 Zookeeper 进行管理的。在 Solr 中已经内置了 Zookeeper 相关内容，当执行集群创建命令会自动创建 Zookeeper 相关内容。这个使用的是 Zookeeper 的集群管理功能实现的。</p>
-<ol>
-<li>
-<p>创建<br>
-SolrCloud 已经包含在了 Solr 中，可以直接启动 Solr 集群。</p>
-<p>./solr -e cloud -noprompt -force</p>
-<p>此命令等同于# ./solr -e cloud -force 全部参数为默认值。</p>
-<p>运行成功后会在 example 文件夹多出 cloud 文件夹。</p>
-</li>
-<li>
-<p>停止</p>
-<p>./solr stop -all</p>
-</li>
-<li>
-<p>重新运行</p>
-</li>
-</ol>
-<p>./solr start -c -p 8983 -s ../example/cloud/node1/solr/ -force</p>
-<p>./solr start -c -p 7574 -z localhost:9983 -s ../example/cloud/node2/solr/ -force</p>
 ]]></content>
     </entry>
 </feed>
